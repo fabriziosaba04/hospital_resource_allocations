@@ -13,6 +13,7 @@ Other project documents:
 | [`docs/PROJECT_SPEC.md`](docs/PROJECT_SPEC.md) | Consolidated technical design and the Implementation Decisions Log |
 | [`docs/EVALUATION_PLAN.md`](docs/EVALUATION_PLAN.md) | Metrics, baselines, run plan and verification |
 | [`docs/PROJECT_OVERVIEW.md`](docs/PROJECT_OVERVIEW.md) | Summary for new readers |
+| [`docs/REFLECTION_LOG.md`](docs/REFLECTION_LOG.md) | Running record of errors and near misses, for the Reflection and Verification sections |
 
 ## 0. Project Structure
 
@@ -42,7 +43,8 @@ hospital_resource_allocations/
 │   ├── DATA_DICTIONARY.md
 │   ├── AGENTS.md
 │   ├── EVALUATION_PLAN.md
-│   └── LIMITATIONS_AND_REFLECTION.md
+│   ├── LIMITATIONS_AND_REFLECTION.md
+│   └── REFLECTION_LOG.md          running record of errors and near misses
 │
 ├── data/
 │   ├── MANIFEST.json              SHA-256 of every frozen data file (tag data-v1.0)
@@ -299,6 +301,7 @@ Claude Code acts as a development assistant, analytical collaborator and critica
 - Keep the agents' responsibilities separate when implementing them. Do not let one agent take over another's role.
 - Verify tool and configuration syntax (for example subagent frontmatter and MCP configuration) against current Claude Code documentation rather than guessing.
 - Do not silently make conceptual decisions in the four escalation areas (Section 9.2). When one is required, explain the alternatives, give a recommendation and wait.
+- **Reflection log:** whenever something goes wrong or nearly goes wrong (a wrong rationale, a false claim, a test or check that caught an error, a gap in enforcement), add an entry to [`docs/REFLECTION_LOG.md`](docs/REFLECTION_LOG.md) **at that moment**, not at the end of a session, and mention new entries in the session report. Errors by the AI assistant count.
 
 ### 9.1 Development sessions vs. run sessions
 

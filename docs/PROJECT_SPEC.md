@@ -13,51 +13,88 @@ This document specifies **how** those are implemented, and does not restate them
 
 ## 0. Current Status and Next Step
 
-*Last updated 2026-11-11. A new session should read this section first, then `CLAUDE.md` and `AGENTS.md`.*
+*Last updated 2026-11-11 (end of session). A new session should read this section first, then `CLAUDE.md`, `AGENTS.md` and `docs/REFLECTION_LOG.md`. This section is meant to be enough to resume from the repository alone.*
 
-### Done
+### Resume checklist
 
-- **Data generator and validation (2026-11-11):** `src/data_generation/` (generator, LOS calibration, 19 validation checks, descriptive statistics, Monte Carlo), the `uv` project (`pyproject.toml`) and `tests/test_data_generation.py` (39 tests; 62 in the whole suite, all passing on 2026-11-11). Datasets `seed20261107`, `seed20261108` and `seed20261109` generated; all 19 checks pass on each. A 1,000-seed Monte Carlo (seeds 1–1000) is in `data/processed/montecarlo/montecarlo_summary.json`.
-- **Environment cut path (2026-11-11):** `src/environment/` largest remainder (§5.1), bed assignment (§5.3), N1 requirement, validator (§5.5) and repair rule (§5.7), with `tests/test_environment_cut_path.py` (unit, property and end-to-end tests). The initial allocation helper, nurse coverage (§5.4) and what-if (§5.6) are not built yet.
-- **Run settings (2026-11-11):** `.claude/run-settings.json` created, deny-by-default on `data/**`; verified with `tests/manual/verify_run_settings.py` (Section 8).
-- **Shock 3 (2026-11-11):** the pre-registered sweep (Decisions Log #33) selected nothing (best eligible: A26, P(forced cut) = 0.52). The owner kept the **approved schedule** and did not lower the threshold after the fact (negative result: Log #40, `LIMITATIONS_AND_REFLECTION.md` §2). The cut path is covered by tests instead.
-- **Stress variant (2026-11-11):** `seed20261107_stress`, a **constructed test case** identical to the primary seed except Shock 3 (beds −40 on days 23–25), forcing a 6-bed cut on day 23. It passes all 19 checks and is **excluded from every comparison in the main evaluation** (Log #41).
-- **Data freeze (2026-11-11):** tag `data-v1.0`, `data/MANIFEST.json`, manifest check passing with byte-exact regeneration (Log #43–44).
-- **Run settings (2026-11-11, extended):** the deny list also covers `tests/**` and `.hypothesis/**`; re-verified (Section 8).
-- **Nurse checks (2026-11-11):** hand-computed N1 tests in `tests/test_nurse_requirement.py`. Primary seed, Shock 1 (nurse pool 33): requirement 36 / 33 / 34 on days 8 / 9 / 10, so the shortage is 3 / 0 / 1. Without the shock (pool 37) there would be none, so Shock 1 does create a shortage despite the low census (79 / 77 / 76), but on days 8 and 10 only.
-- **Conceptual design:** complete and **frozen** (`CLAUDE.md` §9.3).
-- **Documentation:**
-  - `CLAUDE.md`: principles, constraints and decisions.
-  - `AGENTS.md`: agent roles, permissions and workflow.
-  - `DATA_DICTIONARY.md`: data fields and validation checks.
-  - This specification: algorithms, tools, storage and the decisions log.
-  - `EVALUATION_PLAN.md`: provisional metric formulas.
-  - `PROJECT_OVERVIEW.md` and `README.md`.
-  - `LIMITATIONS_AND_REFLECTION.md`: skeleton only.
-- **Not yet built:** everything except the data generator and the environment cut path. Every path marked *(planned)* in the `CLAUDE.md` §0 tree does not exist yet.
+```bash
+uv sync                                                        # environment (Python >= 3.12)
+uv run pytest -q                                               # expect 75 passed
+uv run python -m src.data_generation.manifest --verify         # expect "manifest OK" (add --regenerate for a byte-exact rebuild)
+git log --oneline --decorate                                   # expect tag data-v1.0 on 42b39ed, with later commits on top
+```
 
-### Approved by the owner (2026-11-07)
+### Working rules in force
 
-- **Numerical parameters:** the full set in [Section 10](#10-approved-parameter-set).
-- **Escalation decisions:** the five in [Section 11](#11-approved-escalation-decisions).
-- **Repair rule and baselines:** the algorithms in Sections 5.7 and 6.
-- **Session setup:** as in Section 8.
+- **Escalation** (`CLAUDE.md` §9.2): decide implementation-level choices and log them in §9; escalate anything touching principles, agent visibility, metrics or evaluation design, or data generation, with a recommendation.
+- **Data are frozen** at git tag `data-v1.0` (`CLAUDE.md` §9.3, Log #44). Any change to data needs a new tag and the owner's approval. The manifest check must pass before any run.
+- **Reflection log:** when something goes wrong or nearly goes wrong, add an entry to `docs/REFLECTION_LOG.md` **at that moment**, and mention it in the session report.
+- **Nothing in `src/environment/`, `src/evaluation/` or `src/mcp_server/` may embed generation parameters.** They are hidden from agents (§8, Log #40).
+- **N1 must use exact arithmetic** everywhere (Log #29, #42). Floating-point `ceil` is wrong on real census combinations.
+- **Never run an agent run from a development session** (`CLAUDE.md` §9.1). Run sessions start from the project root (§8).
 
-### Still open (deferred, `CLAUDE.md` §10.M)
+### Where things stand
 
-- The general CHECKER severity scale beyond clinical violations.
-- The final metric formulas and selection. The formulas in `EVALUATION_PLAN.md` are provisional.
-- Visualization tools and design.
+| Area | State | Where |
+| --- | --- | --- |
+| Conceptual design | Frozen 2026-11-07 | `CLAUDE.md` §9.3, §10 |
+| Data generator and 19 validation checks | Done, tested | `src/data_generation/`, `tests/test_data_generation.py` |
+| Datasets | Frozen (`data-v1.0`): `seed20261107` (primary: agent runs and baselines); `seed20261108`, `seed20261109` (robustness: baselines only); `seed20261107_stress` (constructed test case: forced 6-bed cut on day 23; **excluded from all main comparisons**) | `data/`, `data/MANIFEST.json`, `DATA_DICTIONARY.md` §5 |
+| Monte Carlo (seeds 1–1000) | Done: reference ranges, per-day bands (PNG and CSV), Shock 3 sweep, imbalance metric | `data/processed/montecarlo/`; `src/data_generation/montecarlo.py`, `mc_analysis.py` |
+| Shock 3 | Approved schedule kept (beds −10, days 23–25). It almost never forces a cut (P = 0.002); a reliable cut would need about a 30% bed loss. Negative result recorded | Log #33, #40; `LIMITATIONS_AND_REFLECTION.md` §2 |
+| Environment, cut path | Done, tested: largest remainder (§5.1), bed assignment (§5.3), N1 requirement, validator (§5.5), repair rule (§5.7) | `src/environment/`; `tests/test_environment_cut_path.py`, `tests/test_nurse_requirement.py` |
+| Environment, rest | **Not built:** initial allocation (§5.2), nurse coverage C1 (§5.4), what-if (§5.6), clinical-violation detector (shared with the audit) | §5 |
+| Run-session restrictions | `.claude/run-settings.json` (deny-by-default on `data/**`, plus `docs/`, generator code, `tests/`, `.hypothesis/`); verified in a headless session | §8; `tests/manual/verify_run_settings.py` |
+| Deterministic audit, metrics, baselines | **Not built** | `src/evaluation/` (empty) |
+| MCP server, state machine, agent files, prompts | **Not built** | `src/mcp_server/`, `.claude/agents/`, `src/agent/` (planned) |
+| Documentation | Up to date: Decisions Log #1–44, owner decisions §11 #1–15, reflection log R1–R6 | `docs/` |
 
-### Next step (order set by the owner, 2026-11-11)
+**Key data facts (primary seed, approved schedule):**
 
-1. **Proposals, fixed before any agent output is seen:** (a) the final metric formulas; (b) the CHECKER severity scale. Owner decides.
-2. **Complete `src/environment/`:** initial allocation, nurse coverage C1 (§5.4) and what-if (§5.6).
-3. **`src/evaluation/`:** the deterministic audit and the baselines B0–B2, run on the three seeds. The stress variant is used only as an optional test case.
-4. **Minimal MCP path to a first end-to-end run:** state machine, record store, the three role servers, the agent files, the smoke test, and the ALLOCATOR and CHECKER prompts (**owner review before the first run**).
-5. **Polish only after the first run works.**
+- Mean census 87.8 (range 73–102); census exceeds the bed pool on 5 days.
+- The nurse requirement exceeds the pool on 17 of 30 days. This rationing regime is deliberate (§10.2).
+- The Shock 1 shortage is only 3 / 0 / 1 on days 8–10 (REFLECTION_LOG R6), so it must not be presented as a crisis.
+- Demand exceeds `max_beds` twice (Cardiology on day 17, Internal Medicine on day 21). That overflow is structural and excluded from agent-attributable metrics (`EVALUATION_PLAN.md` §3.6).
 
-The data are frozen at tag `data-v1.0` (Log #44). Any change to data needs a new tag and the owner's approval.
+### Still open (owner decisions pending)
+
+- **The final metric formulas and selection.** The formulas in `EVALUATION_PLAN.md` §3 are provisional.
+- **The CHECKER severity scale** beyond clinical violations, and the line between violation, concern and improvement (`AGENTS.md` §6).
+- **Visualization tools and design** (deferred; not needed before the first run).
+
+### Next steps (order set by the owner, 2026-11-11)
+
+1. **Write proposals for the owner, to be fixed before any agent output is seen.** These are escalation areas 1 and 3: propose, do not decide.
+   - **(a) Final metric formulas.** Start from `EVALUATION_PLAN.md` §3 and §3.6. For each metric give the exact formula, the unit, how it is computed from the records (Bed Assignment State, Allocation State) and its direction (lower or higher is better). Propose which metrics are headline and which secondary. Include:
+     - the pairing rule for clinical violations (§3.1);
+     - the empty-bed violation type (severity = k, §11 #3);
+     - the fairness metrics F2, per level;
+     - the stability metrics, with a concrete reversal window;
+     - how structural outcomes are netted out.
+   - **(b) CHECKER severity scale.** Clinical violations keep severity = level difference (`CLAUDE.md` §10.G). Propose a scale for everything else (hard-constraint violations, concerns, improvement opportunities, explanation inaccuracies), with objective criteria for each category.
+   - Record the owner's decisions in §11, and update `EVALUATION_PLAN.md`, `AGENTS.md` §6 and `CLAUDE.md` §10.M before moving on.
+2. **Complete `src/environment/`.** Pure functions only, each with tests in the style of `tests/test_environment_cut_path.py`:
+   - initial allocation (§5.2): beds `LR(P_B(1), census_d(1), caps = max_beds)`; nurses `LR(P_N(1), requirement_d(1))`;
+   - nurse coverage C1 (§5.4);
+   - the clinical-violation detector (bed, shock-cut and nurse types, `CLAUDE.md` §10.G);
+   - what-if (§5.6).
+3. **`src/evaluation/`:**
+   - the deterministic audit, with its **own** hard-constraint and N1 implementations, cross-tested against `src/environment/` (§1, Log #17);
+   - the metrics, using the formulas the owner fixes in step 1;
+   - the baselines B0, B1 and B2 (§6), run on the three seeds through the same environment functions, writing records in the §4 layout.
+4. **Minimal MCP path to a first end-to-end run:**
+   - the state machine and record store (§3–4);
+   - the orchestration, allocator and checker role servers (§2);
+   - `.mcp.json` and the dispatcher, allocator and checker agent files (§8), with `tools` and frontmatter syntax checked against current Claude Code documentation;
+   - the smoke test (`AGENTS.md` §2.4);
+   - the ALLOCATOR and CHECKER prompts, **reviewed by the owner before the first run**;
+   - then run R1 on `seed20261107` in a run session.
+5. **Polish** (visualizations, runs R2 and R3, the optional stress run, the report) **only after the first run works**.
+
+### Approved by the owner
+
+- 2026-11-07: the numerical parameters (§10), escalation decisions §11 #1–5, the repair rule and baselines (§5.7, §6) and the session setup (§8).
+- 2026-11-11: decisions §11 #6–15 (LOS interpretation, `external_event` semantics, deny rules, Shock 3 kept, stress variant, data freeze, work order).
 
 ## 1. Code Layout
 
