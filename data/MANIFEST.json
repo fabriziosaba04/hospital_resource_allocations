@@ -1,0 +1,60 @@
+{
+  "tag": "data-v1.0",
+  "created_at": "2026-11-11T16:55:06+00:00",
+  "generator_commit": "a1d60799e071fedd69ecece69721bf75de9dec66",
+  "hash": "sha256 of the file bytes; code files hashed with CRLF normalised to LF",
+  "datasets": {
+    "seed20261107": {
+      "validation": "19/19 checks passed",
+      "files": {
+        "data/metadata/seed20261107/environment_config.json": "9850aaef2154734b73ac9299c6ba873c1499820207528edc3d07f710cb4c5a83",
+        "data/metadata/seed20261107/generation_config.json": "eab2e9504a4750b91b2c0451277b606b8bfafd6c43c23bb8d932e2aa109a61dc",
+        "data/raw/seed20261107/department_demand_daily.csv": "2e7cd9d4e5b0ab4038f28a7294da60847e49fed40142782a1dfbe3352be233c1",
+        "data/raw/seed20261107/hospital_resources_daily.csv": "495a90c2e418a253c2e27084065dd4ad51b155f02a9ee035591c224ef98a143d",
+        "data/raw/seed20261107/patient_registry.csv": "defed901d90df6515ca5f89d016e4c8ff598b61ff1d3668dd5d63dba8ea4a951"
+      }
+    },
+    "seed20261108": {
+      "validation": "19/19 checks passed",
+      "files": {
+        "data/metadata/seed20261108/environment_config.json": "9850aaef2154734b73ac9299c6ba873c1499820207528edc3d07f710cb4c5a83",
+        "data/metadata/seed20261108/generation_config.json": "c62ac067dc35f3a0713d7269912aadd26f052e740b3eb6368930410d25a4b773",
+        "data/raw/seed20261108/department_demand_daily.csv": "2bbc388332281c3308b40a57e80bb7665818c9e8193e377f788e64c04ddaa8e6",
+        "data/raw/seed20261108/hospital_resources_daily.csv": "495a90c2e418a253c2e27084065dd4ad51b155f02a9ee035591c224ef98a143d",
+        "data/raw/seed20261108/patient_registry.csv": "3d271df7c6f926ba49ba1b9af7547588705cfeb96073ba7ce4be969a87fa55e4"
+      }
+    },
+    "seed20261109": {
+      "validation": "19/19 checks passed",
+      "files": {
+        "data/metadata/seed20261109/environment_config.json": "9850aaef2154734b73ac9299c6ba873c1499820207528edc3d07f710cb4c5a83",
+        "data/metadata/seed20261109/generation_config.json": "4a625d43cd9c88d4be113048c6f4c9d2752788cc25bcfa6487dbe07679e2e3e5",
+        "data/raw/seed20261109/department_demand_daily.csv": "de6ce4332fc739697e6dba76705978576284d19566cf585ff9769b3ca9c628b9",
+        "data/raw/seed20261109/hospital_resources_daily.csv": "495a90c2e418a253c2e27084065dd4ad51b155f02a9ee035591c224ef98a143d",
+        "data/raw/seed20261109/patient_registry.csv": "9d8a54c935cedf96994fa67a755bd7fc544656a3fed70d16d77457694d308f89"
+      }
+    },
+    "seed20261107_stress": {
+      "validation": "19/19 checks passed",
+      "files": {
+        "data/metadata/seed20261107_stress/environment_config.json": "9850aaef2154734b73ac9299c6ba873c1499820207528edc3d07f710cb4c5a83",
+        "data/metadata/seed20261107_stress/generation_config.json": "d51e2704aed89234c6f4715008acaba46099834dde95a0cc4a6f0d94ff108664",
+        "data/raw/seed20261107_stress/department_demand_daily.csv": "2e7cd9d4e5b0ab4038f28a7294da60847e49fed40142782a1dfbe3352be233c1",
+        "data/raw/seed20261107_stress/hospital_resources_daily.csv": "f2ad9c90d462869bf6615ad7e6b74d50a763ea1cfd03fccb1091b7dbd040f3b8",
+        "data/raw/seed20261107_stress/patient_registry.csv": "defed901d90df6515ca5f89d016e4c8ff598b61ff1d3668dd5d63dba8ea4a951"
+      }
+    }
+  },
+  "template_configs": {
+    "src/data_generation/configs/environment_config.json": "aecc044e166e844496f36ad8a91e14fe44af0fcde58b05de1b98cd3b20691eea",
+    "src/data_generation/configs/generation_config.json": "30761a06e52d77b2402385a32a6f02aec94d4a68746e7ac8d3827f4596221b63",
+    "src/data_generation/configs/generation_config_stress.json": "09b3599a8597f0d072f7a0b8d04866c9aa631cba898ce64c770351230d5b50f5"
+  },
+  "generator_code": {
+    "src/data_generation/generator.py": "1e45011ee203109d91f63677137e3dc45de4d916cecbf96a5cb87900770da20b",
+    "src/data_generation/los.py": "48ec03fcc59b73752de56bfb408c26cd1cbc8ce692c04b994c6a7a23aae9e8b9",
+    "src/data_generation/__main__.py": "8ffd852c6d381d46b80af8057c245c0d50686bf3b924ed86fc2c48b98cf5943a",
+    "src/data_generation/validation.py": "f259a1f25dbeaf315c02d60c6720bae962276014013df643fe769753649d03af",
+    "src/utils/constants.py": "15437570fa8e70b0f58e544d78894a11578677cca3b8bc719f5769dd826891bc"
+  }
+}
