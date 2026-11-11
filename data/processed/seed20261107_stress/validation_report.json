@@ -1,0 +1,162 @@
+{
+  "dataset_id": "seed20261107_stress",
+  "created_at": "2026-11-11T16:50:32+00:00",
+  "writer": "src.data_generation.validation",
+  "accepted": true,
+  "n_checks": 19,
+  "n_passed": 19,
+  "checks": [
+    {
+      "check_id": "I0_schema",
+      "section": "4.2",
+      "description": "Every table has exactly the documented columns, in order",
+      "passed": true,
+      "n_failures": 0,
+      "examples": []
+    },
+    {
+      "check_id": "I8_integer_fields",
+      "section": "3",
+      "description": "Count, day and complexity fields are integers; counts are non-negative",
+      "passed": true,
+      "n_failures": 0,
+      "examples": []
+    },
+    {
+      "check_id": "E1_environment_config",
+      "section": "3.4",
+      "description": "environment_config has exactly max_beds and w_L1..w_L3, with valid values",
+      "passed": true,
+      "n_failures": 0,
+      "examples": []
+    },
+    {
+      "check_id": "I1_unique_patient_id",
+      "section": "4.2",
+      "description": "patient_id is unique",
+      "passed": true,
+      "n_failures": 0,
+      "examples": []
+    },
+    {
+      "check_id": "I1b_patient_id_format_order",
+      "section": "3.3",
+      "description": "patient_id is P + six digits, and ID order matches arrival order",
+      "passed": true,
+      "n_failures": 0,
+      "examples": []
+    },
+    {
+      "check_id": "I2_discharge_after_arrival",
+      "section": "4.2",
+      "description": "discharge_day > arrival_day for every patient",
+      "passed": true,
+      "n_failures": 0,
+      "examples": []
+    },
+    {
+      "check_id": "I3_valid_categories",
+      "section": "4.2",
+      "description": "All department and complexity values are valid",
+      "passed": true,
+      "n_failures": 0,
+      "examples": []
+    },
+    {
+      "check_id": "I4_resources_days",
+      "section": "4.2",
+      "description": "Every day 1..H appears exactly once in hospital_resources_daily",
+      "passed": true,
+      "n_failures": 0,
+      "examples": []
+    },
+    {
+      "check_id": "I5_demand_grid",
+      "section": "4.2",
+      "description": "Every day 1..H appears once per department in department_demand_daily",
+      "passed": true,
+      "n_failures": 0,
+      "examples": []
+    },
+    {
+      "check_id": "I6_burn_in",
+      "section": "4.2",
+      "description": "Burn-in patients have arrival_day <= 0 (within the burn-in window) and some are still present on day 1",
+      "passed": true,
+      "n_failures": 0,
+      "examples": []
+    },
+    {
+      "check_id": "I7_day1_presence",
+      "section": "4.2",
+      "description": "Every patient present on day 1 (including burn-in) is in the registry: day-1 census equals registry presence",
+      "passed": true,
+      "n_failures": 0,
+      "examples": []
+    },
+    {
+      "check_id": "I9_external_event",
+      "section": "5",
+      "description": "external_event is non-empty exactly on days when a pool changes from the previous day",
+      "passed": true,
+      "n_failures": 0,
+      "examples": []
+    },
+    {
+      "check_id": "R1_arrivals",
+      "section": "4.1",
+      "description": "arrivals(d,k) equals registry patients in k with arrival_day = d",
+      "passed": true,
+      "n_failures": 0,
+      "examples": []
+    },
+    {
+      "check_id": "R2_discharges",
+      "section": "4.1",
+      "description": "discharges(d,k) equals registry patients in k with discharge_day = d",
+      "passed": true,
+      "n_failures": 0,
+      "examples": []
+    },
+    {
+      "check_id": "R3_census",
+      "section": "4.1",
+      "description": "census_Lj(d,k) equals registry level-j patients in k with arrival_day <= d < discharge_day",
+      "passed": true,
+      "n_failures": 0,
+      "examples": []
+    },
+    {
+      "check_id": "R4_census_flow",
+      "section": "4.1",
+      "description": "census_total(d) = census_total(d-1) + arrivals(d) - discharges(d), for d >= 2",
+      "passed": true,
+      "n_failures": 0,
+      "examples": []
+    },
+    {
+      "check_id": "G1_bed_cap_feasibility",
+      "section": "4.3",
+      "description": "total_beds(t) <= 4 x max_beds (= 160) for every t",
+      "passed": true,
+      "n_failures": 0,
+      "examples": []
+    },
+    {
+      "check_id": "G2_pools_non_negative_integers",
+      "section": "4.3",
+      "description": "Pools are non-negative integers on every day",
+      "passed": true,
+      "n_failures": 0,
+      "examples": []
+    },
+    {
+      "check_id": "G3_pools_match_schedule",
+      "section": "4.3",
+      "description": "Pools equal the base values plus the scheduled shocks",
+      "passed": true,
+      "n_failures": 0,
+      "examples": []
+    }
+  ]
+}

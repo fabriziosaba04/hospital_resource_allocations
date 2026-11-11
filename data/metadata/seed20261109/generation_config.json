@@ -1,0 +1,98 @@
+{
+  "horizon_days": 30,
+  "burn_in_days": 30,
+  "arrival_rates": {
+    "internal_medicine": 6.0,
+    "cardiology": 4.0,
+    "neurology": 3.0,
+    "orthopedics": 4.5
+  },
+  "complexity_mix": {
+    "internal_medicine": [
+      0.45,
+      0.4,
+      0.15
+    ],
+    "cardiology": [
+      0.25,
+      0.4,
+      0.35
+    ],
+    "neurology": [
+      0.2,
+      0.4,
+      0.4
+    ],
+    "orthopedics": [
+      0.55,
+      0.35,
+      0.1
+    ]
+  },
+  "length_of_stay": {
+    "distribution": "discretised_lognormal_ceiling",
+    "cv_continuous": 0.6,
+    "discrete_means": {
+      "1": 3,
+      "2": 5,
+      "3": 8
+    },
+    "calibration": {
+      "sigma": 0.5545130293761912,
+      "mu": {
+        "1": 0.7626251534470789,
+        "2": 1.350275489310369,
+        "3": 1.8611611869042544
+      },
+      "theoretical_discrete_mean": {
+        "1": 2.999999999999999,
+        "2": 4.999999999999998,
+        "3": 7.999999999999999
+      },
+      "theoretical_discrete_cv": {
+        "1": 0.5098216363745556,
+        "2": 0.5429644388037169,
+        "3": 0.5636567382318967
+      }
+    }
+  },
+  "surges": [
+    {
+      "department": "cardiology",
+      "multiplier": 1.6,
+      "from_day": 12,
+      "to_day": 19
+    }
+  ],
+  "base_pools": {
+    "total_beds": 96,
+    "total_nurses": 37
+  },
+  "shocks": [
+    {
+      "resource": "nurses",
+      "delta": -4,
+      "from_day": 8,
+      "to_day": 10
+    },
+    {
+      "resource": "beds",
+      "delta": 4,
+      "from_day": 16,
+      "to_day": 20
+    },
+    {
+      "resource": "beds",
+      "delta": -10,
+      "from_day": 23,
+      "to_day": 25
+    }
+  ],
+  "seed": 20261109,
+  "robustness_seeds": [
+    20261108,
+    20261109
+  ],
+  "dataset_id": "seed20261109",
+  "rng": "numpy.random.default_rng(seed); draws per day, then department in fixed order: Poisson count, complexities, standard normals for LOS"
+}

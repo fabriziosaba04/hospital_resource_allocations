@@ -1,0 +1,31 @@
+day,total_beds,total_nurses,external_event
+1,96,37,
+2,96,37,
+3,96,37,
+4,96,37,
+5,96,37,
+6,96,37,
+7,96,37,
+8,96,33,nurse pool reduced by 4
+9,96,33,
+10,96,33,
+11,96,37,nurse pool increased by 4
+12,96,37,
+13,96,37,
+14,96,37,
+15,96,37,
+16,100,37,bed pool increased by 4
+17,100,37,
+18,100,37,
+19,100,37,
+20,100,37,
+21,96,37,bed pool reduced by 4
+22,96,37,
+23,56,37,bed pool reduced by 40
+24,56,37,
+25,56,37,
+26,96,37,bed pool increased by 40
+27,96,37,
+28,96,37,
+29,96,37,
+30,96,37,

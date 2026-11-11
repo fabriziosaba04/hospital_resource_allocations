@@ -1,0 +1,564 @@
+{
+  "n_seeds": 1000,
+  "seeds": "1..1000",
+  "sweep": {
+    "approved (A10)": {
+      "family": "approved",
+      "N": 10,
+      "eligible": false,
+      "schedule": "beds +4 days 16-20; beds -10 days 23-25 (pool 86)",
+      "onset_day": 23,
+      "P_forced_cut": 0.002,
+      "P_possible_cut": 0.054,
+      "forced_cut_size": {
+        "p5": 0.0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "mean": 0.003
+      },
+      "forced_cut_size_given_cut": {
+        "p5": 1.05,
+        "p50": 1.5,
+        "p95": 1.95,
+        "mean": 1.5
+      },
+      "days_census_gt_pool": {
+        "p5": 1.0,
+        "p50": 7.0,
+        "p95": 15.049999999999955,
+        "mean": 7.559
+      },
+      "window_mean_daily_excess_census_over_pool": {
+        "p5": 0.0,
+        "p50": 3.6666666666666665,
+        "p95": 16.333333333333332,
+        "mean": 5.282333333333334
+      },
+      "carried_into_onset": {
+        "p5": 59.0,
+        "p50": 72.0,
+        "p95": 87.0,
+        "mean": 72.285
+      },
+      "primary": {
+        "carried": 62,
+        "forced_cut": 0,
+        "possible_cut": 0,
+        "days_census_gt_pool": 5,
+        "window_days_census_gt_pool": 1,
+        "window_mean_excess": 3.3333333333333335
+      }
+    },
+    "A18": {
+      "family": "A",
+      "N": 18,
+      "eligible": true,
+      "schedule": "beds +4 days 16-20; beds -18 days 23-25 (pool 78)",
+      "onset_day": 23,
+      "P_forced_cut": 0.086,
+      "P_possible_cut": 0.233,
+      "forced_cut_size": {
+        "p5": 0.0,
+        "p50": 0.0,
+        "p95": 2.0,
+        "mean": 0.232
+      },
+      "forced_cut_size_given_cut": {
+        "p5": 1.0,
+        "p50": 2.0,
+        "p95": 7.0,
+        "mean": 2.697674418604651
+      },
+      "days_census_gt_pool": {
+        "p5": 3.0,
+        "p50": 8.0,
+        "p95": 16.0,
+        "mean": 8.379
+      },
+      "window_mean_daily_excess_census_over_pool": {
+        "p5": 0.3333333333333333,
+        "p50": 11.0,
+        "p95": 24.333333333333332,
+        "mean": 11.438666666666666
+      },
+      "carried_into_onset": {
+        "p5": 59.0,
+        "p50": 72.0,
+        "p95": 87.0,
+        "mean": 72.285
+      },
+      "primary": {
+        "carried": 62,
+        "forced_cut": 0,
+        "possible_cut": 0,
+        "days_census_gt_pool": 7,
+        "window_days_census_gt_pool": 3,
+        "window_mean_excess": 7.333333333333333
+      }
+    },
+    "A22": {
+      "family": "A",
+      "N": 22,
+      "eligible": true,
+      "schedule": "beds +4 days 16-20; beds -22 days 23-25 (pool 74)",
+      "onset_day": 23,
+      "P_forced_cut": 0.291,
+      "P_possible_cut": 0.387,
+      "forced_cut_size": {
+        "p5": 0.0,
+        "p50": 0.0,
+        "p95": 6.0,
+        "mean": 1.056
+      },
+      "forced_cut_size_given_cut": {
+        "p5": 1.0,
+        "p50": 3.0,
+        "p95": 8.5,
+        "mean": 3.6288659793814433
+      },
+      "days_census_gt_pool": {
+        "p5": 3.0,
+        "p50": 8.0,
+        "p95": 16.0,
+        "mean": 8.563
+      },
+      "window_mean_daily_excess_census_over_pool": {
+        "p5": 2.3333333333333335,
+        "p50": 15.0,
+        "p95": 28.333333333333332,
+        "mean": 15.118333333333332
+      },
+      "carried_into_onset": {
+        "p5": 59.0,
+        "p50": 72.0,
+        "p95": 87.0,
+        "mean": 72.285
+      },
+      "primary": {
+        "carried": 62,
+        "forced_cut": 0,
+        "possible_cut": 0,
+        "days_census_gt_pool": 7,
+        "window_days_census_gt_pool": 3,
+        "window_mean_excess": 11.333333333333334
+      }
+    },
+    "A26": {
+      "family": "A",
+      "N": 26,
+      "eligible": true,
+      "schedule": "beds +4 days 16-20; beds -26 days 23-25 (pool 70)",
+      "onset_day": 23,
+      "P_forced_cut": 0.523,
+      "P_possible_cut": 0.566,
+      "forced_cut_size": {
+        "p5": 0.0,
+        "p50": 1.0,
+        "p95": 10.0,
+        "mean": 2.782
+      },
+      "forced_cut_size_given_cut": {
+        "p5": 1.0,
+        "p50": 5.0,
+        "p95": 11.0,
+        "mean": 5.319311663479923
+      },
+      "days_census_gt_pool": {
+        "p5": 3.0,
+        "p50": 8.0,
+        "p95": 16.0,
+        "mean": 8.667
+      },
+      "window_mean_daily_excess_census_over_pool": {
+        "p5": 5.666666666666667,
+        "p50": 19.0,
+        "p95": 32.333333333333336,
+        "mean": 18.979666666666667
+      },
+      "carried_into_onset": {
+        "p5": 59.0,
+        "p50": 72.0,
+        "p95": 87.0,
+        "mean": 72.285
+      },
+      "primary": {
+        "carried": 62,
+        "forced_cut": 0,
+        "possible_cut": 0,
+        "days_census_gt_pool": 7,
+        "window_days_census_gt_pool": 3,
+        "window_mean_excess": 15.333333333333334
+      }
+    },
+    "B10": {
+      "family": "B",
+      "N": 10,
+      "eligible": true,
+      "schedule": "beds +4 days 16-18; beds -10 days 19-21 (pool 86)",
+      "onset_day": 19,
+      "P_forced_cut": 0.011,
+      "P_possible_cut": 0.166,
+      "forced_cut_size": {
+        "p5": 0.0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "mean": 0.013
+      },
+      "forced_cut_size_given_cut": {
+        "p5": 1.0,
+        "p50": 1.0,
+        "p95": 2.0,
+        "mean": 1.1818181818181819
+      },
+      "days_census_gt_pool": {
+        "p5": 2.0,
+        "p50": 7.0,
+        "p95": 15.0,
+        "mean": 7.778
+      },
+      "window_mean_daily_excess_census_over_pool": {
+        "p5": 0.0,
+        "p50": 9.666666666666666,
+        "p95": 23.666666666666668,
+        "mean": 10.300333333333334
+      },
+      "carried_into_onset": {
+        "p5": 63.0,
+        "p50": 78.0,
+        "p95": 92.0,
+        "mean": 77.874
+      },
+      "primary": {
+        "carried": 79,
+        "forced_cut": 0,
+        "possible_cut": 0,
+        "days_census_gt_pool": 7,
+        "window_days_census_gt_pool": 3,
+        "window_mean_excess": 10.333333333333334
+      }
+    },
+    "B14": {
+      "family": "B",
+      "N": 14,
+      "eligible": true,
+      "schedule": "beds +4 days 16-18; beds -14 days 19-21 (pool 82)",
+      "onset_day": 19,
+      "P_forced_cut": 0.1,
+      "P_possible_cut": 0.293,
+      "forced_cut_size": {
+        "p5": 0.0,
+        "p50": 0.0,
+        "p95": 2.0,
+        "mean": 0.239
+      },
+      "forced_cut_size_given_cut": {
+        "p5": 1.0,
+        "p50": 2.0,
+        "p95": 5.0,
+        "mean": 2.39
+      },
+      "days_census_gt_pool": {
+        "p5": 3.0,
+        "p50": 8.0,
+        "p95": 15.0,
+        "mean": 8.04
+      },
+      "window_mean_daily_excess_census_over_pool": {
+        "p5": 1.0,
+        "p50": 13.666666666666666,
+        "p95": 27.666666666666668,
+        "mean": 13.807
+      },
+      "carried_into_onset": {
+        "p5": 63.0,
+        "p50": 78.0,
+        "p95": 92.0,
+        "mean": 77.874
+      },
+      "primary": {
+        "carried": 79,
+        "forced_cut": 0,
+        "possible_cut": 0,
+        "days_census_gt_pool": 7,
+        "window_days_census_gt_pool": 3,
+        "window_mean_excess": 14.333333333333334
+      }
+    },
+    "B18": {
+      "family": "B",
+      "N": 18,
+      "eligible": true,
+      "schedule": "beds +4 days 16-18; beds -18 days 19-21 (pool 78)",
+      "onset_day": 19,
+      "P_forced_cut": 0.304,
+      "P_possible_cut": 0.452,
+      "forced_cut_size": {
+        "p5": 0.0,
+        "p50": 0.0,
+        "p95": 6.0,
+        "mean": 1.132
+      },
+      "forced_cut_size_given_cut": {
+        "p5": 1.0,
+        "p50": 3.0,
+        "p95": 8.0,
+        "mean": 3.723684210526316
+      },
+      "days_census_gt_pool": {
+        "p5": 3.0,
+        "p50": 8.0,
+        "p95": 15.0,
+        "mean": 8.204
+      },
+      "window_mean_daily_excess_census_over_pool": {
+        "p5": 3.9833333333333343,
+        "p50": 17.666666666666668,
+        "p95": 31.666666666666668,
+        "mean": 17.582666666666668
+      },
+      "carried_into_onset": {
+        "p5": 63.0,
+        "p50": 78.0,
+        "p95": 92.0,
+        "mean": 77.874
+      },
+      "primary": {
+        "carried": 79,
+        "forced_cut": 1,
+        "possible_cut": 1,
+        "days_census_gt_pool": 7,
+        "window_days_census_gt_pool": 3,
+        "window_mean_excess": 18.333333333333332
+      }
+    },
+    "C10": {
+      "family": "C",
+      "N": 10,
+      "eligible": false,
+      "schedule": "beds +4 days 16-20; beds -10 days 21-23 (pool 86)",
+      "onset_day": 21,
+      "P_forced_cut": 0.007,
+      "P_possible_cut": 0.103,
+      "forced_cut_size": {
+        "p5": 0.0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "mean": 0.012
+      },
+      "forced_cut_size_given_cut": {
+        "p5": 1.0,
+        "p50": 2.0,
+        "p95": 2.6999999999999993,
+        "mean": 1.7142857142857142
+      },
+      "days_census_gt_pool": {
+        "p5": 1.0,
+        "p50": 7.0,
+        "p95": 15.0,
+        "mean": 7.558
+      },
+      "window_mean_daily_excess_census_over_pool": {
+        "p5": 0.0,
+        "p50": 5.333333333333333,
+        "p95": 20.01666666666665,
+        "mean": 7.0216666666666665
+      },
+      "carried_into_onset": {
+        "p5": 62.0,
+        "p50": 75.0,
+        "p95": 90.0,
+        "mean": 75.717
+      },
+      "primary": {
+        "carried": 84,
+        "forced_cut": 0,
+        "possible_cut": 0,
+        "days_census_gt_pool": 5,
+        "window_days_census_gt_pool": 1,
+        "window_mean_excess": 2.3333333333333335
+      }
+    },
+    "C14": {
+      "family": "C",
+      "N": 14,
+      "eligible": false,
+      "schedule": "beds +4 days 16-20; beds -14 days 21-23 (pool 82)",
+      "onset_day": 21,
+      "P_forced_cut": 0.067,
+      "P_possible_cut": 0.21,
+      "forced_cut_size": {
+        "p5": 0.0,
+        "p50": 0.0,
+        "p95": 1.0,
+        "mean": 0.164
+      },
+      "forced_cut_size_given_cut": {
+        "p5": 1.0,
+        "p50": 2.0,
+        "p95": 5.699999999999996,
+        "mean": 2.4477611940298507
+      },
+      "days_census_gt_pool": {
+        "p5": 2.0,
+        "p50": 8.0,
+        "p95": 15.0,
+        "mean": 7.96
+      },
+      "window_mean_daily_excess_census_over_pool": {
+        "p5": 0.0,
+        "p50": 9.0,
+        "p95": 24.01666666666665,
+        "mean": 10.135
+      },
+      "carried_into_onset": {
+        "p5": 62.0,
+        "p50": 75.0,
+        "p95": 90.0,
+        "mean": 75.717
+      },
+      "primary": {
+        "carried": 84,
+        "forced_cut": 2,
+        "possible_cut": 2,
+        "days_census_gt_pool": 5,
+        "window_days_census_gt_pool": 1,
+        "window_mean_excess": 3.6666666666666665
+      }
+    },
+    "C18": {
+      "family": "C",
+      "N": 18,
+      "eligible": false,
+      "schedule": "beds +4 days 16-20; beds -18 days 21-23 (pool 78)",
+      "onset_day": 21,
+      "P_forced_cut": 0.226,
+      "P_possible_cut": 0.362,
+      "forced_cut_size": {
+        "p5": 0.0,
+        "p50": 0.0,
+        "p95": 5.0,
+        "mean": 0.817
+      },
+      "forced_cut_size_given_cut": {
+        "p5": 1.0,
+        "p50": 3.0,
+        "p95": 8.0,
+        "mean": 3.6150442477876106
+      },
+      "days_census_gt_pool": {
+        "p5": 3.0,
+        "p50": 8.0,
+        "p95": 15.0,
+        "mean": 8.243
+      },
+      "window_mean_daily_excess_census_over_pool": {
+        "p5": 1.3333333333333333,
+        "p50": 12.833333333333332,
+        "p95": 28.01666666666665,
+        "mean": 13.672666666666666
+      },
+      "carried_into_onset": {
+        "p5": 62.0,
+        "p50": 75.0,
+        "p95": 90.0,
+        "mean": 75.717
+      },
+      "primary": {
+        "carried": 84,
+        "forced_cut": 6,
+        "possible_cut": 6,
+        "days_census_gt_pool": 6,
+        "window_days_census_gt_pool": 2,
+        "window_mean_excess": 5.333333333333333
+      }
+    }
+  },
+  "selection_by_preregistered_rule": null,
+  "carried_by_onset_day": {
+    "19": {
+      "p5": 63.0,
+      "p50": 78.0,
+      "p95": 92.0,
+      "mean": 77.874
+    },
+    "21": {
+      "p5": 62.0,
+      "p50": 75.0,
+      "p95": 90.0,
+      "mean": 75.717
+    },
+    "23": {
+      "p5": 59.0,
+      "p50": 72.0,
+      "p95": 87.0,
+      "mean": 72.285
+    }
+  },
+  "imbalance": {
+    "initial_share": {
+      "days": {
+        "p5": 9.0,
+        "p50": 17.0,
+        "p95": 25.0,
+        "mean": 16.754,
+        "primary_percentile": 52.449999999999996
+      },
+      "excess_patient_days": {
+        "p5": 40.0,
+        "p50": 94.0,
+        "p95": 203.04999999999995,
+        "mean": 104.204,
+        "primary_percentile": 66.2
+      },
+      "primary": {
+        "days": 17,
+        "excess_patient_days": 115
+      }
+    },
+    "equal_share": {
+      "days": {
+        "p5": 11.0,
+        "p50": 18.0,
+        "p95": 25.0,
+        "mean": 18.228,
+        "primary_percentile": 90.10000000000001
+      },
+      "excess_patient_days": {
+        "p5": 55.0,
+        "p50": 113.0,
+        "p95": 190.0999999999999,
+        "mean": 117.393,
+        "primary_percentile": 97.39999999999999
+      },
+      "primary": {
+        "days": 24,
+        "excess_patient_days": 206
+      }
+    }
+  },
+  "los_mean_mc": {
+    "L1": {
+      "p5": 2.8790350274725274,
+      "p50": 2.9975399716779028,
+      "p95": 3.1280946299337105,
+      "mean": 2.9992285637842953
+    },
+    "L2": {
+      "p5": 4.798890984485409,
+      "p50": 4.9917284266121476,
+      "p95": 5.214285714285714,
+      "mean": 4.995287870995823
+    },
+    "L3": {
+      "p5": 7.533016017688659,
+      "p50": 7.995631105006105,
+      "p95": 8.486355699477754,
+      "mean": 7.997107067607719
+    }
+  },
+  "primary_los_mean": {
+    "L1": 3.002398081534772,
+    "L2": 4.880668257756564,
+    "L3": 7.852589641434263
+  }
+}

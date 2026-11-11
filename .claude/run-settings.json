@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./data/**)",
+      "Edit(./data/**)",
+      "Read(./docs/**)",
+      "Read(./src/data_generation/**)",
+      "Edit(./results/**)",
+      "Read(./tests/**)",
+      "Read(./.hypothesis/**)"
+    ]
+  }
+}
