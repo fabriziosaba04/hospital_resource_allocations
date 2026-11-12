@@ -13,7 +13,13 @@ This document specifies **how** those are implemented, and does not restate them
 
 ## 0. Current Status and Next Step
 
-*Last updated 2026-11-11 (end of session). A new session should read this section first, then `CLAUDE.md`, `AGENTS.md` and `docs/REFLECTION_LOG.md`. This section is meant to be enough to resume from the repository alone.*
+*Last updated 2026-11-12. A new session should read this section first, then `CLAUDE.md`, `AGENTS.md` and `docs/REFLECTION_LOG.md`. This section is meant to be enough to resume from the repository alone.*
+
+### Timeline
+
+- **External deadline:** "early December" (not yet confirmed by the course, as of 2026-11-12).
+- **Internal deadline: 30 November 2026.** Plan against this date (Log #45).
+- The extra time goes to **evaluation depth**: agent runs R2 and R3, the stress-variant run, and the robustness appendix. It is **not** for new features. The order of the next steps below is unchanged.
 
 ### Resume checklist
 
@@ -47,7 +53,7 @@ git log --oneline --decorate                                   # expect tag data
 | Run-session restrictions | `.claude/run-settings.json` (deny-by-default on `data/**`, plus `docs/`, generator code, `tests/`, `.hypothesis/`); verified in a headless session | §8; `tests/manual/verify_run_settings.py` |
 | Deterministic audit, metrics, baselines | **Not built** | `src/evaluation/` (empty) |
 | MCP server, state machine, agent files, prompts | **Not built** | `src/mcp_server/`, `.claude/agents/`, `src/agent/` (planned) |
-| Documentation | Up to date: Decisions Log #1–44, owner decisions §11 #1–15, reflection log R1–R6 | `docs/` |
+| Documentation | Decisions Log #1–45, owner decisions §11 #1–15, reflection log R1–R16. Resume gaps found on 2026-11-12 are REFLECTION_LOG R7–R16; R8–R16 are still unfixed | `docs/` |
 
 **Key data facts (primary seed, approved schedule):**
 
@@ -89,7 +95,7 @@ git log --oneline --decorate                                   # expect tag data
    - the smoke test (`AGENTS.md` §2.4);
    - the ALLOCATOR and CHECKER prompts, **reviewed by the owner before the first run**;
    - then run R1 on `seed20261107` in a run session.
-5. **Polish** (visualizations, runs R2 and R3, the optional stress run, the report) **only after the first run works**.
+5. **Polish** (visualizations, runs R2 and R3, the optional stress run, the report) **only after the first run works**. The time to the internal deadline (30 November) is reserved for evaluation depth within this step, not for new features (Log #45).
 
 ### Approved by the owner
 
@@ -374,6 +380,7 @@ The rules are in `CLAUDE.md` §9.1. This is the setup:
 | 42 | 2026-11-11 | Corrected the example in #29 (see there). Hand-computed N1 tests check per-department rounding (the hospital total is the sum of department ceilings, 12, not the pooled ceiling, 11) and two real floating-point traps | – | Guards against both implementations sharing a misreading of the spec |
 | 43 | 2026-11-11 | Git repository initialised on `main` (the project had none); `.gitattributes` keeps `data/**` and the template configs byte-exact despite the system-wide `core.autocrlf=true`, and normalises other text files to LF. The manifest hashes code files with CRLF normalised to LF | Commit data with line-ending conversion | Hashes must survive any checkout on any OS |
 | 44 | 2026-11-11 | **Data freeze `data-v1.0`.** `data/MANIFEST.json`: SHA-256 of the 20 data files of the four datasets (CSVs and per-dataset configs), the 3 template configs, and the generator code (`generator.py`, `los.py`, `__main__.py`, `validation.py`, `constants.py`); generator commit `a1d60799e071fedd69ecece69721bf75de9dec66`. Check: `uv run python -m src.data_generation.manifest --verify [--regenerate]`, also run by `tests/test_manifest.py`. It fails on a hash mismatch, a missing or unlisted data file, or a changed generator file, and `--regenerate` rebuilds every dataset from its frozen configs and compares the bytes. Validation reports and Monte Carlo outputs in `data/processed/` are committed but not hashed (they carry timestamps and are derived). Tagged `data-v1.0`. **Any later change to data requires a new tag and the owner's approval** | Hash only the CSVs; no regeneration check | Freezes both the data and the means to reproduce them |
+| 45 | 2026-11-12 | **Schedule (owner).** The external deadline moved to "early December" (not yet confirmed). Plan against an **internal deadline of 30 November 2026**. The extra time is for evaluation depth (runs R2 and R3, the stress-variant run, robustness), not new features; the order of the §0 next steps is unchanged. No earlier deadline was recorded in the repository: the owner's instruction referred to 16 November, which appears in no committed file (REFLECTION_LOG R7) | Plan against the unconfirmed external date | A fixed internal date keeps a buffer if "early December" turns out earlier |
 
 ## 10. Approved Parameter Set
 

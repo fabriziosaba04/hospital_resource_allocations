@@ -59,3 +59,77 @@ Each entry records:
 - **How it was caught:** a per-day check of requirement against pool, requested by the owner before the freeze.
 - **Implication:** Shock 1 must not be presented as a crisis in the report or in the ALLOCATOR's evaluation. Claims about what a scenario "tests" have to be checked on the actual dataset, not inferred from the parameters.
 - **Decisions Log:** `PROJECT_SPEC.md` §0 (nurse checks); §10.2 (nurse-rationing regime).
+
+## 2026-11-12
+
+Entries R7–R16 are gaps found while resuming from the repository alone, at the owner's request ("treat each such gap as a REFLECTION_LOG entry"). R7 is fixed. R8–R16 are recorded but **not yet fixed**, because several of them touch the evaluation design and wait on the owner's decisions on metrics and severity.
+
+### R7. The deadline was not recorded anywhere
+
+- **What happened:** the owner asked for every mention of "16 November" to be updated to the new internal deadline. No committed file, in any commit, mentions 16 November or any deadline date. §0 claimed to be "enough to resume from the repository alone", but it had no timeline.
+- **How it was caught:** a search of the whole git history (`git grep` over all revisions) before editing anything.
+- **Implication:** a handoff document can look complete and still leave out the constraint that drives planning. The owner's memory of what the docs say and what they actually say had drifted apart. An instruction that assumes text exists has to be checked against the file before it is carried out.
+- **Decisions Log:** #45 (fixed: §0 Timeline added).
+
+### R8. EVALUATION_PLAN status line is stale
+
+- **What happened:** `EVALUATION_PLAN.md` says the formulas are provisional "until the first data generation". The data have been generated and frozen (`data-v1.0`), but the formulas are still provisional. What actually ends that status is the owner's decision on the metric proposal (§0 step 1).
+- **How it was caught:** reading the status line against §0 and the git tag.
+- **Implication:** a conditional status ("until X") goes stale silently once X happens. Status lines should name the decision that closes them, not an event.
+- **Decisions Log:** §0 step 1.
+
+### R9. PROJECT_SPEC §10.2 still states the wrong Shock 3 rationale
+
+- **What happened:** the approved parameter table still says Shock 3 "hits while census is high, so relaxed no-eviction is exercised". R1 and Log #40 showed that this is false (P(forced cut) = 0.002), but the table has no annotation. A reader of §10 alone gets the false claim.
+- **How it was caught:** reading §10.2 next to R1 and `LIMITATIONS_AND_REFLECTION.md` §2.
+- **Implication:** correcting an error in one place does not remove it from others. Each correction should search for every place the false claim appears.
+- **Decisions Log:** #33, #40; R1.
+
+### R10. The nurse clinical violation has no unit, pairing rule or integrality treatment
+
+- **What happened:** `CLAUDE.md` §10.G defines a nurse violation as "higher-level patients in d uncovered while lower-level patients are covered elsewhere". It does not say what is counted: patients, nurses or need units. It has no pairing rule (beds have one, in `EVALUATION_PLAN.md` §3.1), and it ignores the fact that need is fractional while nurses are whole. One nurse moved can uncover parts of two levels. As written, the audit cannot be implemented deterministically.
+- **How it was caught:** trying to write the exact formula for the metric proposal.
+- **Implication:** a definition that reads clearly in prose can still be impossible to compute. Every metric needs an executable definition before it is fixed.
+- **Decisions Log:** §0 step 1(a).
+
+### R11. "Movable bed" and how empty beds enter the pairing rule are not defined in record terms
+
+- **What happened:** §10.G says a movable bed is "free, or freed by that day's discharges", but nothing defines it from the records. The bed pairing rule (`EVALUATION_PLAN.md` §3.1) pairs each unserved patient with "the lowest-level movable bed served in their place", but does not say whether empty beds count in the same pool, or where they rank. These choices change the counts and the severities.
+- **How it was caught:** while writing the formula. The proposal treats a movable bed as one of the `B_d(t) − O_d(t)` beds not protected by no-eviction, and an empty bed as level 0. Under that reading, a random check (20,000 cases) found greedy pairing equal to the sum of the per-tier gaps.
+- **Implication:** the same as R10. Ambiguities in prose surface only when someone has to write the code.
+- **Decisions Log:** §0 step 1(a); owner decision §11 #3.
+
+### R12. "Beyond what the pool change forces" has no reference allocation
+
+- **What happened:** reallocation frequency (`EVALUATION_PLAN.md` §3.5) counts days on which the allocation changes "beyond what the pool change forces", but it does not say which allocation counts as forced. A pool change can be absorbed in many ways. The reversal window is listed as open, but this part is not.
+- **How it was caught:** while writing the stability formulas.
+- **Implication:** a metric that compares against a counterfactual must name that counterfactual.
+- **Decisions Log:** §0 step 1(a).
+
+### R13. The explanation-quality metric cannot be computed from the explanation fields
+
+- **What happened:** `EVALUATION_PLAN.md` §3.7 measures "the share of decisions whose stated expected consequences match the deterministic outcomes". The `explanation` argument of `submit_decision` (`PROJECT_SPEC.md` §2.2) has six text fields and no structured prediction. A deterministic comparison is therefore impossible, and the metric would depend on an LLM reading the text.
+- **How it was caught:** checking the metric against the tool signature.
+- **Implication:** a metric and the record it reads have to be designed together. Otherwise the metric quietly becomes LLM-dependent, which the verification principle (`CLAUDE.md` §7) rules out.
+- **Decisions Log:** §0 step 1(a).
+
+### R14. "Mean days in overflow" is not what its formula computes
+
+- **What happened:** the F2 metric "mean days in overflow" divides total overflow patient-days by **all** distinct level-k patients present, including those never in overflow. That is overflow days per patient, which is just the total overflow rescaled. It is not the mean time spent waiting by those who waited, and on its own it carries no fairness information.
+- **How it was caught:** checking each formula's units and denominator for the proposal.
+- **Implication:** a metric's name can promise more than its formula delivers.
+- **Decisions Log:** §0 step 1(a).
+
+### R15. The status of the stress run is unclear after the schedule change
+
+- **What happened:** `EVALUATION_PLAN.md` §5 and §0 step 5 call the stress-variant run "optional". The owner's 2026-11-12 instruction reserves the extra time for "the stress scenario". It is not recorded whether the run is now planned, and whether it is still excluded from the main comparisons (owner decision §11 #12).
+- **How it was caught:** comparing the new instruction with the run plan while updating §0.
+- **Implication:** a change of plan can silently change the status of earlier decisions. The status has to be restated explicitly.
+- **Decisions Log:** #41, #45; owner decision §11 #12.
+
+### R16. AGENTS.md header date is stale
+
+- **What happened:** `AGENTS.md` says "the design decisions were last updated on 2026-11-07", but §2.3 contains the 2026-11-11 deny-by-default rule.
+- **How it was caught:** reading the header against the body.
+- **Implication:** a minor issue, but "last updated" lines that are not maintained make readers trust stale text.
+- **Decisions Log:** owner decision §11 #9.
