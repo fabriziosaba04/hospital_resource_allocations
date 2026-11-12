@@ -53,24 +53,25 @@ git log --oneline --decorate                                   # expect tag data
 | Run-session restrictions | `.claude/run-settings.json` (deny-by-default on `data/**`, plus `docs/`, generator code, `tests/`, `.hypothesis/`); verified in a headless session | §8; `tests/manual/verify_run_settings.py` |
 | Deterministic audit, metrics, baselines | **Not built** | `src/evaluation/` (empty) |
 | MCP server, state machine, agent files, prompts | **Not built** | `src/mcp_server/`, `.claude/agents/`, `src/agent/` (planned) |
-| Documentation | Decisions Log #1–45, owner decisions §11 #1–15, reflection log R1–R16. Resume gaps found on 2026-11-12 are REFLECTION_LOG R7–R16; R8–R16 are still unfixed | `docs/` |
+| Documentation | Decisions Log #1–52, owner decisions §11 #1–23, reflection log R1–R17 (R7–R16 resolved) | `docs/` |
 
 **Key data facts (primary seed, approved schedule):**
 
 - Mean census 87.8 (range 73–102); census exceeds the bed pool on 5 days.
 - The nurse requirement exceeds the pool on 17 of 30 days. This rationing regime is deliberate (§10.2).
 - The Shock 1 shortage is only 3 / 0 / 1 on days 8–10 (REFLECTION_LOG R6), so it must not be presented as a crisis.
-- Demand exceeds `max_beds` twice (Cardiology on day 17, Internal Medicine on day 21). That overflow is structural and excluded from agent-attributable metrics (`EVALUATION_PLAN.md` §3.6).
+- Demand exceeds `max_beds` twice (Cardiology on day 17, Internal Medicine on day 21). That overflow is structural and is inside the policy-independent floor of A3 (`EVALUATION_PLAN.md` §3.3).
 
 ### Still open (owner decisions pending)
 
-- **The final metric formulas and selection.** The formulas in `EVALUATION_PLAN.md` §3 are provisional.
-- **The CHECKER severity scale** beyond clinical violations, and the line between violation, concern and improvement (`AGENTS.md` §6).
+- **The headline set** is fixed provisionally (`EVALUATION_PLAN.md` §3.10) and is confirmed only after the owner reviews the baseline headroom (`EVALUATION_PLAN.md` §8).
 - **Visualization tools and design** (deferred; not needed before the first run).
 
-### Next steps (order set by the owner, 2026-11-11)
+Metric formulas and the CHECKER severity scale were **fixed on 2026-11-12, before any agent output** (§11 #16–#23, `EVALUATION_PLAN.md` §3–§4).
 
-1. **Write proposals for the owner, to be fixed before any agent output is seen.** These are escalation areas 1 and 3: propose, do not decide.
+### Next steps (order set by the owner, 2026-11-11; updated 2026-11-12)
+
+1. **Done 2026-11-12:** the metric formulas and the severity scale were proposed and fixed (§11 #16–#23). The original wording of this step follows. **Write proposals for the owner, to be fixed before any agent output is seen.** These are escalation areas 1 and 3: propose, do not decide.
    - **(a) Final metric formulas.** Start from `EVALUATION_PLAN.md` §3 and §3.6. For each metric give the exact formula, the unit, how it is computed from the records (Bed Assignment State, Allocation State) and its direction (lower or higher is better). Propose which metrics are headline and which secondary. Include:
      - the pairing rule for clinical violations (§3.1);
      - the empty-bed violation type (severity = k, §11 #3);
@@ -87,7 +88,8 @@ git log --oneline --decorate                                   # expect tag data
 3. **`src/evaluation/`:**
    - the deterministic audit, with its **own** hard-constraint and N1 implementations, cross-tested against `src/environment/` (§1, Log #17);
    - the metrics, using the formulas the owner fixes in step 1;
-   - the baselines B0, B1 and B2 (§6), run on the three seeds through the same environment functions, writing records in the §4 layout.
+   - the baselines B0, B1 and B2 (§6), run on the three seeds **and the stress variant** through the same environment functions, writing records in the §4 layout;
+   - **report the headroom table (`EVALUATION_PLAN.md` §8) to the owner before starting step 4** (§11 #23).
 4. **Minimal MCP path to a first end-to-end run:**
    - the state machine and record store (§3–4);
    - the orchestration, allocator and checker role servers (§2);
@@ -95,12 +97,13 @@ git log --oneline --decorate                                   # expect tag data
    - the smoke test (`AGENTS.md` §2.4);
    - the ALLOCATOR and CHECKER prompts, **reviewed by the owner before the first run**;
    - then run R1 on `seed20261107` in a run session.
-5. **Polish** (visualizations, runs R2 and R3, the optional stress run, the report) **only after the first run works**. The time to the internal deadline (30 November) is reserved for evaluation depth within this step, not for new features (Log #45).
+5. **Polish** (visualizations, runs R2 and R3, the stress run — planned since 2026-11-12, §11 #22 — the report) **only after the first run works**. The time to the internal deadline (30 November) is reserved for evaluation depth within this step, not for new features (Log #45).
 
 ### Approved by the owner
 
 - 2026-11-07: the numerical parameters (§10), escalation decisions §11 #1–5, the repair rule and baselines (§5.7, §6) and the session setup (§8).
 - 2026-11-11: decisions §11 #6–15 (LOS interpretation, `external_event` semantics, deny rules, Shock 3 kept, stress variant, data freeze, work order).
+- 2026-11-12: decisions §11 #16–23 (metric formulas, framing, headline set, judgment items, severity scale, CHECKER matching, stress run, work order); internal deadline 30 November (Log #45).
 
 ## 1. Code Layout
 
@@ -381,6 +384,13 @@ The rules are in `CLAUDE.md` §9.1. This is the setup:
 | 43 | 2026-11-11 | Git repository initialised on `main` (the project had none); `.gitattributes` keeps `data/**` and the template configs byte-exact despite the system-wide `core.autocrlf=true`, and normalises other text files to LF. The manifest hashes code files with CRLF normalised to LF | Commit data with line-ending conversion | Hashes must survive any checkout on any OS |
 | 44 | 2026-11-11 | **Data freeze `data-v1.0`.** `data/MANIFEST.json`: SHA-256 of the 20 data files of the four datasets (CSVs and per-dataset configs), the 3 template configs, and the generator code (`generator.py`, `los.py`, `__main__.py`, `validation.py`, `constants.py`); generator commit `a1d60799e071fedd69ecece69721bf75de9dec66`. Check: `uv run python -m src.data_generation.manifest --verify [--regenerate]`, also run by `tests/test_manifest.py`. It fails on a hash mismatch, a missing or unlisted data file, or a changed generator file, and `--regenerate` rebuilds every dataset from its frozen configs and compares the bytes. Validation reports and Monte Carlo outputs in `data/processed/` are committed but not hashed (they carry timestamps and are derived). Tagged `data-v1.0`. **Any later change to data requires a new tag and the owner's approval** | Hash only the CSVs; no regeneration check | Freezes both the data and the means to reproduce them |
 | 45 | 2026-11-12 | **Schedule (owner).** The external deadline moved to "early December" (not yet confirmed). Plan against an **internal deadline of 30 November 2026**. The extra time is for evaluation depth (runs R2 and R3, the stress-variant run, robustness), not new features; the order of the §0 next steps is unchanged. No earlier deadline was recorded in the repository: the owner's instruction referred to 16 November, which appears in no committed file (REFLECTION_LOG R7) | Plan against the unconfirmed external date | A fixed internal date keeps a buffer if "early December" turns out earlier |
+| 46 | 2026-11-12 | **A2 closed form has three cases** (owner correction, REFLECTION_LOG R17): `MaxN_j = Σa` if `P_N ≥ Σ⌈a⌉`; `= P_N` if `P_N ≤ Σ⌊a⌋`; otherwise `Σ⌊a⌋` plus the `P_N − Σ⌊a⌋` largest fractional parts. Each nurse adds at most 1 unit of coverage and the per-department gain is concave (1 per nurse up to ⌊a_d⌋, then the fractional part, then 0), so greedy is optimal. Explicit test for the middle case plus an enumeration cross-check | The two-case form of the proposal | It overstated the maximum on rationing days |
+| 47 | 2026-11-12 | **Rounding floor for SV_N is the lexicographic minimum** `L(t)` of `(gapN_3, gapN_2, gapN_1)` over all integer allocations, per tier. The proposal's joint floor `F_N = min Σ_j gapN_j` is not used | Joint minimum F_N | The owner fixed the reading as per tier and lexicographic; a joint minimum could credit a trade of L3 coverage for L2. The number of days on which `Σ_j L_j ≠ F_N` is reported with the headroom |
+| 48 | 2026-11-12 | **Record-level definitions (R11):** holders `H_d(t)` = in-bed patients of the previous Bed Assignment State (day 1: the `initial` stage) still present; movable beds = `B_d − O_d`; an empty movable bed is level 0; a shock day is `Σ O_d > P_B`, on which no movable beds exist (relaxed no-eviction forces `Σ_d max(0, B_d − O_d) = 0`) | "free, or freed by that day's discharges" | Computable from the records |
+| 49 | 2026-11-12 | **Stability reference (R12):** `τ = B − R`, with R the repair rule applied to the previous allocation, i.e. what B0 would do from the same state | `½(Σ|ΔB| − |ΔP|)` without a reference | Names the counterfactual; equal to the old formula on days with no pool change |
+| 50 | 2026-11-12 | **A3 path component is never negative.** `raw − floor − avoid = Σ_t [min(P_B, Σ_d min(n_d^{≥j}, max_beds)) − Max_j]`, and `Max_j` is at most both terms: per department `|H^{≥j}_d| + min(|Q^{≥j}_d|, max_beds − O_d) ≤ min(n^{≥j}_d, max_beds)`, and `Σ|H^{≥j}| + M ≤ P_B`; on shock days `Max_j = min(|H^{≥j}|, P_B)`. Tested on all baseline runs | – | Makes the decomposition well defined |
+| 51 | 2026-11-12 | **Fairness definitions (R14):** B3 (wait distribution among patients ever in overflow) replaces "mean days in overflow"; B1 cap netting removes the daily cap excess from d's **overflow** patients from the lowest level upward, so net overflow is never negative | Netting against census by level | Holders may be low-level while higher-level non-holders overflow, so netting against census could go negative |
+| 52 | 2026-11-12 | **R10 and R13 resolved:** the nurse clinical violation is measured as the A2 tier gap in need units (with the idle-nurse type, owner-approved); explanation quality is qualitative, LLM CHECKER only, labelled LLM-dependent | Need-unit pairing; a structured `expected_outcomes` field | Pairing in need units is not well defined with whole nurses; matching structured predictions would be trivial given `simulate_allocation` |
 
 ## 10. Approved Parameter Set
 
@@ -405,7 +415,7 @@ The rules are in `CLAUDE.md` §9.1. This is the setup:
 | Surge | Cardiology λ × 1.6 on days 12–19 | Mid-horizon, so adaptation is visible |
 | Shock 1 | Nurses −4 on days 8–10 | Staff absence wave |
 | Shock 2 | Beds +4 on days 16–20 (pool 100) | Surge capacity; still within 4 × `max_beds` |
-| Shock 3 | Beds **−10** on days 23–25 (pool 86) | Hits while census is high, so relaxed no-eviction is exercised |
+| Shock 3 | Beds **−10** on days 23–25 (pool 86) | *Original rationale, shown to be wrong:* "hits while census is high, so relaxed no-eviction is exercised". A forced cut depends on patients carried over, not on census; P(forced cut) = 0.002 (REFLECTION_LOG R1, Log #40). Kept as approved; the cut path is exercised by the stress variant instead (Log #41) |
 | Shock type | Scheduled, not random | Each shock is interpretable |
 | Burn-in | 30 days | About 4 × the L3 mean stay, so day 1 is in steady state |
 | Horizon H | 30 days (6 audits) | Covers the surge, the shocks and recovery |
@@ -445,3 +455,16 @@ The robustness seeds (20261108 and 20261109) are an implementation choice, also 
 | 13 | Deny list extended with `Read(./tests/**)` and `Read(./.hypothesis/**)` | Section 8 |
 | 14 | **Data freeze:** `data/MANIFEST.json` with SHA-256 hashes, a manifest check, git tag `data-v1.0`. After the freeze, any change to data needs a new tag and the owner's approval. | Log #44, `CLAUDE.md` §9.3 |
 | 15 | Work order: metric formulas and CHECKER severity scale proposed and fixed **before any agent output is seen**; then the environment, the audit and baselines, and a minimal MCP path to a first run; polish afterwards | Section 0 |
+
+**Approved by the owner on 2026-11-12** (metric formulas and severity scale fixed **before any agent output**).
+
+| # | Decision | Applied in |
+| --- | --- | --- |
+| 16 | Metric formulas fixed as in `EVALUATION_PLAN.md` §3, with the A2 closed form corrected to three cases (Log #46) | `EVALUATION_PLAN.md` §3 |
+| 17 | Framing: B1 is an optimal myopic rule on A1, so the agent can only match or lose there; the agent's possible advantage lies in the A3 path component and in nurse rationing (A2). Headroom is quantified from baselines (B0–B2, three seeds) before the headline set is confirmed; seeing baseline outputs first is fine, seeing agent outputs is not | `EVALUATION_PLAN.md` §1, §8 |
+| 18 | Headline: SV_B with its type split; SV_N per tier, lexicographic; A3 excess for tiers 3 and 2, split into avoid and path; bed reversals within W. Gate: D (zero hard-constraint violations in effect, else the run is not interpreted). Secondary: B1, B2, B3, A4, nurse reversals. Descriptive: RS and frequency, C1–C4, B4. No combined score | `EVALUATION_PLAN.md` §3.10 |
+| 19 | Approved judgment items: empty bed = level 0; the idle-nurse violation type; F1 inversions (B2) as a secondary metric, with a test that B1 scores 0 on it; W = 3, with W = 2 and 5 as pre-registered sensitivity checks; cap excess netted against the lowest levels; explanation quality qualitative and labelled LLM-dependent. The shock-day A1 pairing must be tested against the closed form before any use on the stress variant | `EVALUATION_PLAN.md` §3 |
+| 20 | Severity scale approved (Critical / Major / Moderate / Minor, with the category test). `validate_allocation` calls are free and never counted; only rejected submissions count. Comparison by lexicographic counts by level; any Critical issue blocks interpretation | `EVALUATION_PLAN.md` §4, `AGENTS.md` §6 |
+| 21 | CHECKER-versus-audit matching (recall, precision, level agreement) is a primary Verification output | `EVALUATION_PLAN.md` §4, §7 |
+| 22 | The stress run is **planned**. It stays excluded from the main comparisons and is reported separately as a probe of forced-cut handling, with B0–B2 run on it as reference | `EVALUATION_PLAN.md` §6 |
+| 23 | Work order: finish `src/environment/`; build the audit and metrics and run B0–B2 on the three seeds and the stress variant; report the headroom table to the owner **before** starting the MCP work | Section 0 |

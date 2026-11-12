@@ -62,7 +62,7 @@ Each entry records:
 
 ## 2026-11-12
 
-Entries R7–R16 are gaps found while resuming from the repository alone, at the owner's request ("treat each such gap as a REFLECTION_LOG entry"). R7 is fixed. R8–R16 are recorded but **not yet fixed**, because several of them touch the evaluation design and wait on the owner's decisions on metrics and severity.
+Entries R7–R16 are gaps found while resuming from the repository alone, at the owner's request ("treat each such gap as a REFLECTION_LOG entry"). **Status (later on 2026-11-12):** all are resolved. R7 by Log #45; R8 (the `EVALUATION_PLAN.md` status line), R9 (§10.2 annotated) and R16 (`AGENTS.md` header) fixed directly; R10–R14 by the owner's decisions §11 #16–#21 and Log #46–#52; R15 by §11 #22 (the stress run is planned and stays out of the main comparisons).
 
 ### R7. The deadline was not recorded anywhere
 
@@ -133,3 +133,10 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **How it was caught:** reading the header against the body.
 - **Implication:** a minor issue, but "last updated" lines that are not maintained make readers trust stale text.
 - **Decisions Log:** owner decision §11 #9.
+
+### R17. The A2 closed form was wrong when nurses are scarcer than whole units of need (assistant error)
+
+- **What happened:** the metric proposal of 2026-11-12 gave the tier maximum of nurse coverage as "if P_N ≥ Σ⌈a⌉ then Σa, else give each department ⌊a_d⌋ and the remaining nurses to the largest fractional parts". That silently assumes P_N ≥ Σ⌊a_d⌋. When P_N < Σ⌊a_d⌋ every nurse covers a full unit and the maximum is simply P_N; the stated formula overstates it (example: a = (2.4, 3.6, 1.2, 0), P_N = 4 gives 6 instead of 4). The case is not exotic: it occurs at tier 1 on rationing days. The assistant had the three-case form in its working notes but wrote only two cases into the proposal, and also claimed the closed form would be "cross-checked against brute force" while no such check had yet been run.
+- **How it was caught:** the owner's review of the proposal, before any code was written. Confirmed by brute force on the example.
+- **Implication:** a proposal that promises a verification ("cross-checked against brute force") reads as if the check were done. Formulas offered for a fixed, pre-registered evaluation must be executed before they are proposed, not after approval.
+- **Decisions Log:** #46.

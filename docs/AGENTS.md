@@ -4,7 +4,7 @@ This document specifies the multi-agent architecture of the Hospital Resource Al
 
 It is subordinate to [`CLAUDE.md`](../CLAUDE.md), which defines the project's scope, decision principles, hard constraints and data model. This document does not restate those principles; it assigns responsibility for applying and enforcing them. If the two documents ever appear to conflict, `CLAUDE.md` prevails and the conflict must be raised with the project owner.
 
-Record schemas, prompt templates, numerical parameters and thresholds are not defined here. Items still undecided are listed in [Section 12](#12-open-items). The design decisions were last updated on 2026-11-07.
+Record schemas, prompt templates, numerical parameters and thresholds are not defined here. Items still undecided are listed in [Section 12](#12-open-items). The design decisions were last updated on 2026-11-12 (severity scale, §6); the run-session deny rules in §2.3 date from 2026-11-11.
 
 ## 1. Architecture Overview
 
@@ -302,7 +302,7 @@ Each identified issue should include, where applicable:
 - Severity.
 - A suggested corrective action.
 
-The severity of a clinical priority violation is the level difference defined in `CLAUDE.md` §10.G. The general severity scale for other issue types is open.
+The severity of a clinical priority violation is the level difference defined in `CLAUDE.md` §10.G. The general severity scale (Critical, Major, Moderate, Minor), the test separating violations, concerns and improvements, and the mapping of every issue type were fixed on 2026-11-12 and are in [`EVALUATION_PLAN.md`](EVALUATION_PLAN.md) §4. Calls to `validate_allocation` are free and never counted; only rejected submissions are issues. The LLM CHECKER uses the same scale, and its issues are matched against the deterministic audit's (recall, precision, level agreement) as a primary Verification output.
 
 Reports must distinguish **actual constraint violations** from less severe **concerns** and **opportunities for improvement**.
 
@@ -464,8 +464,6 @@ The dynamic visualization must be built from these records. It may only show res
 
 ## 12. Open Items
 
-The following remain open, deferred until after the first data generation (`CLAUDE.md` §9.3):
-
-- **Severity scale:** the general CHECKER severity scale beyond clinical violations, and how to distinguish violations, concerns and improvement opportunities.
+No agent-architecture items are open. The severity scale was fixed on 2026-11-12 (`EVALUATION_PLAN.md` §4).
 
 Implementation-level choices are recorded in the Implementation Decisions Log in [`PROJECT_SPEC.md`](PROJECT_SPEC.md). They cover workflow tools, record formats, storage, LLM CHECKER failure handling, tie-breaks and code layout.

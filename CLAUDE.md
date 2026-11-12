@@ -433,7 +433,7 @@ Residual tie-breaks (for example equal `arrival_day`) are implementation-level a
 - **Beds under shock:** it is also a violation to cut the bed of a level-k patient when the bed of a patient of level < k in another department could have been cut instead.
 - **Nurses:** a violation also occurs when higher-level patients in d are uncovered while lower-level patients are covered elsewhere. Coverage follows the intra-department rule in Section 10.D. There is no movability condition, because nurses are freely reassignable.
 - **Severity of a clinical violation** = the level difference between the unserved patient and the patient served in their place.
-- The general severity scale for other issue types remains open.
+- The general severity scale for other issue types was fixed on 2026-11-12 ([`docs/EVALUATION_PLAN.md`](docs/EVALUATION_PLAN.md) §4).
 
 ### 10.H Fairness
 
@@ -531,6 +531,5 @@ Rules:
 
 The following remain undecided. They are deferred until after the first data generation, unless they block current work. Do not settle them without the project owner's agreement (Section 9.2).
 
-- **Severity scale:** the general CHECKER severity scale beyond clinical violations, and how to distinguish violations, concerns and improvement opportunities.
-- **Metrics:** final formulas and selection. Provisional formulas are in [`docs/EVALUATION_PLAN.md`](docs/EVALUATION_PLAN.md).
+- **Headline metric set:** the formulas and the CHECKER severity scale were fixed on 2026-11-12, before any agent output ([`docs/EVALUATION_PLAN.md`](docs/EVALUATION_PLAN.md) §3–§4). The headline set is confirmed after the owner reviews the baseline headroom (§8 there).
 - **Visualization:** tools and design.
