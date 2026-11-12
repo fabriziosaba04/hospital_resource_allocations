@@ -97,7 +97,8 @@ def main() -> int:
     try:
         # ---------------------------------------------------------------- 1. run session
         write_fixture(tmp)
-        store = init_run(DATASET_ID, run_id, data_root=tmp, results_root=tmp / "results", check_manifest=False)
+        store = init_run(DATASET_ID, run_id, data_root=tmp, results_root=tmp / "results", check_manifest=False,
+                         models={"main": "haiku", "subagents": "haiku"})   # the smoke test overrides the run model
         proc = run_claude(RUN_PROMPT, "dispatcher", env)
         (out_dir / "smoke_test_transcript.jsonl").write_text(proc.stdout, encoding="utf-8")
         rep = classify(proc.stdout)

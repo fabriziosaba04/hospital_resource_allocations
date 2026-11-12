@@ -100,7 +100,7 @@ def test_validate_is_free_and_accepted_once(wf):
     cur = wf.get_allocation_state()["in_effect"]
     for _ in range(5):
         assert wf.validate_allocation(cur["beds"], cur["nurses"])["valid"]
-    assert wf.store.read_state()["attempts"] == 0
+    assert wf._state()["attempts"] == 0          # derived from the records (Log #80)
     assert maintain(wf)["outcome"] == "accepted"
     with pytest.raises(WorkflowError, match="already accepted"):
         maintain(wf)

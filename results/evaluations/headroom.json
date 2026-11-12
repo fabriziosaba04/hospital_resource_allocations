@@ -107,19 +107,12 @@
         "floor": 0,
         "B1_minus_floor": 1
       },
-      "E bed reversals W3 (all)": {
+      "E bed reversals W3": {
         "B0": 0,
         "B1": 116,
         "B2": 114,
         "floor": 0,
         "B1_minus_floor": 116
-      },
-      "E bed reversals W3 (occupied)": {
-        "B0": 0,
-        "B1": 23,
-        "B2": 18,
-        "floor": 0,
-        "B1_minus_floor": 23
       },
       "B1 dispersion L1 (pp)": {
         "B0": 49.19,
@@ -319,19 +312,12 @@
         "floor": 0,
         "B1_minus_floor": 4
       },
-      "E bed reversals W3 (all)": {
+      "E bed reversals W3": {
         "B0": 0,
         "B1": 109,
         "B2": 110,
         "floor": 0,
         "B1_minus_floor": 109
-      },
-      "E bed reversals W3 (occupied)": {
-        "B0": 0,
-        "B1": 36,
-        "B2": 30,
-        "floor": 0,
-        "B1_minus_floor": 36
       },
       "B1 dispersion L1 (pp)": {
         "B0": 49.48,
@@ -531,19 +517,12 @@
         "floor": 0,
         "B1_minus_floor": 0
       },
-      "E bed reversals W3 (all)": {
+      "E bed reversals W3": {
         "B0": 0,
         "B1": 103,
         "B2": 103,
         "floor": 0,
         "B1_minus_floor": 103
-      },
-      "E bed reversals W3 (occupied)": {
-        "B0": 0,
-        "B1": 6,
-        "B2": 6,
-        "floor": 0,
-        "B1_minus_floor": 6
       },
       "B1 dispersion L1 (pp)": {
         "B0": 67.02,
@@ -743,19 +722,12 @@
         "floor": 0,
         "B1_minus_floor": 0
       },
-      "E bed reversals W3 (all)": {
+      "E bed reversals W3": {
         "B0": 0,
         "B1": 115,
         "B2": 104,
         "floor": 0,
         "B1_minus_floor": 115
-      },
-      "E bed reversals W3 (occupied)": {
-        "B0": 0,
-        "B1": 21,
-        "B2": 17,
-        "floor": 0,
-        "B1_minus_floor": 21
       },
       "B1 dispersion L1 (pp)": {
         "B0": 42.0,

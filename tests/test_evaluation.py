@@ -14,7 +14,7 @@ import pytest
 from src.environment.validator import validate
 from src.evaluation.audit import audit_run, own_hard_constraints
 from src.evaluation.dataset import load_dataset
-from src.evaluation.metrics import compute_metrics, occupied_reversals, reversals
+from src.evaluation.metrics import compute_metrics, reversals
 from src.evaluation.runner import run_baseline
 from src.utils.constants import DEPARTMENTS
 
@@ -112,12 +112,17 @@ def test_reversal_matching_by_hand():
     assert reversals([0, 0, 0], 3) == 0
 
 
-def test_occupied_reversals_worked_example():
-    """EVALUATION_PLAN.md §3.8 worked example: Cardiology +3 on day 14, -3 on day 16 (Orthopedics the mirror).
-    Days are re-indexed 1..3 here. Cardiology's idle beds: 1 on the gain day, 2 on the day after."""
-    cardiology, orthopedics = [3, 0, -3], [-3, 0, 3]
-    assert reversals(cardiology, 3) + reversals(orthopedics, 3) == 6          # all reversals, both sides
-    assert occupied_reversals(cardiology, [1, 2, 0], 3) == 2                 # at least 3 - 1 gained beds were used
-    assert occupied_reversals(orthopedics, [5, 5, 5], 3) == 0                # loss-then-gain: not the receiving side
-    assert occupied_reversals(cardiology, [3, 4, 0], 3) == 0                 # all three gained beds may have stayed empty
-
+def test_checker_matching_by_hand():
+    from src.evaluation.checker_matching import match
+    audit = [{"day": 3, "type": "bed_displaced", "level": "Major"},
+             {"day": 3, "type": "bed_displaced", "level": "Moderate"},
+             {"day": 4, "type": "nurse_gap", "level": "Moderate"},
+             {"day": 4, "type": "replay_mismatch", "level": "Critical"}]           # integrity: not matched
+    checker = [{"day": 3, "type": "bed_displaced", "severity": "Major"},          # matches the Major one
+               {"day": 4, "type": "nurse_gap", "severity": "Major"},              # matched, level differs
+               {"day": 5, "type": "f1_inversion", "severity": "Moderate"},        # false positive
+               {"day": 2, "type": "explanation_inaccuracy", "severity": "Minor"}]  # LLM-only
+    m = match(audit, checker)
+    assert (m["audit_issues"], m["checker_issues"], m["matched"]) == (3, 3, 2)
+    assert m["recall"] == round(2 / 3, 3) and m["precision"] == round(2 / 3, 3) and m["level_agreement"] == 0.5
+    assert m["checker_llm_only"] == {"explanation_inaccuracy": 1}

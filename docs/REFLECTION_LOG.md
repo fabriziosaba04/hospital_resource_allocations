@@ -180,6 +180,7 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 
 - **What happened:** with a wider window, all reversals grow as expected, for example B1 on seed 07: 100 / 116 / 126 for W = 2 / 3 / 5. The occupied-in-between count does not: B1 on seed 08 gives 28 / 36 / 26, and on seed 09 7 / 6 / 10. The oldest-first matching pairs different units when W changes, and the occupied lower bound depends on which units are paired. The count therefore partly reflects the matching procedure, not only the allocation. The assistant reported the W = 3 values without looking at the sensitivity columns.
 - **How it was caught:** reading the W = 2 / 3 / 5 columns of the baseline metrics while preparing the owner's report.
+- **Resolved (owner decision §11 #32):** the count was dropped before any agent output.
 - **Implication:** a pre-registered sensitivity check is useful only if someone reads it. A metric built on a greedy matching needs a property check (monotone in W) before it is relied on. The definition (Log #59) is still awaiting owner confirmation, so nothing has been fixed yet.
 - **Decisions Log:** #59.
 
@@ -203,4 +204,25 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **How it was caught:** the assistant printed the extracted set before relying on the test. The test now lists the 11 types explicitly and asserts that each one still appears in the audit source.
 - **Implication:** a passing test proves only what it actually exercises. A test whose expected set is computed should show that set at least once.
 - **Decisions Log:** #74.
+
+### R27. Owner decisions that never reached the assistant
+
+- **What happened:** the owner's message of 2026-11-12 said the model choice, the reversal-metric decision and the pre-R1 robustness items "were already decided in an earlier message that apparently didn't reach you". The assistant's report had listed them as open questions. Nothing in the repository recorded those decisions, so the assistant could not have known them.
+- **How it was caught:** the owner noticed that the open-question list repeated items already settled.
+- **Implication:** decisions that live only in chat are as fragile as conversational memory, which the project already forbids for agents (`CLAUDE.md` §10.J). Every owner decision is now written into `PROJECT_SPEC.md` §11 in the same session, so the repository stays the only source of truth.
+- **Decisions Log:** owner decisions §11 #31–#35.
+
+### R28. The reversal definition asks the CHECKER for a computation it cannot do, and the dry run shows it (assistant design gap)
+
+- **What happened:** to match the audit exactly (owner decision §11 #35), `checker.md` defines reversals against the *reference allocation*: the previous allocation adjusted to pool changes by the largest-remainder repair rule. In the dry run, the CHECKER found every reversed move, but it wrote that "the day-4 bed reversal depends on a reference allocation I could not compute exactly" (the fixture's pool changes on days 3 and 4). It also merged the two departments of each round trip into a single issue, although the definition counts one issue per department and day. Result: recall 0.43 (3 of 7), with precision and level agreement 1.0. Every miss is a counting-unit or reference-rule difference, not a missed detection.
+- **How it was caught:** the deterministic CHECKER-versus-audit matching in the dry-run report, then reading the report's own text.
+- **Implication:** a definition can match the audit word for word and still be unusable by the agent who must apply it. Definitional alignment needs two halves: the same words, and the same means of computing them (here the reference allocation, which the CHECKER cannot see). Matching scores on reversals would otherwise measure arithmetic, not checking. Owner decision pending.
+- **Decisions Log:** #84; owner decision §11 #35.
+
+### R29. The synthetic fixture never exercises clinical-priority detection
+
+- **What happened:** in the dry run, the deterministic audit found no bed pairs, no nurse gaps, no F1 inversions and no rejected submissions on any of the 5 days. The fixture is small (mean census 20.6 against 87.8 in the primary dataset), and its only pool changes are mild. The dry run therefore tested the plumbing, the ALLOCATOR's process and the CHECKER's reversal and explanation checks, but **not** whether the CHECKER can find clinical-priority violations, which carry the headline metrics.
+- **How it was caught:** the per-day issue table in the dry-run report.
+- **Implication:** a dry run proves only what its data make happen. A fixture meant to test detection must contain the cases to be detected. A harder synthetic fixture (more pressure, a forced cut) is the obvious remedy; it stays within the prompt development rule (§11 #34), because it is synthetic.
+- **Decisions Log:** —.
 

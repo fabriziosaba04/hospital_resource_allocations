@@ -1,0 +1,6 @@
+day,total_beds,total_nurses,external_event
+1,14,5,
+2,14,5,
+3,12,5,bed pool 14 -> 12
+4,14,5,bed pool 12 -> 14
+5,14,5,

@@ -21,10 +21,18 @@ from .store import POINTER, Store, now
 from .workflow import code_version
 
 RETRY_LIMIT = 3     # PROJECT_SPEC.md §10.3
+RUN_SETTINGS = ROOT / ".claude" / "run-settings.json"
+
+
+def configured_models() -> dict:
+    """The model for all three roles, as set in the run settings (owner decision §11 #31)."""
+    d = json.loads(RUN_SETTINGS.read_text(encoding="utf-8"))
+    return {"main": d.get("model"), "subagents": d.get("env", {}).get("CLAUDE_CODE_SUBAGENT_MODEL")}
 
 
 def init_run(dataset_id: str, run_id: str, data_root: Path = ROOT, results_root: Path = ROOT / "results",
-             check_manifest: bool = True, set_pointer: bool = True, expose_violation_labels: bool = False) -> Store:
+             check_manifest: bool = True, set_pointer: bool = True, expose_violation_labels: bool = False,
+             models: dict | None = None) -> Store:
     if check_manifest:
         chk = subprocess.run([sys.executable, "-m", "src.data_generation.manifest", "--verify"], cwd=ROOT,
                              capture_output=True, text=True)
@@ -40,6 +48,7 @@ def init_run(dataset_id: str, run_id: str, data_root: Path = ROOT, results_root:
     manifest = {"run_id": run_id, "dataset_id": dataset_id, "data_root": str(Path(data_root).resolve()),
                 "eval_dir": str(eval_dir.resolve()), "retry_limit": RETRY_LIMIT, "horizon": ds.horizon,
                 "expose_violation_labels": bool(expose_violation_labels),
+                "models": models or configured_models(),
                 "code_version": code_version(), "started_at": now()}
     (alloc_dir / "run_manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8", newline="\n")
     store = Store(alloc_dir, eval_dir)

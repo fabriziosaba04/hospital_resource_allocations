@@ -1,0 +1,15 @@
+{
+  "run_id": "DRY1-SMOKE5",
+  "dataset_id": "SMOKE5",
+  "data_root": "C:\\Users\\bissi\\OneDrive\\Documenti\\UNI_LAVORO\\MAGISTRALE\\1st_year\\Business_Analytics\\Individual_Project\\hospital_resource_allocations\\results\\dry_runs\\SMOKE5_fixture",
+  "eval_dir": "C:\\Users\\bissi\\OneDrive\\Documenti\\UNI_LAVORO\\MAGISTRALE\\1st_year\\Business_Analytics\\Individual_Project\\hospital_resource_allocations\\results\\evaluations\\DRY1-SMOKE5",
+  "retry_limit": 3,
+  "horizon": 5,
+  "expose_violation_labels": false,
+  "models": {
+    "main": "claude-sonnet-5-5",
+    "subagents": "claude-sonnet-5-5"
+  },
+  "code_version": "698ca5c95d3b9b701fb74d4252b62bedc2a99fef",
+  "started_at": "2026-11-12T19:41:54+00:00"
+}

@@ -6,7 +6,9 @@ re-reads the run state from disk, checks the phase, and writes under the lock.
 
 from __future__ import annotations
 
+import functools
 import subprocess
+import traceback
 from fractions import Fraction
 from pathlib import Path
 
@@ -22,7 +24,7 @@ from src.evaluation.metrics import add_reversal_issues
 from src.utils.constants import DEPARTMENTS, LEVELS
 
 from .analyzer import run_analyzer
-from .store import Store, now
+from .store import Store, StoreError, now
 
 PHASES = ("READY", "ALLOCATION", "READY_TO_CLOSE", "AUDIT", "CLOSED", "FINISHED", "HALTED")
 EXPLANATION_FIELDS = ("situation", "information_used", "alternatives", "reasons", "tradeoffs", "uncertainty")
@@ -32,6 +34,23 @@ TEMPLATE_AUDIT = "AUDIT"
 
 class WorkflowError(RuntimeError):
     """A call in the wrong phase or with invalid arguments; the message names the expected action."""
+
+
+def mutating(fn):
+    """State-changing tools: an unexpected error halts the run with a recorded reason (PROJECT_SPEC.md §3,
+    owner decision §11 #33). Phase and argument errors (WorkflowError) and lock timeouts (StoreError) are
+    returned to the caller and do not halt."""
+    @functools.wraps(fn)
+    def wrapper(self, *a, **k):
+        try:
+            return fn(self, *a, **k)
+        except (WorkflowError, StoreError):
+            raise
+        except Exception as e:  # noqa: BLE001 - every other error is unrecoverable by definition
+            reason = f"{fn.__name__}: {type(e).__name__}: {e}"
+            self._halt(reason, traceback.format_exc(limit=8))
+            raise WorkflowError(f"the run is halted ({reason}). Expected next action: stop") from e
+    return wrapper
 
 
 def _f(x) -> float:
@@ -56,6 +75,51 @@ class Workflow:
         self.m = self.store.manifest()
         self.run_id = self.m["run_id"]
         self.ds = load_dataset(self.m["dataset_id"], root=Path(self.m["data_root"]))
+
+    # ------------------------------------------------------------------ state derived from the records
+    def _state(self) -> dict:
+        """state.json holds the run's position (day, phase); attempts, acceptance and the audit report are
+        derived from the records, so a process killed between two writes cannot leave them inconsistent
+        (Decisions Log #80)."""
+        s = self.store.read_state()
+        t = s["day"]
+        dec = [x for x in self.store.read("decision_history") if x["day"] == t]
+        s["attempts"] = len(dec)
+        s["accepted"] = any(x["outcome"] == "accepted" for x in dec)
+        s["report_received"] = any(x["day"] == t and x.get("kind") == "report"
+                                   for x in self.store.read("validation_history"))
+        return s
+
+    @staticmethod
+    def _persisted(s: dict, **update) -> dict:
+        keep = {k: s[k] for k in ("run_id", "day", "horizon", "phase") if k in s}
+        keep.update(update)
+        return keep
+
+    def _find(self, record: str, **match) -> list[dict]:
+        return [x for x in self.store.read(record) if all(x.get(k) == v for k, v in match.items())]
+
+    def _log_once(self, day, event, **detail):
+        if not self._find("workflow", day=day, event=event):
+            self._log(day, event, **detail)
+
+    def _reconcile(self, t: int) -> None:
+        """Complete a write sequence cut short by a crash: an accepted decision whose allocation line is
+        missing gets it now (call inside the lock)."""
+        acc = self._find("decision_history", day=t, outcome="accepted")
+        if acc and not self._find("allocation_state", day=t, source="ALLOCATOR"):
+            self.store.append("allocation_state", self._line("allocator", t, source="ALLOCATOR",
+                                                             beds=acc[-1]["beds"], nurses=acc[-1]["nurses"],
+                                                             recovered=True))
+            self._log(t, "recovered_allocation_line")
+
+    def _halt(self, reason: str, tb: str) -> None:
+        with self.store.lock():
+            s = self.store.read_state()
+            if s["phase"] != "HALTED":
+                s.update(phase="HALTED", halt_reason=reason, phase_before_halt=s["phase"])
+                self.store.write_state(s)
+            self._log(s["day"], "halted", reason=reason, traceback=tb)
 
     # ------------------------------------------------------------------ helpers
     def _line(self, writer: str, day: int, **content) -> dict:
@@ -127,16 +191,17 @@ class Workflow:
 
     # ------------------------------------------------------------------ orchestration
     def get_workflow_status(self) -> dict:
-        s = self.store.read_state()
+        s = self._state()
         return {"run_id": self.run_id, "day": s["day"], "horizon": s["horizon"], "phase": s["phase"],
                 "expected_next_action": self._next_action(s)}
 
+    @mutating
     def advance_day(self) -> dict:
-        s = self.store.read_state()
+        s = self._state()
         self._require(s, ("READY", "CLOSED"), "advance_day")
         t = s["day"] + 1
         with self.store.lock():
-            if t == 1:
+            if t == 1 and not self._find("allocation_state", day=1, source="initial_rule"):
                 ctx0 = DayContext(1, tuple(self.ds.present(1)), frozenset(), self.ds.pool_beds[1],
                                   self.ds.pool_nurses[1], self.ds.max_beds, self.ds.env)
                 c = ctx0.counts()
@@ -146,7 +211,8 @@ class Workflow:
                                                   self.ds.max_beds)
                 self.store.append("allocation_state", self._line("initial_rule", 1, source="initial_rule",
                                                                  beds=beds, nurses=nurses))
-                self._write_beds(1, "initial", beds, set())
+            if t == 1 and not self._bed_line(1, "initial"):
+                self._write_beds(1, "initial", self._allocation_in_effect(1)["beds"], set())
             ctx = self._ctx(t)
             prev_overflow = None
             if t > 1:
@@ -156,21 +222,24 @@ class Workflow:
                     if v["status"] == "overflow":
                         d, k = lvl[pid]
                         prev_overflow[d][k] += 1
-            observed = run_analyzer(Path(self.m["data_root"]), self.m["dataset_id"], t, self.ds.env, ctx.occupied,
-                                    self._allocation_in_effect(t), prev_overflow)
-            self.store.append("observed_state", self._line("analyzer", t, observed=observed))
-            s.update(day=t, phase="ALLOCATION", attempts=0, accepted=False, report_received=False)
-            self.store.write_state(s)
-            self._log(t, "advance_day")
+            if not self._find("observed_state", day=t):
+                observed = run_analyzer(Path(self.m["data_root"]), self.m["dataset_id"], t, self.ds.env,
+                                        ctx.occupied, self._allocation_in_effect(t), prev_overflow)
+                self.store.append("observed_state", self._line("analyzer", t, observed=observed))
+            self._log_once(t, "advance_day")
+            self.store.write_state(self._persisted(s, day=t, phase="ALLOCATION"))
         return self.get_workflow_status()
 
+    @mutating
     def end_allocation_phase(self) -> dict:
-        s = self.store.read_state()
+        s = self._state()
         self._require(s, ("ALLOCATION",), "end_allocation_phase")
         t = s["day"]
         with self.store.lock():
+            self._reconcile(t)
+            s = self._state()
             ctx = self._ctx(t)
-            if not s["accepted"]:
+            if not s["accepted"] and not self._find("allocation_state", day=t, source="repair_rule"):
                 prev = self._allocation_in_effect(t)
                 req = {d: n1_requirement(*(ctx.counts()[d][k] for k in LEVELS), self.ds.env) for d in DEPARTMENTS}
                 r = repair(prev["beds"], prev["nurses"], ctx.pool_beds, ctx.pool_nurses, ctx.max_beds, ctx.holders, req)
@@ -178,14 +247,12 @@ class Workflow:
                                                                  beds=r.beds, nurses=r.nurses))
                 self._log(t, "allocator_failure", attempts=s["attempts"], detail="no accepted decision; repair rule applied")
             alloc = self._allocation_in_effect(t)
-            self._write_beds(t, "final", alloc["beds"], set(ctx.holder_ids))
-            if t % 5 == 0:
+            if not self._bed_line(t, "final"):
+                self._write_beds(t, "final", alloc["beds"], set(ctx.holder_ids))
+            if t % 5 == 0 and not self._find("deterministic_audit", day=t):
                 self._run_audit(t)
-                s["phase"] = "AUDIT"
-            else:
-                s["phase"] = "READY_TO_CLOSE"
-            self.store.write_state(s)
-            self._log(t, "end_allocation_phase", source=alloc["source"])
+            self._log_once(t, "end_allocation_phase", source=alloc["source"])
+            self.store.write_state(self._persisted(s, phase="AUDIT" if t % 5 == 0 else "READY_TO_CLOSE"))
         return self.get_workflow_status()
 
     def _run_audit(self, t: int) -> None:
@@ -205,23 +272,25 @@ class Workflow:
         self.store.append("deterministic_audit", self._line("deterministic_audit", t,
                                                             period={"from_day": t - 4, "to_day": t}, days=period))
 
+    @mutating
     def close_day(self) -> dict:
-        s = self.store.read_state()
+        s = self._state()
         self._require(s, ("READY_TO_CLOSE", "AUDIT"), "close_day")
         t = s["day"]
         with self.store.lock():
-            if s["phase"] == "AUDIT" and not s["report_received"]:
+            if s["phase"] == "AUDIT" and not s["report_received"] and \
+                    not self._find("validation_history", day=t, kind="llm_checker_failure"):
                 self.store.append("validation_history", self._line(
                     "orchestrator", t, kind="llm_checker_failure", period={"from_day": t - 4, "to_day": t}))
                 self._log(t, "llm_checker_failure")
-            s["phase"] = "FINISHED" if t == s["horizon"] else "CLOSED"
-            self.store.write_state(s)
-            self._log(t, "close_day", next_phase=s["phase"])
+            nxt = "FINISHED" if t == s["horizon"] else "CLOSED"
+            self._log_once(t, "close_day", next_phase=nxt)
+            self.store.write_state(self._persisted(s, phase=nxt))
         return self.get_workflow_status()
 
     # ------------------------------------------------------------------ allocator
     def _alloc_phase(self, tool: str) -> dict:
-        s = self.store.read_state()
+        s = self._state()
         self._require(s, ("ALLOCATION",), tool)
         return s
 
@@ -303,6 +372,7 @@ class Workflow:
         return {"day": s["day"], "valid": not v, "violations": [{"code": x.code, "message": x.message} for x in v],
                 "counts_as_attempt": False}
 
+    @mutating
     def submit_decision(self, beds: dict, nurses: dict, explanation: dict) -> dict:
         s = self._alloc_phase("submit_decision")
         t = s["day"]
@@ -314,6 +384,11 @@ class Workflow:
         self._check_explanation(explanation)
         ctx = self._ctx(t)
         with self.store.lock():
+            self._reconcile(t)
+            s = self._state()
+            if s["accepted"]:
+                raise WorkflowError("a decision was already accepted today. Expected next action: "
+                                    + self._next_action(s))
             v = validate(beds, nurses, ctx.pool_beds, ctx.pool_nurses, ctx.max_beds, ctx.occupied)
             s["attempts"] += 1
             outcome = "rejected" if v else "accepted"
@@ -324,15 +399,13 @@ class Workflow:
             if not v:
                 self.store.append("allocation_state", self._line("allocator", t, source="ALLOCATOR",
                                                                  beds=beds, nurses=nurses))
-                s["accepted"] = True
-            self.store.write_state(s)
             self._log(t, "submit_decision", attempt=s["attempts"], outcome=outcome)
         return {"day": t, "outcome": outcome, "attempt": s["attempts"], "retry_limit": self.m["retry_limit"],
                 "violations": [{"code": x.code, "message": x.message} for x in v]}
 
     # ------------------------------------------------------------------ checker
     def _audit_phase(self, tool: str, from_day: int | None = None, to_day: int | None = None) -> tuple[dict, int, int]:
-        s = self.store.read_state()
+        s = self._state()
         self._require(s, ("AUDIT",), tool)
         lo = s["day"] - 4 if from_day is None else int(from_day)
         hi = s["day"] if to_day is None else int(to_day)
@@ -351,7 +424,7 @@ class Workflow:
                                 for x in lines if lo <= x["day"] <= hi]}
 
     def _past_day(self, tool: str, day) -> int:
-        s = self.store.read_state()
+        s = self._state()
         self._require(s, ("AUDIT",), tool)
         d = int(day)
         if not 1 <= d <= s["day"]:
@@ -388,6 +461,7 @@ class Workflow:
                 "observed": [{"day": x["day"], **x["observed"]} for x in self.store.read("observed_state")
                              if lo <= x["day"] <= hi]}
 
+    @mutating
     def submit_validation_report(self, report: dict) -> dict:
         s, _, _ = self._audit_phase("submit_validation_report")
         if s["report_received"]:
@@ -404,8 +478,9 @@ class Workflow:
             if issue.get("severity") not in ("Critical", "Major", "Moderate", "Minor"):
                 raise WorkflowError(f"issues[{i}].severity must be Critical, Major, Moderate or Minor")
         with self.store.lock():
+            if self._state()["report_received"]:
+                raise WorkflowError("a report for this audit was already accepted. Expected next action: "
+                                    + self._next_action(self._state()))
             self.store.append("validation_history", self._line("llm_checker", s["day"], kind="report", report=report))
-            s["report_received"] = True
-            self.store.write_state(s)
             self._log(s["day"], "submit_validation_report", issues=len(report["issues"]))
         return {"accepted": True, "issues_recorded": len(report["issues"])}

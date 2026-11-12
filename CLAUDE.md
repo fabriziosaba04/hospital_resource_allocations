@@ -44,7 +44,8 @@ hospital_resource_allocations/
 │   ├── AGENTS.md
 │   ├── EVALUATION_PLAN.md
 │   ├── LIMITATIONS_AND_REFLECTION.md
-│   └── REFLECTION_LOG.md          running record of errors and near misses
+│   ├── REFLECTION_LOG.md          running record of errors and near misses
+│   └── SESSION_LOG.md             one entry per working session: achieved, state, next steps, open questions
 │
 ├── data/
 │   ├── MANIFEST.json              SHA-256 of every frozen data file (tag data-v1.0)
@@ -63,7 +64,8 @@ hospital_resource_allocations/
 │
 ├── results/
 │   ├── allocations/               run records (baselines B0–B2 on the four datasets)
-│   ├── evaluations/               audit records, metrics, headroom.json
+│   ├── evaluations/               audit records, metrics, headroom.json, run reports, smoke-test records
+│   ├── dry_runs/                  synthetic fixtures used by dry runs (never frozen data)
 │   └── visualizations/
 │
 ├── tests/
@@ -336,6 +338,7 @@ Rules:
 - The conceptual design is **frozen** as of 2026-11-07. Do not reopen settled decisions unless you find a genuine contradiction between them.
 - Items still open are deferred until after the first data generation, unless they block current work.
 - **Data freeze (2026-11-11):** the datasets are frozen at git tag `data-v1.0`; `data/MANIFEST.json` records their SHA-256 hashes and the generator commit. **Any change to data requires a new tag and the project owner's approval.** The manifest check must pass before any run.
+- **Prompt freeze (owner, 2026-11-12):** the ALLOCATOR and CHECKER prompts (`.claude/agents/`) are developed and tested **only on the synthetic fixture**, never on frozen data. They are frozen at git tag `prompts-v1.0` before R1 and stay unchanged across R1–R3 and the stress run. The run model (`claude-sonnet-5-5` for all three roles, set in `.claude/run-settings.json`) is fixed in the same way.
 
 ### 9.4 Testing and documentation policy (owner, 2026-11-12)
 
