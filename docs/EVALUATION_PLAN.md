@@ -237,7 +237,94 @@ These checks are independent of any LLM output.
 
 ## 8. Headroom (baselines only)
 
-To be filled from the baseline runs before the headline set is confirmed: for each metric and each of the three seeds, B0 / B1 / B2 and the gap between B1 and the per-metric floor.
+*Computed 2026-11-12 from the baseline runs (`uv run python -m src.evaluation`; `results/evaluations/headroom.json`). No agent output exists at this point.* For each metric: B0 / **B1** / B2, the per-metric floor (– where no floor is computed), and B1 − floor per seed. A floor of 0 for an excess, a gap or a count is a **lower bound**, not a value known to be reachable over the horizon, so B1 − floor is an **upper bound on the headroom** below B1.
+
+### 8.1 Main datasets (primary and robustness seeds)
+
+| Metric | `seed20261107` B0 / B1 / B2 | `seed20261108` B0 / B1 / B2 | `seed20261109` B0 / B1 / B2 | Floor | B1 − floor |
+| --- | --- | --- | --- | --- | --- |
+| A1 SV_B | 280 / **0** / 3 | 265 / **0** / 19 | 257 / **0** / 0 | 0 | 0 / 0 / 0 |
+| A1 displaced severity | 8 / **0** / 3 | 24 / **0** / 19 | 0 / **0** / 0 | 0 | 0 / 0 / 0 |
+| A1 empty severity | 272 / **0** / 0 | 241 / **0** / 0 | 257 / **0** / 0 | 0 | 0 / 0 / 0 |
+| A1 shock-cut severity | 0 / **0** / 0 | 0 / **0** / 0 | 0 / **0** / 0 | 0 | 0 / 0 / 0 |
+| A2 SV_N tier 3 | 8.8 / **0** / 0 | 44 / **0** / 2.4 | 6.4 / **0** / 0 | 0 | 0 / 0 / 0 |
+| A2 SV_N tier 2 | 67.9 / **1.05** / 6.85 | 83.9 / **2.3** / 13.9 | 53.2 / **0** / 0.45 | 0 | 1.05 / 2.3 / 0 |
+| A2 SV_N tier 1 | 65.8 / **1.2** / 0.85 | 55.75 / **1.85** / 1.75 | 90.8 / **0.45** / 0.2 | 0 | 1.2 / 1.85 / 0.45 |
+| A3 tier 3 raw | 12 / **0** / 0 | 22 / **0** / 2 | 14 / **0** / 0 | 0 | 0 / 0 / 0 |
+| A3 tier 3 excess | 12 / **0** / 0 | 22 / **0** / 2 | 14 / **0** / 0 | 0 | 0 / 0 / 0 |
+| A3 tier 3 avoid | 12 / **0** / 0 | 22 / **0** / 2 | 14 / **0** / 0 | 0 | 0 / 0 / 0 |
+| A3 tier 3 path | 0 / **0** / 0 | 0 / **0** / 0 | 0 / **0** / 0 | 0 | 0 / 0 / 0 |
+| A3 tier 2 raw | 106 / **1** / 4 | 119 / **4** / 23 | 73 / **0** / 0 | 0 | 1 / 4 / 0 |
+| A3 tier 2 excess | 106 / **1** / 4 | 119 / **4** / 23 | 73 / **0** / 0 | 0 | 1 / 4 / 0 |
+| A3 tier 2 avoid | 106 / **0** / 3 | 104 / **0** / 17 | 73 / **0** / 0 | 0 | 0 / 0 / 0 |
+| A3 tier 2 path | 0 / **1** / 1 | 15 / **4** / 6 | 0 / **0** / 0 | 0 | 1 / 4 / 0 |
+| E bed reversals W3 | 0 / **116** / 114 | 0 / **109** / 110 | 0 / **103** / 103 | 0 | 116 / 109 / 103 |
+| B1 dispersion L1 (pp) | 49.19 / **6.09** / 2 | 49.48 / **5.52** / 10.61 | 67.02 / **0** / 0 | – | – / – / – |
+| B2 F1 inversions L1 | 40 / **0** / 1 | 37 / **0** / 5 | 48 / **0** / 0 | 0 | 0 / 0 / 0 |
+| B3 mean overflow days L1 | 2.324 / **1** / 1.056 | 1.69 / **1.345** / 1.31 | 1.98 / **0** / 0 | – | – / – / – |
+| B1 dispersion L2 (pp) | 34.37 / **0.41** / 2.1 | 26.88 / **0.93** / 4.63 | 24.79 / **0** / 0 | – | – / – / – |
+| B2 F1 inversions L2 | 46 / **0** / 0 | 41 / **0** / 4 | 36 / **0** / 0 | 0 | 0 / 0 / 0 |
+| B3 mean overflow days L2 | 2.35 / **1** / 1 | 2.622 / **1** / 1.615 | 3.278 / **0** / 0 | – | – / – / – |
+| B1 dispersion L3 (pp) | 3.68 / **0** / 0 | 6.07 / **0** / 0.32 | 5.04 / **0** / 0 | – | – / – / – |
+| B2 F1 inversions L3 | 1 / **0** / 0 | 5 / **0** / 0 | 3 / **0** / 0 | 0 | 0 / 0 / 0 |
+| B3 mean overflow days L3 | 1.091 / **0** / 0 | 1.294 / **0** / 1 | 1.4 / **0** / 0 | – | – / – / – |
+| A4 shortage L3 | 8.8 / **0** / 0 | 44 / **0** / 2.4 | 6.4 / **0** / 0 | – | – / – / – |
+| A4 shortage L2 | 63.2 / **5.15** / 10.95 | 70.1 / **32.5** / 41.7 | 46.8 / **0** / 0.45 | – | – / – / – |
+| A4 shortage L1 | 33.95 / **36.2** / 30.05 | 29.3 / **57** / 45.3 | 40.2 / **3.05** / 2.35 | – | – / – / – |
+| E nurse reversals W3 | 0 / **47** / 48 | 0 / **26** / 34 | 0 / **39** / 40 | 0 | 47 / 26 / 39 |
+
+### 8.2 Stress variant (separate probe, excluded from the main comparisons)
+
+| Metric | `seed20261107_stress` B0 / B1 / B2 | Floor | B1 − floor |
+| --- | --- | --- | --- |
+| A1 SV_B | 231 / **0** / 11 | 0 | 0 |
+| A1 displaced severity | 8 / **0** / 11 | 0 | 0 |
+| A1 empty severity | 223 / **0** / 0 | 0 | 0 |
+| A1 shock-cut severity | 0 / **0** / 0 | 0 | 0 |
+| A2 SV_N tier 3 | 8.8 / **0** / 0 | 0 | 0 |
+| A2 SV_N tier 2 | 67.9 / **1.05** / 6.85 | 0 | 1.05 |
+| A2 SV_N tier 1 | 65.8 / **1.2** / 0.85 | 0 | 1.2 |
+| A3 tier 3 raw | 20 / **3** / 12 | 0 | 3 |
+| A3 tier 3 excess | 20 / **3** / 12 | 0 | 3 |
+| A3 tier 3 avoid | 17 / **0** / 9 | 0 | 0 |
+| A3 tier 3 path | 3 / **3** / 3 | 0 | 3 |
+| A3 tier 2 raw | 108 / **38** / 42 | 38 | 0 |
+| A3 tier 2 excess | 70 / **0** / 4 | 0 | 0 |
+| A3 tier 2 avoid | 69 / **0** / 2 | 0 | 0 |
+| A3 tier 2 path | 1 / **0** / 2 | 0 | 0 |
+| E bed reversals W3 | 0 / **115** / 104 | 0 | 115 |
+| B1 dispersion L1 (pp) | 42 / **6.45** / 7.37 | – | – |
+| B2 F1 inversions L1 | 39 / **0** / 4 | 0 | 0 |
+| B3 mean overflow days L1 | 2.156 / **1.537** / 1.513 | – | – |
+| B1 dispersion L2 (pp) | 22.85 / **2.21** / 4.36 | – | – |
+| B2 F1 inversions L2 | 33 / **0** / 3 | 0 | 0 |
+| B3 mean overflow days L2 | 1.833 / **1.25** / 1.25 | – | – |
+| B1 dispersion L3 (pp) | 4.29 / **0.74** / 1.59 | – | – |
+| B2 F1 inversions L3 | 2 / **0** / 2 | 0 | 0 |
+| B3 mean overflow days L3 | 1.111 / **1** / 1.2 | – | – |
+| A4 shortage L3 | 8.8 / **0** / 0 | – | – |
+| A4 shortage L2 | 63.2 / **5.15** / 10.95 | – | – |
+| A4 shortage L1 | 33.95 / **36.2** / 30.05 | – | – |
+| E nurse reversals W3 | 0 / **47** / 48 | 0 | 47 |
+
+### 8.3 Context (policy-independent)
+
+| Dataset | Hospital bed shortfall | Cap excess | A3 tier-1 floor | Nurse shortfall (N1 above pool) |
+| --- | --- | --- | --- | --- |
+| `seed20261107` | 22 patient-days over 5 days | 2 (Cardiology day 17, Internal Medicine day 21) | 23 (day 17 has both) | 67 nurse-days over 17 days |
+| `seed20261108` | 78 over 10 days | 0 | 78 | 128 over 23 days |
+| `seed20261109` | 0 (census peaks at 95 < 96) | 0 | 0 | 8 over 4 days |
+| `seed20261107_stress` | 100 over 7 days | 2 | 101 | 67 over 17 days |
+
+### 8.4 Findings for the headline review
+
+1. **A1:** B1 = 0 on every dataset, as expected (tested). B2 is close (0–19); B0 is far (257–280 on the main datasets, 231 on the stress variant), almost all of it **empty** pairs (a static allocation leaves beds idle in one department while patients wait in another).
+2. **A2 headroom below B1 is small:** at most 2.3 nurse-days at tier 2 and 1.85 at tier 1 (seed 08), and 0 at tier 3 everywhere. B1's largest-remainder rationing is near-optimal. On seed 09 there is almost no nurse rationing (8 nurse-days of shortfall).
+3. **A3 path headroom below B1 is small:** at most 4 patient-days at tier 2 (seed 08) and 0 at tier 3 on the main datasets. Since 0 is only a lower bound, the true headroom may be smaller still. **The two places named in §1 as the agent's possible advantage hold, on these data, at most a few patient-days or nurse-days.**
+4. **Bed reversals (headline) are dominated by empty-bed churn.** B1 and B2 reverse 103–116 bed units within W = 3 (B0: 0). Between 45% and 78% of the bed units they move land on beds that are idle that day, because both re-split spare beds by census every day. An agent that simply leaves empty beds where they are would score far better than B1 and B2 on this headline without allocating any better (REFLECTION_LOG R19). **Owner decision needed** before the headline set is confirmed.
+5. **Stress variant:** the forced cut falls on day 23 only. B1 and B2 cut 6 beds, as Log #41 predicts for policies that fill every bed they can; B0 cuts only 4, because it had left beds empty and so carried fewer holders into the shock. Shock-cut severity is 0 for **all three** baselines, because all of them cut with the same hospital-wide lowest-level-first rule. The probe can show whether the agent matches that rule, but no baseline varies on it.
+6. **Fairness is where B1 is beatable:** B1's L1 overflow-rate dispersion (5.5–6.1 pp on seeds 07–08) is higher than B2's on seed 07 (2.0 pp). Seed 09 has no overflow under B1 or B2 at all, so it does not discriminate between them.
+7. **Rounding floor:** the lexicographic floor differs from the joint floor on 0–2 days per dataset (Log #47).
 
 ## 9. Reporting LLM Variability
 

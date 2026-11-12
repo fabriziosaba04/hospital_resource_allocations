@@ -55,15 +55,15 @@ hospital_resource_allocations/
 ├── src/
 │   ├── data_generation/           stochastic generator, data validation, statistics, Monte Carlo
 │   │   └── configs/               template generation and environment configs
-│   ├── environment/               deterministic rules shared by server and baselines (cut path built; rest planned)
+│   ├── environment/               deterministic rules shared by server and baselines
 │   ├── mcp_server/                (planned) MCP tool layer, state machine, role instances
 │   ├── agent/                     agent prompts and dispatch templates
-│   ├── evaluation/                deterministic audit, metrics, baselines
+│   ├── evaluation/                deterministic audit, metrics, baselines, baseline runner (python -m src.evaluation)
 │   └── utils/
 │
 ├── results/
-│   ├── allocations/
-│   ├── evaluations/
+│   ├── allocations/               run records (baselines B0–B2 on the four datasets)
+│   ├── evaluations/               audit records, metrics, headroom.json
 │   └── visualizations/
 │
 ├── tests/

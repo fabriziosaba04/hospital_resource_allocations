@@ -1,0 +1,825 @@
+{
+  "note": "baselines only; no agent output",
+  "table": {
+    "seed20261107": {
+      "A1 SV_B": {
+        "B0": 280,
+        "B1": 0,
+        "B2": 3,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A1 displaced severity": {
+        "B0": 8,
+        "B1": 0,
+        "B2": 3,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A1 empty severity": {
+        "B0": 272,
+        "B1": 0,
+        "B2": 0,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A1 shock-cut severity": {
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A2 SV_N tier 3": {
+        "B0": 8.8,
+        "B1": 0.0,
+        "B2": 0.0,
+        "floor": 0,
+        "B1_minus_floor": 0.0
+      },
+      "A2 SV_N tier 2": {
+        "B0": 67.9,
+        "B1": 1.05,
+        "B2": 6.85,
+        "floor": 0,
+        "B1_minus_floor": 1.05
+      },
+      "A2 SV_N tier 1": {
+        "B0": 65.8,
+        "B1": 1.2,
+        "B2": 0.85,
+        "floor": 0,
+        "B1_minus_floor": 1.2
+      },
+      "A3 tier 3 raw": {
+        "B0": 12,
+        "B1": 0,
+        "B2": 0,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A3 tier 3 excess": {
+        "B0": 12,
+        "B1": 0,
+        "B2": 0,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A3 tier 3 avoid": {
+        "B0": 12,
+        "B1": 0,
+        "B2": 0,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A3 tier 3 path": {
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A3 tier 2 raw": {
+        "B0": 106,
+        "B1": 1,
+        "B2": 4,
+        "floor": 0,
+        "B1_minus_floor": 1
+      },
+      "A3 tier 2 excess": {
+        "B0": 106,
+        "B1": 1,
+        "B2": 4,
+        "floor": 0,
+        "B1_minus_floor": 1
+      },
+      "A3 tier 2 avoid": {
+        "B0": 106,
+        "B1": 0,
+        "B2": 3,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A3 tier 2 path": {
+        "B0": 0,
+        "B1": 1,
+        "B2": 1,
+        "floor": 0,
+        "B1_minus_floor": 1
+      },
+      "E bed reversals W3": {
+        "B0": 0,
+        "B1": 116,
+        "B2": 114,
+        "floor": 0,
+        "B1_minus_floor": 116
+      },
+      "B1 dispersion L1 (pp)": {
+        "B0": 49.19,
+        "B1": 6.09,
+        "B2": 2.0,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "B2 F1 inversions L1": {
+        "B0": 40,
+        "B1": 0,
+        "B2": 1,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "B3 mean overflow days L1": {
+        "B0": 2.324,
+        "B1": 1.0,
+        "B2": 1.056,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "B1 dispersion L2 (pp)": {
+        "B0": 34.37,
+        "B1": 0.41,
+        "B2": 2.1,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "B2 F1 inversions L2": {
+        "B0": 46,
+        "B1": 0,
+        "B2": 0,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "B3 mean overflow days L2": {
+        "B0": 2.35,
+        "B1": 1.0,
+        "B2": 1.0,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "B1 dispersion L3 (pp)": {
+        "B0": 3.68,
+        "B1": 0.0,
+        "B2": 0.0,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "B2 F1 inversions L3": {
+        "B0": 1,
+        "B1": 0,
+        "B2": 0,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "B3 mean overflow days L3": {
+        "B0": 1.091,
+        "B1": 0.0,
+        "B2": 0.0,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "A4 shortage L3": {
+        "B0": 8.8,
+        "B1": 0.0,
+        "B2": 0.0,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "A4 shortage L2": {
+        "B0": 63.2,
+        "B1": 5.15,
+        "B2": 10.95,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "A4 shortage L1": {
+        "B0": 33.95,
+        "B1": 36.2,
+        "B2": 30.05,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "E nurse reversals W3": {
+        "B0": 0,
+        "B1": 47,
+        "B2": 48,
+        "floor": 0,
+        "B1_minus_floor": 47
+      }
+    },
+    "seed20261108": {
+      "A1 SV_B": {
+        "B0": 265,
+        "B1": 0,
+        "B2": 19,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A1 displaced severity": {
+        "B0": 24,
+        "B1": 0,
+        "B2": 19,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A1 empty severity": {
+        "B0": 241,
+        "B1": 0,
+        "B2": 0,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A1 shock-cut severity": {
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A2 SV_N tier 3": {
+        "B0": 44.0,
+        "B1": 0.0,
+        "B2": 2.4,
+        "floor": 0,
+        "B1_minus_floor": 0.0
+      },
+      "A2 SV_N tier 2": {
+        "B0": 83.9,
+        "B1": 2.3,
+        "B2": 13.9,
+        "floor": 0,
+        "B1_minus_floor": 2.3
+      },
+      "A2 SV_N tier 1": {
+        "B0": 55.75,
+        "B1": 1.85,
+        "B2": 1.75,
+        "floor": 0,
+        "B1_minus_floor": 1.85
+      },
+      "A3 tier 3 raw": {
+        "B0": 22,
+        "B1": 0,
+        "B2": 2,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A3 tier 3 excess": {
+        "B0": 22,
+        "B1": 0,
+        "B2": 2,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A3 tier 3 avoid": {
+        "B0": 22,
+        "B1": 0,
+        "B2": 2,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A3 tier 3 path": {
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A3 tier 2 raw": {
+        "B0": 119,
+        "B1": 4,
+        "B2": 23,
+        "floor": 0,
+        "B1_minus_floor": 4
+      },
+      "A3 tier 2 excess": {
+        "B0": 119,
+        "B1": 4,
+        "B2": 23,
+        "floor": 0,
+        "B1_minus_floor": 4
+      },
+      "A3 tier 2 avoid": {
+        "B0": 104,
+        "B1": 0,
+        "B2": 17,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A3 tier 2 path": {
+        "B0": 15,
+        "B1": 4,
+        "B2": 6,
+        "floor": 0,
+        "B1_minus_floor": 4
+      },
+      "E bed reversals W3": {
+        "B0": 0,
+        "B1": 109,
+        "B2": 110,
+        "floor": 0,
+        "B1_minus_floor": 109
+      },
+      "B1 dispersion L1 (pp)": {
+        "B0": 49.48,
+        "B1": 5.52,
+        "B2": 10.61,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "B2 F1 inversions L1": {
+        "B0": 37,
+        "B1": 0,
+        "B2": 5,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "B3 mean overflow days L1": {
+        "B0": 1.69,
+        "B1": 1.345,
+        "B2": 1.31,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "B1 dispersion L2 (pp)": {
+        "B0": 26.88,
+        "B1": 0.93,
+        "B2": 4.63,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "B2 F1 inversions L2": {
+        "B0": 41,
+        "B1": 0,
+        "B2": 4,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "B3 mean overflow days L2": {
+        "B0": 2.622,
+        "B1": 1.0,
+        "B2": 1.615,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "B1 dispersion L3 (pp)": {
+        "B0": 6.07,
+        "B1": 0.0,
+        "B2": 0.32,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "B2 F1 inversions L3": {
+        "B0": 5,
+        "B1": 0,
+        "B2": 0,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "B3 mean overflow days L3": {
+        "B0": 1.294,
+        "B1": 0.0,
+        "B2": 1.0,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "A4 shortage L3": {
+        "B0": 44.0,
+        "B1": 0.0,
+        "B2": 2.4,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "A4 shortage L2": {
+        "B0": 70.1,
+        "B1": 32.5,
+        "B2": 41.7,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "A4 shortage L1": {
+        "B0": 29.3,
+        "B1": 57.0,
+        "B2": 45.3,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "E nurse reversals W3": {
+        "B0": 0,
+        "B1": 26,
+        "B2": 34,
+        "floor": 0,
+        "B1_minus_floor": 26
+      }
+    },
+    "seed20261109": {
+      "A1 SV_B": {
+        "B0": 257,
+        "B1": 0,
+        "B2": 0,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A1 displaced severity": {
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A1 empty severity": {
+        "B0": 257,
+        "B1": 0,
+        "B2": 0,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A1 shock-cut severity": {
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A2 SV_N tier 3": {
+        "B0": 6.4,
+        "B1": 0.0,
+        "B2": 0.0,
+        "floor": 0,
+        "B1_minus_floor": 0.0
+      },
+      "A2 SV_N tier 2": {
+        "B0": 53.2,
+        "B1": 0.0,
+        "B2": 0.45,
+        "floor": 0,
+        "B1_minus_floor": 0.0
+      },
+      "A2 SV_N tier 1": {
+        "B0": 90.8,
+        "B1": 0.45,
+        "B2": 0.2,
+        "floor": 0,
+        "B1_minus_floor": 0.45
+      },
+      "A3 tier 3 raw": {
+        "B0": 14,
+        "B1": 0,
+        "B2": 0,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A3 tier 3 excess": {
+        "B0": 14,
+        "B1": 0,
+        "B2": 0,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A3 tier 3 avoid": {
+        "B0": 14,
+        "B1": 0,
+        "B2": 0,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A3 tier 3 path": {
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A3 tier 2 raw": {
+        "B0": 73,
+        "B1": 0,
+        "B2": 0,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A3 tier 2 excess": {
+        "B0": 73,
+        "B1": 0,
+        "B2": 0,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A3 tier 2 avoid": {
+        "B0": 73,
+        "B1": 0,
+        "B2": 0,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A3 tier 2 path": {
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "E bed reversals W3": {
+        "B0": 0,
+        "B1": 103,
+        "B2": 103,
+        "floor": 0,
+        "B1_minus_floor": 103
+      },
+      "B1 dispersion L1 (pp)": {
+        "B0": 67.02,
+        "B1": 0.0,
+        "B2": 0.0,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "B2 F1 inversions L1": {
+        "B0": 48,
+        "B1": 0,
+        "B2": 0,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "B3 mean overflow days L1": {
+        "B0": 1.98,
+        "B1": 0.0,
+        "B2": 0.0,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "B1 dispersion L2 (pp)": {
+        "B0": 24.79,
+        "B1": 0.0,
+        "B2": 0.0,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "B2 F1 inversions L2": {
+        "B0": 36,
+        "B1": 0,
+        "B2": 0,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "B3 mean overflow days L2": {
+        "B0": 3.278,
+        "B1": 0.0,
+        "B2": 0.0,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "B1 dispersion L3 (pp)": {
+        "B0": 5.04,
+        "B1": 0.0,
+        "B2": 0.0,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "B2 F1 inversions L3": {
+        "B0": 3,
+        "B1": 0,
+        "B2": 0,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "B3 mean overflow days L3": {
+        "B0": 1.4,
+        "B1": 0.0,
+        "B2": 0.0,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "A4 shortage L3": {
+        "B0": 6.4,
+        "B1": 0.0,
+        "B2": 0.0,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "A4 shortage L2": {
+        "B0": 46.8,
+        "B1": 0.0,
+        "B2": 0.45,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "A4 shortage L1": {
+        "B0": 40.2,
+        "B1": 3.05,
+        "B2": 2.35,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "E nurse reversals W3": {
+        "B0": 0,
+        "B1": 39,
+        "B2": 40,
+        "floor": 0,
+        "B1_minus_floor": 39
+      }
+    },
+    "seed20261107_stress": {
+      "A1 SV_B": {
+        "B0": 231,
+        "B1": 0,
+        "B2": 11,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A1 displaced severity": {
+        "B0": 8,
+        "B1": 0,
+        "B2": 11,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A1 empty severity": {
+        "B0": 223,
+        "B1": 0,
+        "B2": 0,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A1 shock-cut severity": {
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A2 SV_N tier 3": {
+        "B0": 8.8,
+        "B1": 0.0,
+        "B2": 0.0,
+        "floor": 0,
+        "B1_minus_floor": 0.0
+      },
+      "A2 SV_N tier 2": {
+        "B0": 67.9,
+        "B1": 1.05,
+        "B2": 6.85,
+        "floor": 0,
+        "B1_minus_floor": 1.05
+      },
+      "A2 SV_N tier 1": {
+        "B0": 65.8,
+        "B1": 1.2,
+        "B2": 0.85,
+        "floor": 0,
+        "B1_minus_floor": 1.2
+      },
+      "A3 tier 3 raw": {
+        "B0": 20,
+        "B1": 3,
+        "B2": 12,
+        "floor": 0,
+        "B1_minus_floor": 3
+      },
+      "A3 tier 3 excess": {
+        "B0": 20,
+        "B1": 3,
+        "B2": 12,
+        "floor": 0,
+        "B1_minus_floor": 3
+      },
+      "A3 tier 3 avoid": {
+        "B0": 17,
+        "B1": 0,
+        "B2": 9,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A3 tier 3 path": {
+        "B0": 3,
+        "B1": 3,
+        "B2": 3,
+        "floor": 0,
+        "B1_minus_floor": 3
+      },
+      "A3 tier 2 raw": {
+        "B0": 108,
+        "B1": 38,
+        "B2": 42,
+        "floor": 38,
+        "B1_minus_floor": 0
+      },
+      "A3 tier 2 excess": {
+        "B0": 70,
+        "B1": 0,
+        "B2": 4,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A3 tier 2 avoid": {
+        "B0": 69,
+        "B1": 0,
+        "B2": 2,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "A3 tier 2 path": {
+        "B0": 1,
+        "B1": 0,
+        "B2": 2,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "E bed reversals W3": {
+        "B0": 0,
+        "B1": 115,
+        "B2": 104,
+        "floor": 0,
+        "B1_minus_floor": 115
+      },
+      "B1 dispersion L1 (pp)": {
+        "B0": 42.0,
+        "B1": 6.45,
+        "B2": 7.37,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "B2 F1 inversions L1": {
+        "B0": 39,
+        "B1": 0,
+        "B2": 4,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "B3 mean overflow days L1": {
+        "B0": 2.156,
+        "B1": 1.537,
+        "B2": 1.513,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "B1 dispersion L2 (pp)": {
+        "B0": 22.85,
+        "B1": 2.21,
+        "B2": 4.36,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "B2 F1 inversions L2": {
+        "B0": 33,
+        "B1": 0,
+        "B2": 3,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "B3 mean overflow days L2": {
+        "B0": 1.833,
+        "B1": 1.25,
+        "B2": 1.25,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "B1 dispersion L3 (pp)": {
+        "B0": 4.29,
+        "B1": 0.74,
+        "B2": 1.59,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "B2 F1 inversions L3": {
+        "B0": 2,
+        "B1": 0,
+        "B2": 2,
+        "floor": 0,
+        "B1_minus_floor": 0
+      },
+      "B3 mean overflow days L3": {
+        "B0": 1.111,
+        "B1": 1.0,
+        "B2": 1.2,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "A4 shortage L3": {
+        "B0": 8.8,
+        "B1": 0.0,
+        "B2": 0.0,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "A4 shortage L2": {
+        "B0": 63.2,
+        "B1": 5.15,
+        "B2": 10.95,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "A4 shortage L1": {
+        "B0": 33.95,
+        "B1": 36.2,
+        "B2": 30.05,
+        "floor": null,
+        "B1_minus_floor": null
+      },
+      "E nurse reversals W3": {
+        "B0": 0,
+        "B1": 47,
+        "B2": 48,
+        "floor": 0,
+        "B1_minus_floor": 47
+      }
+    }
+  }
+}

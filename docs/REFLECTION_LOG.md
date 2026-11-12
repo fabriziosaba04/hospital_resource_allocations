@@ -140,3 +140,25 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **How it was caught:** the owner's review of the proposal, before any code was written. Confirmed by brute force on the example.
 - **Implication:** a proposal that promises a verification ("cross-checked against brute force") reads as if the check were done. Formulas offered for a fixed, pre-registered evaluation must be executed before they are proposed, not after approval.
 - **Decisions Log:** #46.
+
+### R18. A hand-computed test expectation was wrong (assistant error)
+
+- **What happened:** the new initial-allocation test expected the spare nurse to go to Neurology. The quotas were 12.33, 10.28, 6.17 and 8.22, so the largest fractional part is Internal Medicine's (0.33), and the code was right. The assistant had written the fractions correctly in the comment and still mis-ranked them.
+- **How it was caught:** the test failed on its first run. The assistant recomputed the quotas before touching any code, and changed only the test.
+- **Implication:** as in R3, a failing test is evidence, not a verdict. Hand-computed expectations are themselves claims that need checking; writing the intermediate numbers into the test made the error easy to locate.
+- **Decisions Log:** – (`tests/test_environment_rest.py`).
+
+### R19. A headline metric could reward leaving empty beds alone (gap in the assistant's proposal)
+
+- **What happened:** the metric proposal flagged that B0 "wins stability trivially", and bed reversals within W were approved as a headline metric. The baseline runs show that B1 and B2 reverse 103–116 bed units within W = 3, and that 45–78% of the bed units they move land on beds that are idle that day: both rules re-split spare beds by census every day. The reversal count therefore mostly measures churn of empty beds. An agent that leaves spare beds in place would score far better than B1 and B2 on a headline metric without allocating any better. The proposal did not flag this, although the owner had asked for every metric where an agent could look good without allocating well.
+- **How it was caught:** the headroom review the owner required before confirming the headline set (`EVALUATION_PLAN.md` §8), followed by a direct count of moved bed units landing on idle beds.
+- **Implication:** whether a metric can be gamed is often visible only against real policy outputs. Requiring a baseline-only headroom review before fixing the headline set caught it without anyone seeing agent output.
+- **Decisions Log:** owner decision §11 #18; `EVALUATION_PLAN.md` §8.4 finding 4 (owner decision pending).
+
+### R20. Baseline records reopen a second-layer leak path in run sessions
+
+- **What happened:** the baseline records committed to `results/` contain each patient's bed status on every day of the horizon. That reveals future arrivals and, implicitly, discharge days. `.claude/run-settings.json` denies `Edit(./results/**)` but not `Read(./results/**)`. The first layer still holds, because the dispatcher has no file tools and the subagents have only their MCP tools. But the deny-list layer no longer covers all future information, the same failure pattern as R5.
+- **How it was caught:** the assistant checked the deny rules against the new files before committing them.
+- **Implication:** every new output directory is a potential leak path. The deny list has to be re-checked whenever a step writes new files, not only when data files change.
+- **Decisions Log:** owner decisions §11 #9, #13; `PROJECT_SPEC.md` §8. **Pending owner decision:** add `Read(./results/**)` to the run settings (the server is a Python process and is unaffected) and re-run `tests/manual/verify_run_settings.py`.
+

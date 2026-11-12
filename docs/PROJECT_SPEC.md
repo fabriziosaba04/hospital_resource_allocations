@@ -25,7 +25,7 @@ This document specifies **how** those are implemented, and does not restate them
 
 ```bash
 uv sync                                                        # environment (Python >= 3.12)
-uv run pytest -q                                               # expect 75 passed
+uv run pytest -q                                               # expect 98 passed
 uv run python -m src.data_generation.manifest --verify         # expect "manifest OK" (add --regenerate for a byte-exact rebuild)
 git log --oneline --decorate                                   # expect tag data-v1.0 on 42b39ed, with later commits on top
 ```
@@ -49,11 +49,11 @@ git log --oneline --decorate                                   # expect tag data
 | Monte Carlo (seeds 1–1000) | Done: reference ranges, per-day bands (PNG and CSV), Shock 3 sweep, imbalance metric | `data/processed/montecarlo/`; `src/data_generation/montecarlo.py`, `mc_analysis.py` |
 | Shock 3 | Approved schedule kept (beds −10, days 23–25). It almost never forces a cut (P = 0.002); a reliable cut would need about a 30% bed loss. Negative result recorded | Log #33, #40; `LIMITATIONS_AND_REFLECTION.md` §2 |
 | Environment, cut path | Done, tested: largest remainder (§5.1), bed assignment (§5.3), N1 requirement, validator (§5.5), repair rule (§5.7) | `src/environment/`; `tests/test_environment_cut_path.py`, `tests/test_nurse_requirement.py` |
-| Environment, rest | **Not built:** initial allocation (§5.2), nurse coverage C1 (§5.4), what-if (§5.6), clinical-violation detector (shared with the audit) | §5 |
+| Environment, rest | Done, tested (2026-11-12): initial allocation (§5.2), nurse coverage C1 and tier maxima (§5.4), bed pairing detector, what-if (§5.6) | `src/environment/`; `tests/test_environment_rest.py` |
 | Run-session restrictions | `.claude/run-settings.json` (deny-by-default on `data/**`, plus `docs/`, generator code, `tests/`, `.hypothesis/`); verified in a headless session | §8; `tests/manual/verify_run_settings.py` |
-| Deterministic audit, metrics, baselines | **Not built** | `src/evaluation/` (empty) |
+| Deterministic audit, metrics, baselines | Done, tested (2026-11-12). B0–B2 run on all four datasets; every run passes the gate. Headroom table in `EVALUATION_PLAN.md` §8, **awaiting owner review before the MCP work** | `src/evaluation/`; `tests/test_evaluation.py`; `uv run python -m src.evaluation`; `results/` |
 | MCP server, state machine, agent files, prompts | **Not built** | `src/mcp_server/`, `.claude/agents/`, `src/agent/` (planned) |
-| Documentation | Decisions Log #1–52, owner decisions §11 #1–23, reflection log R1–R17 (R7–R16 resolved) | `docs/` |
+| Documentation | Decisions Log #1–57, owner decisions §11 #1–23, reflection log R1–R19 (R7–R16 resolved) | `docs/` |
 
 **Key data facts (primary seed, approved schedule):**
 
@@ -64,7 +64,7 @@ git log --oneline --decorate                                   # expect tag data
 
 ### Still open (owner decisions pending)
 
-- **The headline set** is fixed provisionally (`EVALUATION_PLAN.md` §3.10) and is confirmed only after the owner reviews the baseline headroom (`EVALUATION_PLAN.md` §8).
+- **The headline set** is fixed provisionally (`EVALUATION_PLAN.md` §3.10) and is confirmed only after the owner reviews the baseline headroom (`EVALUATION_PLAN.md` §8). Open point from that review: bed reversals are dominated by empty-bed churn (§8.4 finding 4, REFLECTION_LOG R19).
 - **Visualization tools and design** (deferred; not needed before the first run).
 
 Metric formulas and the CHECKER severity scale were **fixed on 2026-11-12, before any agent output** (§11 #16–#23, `EVALUATION_PLAN.md` §3–§4).
@@ -391,6 +391,11 @@ The rules are in `CLAUDE.md` §9.1. This is the setup:
 | 50 | 2026-11-12 | **A3 path component is never negative.** `raw − floor − avoid = Σ_t [min(P_B, Σ_d min(n_d^{≥j}, max_beds)) − Max_j]`, and `Max_j` is at most both terms: per department `|H^{≥j}_d| + min(|Q^{≥j}_d|, max_beds − O_d) ≤ min(n^{≥j}_d, max_beds)`, and `Σ|H^{≥j}| + M ≤ P_B`; on shock days `Max_j = min(|H^{≥j}|, P_B)`. Tested on all baseline runs | – | Makes the decomposition well defined |
 | 51 | 2026-11-12 | **Fairness definitions (R14):** B3 (wait distribution among patients ever in overflow) replaces "mean days in overflow"; B1 cap netting removes the daily cap excess from d's **overflow** patients from the lowest level upward, so net overflow is never negative | Netting against census by level | Holders may be low-level while higher-level non-holders overflow, so netting against census could go negative |
 | 52 | 2026-11-12 | **R10 and R13 resolved:** the nurse clinical violation is measured as the A2 tier gap in need units (with the idle-nurse type, owner-approved); explanation quality is qualitative, LLM CHECKER only, labelled LLM-dependent | Need-unit pairing; a structured `expected_outcomes` field | Pairing in need units is not well defined with whole nurses; matching structured predictions would be trivial given `simulate_allocation` |
+| 53 | 2026-11-12 | **Environment completed:** `initial.py` (§5.2), C1 coverage and the three-case tier maximum in `nurses.py` (Fraction), the bed pairing detector in `clinical.py`, the what-if in `whatif.py` with a `DayContext` (day, present patients, holders, pools, `max_beds`, weights). The what-if returns no outcomes for proposals with `BOUNDS` or `INTEGRALITY` errors, and no pairs for any invalid proposal | Outcomes for invalid proposals too | Pairing assumes a feasible allocation |
+| 54 | 2026-11-12 | **Audit independence:** `src/evaluation/audit.py` has its own hard-constraint check, its own N1 and C1 in integer hundredths (via `Decimal`; the third N1 implementation, R4), its own bed-assignment replay, the bed closed form `Max_j`, and an enumeration of every integer nurse allocation (about 10⁴ per day) for `MaxN_j` and the lexicographic floor. It uses the environment only for the pairing detector (the other side of the A1 cross-check) and the repair rule (the stability reference, which is defined as that rule) | Reuse the environment code | Independent verification (`CLAUDE.md` §7) |
+| 55 | 2026-11-12 | **Baseline records:** `allocation_state.jsonl` (day 1: the `initial_rule` line, then the decision) and `bed_assignment_state.jsonl` (one line per day and stage, with a map patient → department and status). No Observed State or workflow records for baselines (they belong to the server). The audit writes one `deterministic_audit.jsonl` line per five-day period, plus `metrics.json`. Baseline results are committed: they are deterministic and contain no agent output | One line per patient and day | Compact, and replayable by the audit |
+| 56 | 2026-11-12 | **Issue mapping details:** one nurse-gap issue per day, graded by its highest tier with a positive net gap; reversal issues per day and department (W = 3); "reallocation without effect" = τ ≠ 0 while the in-bed set and the covered need by level and department equal those under the repair reference; rejected submissions and failure days are read from the Decision History and the Allocation State `source` | One issue per unit | Keeps the issue counts readable |
+| 57 | 2026-11-12 | **Pairing tie-breaks:** bed pairs pair unserved patients in assignment order (level descending, `arrival_day`, `patient_id`) with served beds in (level ascending, department order, `patient_id`); F1 inversions use a strict `arrival_day` comparison (equal arrival days never count) and pair oldest-waiting with newest-placed; reversals match oldest unmatched units first, and units older than W expire | Other greedy orders | Deterministic; the A1 total does not depend on the order (cross-checked against the closed form) |
 
 ## 10. Approved Parameter Set
 
