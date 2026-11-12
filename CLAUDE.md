@@ -337,6 +337,29 @@ Rules:
 - Items still open are deferred until after the first data generation, unless they block current work.
 - **Data freeze (2026-11-11):** the datasets are frozen at git tag `data-v1.0`; `data/MANIFEST.json` records their SHA-256 hashes and the generator commit. **Any change to data requires a new tag and the project owner's approval.** The manifest check must pass before any run.
 
+### 9.4 Testing and documentation policy (owner, 2026-11-12)
+
+The aim is fast turnaround without losing the milestone checks.
+
+**Tests.**
+
+| When | What to run | Command |
+| --- | --- | --- |
+| While developing | Only the tests for the module being changed | `uv run pytest -q tests/test_<module>.py` |
+| Before each commit | The fast suite (slow tests excluded by default) | `uv run pytest -q` |
+| At milestones (environment complete, audit and baselines complete, before any agent run), or when `src/data_generation/` or `data/` is touched | The full suite, including slow tests, plus the manifest check | `uv run pytest -q -m "slow or not slow"` and `uv run python -m src.data_generation.manifest --verify` |
+| Proposal or decision-only prompts | No test runs | – |
+
+- **Slow tests** are marked `@pytest.mark.slow`: the Hypothesis property suites, `manifest --regenerate`, and any Monte Carlo test. The default run excludes them (`-m "not slow"` in `pyproject.toml`). New tests in these categories must carry the mark.
+- The headless run-settings check (`tests/manual/verify_run_settings.py`) is never collected by pytest. It is run only at milestones that touch run-session permissions, and always before an agent run.
+- **Report which tests were run at the end of every response**: the command, and the pass/fail count, or "none".
+
+**Docs.**
+
+- Update the **Implementation Decisions Log** (`docs/PROJECT_SPEC.md` §9) and **`docs/REFLECTION_LOG.md`** immediately.
+- Batch all other documentation updates (status tables, plans, cross-references) at milestones.
+- Do not re-read the full documentation each turn. Read it at session start, or when a decision depends on it.
+
 ## 10. Conceptual Decisions and Open Items
 
 The following decisions are agreed at the conceptual level. They are project defaults for a synthetic environment, **not claims about real hospital operations**. The numerical parameter set and the escalation decisions of 2026-11-07 were approved by the owner. They are recorded in [`docs/PROJECT_SPEC.md`](docs/PROJECT_SPEC.md) §10–11, and the current project status is in its §0.

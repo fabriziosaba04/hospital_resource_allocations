@@ -65,6 +65,7 @@ def test_lr_infeasible_caps():
         largest_remainder(10, [1, 1], caps=[4, 5])
 
 
+@pytest.mark.slow
 @given(total=st.integers(0, 200),
        weights=st.lists(st.integers(0, 50), min_size=4, max_size=4),
        caps=st.lists(st.integers(0, 60), min_size=4, max_size=4))
@@ -204,6 +205,7 @@ PROPS = settings(max_examples=300, deadline=None,
                  suppress_health_check=[HealthCheck.too_slow, HealthCheck.filter_too_much])
 
 
+@pytest.mark.slow
 @PROPS
 @given(st.one_of(cut_scenarios(), cut_scenarios("shortfall")))
 def test_repair_always_valid_and_cuts_exactly_the_shortfall(s):
@@ -220,6 +222,7 @@ def test_repair_always_valid_and_cuts_exactly_the_shortfall(s):
         assert all(beds[d] >= occ[d] for d in DEPARTMENTS)       # no-eviction
 
 
+@pytest.mark.slow
 @PROPS
 @given(st.one_of(cut_scenarios(), cut_scenarios("shortfall")))
 def test_repair_cut_has_no_clinical_shock_violation(s):
@@ -234,6 +237,7 @@ def test_repair_cut_has_no_clinical_shock_violation(s):
         assert max(p.complexity for p in holders if p.patient_id in cut_set) <= min(p.complexity for p in kept)
 
 
+@pytest.mark.slow
 @PROPS
 @given(st.one_of(cut_scenarios(), cut_scenarios("shortfall")))
 def test_bed_assignment_evicts_exactly_the_repair_cut(s):
@@ -249,6 +253,7 @@ def test_bed_assignment_evicts_exactly_the_repair_cut(s):
         assert len([p for p in present_d if p.patient_id in a.in_bed]) == min(beds[d], len(present_d))
 
 
+@pytest.mark.slow
 @PROPS
 @given(cut_scenarios("shortfall"), st.data())
 def test_validator_accepts_every_exact_cut_and_rejects_one_more(s, data):
@@ -274,6 +279,7 @@ def test_validator_accepts_every_exact_cut_and_rejects_one_more(s, data):
     assert "SHOCK_OVERCUT" in codes(validate(over, nurses_ok(), pool, 37, MAX_BEDS, occ))
 
 
+@pytest.mark.slow
 @PROPS
 @given(cut_scenarios("no_shortfall"), st.data())
 def test_validator_rejects_any_eviction_without_shortfall(s, data):
@@ -293,6 +299,7 @@ def test_validator_rejects_any_eviction_without_shortfall(s, data):
     assert "EVICTION" in codes(validate(bad, nurses_ok(), pool, 37, MAX_BEDS, occ))
 
 
+@pytest.mark.slow
 @given(prev=st.lists(st.integers(0, 20), min_size=4, max_size=4), pool=st.integers(0, 80))
 def test_repair_nurses_conserves(prev, pool):
     out = repair_nurses(dict(zip(DEPARTMENTS, prev)), pool, dict(zip(DEPARTMENTS, [3, 2, 1, 1])))

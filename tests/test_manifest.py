@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 pytestmark = pytest.mark.skipif(not (ROOT / "data" / "MANIFEST.json").exists(), reason="data not frozen yet")
 
 
+@pytest.mark.slow
 def test_frozen_data_match_manifest_and_regenerate_exactly():
     assert verify(ROOT, regenerate=True) == []
 

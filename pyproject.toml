@@ -21,3 +21,7 @@ package = false
 [tool.pytest.ini_options]
 pythonpath = ["."]
 testpaths = ["tests"]
+addopts = '-m "not slow"'
+markers = [
+    "slow: Hypothesis suites, manifest --regenerate, Monte Carlo; run at milestones with: uv run pytest -m \"slow or not slow\"",
+]

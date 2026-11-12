@@ -11,6 +11,7 @@ from __future__ import annotations
 from fractions import Fraction
 from itertools import product
 
+import pytest
 from hypothesis import HealthCheck, given, settings
 from hypothesis import strategies as st
 
@@ -78,6 +79,7 @@ def test_max_tier_coverage_three_cases_by_hand():
         assert max_tier_coverage(p, a) == brute_max(p, a)
 
 
+@pytest.mark.slow
 @PROPS
 @given(st.integers(0, 14), st.lists(st.integers(0, 60), min_size=4, max_size=4))
 def test_max_tier_coverage_matches_enumeration(pool, a20):
@@ -85,6 +87,7 @@ def test_max_tier_coverage_matches_enumeration(pool, a20):
     assert max_tier_coverage(pool, a) == brute_max(pool, a)
 
 
+@pytest.mark.slow
 @PROPS
 @given(st.integers(0, 40), st.lists(st.tuples(st.integers(0, 15), st.integers(0, 15), st.integers(0, 10)),
                                     min_size=4, max_size=4))
@@ -120,6 +123,7 @@ levels = st.integers(1, 3)
 dept_lists = st.lists(st.lists(levels, max_size=6), min_size=4, max_size=4)
 
 
+@pytest.mark.slow
 @PROPS
 @given(dept_lists, dept_lists, st.integers(3, 8), st.data())
 def test_pairing_equals_closed_form_normal_day(hold, wait, cap, data):
@@ -143,6 +147,7 @@ def test_pairing_equals_closed_form_normal_day(hold, wait, cap, data):
     assert all(p.kind in ("displaced", "empty") for p in pairs)
 
 
+@pytest.mark.slow
 @PROPS
 @given(dept_lists, dept_lists, st.integers(3, 8), st.data())
 def test_pairing_equals_closed_form_shock_day(hold, wait, cap, data):
@@ -200,6 +205,7 @@ def test_cap_blocked_overflow_is_not_a_violation():
 
 # ============================================================================ B1 is an oracle on A1 and B2
 
+@pytest.mark.slow
 @PROPS
 @given(dept_lists, dept_lists, st.integers(3, 8), st.data())
 def test_b1_scores_zero_on_bed_pairs_and_f1(hold, wait, cap, data):

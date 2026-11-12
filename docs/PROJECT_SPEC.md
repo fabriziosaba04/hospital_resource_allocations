@@ -25,7 +25,7 @@ This document specifies **how** those are implemented, and does not restate them
 
 ```bash
 uv sync                                                        # environment (Python >= 3.12)
-uv run pytest -q                                               # expect 98 passed
+uv run pytest -q                                               # fast suite (slow tests excluded); full: -m "slow or not slow" (CLAUDE.md §9.4)
 uv run python -m src.data_generation.manifest --verify         # expect "manifest OK" (add --regenerate for a byte-exact rebuild)
 git log --oneline --decorate                                   # expect tag data-v1.0 on 42b39ed, with later commits on top
 ```
@@ -396,6 +396,7 @@ The rules are in `CLAUDE.md` §9.1. This is the setup:
 | 55 | 2026-11-12 | **Baseline records:** `allocation_state.jsonl` (day 1: the `initial_rule` line, then the decision) and `bed_assignment_state.jsonl` (one line per day and stage, with a map patient → department and status). No Observed State or workflow records for baselines (they belong to the server). The audit writes one `deterministic_audit.jsonl` line per five-day period, plus `metrics.json`. Baseline results are committed: they are deterministic and contain no agent output | One line per patient and day | Compact, and replayable by the audit |
 | 56 | 2026-11-12 | **Issue mapping details:** one nurse-gap issue per day, graded by its highest tier with a positive net gap; reversal issues per day and department (W = 3); "reallocation without effect" = τ ≠ 0 while the in-bed set and the covered need by level and department equal those under the repair reference; rejected submissions and failure days are read from the Decision History and the Allocation State `source` | One issue per unit | Keeps the issue counts readable |
 | 57 | 2026-11-12 | **Pairing tie-breaks:** bed pairs pair unserved patients in assignment order (level descending, `arrival_day`, `patient_id`) with served beds in (level ascending, department order, `patient_id`); F1 inversions use a strict `arrival_day` comparison (equal arrival days never count) and pair oldest-waiting with newest-placed; reversals match oldest unmatched units first, and units older than W expire | Other greedy orders | Deterministic; the A1 total does not depend on the order (cross-checked against the closed form) |
+| 58 | 2026-11-12 | **Testing and docs policy (owner, `CLAUDE.md` §9.4).** Slow tests marked `@pytest.mark.slow` (the Hypothesis suites in `test_environment_cut_path.py` and `test_environment_rest.py`, and `manifest --regenerate`) and excluded by default via `addopts = -m "not slow"`; the full suite is `uv run pytest -m "slow or not slow"` (an empty `-m ""` is dropped by Windows PowerShell 5.1). No Monte Carlo test exists in the suite, and the headless run-settings check is a manual script, so neither needed a mark. `tests/test_evaluation.py` (12 baseline runs and audits in one module fixture) is not in the owner's list and stays in the fast suite | Mark by module; a separate slow directory | Per-test marks keep the fast hand tests of the same modules in the fast suite |
 
 ## 10. Approved Parameter Set
 
