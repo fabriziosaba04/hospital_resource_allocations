@@ -47,8 +47,8 @@ def test_full_cycle_with_repair_audit_and_report(wf):
         wf.end_allocation_phase()
         if t == 5:
             assert wf.get_workflow_status()["phase"] == "AUDIT"
-            audit = wf.get_deterministic_audit()
-            assert [d["day"] for d in audit["days"]] == [1, 2, 3, 4, 5]
+            audit = wf.store.read("deterministic_audit")
+            assert [d["day"] for d in audit[0]["days"]] == [1, 2, 3, 4, 5]
             wf.submit_validation_report({"period": {"from_day": 1, "to_day": 5}, "checked": ["all"], "issues": [],
                                          "summary": "test"})
         wf.close_day()
@@ -71,7 +71,7 @@ def test_out_of_order_calls_are_rejected_and_logged(wf):
     with pytest.raises(WorkflowError, match="allocator"):
         wf.advance_day()
     with pytest.raises(WorkflowError):
-        wf.get_deterministic_audit()
+        wf.checker_allocation_state()
     with pytest.raises(WorkflowError):
         wf.submit_validation_report({"period": {}, "checked": [], "issues": [], "summary": ""})
     wf.end_allocation_phase()
@@ -142,10 +142,16 @@ def test_no_future_information_in_agent_tools(wf):
             assert reg[pid] <= t, (t, pid)
         if t == 5:
             wf.end_allocation_phase()
-            text = json.dumps([wf.get_deterministic_audit(), wf.checker_decision_history(), wf.checker_observed_state()])
+            cur5 = wf.checker_allocation_state()["allocations"][-1]
+            checker_out = [wf.checker_decision_history(), wf.checker_observed_state(), wf.checker_allocation_state(),
+                           *[wf.checker_overflow_queue(d) for d in range(1, 6)],
+                           wf.checker_simulate(3, *_alloc_on(wf, 3))]
+            text = json.dumps(checker_out)
             assert "discharge_day" not in text
+            for pid in re.findall(r"P\d{6}", text):
+                assert reg[pid] <= 5, pid
             with pytest.raises(WorkflowError, match="current day"):
-                wf.get_deterministic_audit(1, 6)
+                wf.checker_allocation_state(1, 6)
             break
         wf.end_allocation_phase()
         wf.close_day()
@@ -196,3 +202,118 @@ def test_prompts_do_not_leak_generation_information():
         body = (ROOT / ".claude" / "agents" / name).read_text(encoding="utf-8").lower()
         for s in FORBIDDEN_IN_PROMPTS:
             assert s.lower() not in body, (name, s)
+
+
+def _alloc_on(w: Workflow, day: int):
+    x = [a for a in w.store.read("allocation_state") if a["day"] <= day][-1]
+    return x["beds"], x["nurses"]
+
+
+LABEL_KEYS = ("bed_priority_violations", "nurse_priority_gap_by_tier", "severity", "unserved")
+AUDIT_KEYS = ("bed_gap", "nurse_lex_floor_h", "nurse_net_h", "f1_inversions", "pairs", "issues", "tau_beds",
+              "bed_floor", "hard_constraint_errors")
+
+
+def _run_to_audit(w: Workflow):
+    for t in range(1, 6):
+        w.advance_day()
+        w.end_allocation_phase()
+        if t < 5:
+            w.close_day()
+
+
+def test_whatif_returns_outcomes_only(wf):
+    """Owner decision §11 #29: no clinical-priority labels, counts or severities, and no A2 tier gaps."""
+    wf.advance_day()
+    out = wf.simulate_allocation(*_alloc_on(wf, 1))
+    assert {"valid", "violations", "overflow_by_department_and_level", "overflow_patients",
+            "nurse_covered_by_department_and_level", "nurse_shortage_by_department_and_level"} <= set(out)
+    text = json.dumps(out)
+    assert not any(k in text for k in LABEL_KEYS)
+    assert all("days_waiting" in p for p in out["overflow_patients"])
+
+
+def test_validate_and_rejections_report_hard_constraints_only(wf):
+    wf.advance_day()
+    bad = {d: 0 for d in DEPARTMENTS}
+    v = wf.validate_allocation(bad, bad)
+    r = wf.submit_decision(bad, bad, EXPL)
+    for out in (v, r):
+        assert {x["code"] for x in out["violations"]} <= {"CONSERVATION_BEDS", "CONSERVATION_NURSES", "BOUNDS",
+                                                          "INTEGRALITY", "EVICTION", "SHOCK_OVERCUT"}
+        assert not any(k in json.dumps(out) for k in LABEL_KEYS)
+
+
+def test_assisted_flag_exposes_labels_and_is_recorded(tmp_path):
+    write_fixture(tmp_path)
+    store = init_run(DATASET_ID, "A1", data_root=tmp_path, results_root=tmp_path / "results",
+                     check_manifest=False, set_pointer=False, expose_violation_labels=True)
+    w = Workflow(store)
+    assert w.m["expose_violation_labels"] is True
+    w.advance_day()
+    out = w.simulate_allocation(*_alloc_on(w, 1))
+    assert "bed_priority_violations" in out and "nurse_priority_gap_by_tier" in out
+
+
+def test_default_run_records_labels_off(wf):
+    assert wf.m["expose_violation_labels"] is False
+
+
+def test_checker_past_day_tools_refuse_the_future_and_write_nothing(wf):
+    _run_to_audit(wf)
+    files = ("allocation_state", "decision_history", "bed_assignment_state", "observed_state", "deterministic_audit")
+    before = {r: len(wf.store.read(r)) for r in files}
+    q2 = wf.checker_overflow_queue(2)
+    assert q2["day"] == 2 and all(p["arrival_day"] <= 2 for p in q2["queue"])
+    out = wf.checker_simulate(2, *_alloc_on(wf, 2))
+    assert out["valid"] and not any(k in json.dumps(out) for k in LABEL_KEYS)
+    for bad in (6, 0):
+        with pytest.raises(WorkflowError, match="current audit day"):
+            wf.checker_overflow_queue(bad)
+        with pytest.raises(WorkflowError, match="current audit day"):
+            wf.checker_simulate(bad, *_alloc_on(wf, 2))
+    assert {r: len(wf.store.read(r)) for r in files} == before
+
+
+def test_past_day_whatif_matches_the_recorded_outcome(wf):
+    """Replaying day d with the allocation in effect that day reproduces the stored overflow."""
+    _run_to_audit(wf)
+    for d in range(1, 6):
+        out = wf.checker_simulate(d, *_alloc_on(wf, d))
+        stored = [x for x in wf.store.read("bed_assignment_state") if x["day"] == d and x["stage"] == "final"][0]
+        assert {p["patient_id"] for p in out["overflow_patients"]} == \
+            {pid for pid, v in stored["patients"].items() if v["status"] == "overflow"}
+
+
+def test_no_agent_tool_can_read_the_deterministic_audit(wf):
+    """Owner decision §11 #29: the audit is stored for evaluation only."""
+    assert not any("deterministic_audit" in t for names in ROLE_TOOLS.values() for t in names)
+    src = (ROOT / "src" / "mcp_server" / "workflow.py").read_text(encoding="utf-8")
+    assert 'read("deterministic_audit")' not in src
+    _run_to_audit(wf)
+    assert wf.store.read("deterministic_audit")                      # it was written...
+    outs = [wf.checker_decision_history(), wf.checker_observed_state(), wf.checker_allocation_state(),
+            wf.checker_overflow_queue(5), wf.checker_simulate(5, *_alloc_on(wf, 5)), wf.get_workflow_status()]
+    text = json.dumps(outs)
+    assert not any(f'"{k}"' in text for k in AUDIT_KEYS)              # ...and no tool returns its content
+
+
+
+def test_checker_taxonomy_covers_every_agent_attributable_audit_type():
+    """CHECKER-versus-audit matching works on `type` names (EVALUATION_PLAN.md §4). Every agent-attributable
+    type the audit emits must appear in the source and in the prompt's taxonomy table."""
+    import src.evaluation.audit as audit_mod
+    import src.evaluation.metrics as metrics_mod
+    src = (Path(audit_mod.__file__).read_text(encoding="utf-8") + Path(metrics_mod.__file__).read_text(encoding="utf-8")
+           + (ROOT / "src" / "mcp_server" / "workflow.py").read_text(encoding="utf-8"))
+    audit_types = {"hard_constraint_in_effect": '"hard_constraint_in_effect"', "rejected_submission": '"rejected_submission"',
+                   "allocator_failure_day": '"allocator_failure_day"', "nurse_gap": '"nurse_gap"',
+                   "f1_inversion": '"f1_inversion"', "reallocation_without_effect": '"reallocation_without_effect"',
+                   "bed_displaced": '"displaced"', "bed_empty": '"empty"', "bed_shock_cut": '"shock_cut"',
+                   "beds_reversal": '{res}_reversal', "nurses_reversal": '{res}_reversal'}
+    for name, literal in audit_types.items():
+        assert literal in src, f"audit no longer emits {name}"
+    body = (ROOT / ".claude" / "agents" / "checker.md").read_text(encoding="utf-8")
+    listed = {n for pair in re.findall(r"^\| `([a-z0-9_]+)`(?:, `([a-z0-9_]+)`)? \|", body, re.M) for n in pair if n}
+    assert set(audit_types) <= listed, set(audit_types) - listed
+    assert {"explanation_inaccuracy", "information_leak", "inconsistency", "other"} <= listed

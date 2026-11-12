@@ -24,7 +24,7 @@ RETRY_LIMIT = 3     # PROJECT_SPEC.md §10.3
 
 
 def init_run(dataset_id: str, run_id: str, data_root: Path = ROOT, results_root: Path = ROOT / "results",
-             check_manifest: bool = True, set_pointer: bool = True) -> Store:
+             check_manifest: bool = True, set_pointer: bool = True, expose_violation_labels: bool = False) -> Store:
     if check_manifest:
         chk = subprocess.run([sys.executable, "-m", "src.data_generation.manifest", "--verify"], cwd=ROOT,
                              capture_output=True, text=True)
@@ -39,6 +39,7 @@ def init_run(dataset_id: str, run_id: str, data_root: Path = ROOT, results_root:
     eval_dir.mkdir(parents=True, exist_ok=True)
     manifest = {"run_id": run_id, "dataset_id": dataset_id, "data_root": str(Path(data_root).resolve()),
                 "eval_dir": str(eval_dir.resolve()), "retry_limit": RETRY_LIMIT, "horizon": ds.horizon,
+                "expose_violation_labels": bool(expose_violation_labels),
                 "code_version": code_version(), "started_at": now()}
     (alloc_dir / "run_manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8", newline="\n")
     store = Store(alloc_dir, eval_dir)
@@ -58,9 +59,12 @@ def main() -> None:
     ap.add_argument("--data-root", default=str(ROOT))
     ap.add_argument("--results-root", default=str(ROOT / "results"))
     ap.add_argument("--skip-manifest-check", action="store_true", help="synthetic smoke fixture only")
+    ap.add_argument("--assisted", action="store_true",
+                    help="optional 'assisted' ablation: violation labels in the what-if (owner decision §11 #29)")
     a = ap.parse_args()
     run_id = a.run_id or f"R-{a.dataset}-{now().replace(':', '').replace('-', '')}"
-    store = init_run(a.dataset, run_id, Path(a.data_root), Path(a.results_root), not a.skip_manifest_check)
+    store = init_run(a.dataset, run_id, Path(a.data_root), Path(a.results_root), not a.skip_manifest_check,
+                     expose_violation_labels=a.assisted)
     print(f"initialised {run_id} at {store.alloc_dir}; ACTIVE_RUN updated")
 
 

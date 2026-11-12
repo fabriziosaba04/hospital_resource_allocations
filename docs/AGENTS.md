@@ -110,7 +110,7 @@ Each record has exactly one writer, with two declared exceptions in the Allocati
 | **Allocation State** | B_d(t) and N_d(t) for each department and day, each entry attributed to its source | ALLOCATOR (via `submit_decision`); see the exceptions below | ANALYZER, ALLOCATOR, CHECKER, environment |
 | **Decision History** | Each decision with its reasoning, alternatives considered, expected consequences, and every submission attempt with its validation outcome | ALLOCATOR (via `submit_decision`) | ALLOCATOR, CHECKER |
 | **Bed Assignment State** | Per patient and per day: in a bed or in overflow, and in which department | Environment component | ALLOCATOR (current day only, via `get_overflow_queue`), deterministic audit, metrics |
-| **Deterministic Audit Record** | Hard-constraint checks, clinical priority violations and their severity, and metrics for each audit period | CHECKER deterministic component | LLM CHECKER, final evaluation |
+| **Deterministic Audit Record** | Hard-constraint checks, clinical priority violations and their severity, and metrics for each audit period | CHECKER deterministic component | **Final evaluation only.** No agent can read it (owner decision §11 #29, 2026-11-12) |
 | **Validation History** | The LLM CHECKER's validation reports, and recorded failures of the LLM layer | LLM CHECKER (via `submit_validation_report`); failures recorded by the ORCHESTRATOR | Final evaluation only. The ALLOCATOR does **not** read it in the main run. |
 | **Workflow records** | Which steps ran on which day, in what order, with what outcome, plus failures, repairs and halts | ORCHESTRATOR | Final evaluation |
 
@@ -191,7 +191,7 @@ An LLM Claude Code subagent (`.claude/agents/allocator.md`, planned), connected 
 | `get_allocation_state` | Read | The current Allocation State |
 | `get_decision_history` | Read | Previous decisions and their reasoning |
 | `get_overflow_queue` | Read | Current day only: `patient_id`, `department`, `complexity`, `arrival_day` and days waiting for every patient in overflow. It **never returns `discharge_day`**. |
-| `simulate_allocation` | What-if | For a proposed allocation, the resulting overflow, nurse shortages and clinical priority violations, **on day t only** |
+| `simulate_allocation` | What-if | For a proposed allocation **on day t only**, outcomes only: the hard-constraint result, overflow by department and level (with the waiting patients and their days waiting), and nurse coverage and shortage by department and level. **No clinical-priority labels, counts or severities, and no nurse tier gaps** (owner decision §11 #29). These appear only in a run initialised with the `expose_violation_labels` flag (the optional "assisted" ablation, off by default and recorded in `run_manifest.json`) |
 | `validate_allocation` | Check | Runs the hard-constraint validator without submitting |
 | `submit_decision` | **Write** | Submits the decision and its reasoning. The hard-constraint validator runs, and the attempt and its outcome are recorded. |
 
@@ -267,9 +267,9 @@ The CHECKER runs on every simulated day t with t mod 5 = 0. Each audit covers al
 | Layer | Implementation | Checks | Output |
 | --- | --- | --- | --- |
 | **Deterministic audit** | Server component, triggered by the state machine on every audit day. It **always runs**. | Hard constraints, clinical priority violations and their severity (`CLAUDE.md` §10.G), and metrics | Deterministic Audit Record |
-| **LLM review** | Claude Code subagent (`.claude/agents/checker.md`, planned), connected to the CHECKER role server | Whether the ALLOCATOR's explanations are accurate and consistent with the data, and inconsistencies between consecutive decisions | Validation History |
+| **LLM review** | Claude Code subagent (`.claude/agents/checker.md`), connected to the CHECKER role server. **Blind to the deterministic audit** (owner decision §11 #29) | Finds issues itself from the records and its own what-if checks, using the fixed issue-type taxonomy of `EVALUATION_PLAN.md` §4: constraint and clinical-priority violations, fairness, stability, the accuracy of the ALLOCATOR's explanations, and inconsistencies between consecutive decisions | Validation History |
 
-- **The deterministic audit is the independent verification.** It must not depend on any LLM output. It runs and is recorded before the LLM layer is invoked.
+- **The deterministic audit is the independent verification.** It must not depend on any LLM output. It runs and is recorded before the LLM layer is invoked, and it is stored for evaluation only: no agent tool returns it. With access to it, CHECKER-versus-audit matching would measure copying, not checking.
 - Only the LLM layer can fail. A failure is recorded in the Validation History and the workflow continues.
 - The same deterministic audit is applied to the baselines.
 
@@ -277,12 +277,18 @@ The CHECKER runs on every simulated day t with t mod 5 = 0. Each audit covers al
 
 | Tool | Type | Purpose |
 | --- | --- | --- |
-| `get_deterministic_audit(period)` | Read | The Deterministic Audit Record for the period, already produced by the server |
-| `get_decision_history(period)` | Read | The ALLOCATOR's decisions and reasoning |
+Revised 2026-11-12 (owner decision §11 #29, superseding Log #6). All tools are read-only except the last, allowed only in the audit phase, and limited to days ≤ the current audit day.
+
+| Tool | Type | Purpose |
+| --- | --- | --- |
 | `get_observed_state(period)` | Read | Observations for the period |
+| `get_allocation_state(period)` | Read | The allocations in effect (beds, nurses, source) for the period |
+| `get_overflow_queue(day)` | Read | The overflow queue as it stood on that day, before that day's decision |
+| `get_decision_history(period)` | Read | The ALLOCATOR's decisions, reasoning and attempts |
+| `simulate_allocation(day, beds, nurses)` | What-if | The outcome of any allocation on a past day, as it stood that day: the same outcomes-only output as the ALLOCATOR's what-if, no labels. Refuses any day after the current audit day. Writes nothing |
 | `submit_validation_report` | **Write** | Submits the report to the Validation History |
 
-`period` may only cover days up to the current day.
+`period` may only cover days up to the current day. There is **no tool for the Deterministic Audit Record**.
 
 **Data access (2026-11-12, owner decision §11 #27).** The LLM CHECKER reads the record store **only through these MCP tools**, never `results/` or any other file. Its subagent has no file tools, and run sessions deny `Read(./results/**)` as a second layer. `results/` holds every run's full-horizon records, including baseline bed assignments that reveal future presence.
 
@@ -303,6 +309,8 @@ Each identified issue should include, where applicable:
 - The potential or actual impact.
 - Severity.
 - A suggested corrective action.
+
+Each issue also carries a `type` from the fixed taxonomy in `EVALUATION_PLAN.md` §4, listed in the CHECKER prompt, so that its issues can be matched against the deterministic audit's.
 
 The severity of a clinical priority violation is the level difference defined in `CLAUDE.md` §10.G. The general severity scale (Critical, Major, Moderate, Minor), the test separating violations, concerns and improvements, and the mapping of every issue type were fixed on 2026-11-12 and are in [`EVALUATION_PLAN.md`](EVALUATION_PLAN.md) §4. Calls to `validate_allocation` are free and never counted; only rejected submissions are issues. The LLM CHECKER uses the same scale, and its issues are matched against the deterministic audit's (recall, precision, level agreement) as a primary Verification output.
 

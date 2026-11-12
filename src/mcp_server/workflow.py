@@ -258,15 +258,30 @@ class Workflow:
                                   "they receive free beds by the intra-department rule once the allocation takes effect",
                 "queue": queue}
 
+    @property
+    def assisted(self) -> bool:
+        """Run flag for the optional "assisted" ablation (owner decision §11 #29): violation labels in the
+        what-if. Off unless set in run_manifest.json at initialisation."""
+        return bool(self.m.get("expose_violation_labels", False))
+
     def _whatif(self, beds, nurses, ctx) -> dict:
+        """Outcomes only: hard-constraint result, overflow by department and level with waiting days, and
+        nurse coverage and shortage by department and level. No clinical-priority labels unless assisted."""
         res = simulate(beds, nurses, ctx)
         out = {"valid": not res.violations,
                "violations": [{"code": v.code, "message": v.message} for v in res.violations]}
         if res.assignment is not None:
+            overflow_patients = sorted(
+                ({"patient_id": p.patient_id, "department": p.department, "complexity": p.complexity,
+                  "arrival_day": p.arrival_day, "days_waiting": ctx.day - p.arrival_day}
+                 for p in ctx.present if p.patient_id in res.assignment.overflow),
+                key=lambda x: (x["department"], -x["complexity"], x["arrival_day"], x["patient_id"]))
             out.update(overflow_by_department_and_level=_num(res.overflow),
+                       overflow_patients=overflow_patients,
                        nurse_covered_by_department_and_level=_num(res.covered),
-                       nurse_shortage_by_department_and_level=_num(res.shortage),
-                       bed_priority_violations=[{"kind": p.kind, "unserved_patient": p.unserved_id,
+                       nurse_shortage_by_department_and_level=_num(res.shortage))
+        if res.assignment is not None and self.assisted:
+            out.update(bed_priority_violations=[{"kind": p.kind, "unserved_patient": p.unserved_id,
                                                  "unserved_department": p.unserved_department,
                                                  "unserved_level": p.unserved_level,
                                                  "served_patient": p.served_id,
@@ -325,10 +340,39 @@ class Workflow:
             raise WorkflowError(f"period must satisfy 1 <= from_day <= to_day <= {s['day']} (the current day)")
         return s, lo, hi
 
-    def get_deterministic_audit(self, from_day: int | None = None, to_day: int | None = None) -> dict:
-        s, lo, hi = self._audit_phase("get_deterministic_audit", from_day, to_day)
-        days = [d for x in self.store.read("deterministic_audit") for d in x["days"] if lo <= d["day"] <= hi]
-        return {"period": {"from_day": lo, "to_day": hi}, "days": days}
+    # The Deterministic Audit Record is written for evaluation only and is readable by no agent tool
+    # (owner decision §11 #29, superseding Log #6).
+
+    def checker_allocation_state(self, from_day: int | None = None, to_day: int | None = None) -> dict:
+        s, lo, hi = self._audit_phase("get_allocation_state", from_day, to_day)
+        lines = self.store.read("allocation_state")
+        return {"period": {"from_day": lo, "to_day": hi},
+                "allocations": [{"day": x["day"], "source": x["source"], "beds": x["beds"], "nurses": x["nurses"]}
+                                for x in lines if lo <= x["day"] <= hi]}
+
+    def _past_day(self, tool: str, day) -> int:
+        s = self.store.read_state()
+        self._require(s, ("AUDIT",), tool)
+        d = int(day)
+        if not 1 <= d <= s["day"]:
+            raise WorkflowError(f"day must satisfy 1 <= day <= {s['day']} (the current audit day)")
+        return d
+
+    def checker_overflow_queue(self, day) -> dict:
+        """The queue as it stood on `day` before that day's decision: present patients without a bed held
+        from the previous day."""
+        d = self._past_day("get_overflow_queue", day)
+        holders = self._holders(d)
+        queue = [{"patient_id": p.patient_id, "department": p.department, "complexity": p.complexity,
+                  "arrival_day": p.arrival_day, "days_waiting": d - p.arrival_day}
+                 for p in self.ds.present(d) if p.patient_id not in holders]
+        queue.sort(key=lambda x: (-x["complexity"], x["arrival_day"], x["patient_id"]))
+        return {"day": d, "queue": queue}
+
+    def checker_simulate(self, day, beds: dict, nurses: dict) -> dict:
+        """What-if on a past day, as it stood that day before its decision. Outcomes only; no writes."""
+        d = self._past_day("simulate_allocation", day)
+        return {"day": d, "writes": "none", **self._whatif(beds, nurses, self._ctx(d))}
 
     def checker_decision_history(self, from_day: int | None = None, to_day: int | None = None) -> dict:
         s, lo, hi = self._audit_phase("get_decision_history", from_day, to_day)

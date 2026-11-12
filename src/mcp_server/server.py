@@ -39,7 +39,8 @@ ROLE_TOOLS = {
     "orchestration": ("get_workflow_status", "advance_day", "end_allocation_phase", "close_day"),
     "allocator": ("get_observed_state", "get_allocation_state", "get_decision_history", "get_overflow_queue",
                   "simulate_allocation", "validate_allocation", "submit_decision"),
-    "checker": ("get_deterministic_audit", "get_decision_history", "get_observed_state", "submit_validation_report"),
+    "checker": ("get_observed_state", "get_allocation_state", "get_overflow_queue", "get_decision_history",
+                "simulate_allocation", "submit_validation_report"),
 }
 
 
@@ -93,8 +94,8 @@ def build(role: str) -> MCPServer:
 
         @srv.tool()
         def simulate_allocation(beds: dict[str, Any], nurses: dict[str, Any]) -> dict:
-            """What-if for today only, no writes: validator result, overflow and nurse coverage by department and
-            level, and clinical-priority violations of the proposal."""
+            """What-if for today only, no writes: hard-constraint result, overflow by department and level (with
+            the waiting patients), and nurse coverage and shortage by department and level."""
             return Workflow().simulate_allocation(beds, nurses)
 
         @srv.tool()
@@ -110,9 +111,20 @@ def build(role: str) -> MCPServer:
 
     else:
         @srv.tool()
-        def get_deterministic_audit(from_day: int | None = None, to_day: int | None = None) -> dict:
-            """The stored Deterministic Audit Record for the period (default: the current five-day period)."""
-            return Workflow().get_deterministic_audit(from_day, to_day)
+        def get_allocation_state(from_day: int | None = None, to_day: int | None = None) -> dict:
+            """Allocations in effect (beds, nurses, source) for the period (default: the current five days)."""
+            return Workflow().checker_allocation_state(from_day, to_day)
+
+        @srv.tool()
+        def get_overflow_queue(day: int) -> dict:
+            """The overflow queue as it stood on `day` (<= today), before that day's decision."""
+            return Workflow().checker_overflow_queue(day)
+
+        @srv.tool()
+        def simulate_allocation(day: int, beds: dict[str, Any], nurses: dict[str, Any]) -> dict:
+            """What-if on a past day (<= today), as it stood that day: hard-constraint result, overflow by
+            department and level (with the waiting patients), nurse coverage and shortage. No writes."""
+            return Workflow().checker_simulate(day, beds, nurses)
 
         @srv.tool()
         def get_decision_history(from_day: int | None = None, to_day: int | None = None) -> dict:

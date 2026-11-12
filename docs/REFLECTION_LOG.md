@@ -171,8 +171,36 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 
 ### R22. The smoke test ran the draft prompts end to end, because the dispatcher refused the smoke instructions (assistant design error)
 
-- **What happened:** the smoke-test design assumed the dispatcher would follow a one-off user prompt replacing its loop with mechanical steps: subagents calling their own tools without judgement, trying foreign tools, and a test spawn of an `Explore` subagent. The dispatcher refused. It answered that its protocol allows only the fixed workflow steps and the two fixed prompts, and ran its **normal loop**. The ALLOCATOR and CHECKER, with the **draft prompts the owner has not yet reviewed**, therefore made real decisions for 5 days and wrote a validation report. This happened on the synthetic SMOKE5 fixture with haiku; no frozen dataset was touched. But it is not what the owner asked for ("draft the prompts for my review; don't run any agent session"). A first attempt had stopped after one call, for the same reason.
+- **What happened:** the smoke-test design assumed the dispatcher would follow a one-off user prompt replacing its loop with mechanical steps: subagents calling their own tools without judgement, trying foreign tools, and a test spawn of an `Explore` subagent. The dispatcher refused. It answered that its protocol allows only the fixed workflow steps and the two fixed prompts, and ran its **normal loop**. The ALLOCATOR and CHECKER, with the **draft prompts the owner has not yet reviewed**, therefore made real decisions for 5 days and wrote a validation report. This happened on the synthetic SMOKE5 fixture with haiku; no frozen dataset was touched. But it is not what the owner asked for ("draft the prompts for my review; don't run any agent session"). A first attempt had stopped after one call. *Corrected 2026-11-12 (R24):* the reason for that stop is **unknown**, because that run's transcript and final text were not saved. "For the same reason" was an inference stated as fact.
 - **How it was caught:** the smoke script classifies the transcript and keeps the dispatcher's final text, which states the refusal. Every call the dispatcher made was a workflow tool or one of the two fixed templates, word for word.
 - **Implication:** the refusal is itself good evidence for dispatcher neutrality: a system prompt that forbids improvising held against a direct user instruction. But a test that needs an agent to step outside its role cannot be run through that agent. The assistant should have predicted this from the dispatcher prompt it had just written. Check 5c (the dispatcher cannot spawn other subagents) could not be shown live, because the dispatcher never tried.
 - **Decisions Log:** #69, #70.
+
+### R23. The occupied-reversal count is not monotone in the window W
+
+- **What happened:** with a wider window, all reversals grow as expected, for example B1 on seed 07: 100 / 116 / 126 for W = 2 / 3 / 5. The occupied-in-between count does not: B1 on seed 08 gives 28 / 36 / 26, and on seed 09 7 / 6 / 10. The oldest-first matching pairs different units when W changes, and the occupied lower bound depends on which units are paired. The count therefore partly reflects the matching procedure, not only the allocation. The assistant reported the W = 3 values without looking at the sensitivity columns.
+- **How it was caught:** reading the W = 2 / 3 / 5 columns of the baseline metrics while preparing the owner's report.
+- **Implication:** a pre-registered sensitivity check is useful only if someone reads it. A metric built on a greedy matching needs a property check (monotone in W) before it is relied on. The definition (Log #59) is still awaiting owner confirmation, so nothing has been fixed yet.
+- **Decisions Log:** #59.
+
+### R24. Unverified cause stated as fact in R22, and milestone status overstated (assistant error)
+
+- **What happened:** (1) R22 said the first smoke run stopped "for the same reason" as the second, but that run's transcript was never saved, so the cause is unknown. (2) Commit `317160d` labelled the MCP work "milestone 2" in `PROJECT_SPEC.md` §0, although the milestone is "smoke test passing" and one check (5c) failed. The commit also includes `results/evaluations/smoke_test.json` with `passed: false`. (3) The assistant's report ended with a test list that the owner read as the whole report.
+- **How it was caught:** the owner asked for the full report and for any failing check committed; the assistant re-read R22 and the commit while answering.
+- **Implication:** status words ("built", "milestone") must match the stated criterion exactly, and causes must be marked as inferred when they are.
+- **Decisions Log:** #70.
+
+### R25. The approved design gave both agents the evaluation's answers
+
+- **What happened:** the agent design approved on 2026-11-07 had the CHECKER read the deterministic audit, through `get_deterministic_audit` (Log #6), and had the ALLOCATOR's what-if return clinical-priority violations (`AGENTS.md` §5, `PROJECT_SPEC.md` §2.2, §5.6). The owner and the advisor (the assistant) both approved it. The CHECKER prompt even told it to "report every issue in the deterministic audit that you can confirm". The CHECKER-versus-audit matching, a primary Verification output, would then have measured copying, not checking. A1, the "does the agent match B1" test after the headroom result, would have measured whether the agent searched proposals until the tool's violation count was 0, not whether it reasoned. The assistant also returned the nurse tier gaps (the A2 headline) from the what-if; the owner removed those too.
+- **How it was caught:** the owner's review of the two prompts, before any run on frozen data. The assistant had written both the server and the prompts and did not see it.
+- **Implication:** an evaluation is only valid if the evaluated agent cannot see the evaluator's answer key. Exposing a metric through a tool is a quiet form of leakage. It passed every information-rule test, because those tests checked for *future* information, not for *evaluation* information. Visibility reviews should ask "could the agent read off its score?", not only "could it see the future?".
+- **Decisions Log:** #6 (superseded), #71–#74; owner decision §11 #29.
+
+### R26. A new test nearly passed while checking less than it claimed
+
+- **What happened:** the first version of the taxonomy-coverage test extracted the audit's issue types from source code with a regular expression. The regex missed `nurse_gap` (a multi-line call) and `f1_inversion` (its character class excluded digits). The test passed, but it was checking only 6 of the 11 types.
+- **How it was caught:** the assistant printed the extracted set before relying on the test. The test now lists the 11 types explicitly and asserts that each one still appears in the audit source.
+- **Implication:** a passing test proves only what it actually exercises. A test whose expected set is computed should show that set at least once.
+- **Decisions Log:** #74.
 

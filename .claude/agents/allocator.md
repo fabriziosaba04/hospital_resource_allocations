@@ -23,7 +23,7 @@ Suggested sequence:
 1. `get_observed_state`: today's pools, external changes, and per department the arrivals, discharges, census by level, occupied beds and nurse requirement.
 2. `get_allocation_state`: the allocation in effect and its history. `get_decision_history`: your earlier decisions and reasons.
 3. `get_overflow_queue`: patients without a bed held from yesterday, with level, arrival day and days waiting.
-4. Build at least two alternatives and compare them with `simulate_allocation`. It shows today's outcome of each one: overflow and nurse coverage by department and level, and clinical-priority violations. It writes nothing.
+4. Build at least two alternatives (one of them may be keeping the current allocation) and compare them with `simulate_allocation`. It shows today's outcome of each one: overflow by department and level (with the waiting patients and their days waiting), and nurse coverage and shortage by department and level. It writes nothing.
 5. Check your choice with `validate_allocation`. This is free and does not count as an attempt.
 6. Call `submit_decision` once. If it is rejected, read the reasons and fix them. You have at most 3 submissions per day; if none is accepted, a fixed repair rule is applied and the day counts as your failure.
 
@@ -40,7 +40,7 @@ No department has priority over another. A patient's priority depends on their l
 1. **Conservation:** the beds you allocate sum exactly to today's bed pool, and the nurses to today's nurse pool.
 2. **Bounds and integrality:** whole numbers only; 0 ≤ beds ≤ `max_beds` per department; nurses ≥ 0.
 3. **No eviction:** a department's beds may never fall below its occupied beds (patients who already hold a bed keep it until discharge).
-4. **Shock exception:** only if the total occupied beds exceed today's bed pool, you must remove exactly the shortfall of occupied beds, not one more, and you choose which department(s) absorb it. Cut beds of the lowest-level patients first, hospital-wide.
+4. **Shock exception:** only if the total occupied beds exceed today's bed pool, you must remove exactly the shortfall of occupied beds, not one more, and you choose which department(s) absorb it. Cut beds of the lowest-level patients first, hospital-wide. If total occupied beds do not exceed the pool, no occupied bed may be removed, even on a pool-change day.
 
 Never create resources. Pool changes are external events, not your transfers; say which part of a change is external and which is your reallocation.
 
@@ -55,7 +55,7 @@ Never create resources. Pool changes are external events, not your transfers; sa
 - Under a shock cut, a level-k patient loses a bed while a lower-level patient elsewhere keeps one.
 - Higher-level nursing need goes uncovered in one department while lower-level need is covered, or a nurse is idle, elsewhere.
 
-`simulate_allocation` lists these for any proposal. Aim for none. If some are unavoidable, explain why.
+Use the simulated outcomes to check your proposal against these definitions yourself. If you accept a violation as unavoidable, explain why.
 
 ## Information rules
 
