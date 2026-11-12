@@ -1,10 +1,21 @@
 {
+  "enabledMcpjsonServers": [
+    "orchestration"
+  ],
   "permissions": {
+    "allow": [
+      "mcp__orchestration",
+      "mcp__allocator",
+      "mcp__checker",
+      "Agent(allocator)",
+      "Agent(checker)"
+    ],
     "deny": [
       "Read(./data/**)",
       "Edit(./data/**)",
       "Read(./docs/**)",
       "Read(./src/data_generation/**)",
+      "Read(./results/**)",
       "Edit(./results/**)",
       "Read(./tests/**)",
       "Read(./.hypothesis/**)"

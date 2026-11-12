@@ -11,6 +11,10 @@
 
 ## 4. Comparison with Baselines
 
+- **Declared limitation (2026-11-12, owner decision): on these data the agent is not expected to beat B1 on clinical metrics.** The baseline headroom review (`EVALUATION_PLAN.md` §8) shows that B1, a simple greedy clinical-priority-first rule, is at or near the floor on A1, A2 and A3: SV_B = 0, nurse gaps of at most 2.3 nurse-days, path components of at most 4 patient-days. The evaluation therefore asks whether the LLM agent system reliably reproduces a near-optimal myopic policy, where it deviates, and whether the CHECKER catches the deviations. **The frozen data (`data-v1.0`) will not be changed to create headroom.**
+- Seed 09 has no bed overflow under B1 or B2, so the robustness appendix cannot discriminate between them on bed metrics.
+- B1 is optimal for A1 only day by day, given each day's holders. Optimality over the horizon is not claimed.
+
 ## 5. Between-Run Variability of the LLM Agent
 
 ## 6. Enforcement Gaps and Residual Risks

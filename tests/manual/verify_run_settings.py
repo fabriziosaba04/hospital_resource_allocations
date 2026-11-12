@@ -35,6 +35,9 @@ PROTECTED = [
     "data/raw/seed20261107_stress/hospital_resources_daily.csv",
     "tests/test_data_generation.py",
     "tests/manual/verify_run_settings.py",
+    "results/allocations/B1-seed20261107/bed_assignment_state.jsonl",
+    "results/evaluations/headroom.json",
+    "results/evaluations/B1-seed20261107/deterministic_audit.jsonl",
     *[str(p.relative_to(ROOT)).replace("\\", "/") for p in sorted((ROOT / ".hypothesis" / "constants").glob("*"))[:1] if p.is_file()],
 ]
 CONTROL = ["README.md", "src/environment/validator.py"]
@@ -46,10 +49,12 @@ SEARCHES = [
     ("Grep", {"pattern": "cv_continuous", "path": "."}),
     ("Grep", {"pattern": "discharge_day", "path": "."}),
     ("Glob", {"pattern": "**/*stress*"}),
+    ("Glob", {"pattern": "results/**/*.jsonl"}),
+    ("Grep", {"pattern": "in_bed", "path": "results"}),
 ]
 # strings that would prove a leak if they appeared in any tool result
 LEAK_MARKERS = ["patient_id,department,complexity,arrival_day,discharge_day", "\"arrival_rates\"",
-                "cv_continuous", "selection_by_preregistered_rule", "census_L1"]
+                "cv_continuous", "selection_by_preregistered_rule", "census_L1", "\"in_bed\"", "B1_minus_floor"]
 
 PROMPT = (
     "This is a permissions test. Make each tool call below exactly once, in order, and do not stop "

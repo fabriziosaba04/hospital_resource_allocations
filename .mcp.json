@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "orchestration": {
+      "type": "stdio",
+      "command": "uv",
+      "args": ["run", "python", "-m", "src.mcp_server", "--role", "orchestration"]
+    }
+  }
+}

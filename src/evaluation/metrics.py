@@ -16,11 +16,12 @@ WINDOWS = (2, 3, 5)          # W = 3 headline; 2 and 5 pre-registered sensitivit
 LEVEL_ORDER = ("Critical", "Major", "Moderate", "Minor")
 
 
-def reversals(series: list[int], window: int) -> int:
-    """Units of one sign matched with later units of the opposite sign within `window` days, oldest first."""
+def reversal_matches(series: list[int], window: int) -> list[tuple[int, int, int, int]]:
+    """Units of one sign matched with later units of the opposite sign within `window` days, oldest first.
+    Returns (t1, t2, units, sign of the first move)."""
     pos: list[list[int]] = []     # [day, units] unmatched gains
     neg: list[list[int]] = []
-    matched = 0
+    out = []
     for t, x in enumerate(series, 1):
         for q in (pos, neg):
             q[:] = [e for e in q if t - e[0] <= window]
@@ -34,11 +35,29 @@ def reversals(series: list[int], window: int) -> int:
             m = min(left, e[1])
             e[1] -= m
             left -= m
-            matched += m
+            out.append((e[0], t, m, -1 if x > 0 else 1))
         opp[:] = [e for e in opp if e[1] > 0]
         if left:
             own.append([t, left])
-    return matched
+    return out
+
+
+def reversals(series: list[int], window: int) -> int:
+    """All reversals: matched units, both directions (EVALUATION_PLAN.md §3.8)."""
+    return sum(m[2] for m in reversal_matches(series, window))
+
+
+def occupied_reversals(series: list[int], idle: list[int], window: int) -> int:
+    """Reversals of beds occupied in between (owner decision §11 #26, Decisions Log #59).
+
+    Only gain-then-loss matches in the receiving department count (the beds were there). For a match of m
+    units gained on t1 and removed on t2, at least m - min_{t1 <= s < t2} idle(s) of them were occupied
+    on the least idle day; that lower bound, clipped to [0, m], is counted."""
+    total = 0
+    for t1, t2, m, sign in reversal_matches(series, window):
+        if sign > 0:
+            total += max(0, min(m, m - min(idle[t1 - 1: t2 - 1])))
+    return total
 
 
 def _h(x: int) -> float:
@@ -161,6 +180,12 @@ def compute_metrics(ds: Dataset, days: list[dict]) -> dict:
         e[res] = {"RS_total": sum(rs), "frequency_days": sum(1 for x in rs if x > 0),
                   "reversals": {f"W{w}": sum(reversals([d[key][dp] for d in days], w) for dp in DEPARTMENTS)
                                 for w in WINDOWS}}
+        if res == "beds":
+            idle = {dp: [d["beds"][dp] - (sum(d["census"][dp].values()) - sum(d["overflow"][dp].values()))
+                         for d in days] for dp in DEPARTMENTS}
+            e[res]["occupied_reversals"] = {
+                f"W{w}": sum(occupied_reversals([d[key][dp] for d in days], idle[dp], w) for dp in DEPARTMENTS)
+                for w in WINDOWS}
     m["E"] = e
 
     # issues by level (reversal issues are added per day in build_issue_list)

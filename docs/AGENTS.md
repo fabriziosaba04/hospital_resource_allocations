@@ -284,6 +284,8 @@ The CHECKER runs on every simulated day t with t mod 5 = 0. Each audit covers al
 
 `period` may only cover days up to the current day.
 
+**Data access (2026-11-12, owner decision §11 #27).** The LLM CHECKER reads the record store **only through these MCP tools**, never `results/` or any other file. Its subagent has no file tools, and run sessions deny `Read(./results/**)` as a second layer. `results/` holds every run's full-horizon records, including baseline bed assignments that reveal future presence.
+
 ### Independence
 
 - The CHECKER assesses decisions using the underlying records, rather than simply accepting the ALLOCATOR's explanations. It reads the explanations to judge whether they are accurate, not as evidence that a decision was correct.

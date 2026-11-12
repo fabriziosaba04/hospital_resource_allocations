@@ -8,7 +8,13 @@ Tags: **[S]** follows directly from the spec; **[J]** was a judgment call, appro
 
 Does the LLM ALLOCATOR make better allocation decisions than simple deterministic strategies, facing the same environment, while respecting clinical priority first, then fairness, then efficiency? And how reliable and consistent is it?
 
-**Framing on the per-day bed metric (owner, 2026-11-12).** B1 (clinical-priority-first) scores **0 on A1 by construction**: it is an optimal myopic rule for that metric. On A1 the question is therefore "does the agent match an optimal myopic rule, and where does it fail?", not "does it beat it". The agent's possible advantage lies in the **path component of A3** (placements that avoid blocking beds later) and in **nurse rationing (A2)**. The headroom available there is quantified from the baselines in §8.
+**Framing (owner decision §11 #24, after the baseline headroom review, §8).**
+
+- B0 vs B1 shows that reallocation matters a lot: SV_B is 257–280 for B0 and 0 for B1 on the main datasets.
+- B1, a simple greedy rule, captures almost all of that value. On A1, A2 and A3 it is at or near the floor (§8).
+- **The research question is therefore: does the LLM agent system reliably reproduce a near-optimal myopic policy, where does it deviate, and does the CHECKER catch those deviations?**
+- On these data the agent is **not expected to beat B1 on clinical metrics**, and the frozen data will not be changed to create headroom (`LIMITATIONS_AND_REFLECTION.md` §4).
+- Every headline metric is read as the **gap to B1 and to the floor**.
 
 ## 2. Notation
 
@@ -138,7 +144,11 @@ C2 and C4 are contained in A1 and A2: in this model, bed and nurse inefficiency 
 RS(t)  = ½ Σ_d |τ_d(t)|                 reallocation size
 ```
 
-- **Reversals (headline for beds; secondary for nurses):** for each department and resource, units of τ_d of one sign on day t1 matched with units of the opposite sign on t2, `0 < t2 − t1 ≤ W`, oldest unmatched units first; units older than W expire. Count matched units. **W = 3** (the L1 mean stay); **W = 2 and W = 5 are pre-registered sensitivity checks**. Unit: beds (nurses).
+- **Reversals (secondary; owner decision §11 #26):** for each department and resource, units of τ_d of one sign on day t1 matched with units of the opposite sign on t2, `0 < t2 − t1 ≤ W`, oldest unmatched units first; units older than W expire. **W = 3** (the L1 mean stay); **W = 2 and W = 5 are pre-registered sensitivity checks**. Two counts are reported for beds:
+  - **All reversals:** matched units, both directions, summed over departments. A round trip of one bed between two departments counts twice: once as gain-then-loss in the receiver, once as loss-then-gain in the donor. Nurses report this count only.
+  - **Reversals of beds occupied in between:** only gain-then-loss matches in the receiving department, where the beds actually were. For m units gained on t1 and removed on t2, the count is `max(0, min(m, m − min_{t1 ≤ s < t2} idle_d(s)))`, with `idle_d = B_d − (patients in a bed in d)`: on the least idle day, at least that many of the gained beds were occupied. It is a lower bound, computed from the records only (Decisions Log #59).
+  - **Worked example.** Cardiology τ = +3 on day 14, 0 on day 15, −3 on day 16; Orthopedics the mirror (−3, 0, +3); no pool change. **All reversals = 6** (3 in Cardiology, 3 in Orthopedics). Cardiology has 1 idle bed on day 14 and 2 on day 15, so **occupied reversals = 3 − min(1, 2) = 2**. If Cardiology had 3 or more idle beds on both days, the gained beds may all have stayed empty: **occupied reversals = 0**.
+  - **Why two counts:** under no-eviction occupied beds never move, so moving beds has no real cost in the model, and most reversals by B1 and B2 move empty beds (§8.4, REFLECTION_LOG R19). This is a validity fix, made on baseline outputs only, not on agent results.
 - **Descriptive only:** RS and reallocation frequency (days with RS > 0). Reallocation is the task, not a cost.
 - On days with no pool change, RS equals the 2026-11-07 formula `½(Σ|ΔB_d| − |ΔP_B|)`.
 - B0 has τ = 0 by definition.
@@ -147,13 +157,13 @@ RS(t)  = ½ Σ_d |τ_d(t)|                 reallocation size
 
 Assessed by the LLM CHECKER only, reported qualitatively and **labelled LLM-dependent**. It is not part of verification (REFLECTION_LOG R13).
 
-### 3.10 Headline set (to be confirmed after the headroom review, §8)
+### 3.10 Headline set (confirmed 2026-11-12, owner decision §11 #25)
 
 | Role | Metrics |
 | --- | --- |
-| **Headline** | SV_B (A1) with its displaced / empty / shock-cut split; SV_N per tier, lexicographic (A2); A3 excess for tiers 3 and 2, split into avoid and path; bed reversals within W = 3 |
+| **Headline** | A1 (SV_B, with its displaced / empty / shock-cut split); A2 (SV_N per tier, lexicographic); A3 (excess for tiers 3 and 2, split into avoid and path). Each is read as the **gap to B1 and to the floor** |
 | **Gate** | D |
-| **Secondary** | B1, B2, B3, A4, nurse reversals |
+| **Secondary** | Stability: bed reversals (all, and occupied in between) and nurse reversals; B1 (always reported next to A1 and A3), B2, B3, A4 |
 | **Descriptive** | RS and frequency, C1–C4, B4 |
 
 **No combined score.**
@@ -213,8 +223,8 @@ Nurse issues are graded by the **highest tier with a positive net gap**, not by 
 1. **Datasets:** frozen at `data-v1.0`; the manifest check must pass.
 2. **Baselines** B0, B1 and B2 on the primary dataset, the two robustness seeds and the stress variant. They are deterministic, so one run each.
 3. **Agent runs** R1, R2 and R3 on the **same** primary dataset, each a fresh run in a run session. Differences between runs isolate LLM variability.
-4. **Stress run (planned, owner 2026-11-12):** one agent run on `seed20261107_stress`, with B0–B2 as reference. It stays **excluded from the main comparisons** and is reported separately as a probe of forced-cut handling. Before any use, the shock-day A1 pairing is tested against the closed form (§7).
-5. **Robustness:** the baselines on the two extra seeds, reported as an appendix. Agent results rest on the primary dataset only (declared limitation).
+4. **Stress run (planned, owner 2026-11-12):** one agent run on `seed20261107_stress`, with B0–B2 as reference. It stays **excluded from the main comparisons** and is reported separately as a probe of forced-cut handling. All three baselines score 0 on shock-cut severity, because they share the hospital-wide lowest-level-first cut rule: the probe tests **whether the agent follows the cut rule under pressure**, which is its intended purpose. Before any use, the shock-day A1 pairing is tested against the closed form (§7).
+5. **Robustness:** the baselines on the two extra seeds, reported as an appendix. Agent results rest on the primary dataset only (declared limitation). **Seed 09 has no bed overflow under B1 or B2**, so it cannot discriminate between them on bed metrics; this is stated wherever robustness results are reported (§8.4).
 6. **Metrics** for every run with the same code, plus the verification checks (§7).
 
 ## 7. Verification Checks
@@ -258,7 +268,8 @@ These checks are independent of any LLM output.
 | A3 tier 2 excess | 106 / **1** / 4 | 119 / **4** / 23 | 73 / **0** / 0 | 0 | 1 / 4 / 0 |
 | A3 tier 2 avoid | 106 / **0** / 3 | 104 / **0** / 17 | 73 / **0** / 0 | 0 | 0 / 0 / 0 |
 | A3 tier 2 path | 0 / **1** / 1 | 15 / **4** / 6 | 0 / **0** / 0 | 0 | 1 / 4 / 0 |
-| E bed reversals W3 | 0 / **116** / 114 | 0 / **109** / 110 | 0 / **103** / 103 | 0 | 116 / 109 / 103 |
+| E bed reversals W3 (all) | 0 / **116** / 114 | 0 / **109** / 110 | 0 / **103** / 103 | 0 | 116 / 109 / 103 |
+| E bed reversals W3 (occupied) | 0 / **23** / 18 | 0 / **36** / 30 | 0 / **6** / 6 | 0 | 23 / 36 / 6 |
 | B1 dispersion L1 (pp) | 49.19 / **6.09** / 2 | 49.48 / **5.52** / 10.61 | 67.02 / **0** / 0 | – | – / – / – |
 | B2 F1 inversions L1 | 40 / **0** / 1 | 37 / **0** / 5 | 48 / **0** / 0 | 0 | 0 / 0 / 0 |
 | B3 mean overflow days L1 | 2.324 / **1** / 1.056 | 1.69 / **1.345** / 1.31 | 1.98 / **0** / 0 | – | – / – / – |
@@ -292,7 +303,8 @@ These checks are independent of any LLM output.
 | A3 tier 2 excess | 70 / **0** / 4 | 0 | 0 |
 | A3 tier 2 avoid | 69 / **0** / 2 | 0 | 0 |
 | A3 tier 2 path | 1 / **0** / 2 | 0 | 0 |
-| E bed reversals W3 | 0 / **115** / 104 | 0 | 115 |
+| E bed reversals W3 (all) | 0 / **115** / 104 | 0 | 115 |
+| E bed reversals W3 (occupied) | 0 / **21** / 17 | 0 | 21 |
 | B1 dispersion L1 (pp) | 42 / **6.45** / 7.37 | – | – |
 | B2 F1 inversions L1 | 39 / **0** / 4 | 0 | 0 |
 | B3 mean overflow days L1 | 2.156 / **1.537** / 1.513 | – | – |
@@ -316,15 +328,16 @@ These checks are independent of any LLM output.
 | `seed20261109` | 0 (census peaks at 95 < 96) | 0 | 0 | 8 over 4 days |
 | `seed20261107_stress` | 100 over 7 days | 2 | 101 | 67 over 17 days |
 
-### 8.4 Findings for the headline review
+### 8.4 Findings and the owner's decisions on them (2026-11-12)
 
-1. **A1:** B1 = 0 on every dataset, as expected (tested). B2 is close (0–19); B0 is far (257–280 on the main datasets, 231 on the stress variant), almost all of it **empty** pairs (a static allocation leaves beds idle in one department while patients wait in another).
+1. **A1:** B1 = 0 on every dataset, as expected (tested). B2 is close (0–19); B0 is far (257–280 on the main datasets, 231 on the stress variant), almost all of it **empty** pairs: a static allocation leaves beds idle in one department while patients wait in another. **Reallocation matters a lot, and a simple greedy rule captures almost all of its value.**
 2. **A2 headroom below B1 is small:** at most 2.3 nurse-days at tier 2 and 1.85 at tier 1 (seed 08), and 0 at tier 3 everywhere. B1's largest-remainder rationing is near-optimal. On seed 09 there is almost no nurse rationing (8 nurse-days of shortfall).
-3. **A3 path headroom below B1 is small:** at most 4 patient-days at tier 2 (seed 08) and 0 at tier 3 on the main datasets. Since 0 is only a lower bound, the true headroom may be smaller still. **The two places named in §1 as the agent's possible advantage hold, on these data, at most a few patient-days or nurse-days.**
-4. **Bed reversals (headline) are dominated by empty-bed churn.** B1 and B2 reverse 103–116 bed units within W = 3 (B0: 0). Between 45% and 78% of the bed units they move land on beds that are idle that day, because both re-split spare beds by census every day. An agent that simply leaves empty beds where they are would score far better than B1 and B2 on this headline without allocating any better (REFLECTION_LOG R19). **Owner decision needed** before the headline set is confirmed.
-5. **Stress variant:** the forced cut falls on day 23 only. B1 and B2 cut 6 beds, as Log #41 predicts for policies that fill every bed they can; B0 cuts only 4, because it had left beds empty and so carried fewer holders into the shock. Shock-cut severity is 0 for **all three** baselines, because all of them cut with the same hospital-wide lowest-level-first rule. The probe can show whether the agent matches that rule, but no baseline varies on it.
-6. **Fairness is where B1 is beatable:** B1's L1 overflow-rate dispersion (5.5–6.1 pp on seeds 07–08) is higher than B2's on seed 07 (2.0 pp). Seed 09 has no overflow under B1 or B2 at all, so it does not discriminate between them.
-7. **Rounding floor:** the lexicographic floor differs from the joint floor on 0–2 days per dataset (Log #47).
+3. **A3 path headroom below B1 is small:** at most 4 patient-days at tier 2 (seed 08), and 0 at tier 3 on the main datasets. Since 0 is only a lower bound, the true headroom may be smaller still. **This changed the framing (§1, owner decision §11 #24): the agent is not expected to beat B1 on clinical metrics, and the frozen data are not changed to create headroom.**
+4. **Bed reversals were dominated by empty-bed churn** (REFLECTION_LOG R19). B1 and B2 reverse 103–116 bed units within W = 3 (B0: 0), and 45–78% of the bed units they move land on beds idle that day. Under no-eviction, occupied beds never move, so moving beds has no real cost in this model. **Validity fix (owner decision §11 #26):** stability is demoted to secondary and reported as two counts, all reversals and reversals of beds occupied in between (§3.8). With the second count, B1 and B2 drop to 6–36.
+5. **Stress variant: a probe of the cut rule under pressure, as intended.** The forced cut falls on day 23 only. B1 and B2 cut 6 beds; B0 cuts 4, because it had left beds empty and so carried fewer holders into the shock. That is consistent with Log #41, whose forced cut of 6 holds for allocations that fill every bed they can. Shock-cut severity is 0 for **all three** baselines, because they all cut with the same hospital-wide lowest-level-first rule. The probe therefore tests whether the agent follows the cut rule under pressure, which is its purpose.
+6. **Fairness stays secondary (owner decision §11 #25).** B1 vs B2 on L1 dispersion flips between seeds (6.1 vs 2.0 pp on seed 07, 5.5 vs 10.6 pp on seed 08), and dispersion can be gamed by equalising overflow. Promoting it because it is the only place the agent could win would be metric selection driven by the hoped-for result. It is always reported next to A1 and A3.
+7. **Seed 09 cannot discriminate between B1 and B2 on bed metrics.** Its census peaks at 95 against a pool of 96, so neither has any bed overflow. This must be stated wherever robustness results are reported.
+8. **Rounding floor:** the lexicographic floor differs from the joint floor on 0–2 days per dataset (Log #47, confirmed by the owner).
 
 ## 9. Reporting LLM Variability
 

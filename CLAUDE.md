@@ -28,14 +28,14 @@ hospital_resource_allocations/
 ├── uv.lock
 ├── .gitignore
 ├── .gitattributes                 keeps data and configs byte-exact (no line-ending conversion)
-├── .mcp.json                      (planned) orchestration server only (main session)
+├── .mcp.json                      orchestration server only (main session)
 │
 ├── .claude/
 │   ├── run-settings.json          deny rules for run sessions only
-│   └── agents/                    (planned) agent definitions
-│       ├── dispatcher.md          (planned) restricted main session for runs (--agent)
-│       ├── allocator.md           (planned) defines the ALLOCATOR role server inline
-│       └── checker.md             (planned) defines the CHECKER role server inline
+│   └── agents/                    agent definitions
+│       ├── dispatcher.md          restricted main session for runs (--agent)
+│       ├── allocator.md           ALLOCATOR prompt (draft, pending owner review); defines its role server inline
+│       └── checker.md             CHECKER prompt (draft, pending owner review); defines its role server inline
 │
 ├── docs/
 │   ├── PROJECT_OVERVIEW.md
@@ -56,8 +56,8 @@ hospital_resource_allocations/
 │   ├── data_generation/           stochastic generator, data validation, statistics, Monte Carlo
 │   │   └── configs/               template generation and environment configs
 │   ├── environment/               deterministic rules shared by server and baselines
-│   ├── mcp_server/                (planned) MCP tool layer, state machine, role instances
-│   ├── agent/                     agent prompts and dispatch templates
+│   ├── mcp_server/                MCP tool layer, state machine, record store, ANALYZER, run init, smoke fixture
+│   ├── agent/                     fixed dispatch templates (the prompts live in .claude/agents/)
 │   ├── evaluation/                deterministic audit, metrics, baselines, baseline runner (python -m src.evaluation)
 │   └── utils/
 │
@@ -67,7 +67,7 @@ hospital_resource_allocations/
 │   └── visualizations/
 │
 ├── tests/
-│   └── manual/                    checks that need the claude CLI (run-settings verification)
+│   └── manual/                    checks that need the claude CLI (run-settings verification, smoke test)
 │
 └── notebooks/
 ```

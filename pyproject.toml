@@ -5,6 +5,7 @@ description = "Hospital Resource Allocation Agent: synthetic data, deterministic
 requires-python = ">=3.12"
 dependencies = [
     "matplotlib>=3.11.2",
+    "mcp>=2.3,<3",
     "numpy>=2.0",
     "pandas>=2.2",
 ]

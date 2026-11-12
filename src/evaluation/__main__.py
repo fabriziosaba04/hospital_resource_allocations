@@ -38,7 +38,8 @@ def rows(m: dict) -> dict:
         r[f"A3 tier {j} excess"] = (t["excess"], 0)
         r[f"A3 tier {j} avoid"] = (t["avoid"], 0)
         r[f"A3 tier {j} path"] = (t["path"], 0)
-    r["E bed reversals W3"] = (e["beds"]["reversals"]["W3"], 0)
+    r["E bed reversals W3 (all)"] = (e["beds"]["reversals"]["W3"], 0)
+    r["E bed reversals W3 (occupied)"] = (e["beds"]["occupied_reversals"]["W3"], 0)
     for k in (1, 2, 3):
         r[f"B1 dispersion L{k} (pp)"] = (m["B1"][f"L{k}"]["dispersion_pp"], None)
         r[f"B2 F1 inversions L{k}"] = (m["B2"][f"L{k}"]["count"], 0)

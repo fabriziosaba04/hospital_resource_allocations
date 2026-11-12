@@ -14,7 +14,7 @@ import pytest
 from src.environment.validator import validate
 from src.evaluation.audit import audit_run, own_hard_constraints
 from src.evaluation.dataset import load_dataset
-from src.evaluation.metrics import compute_metrics, reversals
+from src.evaluation.metrics import compute_metrics, occupied_reversals, reversals
 from src.evaluation.runner import run_baseline
 from src.utils.constants import DEPARTMENTS
 
@@ -110,3 +110,14 @@ def test_reversal_matching_by_hand():
     assert reversals([3, 0, 0, 0, -3], 3) == 0              # outside the window
     assert reversals([2, -1, -1, 1], 3) == 2                # +2 matched by the two -1s; the final +1 finds nothing left
     assert reversals([0, 0, 0], 3) == 0
+
+
+def test_occupied_reversals_worked_example():
+    """EVALUATION_PLAN.md §3.8 worked example: Cardiology +3 on day 14, -3 on day 16 (Orthopedics the mirror).
+    Days are re-indexed 1..3 here. Cardiology's idle beds: 1 on the gain day, 2 on the day after."""
+    cardiology, orthopedics = [3, 0, -3], [-3, 0, 3]
+    assert reversals(cardiology, 3) + reversals(orthopedics, 3) == 6          # all reversals, both sides
+    assert occupied_reversals(cardiology, [1, 2, 0], 3) == 2                 # at least 3 - 1 gained beds were used
+    assert occupied_reversals(orthopedics, [5, 5, 5], 3) == 0                # loss-then-gain: not the receiving side
+    assert occupied_reversals(cardiology, [3, 4, 0], 3) == 0                 # all three gained beds may have stayed empty
+

@@ -208,6 +208,11 @@
     "beds": {
       "RS_total": 0.0,
       "frequency_days": 0,
+      "occupied_reversals": {
+        "W2": 0,
+        "W3": 0,
+        "W5": 0
+      },
       "reversals": {
         "W2": 0,
         "W3": 0,
