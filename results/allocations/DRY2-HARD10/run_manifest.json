@@ -1,0 +1,15 @@
+{
+  "run_id": "DRY2-HARD10",
+  "dataset_id": "HARD10",
+  "data_root": "C:\\Users\\bissi\\OneDrive\\Documenti\\UNI_LAVORO\\MAGISTRALE\\1st_year\\Business_Analytics\\Individual_Project\\hospital_resource_allocations\\results\\dry_runs\\HARD10_fixture",
+  "eval_dir": "C:\\Users\\bissi\\OneDrive\\Documenti\\UNI_LAVORO\\MAGISTRALE\\1st_year\\Business_Analytics\\Individual_Project\\hospital_resource_allocations\\results\\evaluations\\DRY2-HARD10",
+  "retry_limit": 3,
+  "horizon": 10,
+  "expose_violation_labels": false,
+  "models": {
+    "main": "claude-sonnet-5-5",
+    "subagents": "claude-sonnet-5-5"
+  },
+  "code_version": "81c2cf423419f89182b3fddd885c2c7728291868",
+  "started_at": "2026-11-14T15:37:39+00:00"
+}

@@ -226,3 +226,17 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **Implication:** a dry run proves only what its data make happen. A fixture meant to test detection must contain the cases to be detected. A harder synthetic fixture (more pressure, a forced cut) is the obvious remedy; it stays within the prompt development rule (§11 #34), because it is synthetic.
 - **Decisions Log:** —.
 
+### R30. Pooled CHECKER recall was reported as the headline (assistant reporting error)
+
+- **What happened:** the DRY1 report led with pooled CHECKER-versus-audit figures (recall 0.43, precision 1.0). All 7 audit issues were Minor reversals. A pooled figure weights every issue equally, so on a real run, where reversals are numerous, it would mostly measure reversal bookkeeping. It would hide how the CHECKER does on the clinical and hard-constraint types that carry the headline metrics.
+- **How it was caught:** the owner's review of DRY1 (2026-11-14).
+- **Implication:** an aggregate over heterogeneous issue types inherits the mix of the most frequent type. Verification figures must be stratified by type, by severity, and by the group the evaluation cares about.
+- **Decisions Log:** owner decision §11 #37; Log #86.
+
+### R31. The forced cut in the hard fixture cannot be guaranteed independently of the policy
+
+- **What happened:** the hard fixture was meant to "guarantee a forced shock cut". Whether holders outnumber the pool on day 8 depends on how many beds were filled on day 7, which is an allocation outcome. Under B0, which leaves beds idle in departments without waiting patients, day 8 is never a shock day, even with the bed pool cut from 20 to 11. The first draft of the fixture also gave only empty-bed pairs, with no L3-vs-L1 or L2-vs-L1 displaced pair.
+- **How it was caught:** probing the draft fixture under B0–B2 before writing the test.
+- **Implication:** a fixture can guarantee data conditions, not decisions. The test therefore states the cut guarantee as a bound: any allocation that fills every bed on day 7 leaves 13 holders for 11 beds. It also shows the shock day under B1 and B2. If the ALLOCATOR leaves beds idle on day 7, DRY2 may not exercise the cut, and the report must say so. *Outcome (DRY2):* the cut was exercised (20 beds filled on day 7, 3 beds cut on day 8). But the ALLOCATOR avoided every bed conflict the fixture offered, so the CHECKER's bed-violation detection is still untested on positives; this is an open question for the owner.
+- **Decisions Log:** #88.
+
