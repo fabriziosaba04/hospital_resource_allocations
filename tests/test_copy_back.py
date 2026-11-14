@@ -89,3 +89,11 @@ def test_launcher_refuses_synced_folders(tmp_path, monkeypatch):
     clean.mkdir(parents=True)
     (clean / "run_manifest.json").write_text(json.dumps({"dataset_id": "seed20261107"}), encoding="utf-8")
     assert launch.guard(Store(clean, clean)) is None
+
+
+def test_launcher_counts_refused_subagent_spawns():
+    """Log #94: a run whose role server did not connect must not look like a clean launch."""
+    line = json.dumps({"type": "user", "message": {"content": [{"type": "tool_result", "content":
+            "Agent 'allocator' would be spawned with zero tools — refusing."}]}})
+    assert launch.spawn_refusals([line, line, "{}"]) == 2
+    assert launch.spawn_refusals(["{}"]) == 0

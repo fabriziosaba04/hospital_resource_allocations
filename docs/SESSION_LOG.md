@@ -370,3 +370,64 @@ No change and no relaunch guard (owner decision §11 #49).
 2. **Animation flows.** Show only net gains and losses per department (recommended, nothing invented), or add a fixed, disclosed rule that decomposes each day's changes into department-to-department flows?
 3. **Dry runs after the guard.** Is `--allow-synced-folder` for synthetic fixtures acceptable, or should every launch, dry runs included, go through a clone? *Recommendation:* keep the flag. Synthetic runs carry no evaluation weight, and the flag is refused for frozen data in code.
 4. **Tag.** With bed detection passing on B2-HARD10 and no prompt change, may I tag `prompts-v1.0` at the start of the next session, after the full pre-R1 checks in the clone?
+
+---
+
+## 2026-11-14 (third session: B1 nurse gap, explanation-claim protocol, clone)
+
+Started 17:37. Commits: `7134ff7` (B1 and §11 #50–#53), `3517c47` (Point A), and the session-close commit. **No tag; no run on frozen data; prompts unchanged.** Stopped before the tag for two reasons: the extractor for the claim protocol is still open, and the first launch from the clone exposed an infrastructure fault (R37).
+
+### Achieved
+
+1. **Q1, B1 on nurses** (§11 #50, R35). B1's nurse rule matches PROJECT_SPEC §6 (B1 "Nurses" steps 1–3); B1 is not changed. Its A2 gap to the optimum on the frozen seeds:
+
+   | Dataset | Tier 3 | Tier 2 (days > 0) | Tier 1 (days > 0) | Tier-2 gap / need |
+   | --- | --- | --- | --- | --- |
+   | seed20261107 | 0 | 1.05 (26, 30) | 1.2 (16, 26, 30) | 0.11% |
+   | seed20261108 | 0 | 2.3 (19, 23, 24, 27, 28) | 1.85 (4, 6, 12, 19, 27) | 0.22% |
+   | seed20261109 | 0 | 0 | 0.45 (21) | 0% |
+   | HARD10 (synthetic) | 1.2 (2.1%) | 1.2 | 0.75 | 1.41% |
+
+   "Near-optimal" is kept only for A2 on the frozen seeds. Elsewhere the wording is "optimal on A1 by construction, greedy on nurses with a measured gap of X". On the primary seed the A2 headroom below B1 is at most 1.05 need units at tier 2 and 1.2 at tier 1.
+2. **Q2–Q4 recorded** (§11 #51–#53): the animation shows net changes only, with the limit stated in the caption; `--allow-synced-folder` stays; the tag conditions are recorded.
+3. **Point A, explanation claims: option (b), protocol in `EVALUATION_PLAN.md` §4** (§11 #54, Log #93).
+   - **Why not (a):** structured fields would change the agent's output, and would capture figures copied from the what-if. All three wrong claims found in DRY2 are derived figures.
+   - **DRY2 fully extracted, independent of the CHECKER:** 445 universe claims in 10 days (30–55 per day).
+     - The ALLOCATOR: 442 correct, 3 wrong, 0 unverifiable.
+     - The CHECKER: caught 2/3 wrong claims, precision 2/3, 1 wrong dispute; it missed D7-58 ("its spare bed was empty").
+   - Day 7 was also extracted in all categories (77 claims) to size the out-of-universe share.
+   - **Effort for R1 at primary scale:** 1,350–1,800 claims, about 22–30 person-hours.
+   - **Scope pre-registered:** R1 complete; R2–R3 optional, each complete if done.
+4. **Prompt diff:** `allocator.md`, `checker.md`, `dispatcher.md` and `.claude/run-settings.json` are byte-identical to DRY2's commit `81c2cf4` (SHA-256 compared).
+5. **Clone** `C:\hra-runs\hospital_resource_allocations` at `3517c47`: `uv sync`; manifest OK; the guard sees no synced folder; full suite 163 passed.
+6. **Usage-cutoff resume path:**
+   - **Records:** each write is atomic and idempotent and the state is rebuilt from the records (Log #80), so a client session cut by a usage limit leaves the server consistent. A relaunch resumes from `get_workflow_status`. A day whose ALLOCATOR was cut is re-dispatched with a fresh subagent; attempts and the retry limit carry over from the records.
+   - **Report:** this exposed a gap in how the report maps work to days (R36), fixed in Log #92.
+   - **Not yet shown live:** an end-to-end two-launch resume. The test in the clone is where R37 appeared.
+7. **R37, infrastructure fault in the clone:**
+   - **What failed:** the ALLOCATOR's inline role server did not start, so the spawn was refused ("zero tools").
+   - **Likely cause (inferred):** the clone was never trusted by Claude Code, while the OneDrive folder is.
+   - **The dispatcher behaved correctly:** it stopped and did not apply the repair rule.
+   - **The launcher reported success.** It now flags refused spawns and exits 1 unless the run is FINISHED (Log #94).
+   - **The run procedure** now requires opening the clone once with `claude`, starting R-runs from a fresh shell, and starting at a fresh usage window.
+
+### State
+
+- **Tests:** affected tests during work; fast suite 150 passed at `3517c47`; full suite at close (see the report). In the clone: full suite 163 passed, manifest OK.
+- **New REFLECTION_LOG entries:** R35 (B1 framing), R36 (report day mapping after a cutoff), R37 (clone trust fault and false success).
+- **Clone:** DRY3-RESUME (synthetic SMOKE5) is stalled on day 1, and the clone's ACTIVE_RUN points at it. It is the resume test, to be relaunched once the clone is trusted.
+- The repository has no ACTIVE_RUN pointer.
+
+### Next session
+
+1. **Owner:** open the clone once (`cd C:\hra-runs\hospital_resource_allocations`, then `claude`, accept the trust prompt, `/exit`), and answer the questions below.
+2. In the clone: `git pull`, then relaunch DRY3-RESUME. It must finish across two launches with consistent records and correct day attribution. If the ALLOCATOR still gets zero tools, the trust hypothesis is wrong; stop and diagnose.
+3. Bring DRY3-RESUME back with `copy_back` (the live copy-back test).
+4. Pre-R1 checks in the clone on the final commit: `verify_run_settings.py`, smoke test, full suite, manifest. Prompt diff again. Then tag `prompts-v1.0`.
+5. R1 only at the start of a fresh usage window; otherwise stop after the tag.
+
+### Open questions for the owner
+
+1. **Extractor for the claim protocol.** 22–30 person-hours for R1 is likely too much before 30 November. *Recommendation:* the assistant extracts after R1, following the rubric. You independently extract days 3, 8 and 18 (pre-registered with seed 20261114), and agreement is reported. The universe is then labelled LLM-assisted; recomputation stays deterministic. Alternatively you extract everything.
+2. **Trust the clone** (step 1 above). It changes your Claude Code configuration, so I have not done it for you.
+3. **Rubric strictness.** D7-58 ("its spare bed was empty") is wrong only under the strict reading of *empty* (the bed was free, not held, and would have gone to a waiting patient). Keep the strict wording rule (recommended: it is pre-registered and mechanical), or score *spare* and *empty* as synonyms?

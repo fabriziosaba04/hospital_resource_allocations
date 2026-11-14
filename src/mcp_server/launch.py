@@ -91,6 +91,15 @@ def guard(store: Store, allow_synced: bool = False) -> str | None:
                      + ("" if not allow_synced else " --allow-synced-folder is for synthetic fixtures only."))
 
 
+SPAWN_REFUSAL = "would be spawned with zero tools"
+
+
+def spawn_refusals(transcript_lines: list[str]) -> int:
+    """Subagent spawns refused because the role's tools did not resolve (Log #94): the role server did not
+    connect, for example in a folder Claude Code has not trusted."""
+    return sum(line.count(SPAWN_REFUSAL) for line in transcript_lines)
+
+
 def launch(store: Store, max_turns: int = 2000, synced: str | None = None) -> dict:
     m = store.manifest()
     model = m["models"]["main"]
@@ -118,6 +127,7 @@ def launch(store: Store, max_turns: int = 2000, synced: str | None = None) -> di
            "exit_code": proc.returncode, "expected_models": expected, "observed": obs,
            "models_match": obs["all_used"] == expected and obs["main_session"] == [model],
            "synced_folder": synced, "state_after": store.read_state(), "consistency_problems": check(store),
+           "spawn_refusals": spawn_refusals(lines),
            "stderr_tail": stderr[-1500:]}
     with open(store.alloc_dir / "launches.jsonl", "a", encoding="utf-8", newline="\n") as f:
         f.write(json.dumps(rec) + "\n")
@@ -131,7 +141,14 @@ def main() -> int:
     print(json.dumps({k: rec[k] for k in ("launch", "exit_code", "duration_s", "models_match",
                                           "consistency_problems")}, indent=2))
     print("state:", rec["state_after"]["phase"], "day", rec["state_after"]["day"])
-    return 0 if rec["exit_code"] == 0 and not rec["consistency_problems"] else 1
+    finished = rec["state_after"]["phase"] == "FINISHED"
+    if rec["spawn_refusals"]:
+        print(f"ERROR: {rec['spawn_refusals']} subagent spawn(s) refused: a role server did not connect. Is this "
+              "folder trusted by Claude Code (open it once with `claude` and accept)? Do not relaunch until fixed.")
+    elif not finished:
+        print("WARNING: the run is not finished. Relaunch with the same command to resume, after checking why "
+              "the session stopped (usage limit, error) in the last transcript.")
+    return 0 if rec["exit_code"] == 0 and not rec["consistency_problems"] and finished else 1
 
 
 if __name__ == "__main__":

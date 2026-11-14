@@ -13,7 +13,7 @@ This document specifies **how** those are implemented, and does not restate them
 
 ## 0. Current Status and Next Step
 
-*Last updated 2026-11-14 (end of the second session). A new session should read this section first, then the latest entry of [`docs/SESSION_LOG.md`](SESSION_LOG.md) (2026-11-14), then `CLAUDE.md`, `AGENTS.md` and `docs/REFLECTION_LOG.md`. This section is meant to be enough to resume from the repository alone.*
+*Last updated 2026-11-14 (end of the third session). A new session should read this section first, then the latest entry of [`docs/SESSION_LOG.md`](SESSION_LOG.md) (2026-11-14), then `CLAUDE.md`, `AGENTS.md` and `docs/REFLECTION_LOG.md`. This section is meant to be enough to resume from the repository alone.*
 
 ### Timeline
 
@@ -29,8 +29,11 @@ uv run pytest -q                                               # fast suite (slo
 uv run python -m src.data_generation.manifest --verify         # expect "manifest OK" (add --regenerate for a byte-exact rebuild)
 git log --oneline --decorate                                   # expect tag data-v1.0 on 42b39ed, with later commits on top
 # a run (R1 and later; only after the tag prompts-v1.0 exists):
+# R-runs: from a clone outside OneDrive (Log #90), opened once with `claude` so the folder is trusted (R37),
+# from a fresh shell, at the start of a fresh usage window (owner decision §11 #53)
 uv run python -m src.mcp_server.init_run --dataset seed20261107 --run-id R1   # manifest check, run dir, ACTIVE_RUN
-uv run python -m src.mcp_server.launch                                         # the run session; re-run the same command to resume
+uv run python -m src.mcp_server.launch                                         # exits 1 unless FINISHED; re-run to resume
+uv run python -m src.mcp_server.copy_back C:/hra-runs/hospital_resource_allocations R1   # in the OneDrive repo
 uv run python -m src.evaluation.run_report R1                                  # per-day table, CHECKER matching, cost
 ```
 
@@ -60,7 +63,7 @@ uv run python -m src.evaluation.run_report R1                                  #
 | Prompts | ALLOCATOR and CHECKER prompts reviewed by the owner and edited (§11 #30, #35). **Not frozen**: the owner reviews the dry run first. The CHECKER's deterministic definitions match the audit's (Log #84) | `.claude/agents/` |
 | Run model and launcher | `claude-sonnet-5-5` for all three roles, in `.claude/run-settings.json`, recorded in `run_manifest.json` (§11 #31, Log #77). One launch command for the dry run and R1–R3: `python -m src.mcp_server.launch` (Log #78) | `.claude/run-settings.json`; `src/mcp_server/launch.py` |
 | Dry runs | **DRY1-SMOKE5** (2026-11-12; review applied 2026-11-14, §11 #36–#41). **DRY2-HARD10** (2026-11-14), hard 10-day fixture: finished, consistent, models as configured, every decision accepted on the first attempt, $1.64 and 628 s. No bed or F1 issue; correct forced cut on day 8; 4 Moderate nurse gaps. CHECKER headline group 4/4 (all `nurse_gap`), secondary 9/11. **Awaiting the owner's review** | `SESSION_LOG.md` 2026-11-14; `results/evaluations/DRY2-HARD10/run_report.json` |
-| Documentation | Decisions Log #1–91, owner decisions §11 #1–49, reflection log R1–R34, session log from 2026-11-12 | `docs/` |
+| Documentation | Decisions Log #1–94, owner decisions §11 #1–54, reflection log R1–R37, session log from 2026-11-12 | `docs/` |
 
 **Key data facts (primary seed, approved schedule):**
 
@@ -71,7 +74,7 @@ uv run python -m src.evaluation.run_report R1                                  #
 
 ### Still open (owner decisions pending)
 
-See the open questions in the latest `SESSION_LOG.md` entry (2026-11-14, second session). The DRY2 review was applied the same day (§11 #42–#49): grouping, date-shift count, claim-by-claim protocol, clone procedure with a synced-folder guard, CHECKER-only test on B2-HARD10 (bed detection 3/3, F1 2/2), figure plan. Open: permission to tag `prompts-v1.0`; the animation's flow rule; how the nurse-gap result on HARD10 is described.
+See the open questions in the latest `SESSION_LOG.md` entry (2026-11-14, second session). The DRY2 review was applied the same day (§11 #42–#49): grouping, date-shift count, claim-by-claim protocol, clone procedure with a synced-folder guard, CHECKER-only test on B2-HARD10 (bed detection 3/3, F1 2/2), figure plan. Third session: B1's nurse gap measured (§11 #50), claim protocol (b) pre-registered (§11 #54), clone set up; the first clone launch exposed a trust fault (R37). Open: the claim extractor, trusting the clone, rubric strictness; then the pre-R1 checks in the clone and the tag.
 
 Metric formulas, the CHECKER severity scale and the headline set are **fixed** (§11 #16–#28), all before any agent output on frozen data.
 
@@ -421,6 +424,7 @@ The rules are in `CLAUDE.md` §9.1. This is the setup:
 | 91 | 2026-11-14 | **Claim checker and figures.** `src/evaluation/claim_check.py` scores a hand-written claim specification (`<eval>/explanation_claims_spec.json`: one atomic claim per figure or assertion, its author, the day, the allocation, the quantity and the relation) by recomputing each quantity with the what-if engine on the day's state rebuilt from the records. `src/evaluation/figures.py` draws F1–F6 from the records (metrics recomputed into a temporary folder) and holds the record-field check (`daily_frame`, `check_frame`). Kept in `src/evaluation/` (no new directory, `CLAUDE.md` §0). Palette: slots 1–4 of the dataviz skill's reference palette, taken as documented because Node.js is not installed to run its validator | A new `src/visualization/` | No structure change without the owner's approval |
 | 92 | 2026-11-14 | **Run report across launches:** each subagent invocation is attributed to the day reported by the last orchestration tool result before it (status JSON), not to a count of `advance_day` calls, and launches are ordered numerically (`launch-10` after `launch-9`). A usage-limit cutoff that loses a tool result therefore no longer shifts later days. Tested with a synthetic two-launch transcript; DRY2 and CHK-B2 reports unchanged | Count `advance_day` results | A lost tool result would shift every later day |
 | 93 | 2026-11-14 | **Claim checker extended** for the full-universe protocol: day quantities (pools, free beds, occupied beds by tier, waiting patients, nursing need, N1 requirement, arrival means, patient attributes), allocation quantities (beds, nurses, shortage, patient in bed, holders cut), the `round` and `eq_alloc` relations, claim categories, and CHECKER metrics on the universe (`checker_on_claims`). DRY2 fully extracted: 445 universe claims (`make_full_claims.py`; day 7 also with all categories, 77 claims, in `make_day7_claims.py`). The extractor for R1 is an open question for the owner | Structured explanation fields (option (a)) | (a) changes the agent's output and would capture copied figures, while every wrong claim found so far was derived |
+| 94 | 2026-11-14 | **Launcher outcome:** the launch record counts refused subagent spawns ("would be spawned with zero tools": a role server did not connect), and `launch` exits 1 unless the run is FINISHED, consistent and exited 0. It prints an error for refusals (do not relaunch until fixed) and a resume hint for an unfinished run. Found when the first launch in the clone stalled on day 1 with exit 0 and "consistent" (REFLECTION_LOG R37) | Exit code of `claude` only | A stalled run looked like a clean launch |
 
 ## 10. Approved Parameter Set
 

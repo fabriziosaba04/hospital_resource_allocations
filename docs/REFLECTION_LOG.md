@@ -268,3 +268,19 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **Outcome:** on the frozen seeds B1 is optimal at tier 3 and within 0.22% of tier-2 need, so the framing holds there with a measured gap. But it is a measured property of these data, not a property of B1. B1 rounds up to whole nurses per department, which costs more when departments are small.
 - **Implication:** a framing word like "near-optimal" is a claim and needs a number and a scope. The fixture built to test the CHECKER also tested the framing, before any agent output on frozen data.
 - **Decisions Log:** owner decision §11 #50.
+
+### R36. The run report would have shifted every day after a usage-limit cutoff
+
+- **What happened:** the run report attributed each subagent invocation to a day by counting successful `advance_day` results across all launch transcripts. If a session is cut off after the server applies `advance_day` but before the result reaches the transcript, which is plausible for a usage-limit cutoff, every later day's tokens, tool calls and timings would be credited to the previous day. Launches were also sorted as text, so `launch-10` would come before `launch-2`.
+- **How it was caught:** checking the resume path for usage cutoffs (owner's note on cost, 2026-11-14) by reading `transcript_stats`.
+- **Fix:** each invocation takes the day reported by the last orchestration tool result before it, and launches sort numerically (Log #92). A synthetic two-launch transcript test covers both.
+- **Implication:** the resume tests proved that the records survive an interruption, but not that the *reports* do. Every derived output needs its own interruption check.
+- **Decisions Log:** #92.
+
+### R37. In a fresh clone the role servers did not start, and the launch still reported success
+
+- **What happened:** the first dry run launched from the clone outside OneDrive (`C:\hra-runs\…`, DRY3-RESUME on the synthetic SMOKE5 fixture) stopped on day 1. The Agent tool refused to spawn the ALLOCATOR: "would be spawned with zero tools … `mcp__allocator__*` matched no tools". The orchestration server, configured in `.mcp.json` and enabled by the run settings, connected. The allocator's inline server, defined in its agent frontmatter, did not, although the same server started and answered an MCP handshake when run by hand in the clone. The OneDrive folder has `hasTrustDialogAccepted: true` in the Claude Code configuration; the clone has no entry. **Inferred cause (not verified against documentation):** Claude Code does not start a subagent's inline MCP servers in a folder that has never been trusted. The dispatcher behaved correctly: it did not call `end_allocation_phase`, which would have applied the repair rule, and it stopped with an explanation. **But the launcher recorded exit 0 and "consistent"**, so the stalled run looked clean.
+- **How it was caught:** the resume test in the clone, run before any R-run, on synthetic data.
+- **Fix:** the launcher counts refused spawns and exits 1 unless the run is FINISHED (Log #94). The run procedure now requires opening the clone once with `claude` and accepting the trust prompt. Confirming the cause needs that step, then a relaunch.
+- **Implication:** the clone procedure was tested for paths and copy-back, but not for Claude Code's per-folder state. The pre-R1 smoke test would have caught it (it checks that both role servers connect), which is why it is a condition of the tag. "Exit 0" must never stand for "the run finished".
+- **Decisions Log:** #94.
