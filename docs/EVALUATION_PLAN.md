@@ -202,14 +202,49 @@ Nurse issues are graded by the **highest tier with a positive net gap**, not by 
 7. **Date-shift count, descriptive (owner decision §11 #45).** Exact day matching stays the primary rule. Next to the primary figures, and never instead of them, the report gives the number of **matches with the correct type and departments but a date off by 1–2 days**. These are counted among the issues the primary rule leaves unmatched; the audit issue's departments must all be named in the CHECKER issue's text, and types without departments compare on type only (`checker_matching.date_shift_matches`). The count does not identify the cause of the shift: in DRY2 both shifted items came from reusing reversal units already matched, not from dating (REFLECTION_LOG R32).
 8. **Reversal matching measures reading, not discovery (owner decision §11 #46).** The CHECKER receives the reference allocation and τ computed exactly as the audit computes them (§11 #36). Reversal recall therefore measures whether it reads τ and applies the matching rule correctly, not whether it discovers anything. This is stated next to every reversal figure (`LIMITATIONS_AND_REFLECTION.md` §6).
 
-**Explanation findings: claim-by-claim verification (owner decision §11 #48, fixed before `prompts-v1.0`).** The CHECKER's LLM-only findings (`explanation_inaccuracy`, `information_leak`, `inconsistency`, `other`) are scored **claim by claim, not finding by finding**:
+**Explanation claims: pre-registered protocol (owner decisions §11 #48 and #54, fixed before `prompts-v1.0`).** Explanation accuracy is measured on the **full universe of verifiable claims**, independent of what the CHECKER raised. Scoring only the claims inside CHECKER findings would say nothing about the ALLOCATOR's accuracy, and would make CHECKER recall on explanation errors uncomputable.
 
-1. Each finding is split into atomic claims, and each claim is attributed to the ALLOCATOR's explanation it quotes or to the CHECKER's own assertion. Example: an explanation statement with two numbers gives one claim per number, plus one claim for each CHECKER statement about them.
-2. Each claim is scored **correct**, **wrong** or **unverifiable** against the records.
-3. **A numeric claim is verified by a script** that recomputes the quantity with the what-if engine on that day's state (`src/evaluation/claim_check.py`), never by reading. Non-numeric claims are checked against the records and the check is quoted.
-4. The report gives the counts per category for ALLOCATOR claims and for CHECKER claims separately. A finding counts as *valid* only if the ALLOCATOR claim it disputes is wrong. A wrong CHECKER claim is reported as a CHECKER error, even inside a valid finding.
+1. **Universe.** Every verifiable numeric claim in every ALLOCATOR explanation (all six fields) of the run, in these categories:
+   - **pool:** bed and nurse pools, and free beds (pool minus occupied);
+   - **beds:** beds and nurses allocated, in effect or proposed, and occupied beds;
+   - **empty_beds:** empty beds;
+   - **overflow:** overflow and waiting patients by tier, including a named patient in or out of a bed;
+   - **nurse_coverage:** nursing need, coverage and shortage by tier.
 
-DRY2's two findings are the first test case (`tests/test_claim_check.py`). Within a (day, type) key the pairing is the approved one (both sides sorted most severe first, paired in order), so when the CHECKER reports fewer issues than the audit under a key, the matched audit issues are taken to be its most severe ones; this is stated with the results (`src/evaluation/checker_matching.py`).
+   Census by tier, the N1 requirement, arrival rates and patient attributes are outside the universe. They may be scored, but they are reported separately.
+2. **Extraction rubric** (free text; the explanations are not changed):
+   - **One figure is one claim.** A comparison with a named alternative ("the same overflow", "no better", "higher") is one claim. A figure repeated in another field is extracted once.
+   - **Allocations the ALLOCATOR proposes are definitions, not claims.** Its statements of the allocation in effect, and of the outcomes of an alternative, are claims.
+   - **Department order** in "a/b/c/d" is the order the ALLOCATOR states or consistently uses (in DRY2: cardiology / internal medicine / neurology / orthopedics). If it cannot be established, the claim is *unverifiable*.
+   - **Time reference:**
+     - situation and queue figures refer to the day before the decision;
+     - an alternative's outcomes refer to that alternative applied to the day;
+     - a past-tense statement refers to the end of the previous day.
+   - **Strict wording:** *empty* means no patient after assignment. *Free* or *spare (not held)* means beds minus occupied. *Covered* means shortage 0, unless a coverage amount is stated.
+   - **Tolerance:**
+     - counts are exact (tolerance 0);
+     - a stated decimal is compared at its own precision ("about 2.7" is correct for 2.65 ≤ x < 2.75);
+     - a range is correct if the value lies inside it.
+   - **Unverifiable:** a vague qualifier ("nearly", "most"), an ambiguous referent, or an alternative that fails validation. These are counted but excluded from the accuracy denominator.
+3. **Recomputation by script.** Each claim is written as one entry of `<eval>/explanation_claims_spec.json` (author, field, quoted text, day, allocation, quantity, relation, value, category). `src/evaluation/claim_check.py` recomputes every quantity with the what-if engine on that day's state rebuilt from the records. **No claim is scored by reading.** The CHECKER's explanation findings are mapped in the same file (`disputed_by_checker`) to the claim ids they contest.
+4. **Metrics:**
+   - **ALLOCATOR claim accuracy:** correct, wrong and unverifiable counts, overall and by category, written as counts.
+   - **CHECKER on explanation errors:** recall = wrong claims it contested / all wrong claims; precision = wrong claims it contested / all claims it contested.
+   - **CHECKER wrong disputes**, counted separately: correct claims it contested. Disputes of claims outside the universe are listed apart.
+5. **Scope (pre-registered now, before any agent output on frozen data).**
+   - **R1 is scored completely** (all 30 days).
+   - **R2 and R3 are optional.** If done, each is scored completely, never on a subset chosen after seeing it.
+   - The stress run is not scored.
+6. **Effort estimate.**
+   - **DRY2 calibration:** 445 universe claims in 10 days, 30–55 per day.
+   - **R1 at primary scale:** about 45–60 per day, so **1,350–1,800 claims**.
+   - **Hours:** with the encoding helpers used for DRY2 (`results/evaluations/DRY2-HARD10/make_full_claims.py`), about 1 minute per claim for a person, so **22–30 hours** for R1.
+7. **Extractor (open question for the owner, Log #93).** Proposal: the assistant extracts in a development session after R1, following this rubric. The owner independently extracts **days 3, 8 and 18** (drawn with `random.Random(20261114)`, pre-registered here), and the report gives the agreement: claims found by one extractor only, and verdict disagreements. The recomputation is deterministic either way. With the assistant as extractor, the claim universe is LLM-assisted and is labelled so (§3.9).
+
+**Calibration on DRY2** (`tests/test_claim_check.py`, `explanation_claims_full_spec.json`):
+- **The ALLOCATOR:** 442 correct, 3 wrong, 0 unverifiable. **All three wrong claims are derived figures, not figures copied from a what-if:** "4 empty beds" (really 5), "no better" (6.0 against 5.6 need covered), and "its spare bed was empty" (the bed was free, not empty).
+- **The CHECKER:** caught 2/3 wrong claims, with precision 2/3. It made 1 wrong dispute (it contested the correct "5 level-3 overflow") and missed D7-58.
+- The first finding-level test case (DRY2's two flagged findings, scored claim by claim) is kept in the same test file. Within a (day, type) key the pairing is the approved one (both sides sorted most severe first, paired in order), so when the CHECKER reports fewer issues than the audit under a key, the matched audit issues are taken to be its most severe ones; this is stated with the results (`src/evaluation/checker_matching.py`).
 
 **Examples:**
 

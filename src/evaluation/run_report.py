@@ -25,7 +25,9 @@ AGENT = {"Agent", "Task"}
 
 
 def _transcript_events(alloc_dir: Path):
-    for t in sorted((alloc_dir / "transcripts").glob("launch-*.jsonl")):
+    def launch_no(t: Path) -> int:                     # launch-10 after launch-9, not after launch-1
+        return int(t.stem.split("-")[-1])
+    for t in sorted((alloc_dir / "transcripts").glob("launch-*.jsonl"), key=launch_no):
         for line in t.read_text(encoding="utf-8").splitlines():
             try:
                 yield t.name, json.loads(line)
@@ -34,8 +36,10 @@ def _transcript_events(alloc_dir: Path):
 
 
 def transcript_stats(alloc_dir: Path) -> dict:
-    """Maps each subagent invocation to its day (the number of successful advance_day calls before it)."""
-    uses, results, notif, final, inits = {}, {}, {}, {}, []
+    """Maps each subagent invocation to its day: the day reported by the last orchestration tool result before
+    it (get_workflow_status, advance_day, ...), so a launch cut off by a usage limit and resumed in a new launch
+    keeps the right day even if a tool result was lost (Log #92)."""
+    uses, results, notif, final, inits, reported_day = {}, {}, {}, {}, [], {}
     order = []
     for name, ev in _transcript_events(alloc_dir):
         if ev.get("type") == "system" and ev.get("subtype") == "init":
@@ -53,11 +57,21 @@ def transcript_stats(alloc_dir: Path) -> dict:
                 order.append(b["id"])
             elif isinstance(b, dict) and b.get("type") == "tool_result":
                 results[b["tool_use_id"]] = bool(b.get("is_error"))
+                if ev.get("parent_tool_use_id") is None and not b.get("is_error"):
+                    for blk in b.get("content") if isinstance(b.get("content"), list) else []:
+                        try:
+                            obj = json.loads(blk.get("text", ""))
+                        except (json.JSONDecodeError, TypeError, AttributeError):
+                            continue
+                        if isinstance(obj, dict) and isinstance(obj.get("day"), int):
+                            reported_day[b["tool_use_id"]] = obj["day"]
     day, task_day, task_role = 0, {}, {}
     for tid in order:
         u = uses[tid]
         if u["parent"] is None:
-            if u["name"] == "mcp__orchestration__advance_day" and results.get(tid) is False:
+            if tid in reported_day:
+                day = reported_day[tid]
+            elif u["name"] == "mcp__orchestration__advance_day" and results.get(tid) is False:
                 day += 1
             if u["name"] in AGENT:
                 task_day[tid], task_role[tid] = day, u["input"].get("subagent_type")

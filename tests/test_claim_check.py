@@ -20,3 +20,19 @@ def test_dry2_findings_scored_claim_by_claim():
     assert out["summary"] == {"ALLOCATOR": {"correct": 2, "wrong": 2, "unverifiable": 0},
                               "CHECKER": {"correct": 4, "wrong": 1, "unverifiable": 0}}
     assert all(f["finding_valid"] for f in out["findings"].values())
+
+
+def test_full_universe_of_dry2_claims_and_checker_recall():
+    """Owner Point A: every universe claim in every DRY2 explanation, independent of the CHECKER."""
+    from collections import Counter
+    from pathlib import Path
+    spec = Path("results/evaluations/DRY2-HARD10/explanation_claims_full_spec.json")
+    out = score("DRY2-HARD10", spec)
+    assert len(out["claims"]) == 445
+    assert Counter(c["day"] for c in out["claims"]) == {1: 30, 2: 45, 3: 39, 4: 44, 5: 48, 6: 47, 7: 46, 8: 55,
+                                                        9: 47, 10: 44}
+    assert out["summary"]["ALLOCATOR"] == {"correct": 442, "wrong": 3, "unverifiable": 0}
+    assert {c["id"] for c in out["claims"] if c["verdict"] == "wrong"} == {"D2-15", "D2-45", "D7-58"}
+    ch = out["checker_on_claims"]
+    assert (ch["recall"], ch["precision"]) == ("2/3", "2/3")
+    assert ch["wrong_disputes"] == ["D2-14"] and ch["missed"] == ["D7-58"]

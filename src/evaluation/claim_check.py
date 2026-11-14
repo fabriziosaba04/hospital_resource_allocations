@@ -11,8 +11,13 @@ Quantities (summed over `departments`, default all):
   empty_beds             allocated beds minus patients placed in them
   overflow               present patients without a bed, at `levels`
   covered_need           nursing need covered, at `levels` (in need units)
-Relations: eq, ne, le, ge (with `value`); `le_alloc` / `ge_alloc` compare with the same quantity under
-`compare_allocation`.
+Day quantities (no allocation): pool_beds, pool_nurses, max_beds, census, holders, queue, free_beds,
+requirement, mean_arrivals, patient, need. Allocation quantities: beds, nurses, empty_beds, overflow,
+covered_need, shortage, patient_in_bed, holders_cut.
+Relations: eq, ne, le, ge (with `value`; counts are exact, tolerance 0); round (a stated decimal compared at its
+own precision); le_alloc / ge_alloc / eq_alloc compare with the same quantity under `compare_allocation`.
+Each claim may carry a `category`; the pre-registered universe (EVALUATION_PLAN.md §4) is the categories
+beds, empty_beds, overflow, nurse_coverage, pool.
 """
 
 from __future__ import annotations
@@ -55,7 +60,59 @@ def resolve_allocation(rec, spec) -> tuple[dict, dict]:
     return dict(spec["beds"]), dict(spec["nurses"])
 
 
+DAY_QUANTITIES = ("pool_beds", "pool_nurses", "max_beds", "census", "holders", "queue", "free_beds",
+                  "requirement", "mean_arrivals", "patient", "need")
+
+
+def day_quantity(ds, rec, day: int, q: dict):
+    """Quantities of the day's state before the decision (no allocation needed)."""
+    from src.environment.nurses import requirement
+    ctx = day_context(ds, rec, day)
+    deps = q.get("departments", list(DEPARTMENTS))
+    levels = q.get("levels", [1, 2, 3])
+    n = q["name"]
+    if n == "pool_beds":
+        return ctx.pool_beds
+    if n == "pool_nurses":
+        return ctx.pool_nurses
+    if n == "max_beds":
+        return ctx.max_beds
+    if n == "census":
+        return sum(1 for p in ctx.present if p.department in deps and p.complexity in levels)
+    if n == "holders":
+        return sum(1 for p in ctx.holders if p.department in deps and p.complexity in levels)
+    if n == "need":                                      # nursing need (N1 weights), in need units
+        nd = ctx.needs()
+        return sum(Fraction(nd[d][k]) for d in deps for k in levels)
+    if n == "queue":                                     # present patients without a bed held from yesterday
+        return sum(1 for p in ctx.present if p.patient_id not in ctx.holder_ids and p.department in deps
+                   and p.complexity in levels)
+    if n == "free_beds":                                 # pool minus holders
+        return ctx.pool_beds - len(ctx.holders)
+    if n == "requirement":
+        c = ctx.counts()
+        return sum(requirement(c[d][1], c[d][2], c[d][3], ctx.weights) for d in deps)
+    if n == "mean_arrivals":                             # observed arrivals per day over days lo..hi (<= day)
+        lo, hi = q["days"]
+        ids = {}
+        for t in range(1, hi + 1):
+            for p in ds.present(t):
+                ids[p.patient_id] = p
+        arr = sum(1 for p in ids.values() if p.department in deps and lo <= p.arrival_day <= hi)
+        return Fraction(arr, hi - lo + 1)
+    if n == "patient":                                   # 1 if every stated attribute matches the registry
+        p = next((x for x in ctx.present if x.patient_id == q["patient_id"]), None)
+        if p is None:
+            return 0
+        ok = all(getattr(p, {"level": "complexity"}.get(k, k)) == v for k, v in q.items()
+                 if k in ("department", "level", "arrival_day"))
+        return int(ok)
+    return None
+
+
 def quantity(ds, rec, day: int, alloc_spec, q: dict) -> Fraction | int | None:
+    if q["name"] in DAY_QUANTITIES:
+        return day_quantity(ds, rec, day, q)
     beds, nurses = resolve_allocation(rec, alloc_spec)
     ctx = day_context(ds, rec, day)
     res = simulate(beds, nurses, ctx)
@@ -63,6 +120,17 @@ def quantity(ds, rec, day: int, alloc_spec, q: dict) -> Fraction | int | None:
         return None
     deps = q.get("departments", list(DEPARTMENTS))
     levels = q.get("levels", [1, 2, 3])
+    if q["name"] == "beds":
+        return sum(beds[d] for d in deps)
+    if q["name"] == "nurses":
+        return sum(nurses[d] for d in deps)
+    if q["name"] == "shortage":
+        return sum(Fraction(res.shortage[d][k]) for d in deps for k in levels)
+    if q["name"] == "patient_in_bed":
+        return int(q["patient_id"] in res.assignment.in_bed)
+    if q["name"] == "holders_cut":                       # holders who lose their bed (shock cut)
+        return sum(1 for p in ctx.holders if p.patient_id not in res.assignment.in_bed and p.department in deps
+                   and p.complexity in levels)
     if q["name"] == "empty_beds":
         placed = {d: 0 for d in DEPARTMENTS}
         for p in ctx.present:
@@ -83,15 +151,20 @@ def _num(x):
 def score_claim(ds, rec, c: dict) -> dict:
     if c.get("quantity") is None:
         return {**c, "computed": None, "verdict": "unverifiable"}
-    v = quantity(ds, rec, c["day"], c["allocation"], c["quantity"])
+    v = quantity(ds, rec, c["day"], c.get("allocation"), c["quantity"])
     if v is None:
         return {**c, "computed": None, "verdict": "unverifiable"}
     rel = c["relation"]
-    if rel in ("le_alloc", "ge_alloc"):
+    if rel in ("le_alloc", "ge_alloc", "eq_alloc"):
         w = quantity(ds, rec, c["day"], c["compare_allocation"], c["quantity"])
-        ok = (v <= w) if rel == "le_alloc" else (v >= w)
+        ok = {"le_alloc": v <= w, "ge_alloc": v >= w, "eq_alloc": v == w}[rel]
         return {**c, "computed": _num(v), "computed_compare": _num(w), "verdict": "correct" if ok else "wrong"}
     target = Fraction(str(c["value"]))
+    if rel == "round":                       # a stated decimal is compared at its own precision ("about 2.7")
+        places = len(str(c["value"]).split(".")[1]) if "." in str(c["value"]) else 0
+        half = Fraction(1, 2 * 10 ** places)
+        ok = target - half <= v < target + half
+        return {**c, "computed": _num(v), "verdict": "correct" if ok else "wrong"}
     ok = {"eq": v == target, "ne": v != target, "le": v <= target, "ge": v >= target}[rel]
     return {**c, "computed": _num(v), "verdict": "correct" if ok else "wrong"}
 
@@ -116,7 +189,25 @@ def score(run_id: str, spec_path: Path | None = None, results_root: Path = ROOT 
     for f in findings.values():
         # a finding is valid only if some ALLOCATOR claim it disputes is wrong (EVALUATION_PLAN.md §4)
         f["finding_valid"] = any(v == "wrong" for v in f["ALLOCATOR"].values())
-    return {"run_id": run_id, "claims": claims, "summary": summary, "findings": findings}
+    out = {"run_id": run_id, "claims": claims, "summary": summary, "findings": findings}
+    if "disputed_by_checker" in spec:
+        out["checker_on_claims"] = checker_on_claims(claims, spec["disputed_by_checker"])
+    return out
+
+
+def checker_on_claims(claims: list[dict], disputed: dict[str, str]) -> dict:
+    """CHECKER against the full universe of scored ALLOCATOR claims (EVALUATION_PLAN.md §4): `disputed` maps
+    each ALLOCATOR claim id the CHECKER contested to the CHECKER issue that contests it."""
+    alloc = {c["id"]: c["verdict"] for c in claims if c["author"] == "ALLOCATOR"}
+    wrong = {i for i, v in alloc.items() if v == "wrong"}
+    contested = set(disputed) & set(alloc)
+    hit = wrong & contested
+    return {"wrong_claims": len(wrong), "contested": len(contested), "caught": len(hit),
+            "recall": f"{len(hit)}/{len(wrong)}", "precision": f"{len(hit)}/{len(contested)}",
+            "wrong_disputes": sorted(contested - wrong - {i for i, v in alloc.items() if v == "unverifiable"}),
+            "missed": sorted(wrong - contested),
+            "contested_unverifiable": sorted(i for i in contested if alloc[i] == "unverifiable"),
+            "disputes_outside_universe": sorted(set(disputed) - set(alloc))}
 
 
 if __name__ == "__main__":

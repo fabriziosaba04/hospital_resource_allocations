@@ -1,0 +1,9089 @@
+{
+  "run_id": "DRY2-HARD10",
+  "note": "full extraction, universe categories (EVALUATION_PLAN.md \u00a74)",
+  "disputed_by_checker": {
+    "D2-14": "issue 3 (keep: 5 L3 overflow called wrong)",
+    "D2-15": "issue 3 (keep: 4 empty beds called wrong)",
+    "D2-45": "issue 2 (moving orthopedics' nurse is 'no better')"
+  },
+  "claims": [
+    {
+      "id": "D1-01",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A (current nurses): no overflow",
+      "day": 1,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow"
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "in_effect": 0
+      }
+    },
+    {
+      "id": "D1-02",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: cardiology L3 uncovered by 0.2",
+      "day": 1,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.2",
+      "allocation": {
+        "in_effect": 0
+      }
+    },
+    {
+      "id": "D1-03",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: IM L2 covered 1.4",
+      "day": 1,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "covered_need",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "1.4",
+      "allocation": {
+        "in_effect": 0
+      }
+    },
+    {
+      "id": "D1-04",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: IM L1 covered 0.4",
+      "day": 1,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "covered_need",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "0.4",
+      "allocation": {
+        "in_effect": 0
+      }
+    },
+    {
+      "id": "D1-05",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: all L3 covered",
+      "day": 1,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 1
+      }
+    },
+    {
+      "id": "D1-06",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: IM L2 shortage 0.6",
+      "day": 1,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0.6",
+      "allocation": {
+        "decided": 1
+      }
+    },
+    {
+      "id": "D1-07",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: IM L1 shortage 0.6",
+      "day": 1,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "0.6",
+      "allocation": {
+        "decided": 1
+      }
+    },
+    {
+      "id": "D1-08",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: orthopedics L1 shortage 0.4",
+      "day": 1,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "0.4",
+      "allocation": {
+        "decided": 1
+      }
+    },
+    {
+      "id": "D1-09",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "initial beds cardiology 4",
+      "day": 1,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "4",
+      "allocation": {
+        "in_effect": 0
+      }
+    },
+    {
+      "id": "D1-10",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "initial beds internal_medicine 10",
+      "day": 1,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "10",
+      "allocation": {
+        "in_effect": 0
+      }
+    },
+    {
+      "id": "D1-11",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "initial beds neurology 1",
+      "day": 1,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "in_effect": 0
+      }
+    },
+    {
+      "id": "D1-12",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "initial beds orthopedics 5",
+      "day": 1,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "5",
+      "allocation": {
+        "in_effect": 0
+      }
+    },
+    {
+      "id": "D1-13",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "initial nurses cardiology 1",
+      "day": 1,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "in_effect": 0
+      }
+    },
+    {
+      "id": "D1-14",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "initial nurses internal_medicine 3",
+      "day": 1,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "3",
+      "allocation": {
+        "in_effect": 0
+      }
+    },
+    {
+      "id": "D1-15",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "initial nurses neurology 1",
+      "day": 1,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "in_effect": 0
+      }
+    },
+    {
+      "id": "D1-16",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "initial nurses orthopedics 1",
+      "day": 1,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "in_effect": 0
+      }
+    },
+    {
+      "id": "D1-17",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "empty overflow queue",
+      "day": 1,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue"
+      },
+      "relation": "eq",
+      "value": "0"
+    },
+    {
+      "id": "D1-18",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "nothing is overflowed",
+      "day": 1,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow"
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 1
+      }
+    },
+    {
+      "id": "D1-19",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "the single spare bed stays in IM",
+      "day": 1,
+      "category": "empty_beds",
+      "quantity": {
+        "name": "empty_beds",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 1
+      }
+    },
+    {
+      "id": "D1-20",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "(single spare bed in total)",
+      "day": 1,
+      "category": "empty_beds",
+      "quantity": {
+        "name": "empty_beds"
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 1
+      }
+    },
+    {
+      "id": "D1-21",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "all 6 nurses used",
+      "day": 1,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses"
+      },
+      "relation": "eq",
+      "value": "6",
+      "allocation": {
+        "decided": 1
+      }
+    },
+    {
+      "id": "D1-22",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "20 beds assigned",
+      "day": 1,
+      "category": "beds",
+      "quantity": {
+        "name": "beds"
+      },
+      "relation": "eq",
+      "value": "20",
+      "allocation": {
+        "decided": 1
+      }
+    },
+    {
+      "id": "D1-23",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "pool 20 beds",
+      "day": 1,
+      "category": "pool",
+      "quantity": {
+        "name": "pool_beds"
+      },
+      "relation": "eq",
+      "value": "20"
+    },
+    {
+      "id": "D1-24",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "pool 6 nurses",
+      "day": 1,
+      "category": "pool",
+      "quantity": {
+        "name": "pool_nurses"
+      },
+      "relation": "eq",
+      "value": "6"
+    },
+    {
+      "id": "D1-25",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "Occupied beds 19",
+      "day": 1,
+      "category": "beds",
+      "quantity": {
+        "name": "holders"
+      },
+      "relation": "eq",
+      "value": "19"
+    },
+    {
+      "id": "D1-26",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied cardiology 4",
+      "day": 1,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "4"
+    },
+    {
+      "id": "D1-27",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied internal_medicine 9",
+      "day": 1,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "9"
+    },
+    {
+      "id": "D1-28",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied neurology 1",
+      "day": 1,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "1"
+    },
+    {
+      "id": "D1-29",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied orthopedics 5",
+      "day": 1,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "5"
+    },
+    {
+      "id": "D1-30",
+      "finding": "day 1",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "Orthopedics level-1 gets 0.4 coverage",
+      "day": 1,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "covered_need",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "0.4",
+      "allocation": {
+        "decided": 1
+      }
+    },
+    {
+      "id": "D2-01",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: overflow 1 L2 in IM",
+      "day": 2,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 2
+      }
+    },
+    {
+      "id": "D2-02",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: overflow total 1",
+      "day": 2,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow"
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 2
+      }
+    },
+    {
+      "id": "D2-03",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: every L3 has a bed",
+      "day": 2,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 2
+      }
+    },
+    {
+      "id": "D2-04",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: L3 shortage cardiology 0.6",
+      "day": 2,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.6",
+      "allocation": {
+        "decided": 2
+      }
+    },
+    {
+      "id": "D2-05",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: L3 shortage internal_medicine 0.2",
+      "day": 2,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.2",
+      "allocation": {
+        "decided": 2
+      }
+    },
+    {
+      "id": "D2-06",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: L3 shortage neurology 0.2",
+      "day": 2,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "neurology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.2",
+      "allocation": {
+        "decided": 2
+      }
+    },
+    {
+      "id": "D2-07",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: L3 shortage orthopedics 0",
+      "day": 2,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 2
+      }
+    },
+    {
+      "id": "D2-08",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: overflow 1 L2 in cardiology",
+      "day": 2,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "beds": {
+          "cardiology": 8,
+          "internal_medicine": 7,
+          "neurology": 2,
+          "orthopedics": 3
+        },
+        "nurses": {
+          "cardiology": 4,
+          "internal_medicine": 1,
+          "neurology": 1,
+          "orthopedics": 0
+        }
+      }
+    },
+    {
+      "id": "D2-09",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: overflow total 1",
+      "day": 2,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow"
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "beds": {
+          "cardiology": 8,
+          "internal_medicine": 7,
+          "neurology": 2,
+          "orthopedics": 3
+        },
+        "nurses": {
+          "cardiology": 4,
+          "internal_medicine": 1,
+          "neurology": 1,
+          "orthopedics": 0
+        }
+      }
+    },
+    {
+      "id": "D2-10",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: L3 shortage internal_medicine 0.2",
+      "day": 2,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.2",
+      "allocation": {
+        "beds": {
+          "cardiology": 8,
+          "internal_medicine": 7,
+          "neurology": 2,
+          "orthopedics": 3
+        },
+        "nurses": {
+          "cardiology": 4,
+          "internal_medicine": 1,
+          "neurology": 1,
+          "orthopedics": 0
+        }
+      }
+    },
+    {
+      "id": "D2-11",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: L3 shortage neurology 0.2",
+      "day": 2,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "neurology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.2",
+      "allocation": {
+        "beds": {
+          "cardiology": 8,
+          "internal_medicine": 7,
+          "neurology": 2,
+          "orthopedics": 3
+        },
+        "nurses": {
+          "cardiology": 4,
+          "internal_medicine": 1,
+          "neurology": 1,
+          "orthopedics": 0
+        }
+      }
+    },
+    {
+      "id": "D2-12",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: L3 shortage orthopedics 0.6",
+      "day": 2,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.6",
+      "allocation": {
+        "beds": {
+          "cardiology": 8,
+          "internal_medicine": 7,
+          "neurology": 2,
+          "orthopedics": 3
+        },
+        "nurses": {
+          "cardiology": 4,
+          "internal_medicine": 1,
+          "neurology": 1,
+          "orthopedics": 0
+        }
+      }
+    },
+    {
+      "id": "D2-13",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: cardiology level-2 gets 0.4 coverage",
+      "day": 2,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "covered_need",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0.4",
+      "allocation": {
+        "beds": {
+          "cardiology": 8,
+          "internal_medicine": 7,
+          "neurology": 2,
+          "orthopedics": 3
+        },
+        "nurses": {
+          "cardiology": 4,
+          "internal_medicine": 1,
+          "neurology": 1,
+          "orthopedics": 0
+        }
+      }
+    },
+    {
+      "id": "D2-14",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "keep: overflow 5 L3 in cardiology and neurology",
+      "day": 2,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "cardiology",
+          "neurology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "5",
+      "allocation": {
+        "in_effect": 1
+      }
+    },
+    {
+      "id": "D2-15",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "keep: 4 beds empty in IM and orthopedics",
+      "day": 2,
+      "category": "empty_beds",
+      "quantity": {
+        "name": "empty_beds",
+        "departments": [
+          "internal_medicine",
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "4",
+      "allocation": {
+        "in_effect": 1
+      }
+    },
+    {
+      "id": "D2-16",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "current beds cardiology 4",
+      "day": 2,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "4",
+      "allocation": {
+        "in_effect": 1
+      }
+    },
+    {
+      "id": "D2-17",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "current beds internal_medicine 10",
+      "day": 2,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "10",
+      "allocation": {
+        "in_effect": 1
+      }
+    },
+    {
+      "id": "D2-18",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "current beds neurology 1",
+      "day": 2,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "in_effect": 1
+      }
+    },
+    {
+      "id": "D2-19",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "current beds orthopedics 5",
+      "day": 2,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "5",
+      "allocation": {
+        "in_effect": 1
+      }
+    },
+    {
+      "id": "D2-20",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "current nurses cardiology 2",
+      "day": 2,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "2",
+      "allocation": {
+        "in_effect": 1
+      }
+    },
+    {
+      "id": "D2-21",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "current nurses internal_medicine 2",
+      "day": 2,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "2",
+      "allocation": {
+        "in_effect": 1
+      }
+    },
+    {
+      "id": "D2-22",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "current nurses neurology 1",
+      "day": 2,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "in_effect": 1
+      }
+    },
+    {
+      "id": "D2-23",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "current nurses orthopedics 1",
+      "day": 2,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "in_effect": 1
+      }
+    },
+    {
+      "id": "D2-24",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "level-3 need totals 6.6",
+      "day": 2,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "need",
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "6.6"
+    },
+    {
+      "id": "D2-25",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "no bed is empty",
+      "day": 2,
+      "category": "empty_beds",
+      "quantity": {
+        "name": "empty_beds"
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 2
+      }
+    },
+    {
+      "id": "D2-26",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "pool 20 beds",
+      "day": 2,
+      "category": "pool",
+      "quantity": {
+        "name": "pool_beds"
+      },
+      "relation": "eq",
+      "value": "20"
+    },
+    {
+      "id": "D2-27",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "pool 6 nurses",
+      "day": 2,
+      "category": "pool",
+      "quantity": {
+        "name": "pool_nurses"
+      },
+      "relation": "eq",
+      "value": "6"
+    },
+    {
+      "id": "D2-28",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "Occupied beds 14",
+      "day": 2,
+      "category": "beds",
+      "quantity": {
+        "name": "holders"
+      },
+      "relation": "eq",
+      "value": "14"
+    },
+    {
+      "id": "D2-29",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied cardiology 4",
+      "day": 2,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "4"
+    },
+    {
+      "id": "D2-30",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied internal_medicine 6",
+      "day": 2,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "6"
+    },
+    {
+      "id": "D2-31",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied neurology 1",
+      "day": 2,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "1"
+    },
+    {
+      "id": "D2-32",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied orthopedics 3",
+      "day": 2,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "3"
+    },
+    {
+      "id": "D2-33",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "Seven new arrivals wait without a bed",
+      "day": 2,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue"
+      },
+      "relation": "eq",
+      "value": "7"
+    },
+    {
+      "id": "D2-34",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "5 level-3 waiting: cardiology 4",
+      "day": 2,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "4"
+    },
+    {
+      "id": "D2-35",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "... neurology 1",
+      "day": 2,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue",
+        "departments": [
+          "neurology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "1"
+    },
+    {
+      "id": "D2-36",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "2 level-2 waiting",
+      "day": 2,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue",
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "2"
+    },
+    {
+      "id": "D2-37",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "beds now cardiology 9",
+      "day": 2,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "9",
+      "allocation": {
+        "decided": 2
+      }
+    },
+    {
+      "id": "D2-38",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "beds now internal_medicine 6",
+      "day": 2,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "6",
+      "allocation": {
+        "decided": 2
+      }
+    },
+    {
+      "id": "D2-39",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "beds now neurology 2",
+      "day": 2,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "2",
+      "allocation": {
+        "decided": 2
+      }
+    },
+    {
+      "id": "D2-40",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "beds now orthopedics 3",
+      "day": 2,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "3",
+      "allocation": {
+        "decided": 2
+      }
+    },
+    {
+      "id": "D2-41",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "IM level-2 shortage 1.75",
+      "day": 2,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "1.75",
+      "allocation": {
+        "decided": 2
+      }
+    },
+    {
+      "id": "D2-42",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "orthopedics' nurse covers its level-3 need 0.6",
+      "day": 2,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "covered_need",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.6",
+      "allocation": {
+        "decided": 2
+      }
+    },
+    {
+      "id": "D2-43",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "... plus 0.4 of level-1",
+      "day": 2,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "covered_need",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "0.4",
+      "allocation": {
+        "decided": 2
+      }
+    },
+    {
+      "id": "D2-44",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "cardiology, IM, neurology level-3 short 1.0 total",
+      "day": 2,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "cardiology",
+          "internal_medicine",
+          "neurology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "1.0",
+      "allocation": {
+        "decided": 2
+      }
+    },
+    {
+      "id": "D2-45",
+      "finding": "day 2",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "moving orthopedics' only nurse ... is no better (levels 2-3 covered)",
+      "day": 2,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "covered_need",
+        "levels": [
+          2,
+          3
+        ]
+      },
+      "relation": "le_alloc",
+      "allocation": {
+        "base": {
+          "decided": 2
+        },
+        "nurses": {
+          "cardiology": 4,
+          "internal_medicine": 1,
+          "neurology": 1,
+          "orthopedics": 0
+        }
+      },
+      "compare_allocation": {
+        "decided": 2
+      }
+    },
+    {
+      "id": "D3-01",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: zero overflow",
+      "day": 3,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow"
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 3
+      }
+    },
+    {
+      "id": "D3-02",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: L3 shortage cardiology 0.2",
+      "day": 3,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.2",
+      "allocation": {
+        "decided": 3
+      }
+    },
+    {
+      "id": "D3-03",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: L3 shortage neurology 0.2",
+      "day": 3,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "neurology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.2",
+      "allocation": {
+        "decided": 3
+      }
+    },
+    {
+      "id": "D3-04",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: L3 shortage orthopedics 0.6",
+      "day": 3,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.6",
+      "allocation": {
+        "decided": 3
+      }
+    },
+    {
+      "id": "D3-05",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: L3 shortage total 1.0",
+      "day": 3,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "1.0",
+      "allocation": {
+        "decided": 3
+      }
+    },
+    {
+      "id": "D3-06",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: zero overflow",
+      "day": 3,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow"
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "in_effect": 2
+      }
+    },
+    {
+      "id": "D3-07",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: L3 shortage cardiology 1.2",
+      "day": 3,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "1.2",
+      "allocation": {
+        "in_effect": 2
+      }
+    },
+    {
+      "id": "D3-08",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: L3 shortage neurology 0.2",
+      "day": 3,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "neurology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.2",
+      "allocation": {
+        "in_effect": 2
+      }
+    },
+    {
+      "id": "D3-09",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: L3 shortage total 1.4",
+      "day": 3,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "1.4",
+      "allocation": {
+        "in_effect": 2
+      }
+    },
+    {
+      "id": "D3-10",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: orthopedics L3 covered",
+      "day": 3,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "in_effect": 2
+      }
+    },
+    {
+      "id": "D3-11",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: orthopedics L1 covered",
+      "day": 3,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "in_effect": 2
+      }
+    },
+    {
+      "id": "D3-12",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "occupied cardiology 7",
+      "day": 3,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "7"
+    },
+    {
+      "id": "D3-13",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "occupied internal_medicine 4",
+      "day": 3,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "4"
+    },
+    {
+      "id": "D3-14",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "occupied neurology 2",
+      "day": 3,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "2"
+    },
+    {
+      "id": "D3-15",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "occupied orthopedics 1",
+      "day": 3,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "1"
+    },
+    {
+      "id": "D3-16",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds cardiology 9",
+      "day": 3,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "9",
+      "allocation": {
+        "in_effect": 2
+      }
+    },
+    {
+      "id": "D3-17",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds internal_medicine 6",
+      "day": 3,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "6",
+      "allocation": {
+        "in_effect": 2
+      }
+    },
+    {
+      "id": "D3-18",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds neurology 2",
+      "day": 3,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "2",
+      "allocation": {
+        "in_effect": 2
+      }
+    },
+    {
+      "id": "D3-19",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds orthopedics 3",
+      "day": 3,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "3",
+      "allocation": {
+        "in_effect": 2
+      }
+    },
+    {
+      "id": "D3-20",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses cardiology 3",
+      "day": 3,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "3",
+      "allocation": {
+        "in_effect": 2
+      }
+    },
+    {
+      "id": "D3-21",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses internal_medicine 1",
+      "day": 3,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "in_effect": 2
+      }
+    },
+    {
+      "id": "D3-22",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses neurology 1",
+      "day": 3,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "in_effect": 2
+      }
+    },
+    {
+      "id": "D3-23",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses orthopedics 1",
+      "day": 3,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "in_effect": 2
+      }
+    },
+    {
+      "id": "D3-24",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "P000045 gets a bed",
+      "day": 3,
+      "category": "overflow",
+      "quantity": {
+        "name": "patient_in_bed",
+        "patient_id": "P000045"
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 3
+      }
+    },
+    {
+      "id": "D3-25",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "spare bed in cardiology",
+      "day": 3,
+      "category": "empty_beds",
+      "quantity": {
+        "name": "empty_beds",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 3
+      }
+    },
+    {
+      "id": "D3-26",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "spare bed in internal_medicine",
+      "day": 3,
+      "category": "empty_beds",
+      "quantity": {
+        "name": "empty_beds",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 3
+      }
+    },
+    {
+      "id": "D3-27",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "spare bed in orthopedics",
+      "day": 3,
+      "category": "empty_beds",
+      "quantity": {
+        "name": "empty_beds",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 3
+      }
+    },
+    {
+      "id": "D3-28",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "Three beds are spare",
+      "day": 3,
+      "category": "empty_beds",
+      "quantity": {
+        "name": "empty_beds"
+      },
+      "relation": "eq",
+      "value": "3",
+      "allocation": {
+        "decided": 3
+      }
+    },
+    {
+      "id": "D3-29",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "pool 20 beds",
+      "day": 3,
+      "category": "pool",
+      "quantity": {
+        "name": "pool_beds"
+      },
+      "relation": "eq",
+      "value": "20"
+    },
+    {
+      "id": "D3-30",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "pool 6 nurses",
+      "day": 3,
+      "category": "pool",
+      "quantity": {
+        "name": "pool_nurses"
+      },
+      "relation": "eq",
+      "value": "6"
+    },
+    {
+      "id": "D3-31",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied 14 of 20",
+      "day": 3,
+      "category": "beds",
+      "quantity": {
+        "name": "holders"
+      },
+      "relation": "eq",
+      "value": "14"
+    },
+    {
+      "id": "D3-32",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "Three patients lack a bed",
+      "day": 3,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue"
+      },
+      "relation": "eq",
+      "value": "3"
+    },
+    {
+      "id": "D3-33",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "orthopedics L3 patient (0.6) gets no nursing",
+      "day": 3,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.6",
+      "allocation": {
+        "decided": 3
+      }
+    },
+    {
+      "id": "D3-34",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "orthopedics L1 (0.2) gets no nursing",
+      "day": 3,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "0.2",
+      "allocation": {
+        "decided": 3
+      }
+    },
+    {
+      "id": "D3-35",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "IM L2 is short 1.0",
+      "day": 3,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "1.0",
+      "allocation": {
+        "decided": 3
+      }
+    },
+    {
+      "id": "D3-36",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "cardiology L2 short 0.35",
+      "day": 3,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0.35",
+      "allocation": {
+        "decided": 3
+      }
+    },
+    {
+      "id": "D3-37",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "L3 need 6.6",
+      "day": 3,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "need",
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "6.6"
+    },
+    {
+      "id": "D3-38",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "IM's one nurse covers 0.6 L3",
+      "day": 3,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "covered_need",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.6",
+      "allocation": {
+        "decided": 3
+      }
+    },
+    {
+      "id": "D3-39",
+      "finding": "day 3",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "... plus 0.4 L2",
+      "day": 3,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "covered_need",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0.4",
+      "allocation": {
+        "decided": 3
+      }
+    },
+    {
+      "id": "D4-01",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: zero overflow",
+      "day": 4,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow"
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 4
+      }
+    },
+    {
+      "id": "D4-02",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: all L3 covered",
+      "day": 4,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 4
+      }
+    },
+    {
+      "id": "D4-03",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: shortage internal_medicine L2 0.3",
+      "day": 4,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0.3",
+      "allocation": {
+        "decided": 4
+      }
+    },
+    {
+      "id": "D4-04",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: shortage internal_medicine L1 0.2",
+      "day": 4,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "0.2",
+      "allocation": {
+        "decided": 4
+      }
+    },
+    {
+      "id": "D4-05",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: shortage cardiology L2 0.15",
+      "day": 4,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0.15",
+      "allocation": {
+        "decided": 4
+      }
+    },
+    {
+      "id": "D4-06",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: shortage orthopedics L1 0.55",
+      "day": 4,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "0.55",
+      "allocation": {
+        "decided": 4
+      }
+    },
+    {
+      "id": "D4-07",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: zero overflow",
+      "day": 4,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow"
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "base": {
+          "decided": 4
+        },
+        "nurses": {
+          "cardiology": 5,
+          "internal_medicine": 2,
+          "neurology": 1,
+          "orthopedics": 0
+        }
+      }
+    },
+    {
+      "id": "D4-08",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: all L3 covered",
+      "day": 4,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "base": {
+          "decided": 4
+        },
+        "nurses": {
+          "cardiology": 5,
+          "internal_medicine": 2,
+          "neurology": 1,
+          "orthopedics": 0
+        }
+      }
+    },
+    {
+      "id": "D4-09",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: IM fully covered",
+      "day": 4,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "base": {
+          "decided": 4
+        },
+        "nurses": {
+          "cardiology": 5,
+          "internal_medicine": 2,
+          "neurology": 1,
+          "orthopedics": 0
+        }
+      }
+    },
+    {
+      "id": "D4-10",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: orthopedics L2 shortage 0.35",
+      "day": 4,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0.35",
+      "allocation": {
+        "base": {
+          "decided": 4
+        },
+        "nurses": {
+          "cardiology": 5,
+          "internal_medicine": 2,
+          "neurology": 1,
+          "orthopedics": 0
+        }
+      }
+    },
+    {
+      "id": "D4-11",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: orthopedics L1 shortage 1.2",
+      "day": 4,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "1.2",
+      "allocation": {
+        "base": {
+          "decided": 4
+        },
+        "nurses": {
+          "cardiology": 5,
+          "internal_medicine": 2,
+          "neurology": 1,
+          "orthopedics": 0
+        }
+      }
+    },
+    {
+      "id": "D4-12",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "keep: sums to 20 beds",
+      "day": 4,
+      "category": "beds",
+      "quantity": {
+        "name": "beds"
+      },
+      "relation": "eq",
+      "value": "20",
+      "allocation": {
+        "in_effect": 3
+      }
+    },
+    {
+      "id": "D4-13",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "keep: ... and 6 nurses",
+      "day": 4,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses"
+      },
+      "relation": "eq",
+      "value": "6",
+      "allocation": {
+        "in_effect": 3
+      }
+    },
+    {
+      "id": "D4-14",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds cardiology 9",
+      "day": 4,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "9",
+      "allocation": {
+        "in_effect": 3
+      }
+    },
+    {
+      "id": "D4-15",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds internal_medicine 6",
+      "day": 4,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "6",
+      "allocation": {
+        "in_effect": 3
+      }
+    },
+    {
+      "id": "D4-16",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds neurology 2",
+      "day": 4,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "2",
+      "allocation": {
+        "in_effect": 3
+      }
+    },
+    {
+      "id": "D4-17",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds orthopedics 3",
+      "day": 4,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "3",
+      "allocation": {
+        "in_effect": 3
+      }
+    },
+    {
+      "id": "D4-18",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses cardiology 4",
+      "day": 4,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "4",
+      "allocation": {
+        "in_effect": 3
+      }
+    },
+    {
+      "id": "D4-19",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses internal_medicine 1",
+      "day": 4,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "in_effect": 3
+      }
+    },
+    {
+      "id": "D4-20",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses neurology 1",
+      "day": 4,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "in_effect": 3
+      }
+    },
+    {
+      "id": "D4-21",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses orthopedics 0",
+      "day": 4,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "in_effect": 3
+      }
+    },
+    {
+      "id": "D4-22",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "Nobody is overflowed",
+      "day": 4,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow"
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 4
+      }
+    },
+    {
+      "id": "D4-23",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "The 2 spare beds",
+      "day": 4,
+      "category": "empty_beds",
+      "quantity": {
+        "name": "empty_beds"
+      },
+      "relation": "eq",
+      "value": "2",
+      "allocation": {
+        "decided": 4
+      }
+    },
+    {
+      "id": "D4-24",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "all 23 beds assigned",
+      "day": 4,
+      "category": "beds",
+      "quantity": {
+        "name": "beds"
+      },
+      "relation": "eq",
+      "value": "23",
+      "allocation": {
+        "decided": 4
+      }
+    },
+    {
+      "id": "D4-25",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "... and 8 nurses",
+      "day": 4,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses"
+      },
+      "relation": "eq",
+      "value": "8",
+      "allocation": {
+        "decided": 4
+      }
+    },
+    {
+      "id": "D4-26",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "pool 23 beds",
+      "day": 4,
+      "category": "pool",
+      "quantity": {
+        "name": "pool_beds"
+      },
+      "relation": "eq",
+      "value": "23"
+    },
+    {
+      "id": "D4-27",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "pool 8 nurses",
+      "day": 4,
+      "category": "pool",
+      "quantity": {
+        "name": "pool_nurses"
+      },
+      "relation": "eq",
+      "value": "8"
+    },
+    {
+      "id": "D4-28",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "Occupied beds 12",
+      "day": 4,
+      "category": "beds",
+      "quantity": {
+        "name": "holders"
+      },
+      "relation": "eq",
+      "value": "12"
+    },
+    {
+      "id": "D4-29",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied cardiology 7",
+      "day": 4,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "7"
+    },
+    {
+      "id": "D4-30",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied internal_medicine 3",
+      "day": 4,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "3"
+    },
+    {
+      "id": "D4-31",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied neurology 1",
+      "day": 4,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "1"
+    },
+    {
+      "id": "D4-32",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied orthopedics 1",
+      "day": 4,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "1"
+    },
+    {
+      "id": "D4-33",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "Nine patients are in the overflow queue",
+      "day": 4,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue"
+      },
+      "relation": "eq",
+      "value": "9"
+    },
+    {
+      "id": "D4-34",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "queue cardiology L3 2",
+      "day": 4,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "2"
+    },
+    {
+      "id": "D4-35",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "queue orthopedics L2 1",
+      "day": 4,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "1"
+    },
+    {
+      "id": "D4-36",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "queue orthopedics L1 5",
+      "day": 4,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "5"
+    },
+    {
+      "id": "D4-37",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "queue internal_medicine L1 1",
+      "day": 4,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "1"
+    },
+    {
+      "id": "D4-38",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "beds now cardiology 10",
+      "day": 4,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "10",
+      "allocation": {
+        "decided": 4
+      }
+    },
+    {
+      "id": "D4-39",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "beds now internal_medicine 4",
+      "day": 4,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "4",
+      "allocation": {
+        "decided": 4
+      }
+    },
+    {
+      "id": "D4-40",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "beds now neurology 1",
+      "day": 4,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 4
+      }
+    },
+    {
+      "id": "D4-41",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "beds now orthopedics 8",
+      "day": 4,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "8",
+      "allocation": {
+        "decided": 4
+      }
+    },
+    {
+      "id": "D4-42",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "nurses cardiology 4 -> 5",
+      "day": 4,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "5",
+      "allocation": {
+        "decided": 4
+      }
+    },
+    {
+      "id": "D4-43",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "orthopedics 0 -> 1",
+      "day": 4,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 4
+      }
+    },
+    {
+      "id": "D4-44",
+      "finding": "day 4",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "Neurology's nurse covers 0.6 of L3 need",
+      "day": 4,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "covered_need",
+        "departments": [
+          "neurology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.6",
+      "allocation": {
+        "decided": 4
+      }
+    },
+    {
+      "id": "D5-01",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: zero overflow",
+      "day": 5,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow"
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "base": {
+          "decided": 5
+        },
+        "nurses": {
+          "cardiology": 5,
+          "internal_medicine": 1,
+          "neurology": 1,
+          "orthopedics": 1
+        }
+      }
+    },
+    {
+      "id": "D5-02",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: all L3 covered",
+      "day": 5,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "base": {
+          "decided": 5
+        },
+        "nurses": {
+          "cardiology": 5,
+          "internal_medicine": 1,
+          "neurology": 1,
+          "orthopedics": 1
+        }
+      }
+    },
+    {
+      "id": "D5-03",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: shortage internal_medicine L2 0.3",
+      "day": 5,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0.3",
+      "allocation": {
+        "base": {
+          "decided": 5
+        },
+        "nurses": {
+          "cardiology": 5,
+          "internal_medicine": 1,
+          "neurology": 1,
+          "orthopedics": 1
+        }
+      }
+    },
+    {
+      "id": "D5-04",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: shortage internal_medicine L1 0.2",
+      "day": 5,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "0.2",
+      "allocation": {
+        "base": {
+          "decided": 5
+        },
+        "nurses": {
+          "cardiology": 5,
+          "internal_medicine": 1,
+          "neurology": 1,
+          "orthopedics": 1
+        }
+      }
+    },
+    {
+      "id": "D5-05",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: shortage cardiology L2 0.5",
+      "day": 5,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0.5",
+      "allocation": {
+        "base": {
+          "decided": 5
+        },
+        "nurses": {
+          "cardiology": 5,
+          "internal_medicine": 1,
+          "neurology": 1,
+          "orthopedics": 1
+        }
+      }
+    },
+    {
+      "id": "D5-06",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: L2 total 0.8",
+      "day": 5,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0.8",
+      "allocation": {
+        "base": {
+          "decided": 5
+        },
+        "nurses": {
+          "cardiology": 5,
+          "internal_medicine": 1,
+          "neurology": 1,
+          "orthopedics": 1
+        }
+      }
+    },
+    {
+      "id": "D5-07",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: L1 total 0.2",
+      "day": 5,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "0.2",
+      "allocation": {
+        "base": {
+          "decided": 5
+        },
+        "nurses": {
+          "cardiology": 5,
+          "internal_medicine": 1,
+          "neurology": 1,
+          "orthopedics": 1
+        }
+      }
+    },
+    {
+      "id": "D5-08",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: zero overflow",
+      "day": 5,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow"
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 5
+      }
+    },
+    {
+      "id": "D5-09",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: all L3 covered",
+      "day": 5,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 5
+      }
+    },
+    {
+      "id": "D5-10",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: shortage internal_medicine L2 0.3",
+      "day": 5,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0.3",
+      "allocation": {
+        "decided": 5
+      }
+    },
+    {
+      "id": "D5-11",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: shortage internal_medicine L1 0.2",
+      "day": 5,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "0.2",
+      "allocation": {
+        "decided": 5
+      }
+    },
+    {
+      "id": "D5-12",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: shortage orthopedics L2 0.35",
+      "day": 5,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0.35",
+      "allocation": {
+        "decided": 5
+      }
+    },
+    {
+      "id": "D5-13",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: shortage orthopedics L1 0.6",
+      "day": 5,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "0.6",
+      "allocation": {
+        "decided": 5
+      }
+    },
+    {
+      "id": "D5-14",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: L2 total 0.65",
+      "day": 5,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0.65",
+      "allocation": {
+        "decided": 5
+      }
+    },
+    {
+      "id": "D5-15",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: L1 total 0.8",
+      "day": 5,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "0.8",
+      "allocation": {
+        "decided": 5
+      }
+    },
+    {
+      "id": "D5-16",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "occupied cardiology 7",
+      "day": 5,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "7"
+    },
+    {
+      "id": "D5-17",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "occupied internal_medicine 2",
+      "day": 5,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "2"
+    },
+    {
+      "id": "D5-18",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "occupied neurology 1",
+      "day": 5,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "1"
+    },
+    {
+      "id": "D5-19",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "occupied orthopedics 3",
+      "day": 5,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "3"
+    },
+    {
+      "id": "D5-20",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds cardiology 10",
+      "day": 5,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "10",
+      "allocation": {
+        "in_effect": 4
+      }
+    },
+    {
+      "id": "D5-21",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds internal_medicine 4",
+      "day": 5,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "4",
+      "allocation": {
+        "in_effect": 4
+      }
+    },
+    {
+      "id": "D5-22",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds neurology 1",
+      "day": 5,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "in_effect": 4
+      }
+    },
+    {
+      "id": "D5-23",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds orthopedics 8",
+      "day": 5,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "8",
+      "allocation": {
+        "in_effect": 4
+      }
+    },
+    {
+      "id": "D5-24",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses cardiology 5",
+      "day": 5,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "5",
+      "allocation": {
+        "in_effect": 4
+      }
+    },
+    {
+      "id": "D5-25",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses internal_medicine 1",
+      "day": 5,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "in_effect": 4
+      }
+    },
+    {
+      "id": "D5-26",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses neurology 1",
+      "day": 5,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "in_effect": 4
+      }
+    },
+    {
+      "id": "D5-27",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses orthopedics 1",
+      "day": 5,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "in_effect": 4
+      }
+    },
+    {
+      "id": "D5-28",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "cardiology L2 is fully covered",
+      "day": 5,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 5
+      }
+    },
+    {
+      "id": "D5-29",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "4 spare beds",
+      "day": 5,
+      "category": "empty_beds",
+      "quantity": {
+        "name": "empty_beds"
+      },
+      "relation": "eq",
+      "value": "4",
+      "allocation": {
+        "decided": 5
+      }
+    },
+    {
+      "id": "D5-30",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "all 23 beds assigned",
+      "day": 5,
+      "category": "beds",
+      "quantity": {
+        "name": "beds"
+      },
+      "relation": "eq",
+      "value": "23",
+      "allocation": {
+        "decided": 5
+      }
+    },
+    {
+      "id": "D5-31",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "... and 8 nurses",
+      "day": 5,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses"
+      },
+      "relation": "eq",
+      "value": "8",
+      "allocation": {
+        "decided": 5
+      }
+    },
+    {
+      "id": "D5-32",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "pool 23 beds",
+      "day": 5,
+      "category": "pool",
+      "quantity": {
+        "name": "pool_beds"
+      },
+      "relation": "eq",
+      "value": "23"
+    },
+    {
+      "id": "D5-33",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "pool 8 nurses",
+      "day": 5,
+      "category": "pool",
+      "quantity": {
+        "name": "pool_nurses"
+      },
+      "relation": "eq",
+      "value": "8"
+    },
+    {
+      "id": "D5-34",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied 13 of 23",
+      "day": 5,
+      "category": "beds",
+      "quantity": {
+        "name": "holders"
+      },
+      "relation": "eq",
+      "value": "13"
+    },
+    {
+      "id": "D5-35",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "Six patients arrived today without a bed",
+      "day": 5,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue"
+      },
+      "relation": "eq",
+      "value": "6"
+    },
+    {
+      "id": "D5-36",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "queue cardiology L3 1",
+      "day": 5,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "1"
+    },
+    {
+      "id": "D5-37",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "queue cardiology L2 2",
+      "day": 5,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "2"
+    },
+    {
+      "id": "D5-38",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "queue internal_medicine L2 1",
+      "day": 5,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "1"
+    },
+    {
+      "id": "D5-39",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "queue internal_medicine L1 1",
+      "day": 5,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "1"
+    },
+    {
+      "id": "D5-40",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "queue orthopedics L1 1",
+      "day": 5,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "1"
+    },
+    {
+      "id": "D5-41",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "beds now cardiology 10",
+      "day": 5,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "10",
+      "allocation": {
+        "decided": 5
+      }
+    },
+    {
+      "id": "D5-42",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "beds now internal_medicine 5",
+      "day": 5,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "5",
+      "allocation": {
+        "decided": 5
+      }
+    },
+    {
+      "id": "D5-43",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "beds now neurology 2",
+      "day": 5,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "2",
+      "allocation": {
+        "decided": 5
+      }
+    },
+    {
+      "id": "D5-44",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "beds now orthopedics 6",
+      "day": 5,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "6",
+      "allocation": {
+        "decided": 5
+      }
+    },
+    {
+      "id": "D5-45",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "nurses orthopedics 1 to 0",
+      "day": 5,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 5
+      }
+    },
+    {
+      "id": "D5-46",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "cardiology 5 to 6",
+      "day": 5,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "6",
+      "allocation": {
+        "decided": 5
+      }
+    },
+    {
+      "id": "D5-47",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "total shortage B 1.45",
+      "day": 5,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage"
+      },
+      "relation": "eq",
+      "value": "1.45",
+      "allocation": {
+        "decided": 5
+      }
+    },
+    {
+      "id": "D5-48",
+      "finding": "day 5",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "vs A 1.0",
+      "day": 5,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage"
+      },
+      "relation": "eq",
+      "value": "1.0",
+      "allocation": {
+        "base": {
+          "decided": 5
+        },
+        "nurses": {
+          "cardiology": 5,
+          "internal_medicine": 1,
+          "neurology": 1,
+          "orthopedics": 1
+        }
+      }
+    },
+    {
+      "id": "D6-01",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: overflow cardiology 1 L3",
+      "day": 6,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 6
+      }
+    },
+    {
+      "id": "D6-02",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: overflow cardiology 3 L2",
+      "day": 6,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "3",
+      "allocation": {
+        "decided": 6
+      }
+    },
+    {
+      "id": "D6-03",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: overflow only in cardiology",
+      "day": 6,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "internal_medicine",
+          "neurology",
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 6
+      }
+    },
+    {
+      "id": "D6-04",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: L3 shortage only cardiology 0.4",
+      "day": 6,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.4",
+      "allocation": {
+        "decided": 6
+      }
+    },
+    {
+      "id": "D6-05",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: L2 shortage cardiology 1.75",
+      "day": 6,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "1.75",
+      "allocation": {
+        "decided": 6
+      }
+    },
+    {
+      "id": "D6-06",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: L2 shortage internal_medicine 1.75",
+      "day": 6,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "1.75",
+      "allocation": {
+        "decided": 6
+      }
+    },
+    {
+      "id": "D6-07",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: L2 shortage orthopedics 0.7",
+      "day": 6,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0.7",
+      "allocation": {
+        "decided": 6
+      }
+    },
+    {
+      "id": "D6-08",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B (6/0/0/0): cardiology L3 fully covered",
+      "day": 6,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "base": {
+          "decided": 6
+        },
+        "nurses": {
+          "cardiology": 6,
+          "internal_medicine": 0,
+          "neurology": 0,
+          "orthopedics": 0
+        }
+      }
+    },
+    {
+      "id": "D6-09",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: neurology L3 uncovered (0.6)",
+      "day": 6,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "neurology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.6",
+      "allocation": {
+        "base": {
+          "decided": 6
+        },
+        "nurses": {
+          "cardiology": 6,
+          "internal_medicine": 0,
+          "neurology": 0,
+          "orthopedics": 0
+        }
+      }
+    },
+    {
+      "id": "D6-10",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: cardiology L2 gets 0.6 coverage",
+      "day": 6,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "covered_need",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0.6",
+      "allocation": {
+        "base": {
+          "decided": 6
+        },
+        "nurses": {
+          "cardiology": 6,
+          "internal_medicine": 0,
+          "neurology": 0,
+          "orthopedics": 0
+        }
+      }
+    },
+    {
+      "id": "D6-11",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "keep: 23 beds",
+      "day": 6,
+      "category": "beds",
+      "quantity": {
+        "name": "beds"
+      },
+      "relation": "eq",
+      "value": "23",
+      "allocation": {
+        "in_effect": 5
+      }
+    },
+    {
+      "id": "D6-12",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "keep: 8 nurses",
+      "day": 6,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses"
+      },
+      "relation": "eq",
+      "value": "8",
+      "allocation": {
+        "in_effect": 5
+      }
+    },
+    {
+      "id": "D6-13",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds cardiology 10",
+      "day": 6,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "10",
+      "allocation": {
+        "in_effect": 5
+      }
+    },
+    {
+      "id": "D6-14",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds internal_medicine 5",
+      "day": 6,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "5",
+      "allocation": {
+        "in_effect": 5
+      }
+    },
+    {
+      "id": "D6-15",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds neurology 2",
+      "day": 6,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "2",
+      "allocation": {
+        "in_effect": 5
+      }
+    },
+    {
+      "id": "D6-16",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds orthopedics 6",
+      "day": 6,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "6",
+      "allocation": {
+        "in_effect": 5
+      }
+    },
+    {
+      "id": "D6-17",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses cardiology 6",
+      "day": 6,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "6",
+      "allocation": {
+        "in_effect": 5
+      }
+    },
+    {
+      "id": "D6-18",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses internal_medicine 1",
+      "day": 6,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "in_effect": 5
+      }
+    },
+    {
+      "id": "D6-19",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses neurology 1",
+      "day": 6,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "in_effect": 5
+      }
+    },
+    {
+      "id": "D6-20",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses orthopedics 0",
+      "day": 6,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "in_effect": 5
+      }
+    },
+    {
+      "id": "D6-21",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "The 5 free beds",
+      "day": 6,
+      "category": "pool",
+      "quantity": {
+        "name": "free_beds"
+      },
+      "relation": "eq",
+      "value": "5"
+    },
+    {
+      "id": "D6-22",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "waiting L2 in IM: 3",
+      "day": 6,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "3"
+    },
+    {
+      "id": "D6-23",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "waiting L2 in orthopedics: 2",
+      "day": 6,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "2"
+    },
+    {
+      "id": "D6-24",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "no bed is idle",
+      "day": 6,
+      "category": "empty_beds",
+      "quantity": {
+        "name": "empty_beds"
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 6
+      }
+    },
+    {
+      "id": "D6-25",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "neurology occupied is 1",
+      "day": 6,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "1"
+    },
+    {
+      "id": "D6-26",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "neurology covers its L3 fully",
+      "day": 6,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "neurology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 6
+      }
+    },
+    {
+      "id": "D6-27",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "cardiology 5 covers 5 of 5.4 L3: covered",
+      "day": 6,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "covered_need",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "5",
+      "allocation": {
+        "decided": 6
+      }
+    },
+    {
+      "id": "D6-28",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "... need 5.4",
+      "day": 6,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "need",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "5.4"
+    },
+    {
+      "id": "D6-29",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "pool 20 beds",
+      "day": 6,
+      "category": "pool",
+      "quantity": {
+        "name": "pool_beds"
+      },
+      "relation": "eq",
+      "value": "20"
+    },
+    {
+      "id": "D6-30",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "pool 6 nurses",
+      "day": 6,
+      "category": "pool",
+      "quantity": {
+        "name": "pool_nurses"
+      },
+      "relation": "eq",
+      "value": "6"
+    },
+    {
+      "id": "D6-31",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "Occupied beds 15",
+      "day": 6,
+      "category": "beds",
+      "quantity": {
+        "name": "holders"
+      },
+      "relation": "eq",
+      "value": "15"
+    },
+    {
+      "id": "D6-32",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied cardiology 10",
+      "day": 6,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "10"
+    },
+    {
+      "id": "D6-33",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied internal_medicine 3",
+      "day": 6,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "3"
+    },
+    {
+      "id": "D6-34",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied neurology 1",
+      "day": 6,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "1"
+    },
+    {
+      "id": "D6-35",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied orthopedics 1",
+      "day": 6,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "1"
+    },
+    {
+      "id": "D6-36",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "9 patients wait without a bed",
+      "day": 6,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue"
+      },
+      "relation": "eq",
+      "value": "9"
+    },
+    {
+      "id": "D6-37",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "queue cardiology L3 1",
+      "day": 6,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "1"
+    },
+    {
+      "id": "D6-38",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "queue cardiology L2 3",
+      "day": 6,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "3"
+    },
+    {
+      "id": "D6-39",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "queue internal_medicine L2 3",
+      "day": 6,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "3"
+    },
+    {
+      "id": "D6-40",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "queue orthopedics L2 2",
+      "day": 6,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "2"
+    },
+    {
+      "id": "D6-41",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "beds now cardiology 10",
+      "day": 6,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "10",
+      "allocation": {
+        "decided": 6
+      }
+    },
+    {
+      "id": "D6-42",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "beds now internal_medicine 6",
+      "day": 6,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "6",
+      "allocation": {
+        "decided": 6
+      }
+    },
+    {
+      "id": "D6-43",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "beds now neurology 1",
+      "day": 6,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 6
+      }
+    },
+    {
+      "id": "D6-44",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "beds now orthopedics 3",
+      "day": 6,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "3",
+      "allocation": {
+        "decided": 6
+      }
+    },
+    {
+      "id": "D6-45",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "IM L2 housed but uncovered (shortage 1.75)",
+      "day": 6,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "1.75",
+      "allocation": {
+        "decided": 6
+      }
+    },
+    {
+      "id": "D6-46",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "orthopedics L2 shortage 0.7",
+      "day": 6,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0.7",
+      "allocation": {
+        "decided": 6
+      }
+    },
+    {
+      "id": "D6-47",
+      "finding": "day 6",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "Cardiology L3 is short 0.4",
+      "day": 6,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.4",
+      "allocation": {
+        "decided": 6
+      }
+    },
+    {
+      "id": "D7-01",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "Pools 20 beds",
+      "day": 7,
+      "category": "pool",
+      "quantity": {
+        "name": "pool_beds"
+      },
+      "relation": "eq",
+      "value": "20"
+    },
+    {
+      "id": "D7-02",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "... and 6 nurses",
+      "day": 7,
+      "category": "pool",
+      "quantity": {
+        "name": "pool_nurses"
+      },
+      "relation": "eq",
+      "value": "6"
+    },
+    {
+      "id": "D7-12",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "Only 2 beds are not tied to occupied patients",
+      "day": 7,
+      "category": "pool",
+      "quantity": {
+        "name": "free_beds"
+      },
+      "relation": "eq",
+      "value": "2"
+    },
+    {
+      "id": "D7-14",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: overflow cardiology L3 1",
+      "day": 7,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 7
+      }
+    },
+    {
+      "id": "D7-15",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: overflow cardiology L2 4",
+      "day": 7,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "4",
+      "allocation": {
+        "decided": 7
+      }
+    },
+    {
+      "id": "D7-16",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: overflow cardiology L1 1",
+      "day": 7,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 7
+      }
+    },
+    {
+      "id": "D7-17",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: overflow internal_medicine L1 1",
+      "day": 7,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 7
+      }
+    },
+    {
+      "id": "D7-18",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: overflow orthopedics L1 1",
+      "day": 7,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 7
+      }
+    },
+    {
+      "id": "D7-19",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: neurology overflow 0",
+      "day": 7,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 7
+      }
+    },
+    {
+      "id": "D7-20",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: L3 shortage cardiology 0.4",
+      "day": 7,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.4",
+      "allocation": {
+        "decided": 7
+      }
+    },
+    {
+      "id": "D7-21",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: L3 shortage IM 0.6",
+      "day": 7,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.6",
+      "allocation": {
+        "decided": 7
+      }
+    },
+    {
+      "id": "D7-22",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: same overflow",
+      "day": 7,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow"
+      },
+      "relation": "eq_alloc",
+      "allocation": {
+        "base": {
+          "decided": 7
+        },
+        "nurses": {
+          "cardiology": 5,
+          "internal_medicine": 1,
+          "neurology": 0,
+          "orthopedics": 0
+        }
+      },
+      "compare_allocation": {
+        "decided": 7
+      }
+    },
+    {
+      "id": "D7-23",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: L3 shortage cardiology 0.4",
+      "day": 7,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.4",
+      "allocation": {
+        "base": {
+          "decided": 7
+        },
+        "nurses": {
+          "cardiology": 5,
+          "internal_medicine": 1,
+          "neurology": 0,
+          "orthopedics": 0
+        }
+      }
+    },
+    {
+      "id": "D7-24",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: L3 shortage neurology 0.6",
+      "day": 7,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "neurology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.6",
+      "allocation": {
+        "base": {
+          "decided": 7
+        },
+        "nurses": {
+          "cardiology": 5,
+          "internal_medicine": 1,
+          "neurology": 0,
+          "orthopedics": 0
+        }
+      }
+    },
+    {
+      "id": "D7-25",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: IM L3 covered",
+      "day": 7,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "base": {
+          "decided": 7
+        },
+        "nurses": {
+          "cardiology": 5,
+          "internal_medicine": 1,
+          "neurology": 0,
+          "orthopedics": 0
+        }
+      }
+    },
+    {
+      "id": "D7-27",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: total L3 shortage 1.0",
+      "day": 7,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "1.0",
+      "allocation": {
+        "decided": 7
+      }
+    },
+    {
+      "id": "D7-28",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: the same total L3 shortage of 1.0",
+      "day": 7,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "1.0",
+      "allocation": {
+        "base": {
+          "decided": 7
+        },
+        "nurses": {
+          "cardiology": 5,
+          "internal_medicine": 1,
+          "neurology": 0,
+          "orthopedics": 0
+        }
+      }
+    },
+    {
+      "id": "D7-29",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "C (current allocation): neurology L2 P000082 stays in overflow",
+      "day": 7,
+      "category": "overflow",
+      "quantity": {
+        "name": "patient_in_bed",
+        "patient_id": "P000082"
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "in_effect": 6
+      }
+    },
+    {
+      "id": "D7-30",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "C: orthopedics L1 P000083 gets a bed",
+      "day": 7,
+      "category": "overflow",
+      "quantity": {
+        "name": "patient_in_bed",
+        "patient_id": "P000083"
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "in_effect": 6
+      }
+    },
+    {
+      "id": "D7-37",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds cardiology 10",
+      "day": 7,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "10",
+      "allocation": {
+        "in_effect": 6
+      }
+    },
+    {
+      "id": "D7-38",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds internal_medicine 6",
+      "day": 7,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "6",
+      "allocation": {
+        "in_effect": 6
+      }
+    },
+    {
+      "id": "D7-39",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds neurology 1",
+      "day": 7,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "in_effect": 6
+      }
+    },
+    {
+      "id": "D7-40",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds orthopedics 3",
+      "day": 7,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "3",
+      "allocation": {
+        "in_effect": 6
+      }
+    },
+    {
+      "id": "D7-41",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses cardiology 5",
+      "day": 7,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "5",
+      "allocation": {
+        "in_effect": 6
+      }
+    },
+    {
+      "id": "D7-42",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses internal_medicine 0",
+      "day": 7,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "in_effect": 6
+      }
+    },
+    {
+      "id": "D7-43",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses neurology 1",
+      "day": 7,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "in_effect": 6
+      }
+    },
+    {
+      "id": "D7-44",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses orthopedics 0",
+      "day": 7,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "in_effect": 6
+      }
+    },
+    {
+      "id": "D7-55",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "the 2 usable beds go to IM L3 (P000079) ...",
+      "day": 7,
+      "category": "overflow",
+      "quantity": {
+        "name": "patient_in_bed",
+        "patient_id": "P000079"
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 7
+      }
+    },
+    {
+      "id": "D7-56",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "... and the neurology L2 (P000082)",
+      "day": 7,
+      "category": "overflow",
+      "quantity": {
+        "name": "patient_in_bed",
+        "patient_id": "P000082"
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 7
+      }
+    },
+    {
+      "id": "D7-57",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "Orthopedics drops from 3 to 2 beds",
+      "day": 7,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "2",
+      "allocation": {
+        "decided": 7
+      }
+    },
+    {
+      "id": "D7-58",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "(its spare bed was empty) ['empty' = no patient after assignment; the bed was free (not held), and under C it would go to P000083, so strict reading: wrong]",
+      "day": 7,
+      "category": "empty_beds",
+      "quantity": {
+        "name": "empty_beds",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "in_effect": 6
+      }
+    },
+    {
+      "id": "D7-59",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "1 nurse covers neurology L3 ...",
+      "day": 7,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "neurology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 7
+      }
+    },
+    {
+      "id": "D7-60",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "... plus L2",
+      "day": 7,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "covered_need",
+        "departments": [
+          "neurology"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0.35",
+      "allocation": {
+        "decided": 7
+      }
+    },
+    {
+      "id": "D7-62",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "all 20 beds assigned",
+      "day": 7,
+      "category": "beds",
+      "quantity": {
+        "name": "beds"
+      },
+      "relation": "eq",
+      "value": "20",
+      "allocation": {
+        "decided": 7
+      }
+    },
+    {
+      "id": "D7-63",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "... and 6 nurses",
+      "day": 7,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses"
+      },
+      "relation": "eq",
+      "value": "6",
+      "allocation": {
+        "decided": 7
+      }
+    },
+    {
+      "id": "D7-64",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "no idle bed",
+      "day": 7,
+      "category": "empty_beds",
+      "quantity": {
+        "name": "empty_beds"
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 7
+      }
+    },
+    {
+      "id": "D7-65",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "beds moved: neurology now 2",
+      "day": 7,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "2",
+      "allocation": {
+        "decided": 7
+      }
+    },
+    {
+      "id": "D7-66",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "beds moved: orthopedics now 2",
+      "day": 7,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "2",
+      "allocation": {
+        "decided": 7
+      }
+    },
+    {
+      "id": "D7-67",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "beds moved: internal_medicine now 6",
+      "day": 7,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "6",
+      "allocation": {
+        "decided": 7
+      }
+    },
+    {
+      "id": "D7-68",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "beds moved: cardiology now 10",
+      "day": 7,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "10",
+      "allocation": {
+        "decided": 7
+      }
+    },
+    {
+      "id": "D7-69",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "IM L3 is uncovered (0.6)",
+      "day": 7,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.6",
+      "allocation": {
+        "decided": 7
+      }
+    },
+    {
+      "id": "D7-70",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "the neurology nurse also covers 0.35 of L2",
+      "day": 7,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "covered_need",
+        "departments": [
+          "neurology"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0.35",
+      "allocation": {
+        "decided": 7
+      }
+    },
+    {
+      "id": "D7-71",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "orthopedics L1 waits in overflow",
+      "day": 7,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 7
+      }
+    },
+    {
+      "id": "D7-72",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "IM L1 waits in overflow",
+      "day": 7,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 7
+      }
+    },
+    {
+      "id": "D7-73",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "orthopedics L2 gets no nursing",
+      "day": 7,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "covered_need",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 7
+      }
+    },
+    {
+      "id": "D7-74",
+      "finding": "day 7",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "IM L2 gets no nursing",
+      "day": 7,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "covered_need",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 7
+      }
+    },
+    {
+      "id": "D8-01",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: overflow cardiology L3 1",
+      "day": 8,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 8
+      }
+    },
+    {
+      "id": "D8-02",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: overflow cardiology L2 4",
+      "day": 8,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "4",
+      "allocation": {
+        "decided": 8
+      }
+    },
+    {
+      "id": "D8-03",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: overflow cardiology L1 1",
+      "day": 8,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 8
+      }
+    },
+    {
+      "id": "D8-04",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: overflow internal_medicine L2 4",
+      "day": 8,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "4",
+      "allocation": {
+        "decided": 8
+      }
+    },
+    {
+      "id": "D8-05",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: overflow internal_medicine L1 1",
+      "day": 8,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 8
+      }
+    },
+    {
+      "id": "D8-06",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: overflow neurology L1 1",
+      "day": 8,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "neurology"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 8
+      }
+    },
+    {
+      "id": "D8-07",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: overflow orthopedics L2 1",
+      "day": 8,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 8
+      }
+    },
+    {
+      "id": "D8-08",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: overflow orthopedics L1 2",
+      "day": 8,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "2",
+      "allocation": {
+        "decided": 8
+      }
+    },
+    {
+      "id": "D8-09",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: L3 shortage cardiology 0.2",
+      "day": 8,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.2",
+      "allocation": {
+        "decided": 8
+      }
+    },
+    {
+      "id": "D8-10",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: L3 shortage IM 0.6",
+      "day": 8,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.6",
+      "allocation": {
+        "decided": 8
+      }
+    },
+    {
+      "id": "D8-11",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: L3 shortage total 0.8",
+      "day": 8,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.8",
+      "allocation": {
+        "decided": 8
+      }
+    },
+    {
+      "id": "D8-12",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: L3 shortage total 0.8",
+      "day": 8,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.8",
+      "allocation": {
+        "beds": {
+          "cardiology": 6,
+          "internal_medicine": 3,
+          "neurology": 2,
+          "orthopedics": 0
+        },
+        "nurses": {
+          "cardiology": 4,
+          "internal_medicine": 1,
+          "neurology": 0,
+          "orthopedics": 0
+        }
+      }
+    },
+    {
+      "id": "D8-13",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: cardiology 0.2",
+      "day": 8,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.2",
+      "allocation": {
+        "beds": {
+          "cardiology": 6,
+          "internal_medicine": 3,
+          "neurology": 2,
+          "orthopedics": 0
+        },
+        "nurses": {
+          "cardiology": 4,
+          "internal_medicine": 1,
+          "neurology": 0,
+          "orthopedics": 0
+        }
+      }
+    },
+    {
+      "id": "D8-14",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: neurology 0.6",
+      "day": 8,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "neurology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.6",
+      "allocation": {
+        "beds": {
+          "cardiology": 6,
+          "internal_medicine": 3,
+          "neurology": 2,
+          "orthopedics": 0
+        },
+        "nurses": {
+          "cardiology": 4,
+          "internal_medicine": 1,
+          "neurology": 0,
+          "orthopedics": 0
+        }
+      }
+    },
+    {
+      "id": "D8-15",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: cuts P000066",
+      "day": 8,
+      "category": "overflow",
+      "quantity": {
+        "name": "patient_in_bed",
+        "patient_id": "P000066"
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "beds": {
+          "cardiology": 6,
+          "internal_medicine": 3,
+          "neurology": 2,
+          "orthopedics": 0
+        },
+        "nurses": {
+          "cardiology": 4,
+          "internal_medicine": 1,
+          "neurology": 0,
+          "orthopedics": 0
+        }
+      }
+    },
+    {
+      "id": "D8-16",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: cardiology overflow gets 5 L2",
+      "day": 8,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "5",
+      "allocation": {
+        "beds": {
+          "cardiology": 6,
+          "internal_medicine": 3,
+          "neurology": 2,
+          "orthopedics": 0
+        },
+        "nurses": {
+          "cardiology": 4,
+          "internal_medicine": 1,
+          "neurology": 0,
+          "orthopedics": 0
+        }
+      }
+    },
+    {
+      "id": "D8-17",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "shortfall 3 (occupied minus pool)",
+      "day": 8,
+      "category": "pool",
+      "quantity": {
+        "name": "free_beds"
+      },
+      "relation": "eq",
+      "value": "-3"
+    },
+    {
+      "id": "D8-18",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds cardiology 10",
+      "day": 8,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "10",
+      "allocation": {
+        "in_effect": 7
+      }
+    },
+    {
+      "id": "D8-19",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds internal_medicine 6",
+      "day": 8,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "6",
+      "allocation": {
+        "in_effect": 7
+      }
+    },
+    {
+      "id": "D8-20",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds neurology 2",
+      "day": 8,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "2",
+      "allocation": {
+        "in_effect": 7
+      }
+    },
+    {
+      "id": "D8-21",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds orthopedics 2",
+      "day": 8,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "2",
+      "allocation": {
+        "in_effect": 7
+      }
+    },
+    {
+      "id": "D8-22",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses cardiology 5",
+      "day": 8,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "5",
+      "allocation": {
+        "in_effect": 7
+      }
+    },
+    {
+      "id": "D8-23",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses internal_medicine 0",
+      "day": 8,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "in_effect": 7
+      }
+    },
+    {
+      "id": "D8-24",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses neurology 1",
+      "day": 8,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "in_effect": 7
+      }
+    },
+    {
+      "id": "D8-25",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses orthopedics 0",
+      "day": 8,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "in_effect": 7
+      }
+    },
+    {
+      "id": "D8-26",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "occupied L3 = 8",
+      "day": 8,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "8"
+    },
+    {
+      "id": "D8-27",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "occupied L3 cardiology 6",
+      "day": 8,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "6"
+    },
+    {
+      "id": "D8-28",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "occupied L3 internal_medicine 1",
+      "day": 8,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "1"
+    },
+    {
+      "id": "D8-29",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "occupied L3 neurology 1",
+      "day": 8,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "neurology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "1"
+    },
+    {
+      "id": "D8-30",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "occupied L2 = 6",
+      "day": 8,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "6"
+    },
+    {
+      "id": "D8-31",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "occupied L2 cardiology 1",
+      "day": 8,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "1"
+    },
+    {
+      "id": "D8-32",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "occupied L2 internal_medicine 4",
+      "day": 8,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "4"
+    },
+    {
+      "id": "D8-33",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "occupied L2 neurology 1",
+      "day": 8,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "neurology"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "1"
+    },
+    {
+      "id": "D8-34",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "occupied L1 = 0",
+      "day": 8,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "0"
+    },
+    {
+      "id": "D8-35",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "all 8 L3 occupants keep beds",
+      "day": 8,
+      "category": "overflow",
+      "quantity": {
+        "name": "holders_cut",
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 8
+      }
+    },
+    {
+      "id": "D8-36",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "no beds are free (all 11 occupied)",
+      "day": 8,
+      "category": "empty_beds",
+      "quantity": {
+        "name": "empty_beds"
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 8
+      }
+    },
+    {
+      "id": "D8-37",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "4 to cardiology covers 4.0 of L3",
+      "day": 8,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "covered_need",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "4.0",
+      "allocation": {
+        "decided": 8
+      }
+    },
+    {
+      "id": "D8-38",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "... of 4.2 L3 need",
+      "day": 8,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "need",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "4.2"
+    },
+    {
+      "id": "D8-39",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "neurology covers its L3 (0.6)",
+      "day": 8,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "covered_need",
+        "departments": [
+          "neurology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.6",
+      "allocation": {
+        "decided": 8
+      }
+    },
+    {
+      "id": "D8-40",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "5.4 L3 need",
+      "day": 8,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "need",
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "5.4"
+    },
+    {
+      "id": "D8-41",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "IM has the most L2 occupants (4)",
+      "day": 8,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "4"
+    },
+    {
+      "id": "D8-42",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "pool 11 beds",
+      "day": 8,
+      "category": "pool",
+      "quantity": {
+        "name": "pool_beds"
+      },
+      "relation": "eq",
+      "value": "11"
+    },
+    {
+      "id": "D8-43",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "pool 5 nurses",
+      "day": 8,
+      "category": "pool",
+      "quantity": {
+        "name": "pool_nurses"
+      },
+      "relation": "eq",
+      "value": "5"
+    },
+    {
+      "id": "D8-44",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "Occupied beds total 14",
+      "day": 8,
+      "category": "beds",
+      "quantity": {
+        "name": "holders"
+      },
+      "relation": "eq",
+      "value": "14"
+    },
+    {
+      "id": "D8-45",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied cardiology 7",
+      "day": 8,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "7"
+    },
+    {
+      "id": "D8-46",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied internal_medicine 5",
+      "day": 8,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "5"
+    },
+    {
+      "id": "D8-47",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied neurology 2",
+      "day": 8,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "2"
+    },
+    {
+      "id": "D8-48",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied orthopedics 0",
+      "day": 8,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "0"
+    },
+    {
+      "id": "D8-49",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "12 patients in the overflow queue",
+      "day": 8,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue"
+      },
+      "relation": "eq",
+      "value": "12"
+    },
+    {
+      "id": "D8-50",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "beds now cardiology 7",
+      "day": 8,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "7",
+      "allocation": {
+        "decided": 8
+      }
+    },
+    {
+      "id": "D8-51",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "beds now internal_medicine 2",
+      "day": 8,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "2",
+      "allocation": {
+        "decided": 8
+      }
+    },
+    {
+      "id": "D8-52",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "beds now neurology 2",
+      "day": 8,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "2",
+      "allocation": {
+        "decided": 8
+      }
+    },
+    {
+      "id": "D8-53",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "beds now orthopedics 0",
+      "day": 8,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 8
+      }
+    },
+    {
+      "id": "D8-54",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "3 IM L2 patients lose their beds",
+      "day": 8,
+      "category": "overflow",
+      "quantity": {
+        "name": "holders_cut",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "3",
+      "allocation": {
+        "decided": 8
+      }
+    },
+    {
+      "id": "D8-55",
+      "finding": "day 8",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "neurology's nurse also covers 0.35 of L2",
+      "day": 8,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "covered_need",
+        "departments": [
+          "neurology"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0.35",
+      "allocation": {
+        "decided": 8
+      }
+    },
+    {
+      "id": "D9-01",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: no L3 in overflow",
+      "day": 9,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 9
+      }
+    },
+    {
+      "id": "D9-02",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: overflow cardiology L2 4",
+      "day": 9,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "4",
+      "allocation": {
+        "decided": 9
+      }
+    },
+    {
+      "id": "D9-03",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: overflow internal_medicine L2 3",
+      "day": 9,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "3",
+      "allocation": {
+        "decided": 9
+      }
+    },
+    {
+      "id": "D9-04",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: overflow orthopedics L2 1",
+      "day": 9,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 9
+      }
+    },
+    {
+      "id": "D9-05",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: overflow cardiology L1 1",
+      "day": 9,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 9
+      }
+    },
+    {
+      "id": "D9-06",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: overflow internal_medicine L1 2",
+      "day": 9,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "2",
+      "allocation": {
+        "decided": 9
+      }
+    },
+    {
+      "id": "D9-07",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: overflow neurology L1 1",
+      "day": 9,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "neurology"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 9
+      }
+    },
+    {
+      "id": "D9-08",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: overflow orthopedics L1 4",
+      "day": 9,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "4",
+      "allocation": {
+        "decided": 9
+      }
+    },
+    {
+      "id": "D9-09",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: L3 shortage cardiology 0.6",
+      "day": 9,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.6",
+      "allocation": {
+        "decided": 9
+      }
+    },
+    {
+      "id": "D9-10",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: L3 shortage IM 0.2",
+      "day": 9,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.2",
+      "allocation": {
+        "decided": 9
+      }
+    },
+    {
+      "id": "D9-11",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: L3 shortage total 0.8",
+      "day": 9,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.8",
+      "allocation": {
+        "decided": 9
+      }
+    },
+    {
+      "id": "D9-12",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: same overflow",
+      "day": 9,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow"
+      },
+      "relation": "eq_alloc",
+      "allocation": {
+        "base": {
+          "decided": 9
+        },
+        "nurses": {
+          "cardiology": 4,
+          "internal_medicine": 1,
+          "neurology": 0,
+          "orthopedics": 0
+        }
+      },
+      "compare_allocation": {
+        "decided": 9
+      }
+    },
+    {
+      "id": "D9-13",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: L3 shortage total 0.8",
+      "day": 9,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.8",
+      "allocation": {
+        "base": {
+          "decided": 9
+        },
+        "nurses": {
+          "cardiology": 4,
+          "internal_medicine": 1,
+          "neurology": 0,
+          "orthopedics": 0
+        }
+      }
+    },
+    {
+      "id": "D9-14",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: IM 0.2",
+      "day": 9,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.2",
+      "allocation": {
+        "base": {
+          "decided": 9
+        },
+        "nurses": {
+          "cardiology": 4,
+          "internal_medicine": 1,
+          "neurology": 0,
+          "orthopedics": 0
+        }
+      }
+    },
+    {
+      "id": "D9-15",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: neurology 0.6",
+      "day": 9,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "neurology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.6",
+      "allocation": {
+        "base": {
+          "decided": 9
+        },
+        "nurses": {
+          "cardiology": 4,
+          "internal_medicine": 1,
+          "neurology": 0,
+          "orthopedics": 0
+        }
+      }
+    },
+    {
+      "id": "D9-16",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: cardiology's spare 0.4 covers L2",
+      "day": 9,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "covered_need",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0.4",
+      "allocation": {
+        "base": {
+          "decided": 9
+        },
+        "nurses": {
+          "cardiology": 4,
+          "internal_medicine": 1,
+          "neurology": 0,
+          "orthopedics": 0
+        }
+      }
+    },
+    {
+      "id": "D9-17",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "4 free beds",
+      "day": 9,
+      "category": "pool",
+      "quantity": {
+        "name": "free_beds"
+      },
+      "relation": "eq",
+      "value": "4"
+    },
+    {
+      "id": "D9-18",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "4 waiting L3",
+      "day": 9,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue",
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "4"
+    },
+    {
+      "id": "D9-19",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "pool 11 beds",
+      "day": 9,
+      "category": "pool",
+      "quantity": {
+        "name": "pool_beds"
+      },
+      "relation": "eq",
+      "value": "11"
+    },
+    {
+      "id": "D9-20",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "pool 5 nurses",
+      "day": 9,
+      "category": "pool",
+      "quantity": {
+        "name": "pool_nurses"
+      },
+      "relation": "eq",
+      "value": "5"
+    },
+    {
+      "id": "D9-21",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "L3 waiting cardiology 3",
+      "day": 9,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "3"
+    },
+    {
+      "id": "D9-22",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "L3 waiting IM 1",
+      "day": 9,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "1"
+    },
+    {
+      "id": "D9-23",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "L2 waiting cardiology 4",
+      "day": 9,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "4"
+    },
+    {
+      "id": "D9-24",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "L2 waiting internal_medicine 3",
+      "day": 9,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "3"
+    },
+    {
+      "id": "D9-25",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "L2 waiting orthopedics 1",
+      "day": 9,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "1"
+    },
+    {
+      "id": "D9-26",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "L1 waiting 8",
+      "day": 9,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue",
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "8"
+    },
+    {
+      "id": "D9-27",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds cardiology 7",
+      "day": 9,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "7",
+      "allocation": {
+        "in_effect": 8
+      }
+    },
+    {
+      "id": "D9-28",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds internal_medicine 2",
+      "day": 9,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "2",
+      "allocation": {
+        "in_effect": 8
+      }
+    },
+    {
+      "id": "D9-29",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds neurology 2",
+      "day": 9,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "2",
+      "allocation": {
+        "in_effect": 8
+      }
+    },
+    {
+      "id": "D9-30",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds orthopedics 0",
+      "day": 9,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "in_effect": 8
+      }
+    },
+    {
+      "id": "D9-31",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses cardiology 4",
+      "day": 9,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "4",
+      "allocation": {
+        "in_effect": 8
+      }
+    },
+    {
+      "id": "D9-32",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses internal_medicine 0",
+      "day": 9,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "in_effect": 8
+      }
+    },
+    {
+      "id": "D9-33",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses neurology 1",
+      "day": 9,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "in_effect": 8
+      }
+    },
+    {
+      "id": "D9-34",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses orthopedics 0",
+      "day": 9,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "in_effect": 8
+      }
+    },
+    {
+      "id": "D9-35",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "occupied 7",
+      "day": 9,
+      "category": "beds",
+      "quantity": {
+        "name": "holders"
+      },
+      "relation": "eq",
+      "value": "7"
+    },
+    {
+      "id": "D9-36",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "P000074 gets a bed",
+      "day": 9,
+      "category": "overflow",
+      "quantity": {
+        "name": "patient_in_bed",
+        "patient_id": "P000074"
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 9
+      }
+    },
+    {
+      "id": "D9-37",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "neurology's nurse has 0.4 left after L3 (goes to L2 and L1)",
+      "day": 9,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "covered_need",
+        "departments": [
+          "neurology"
+        ],
+        "levels": [
+          1,
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0.4",
+      "allocation": {
+        "decided": 9
+      }
+    },
+    {
+      "id": "D9-38",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "no empty bed",
+      "day": 9,
+      "category": "empty_beds",
+      "quantity": {
+        "name": "empty_beds"
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 9
+      }
+    },
+    {
+      "id": "D9-39",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied cardiology 4",
+      "day": 9,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "4"
+    },
+    {
+      "id": "D9-40",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied internal_medicine 1",
+      "day": 9,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "1"
+    },
+    {
+      "id": "D9-41",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied neurology 2",
+      "day": 9,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "2"
+    },
+    {
+      "id": "D9-42",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied orthopedics 0",
+      "day": 9,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "0"
+    },
+    {
+      "id": "D9-43",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "20 patients in the overflow queue",
+      "day": 9,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue"
+      },
+      "relation": "eq",
+      "value": "20"
+    },
+    {
+      "id": "D9-44",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "4 of them are L3",
+      "day": 9,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue",
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "4"
+    },
+    {
+      "id": "D9-45",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "orthopedics L2 (P000088) waits",
+      "day": 9,
+      "category": "overflow",
+      "quantity": {
+        "name": "patient_in_bed",
+        "patient_id": "P000088"
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 9
+      }
+    },
+    {
+      "id": "D9-46",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "nurses cardiology 3",
+      "day": 9,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "3",
+      "allocation": {
+        "decided": 9
+      }
+    },
+    {
+      "id": "D9-47",
+      "finding": "day 9",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "IM 1",
+      "day": 9,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 9
+      }
+    },
+    {
+      "id": "D10-01",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: overflow only 2 L1",
+      "day": 10,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow"
+      },
+      "relation": "eq",
+      "value": "2",
+      "allocation": {
+        "decided": 10
+      }
+    },
+    {
+      "id": "D10-02",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: overflow L1 = 2",
+      "day": 10,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "levels": [
+          1
+        ]
+      },
+      "relation": "eq",
+      "value": "2",
+      "allocation": {
+        "decided": 10
+      }
+    },
+    {
+      "id": "D10-03",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: IM P000096 in overflow",
+      "day": 10,
+      "category": "overflow",
+      "quantity": {
+        "name": "patient_in_bed",
+        "patient_id": "P000096"
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 10
+      }
+    },
+    {
+      "id": "D10-04",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: orthopedics P000103 in overflow",
+      "day": 10,
+      "category": "overflow",
+      "quantity": {
+        "name": "patient_in_bed",
+        "patient_id": "P000103"
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 10
+      }
+    },
+    {
+      "id": "D10-05",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: all L3 and L2 housed",
+      "day": 10,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow",
+        "levels": [
+          2,
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 10
+      }
+    },
+    {
+      "id": "D10-06",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: L3 shortage 0",
+      "day": 10,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 10
+      }
+    },
+    {
+      "id": "D10-07",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: L2 shortage cardiology 0.8",
+      "day": 10,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0.8",
+      "allocation": {
+        "decided": 10
+      }
+    },
+    {
+      "id": "D10-08",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: L2 shortage internal_medicine 0.15",
+      "day": 10,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0.15",
+      "allocation": {
+        "decided": 10
+      }
+    },
+    {
+      "id": "D10-09",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: L2 shortage neurology 0.3",
+      "day": 10,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "neurology"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0.3",
+      "allocation": {
+        "decided": 10
+      }
+    },
+    {
+      "id": "D10-10",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "A: L2 shortage orthopedics 0.35",
+      "day": 10,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0.35",
+      "allocation": {
+        "decided": 10
+      }
+    },
+    {
+      "id": "D10-11",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: same overflow",
+      "day": 10,
+      "category": "overflow",
+      "quantity": {
+        "name": "overflow"
+      },
+      "relation": "eq_alloc",
+      "allocation": {
+        "base": {
+          "decided": 10
+        },
+        "nurses": {
+          "cardiology": 3,
+          "internal_medicine": 1,
+          "neurology": 1,
+          "orthopedics": 1
+        }
+      },
+      "compare_allocation": {
+        "decided": 10
+      }
+    },
+    {
+      "id": "D10-12",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: IM L3 short 0.8",
+      "day": 10,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0.8",
+      "allocation": {
+        "base": {
+          "decided": 10
+        },
+        "nurses": {
+          "cardiology": 3,
+          "internal_medicine": 1,
+          "neurology": 1,
+          "orthopedics": 1
+        }
+      }
+    },
+    {
+      "id": "D10-13",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "B: orthopedics L2 covered",
+      "day": 10,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "base": {
+          "decided": 10
+        },
+        "nurses": {
+          "cardiology": 3,
+          "internal_medicine": 1,
+          "neurology": 1,
+          "orthopedics": 1
+        }
+      }
+    },
+    {
+      "id": "D10-14",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "keep: 11 beds",
+      "day": 10,
+      "category": "beds",
+      "quantity": {
+        "name": "beds"
+      },
+      "relation": "eq",
+      "value": "11",
+      "allocation": {
+        "in_effect": 9
+      }
+    },
+    {
+      "id": "D10-15",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "alternatives",
+      "text": "keep: 5 nurses",
+      "day": 10,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses"
+      },
+      "relation": "eq",
+      "value": "5",
+      "allocation": {
+        "in_effect": 9
+      }
+    },
+    {
+      "id": "D10-16",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds cardiology 7",
+      "day": 10,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "7",
+      "allocation": {
+        "in_effect": 9
+      }
+    },
+    {
+      "id": "D10-17",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds internal_medicine 2",
+      "day": 10,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "2",
+      "allocation": {
+        "in_effect": 9
+      }
+    },
+    {
+      "id": "D10-18",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds neurology 2",
+      "day": 10,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "2",
+      "allocation": {
+        "in_effect": 9
+      }
+    },
+    {
+      "id": "D10-19",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect beds orthopedics 0",
+      "day": 10,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "in_effect": 9
+      }
+    },
+    {
+      "id": "D10-20",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses cardiology 3",
+      "day": 10,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "3",
+      "allocation": {
+        "in_effect": 9
+      }
+    },
+    {
+      "id": "D10-21",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses internal_medicine 1",
+      "day": 10,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "in_effect": 9
+      }
+    },
+    {
+      "id": "D10-22",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses neurology 1",
+      "day": 10,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "in_effect": 9
+      }
+    },
+    {
+      "id": "D10-23",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "information_used",
+      "text": "in-effect nurses orthopedics 0",
+      "day": 10,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "in_effect": 9
+      }
+    },
+    {
+      "id": "D10-24",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "L3 need (4.8)",
+      "day": 10,
+      "category": "nurse_coverage",
+      "quantity": {
+        "name": "need",
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "4.8"
+    },
+    {
+      "id": "D10-25",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "oldest L1 P000085 gets a bed",
+      "day": 10,
+      "category": "overflow",
+      "quantity": {
+        "name": "patient_in_bed",
+        "patient_id": "P000085"
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 10
+      }
+    },
+    {
+      "id": "D10-26",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "oldest L1 P000087 gets a bed",
+      "day": 10,
+      "category": "overflow",
+      "quantity": {
+        "name": "patient_in_bed",
+        "patient_id": "P000087"
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 10
+      }
+    },
+    {
+      "id": "D10-27",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "oldest L1 P000094 gets a bed",
+      "day": 10,
+      "category": "overflow",
+      "quantity": {
+        "name": "patient_in_bed",
+        "patient_id": "P000094"
+      },
+      "relation": "eq",
+      "value": "1",
+      "allocation": {
+        "decided": 10
+      }
+    },
+    {
+      "id": "D10-28",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "no empty bed",
+      "day": 10,
+      "category": "empty_beds",
+      "quantity": {
+        "name": "empty_beds"
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 10
+      }
+    },
+    {
+      "id": "D10-29",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "all 20 beds assigned",
+      "day": 10,
+      "category": "beds",
+      "quantity": {
+        "name": "beds"
+      },
+      "relation": "eq",
+      "value": "20",
+      "allocation": {
+        "decided": 10
+      }
+    },
+    {
+      "id": "D10-30",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "reasons",
+      "text": "... and 6 nurses",
+      "day": 10,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses"
+      },
+      "relation": "eq",
+      "value": "6",
+      "allocation": {
+        "decided": 10
+      }
+    },
+    {
+      "id": "D10-31",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "pool 20 beds",
+      "day": 10,
+      "category": "pool",
+      "quantity": {
+        "name": "pool_beds"
+      },
+      "relation": "eq",
+      "value": "20"
+    },
+    {
+      "id": "D10-32",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "pool 6 nurses",
+      "day": 10,
+      "category": "pool",
+      "quantity": {
+        "name": "pool_nurses"
+      },
+      "relation": "eq",
+      "value": "6"
+    },
+    {
+      "id": "D10-33",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "Occupied beds 6",
+      "day": 10,
+      "category": "beds",
+      "quantity": {
+        "name": "holders"
+      },
+      "relation": "eq",
+      "value": "6"
+    },
+    {
+      "id": "D10-34",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied cardiology 3",
+      "day": 10,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "3"
+    },
+    {
+      "id": "D10-35",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied internal_medicine 2",
+      "day": 10,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "2"
+    },
+    {
+      "id": "D10-36",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied neurology 1",
+      "day": 10,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "1"
+    },
+    {
+      "id": "D10-37",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "occupied orthopedics 0",
+      "day": 10,
+      "category": "beds",
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "0"
+    },
+    {
+      "id": "D10-38",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "situation",
+      "text": "16 patients are in the queue",
+      "day": 10,
+      "category": "overflow",
+      "quantity": {
+        "name": "queue"
+      },
+      "relation": "eq",
+      "value": "16"
+    },
+    {
+      "id": "D10-39",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "beds now cardiology 8",
+      "day": 10,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "relation": "eq",
+      "value": "8",
+      "allocation": {
+        "decided": 10
+      }
+    },
+    {
+      "id": "D10-40",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "beds now internal_medicine 4",
+      "day": 10,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "4",
+      "allocation": {
+        "decided": 10
+      }
+    },
+    {
+      "id": "D10-41",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "beds now neurology 4",
+      "day": 10,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "relation": "eq",
+      "value": "4",
+      "allocation": {
+        "decided": 10
+      }
+    },
+    {
+      "id": "D10-42",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "beds now orthopedics 4",
+      "day": 10,
+      "category": "beds",
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "4",
+      "allocation": {
+        "decided": 10
+      }
+    },
+    {
+      "id": "D10-43",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "IM 1 -> 2 nurses",
+      "day": 10,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "relation": "eq",
+      "value": "2",
+      "allocation": {
+        "decided": 10
+      }
+    },
+    {
+      "id": "D10-44",
+      "finding": "day 10",
+      "author": "ALLOCATOR",
+      "field": "tradeoffs",
+      "text": "orthopedics has no nurse",
+      "day": 10,
+      "category": "beds",
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "allocation": {
+        "decided": 10
+      }
+    }
+  ]
+}

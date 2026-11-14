@@ -281,6 +281,14 @@
           "precision": null,
           "level_agreement": null
         },
+        "headline_rejected_submission": {
+          "audit": 0,
+          "checker": 0,
+          "matched": 0,
+          "recall": null,
+          "precision": null,
+          "level_agreement": null
+        },
         "secondary": {
           "audit": 7,
           "checker": 3,
@@ -288,14 +296,6 @@
           "recall": 0.429,
           "precision": 1.0,
           "level_agreement": 1.0
-        },
-        "other": {
-          "audit": 0,
-          "checker": 0,
-          "matched": 0,
-          "recall": null,
-          "precision": null,
-          "level_agreement": null
         }
       },
       "groups": {
@@ -307,16 +307,17 @@
           "nurse_gap",
           "allocator_failure_day"
         ],
+        "headline_rejected_submission": [
+          "rejected_submission"
+        ],
         "secondary": [
           "beds_reversal",
           "nurses_reversal",
-          "reallocation_without_effect"
-        ],
-        "other": [
-          "rejected_submission",
+          "reallocation_without_effect",
           "f1_inversion"
         ]
       },
+      "date_shift_matches": [],
       "checker_llm_only": {
         "explanation_inaccuracy": 1
       },
@@ -403,6 +404,14 @@
         "precision": null,
         "level_agreement": null
       },
+      "headline_rejected_submission": {
+        "audit": 0,
+        "checker": 0,
+        "matched": 0,
+        "recall": null,
+        "precision": null,
+        "level_agreement": null
+      },
       "secondary": {
         "audit": 7,
         "checker": 3,
@@ -410,14 +419,6 @@
         "recall": 0.429,
         "precision": 1.0,
         "level_agreement": 1.0
-      },
-      "other": {
-        "audit": 0,
-        "checker": 0,
-        "matched": 0,
-        "recall": null,
-        "precision": null,
-        "level_agreement": null
       }
     },
     "groups": {
@@ -429,16 +430,17 @@
         "nurse_gap",
         "allocator_failure_day"
       ],
+      "headline_rejected_submission": [
+        "rejected_submission"
+      ],
       "secondary": [
         "beds_reversal",
         "nurses_reversal",
-        "reallocation_without_effect"
-      ],
-      "other": [
-        "rejected_submission",
+        "reallocation_without_effect",
         "f1_inversion"
       ]
     },
+    "date_shift_matches": [],
     "checker_llm_only": {
       "explanation_inaccuracy": 1
     },
