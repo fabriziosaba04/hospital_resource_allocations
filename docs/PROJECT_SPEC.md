@@ -532,3 +532,12 @@ The robustness seeds (20261108 and 20261109) are an implementation choice, also 
 | 47 | **Small numbers:** matching figures are written as counts ("4/4"), never as a rate alone, here and in R1–R3 | `EVALUATION_PLAN.md` §4 point 6 |
 | 48 | **Explanation findings scored claim by claim** (correct / wrong / unverifiable); numeric claims verified by a script with the what-if engine, not by reading; protocol fixed before the tag; DRY2's two findings are the first test case | `EVALUATION_PLAN.md` §4; `src/evaluation/claim_check.py` |
 | 49 | Before the tag: a baseline comparison on HARD10 (A1, A2 by tier, A3 avoid and path for B0, B1, B2, DRY2); a figure plan (4–6 static figures, each with its question, code tested on the baselines and DRY2) and a check that the records carry every field the figures and the animation need; a per-run cost estimate at primary scale. Dispatcher context: no change, no relaunch guard | `SESSION_LOG.md` |
+
+**Approved by the owner on 2026-11-14** (review of the B2-HARD10 test and the pre-tag work).
+
+| # | Decision | Applied in |
+| --- | --- | --- |
+| 50 | **B1 on nurses:** "near-optimal" is used only where measured. B1's nurse rule matches §6 (B1 "Nurses" steps 1–3) and is not changed. On the frozen seeds its A2 gap is 0 at tier 3 on all three, at tier 2 1.05 / 2.3 / 0 need units (2 / 5 / 0 days, at most 0.22% of tier-2 need), at tier 1 1.2 / 1.85 / 0.45. Wording: "optimal on A1 by construction, greedy on nurses with a measured gap of X"; "near-optimal" only for A2 on the frozen seeds. HARD10 (B1 tier-3 gap 1.2, 2.1% of need; DRY2 beat it) is reported as a falsified premise (R35) | `LIMITATIONS_AND_REFLECTION.md` §4 |
+| 51 | **Animation:** net changes per department only; no arrows between departments, because the records hold allocations, not transfers. The caption states this limit | `EVALUATION_PLAN.md` §10 |
+| 52 | **`--allow-synced-folder`** accepted for synthetic dry runs (refused in code for frozen data, and whenever frozen status cannot be established) | Log #90 |
+| 53 | **Tag `prompts-v1.0`** at the start of a session, once: (1) explanation-claim scoring (Point A) is resolved and its protocol is in `EVALUATION_PLAN.md`; (2) #50 is done; (3) the pre-R1 checks pass in the clone (manifest, run settings, smoke test, full suite); (4) `allocator.md` and `checker.md` are byte-identical to the DRY2 versions (otherwise a dry run first). The tag covers code, prompts and `EVALUATION_PLAN.md` together. Each R-run starts at the beginning of a fresh usage window | `SESSION_LOG.md` |

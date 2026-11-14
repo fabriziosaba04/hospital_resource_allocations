@@ -260,3 +260,11 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **How it was caught:** the guard's unit test, which moves the project root to a temporary folder, failed with "DID NOT RAISE".
 - **Implication:** a safety check must fail closed. When it cannot decide, it now treats the dataset as frozen and refuses. The test also exposed that the manifest path depended on a patched global; it is now fixed at import time.
 - **Decisions Log:** #90.
+
+### R35. "B1 is near-optimal on nurses" was a premise, and a synthetic fixture falsified it first
+
+- **What happened:** after the headroom review the evaluation was framed as "can the agent reproduce a near-optimal myopic policy (B1)?" (owner decision §11 #24). On A2 that rested on small B1 gaps on the frozen seeds, but nobody had stated where B1's nurse rule stops being near-optimal. On HARD10, DRY2 beat B1 at every A2 tier (tier 3: 0 against 1.2 need units), so the premise was false on that fixture.
+- **How it was caught:** the baseline table on HARD10 the owner asked for (2026-11-14), then the recomputation of B1's gap per tier on the three frozen seeds.
+- **Outcome:** on the frozen seeds B1 is optimal at tier 3 and within 0.22% of tier-2 need, so the framing holds there with a measured gap. But it is a measured property of these data, not a property of B1. B1 rounds up to whole nurses per department, which costs more when departments are small.
+- **Implication:** a framing word like "near-optimal" is a claim and needs a number and a scope. The fixture built to test the CHECKER also tested the framing, before any agent output on frozen data.
+- **Decisions Log:** owner decision §11 #50.
