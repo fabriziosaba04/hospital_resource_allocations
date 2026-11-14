@@ -1,0 +1,271 @@
+{
+  "run_id": "DRY2-HARD10",
+  "claims": [
+    {
+      "id": "F1-A1",
+      "finding": "F1: day 2, moving orthopedics' only nurse",
+      "author": "ALLOCATOR",
+      "text": "moving orthopedics' only nurse would leave its level-3 patient uncovered",
+      "day": 2,
+      "allocation": {
+        "base": {
+          "decided": 2
+        },
+        "nurses": {
+          "cardiology": 4,
+          "internal_medicine": 1,
+          "neurology": 1,
+          "orthopedics": 0
+        }
+      },
+      "quantity": {
+        "name": "covered_need",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "computed": 0.0,
+      "verdict": "correct"
+    },
+    {
+      "id": "F1-A2",
+      "finding": "F1: day 2, moving orthopedics' only nurse",
+      "author": "ALLOCATOR",
+      "text": "... which is no better (covered need at levels 2-3 not higher than with the chosen split)",
+      "day": 2,
+      "allocation": {
+        "base": {
+          "decided": 2
+        },
+        "nurses": {
+          "cardiology": 4,
+          "internal_medicine": 1,
+          "neurology": 1,
+          "orthopedics": 0
+        }
+      },
+      "compare_allocation": {
+        "decided": 2
+      },
+      "quantity": {
+        "name": "covered_need",
+        "levels": [
+          2,
+          3
+        ]
+      },
+      "relation": "le_alloc",
+      "computed": 6.0,
+      "computed_compare": 5.6,
+      "verdict": "wrong"
+    },
+    {
+      "id": "F1-C1",
+      "finding": "F1: day 2, moving orthopedics' only nurse",
+      "author": "CHECKER",
+      "text": "that split has equal L3 coverage (5.6)",
+      "day": 2,
+      "allocation": {
+        "base": {
+          "decided": 2
+        },
+        "nurses": {
+          "cardiology": 4,
+          "internal_medicine": 1,
+          "neurology": 1,
+          "orthopedics": 0
+        }
+      },
+      "quantity": {
+        "name": "covered_need",
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "5.6",
+      "computed": 5.6,
+      "verdict": "correct"
+    },
+    {
+      "id": "F1-C2",
+      "finding": "F1: day 2, moving orthopedics' only nurse",
+      "author": "CHECKER",
+      "text": "and higher L2 coverage (0.4 ...)",
+      "day": 2,
+      "allocation": {
+        "base": {
+          "decided": 2
+        },
+        "nurses": {
+          "cardiology": 4,
+          "internal_medicine": 1,
+          "neurology": 1,
+          "orthopedics": 0
+        }
+      },
+      "quantity": {
+        "name": "covered_need",
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0.4",
+      "computed": 0.4,
+      "verdict": "correct"
+    },
+    {
+      "id": "F1-C3",
+      "finding": "F1: day 2, moving orthopedics' only nurse",
+      "author": "CHECKER",
+      "text": "(... vs 0) for the chosen split",
+      "day": 2,
+      "allocation": {
+        "decided": 2
+      },
+      "quantity": {
+        "name": "covered_need",
+        "levels": [
+          2
+        ]
+      },
+      "relation": "eq",
+      "value": "0",
+      "computed": 0.0,
+      "verdict": "correct"
+    },
+    {
+      "id": "F2-A1",
+      "finding": "F2: day 2, keeping the current allocation",
+      "author": "ALLOCATOR",
+      "text": "keeping the current allocation would overflow 5 level-3 patients in cardiology and neurology",
+      "day": 2,
+      "allocation": {
+        "in_effect": 1
+      },
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "cardiology",
+          "neurology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "eq",
+      "value": "5",
+      "computed": 5,
+      "verdict": "correct"
+    },
+    {
+      "id": "F2-A2",
+      "finding": "F2: day 2, keeping the current allocation",
+      "author": "ALLOCATOR",
+      "text": "while 4 beds sit empty in IM and orthopedics",
+      "day": 2,
+      "allocation": {
+        "in_effect": 1
+      },
+      "quantity": {
+        "name": "empty_beds",
+        "departments": [
+          "internal_medicine",
+          "orthopedics"
+        ]
+      },
+      "relation": "eq",
+      "value": "4",
+      "computed": 5,
+      "verdict": "wrong"
+    },
+    {
+      "id": "F2-C1",
+      "finding": "F2: day 2, keeping the current allocation",
+      "author": "CHECKER",
+      "text": "both figures contradict the records: the level-3 overflow is not 5",
+      "day": 2,
+      "allocation": {
+        "in_effect": 1
+      },
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "cardiology",
+          "neurology"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "relation": "ne",
+      "value": "5",
+      "computed": 5,
+      "verdict": "wrong"
+    },
+    {
+      "id": "F2-C2",
+      "finding": "F2: day 2, keeping the current allocation",
+      "author": "CHECKER",
+      "text": "both figures contradict the records: the empty beds are not 4",
+      "day": 2,
+      "allocation": {
+        "in_effect": 1
+      },
+      "quantity": {
+        "name": "empty_beds",
+        "departments": [
+          "internal_medicine",
+          "orthopedics"
+        ]
+      },
+      "relation": "ne",
+      "value": "4",
+      "computed": 5,
+      "verdict": "correct"
+    }
+  ],
+  "summary": {
+    "ALLOCATOR": {
+      "correct": 2,
+      "wrong": 2,
+      "unverifiable": 0
+    },
+    "CHECKER": {
+      "correct": 4,
+      "wrong": 1,
+      "unverifiable": 0
+    }
+  },
+  "findings": {
+    "F1: day 2, moving orthopedics' only nurse": {
+      "ALLOCATOR": {
+        "F1-A1": "correct",
+        "F1-A2": "wrong"
+      },
+      "CHECKER": {
+        "F1-C1": "correct",
+        "F1-C2": "correct",
+        "F1-C3": "correct"
+      },
+      "finding_valid": true
+    },
+    "F2: day 2, keeping the current allocation": {
+      "ALLOCATOR": {
+        "F2-A1": "correct",
+        "F2-A2": "wrong"
+      },
+      "CHECKER": {
+        "F2-C1": "wrong",
+        "F2-C2": "correct"
+      },
+      "finding_valid": true
+    }
+  }
+}

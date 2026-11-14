@@ -1,0 +1,16 @@
+{
+  "run_id": "CHK-B2-HARD10",
+  "dataset_id": "HARD10",
+  "data_root": "C:\\Users\\bissi\\OneDrive\\Documenti\\UNI_LAVORO\\MAGISTRALE\\1st_year\\Business_Analytics\\Individual_Project\\hospital_resource_allocations\\results\\dry_runs\\HARD10_fixture",
+  "eval_dir": "C:\\Users\\bissi\\OneDrive\\Documenti\\UNI_LAVORO\\MAGISTRALE\\1st_year\\Business_Analytics\\Individual_Project\\hospital_resource_allocations\\results\\evaluations\\CHK-B2-HARD10",
+  "retry_limit": 3,
+  "horizon": 10,
+  "expose_violation_labels": false,
+  "models": {
+    "main": "claude-sonnet-5-5",
+    "subagents": "claude-sonnet-5-5"
+  },
+  "code_version": "2e1531a26462c9a4bb0b15b516d523961e49b46b",
+  "started_at": "2026-11-14T16:12:38+00:00",
+  "checker_only_replay": "B2"
+}

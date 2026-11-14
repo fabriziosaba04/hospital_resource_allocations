@@ -1,0 +1,786 @@
+{
+  "run_id": "CHK-B2-HARD10",
+  "models_configured": {
+    "main": "claude-sonnet-5-5",
+    "subagents": "claude-sonnet-5-5"
+  },
+  "main_models_observed": [
+    "claude-sonnet-5-5"
+  ],
+  "model_usage": {
+    "launch-1.jsonl": {
+      "claude-sonnet-5-5": {
+        "inputTokens": 84,
+        "outputTokens": 23255,
+        "cacheReadInputTokens": 801963,
+        "cacheCreationInputTokens": 66682,
+        "webSearchRequests": 0,
+        "costUSD": 0.48872129999999997,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 12020,
+        "cacheCreationEphemeral5mInputTokens": 60614,
+        "cacheCreationEphemeral1hInputTokens": 6068,
+        "canonicalModel": "claude-sonnet-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    }
+  },
+  "session_cost_usd": {
+    "launch-1.jsonl": 0.48872129999999997
+  },
+  "days": [
+    {
+      "day": 1,
+      "attempts": 0,
+      "accepted_on_attempt": null,
+      "rejection_codes": [],
+      "source": "replay_B2",
+      "beds": {
+        "cardiology": 4,
+        "internal_medicine": 10,
+        "neurology": 1,
+        "orthopedics": 5
+      },
+      "nurses": {
+        "cardiology": 1,
+        "internal_medicine": 3,
+        "neurology": 1,
+        "orthopedics": 1
+      },
+      "audit_issues": {
+        "nurse_gap (Major)": 1
+      },
+      "wall_clock_s": 3.0,
+      "allocator_calls": {}
+    },
+    {
+      "day": 2,
+      "attempts": 0,
+      "accepted_on_attempt": null,
+      "rejection_codes": [],
+      "source": "replay_B2",
+      "beds": {
+        "cardiology": 8,
+        "internal_medicine": 7,
+        "neurology": 2,
+        "orthopedics": 3
+      },
+      "nurses": {
+        "cardiology": 3,
+        "internal_medicine": 2,
+        "neurology": 1,
+        "orthopedics": 0
+      },
+      "audit_issues": {
+        "nurse_gap (Major)": 1
+      },
+      "wall_clock_s": 3.0,
+      "allocator_calls": {}
+    },
+    {
+      "day": 3,
+      "attempts": 0,
+      "accepted_on_attempt": null,
+      "rejection_codes": [],
+      "source": "replay_B2",
+      "beds": {
+        "cardiology": 10,
+        "internal_medicine": 6,
+        "neurology": 2,
+        "orthopedics": 2
+      },
+      "nurses": {
+        "cardiology": 3,
+        "internal_medicine": 1,
+        "neurology": 1,
+        "orthopedics": 1
+      },
+      "audit_issues": {
+        "nurse_gap (Major)": 1,
+        "nurses_reversal (Minor)": 1
+      },
+      "wall_clock_s": 2.0,
+      "allocator_calls": {}
+    },
+    {
+      "day": 4,
+      "attempts": 0,
+      "accepted_on_attempt": null,
+      "rejection_codes": [],
+      "source": "replay_B2",
+      "beds": {
+        "cardiology": 10,
+        "internal_medicine": 4,
+        "neurology": 1,
+        "orthopedics": 8
+      },
+      "nurses": {
+        "cardiology": 4,
+        "internal_medicine": 2,
+        "neurology": 1,
+        "orthopedics": 1
+      },
+      "audit_issues": {
+        "nurse_gap (Major)": 1,
+        "beds_reversal (Minor)": 2
+      },
+      "wall_clock_s": 3.0,
+      "allocator_calls": {}
+    },
+    {
+      "day": 5,
+      "attempts": 0,
+      "accepted_on_attempt": null,
+      "rejection_codes": [],
+      "source": "replay_B2",
+      "beds": {
+        "cardiology": 10,
+        "internal_medicine": 6,
+        "neurology": 1,
+        "orthopedics": 6
+      },
+      "nurses": {
+        "cardiology": 5,
+        "internal_medicine": 1,
+        "neurology": 1,
+        "orthopedics": 1
+      },
+      "audit_issues": {
+        "nurse_gap (Moderate)": 1,
+        "beds_reversal (Minor)": 2
+      },
+      "wall_clock_s": 66.0,
+      "allocator_invocations": 0,
+      "simulate_calls": 0,
+      "validate_calls": 0,
+      "tool_errors": 0,
+      "allocator_tokens": 0,
+      "allocator_duration_s": 0.0,
+      "checker_tokens": 31234,
+      "checker_duration_s": 61.5,
+      "allocator_calls": {}
+    },
+    {
+      "day": 6,
+      "attempts": 0,
+      "accepted_on_attempt": null,
+      "rejection_codes": [],
+      "source": "replay_B2",
+      "beds": {
+        "cardiology": 10,
+        "internal_medicine": 6,
+        "neurology": 1,
+        "orthopedics": 3
+      },
+      "nurses": {
+        "cardiology": 4,
+        "internal_medicine": 1,
+        "neurology": 1,
+        "orthopedics": 0
+      },
+      "audit_issues": {
+        "nurse_gap (Major)": 1,
+        "beds_reversal (Minor)": 2,
+        "nurses_reversal (Minor)": 1
+      },
+      "wall_clock_s": 3.0,
+      "allocator_calls": {}
+    },
+    {
+      "day": 7,
+      "attempts": 0,
+      "accepted_on_attempt": null,
+      "rejection_codes": [],
+      "source": "replay_B2",
+      "beds": {
+        "cardiology": 10,
+        "internal_medicine": 6,
+        "neurology": 2,
+        "orthopedics": 2
+      },
+      "nurses": {
+        "cardiology": 4,
+        "internal_medicine": 1,
+        "neurology": 1,
+        "orthopedics": 0
+      },
+      "audit_issues": {
+        "nurse_gap (Major)": 1,
+        "beds_reversal (Minor)": 1
+      },
+      "wall_clock_s": 3.0,
+      "allocator_calls": {}
+    },
+    {
+      "day": 8,
+      "attempts": 0,
+      "accepted_on_attempt": null,
+      "rejection_codes": [],
+      "source": "replay_B2",
+      "beds": {
+        "cardiology": 7,
+        "internal_medicine": 3,
+        "neurology": 1,
+        "orthopedics": 0
+      },
+      "nurses": {
+        "cardiology": 3,
+        "internal_medicine": 1,
+        "neurology": 1,
+        "orthopedics": 0
+      },
+      "audit_issues": {
+        "nurse_gap (Major)": 1
+      },
+      "wall_clock_s": 3.0,
+      "allocator_calls": {}
+    },
+    {
+      "day": 9,
+      "attempts": 0,
+      "accepted_on_attempt": null,
+      "rejection_codes": [],
+      "source": "replay_B2",
+      "beds": {
+        "cardiology": 5,
+        "internal_medicine": 3,
+        "neurology": 1,
+        "orthopedics": 2
+      },
+      "nurses": {
+        "cardiology": 2,
+        "internal_medicine": 1,
+        "neurology": 1,
+        "orthopedics": 1
+      },
+      "audit_issues": {
+        "bed_displaced (Major)": 1,
+        "bed_displaced (Moderate)": 1,
+        "nurse_gap (Major)": 1,
+        "f1_inversion (Moderate)": 2,
+        "beds_reversal (Minor)": 1,
+        "nurses_reversal (Minor)": 1
+      },
+      "wall_clock_s": 3.0,
+      "allocator_calls": {}
+    },
+    {
+      "day": 10,
+      "attempts": 0,
+      "accepted_on_attempt": null,
+      "rejection_codes": [],
+      "source": "replay_B2",
+      "beds": {
+        "cardiology": 7,
+        "internal_medicine": 5,
+        "neurology": 4,
+        "orthopedics": 4
+      },
+      "nurses": {
+        "cardiology": 2,
+        "internal_medicine": 2,
+        "neurology": 1,
+        "orthopedics": 1
+      },
+      "audit_issues": {
+        "bed_displaced (Moderate)": 1,
+        "nurse_gap (Major)": 1
+      },
+      "wall_clock_s": 99.0,
+      "allocator_invocations": 0,
+      "simulate_calls": 0,
+      "validate_calls": 0,
+      "tool_errors": 0,
+      "allocator_tokens": 0,
+      "allocator_duration_s": 0.0,
+      "checker_tokens": 36971,
+      "checker_duration_s": 94.9,
+      "allocator_calls": {}
+    }
+  ],
+  "checker": [
+    {
+      "day": 5,
+      "period": [
+        1,
+        5
+      ],
+      "n_issues": 8,
+      "checker_types": {
+        "nurse_gap": 3,
+        "beds_reversal": 4,
+        "nurses_reversal": 1
+      },
+      "audit_issues": 10,
+      "checker_issues": 8,
+      "matched": 8,
+      "recall": 0.8,
+      "precision": 1.0,
+      "level_agreement": 1.0,
+      "per_type": {
+        "nurse_gap": {
+          "audit": 5,
+          "checker": 3,
+          "matched": 3
+        },
+        "beds_reversal": {
+          "audit": 4,
+          "checker": 4,
+          "matched": 4
+        },
+        "nurses_reversal": {
+          "audit": 1,
+          "checker": 1,
+          "matched": 1
+        }
+      },
+      "by_type": {
+        "nurse_gap": {
+          "audit": 5,
+          "checker": 3,
+          "matched": 3,
+          "recall": 0.6,
+          "precision": 1.0,
+          "level_agreement": 1.0
+        },
+        "beds_reversal": {
+          "audit": 4,
+          "checker": 4,
+          "matched": 4,
+          "recall": 1.0,
+          "precision": 1.0,
+          "level_agreement": 1.0
+        },
+        "nurses_reversal": {
+          "audit": 1,
+          "checker": 1,
+          "matched": 1,
+          "recall": 1.0,
+          "precision": 1.0,
+          "level_agreement": 1.0
+        }
+      },
+      "by_level": {
+        "Critical": {
+          "audit": 0,
+          "checker": 0,
+          "matched": 0,
+          "recall": null,
+          "precision": null,
+          "level_agreement": null
+        },
+        "Major": {
+          "audit": 4,
+          "checker": 3,
+          "matched": 3,
+          "recall": 0.75,
+          "precision": 1.0,
+          "level_agreement": 1.0
+        },
+        "Moderate": {
+          "audit": 1,
+          "checker": 0,
+          "matched": 0,
+          "recall": 0.0,
+          "precision": null,
+          "level_agreement": null
+        },
+        "Minor": {
+          "audit": 5,
+          "checker": 5,
+          "matched": 5,
+          "recall": 1.0,
+          "precision": 1.0,
+          "level_agreement": 1.0
+        }
+      },
+      "by_group": {
+        "headline": {
+          "audit": 5,
+          "checker": 3,
+          "matched": 3,
+          "recall": 0.6,
+          "precision": 1.0,
+          "level_agreement": 1.0
+        },
+        "headline_rejected_submission": {
+          "audit": 0,
+          "checker": 0,
+          "matched": 0,
+          "recall": null,
+          "precision": null,
+          "level_agreement": null
+        },
+        "secondary": {
+          "audit": 5,
+          "checker": 5,
+          "matched": 5,
+          "recall": 1.0,
+          "precision": 1.0,
+          "level_agreement": 1.0
+        }
+      },
+      "groups": {
+        "headline": [
+          "hard_constraint_in_effect",
+          "bed_displaced",
+          "bed_empty",
+          "bed_shock_cut",
+          "nurse_gap",
+          "allocator_failure_day"
+        ],
+        "headline_rejected_submission": [
+          "rejected_submission"
+        ],
+        "secondary": [
+          "beds_reversal",
+          "nurses_reversal",
+          "reallocation_without_effect",
+          "f1_inversion"
+        ]
+      },
+      "date_shift_matches": [],
+      "checker_llm_only": {},
+      "checker_unmatchable": 0
+    },
+    {
+      "day": 10,
+      "period": [
+        6,
+        10
+      ],
+      "n_issues": 13,
+      "checker_types": {
+        "nurse_gap": 5,
+        "bed_displaced": 3,
+        "f1_inversion": 2,
+        "beds_reversal": 1,
+        "nurses_reversal": 1,
+        "other": 1
+      },
+      "audit_issues": 16,
+      "checker_issues": 12,
+      "matched": 12,
+      "recall": 0.75,
+      "precision": 1.0,
+      "level_agreement": 1.0,
+      "per_type": {
+        "bed_displaced": {
+          "audit": 3,
+          "checker": 3,
+          "matched": 3
+        },
+        "nurse_gap": {
+          "audit": 5,
+          "checker": 5,
+          "matched": 5
+        },
+        "f1_inversion": {
+          "audit": 2,
+          "checker": 2,
+          "matched": 2
+        },
+        "beds_reversal": {
+          "audit": 4,
+          "checker": 1,
+          "matched": 1
+        },
+        "nurses_reversal": {
+          "audit": 2,
+          "checker": 1,
+          "matched": 1
+        }
+      },
+      "by_type": {
+        "bed_displaced": {
+          "audit": 3,
+          "checker": 3,
+          "matched": 3,
+          "recall": 1.0,
+          "precision": 1.0,
+          "level_agreement": 1.0
+        },
+        "nurse_gap": {
+          "audit": 5,
+          "checker": 5,
+          "matched": 5,
+          "recall": 1.0,
+          "precision": 1.0,
+          "level_agreement": 1.0
+        },
+        "f1_inversion": {
+          "audit": 2,
+          "checker": 2,
+          "matched": 2,
+          "recall": 1.0,
+          "precision": 1.0,
+          "level_agreement": 1.0
+        },
+        "beds_reversal": {
+          "audit": 4,
+          "checker": 1,
+          "matched": 1,
+          "recall": 0.25,
+          "precision": 1.0,
+          "level_agreement": 1.0
+        },
+        "nurses_reversal": {
+          "audit": 2,
+          "checker": 1,
+          "matched": 1,
+          "recall": 0.5,
+          "precision": 1.0,
+          "level_agreement": 1.0
+        }
+      },
+      "by_level": {
+        "Critical": {
+          "audit": 0,
+          "checker": 0,
+          "matched": 0,
+          "recall": null,
+          "precision": null,
+          "level_agreement": null
+        },
+        "Major": {
+          "audit": 6,
+          "checker": 6,
+          "matched": 6,
+          "recall": 1.0,
+          "precision": 1.0,
+          "level_agreement": 1.0
+        },
+        "Moderate": {
+          "audit": 4,
+          "checker": 4,
+          "matched": 4,
+          "recall": 1.0,
+          "precision": 1.0,
+          "level_agreement": 1.0
+        },
+        "Minor": {
+          "audit": 6,
+          "checker": 2,
+          "matched": 2,
+          "recall": 0.333,
+          "precision": 1.0,
+          "level_agreement": 1.0
+        }
+      },
+      "by_group": {
+        "headline": {
+          "audit": 8,
+          "checker": 8,
+          "matched": 8,
+          "recall": 1.0,
+          "precision": 1.0,
+          "level_agreement": 1.0
+        },
+        "headline_rejected_submission": {
+          "audit": 0,
+          "checker": 0,
+          "matched": 0,
+          "recall": null,
+          "precision": null,
+          "level_agreement": null
+        },
+        "secondary": {
+          "audit": 8,
+          "checker": 4,
+          "matched": 4,
+          "recall": 0.5,
+          "precision": 1.0,
+          "level_agreement": 1.0
+        }
+      },
+      "groups": {
+        "headline": [
+          "hard_constraint_in_effect",
+          "bed_displaced",
+          "bed_empty",
+          "bed_shock_cut",
+          "nurse_gap",
+          "allocator_failure_day"
+        ],
+        "headline_rejected_submission": [
+          "rejected_submission"
+        ],
+        "secondary": [
+          "beds_reversal",
+          "nurses_reversal",
+          "reallocation_without_effect",
+          "f1_inversion"
+        ]
+      },
+      "date_shift_matches": [],
+      "checker_llm_only": {
+        "other": 1
+      },
+      "checker_unmatchable": 0
+    }
+  ],
+  "checker_overall": {
+    "audit_issues": 26,
+    "checker_issues": 20,
+    "matched": 20,
+    "recall": 0.769,
+    "precision": 1.0,
+    "level_agreement": 1.0,
+    "per_type": {
+      "bed_displaced": {
+        "audit": 3,
+        "checker": 3,
+        "matched": 3
+      },
+      "nurse_gap": {
+        "audit": 10,
+        "checker": 8,
+        "matched": 8
+      },
+      "f1_inversion": {
+        "audit": 2,
+        "checker": 2,
+        "matched": 2
+      },
+      "beds_reversal": {
+        "audit": 8,
+        "checker": 5,
+        "matched": 5
+      },
+      "nurses_reversal": {
+        "audit": 3,
+        "checker": 2,
+        "matched": 2
+      }
+    },
+    "by_type": {
+      "bed_displaced": {
+        "audit": 3,
+        "checker": 3,
+        "matched": 3,
+        "recall": 1.0,
+        "precision": 1.0,
+        "level_agreement": 1.0
+      },
+      "nurse_gap": {
+        "audit": 10,
+        "checker": 8,
+        "matched": 8,
+        "recall": 0.8,
+        "precision": 1.0,
+        "level_agreement": 1.0
+      },
+      "f1_inversion": {
+        "audit": 2,
+        "checker": 2,
+        "matched": 2,
+        "recall": 1.0,
+        "precision": 1.0,
+        "level_agreement": 1.0
+      },
+      "beds_reversal": {
+        "audit": 8,
+        "checker": 5,
+        "matched": 5,
+        "recall": 0.625,
+        "precision": 1.0,
+        "level_agreement": 1.0
+      },
+      "nurses_reversal": {
+        "audit": 3,
+        "checker": 2,
+        "matched": 2,
+        "recall": 0.667,
+        "precision": 1.0,
+        "level_agreement": 1.0
+      }
+    },
+    "by_level": {
+      "Critical": {
+        "audit": 0,
+        "checker": 0,
+        "matched": 0,
+        "recall": null,
+        "precision": null,
+        "level_agreement": null
+      },
+      "Major": {
+        "audit": 10,
+        "checker": 9,
+        "matched": 9,
+        "recall": 0.9,
+        "precision": 1.0,
+        "level_agreement": 1.0
+      },
+      "Moderate": {
+        "audit": 5,
+        "checker": 4,
+        "matched": 4,
+        "recall": 0.8,
+        "precision": 1.0,
+        "level_agreement": 1.0
+      },
+      "Minor": {
+        "audit": 11,
+        "checker": 7,
+        "matched": 7,
+        "recall": 0.636,
+        "precision": 1.0,
+        "level_agreement": 1.0
+      }
+    },
+    "by_group": {
+      "headline": {
+        "audit": 13,
+        "checker": 11,
+        "matched": 11,
+        "recall": 0.846,
+        "precision": 1.0,
+        "level_agreement": 1.0
+      },
+      "headline_rejected_submission": {
+        "audit": 0,
+        "checker": 0,
+        "matched": 0,
+        "recall": null,
+        "precision": null,
+        "level_agreement": null
+      },
+      "secondary": {
+        "audit": 13,
+        "checker": 9,
+        "matched": 9,
+        "recall": 0.692,
+        "precision": 1.0,
+        "level_agreement": 1.0
+      }
+    },
+    "groups": {
+      "headline": [
+        "hard_constraint_in_effect",
+        "bed_displaced",
+        "bed_empty",
+        "bed_shock_cut",
+        "nurse_gap",
+        "allocator_failure_day"
+      ],
+      "headline_rejected_submission": [
+        "rejected_submission"
+      ],
+      "secondary": [
+        "beds_reversal",
+        "nurses_reversal",
+        "reallocation_without_effect",
+        "f1_inversion"
+      ]
+    },
+    "date_shift_matches": [],
+    "checker_llm_only": {
+      "other": 1
+    },
+    "checker_unmatchable": 0
+  },
+  "checker_simulate_calls": 12
+}

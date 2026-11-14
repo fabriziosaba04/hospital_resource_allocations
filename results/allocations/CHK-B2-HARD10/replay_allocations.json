@@ -1,0 +1,145 @@
+{
+  "baseline": "B2",
+  "days": {
+    "1": {
+      "beds": {
+        "cardiology": 4,
+        "internal_medicine": 10,
+        "neurology": 1,
+        "orthopedics": 5
+      },
+      "nurses": {
+        "cardiology": 1,
+        "internal_medicine": 3,
+        "neurology": 1,
+        "orthopedics": 1
+      }
+    },
+    "2": {
+      "beds": {
+        "cardiology": 8,
+        "internal_medicine": 7,
+        "neurology": 2,
+        "orthopedics": 3
+      },
+      "nurses": {
+        "cardiology": 3,
+        "internal_medicine": 2,
+        "neurology": 1,
+        "orthopedics": 0
+      }
+    },
+    "3": {
+      "beds": {
+        "cardiology": 10,
+        "internal_medicine": 6,
+        "neurology": 2,
+        "orthopedics": 2
+      },
+      "nurses": {
+        "cardiology": 3,
+        "internal_medicine": 1,
+        "neurology": 1,
+        "orthopedics": 1
+      }
+    },
+    "4": {
+      "beds": {
+        "cardiology": 10,
+        "internal_medicine": 4,
+        "neurology": 1,
+        "orthopedics": 8
+      },
+      "nurses": {
+        "cardiology": 4,
+        "internal_medicine": 2,
+        "neurology": 1,
+        "orthopedics": 1
+      }
+    },
+    "5": {
+      "beds": {
+        "cardiology": 10,
+        "internal_medicine": 6,
+        "neurology": 1,
+        "orthopedics": 6
+      },
+      "nurses": {
+        "cardiology": 5,
+        "internal_medicine": 1,
+        "neurology": 1,
+        "orthopedics": 1
+      }
+    },
+    "6": {
+      "beds": {
+        "cardiology": 10,
+        "internal_medicine": 6,
+        "neurology": 1,
+        "orthopedics": 3
+      },
+      "nurses": {
+        "cardiology": 4,
+        "internal_medicine": 1,
+        "neurology": 1,
+        "orthopedics": 0
+      }
+    },
+    "7": {
+      "beds": {
+        "cardiology": 10,
+        "internal_medicine": 6,
+        "neurology": 2,
+        "orthopedics": 2
+      },
+      "nurses": {
+        "cardiology": 4,
+        "internal_medicine": 1,
+        "neurology": 1,
+        "orthopedics": 0
+      }
+    },
+    "8": {
+      "beds": {
+        "cardiology": 7,
+        "internal_medicine": 3,
+        "neurology": 1,
+        "orthopedics": 0
+      },
+      "nurses": {
+        "cardiology": 3,
+        "internal_medicine": 1,
+        "neurology": 1,
+        "orthopedics": 0
+      }
+    },
+    "9": {
+      "beds": {
+        "cardiology": 5,
+        "internal_medicine": 3,
+        "neurology": 1,
+        "orthopedics": 2
+      },
+      "nurses": {
+        "cardiology": 2,
+        "internal_medicine": 1,
+        "neurology": 1,
+        "orthopedics": 1
+      }
+    },
+    "10": {
+      "beds": {
+        "cardiology": 7,
+        "internal_medicine": 5,
+        "neurology": 4,
+        "orthopedics": 4
+      },
+      "nurses": {
+        "cardiology": 2,
+        "internal_medicine": 2,
+        "neurology": 1,
+        "orthopedics": 1
+      }
+    }
+  }
+}
