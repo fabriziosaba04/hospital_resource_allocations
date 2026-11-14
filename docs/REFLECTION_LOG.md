@@ -253,3 +253,10 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **How it was caught:** the owner's review of DRY2 (2026-11-14).
 - **Implication:** giving an agent an input changes what the matching measures. Every exposed intermediate should be listed next to the figures that depend on it, and small counts are reported as counts.
 - **Decisions Log:** owner decisions §11 #46, #47.
+
+### R34. The synced-folder guard first allowed frozen data whenever the manifest could not be read
+
+- **What happened:** the launcher's guard accepts `--allow-synced-folder` only for synthetic fixtures. It decides "frozen" by looking the dataset up in `data/MANIFEST.json`. The first version returned "not frozen" when the manifest file was missing, so a missing or unreadable manifest would have let a frozen-data run start inside OneDrive with the flag.
+- **How it was caught:** the guard's unit test, which moves the project root to a temporary folder, failed with "DID NOT RAISE".
+- **Implication:** a safety check must fail closed. When it cannot decide, it now treats the dataset as frozen and refuses. The test also exposed that the manifest path depended on a patched global; it is now fixed at import time.
+- **Decisions Log:** #90.

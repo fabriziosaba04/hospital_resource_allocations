@@ -57,9 +57,9 @@ hospital_resource_allocations/
 │   ├── data_generation/           stochastic generator, data validation, statistics, Monte Carlo
 │   │   └── configs/               template generation and environment configs
 │   ├── environment/               deterministic rules shared by server and baselines
-│   ├── mcp_server/                MCP tool layer, state machine, record store, ANALYZER, run init, smoke fixture
+│   ├── mcp_server/                MCP tool layer, state machine, record store, ANALYZER, run init, launcher, copy-back, synthetic fixtures
 │   ├── agent/                     fixed dispatch templates (the prompts live in .claude/agents/)
-│   ├── evaluation/                deterministic audit, metrics, baselines, baseline runner (python -m src.evaluation)
+│   ├── evaluation/                deterministic audit, metrics, baselines, baseline runner (python -m src.evaluation), run report, CHECKER matching, claim checker, figures
 │   └── utils/
 │
 ├── results/

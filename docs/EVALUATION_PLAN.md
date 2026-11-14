@@ -370,3 +370,21 @@ Decision-level agreement between runs is also reported:
 - The mean L1 distance between their daily allocations.
 
 Notable divergences are discussed qualitatively in the Reflection, using the decision explanations and the CHECKER reports.
+
+## 10. Figure Plan (draft, 2026-11-14, owner decision §11 #49)
+
+Static figures, each answering one question. Code: `src/evaluation/figures.py`, tested on B0–B2 and DRY2 on HARD10 (`tests/test_figures.py`, outputs in `results/visualizations/HARD10/`). Every figure is drawn from the run records and the dataset; metrics are recomputed, never taken from an agent, so the figures show actual decisions.
+
+| # | Figure | Question | Encoding |
+| --- | --- | --- | --- |
+| F1 | Overflow by tier | Does the policy leave high-tier patients waiting more than the floor requires? | Grouped bars, overflow patient-days per tier and policy, policy-independent floor as a dashed line (A3) |
+| F2 | Avoidable nurse gap by tier | When nurses are rationed, how much uncovered need was avoidable, by tier? | Grouped bars, SV_N per tier and policy (A2) |
+| F3 | Beds over time, per policy | Are beds moved to where the patients are? | Small multiples by department: in-bed patients stacked by tier, overflow hatched, allocated beds as a step line; pools in the title |
+| F4 | Nurses against the requirement, per policy | Are nurses assigned where the N1 requirement is? | Small multiples by department: nurses assigned and N1 requirement per day |
+| F5 | Fairness dispersion | Do patients of the same tier wait equally across departments? | Grouped bars, overflow-rate dispersion (max − min, pp) per tier and policy (secondary metric B1) |
+| F6 | CHECKER versus audit | How much of the audit did the CHECKER find, by stratum? | Horizontal bars: audit issues and matched issues, labelled "matched/total · reported" (counts, §4 point 6) |
+
+**Record-field check (2026-11-14).** `figures.daily_frame` builds, per day and department, every field the figures and the animation need: beds and nurses allocated, both pools, in-bed patients and overflow by tier, census by tier, the N1 requirement, and the day-to-day change in beds and nurses. `check_frame` asserts the identities that tie them to the records (conservation, in-bed + overflow = census, occupancy ≤ beds ≤ `max_beds`). It passes on B0–B2 and DRY2. **No field is missing, so no code change is needed before the freeze.**
+
+**Limit for the animation.** The records hold allocations, not transfers. A department's daily change is recorded, but not which department a bed or nurse came from, because a decision is a vector of allocations, not a list of moves. An animation that draws arrows from one department to another would invent pairings (`CLAUDE.md` §6: it must not invent resource movements). It should show each department's net gain or loss per day. If flows are wanted, a fixed, disclosed decomposition rule could be added; that is an open question for the owner.
+

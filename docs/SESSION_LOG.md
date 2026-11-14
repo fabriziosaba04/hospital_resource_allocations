@@ -219,3 +219,154 @@ After step 4 (DRY2 and its report), inside the time box. Nothing is half-applied
 2. **Group for `rejected_submission` and `f1_inversion`** in the stratified matching: they are in neither the headline nor the secondary list. *Recommendation:* `rejected_submission` in the headline group (a hard-constraint breach caught by the validator); `f1_inversion` in secondary (a fairness concern). Currently they are reported as "other".
 3. **OneDrive:** approve the run-from-a-clone procedure (7b), including the small eval-dir override before the tag, or choose pausing sync.
 4. **Reversal day placement:** the CHECKER placed 2 of 8 bed reversals one or two days late, even with τ exposed. Accept this as a CHECKER error, which is what the matching should measure, or clarify the dating in `checker.md`? *Recommendation: accept.* The prompt already defines it, and changing it after seeing the result would tune the prompt to the matching.
+
+---
+
+## 2026-11-14 (second session: owner review of DRY2)
+
+Started 17:05. Commits: `7f25b22` (decisions and plan additions), `2e1531a` (replay mode, HARD10 baselines), `142a136` (B2 CHECKER test, claim checker, figures), `f4ba212` (clone procedure), and the session-close commit. **No `prompts-v1.0` tag, no run on frozen data, no prompt change.**
+
+### Achieved
+
+1. **Owner decisions §11 #42–#49 recorded and applied:**
+   - `rejected_submission` gets its own headline row; `f1_inversion` moves to secondary;
+   - the descriptive date-shift count is added;
+   - counts are written as "matched/total";
+   - the claim-by-claim protocol is in `EVALUATION_PLAN.md` §4;
+   - the optional, pre-registered B2-primary CHECKER evaluation is in §6 point 8;
+   - Limitations note that reversal recall measures reading τ;
+   - Log #89–#91.
+2. **Baseline comparison on HARD10** (table below). B0, B1 and B2 records are now in `results/allocations/B?-HARD10`. The in-run audit and the post-hoc audit of DRY2 agree exactly.
+3. **CHECKER alone on B2-HARD10** through a new checker-only replay mode (Log #89). It uses the real dispatcher, CHECKER prompt and tools, unchanged. Bed detection did **not** fail, so **no prompt fix**.
+4. **Clone procedure** (Log #90):
+   - run paths resolve relative to the run folder;
+   - `copy_back` copies everything, checks hashes, runs the consistency check and rebuilds the report;
+   - a test rebuilds DRY2's report from a copied folder byte for byte;
+   - the launcher refuses synced folders (`--allow-synced-folder` is for synthetic fixtures only, never frozen data).
+5. **Claim checker** (`src/evaluation/claim_check.py`) and its first case, DRY2's two findings; **figure plan** F1–F6 with code, tests and a record-field check (`EVALUATION_PLAN.md` §10).
+
+### Point 3: baseline comparison on HARD10
+
+| Metric | B0 | B1 | B2 | DRY2 |
+| --- | --- | --- | --- | --- |
+| Gate D | pass | pass | pass | pass |
+| A1 SV_B (displaced / empty / shock-cut severity) | 89 (3 / 86 / 0) | 0 | 4 (4 / 0 / 0) | **0** |
+| A2 SV_N tier 3 / 2 / 1 (need units) | 23.0 / 13.15 / 8.35 | 1.2 / 1.2 / 0.75 | 5.0 / 2.65 / 0.05 | **0.0 / 0.55 / 0.05** |
+| A3 tier 3: raw (floor) / avoid / path | 28 (0) / 24 / 4 | 3 (0) / 0 / 3 | 5 (0) / 2 / 3 | 3 (0) / 0 / 3 |
+| A3 tier 2: raw (floor) / avoid / path | 62 (27) / 32 / 3 | 28 (27) / 0 / 1 | 30 (27) / 2 / 1 | 28 (27) / 0 / 1 |
+| F1 inversions | 7 | 0 | 2 | 0 |
+| Bed / nurse reversals (W = 3) | 0 / 0 | 12 / 2 | 12 / 3 | 11 / 3 |
+
+**Net nurse gap at tier 2 on DRY2's four nurse-gap days** (hundredths of need units; tier 3 in brackets):
+
+| Day | B1 | DRY2 |
+| --- | --- | --- |
+| 2 | 40 (0) | 40 (0) |
+| 7 | 5 (40) | 5 (0) |
+| 8 | 5 (40) | 5 (0) |
+| 9 | 5 (0) | 5 (0) |
+
+- **B1 does not have zero tier-2 nurse gaps on those days.** It has exactly the ALLOCATOR's gaps, and on days 7 and 8 also a tier-3 gap.
+- So the 4 nurse gaps are real, avoidable gaps (a better integer split existed), but they are **not errors relative to B1**. The ALLOCATOR matched or beat B1 on every nurse day, and over the run it beats B1 on A2 at every tier.
+- On beds the ALLOCATOR equals B1 (A1 = 0, same A3 path).
+- This is the A2 headroom the framing predicted (§11 #17), seen on a synthetic fixture only. Nothing is claimed for the frozen data.
+
+### Point Q1: CHECKER alone on B2-HARD10 (reported separately; not pooled with DRY2)
+
+**Expected positives, written down before the run** (audit of B2-HARD10):
+- **Days 1–5:** `nurse_gap` 4 Major + 1 Moderate; `beds_reversal` 4 Minor; `nurses_reversal` 1 Minor.
+- **Days 6–10:**
+  - `bed_displaced` 3: day 9, L3 vs L1 (Major) and L3 vs L2 (Moderate); day 10, L2 vs L1 (Moderate);
+  - `f1_inversion` 2 Moderate (day 9);
+  - `nurse_gap` 5 Major;
+  - `beds_reversal` 4 Minor; `nurses_reversal` 2 Minor.
+
+**Input differs from an agent run:** the records are B2's allocations replayed through the server (source `replay_B2`). There are no decisions and no explanations, so explanation types cannot arise.
+
+| Stratum | Matched / audit | CHECKER reported | Level agreement |
+| --- | --- | --- | --- |
+| **Headline group** | **11/13** | 11 | 11/11 |
+| – `bed_displaced` | **3/3** | 3 | 3/3 |
+| – `nurse_gap` | 8/10 | 8 | 8/8 |
+| Rejected submissions (own row) | 0/0 | 0 | – |
+| Secondary group | 9/13 | 9 | 9/9 |
+| – `f1_inversion` | **2/2** | 2 | 2/2 |
+| – `beds_reversal` | 5/8 | 5 | 5/5 |
+| – `nurses_reversal` | 2/3 | 2 | 2/2 |
+| By level: Major / Moderate / Minor | 9/10, 4/5, 7/11 | 9, 4, 7 | all equal |
+| Date-shift matches (descriptive) | 0 | – | – |
+
+- **No false positive** in any stratum: 20/20 of its deterministic-type issues match the audit.
+- **Bed-priority and fairness detection, untested after DRY2, now has positive cases.** The CHECKER found all 3 displaced pairs and both F1 inversions, with the correct levels.
+- **Misses:** the nurse gaps on day 1 (Major) and day 5 (Moderate, tier 2 only), and all four reversals on days 6–7. Reversal recall is a reading test (R33).
+- The CHECKER added one `other` (Minor): "no decision records or explanations for days 6–10". This is correct, and it is an artefact of the replay input.
+- **Cost:** $0.49 (list), 212 s; the two audits used 31k and 37k tokens, with 12 past-day what-ifs.
+
+### Point 4: claim-by-claim scoring of DRY2's two findings (script-verified)
+
+| Claim | Author | Verdict | Recomputed |
+| --- | --- | --- | --- |
+| F1-A1 "orthopedics' level-3 patient uncovered without its nurse" | ALLOCATOR | correct | 0.0 |
+| F1-A2 "… which is no better" | ALLOCATOR | **wrong** | 6.0 vs 5.6 need covered at levels 2–3 |
+| F1-C1 "equal L3 coverage (5.6)" | CHECKER | correct | 5.6 |
+| F1-C2 "higher L2 coverage (0.4 …)" | CHECKER | correct | 0.4 |
+| F1-C3 "(… vs 0)" | CHECKER | correct | 0.0 |
+| F2-A1 "5 level-3 patients would overflow" | ALLOCATOR | correct | 5 |
+| F2-A2 "4 beds would sit empty" | ALLOCATOR | **wrong** | 5 |
+| F2-C1 dispute of the level-3 figure | CHECKER | **wrong** | 5 |
+| F2-C2 dispute of the empty-bed figure | CHECKER | correct | 5 |
+
+- **ALLOCATOR:** 2 correct, 2 wrong. **CHECKER:** 4 correct, 1 wrong. Both findings are valid.
+- Finding (2) comes out as specified: 1 correct ALLOCATOR claim, 1 wrong figure confirmed, and 1 wrong dispute by the CHECKER.
+- Files: `results/evaluations/DRY2-HARD10/explanation_claims_spec.json` and `explanation_claims.json`.
+
+### Point 5: figure plan and record fields
+
+- **Figures:** F1–F6 are drafted, each with its question (`EVALUATION_PLAN.md` §10). Rendered for B0–B2 and DRY2 on HARD10 in `results/visualizations/HARD10/`.
+- **Record fields:** the check passes on all four runs. **No field is missing.**
+- **One limit:** the records hold allocations, not transfers. An animation can show net gains and losses per department, but arrows between departments would invent pairings (open question 2).
+
+### Point 6: cost estimate per run at primary scale (30 days, 6 audits)
+
+**Basis (DRY2, list price):**
+- $1.64 for 216k ALLOCATOR tokens, 90k CHECKER tokens and 10 dispatcher days.
+- The CHECKER-only run ($0.49 for 68k CHECKER tokens) puts the 10-day dispatcher at about $0.12.
+- So about **$5 per million subagent tokens**, with caching included.
+
+**ALLOCATOR:** 11.8k tokens on day 1, about +1.9k per day.
+- At primary scale (census about 4 times larger, although overflow lists stay short under a near-optimal policy), assume a day-1 base of 18–30k and growth of 1.9–2.5k per day.
+- That gives **1.4–2.0M tokens over 30 days**.
+
+**CHECKER:** 37–49k per audit on the fixtures; assume ×1.5–2.5, so 65–120k per audit, **0.4–0.7M for 6 audits**.
+
+**Estimate:**
+- **about $9–14 per run at list price, plus about $0.4 for the dispatcher**;
+- **R1–R3 and the stress run: about $40–60**;
+- time about 35–60 minutes per run (DRY2 averaged 63 s per day, audits included).
+- This is lower than the earlier $15–25 because it uses measured cache-inclusive cost per token. The scale factors are assumptions, so treat it as ±50%.
+- On a subscription this is usage-limit consumption; a 30-day run may still be interrupted, which the resume path covers.
+
+### Point 7: dispatcher context
+
+No change and no relaunch guard (owner decision §11 #49).
+
+### State
+
+- **Tests:** affected tests during work; fast suite 148 passed at the clone-procedure commit; full suite and manifest check at close (see the session report).
+- **New REFLECTION_LOG entries:** R32 (cause of the late-dated reversals), R33 (reversal recall is a reading test; small counts), R34 (guard default).
+- No ACTIVE_RUN pointer is set.
+- **The launcher now refuses to start inside OneDrive.** A dry run from this repository needs `--allow-synced-folder` (synthetic fixtures only). R1–R3 must run from a clone.
+
+### Next session
+
+1. Owner reviews this entry and answers the questions below. **No tag before that.**
+2. Tag `prompts-v1.0` (prompts unchanged since DRY2; run settings unchanged).
+3. Create the clone outside OneDrive and check it out at `prompts-v1.0`. Then, in the clone: `uv sync`, manifest check, `verify_run_settings.py`, smoke test, full suite.
+4. R1 (`init_run --dataset seed20261107 --run-id R1`, then `launch`), then `copy_back`, then review **for infrastructure faults only** (§11 #40). Then R2, R3 and the stress run.
+
+### Open questions for the owner
+
+1. **Nurse-gap reading.** On HARD10, B1 is not near-optimal on A2: it has tier-2 and tier-3 gaps, and the ALLOCATOR beat it. Should the report keep describing B1 as "near-optimal" on A2 for the frozen data? There the headroom review found B1's A2 gap small. *Recommendation:* keep the frozen-data framing as approved (it rests on the frozen-data headroom), and report HARD10 only as a development check, never as evidence.
+2. **Animation flows.** Show only net gains and losses per department (recommended, nothing invented), or add a fixed, disclosed rule that decomposes each day's changes into department-to-department flows?
+3. **Dry runs after the guard.** Is `--allow-synced-folder` for synthetic fixtures acceptable, or should every launch, dry runs included, go through a clone? *Recommendation:* keep the flag. Synthetic runs carry no evaluation weight, and the flag is refused for frozen data in code.
+4. **Tag.** With bed detection passing on B2-HARD10 and no prompt change, may I tag `prompts-v1.0` at the start of the next session, after the full pre-R1 checks in the clone?

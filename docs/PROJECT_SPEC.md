@@ -13,7 +13,7 @@ This document specifies **how** those are implemented, and does not restate them
 
 ## 0. Current Status and Next Step
 
-*Last updated 2026-11-14 (end of session). A new session should read this section first, then the latest entry of [`docs/SESSION_LOG.md`](SESSION_LOG.md) (2026-11-14), then `CLAUDE.md`, `AGENTS.md` and `docs/REFLECTION_LOG.md`. This section is meant to be enough to resume from the repository alone.*
+*Last updated 2026-11-14 (end of the second session). A new session should read this section first, then the latest entry of [`docs/SESSION_LOG.md`](SESSION_LOG.md) (2026-11-14), then `CLAUDE.md`, `AGENTS.md` and `docs/REFLECTION_LOG.md`. This section is meant to be enough to resume from the repository alone.*
 
 ### Timeline
 
@@ -60,7 +60,7 @@ uv run python -m src.evaluation.run_report R1                                  #
 | Prompts | ALLOCATOR and CHECKER prompts reviewed by the owner and edited (§11 #30, #35). **Not frozen**: the owner reviews the dry run first. The CHECKER's deterministic definitions match the audit's (Log #84) | `.claude/agents/` |
 | Run model and launcher | `claude-sonnet-5-5` for all three roles, in `.claude/run-settings.json`, recorded in `run_manifest.json` (§11 #31, Log #77). One launch command for the dry run and R1–R3: `python -m src.mcp_server.launch` (Log #78) | `.claude/run-settings.json`; `src/mcp_server/launch.py` |
 | Dry runs | **DRY1-SMOKE5** (2026-11-12; review applied 2026-11-14, §11 #36–#41). **DRY2-HARD10** (2026-11-14), hard 10-day fixture: finished, consistent, models as configured, every decision accepted on the first attempt, $1.64 and 628 s. No bed or F1 issue; correct forced cut on day 8; 4 Moderate nurse gaps. CHECKER headline group 4/4 (all `nurse_gap`), secondary 9/11. **Awaiting the owner's review** | `SESSION_LOG.md` 2026-11-14; `results/evaluations/DRY2-HARD10/run_report.json` |
-| Documentation | Decisions Log #1–88, owner decisions §11 #1–41, reflection log R1–R31, session log from 2026-11-12 | `docs/` |
+| Documentation | Decisions Log #1–91, owner decisions §11 #1–49, reflection log R1–R34, session log from 2026-11-12 | `docs/` |
 
 **Key data facts (primary seed, approved schedule):**
 
@@ -71,7 +71,7 @@ uv run python -m src.evaluation.run_report R1                                  #
 
 ### Still open (owner decisions pending)
 
-See the open questions in `SESSION_LOG.md` (2026-11-14). The DRY1 review was applied on 2026-11-14 (§11 #36–#41). Open: the owner's review of DRY2 on the hard fixture HARD10; the group for `rejected_submission` and `f1_inversion` in the stratified matching; the OneDrive mitigation for R1–R3; visualization (deferred).
+See the open questions in the latest `SESSION_LOG.md` entry (2026-11-14, second session). The DRY2 review was applied the same day (§11 #42–#49): grouping, date-shift count, claim-by-claim protocol, clone procedure with a synced-folder guard, CHECKER-only test on B2-HARD10 (bed detection 3/3, F1 2/2), figure plan. Open: permission to tag `prompts-v1.0`; the animation's flow rule; how the nurse-gap result on HARD10 is described.
 
 Metric formulas, the CHECKER severity scale and the headline set are **fixed** (§11 #16–#28), all before any agent output on frozen data.
 
@@ -79,7 +79,7 @@ Metric formulas, the CHECKER severity scale and the headline set are **fixed** (
 
 Steps 1–4 of the 2026-11-11 plan are done: metric formulas and severity scale, the environment, the audit with metrics and baselines (headroom reviewed), and the MCP path with the smoke test and the dry run. What remains:
 
-1. **Owner reviews DRY2** (`SESSION_LOG.md` 2026-11-14; `results/evaluations/DRY2-HARD10/run_report.json`). **No `prompts-v1.0` tag and no run on frozen data before that review** (§11 #41).
+1. **Owner reviews the second 2026-11-14 session** (DRY2 decisions applied, B2-HARD10 CHECKER test, clone procedure). **No `prompts-v1.0` tag and no run on frozen data before that review.** R1–R3 run from a clone outside OneDrive and come back with `copy_back` (§11 #44, Log #90).
 2. Apply the owner's decisions from the review, on the synthetic fixtures only (§11 #34).
 3. **Tag `prompts-v1.0`** (prompts and run settings frozen from here; `CLAUDE.md` §9.3).
 4. Before R1: re-run `tests/manual/verify_run_settings.py` and the smoke test; full test suite; manifest check.
