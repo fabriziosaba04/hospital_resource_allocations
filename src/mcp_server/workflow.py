@@ -361,14 +361,29 @@ class Workflow:
                                                    for j, g in res.nurse_tier_gaps.items()})
         return out
 
+    def _log_call(self, role: str, tool: str, day: int, **detail) -> None:
+        """Descriptive process data (owner decision §11 #39): one line per what-if or validate call, with
+        day, the submission attempt it precedes and a timestamp. Written to the evaluation directory; no
+        agent tool reads it. A logging failure never affects the agent's call."""
+        try:
+            with self.store.lock():
+                self.store.append("process_calls", self._line(role, day, tool=tool, **detail))
+        except Exception:                                           # noqa: BLE001 - logging is best effort
+            pass
+
     def simulate_allocation(self, beds: dict, nurses: dict) -> dict:
         s = self._alloc_phase("simulate_allocation")
-        return {"day": s["day"], "writes": "none", **self._whatif(beds, nurses, self._ctx(s["day"]))}
+        out = {"day": s["day"], "writes": "none", **self._whatif(beds, nurses, self._ctx(s["day"]))}
+        self._log_call("allocator", "simulate_allocation", s["day"], before_attempt=s["attempts"] + 1,
+                       after_acceptance=bool(s["accepted"]), valid=out["valid"])
+        return out
 
     def validate_allocation(self, beds: dict, nurses: dict) -> dict:
         s = self._alloc_phase("validate_allocation")
         ctx = self._ctx(s["day"])
         v = validate(beds, nurses, ctx.pool_beds, ctx.pool_nurses, ctx.max_beds, ctx.occupied)
+        self._log_call("allocator", "validate_allocation", s["day"], before_attempt=s["attempts"] + 1,
+                       after_acceptance=bool(s["accepted"]), valid=not v)
         return {"day": s["day"], "valid": not v, "violations": [{"code": x.code, "message": x.message} for x in v],
                 "counts_as_attempt": False}
 
@@ -416,12 +431,32 @@ class Workflow:
     # The Deterministic Audit Record is written for evaluation only and is readable by no agent tool
     # (owner decision §11 #29, superseding Log #6).
 
+    def reference_allocation(self, day: int) -> dict:
+        """The stability reference for `day` (owner decision §11 #36): the allocation in effect on day-1
+        (on day 1, the initial allocation) adjusted for pool changes by the repair rule, and the
+        reallocation tau = allocation in effect on `day` minus the reference. The same computation as the
+        deterministic audit (`audit_day`); knowable on the day, since it uses only day-`day` pools and holders."""
+        lines = self.store.read("allocation_state")
+        prev = (next(x for x in lines if x["source"] == "initial_rule") if day == 1
+                else [x for x in lines if x["day"] <= day - 1][-1])
+        ctx = self._ctx(day)
+        req = {d: n1_requirement(*(ctx.counts()[d][k] for k in LEVELS), self.ds.env) for d in DEPARTMENTS}
+        ref = repair(prev["beds"], prev["nurses"], ctx.pool_beds, ctx.pool_nurses, ctx.max_beds, ctx.holders, req)
+        cur = self._allocation_in_effect(day)
+        return {"day": day, "beds": ref.beds, "nurses": ref.nurses,
+                "reallocation_beds": {d: cur["beds"][d] - ref.beds[d] for d in DEPARTMENTS},
+                "reallocation_nurses": {d: cur["nurses"][d] - ref.nurses[d] for d in DEPARTMENTS}}
+
     def checker_allocation_state(self, from_day: int | None = None, to_day: int | None = None) -> dict:
         s, lo, hi = self._audit_phase("get_allocation_state", from_day, to_day)
         lines = self.store.read("allocation_state")
         return {"period": {"from_day": lo, "to_day": hi},
                 "allocations": [{"day": x["day"], "source": x["source"], "beds": x["beds"], "nurses": x["nurses"]}
-                                for x in lines if lo <= x["day"] <= hi]}
+                                for x in lines if lo <= x["day"] <= hi],
+                "reference_allocations": [self.reference_allocation(d) for d in range(lo, hi + 1)],
+                "note": "reference = the previous day's allocation in effect (day 1: the initial allocation) "
+                        "adjusted only for pool changes by the fixed repair rule; reallocation = allocation in "
+                        "effect minus reference"}
 
     def _past_day(self, tool: str, day) -> int:
         s = self._state()
@@ -445,7 +480,9 @@ class Workflow:
     def checker_simulate(self, day, beds: dict, nurses: dict) -> dict:
         """What-if on a past day, as it stood that day before its decision. Outcomes only; no writes."""
         d = self._past_day("simulate_allocation", day)
-        return {"day": d, "writes": "none", **self._whatif(beds, nurses, self._ctx(d))}
+        out = {"day": d, "writes": "none", **self._whatif(beds, nurses, self._ctx(d))}
+        self._log_call("checker", "simulate_allocation", self._state()["day"], simulated_day=d, valid=out["valid"])
+        return out
 
     def checker_decision_history(self, from_day: int | None = None, to_day: int | None = None) -> dict:
         s, lo, hi = self._audit_phase("get_decision_history", from_day, to_day)

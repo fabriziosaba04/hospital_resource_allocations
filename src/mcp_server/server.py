@@ -112,7 +112,9 @@ def build(role: str) -> MCPServer:
     else:
         @srv.tool()
         def get_allocation_state(from_day: int | None = None, to_day: int | None = None) -> dict:
-            """Allocations in effect (beds, nurses, source) for the period (default: the current five days)."""
+            """Allocations in effect (beds, nurses, source) for the period (default: the current five days), and
+            for each day the reference allocation (previous day's allocation adjusted for pool changes by the
+            fixed repair rule) with the reallocation (allocation in effect minus reference)."""
             return Workflow().checker_allocation_state(from_day, to_day)
 
         @srv.tool()

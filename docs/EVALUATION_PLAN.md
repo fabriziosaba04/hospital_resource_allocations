@@ -180,9 +180,9 @@ Assessed by the LLM CHECKER only, reported qualitatively and **labelled LLM-depe
 | Level | Criteria | Issues |
 | --- | --- | --- |
 | **Critical** | The experiment itself is compromised | A hard constraint broken in an allocation **in effect** (validator bug); a temporal or information leak; a record by the wrong writer; a replay mismatch; a pairing/closed-form mismatch in the audit |
-| **Major** | Clinical severity ≥ 2, or a failed day | Bed or shock-cut pair with `k − k′ ≥ 2`; a day with a positive net nurse gap at tier 3; an ALLOCATOR failure day (all N submissions rejected, repair applied); an explanation that misstates a clinical outcome |
-| **Moderate** | Clinical severity 1, or a caught rule breach | Bed or shock-cut pair with `k − k′ = 1`; a day whose positive net nurse gap is only at tiers 2 or 1; a rejected **submission** later corrected the same day; an F1 inversion; an explanation that misstates a non-clinical number |
-| **Minor** | Low cost, or process only | A bed or nurse reversal within W; a reallocation that changed no patient outcome; a §3.6 explanation field missing or empty; a modification submitted without a `simulate_allocation` call |
+| **Major** | Clinical severity ≥ 2, or a failed day | Bed or shock-cut pair with `k − k′ ≥ 2`; a day with a positive net nurse gap at tier 3; an ALLOCATOR failure day (no submission accepted, repair applied; one issue per day); an explanation that misstates a clinical outcome |
+| **Moderate** | Clinical severity 1, or a caught rule breach | Bed or shock-cut pair with `k − k′ = 1`; a day whose positive net nurse gap is only at tiers 2 or 1; **every** rejected submission, whether or not it is corrected the same day (on a failure day each rejected submission is Moderate, and the day is in addition one Major issue; owner decision §11 #38); an F1 inversion; an explanation that misstates a non-clinical number |
+| **Minor** | Low cost, or process only | A bed or nurse reversal within W; a reallocation that changed no patient outcome; a §3.6 explanation field missing or empty |
 
 Nurse issues are graded by the **highest tier with a positive net gap**, not by level difference, because need units do not pair cleanly [J].
 
@@ -192,6 +192,12 @@ Nurse issues are graded by the **highest tier with a positive net gap**, not by 
 2. Runs are compared on **issue counts by level, lexicographically** (Critical, then Major, then Moderate, then Minor). No weighted sum (`CLAUDE.md` §10.I).
 3. **Any Critical issue blocks interpretation** of the run until it is explained (and logged in `REFLECTION_LOG.md`).
 4. **CHECKER-versus-audit matching is a primary Verification output:** the LLM CHECKER's issues are matched to deterministic issues on (day, type); report recall, precision and level agreement. The CHECKER is **blind to the deterministic audit** and finds issues from the records (owner decision §11 #29), so the matching measures checking, not copying. It reports `type` from a fixed taxonomy listed in its prompt: the audit's agent-attributable types (`hard_constraint_in_effect`, `rejected_submission`, `allocator_failure_day`, `bed_displaced`, `bed_empty`, `bed_shock_cut`, `nurse_gap`, `f1_inversion`, `beds_reversal`, `nurses_reversal`, `reallocation_without_effect`) plus the LLM-only types `explanation_inaccuracy`, `information_leak`, `inconsistency` and `other`. The integrity types `replay_mismatch` and `pairing_closed_form_mismatch` are system checks, not matched. Issues only the LLM can raise (explanation accuracy) are reported separately as LLM-dependent.
+5. **Matching is reported stratified** (owner decision §11 #37, 2026-11-14), because pooled recall is dominated by the many Minor reversals. Recall, precision and level agreement are reported:
+   - **by issue type;**
+   - **by severity level** (recall over the audit's issues of that level, precision over the CHECKER's issues of that level);
+   - **by group.** *Headline:* the clinical and hard-constraint types `hard_constraint_in_effect`, `bed_displaced`, `bed_empty`, `bed_shock_cut`, `nurse_gap`, `allocator_failure_day`. *Secondary, reported separately:* `beds_reversal`, `nurses_reversal`, `reallocation_without_effect`. The two remaining types, `rejected_submission` and `f1_inversion`, are reported as a third group, *other*, by type (their classification is an open question for the owner).
+
+   The pooled figures are kept for reference but are not a headline. Within a (day, type) key the pairing is the approved one (both sides sorted most severe first, paired in order), so when the CHECKER reports fewer issues than the audit under a key, the matched audit issues are taken to be its most severe ones; this is stated with the results (`src/evaluation/checker_matching.py`).
 
 **Examples:**
 
@@ -200,7 +206,7 @@ Nurse issues are graded by the **highest tier with a positive net gap**, not by 
 3. An Internal Medicine L2 patient overflows while an Orthopedics movable bed goes to an L1 patient → severity 1, **Moderate**.
 4. As 1, but Cardiology is at 40 beds → **no issue**: structural, reported as context.
 5. Stress variant, day 23, forced cut of 6: an L2 holder in Neurology is cut while an L1 holder in Orthopedics is kept → shock-cut pair, severity 1, **Moderate**. Cutting 7 is `SHOCK_OVERCUT`: a rejected submission is **Moderate**; in effect it is **Critical**.
-6. Three rejected **submissions**, then the repair rule → ALLOCATOR failure day, **Major**. Any number of `validate_allocation` calls before a valid submission → no issue.
+6. Three rejected **submissions**, then the repair rule → three rejected submissions (**Moderate** each) and one ALLOCATOR failure day (**Major**). Any number of `validate_allocation` calls before a valid submission → no issue.
 7. Two L2 patients overflow, in Internal Medicine since day 12 and in Cardiology since day 14; the free bed goes to Cardiology while Internal Medicine has room → F1 inversion of 2 days, **Moderate** concern.
 8. Cardiology gains 3 beds on day 14 and loses 3 on day 16 with no pool change → reversal of 3 within W, **Minor** concern.
 9. An explanation says "no L3 in overflow" while the records show one → **Major** concern. An empty `alternatives` field → **Minor** improvement.
@@ -225,6 +231,8 @@ Nurse issues are graded by the **highest tier with a positive net gap**, not by 
 4. **Stress run (planned, owner 2026-11-12):** one agent run on `seed20261107_stress`, with B0–B2 as reference. It stays **excluded from the main comparisons** and is reported separately as a probe of forced-cut handling. All three baselines score 0 on shock-cut severity, because they share the hospital-wide lowest-level-first cut rule: the probe tests **whether the agent follows the cut rule under pressure**, which is its intended purpose. Before any use, the shock-day A1 pairing is tested against the closed form (§7).
 5. **Robustness:** the baselines on the two extra seeds, reported as an appendix. Agent results rest on the primary dataset only (declared limitation). **Seed 09 has no bed overflow under B1 or B2**, so it cannot discriminate between them on bed metrics; this is stated wherever robustness results are reported (§8.4).
 6. **Metrics** for every run with the same code, plus the verification checks (§7).
+7. **Pre-commitment for R1–R3 (owner decision §11 #40, 2026-11-14).** R1, R2 and R3 run with the same frozen prompts (`prompts-v1.0`) **regardless of R1's results**. R1 is reviewed before R2 **only for infrastructure faults**: halts, record inconsistencies, tool errors, a wrong model. It is never reviewed for agent quality. If an infrastructure fault requires a code change, **every run is redone** after the fix; prompts are never changed on the basis of R1. The stress run comes after R3.
+8. **Process data (owner decision §11 #39).** The server logs every `simulate_allocation` and `validate_allocation` call (day, the attempt it precedes, timestamp, and for the CHECKER the simulated day) to `process_calls.jsonl` in the evaluation directory; no agent tool reads it. It is descriptive only (how much the agent explores), and not an issue type.
 
 ## 7. Verification Checks
 

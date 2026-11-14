@@ -282,7 +282,7 @@ Revised 2026-11-12 (owner decision §11 #29, superseding Log #6). All tools are 
 | Tool | Type | Purpose |
 | --- | --- | --- |
 | `get_observed_state(period)` | Read | Observations for the period |
-| `get_allocation_state(period)` | Read | The allocations in effect (beds, nurses, source) for the period |
+| `get_allocation_state(period)` | Read | The allocations in effect (beds, nurses, source) for the period, and for each day the reference allocation and the reallocation τ, by the fixed repair rule (owner decision §11 #36) |
 | `get_overflow_queue(day)` | Read | The overflow queue as it stood on that day, before that day's decision |
 | `get_decision_history(period)` | Read | The ALLOCATOR's decisions, reasoning and attempts |
 | `simulate_allocation(day, beds, nurses)` | What-if | The outcome of any allocation on a past day, as it stood that day: the same outcomes-only output as the ALLOCATOR's what-if, no labels. Refuses any day after the current audit day. Writes nothing |

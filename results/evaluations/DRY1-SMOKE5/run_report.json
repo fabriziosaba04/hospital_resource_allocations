@@ -58,7 +58,8 @@
       "allocator_tokens": 16316,
       "allocator_duration_s": 31.9,
       "checker_tokens": 0,
-      "checker_duration_s": 0.0
+      "checker_duration_s": 0.0,
+      "allocator_calls": {}
     },
     {
       "day": 2,
@@ -89,7 +90,8 @@
       "allocator_tokens": 17873,
       "allocator_duration_s": 31.9,
       "checker_tokens": 0,
-      "checker_duration_s": 0.0
+      "checker_duration_s": 0.0,
+      "allocator_calls": {}
     },
     {
       "day": 3,
@@ -118,7 +120,8 @@
       "allocator_tokens": 19399,
       "allocator_duration_s": 27.7,
       "checker_tokens": 0,
-      "checker_duration_s": 0.0
+      "checker_duration_s": 0.0,
+      "allocator_calls": {}
     },
     {
       "day": 4,
@@ -149,7 +152,8 @@
       "allocator_tokens": 19525,
       "allocator_duration_s": 28.1,
       "checker_tokens": 0,
-      "checker_duration_s": 0.0
+      "checker_duration_s": 0.0,
+      "allocator_calls": {}
     },
     {
       "day": 5,
@@ -181,7 +185,8 @@
       "allocator_tokens": 22098,
       "allocator_duration_s": 28.2,
       "checker_tokens": 44195,
-      "checker_duration_s": 98.6
+      "checker_duration_s": 98.6,
+      "allocator_calls": {}
     }
   ],
   "checker": [
@@ -215,10 +220,229 @@
           "matched": 2
         }
       },
+      "by_type": {
+        "beds_reversal": {
+          "audit": 3,
+          "checker": 1,
+          "matched": 1,
+          "recall": 0.333,
+          "precision": 1.0,
+          "level_agreement": 1.0
+        },
+        "nurses_reversal": {
+          "audit": 4,
+          "checker": 2,
+          "matched": 2,
+          "recall": 0.5,
+          "precision": 1.0,
+          "level_agreement": 1.0
+        }
+      },
+      "by_level": {
+        "Critical": {
+          "audit": 0,
+          "checker": 0,
+          "matched": 0,
+          "recall": null,
+          "precision": null,
+          "level_agreement": null
+        },
+        "Major": {
+          "audit": 0,
+          "checker": 0,
+          "matched": 0,
+          "recall": null,
+          "precision": null,
+          "level_agreement": null
+        },
+        "Moderate": {
+          "audit": 0,
+          "checker": 0,
+          "matched": 0,
+          "recall": null,
+          "precision": null,
+          "level_agreement": null
+        },
+        "Minor": {
+          "audit": 7,
+          "checker": 3,
+          "matched": 3,
+          "recall": 0.429,
+          "precision": 1.0,
+          "level_agreement": 1.0
+        }
+      },
+      "by_group": {
+        "headline": {
+          "audit": 0,
+          "checker": 0,
+          "matched": 0,
+          "recall": null,
+          "precision": null,
+          "level_agreement": null
+        },
+        "secondary": {
+          "audit": 7,
+          "checker": 3,
+          "matched": 3,
+          "recall": 0.429,
+          "precision": 1.0,
+          "level_agreement": 1.0
+        },
+        "other": {
+          "audit": 0,
+          "checker": 0,
+          "matched": 0,
+          "recall": null,
+          "precision": null,
+          "level_agreement": null
+        }
+      },
+      "groups": {
+        "headline": [
+          "hard_constraint_in_effect",
+          "bed_displaced",
+          "bed_empty",
+          "bed_shock_cut",
+          "nurse_gap",
+          "allocator_failure_day"
+        ],
+        "secondary": [
+          "beds_reversal",
+          "nurses_reversal",
+          "reallocation_without_effect"
+        ],
+        "other": [
+          "rejected_submission",
+          "f1_inversion"
+        ]
+      },
       "checker_llm_only": {
         "explanation_inaccuracy": 1
       },
       "checker_unmatchable": 0
     }
-  ]
+  ],
+  "checker_overall": {
+    "audit_issues": 7,
+    "checker_issues": 3,
+    "matched": 3,
+    "recall": 0.429,
+    "precision": 1.0,
+    "level_agreement": 1.0,
+    "per_type": {
+      "beds_reversal": {
+        "audit": 3,
+        "checker": 1,
+        "matched": 1
+      },
+      "nurses_reversal": {
+        "audit": 4,
+        "checker": 2,
+        "matched": 2
+      }
+    },
+    "by_type": {
+      "beds_reversal": {
+        "audit": 3,
+        "checker": 1,
+        "matched": 1,
+        "recall": 0.333,
+        "precision": 1.0,
+        "level_agreement": 1.0
+      },
+      "nurses_reversal": {
+        "audit": 4,
+        "checker": 2,
+        "matched": 2,
+        "recall": 0.5,
+        "precision": 1.0,
+        "level_agreement": 1.0
+      }
+    },
+    "by_level": {
+      "Critical": {
+        "audit": 0,
+        "checker": 0,
+        "matched": 0,
+        "recall": null,
+        "precision": null,
+        "level_agreement": null
+      },
+      "Major": {
+        "audit": 0,
+        "checker": 0,
+        "matched": 0,
+        "recall": null,
+        "precision": null,
+        "level_agreement": null
+      },
+      "Moderate": {
+        "audit": 0,
+        "checker": 0,
+        "matched": 0,
+        "recall": null,
+        "precision": null,
+        "level_agreement": null
+      },
+      "Minor": {
+        "audit": 7,
+        "checker": 3,
+        "matched": 3,
+        "recall": 0.429,
+        "precision": 1.0,
+        "level_agreement": 1.0
+      }
+    },
+    "by_group": {
+      "headline": {
+        "audit": 0,
+        "checker": 0,
+        "matched": 0,
+        "recall": null,
+        "precision": null,
+        "level_agreement": null
+      },
+      "secondary": {
+        "audit": 7,
+        "checker": 3,
+        "matched": 3,
+        "recall": 0.429,
+        "precision": 1.0,
+        "level_agreement": 1.0
+      },
+      "other": {
+        "audit": 0,
+        "checker": 0,
+        "matched": 0,
+        "recall": null,
+        "precision": null,
+        "level_agreement": null
+      }
+    },
+    "groups": {
+      "headline": [
+        "hard_constraint_in_effect",
+        "bed_displaced",
+        "bed_empty",
+        "bed_shock_cut",
+        "nurse_gap",
+        "allocator_failure_day"
+      ],
+      "secondary": [
+        "beds_reversal",
+        "nurses_reversal",
+        "reallocation_without_effect"
+      ],
+      "other": [
+        "rejected_submission",
+        "f1_inversion"
+      ]
+    },
+    "checker_llm_only": {
+      "explanation_inaccuracy": 1
+    },
+    "checker_unmatchable": 0
+  },
+  "checker_simulate_calls": 0
 }

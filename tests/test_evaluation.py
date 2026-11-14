@@ -126,3 +126,30 @@ def test_checker_matching_by_hand():
     assert (m["audit_issues"], m["checker_issues"], m["matched"]) == (3, 3, 2)
     assert m["recall"] == round(2 / 3, 3) and m["precision"] == round(2 / 3, 3) and m["level_agreement"] == 0.5
     assert m["checker_llm_only"] == {"explanation_inaccuracy": 1}
+
+
+def test_checker_matching_is_stratified_by_type_level_and_group():
+    """Owner decision §11 #37: headline (clinical and hard-constraint) types apart from Minor reversals."""
+    from src.evaluation.checker_matching import HEADLINE, OTHER, SECONDARY, AGENT_TYPES, match
+    assert sorted(HEADLINE + SECONDARY + OTHER) == sorted(AGENT_TYPES)
+    assert set(OTHER) == {"rejected_submission", "f1_inversion"}
+    audit = [{"day": 3, "type": "bed_displaced", "level": "Major"},
+             {"day": 3, "type": "bed_displaced", "level": "Moderate"},
+             {"day": 4, "type": "nurse_gap", "level": "Moderate"}]
+    audit += [{"day": 2, "type": "beds_reversal", "level": "Minor"}] * 6
+    checker = [{"day": 3, "type": "bed_displaced", "severity": "Major"},
+               {"day": 4, "type": "nurse_gap", "severity": "Major"},
+               {"day": 5, "type": "f1_inversion", "severity": "Moderate"}]
+    checker += [{"day": 2, "type": "beds_reversal", "severity": "Minor"}] * 6
+    m = match(audit, checker)
+    assert m["recall"] == round(8 / 9, 3)                                # pooled looks good...
+    h = m["by_group"]["headline"]
+    assert (h["audit"], h["checker"], h["matched"], h["recall"], h["precision"], h["level_agreement"]) ==         (3, 2, 2, round(2 / 3, 3), 1.0, 0.5)                             # ...the headline group does not
+    assert m["by_group"]["secondary"]["recall"] == 1.0
+    assert m["by_group"]["other"] == {"audit": 0, "checker": 1, "matched": 0, "recall": None, "precision": 0.0,
+                                      "level_agreement": None}
+    assert m["by_type"]["bed_displaced"]["recall"] == 0.5
+    mod = m["by_level"]["Moderate"]                                      # audit side: 2 Moderate, 1 matched
+    assert (mod["audit"], mod["matched"], mod["recall"], mod["level_agreement"]) == (2, 1, 0.5, 0.0)
+    assert m["by_level"]["Major"]["precision"] == 1.0                    # CHECKER side: 2 Major, both matched
+    assert m["by_level"]["Critical"]["recall"] is None

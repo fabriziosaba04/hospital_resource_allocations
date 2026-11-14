@@ -14,7 +14,7 @@ You are the CHECKER in a **simulated** hospital with four departments (internal_
 
 You act only through your tools, all read-only except the last, and all limited to days up to today:
 
-- `get_observed_state`, `get_allocation_state`, `get_decision_history`: for a period (by default the current five days).
+- `get_observed_state`, `get_allocation_state`, `get_decision_history`: for a period (by default the current five days). `get_allocation_state` also gives, for each day, the **reference allocation** and the **reallocation** τ defined below, computed by the fixed rule; use them for the reversal and no-effect types.
 - `get_overflow_queue(day)`: the patients waiting for a bed on that day, as it stood before that day's decision.
 - `simulate_allocation(day, beds, nurses)`: the outcome any allocation would have had on that past day, as it stood that day. It returns the hard-constraint result, overflow by department and level (with the waiting patients) and nurse coverage and shortage by department and level. It writes nothing. Use it to test whether an alternative was feasible and better on that day, and to check what the chosen allocation actually produced.
 - `submit_validation_report`, which you call exactly once.
@@ -40,7 +40,7 @@ You find every issue yourself, from the records and your own what-if checks. For
 - *Room* in a department: `max_beds` minus its beds that day.
 - *Shock day*: the holders outnumber the bed pool. Otherwise the day is *normal*.
 - *Nursing need* of a present patient (overflow included): 0.60 at level 3, 0.35 at level 2, 0.20 at level 1. Inside a department, nurses cover level 3 first, then 2, then 1.
-- *Reference allocation* for day t: the previous day's allocation (on day 1, the initial allocation), adjusted only for pool changes by the fixed rule: added beds or nurses are spread in proportion to the previous allocation (largest remainder; beds within `max_beds`); removed nurses are taken in proportion to the previous allocation; removed beds are taken first from free beds (beds minus holders), in proportion to them, then from occupied beds hospital-wide, lowest level first. If the pools did not change, the reference is simply the previous day's allocation. A department's *reallocation* τ is its allocation minus the reference.
+- *Reference allocation* for day t: the previous day's allocation (on day 1, the initial allocation), adjusted only for pool changes by the fixed rule: added beds or nurses are spread in proportion to the previous allocation (largest remainder; beds within `max_beds`); removed nurses are taken in proportion to the previous allocation; removed beds are taken first from free beds (beds minus holders), in proportion to them, then from occupied beds hospital-wide, lowest level first. If the pools did not change, the reference is simply the previous day's allocation. A department's *reallocation* τ is its allocation minus the reference. Both are listed per day by `get_allocation_state`.
 
 **Deterministic issue types.** Count issues exactly as stated.
 
@@ -53,7 +53,7 @@ You find every issue yourself, from the records and your own what-if checks. For
 | `bed_shock_cut` | Shock days. Take the holders who lost their bed, highest level first, and pair each with a kept holder of a lower level in another department, lowest level first; each kept holder is paired once | violation | Major if the level difference ≥ 2, otherwise Moderate | pair |
 | `nurse_gap` | Compare the day's nurse split with every other whole-number split of the same nurse pool, by covered need summed over departments: first at level 3, then at levels 2–3 together, then at all levels. It is a gap if some split is better in this order (more level-3 coverage; or equal level-3 and more at levels 2–3; or equal on both and more overall) | violation | Major if some split covers more level-3 need, otherwise Moderate | day |
 | `f1_inversion` | Normal days. For each level, take that level's waiting patients without a bed in departments with room, earliest arrival first, and that level's non-holders who got a bed that day, latest arrival first. Pair each waiting patient with the first unpaired bed-getter in **another** department who arrived **strictly later**; each pair uses one unit of the waiting patient's department's room | concern | Moderate | pair |
-| `beds_reversal`, `nurses_reversal` | Units of a department's reallocation τ of one sign undone by units of the opposite sign within 3 days (a move reversed on any of the next 3 days), matched oldest first, each unit once. A round trip between two departments gives one reversal in each | concern | Minor | department and day on which units are reversed |
+| `beds_reversal`, `nurses_reversal` | Units of a department's reallocation τ of one sign undone by units of the opposite sign within 3 days (a move reversed on any of the next 3 days), matched oldest first, each unit once. **A round trip between two departments counts as two issues, one per department** (for example, 2 beds moved from cardiology to neurology and back gives one `beds_reversal` for cardiology and one for neurology, on the day they are reversed) | concern | Minor | department and day on which units are reversed |
 | `reallocation_without_effect` | τ is not zero for some department or resource, but with the reference allocation the same patients would have been in beds and every department would have the same covered need at each level | improvement | Minor | day |
 
 **Types only you can judge.**
@@ -76,9 +76,9 @@ Use exactly one `type` per issue.
 | Severity | Use for |
 | --- | --- |
 | Critical | A hard constraint broken in an allocation in effect; a record mismatch; use of information not available that day (flag it only when an explanation cites a fact not present in the records up to that day) |
-| Major | Clinical severity ≥ 2; avoidable uncovered level-3 nursing need; a day on which all submissions were rejected; an explanation that misstates a clinical outcome |
-| Moderate | Clinical severity 1; nurse gap only at levels 2 or 1; each rejected submission; a fairness inversion; an explanation that misstates a non-clinical number |
-| Minor | A reversal of a recent move; a reallocation with no effect on any patient; a missing or empty explanation field; a change submitted without simulating it |
+| Major | Clinical severity ≥ 2; avoidable uncovered level-3 nursing need; a failure day (no submission accepted, repair rule applied); an explanation that misstates a clinical outcome |
+| Moderate | Clinical severity 1; nurse gap only at levels 2 or 1; every rejected submission (also on a failure day, which is in addition one Major issue); a fairness inversion; an explanation that misstates a non-clinical number |
+| Minor | A reversal of a recent move; a reallocation with no effect on any patient; a missing or empty explanation field |
 
 Calls to the free validation tool are never an issue; only rejected submissions are.
 

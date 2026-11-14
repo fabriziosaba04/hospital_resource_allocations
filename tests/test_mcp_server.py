@@ -317,3 +317,30 @@ def test_checker_taxonomy_covers_every_agent_attributable_audit_type():
     listed = {n for pair in re.findall(r"^\| `([a-z0-9_]+)`(?:, `([a-z0-9_]+)`)? \|", body, re.M) for n in pair if n}
     assert set(audit_types) <= listed, set(audit_types) - listed
     assert {"explanation_inaccuracy", "information_leak", "inconsistency", "other"} <= listed
+
+
+def test_checker_reference_allocation_equals_the_audit_reference(wf):
+    """Owner decision §11 #36 (R28): the CHECKER's reference and reallocation are the audit's own."""
+    _run_to_audit(wf)
+    audit = {d["day"]: d for d in wf.store.read("deterministic_audit")[0]["days"]}
+    out = wf.checker_allocation_state(1, 5)
+    assert [r["day"] for r in out["reference_allocations"]] == [1, 2, 3, 4, 5]
+    for r in out["reference_allocations"]:
+        assert r["reallocation_beds"] == audit[r["day"]]["tau_beds"]
+        assert r["reallocation_nurses"] == audit[r["day"]]["tau_nurses"]
+
+
+def test_whatif_and_validate_calls_are_logged_and_hidden(wf):
+    """Owner decision §11 #39: process data for the analysis, readable by no agent tool."""
+    wf.advance_day()
+    cur = wf.get_allocation_state()["in_effect"]
+    wf.simulate_allocation(cur["beds"], cur["nurses"])
+    wf.validate_allocation(cur["beds"], cur["nurses"])
+    maintain(wf)
+    wf.simulate_allocation(cur["beds"], cur["nurses"])
+    calls = wf.store.read("process_calls")
+    assert [(c["tool"], c["before_attempt"], c["after_acceptance"]) for c in calls] == [
+        ("simulate_allocation", 1, False), ("validate_allocation", 1, False), ("simulate_allocation", 2, True)]
+    assert all(c["day"] == 1 and c["created_at"] for c in calls)
+    src = (ROOT / "src" / "mcp_server" / "workflow.py").read_text(encoding="utf-8")
+    assert src.count('"process_calls"') == 1                         # written once, never read by a tool

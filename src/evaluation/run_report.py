@@ -128,9 +128,18 @@ def build(run_id: str) -> dict:
         matching.append({"day": r["day"], "period": [lo, hi], "n_issues": len(r["report"]["issues"]),
                          "checker_types": dict(Counter(i.get("type") for i in r["report"]["issues"])),
                          **match(ai, r["report"]["issues"])})
+    reps = [r for r in reports if r.get("kind") == "report"]
+    covered = [i for i in audit_issues
+               if any(r["report"]["period"]["from_day"] <= i["day"] <= r["report"]["period"]["to_day"] for r in reps)]
+    overall = match(covered, [i for r in reps for i in r["report"]["issues"]]) if reps else None
+    calls = store.read("process_calls")                  # owner decision §11 #39: descriptive process data
+    for od in out_days:
+        mine = [c for c in calls if c["day"] == od["day"] and c["writer"] == "allocator"]
+        od["allocator_calls"] = dict(Counter(c["tool"] for c in mine))
     rep = {"run_id": run_id, "models_configured": m["models"], "main_models_observed": tr["main_models"],
            "model_usage": tr["model_usage"], "session_cost_usd": tr["session_cost_usd"],
-           "days": out_days, "checker": matching}
+           "days": out_days, "checker": matching, "checker_overall": overall,
+           "checker_simulate_calls": sum(1 for c in calls if c["writer"] == "checker")}
     (Path(m["eval_dir"]) / "run_report.json").write_text(json.dumps(rep, indent=2) + "\n", encoding="utf-8",
                                                          newline="\n")
     return rep

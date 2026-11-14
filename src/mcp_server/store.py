@@ -32,6 +32,7 @@ RECORDS = {
     "workflow": ("alloc", "workflow.jsonl"),
     "deterministic_audit": ("eval", "deterministic_audit.jsonl"),
     "validation_history": ("eval", "validation_history.jsonl"),
+    "process_calls": ("eval", "process_calls.jsonl"),    # what-if/validate calls; no agent tool reads it
 }
 
 _append_counts: dict[str, int] = {}
