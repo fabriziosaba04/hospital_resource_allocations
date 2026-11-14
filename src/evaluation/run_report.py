@@ -91,11 +91,23 @@ def _ts(x: str) -> datetime:
     return datetime.fromisoformat(x)
 
 
-def build(run_id: str) -> dict:
-    alloc = ROOT / "results" / "allocations" / run_id
+def resolve_data_root(m: dict, data_root: Path | None = None) -> Path:
+    """The dataset root for a run: an explicit override, else the manifest's `data_root` if it exists (a
+    clone may have been deleted), else the repository root (frozen data are identical by manifest)."""
+    if data_root is not None:
+        return Path(data_root)
+    p = Path(m["data_root"])
+    return p if p.exists() else ROOT
+
+
+def build(run_id: str, results_root: Path = ROOT / "results", data_root: Path | None = None,
+          write: bool = True) -> dict:
+    """Paths are resolved relative to `results_root` (owner decision §11 #44, Log #90), so a run folder
+    copied back from a clone gives the same report as in place."""
+    alloc = Path(results_root) / "allocations" / run_id
     m = json.loads((alloc / "run_manifest.json").read_text(encoding="utf-8"))
-    store = Store(alloc, Path(m["eval_dir"]))
-    ds = load_dataset(m["dataset_id"], root=Path(m["data_root"]))
+    store = Store.from_run_dir(alloc)
+    ds = load_dataset(m["dataset_id"], root=resolve_data_root(m, data_root))
     _, days = audit_run(ds, alloc)
     add_reversal_issues(days)
     tr = transcript_stats(alloc)
@@ -140,12 +152,19 @@ def build(run_id: str) -> dict:
            "model_usage": tr["model_usage"], "session_cost_usd": tr["session_cost_usd"],
            "days": out_days, "checker": matching, "checker_overall": overall,
            "checker_simulate_calls": sum(1 for c in calls if c["writer"] == "checker")}
-    (Path(m["eval_dir"]) / "run_report.json").write_text(json.dumps(rep, indent=2) + "\n", encoding="utf-8",
-                                                         newline="\n")
+    if write:
+        (store.eval_dir / "run_report.json").write_text(json.dumps(rep, indent=2) + "\n", encoding="utf-8",
+                                                        newline="\n")
     return rep
 
 
 if __name__ == "__main__":
-    r = build(sys.argv[1])
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("run_id")
+    ap.add_argument("--results-root", default=str(ROOT / "results"))
+    ap.add_argument("--data-root")
+    a = ap.parse_args()
+    r = build(a.run_id, Path(a.results_root), Path(a.data_root) if a.data_root else None)
     print(json.dumps({k: r[k] for k in ("run_id", "models_configured", "main_models_observed",
                                         "session_cost_usd")}, indent=2))

@@ -9,6 +9,10 @@ it. The transcript is streamed to <run>/transcripts/launch-<k>.jsonl line by lin
 what it had. After the session ends, the observed models are compared with run_manifest.json, the record
 consistency check runs, and both go to <run>/launches.jsonl. Re-running the command resumes the run: the
 dispatcher starts from get_workflow_status, and the server rebuilds every flag from the records.
+
+The launcher refuses to start in a cloud-synced folder (OneDrive, Dropbox, Google Drive, iCloud; owner decision
+§11 #44): R1-R3 and the stress run are launched from a clone outside it and copied back with
+`python -m src.mcp_server.copy_back`. `--allow-synced-folder` is accepted for synthetic fixtures only.
 """
 
 from __future__ import annotations
@@ -19,6 +23,7 @@ import subprocess
 import sys
 import time
 from datetime import datetime, timezone
+from pathlib import Path
 
 from src.evaluation.dataset import ROOT
 
@@ -26,6 +31,32 @@ from .consistency import check
 from .store import Store
 
 PROMPT = "Start."
+SYNCED_MARKERS = ("onedrive", "dropbox", "google drive", "googledrive", "icloud")
+
+
+def synced_folder(path: Path) -> str | None:
+    """The marker if `path` lies in a cloud-synced folder (owner decision §11 #44, Log #90): a path part
+    containing OneDrive, Dropbox, Google Drive or iCloud, or a path under an OneDrive environment root."""
+    p = str(Path(path).resolve())
+    low = p.lower()
+    for mk in SYNCED_MARKERS:
+        if any(mk in part.lower() for part in Path(p).parts):
+            return mk
+    for var in ("OneDrive", "OneDriveConsumer", "OneDriveCommercial"):
+        root = os.environ.get(var)
+        if root and low.startswith(str(Path(root).resolve()).lower()):
+            return var
+    return None
+
+
+DATA_MANIFEST = ROOT / "data" / "MANIFEST.json"
+
+
+def frozen_dataset(dataset_id: str) -> bool:
+    """True for a dataset listed in the frozen-data manifest (data-v1.0)."""
+    if not DATA_MANIFEST.exists():
+        return True                      # cannot tell: treat as frozen, so the guard stays strict
+    return f'"{dataset_id}' in DATA_MANIFEST.read_text(encoding="utf-8") or f"/{dataset_id}/" in         DATA_MANIFEST.read_text(encoding="utf-8")
 
 
 def observed_models(transcript_lines: list[str]) -> dict:
@@ -46,7 +77,21 @@ def observed_models(transcript_lines: list[str]) -> dict:
                                                                                      "num_turns", "result")}}
 
 
-def launch(store: Store, max_turns: int = 2000) -> dict:
+def guard(store: Store, allow_synced: bool = False) -> str | None:
+    """Refuse a run in a synced folder. `allow_synced` is accepted only for synthetic fixtures (dry runs),
+    never for a frozen dataset. Returns the marker when a synthetic run is allowed in a synced folder."""
+    m = store.manifest()
+    mk = synced_folder(ROOT) or synced_folder(store.alloc_dir)
+    if mk is None:
+        return None
+    if allow_synced and not frozen_dataset(m["dataset_id"]):
+        return mk
+    raise SystemExit(f"refusing to launch: the project is in a synced folder ({mk}: {ROOT}). Run from a clone "
+                     "outside OneDrive or any synced folder (PROJECT_SPEC.md Log #90)."
+                     + ("" if not allow_synced else " --allow-synced-folder is for synthetic fixtures only."))
+
+
+def launch(store: Store, max_turns: int = 2000, synced: str | None = None) -> dict:
     m = store.manifest()
     model = m["models"]["main"]
     tdir = store.alloc_dir / "transcripts"
@@ -72,7 +117,7 @@ def launch(store: Store, max_turns: int = 2000) -> dict:
     rec = {"launch": k, "started_at": started, "duration_s": round(time.monotonic() - t0, 1),
            "exit_code": proc.returncode, "expected_models": expected, "observed": obs,
            "models_match": obs["all_used"] == expected and obs["main_session"] == [model],
-           "state_after": store.read_state(), "consistency_problems": check(store),
+           "synced_folder": synced, "state_after": store.read_state(), "consistency_problems": check(store),
            "stderr_tail": stderr[-1500:]}
     with open(store.alloc_dir / "launches.jsonl", "a", encoding="utf-8", newline="\n") as f:
         f.write(json.dumps(rec) + "\n")
@@ -81,7 +126,8 @@ def launch(store: Store, max_turns: int = 2000) -> dict:
 
 def main() -> int:
     store = Store.active()
-    rec = launch(store)
+    synced = guard(store, allow_synced="--allow-synced-folder" in sys.argv[1:])
+    rec = launch(store, synced=synced)
     print(json.dumps({k: rec[k] for k in ("launch", "exit_code", "duration_s", "models_match",
                                           "consistency_problems")}, indent=2))
     print("state:", rec["state_after"]["phase"], "day", rec["state_after"]["day"])

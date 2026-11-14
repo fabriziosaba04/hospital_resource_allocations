@@ -73,11 +73,7 @@ def check(store: Store) -> list[str]:
 
 
 def main() -> int:
-    store = Store.active() if len(sys.argv) < 2 else None
-    if store is None:
-        import json
-        alloc = Path(sys.argv[1])
-        store = Store(alloc, Path(json.loads((alloc / "run_manifest.json").read_text())["eval_dir"]))
+    store = Store.active() if len(sys.argv) < 2 else Store.from_run_dir(Path(sys.argv[1]))
     probs = check(store)
     print("consistent" if not probs else "\n".join(probs))
     return 1 if probs else 0

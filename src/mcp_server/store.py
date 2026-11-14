@@ -93,6 +93,14 @@ class Store:
         manifest = json.loads((alloc_dir / "run_manifest.json").read_text(encoding="utf-8"))
         return cls(alloc_dir, Path(manifest["eval_dir"]))
 
+    @classmethod
+    def from_run_dir(cls, alloc_dir: Path) -> "Store":
+        """Paths resolved relative to the run directory, <results>/allocations/<run> and
+        <results>/evaluations/<run>, never from the manifest's absolute `eval_dir`, so a run folder copied
+        from a clone is read in place (owner decision §11 #44, Log #90)."""
+        alloc_dir = Path(alloc_dir).resolve()
+        return cls(alloc_dir, alloc_dir.parent.parent / "evaluations" / alloc_dir.name)
+
     # ------------------------------------------------------------------ files
     def path(self, record: str) -> Path:
         key, name = RECORDS[record]
