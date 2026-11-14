@@ -114,3 +114,38 @@ def test_workflow_runs_on_the_hard_fixture(tmp_path):
             assert len(ref) == 5
         w.close_day()
     assert w.get_workflow_status()["phase"] == "FINISHED"
+
+
+def test_checker_only_replay_reproduces_the_baseline_and_its_audit(tmp_path):
+    """Log #89: replaying B2 through the server gives B2's allocations and the same deterministic audit."""
+    import json
+    from src.evaluation.metrics import evaluate_run
+    from src.mcp_server.consistency import check
+    from src.mcp_server.init_run import init_run
+    from src.mcp_server.workflow import Workflow, WorkflowError
+    fh.write_fixture(tmp_path)
+    store = init_run(fh.DATASET_ID, "CHK-B2", data_root=tmp_path, results_root=tmp_path / "results",
+                     check_manifest=False, set_pointer=False, replay_baseline="B2")
+    w = Workflow(store)
+    for t in range(1, fh.HORIZON + 1):
+        w.advance_day()
+        assert w.get_workflow_status()["expected_next_action"] == "call end_allocation_phase"
+        with pytest.raises(WorkflowError, match="checker-only"):
+            w.submit_decision({}, {}, {})
+        w.end_allocation_phase()
+        if t % 5 == 0:
+            w.submit_validation_report({"period": {"from_day": t - 4, "to_day": t}, "checked": ["x"],
+                                        "issues": [], "summary": "test"})
+        w.close_day()
+    assert not check(store)
+    ds = load_dataset(fh.DATASET_ID, tmp_path)
+    ref = run_baseline("B2", ds, tmp_path / "ref")
+    want = [json.loads(x) for x in (ref / "allocation_state.jsonl").read_text(encoding="utf-8").splitlines()]
+    got = store.read("allocation_state")
+    assert [(x["beds"], x["nurses"]) for x in got] == [(x["beds"], x["nurses"]) for x in want]
+    evaluate_run(ds, ref, out_root=tmp_path / "ev")
+    key = lambda recs: sorted(json.dumps({k: v for k, v in i.items()}, sort_keys=True)
+                              for r in recs for d in r["days"] for i in d["issues"])
+    exp = [json.loads(x) for x in (tmp_path / "ev" / "B2-HARD10" / "deterministic_audit.jsonl")
+           .read_text(encoding="utf-8").splitlines()]
+    assert key(store.read("deterministic_audit")) == key(exp)

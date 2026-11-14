@@ -34,6 +34,7 @@ def check(store: Store) -> list[str]:
     for t in range(1, d + 1):
         a = sum(1 for x in alloc if x["day"] == t and x["source"] == "ALLOCATOR")
         r = sum(1 for x in alloc if x["day"] == t and x["source"] == "repair_rule")
+        r += sum(1 for x in alloc if x["day"] == t and str(x["source"]).startswith("replay_"))   # Log #89
         if a > 1 or r > 1 or (a and r):
             probs.append(f"allocation_state: day {t} has {a} ALLOCATOR and {r} repair lines")
         if t <= done and a + r != 1:

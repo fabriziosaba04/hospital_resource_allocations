@@ -137,10 +137,23 @@ class Workflow:
                 self._log(state["day"], "rejected_call", tool=tool, phase=state["phase"])
             raise WorkflowError(msg)
 
+    @property
+    def replay(self) -> dict | None:
+        """Checker-only replay (owner decision §11 #42, Log #89): the day's allocation comes from a recorded
+        baseline run, not from the ALLOCATOR. None in agent runs."""
+        name = self.m.get("checker_only_replay")
+        if not name:
+            return None
+        import json
+        data = json.loads((self.store.alloc_dir / "replay_allocations.json").read_text(encoding="utf-8"))
+        return {"baseline": name, "days": {int(k): v for k, v in data["days"].items()}}
+
     def _next_action(self, s: dict) -> str:
         p = s["phase"]
         if p in ("READY", "CLOSED"):
             return "call advance_day"
+        if p == "ALLOCATION" and self.m.get("checker_only_replay"):
+            return "call end_allocation_phase"
         if p == "ALLOCATION":
             return ("call end_allocation_phase" if s["accepted"] else
                     f"invoke the allocator subagent with template {TEMPLATE_ALLOCATE}, then call end_allocation_phase")
@@ -239,7 +252,17 @@ class Workflow:
             self._reconcile(t)
             s = self._state()
             ctx = self._ctx(t)
-            if not s["accepted"] and not self._find("allocation_state", day=t, source="repair_rule"):
+            rp = self.replay
+            if rp is not None:
+                src = f"replay_{rp['baseline']}"
+                if not self._find("allocation_state", day=t, source=src):
+                    a = rp["days"][t]
+                    v = validate(a["beds"], a["nurses"], ctx.pool_beds, ctx.pool_nurses, ctx.max_beds, ctx.occupied)
+                    if v:
+                        raise RuntimeError(f"replayed {rp['baseline']} allocation invalid on day {t}: {v}")
+                    self.store.append("allocation_state", self._line("replay", t, source=src,
+                                                                     beds=a["beds"], nurses=a["nurses"]))
+            elif not s["accepted"] and not self._find("allocation_state", day=t, source="repair_rule"):
                 prev = self._allocation_in_effect(t)
                 req = {d: n1_requirement(*(ctx.counts()[d][k] for k in LEVELS), self.ds.env) for d in DEPARTMENTS}
                 r = repair(prev["beds"], prev["nurses"], ctx.pool_beds, ctx.pool_nurses, ctx.max_beds, ctx.holders, req)
@@ -391,6 +414,9 @@ class Workflow:
     def submit_decision(self, beds: dict, nurses: dict, explanation: dict) -> dict:
         s = self._alloc_phase("submit_decision")
         t = s["day"]
+        if self.m.get("checker_only_replay"):
+            raise WorkflowError("this is a checker-only replay run: no decisions are accepted. Expected next "
+                                "action: " + self._next_action(s))
         if s["accepted"]:
             raise WorkflowError("a decision was already accepted today. Expected next action: " + self._next_action(s))
         if s["attempts"] >= self.m["retry_limit"]:

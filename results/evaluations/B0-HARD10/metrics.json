@@ -1,0 +1,236 @@
+{
+  "A1": {
+    "SV_B": 89,
+    "by_tier": {
+      "1": 33,
+      "2": 32,
+      "3": 24
+    },
+    "by_type": {
+      "displaced": {
+        "pairs": 3,
+        "severity": 3
+      },
+      "empty": {
+        "pairs": 33,
+        "severity": 86
+      },
+      "shock_cut": {
+        "pairs": 0,
+        "severity": 0
+      }
+    },
+    "severity_distribution": {
+      "1": 6,
+      "2": 7,
+      "3": 23
+    }
+  },
+  "A2": {
+    "days_lex_floor_ne_joint_floor": 3,
+    "tier1": {
+      "SV_N": 8.35,
+      "lex_floor": 1.25,
+      "raw_gap": 9.6
+    },
+    "tier2": {
+      "SV_N": 13.15,
+      "lex_floor": 0.45,
+      "raw_gap": 13.6
+    },
+    "tier3": {
+      "SV_N": 23.0,
+      "lex_floor": 0.0,
+      "raw_gap": 23.0
+    }
+  },
+  "A3": {
+    "tier1": {
+      "avoid": 33,
+      "excess": 33,
+      "floor": 46,
+      "min_daily_path": 0,
+      "path": 0,
+      "raw": 79
+    },
+    "tier2": {
+      "avoid": 32,
+      "excess": 35,
+      "floor": 27,
+      "min_daily_path": 0,
+      "path": 3,
+      "raw": 62
+    },
+    "tier3": {
+      "avoid": 24,
+      "excess": 28,
+      "floor": 0,
+      "min_daily_path": 0,
+      "path": 4,
+      "raw": 28
+    }
+  },
+  "A4": {
+    "shortage_by_level": {
+      "1": 3.55,
+      "2": 12.1,
+      "3": 28.0
+    },
+    "tier_floor": {
+      "1": 34.05,
+      "2": 26.5,
+      "3": 5.0
+    }
+  },
+  "B1": {
+    "L1": {
+      "denominators": {
+        "cardiology": 5,
+        "internal_medicine": 12,
+        "neurology": 3,
+        "orthopedics": 28
+      },
+      "dispersion_pp": 100.0,
+      "rates_pct": {
+        "cardiology": 0.0,
+        "internal_medicine": 8.33,
+        "neurology": 100.0,
+        "orthopedics": 35.71
+      }
+    },
+    "L2": {
+      "denominators": {
+        "cardiology": 32,
+        "internal_medicine": 35,
+        "neurology": 5,
+        "orthopedics": 9
+      },
+      "dispersion_pp": 77.14,
+      "rates_pct": {
+        "cardiology": 43.75,
+        "internal_medicine": 2.86,
+        "neurology": 80.0,
+        "orthopedics": 33.33
+      }
+    },
+    "L3": {
+      "denominators": {
+        "cardiology": 66,
+        "internal_medicine": 14,
+        "neurology": 12,
+        "orthopedics": 3
+      },
+      "dispersion_pp": 39.39,
+      "rates_pct": {
+        "cardiology": 39.39,
+        "internal_medicine": 0.0,
+        "neurology": 16.67,
+        "orthopedics": 0.0
+      }
+    }
+  },
+  "B2": {
+    "L1": {
+      "count": 1,
+      "wait_days": 2
+    },
+    "L2": {
+      "count": 5,
+      "wait_days": 9
+    },
+    "L3": {
+      "count": 1,
+      "wait_days": 3
+    }
+  },
+  "B3": {
+    "L1": {
+      "max_days": 3,
+      "mean_days": 1.889,
+      "patients_ever_in_overflow": 9
+    },
+    "L2": {
+      "max_days": 5,
+      "mean_days": 2.833,
+      "patients_ever_in_overflow": 12
+    },
+    "L3": {
+      "max_days": 5,
+      "mean_days": 2.333,
+      "patients_ever_in_overflow": 12
+    }
+  },
+  "B4": {
+    "L1": {
+      "coverage": {
+        "cardiology": 0.0,
+        "internal_medicine": 0.6667,
+        "neurology": 0.1667,
+        "orthopedics": 0.7768
+      },
+      "dispersion": 0.7768
+    },
+    "L2": {
+      "coverage": {
+        "cardiology": 0.0,
+        "internal_medicine": 0.951,
+        "neurology": 0.8286,
+        "orthopedics": 1.0
+      },
+      "dispersion": 1.0
+    },
+    "L3": {
+      "coverage": {
+        "cardiology": 0.303,
+        "internal_medicine": 1.0,
+        "neurology": 0.9444,
+        "orthopedics": 1.0
+      },
+      "dispersion": 0.697
+    }
+  },
+  "C": {
+    "C1_bed_utilisation": 0.7713,
+    "C2_avoidable_idle_bed_days": 33,
+    "C3_nurse_utilisation": 0.9032,
+    "C4_avoidable_idle_nurse_days": 6,
+    "C4_unavoidable_idle_nurse_days": 0
+  },
+  "D": {
+    "failure_days": 0,
+    "gate_passed": true,
+    "hard_constraint_violations_in_effect": 0,
+    "pairing_closed_form_mismatches": 0,
+    "rejected_submissions": 0,
+    "replay_mismatches": 0
+  },
+  "E": {
+    "beds": {
+      "RS_total": 0.0,
+      "frequency_days": 0,
+      "reversals": {
+        "W2": 0,
+        "W3": 0,
+        "W5": 0
+      }
+    },
+    "nurses": {
+      "RS_total": 0.0,
+      "frequency_days": 0,
+      "reversals": {
+        "W2": 0,
+        "W3": 0,
+        "W5": 0
+      }
+    }
+  },
+  "dataset_id": "HARD10",
+  "horizon": 10,
+  "issues_by_level": {
+    "Critical": 0,
+    "Major": 40,
+    "Minor": 0,
+    "Moderate": 13
+  },
+  "run_id": "B0-HARD10"
+}
