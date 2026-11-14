@@ -1,0 +1,85 @@
+{
+  "seed": 20261114,
+  "horizon": 10,
+  "burn_in_days": 6,
+  "max_beds": 10,
+  "weights": {
+    "w_L1": 0.2,
+    "w_L2": 0.35,
+    "w_L3": 0.6
+  },
+  "arrival_rate": {
+    "internal_medicine": 2.0,
+    "cardiology": 1.2,
+    "neurology": 0.8,
+    "orthopedics": 2.2
+  },
+  "surge": {
+    "department": "cardiology",
+    "days": [
+      3,
+      7
+    ],
+    "multiplier": 2.5
+  },
+  "complexity_mix": {
+    "internal_medicine": [
+      0.35,
+      0.45,
+      0.2
+    ],
+    "cardiology": [
+      0.1,
+      0.3,
+      0.6
+    ],
+    "neurology": [
+      0.2,
+      0.4,
+      0.4
+    ],
+    "orthopedics": [
+      0.75,
+      0.2,
+      0.05
+    ]
+  },
+  "los": {
+    "1": [
+      1,
+      3
+    ],
+    "2": [
+      2,
+      5
+    ],
+    "3": [
+      4,
+      8
+    ]
+  },
+  "bed_pool": {
+    "1": 20,
+    "2": 20,
+    "3": 20,
+    "4": 23,
+    "5": 23,
+    "6": 20,
+    "7": 20,
+    "8": 11,
+    "9": 11,
+    "10": 20
+  },
+  "nurse_pool": {
+    "1": 6,
+    "2": 6,
+    "3": 6,
+    "4": 8,
+    "5": 8,
+    "6": 6,
+    "7": 6,
+    "8": 5,
+    "9": 5,
+    "10": 6
+  }
+}
