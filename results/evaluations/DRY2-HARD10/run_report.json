@@ -480,6 +480,14 @@
           "precision": 1.0,
           "level_agreement": 1.0
         },
+        "headline_rejected_submission": {
+          "audit": 0,
+          "checker": 0,
+          "matched": 0,
+          "recall": null,
+          "precision": null,
+          "level_agreement": null
+        },
         "secondary": {
           "audit": 5,
           "checker": 5,
@@ -487,14 +495,6 @@
           "recall": 1.0,
           "precision": 1.0,
           "level_agreement": 1.0
-        },
-        "other": {
-          "audit": 0,
-          "checker": 0,
-          "matched": 0,
-          "recall": null,
-          "precision": null,
-          "level_agreement": null
         }
       },
       "groups": {
@@ -506,16 +506,17 @@
           "nurse_gap",
           "allocator_failure_day"
         ],
+        "headline_rejected_submission": [
+          "rejected_submission"
+        ],
         "secondary": [
           "beds_reversal",
           "nurses_reversal",
-          "reallocation_without_effect"
-        ],
-        "other": [
-          "rejected_submission",
+          "reallocation_without_effect",
           "f1_inversion"
         ]
       },
+      "date_shift_matches": [],
       "checker_llm_only": {
         "explanation_inaccuracy": 2
       },
@@ -625,6 +626,14 @@
           "precision": 1.0,
           "level_agreement": 1.0
         },
+        "headline_rejected_submission": {
+          "audit": 0,
+          "checker": 0,
+          "matched": 0,
+          "recall": null,
+          "precision": null,
+          "level_agreement": null
+        },
         "secondary": {
           "audit": 6,
           "checker": 6,
@@ -632,14 +641,6 @@
           "recall": 0.667,
           "precision": 0.667,
           "level_agreement": 1.0
-        },
-        "other": {
-          "audit": 0,
-          "checker": 0,
-          "matched": 0,
-          "recall": null,
-          "precision": null,
-          "level_agreement": null
         }
       },
       "groups": {
@@ -651,16 +652,34 @@
           "nurse_gap",
           "allocator_failure_day"
         ],
+        "headline_rejected_submission": [
+          "rejected_submission"
+        ],
         "secondary": [
           "beds_reversal",
           "nurses_reversal",
-          "reallocation_without_effect"
-        ],
-        "other": [
-          "rejected_submission",
+          "reallocation_without_effect",
           "f1_inversion"
         ]
       },
+      "date_shift_matches": [
+        {
+          "type": "beds_reversal",
+          "audit_day": 6,
+          "checker_day": 8,
+          "departments": [
+            "internal_medicine"
+          ]
+        },
+        {
+          "type": "beds_reversal",
+          "audit_day": 6,
+          "checker_day": 7,
+          "departments": [
+            "neurology"
+          ]
+        }
+      ],
       "checker_llm_only": {},
       "checker_unmatchable": 0
     }
@@ -758,6 +777,14 @@
         "precision": 1.0,
         "level_agreement": 1.0
       },
+      "headline_rejected_submission": {
+        "audit": 0,
+        "checker": 0,
+        "matched": 0,
+        "recall": null,
+        "precision": null,
+        "level_agreement": null
+      },
       "secondary": {
         "audit": 11,
         "checker": 11,
@@ -765,14 +792,6 @@
         "recall": 0.818,
         "precision": 0.818,
         "level_agreement": 1.0
-      },
-      "other": {
-        "audit": 0,
-        "checker": 0,
-        "matched": 0,
-        "recall": null,
-        "precision": null,
-        "level_agreement": null
       }
     },
     "groups": {
@@ -784,16 +803,34 @@
         "nurse_gap",
         "allocator_failure_day"
       ],
+      "headline_rejected_submission": [
+        "rejected_submission"
+      ],
       "secondary": [
         "beds_reversal",
         "nurses_reversal",
-        "reallocation_without_effect"
-      ],
-      "other": [
-        "rejected_submission",
+        "reallocation_without_effect",
         "f1_inversion"
       ]
     },
+    "date_shift_matches": [
+      {
+        "type": "beds_reversal",
+        "audit_day": 6,
+        "checker_day": 8,
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      {
+        "type": "beds_reversal",
+        "audit_day": 6,
+        "checker_day": 7,
+        "departments": [
+          "neurology"
+        ]
+      }
+    ],
     "checker_llm_only": {
       "explanation_inaccuracy": 2
     },

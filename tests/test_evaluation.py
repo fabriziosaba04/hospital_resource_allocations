@@ -130,9 +130,9 @@ def test_checker_matching_by_hand():
 
 def test_checker_matching_is_stratified_by_type_level_and_group():
     """Owner decision §11 #37: headline (clinical and hard-constraint) types apart from Minor reversals."""
-    from src.evaluation.checker_matching import HEADLINE, OTHER, SECONDARY, AGENT_TYPES, match
-    assert sorted(HEADLINE + SECONDARY + OTHER) == sorted(AGENT_TYPES)
-    assert set(OTHER) == {"rejected_submission", "f1_inversion"}
+    from src.evaluation.checker_matching import HEADLINE, HEADLINE_SEPARATE, OTHER, SECONDARY, AGENT_TYPES, match
+    assert sorted(HEADLINE + HEADLINE_SEPARATE + SECONDARY) == sorted(AGENT_TYPES) and OTHER == ()
+    assert HEADLINE_SEPARATE == ("rejected_submission",) and "f1_inversion" in SECONDARY
     audit = [{"day": 3, "type": "bed_displaced", "level": "Major"},
              {"day": 3, "type": "bed_displaced", "level": "Moderate"},
              {"day": 4, "type": "nurse_gap", "level": "Moderate"}]
@@ -145,11 +145,38 @@ def test_checker_matching_is_stratified_by_type_level_and_group():
     assert m["recall"] == round(8 / 9, 3)                                # pooled looks good...
     h = m["by_group"]["headline"]
     assert (h["audit"], h["checker"], h["matched"], h["recall"], h["precision"], h["level_agreement"]) ==         (3, 2, 2, round(2 / 3, 3), 1.0, 0.5)                             # ...the headline group does not
-    assert m["by_group"]["secondary"]["recall"] == 1.0
-    assert m["by_group"]["other"] == {"audit": 0, "checker": 1, "matched": 0, "recall": None, "precision": 0.0,
-                                      "level_agreement": None}
+    assert m["by_group"]["secondary"]["recall"] == 1.0 and m["by_group"]["secondary"]["precision"] == round(6 / 7, 3)
+    assert m["by_group"]["headline_rejected_submission"]["audit"] == 0
     assert m["by_type"]["bed_displaced"]["recall"] == 0.5
     mod = m["by_level"]["Moderate"]                                      # audit side: 2 Moderate, 1 matched
     assert (mod["audit"], mod["matched"], mod["recall"], mod["level_agreement"]) == (2, 1, 0.5, 0.0)
     assert m["by_level"]["Major"]["precision"] == 1.0                    # CHECKER side: 2 Major, both matched
     assert m["by_level"]["Critical"]["recall"] is None
+
+
+def test_rejected_submissions_never_inflate_headline_recall():
+    """Owner decision §11 #43: a headline type, but always its own row."""
+    from src.evaluation.checker_matching import match
+    audit = [{"day": 2, "type": "rejected_submission", "level": "Moderate"}] * 5 + \
+            [{"day": 3, "type": "bed_displaced", "level": "Major"}]
+    checker = [{"day": 2, "type": "rejected_submission", "severity": "Moderate"}] * 5
+    m = match(audit, checker)
+    assert m["by_group"]["headline"]["audit"] == 1 and m["by_group"]["headline"]["matched"] == 0
+    assert m["by_group"]["headline_rejected_submission"]["matched"] == 5
+
+
+def test_date_shift_count_is_descriptive_and_needs_type_and_departments():
+    """Owner decision §11 #45; the DRY2 case: audit reversals on day 6, CHECKER items on days 7 and 8."""
+    from src.evaluation.checker_matching import match
+    audit = [{"day": 6, "type": "beds_reversal", "level": "Minor", "detail": {"department": "neurology"}},
+             {"day": 6, "type": "beds_reversal", "level": "Minor", "detail": {"department": "internal_medicine"}},
+             {"day": 4, "type": "beds_reversal", "level": "Minor", "detail": {"department": "cardiology"}}]
+    checker = [{"day": 7, "type": "beds_reversal", "severity": "Minor",
+                "what_happened": "Neurology tau +1 bed on day 7 undid the day 6 tau of -1."},
+               {"day": 8, "type": "beds_reversal", "severity": "Minor",
+                "what_happened": "IM tau -1 on day 8 undid 1 of the +2 beds given on day 6."},
+               {"day": 9, "type": "beds_reversal", "severity": "Minor", "what_happened": "Orthopedics moved."}]
+    m = match(audit, checker)
+    assert m["matched"] == 0                                             # primary rule: exact day only
+    shifts = {(x["audit_day"], x["checker_day"], tuple(x["departments"])) for x in m["date_shift_matches"]}
+    assert shifts == {(6, 7, ("neurology",)), (6, 8, ("internal_medicine",))}   # cardiology day 4: no partner

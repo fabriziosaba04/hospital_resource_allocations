@@ -19,6 +19,8 @@
 
 ## 6. Enforcement Gaps and Residual Risks
 
+- **Reversal detection by the CHECKER measures reading, not discovery (owner decision §11 #46, 2026-11-14).** The CHECKER is given the reference allocation and τ, computed exactly as the audit computes them (§11 #36). Its reversal recall shows whether it reads τ and applies the oldest-first matching rule correctly; it does not show that the CHECKER can find reversals on its own. This must be stated next to every reversal figure.
+- **Small counts (owner decision §11 #47).** CHECKER matching figures rest on few issues (DRY2: 4 headline issues, all `nurse_gap`). They are written as counts ("4/4"), never as a rate alone.
 - Run-session deny rules are a second layer and apply only to Claude Code tools; they hold only when the session starts from the project root (`./` rules). Verified 2026-11-11 (`PROJECT_SPEC.md` §8).
 
 ## 7. What Worked and What Did Not

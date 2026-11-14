@@ -240,3 +240,16 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **Implication:** a fixture can guarantee data conditions, not decisions. The test therefore states the cut guarantee as a bound: any allocation that fills every bed on day 7 leaves 13 holders for 11 beds. It also shows the shock day under B1 and B2. If the ALLOCATOR leaves beds idle on day 7, DRY2 may not exercise the cut, and the report must say so. *Outcome (DRY2):* the cut was exercised (20 beds filled on day 7, 3 beds cut on day 8). But the ALLOCATOR avoided every bed conflict the fixture offered, so the CHECKER's bed-violation detection is still untested on positives; this is an open question for the owner.
 - **Decisions Log:** #88.
 
+### R32. The CHECKER's two "late-dated" bed reversals reused units already matched
+
+- **What happened:** in DRY2 the audit has two bed reversals on day 6: internal medicine (τ +2 undoing part of day 4's −3) and neurology (τ −1 undoing day 5's +1). The CHECKER missed both and instead reported neurology on day 7 ("+1 undid the day 6 tau of −1") and internal medicine on day 8 ("−1 undid 1 of the +2 beds given on day 6"). The τ values it quotes are correct. What it got wrong is the matching rule: each unit is matched once, oldest first, so day 6's units had already been used to reverse days 4 and 5, and days 7 and 8 are new moves, not reversals. The cause is **matching against the most recent opposite move**, not dating from occupancy trends (the owner's hypothesis, which these two items do not support).
+- **How it was caught:** reading the two items against the audit's per-day τ (owner request, 2026-11-14).
+- **Implication:** the date-shift count (§11 #45) catches both items, but its name suggests a dating error. The report must state the cause, not just the count. The prompt is not changed (owner decision §11 #45).
+- **Decisions Log:** owner decisions §11 #45, #46.
+
+### R33. Reversal recall is a reading test, and the matching figures rest on small counts
+
+- **What happened:** after §11 #36 the CHECKER receives the reference allocation and τ, computed exactly as in the audit. DRY2's secondary-group figure (9/11) therefore measures how well it reads τ and applies the matching rule, not whether it detects reversals independently. Separately, the headline result of DRY2 is 4/4, all one type (`nurse_gap`), and a rate of "1.0" would hide both the small count and the single type.
+- **How it was caught:** the owner's review of DRY2 (2026-11-14).
+- **Implication:** giving an agent an input changes what the matching measures. Every exposed intermediate should be listed next to the figures that depend on it, and small counts are reported as counts.
+- **Decisions Log:** owner decisions §11 #46, #47.

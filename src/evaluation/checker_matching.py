@@ -13,8 +13,14 @@ reversals, so the same pairing is also reported
   - by type;
   - by severity level: recall over audit issues of that level, precision over CHECKER issues of that level,
     level agreement over matched audit issues of that level;
-  - by group: HEADLINE (clinical and hard-constraint types), SECONDARY (reversals and reallocations without
-    effect), OTHER (the remaining deterministic types, rejected_submission and f1_inversion).
+  - by group (owner decision §11 #43): HEADLINE (clinical and hard-constraint types), with rejected_submission
+    always a separate row (`headline_rejected_submission`), never folded into the headline group's figures,
+    because it is visible in the records and close to trivial to detect; SECONDARY (reversals, reallocations
+    without effect, F1 inversions).
+Descriptive date-shift count (owner decision §11 #45): among issues left unmatched by the primary rule, pairs
+with the same type, a day differing by 1 or 2, and the same departments (the audit issue's departments all
+named in the CHECKER issue's text; types without departments compare on type only). Reported next to the
+primary figures, never instead of them.
 Within a (day, type) key the pairing is the approved one (Log #82): both sides sorted most severe first, the
 first min(n_audit, n_checker) of each paired in order. So when the CHECKER reports fewer issues than the
 audit under a key, the matched audit issues are taken to be its most severe ones (stated with the results).
@@ -22,6 +28,7 @@ audit under a key, the matched audit issues are taken to be its most severe ones
 
 from __future__ import annotations
 
+import re
 from collections import defaultdict
 
 AGENT_TYPES = ("hard_constraint_in_effect", "rejected_submission", "allocator_failure_day", "bed_displaced",
@@ -33,8 +40,65 @@ RANK = {"Critical": 0, "Major": 1, "Moderate": 2, "Minor": 3}
 
 HEADLINE = ("hard_constraint_in_effect", "bed_displaced", "bed_empty", "bed_shock_cut", "nurse_gap",
             "allocator_failure_day")
-SECONDARY = ("beds_reversal", "nurses_reversal", "reallocation_without_effect")
-OTHER = tuple(t for t in AGENT_TYPES if t not in HEADLINE + SECONDARY)
+HEADLINE_SEPARATE = ("rejected_submission",)          # headline type, own row, never folded into HEADLINE
+SECONDARY = ("beds_reversal", "nurses_reversal", "reallocation_without_effect", "f1_inversion")
+OTHER = tuple(t for t in AGENT_TYPES if t not in HEADLINE + HEADLINE_SEPARATE + SECONDARY)
+# department names as the CHECKER may write them: (case-insensitive patterns, case-sensitive abbreviations)
+DEPT_ALIASES = {"internal_medicine": ([r"internal[ _]medicine"], [r"\bIM\b"]),
+                "cardiology": ([r"cardiology"], []),
+                "neurology": ([r"neurology"], []),
+                "orthopedics": ([r"orthop(a)?edics"], [])}
+TEXT_FIELDS = ("what_happened", "what_should_have_happened", "why_incorrect", "impact")
+
+
+def _audit_departments(issue: dict) -> set[str]:
+    d = issue.get("detail")
+    if not isinstance(d, dict):
+        return set()
+    return {d[k] for k in ("department", "unserved_department", "served_department") if d.get(k)}
+
+
+def _checker_departments(issue: dict) -> set[str]:
+    text = " ".join(str(issue.get(k, "")) for k in TEXT_FIELDS)
+    out = set()
+    for dep, (ci, cs) in DEPT_ALIASES.items():
+        if any(re.search(pt, text, re.IGNORECASE) for pt in ci) or any(re.search(pt, text) for pt in cs):
+            out.add(dep)
+    return out
+
+
+def date_shift_matches(audit_issues: list[dict], checker_issues: list[dict], max_shift: int = 2) -> list[dict]:
+    """Descriptive only: pairs among the issues the primary (day, type) rule leaves unmatched."""
+    a, c = defaultdict(list), defaultdict(list)
+    for i in audit_issues:
+        if i["type"] in AGENT_TYPES:
+            a[(int(i["day"]), i["type"])].append(i)
+    for i in checker_issues:
+        try:
+            if i.get("type") in AGENT_TYPES:
+                c[(int(i["day"]), i["type"])].append(i)
+        except (KeyError, TypeError, ValueError):
+            pass
+    left_a, left_c = [], []
+    for key in set(a) | set(c):
+        m = min(len(a.get(key, [])), len(c.get(key, [])))
+        left_a += a.get(key, [])[m:]
+        left_c += c.get(key, [])[m:]
+    used, out = set(), []
+    for ai in sorted(left_a, key=lambda x: (x["day"], x["type"])):
+        need = _audit_departments(ai)
+        for j, ci in sorted(enumerate(left_c), key=lambda x: (abs(int(x[1]["day"]) - ai["day"]), x[0])):
+            if j in used or ci["type"] != ai["type"]:
+                continue
+            if not 1 <= abs(int(ci["day"]) - int(ai["day"])) <= max_shift:
+                continue
+            if need and not need <= _checker_departments(ci):
+                continue
+            used.add(j)
+            out.append({"type": ai["type"], "audit_day": int(ai["day"]), "checker_day": int(ci["day"]),
+                        "departments": sorted(need)})
+            break
+    return out
 LEVELS = ("Critical", "Major", "Moderate", "Minor")
 
 
@@ -96,6 +160,9 @@ def match(audit_issues: list[dict], checker_issues: list[dict]) -> dict:
             "per_type": {t: v for t, v in per_type.items() if v["audit"] or v["checker"]},
             "by_type": {t: strat((t,)) for t in AGENT_TYPES if per_type[t]["audit"] or per_type[t]["checker"]},
             "by_level": {lv: strat(AGENT_TYPES, lv) for lv in LEVELS},
-            "by_group": {"headline": strat(HEADLINE), "secondary": strat(SECONDARY), "other": strat(OTHER)},
-            "groups": {"headline": list(HEADLINE), "secondary": list(SECONDARY), "other": list(OTHER)},
+            "by_group": {"headline": strat(HEADLINE), "headline_rejected_submission": strat(HEADLINE_SEPARATE),
+                         "secondary": strat(SECONDARY)},
+            "groups": {"headline": list(HEADLINE), "headline_rejected_submission": list(HEADLINE_SEPARATE),
+                       "secondary": list(SECONDARY)},
+            "date_shift_matches": date_shift_matches(audit_issues, checker_issues),
             "checker_llm_only": dict(llm_only), "checker_unmatchable": len(unknown)}
