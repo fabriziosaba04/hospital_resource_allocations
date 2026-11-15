@@ -213,3 +213,49 @@ for d, v in (("IM", 0.2), ("N", 0.2), ("O", 0.7)):
 for d in ("N", "O"):
     c(T, "Neurology and orthopedics have only 0 to 1 spare bed", "spare_beds", "in_range", [0, 1], "empty_beds",
       "derived", alloc="dec", deps=[d], rival=True, note="range stated per department: one claim per department")
+
+# ---------------------------------------------------------------- day 20 (cur = decided 19; A = 30/37/19/14, 12/13/9/3;
+#                                    B = same beds, 12/13/10/2; C = chosen = dec = same beds, 12/12/9/4)
+# Appended in a separate commit: the first batch-4 commit (f8357a5) left day 20 out (R43).
+D = 20
+A20 = {"B": [30, 37, 19, 14], "N": [12, 13, 9, 3]}
+B20 = {"B": [30, 37, 19, 14], "N": [12, 13, 10, 2]}
+pools(S, "no external pool change (beds 100", 100, "nurses 37)", 37)
+c(S, "occupied beds are 73", "holders", "eq", 73, "beds", "copied")
+per_dep(S, "The current allocation (beds 35/33/19/13", "beds", [35, 33, 19, 13], "beds", "copied", alloc="cur")
+per_dep(S, "nurses 13/10/10/4 ...)", "nurses", [13, 10, 10, 4], "beds", "copied", alloc="cur")
+c(S, "leaves IM 4 beds short", "overflow", "eq", 4, "overflow", "derived", alloc="cur", deps=["IM"])
+c(S, "and orthopedics 1 short", "overflow", "eq", 1, "overflow", "derived", alloc="cur", deps=["O"])
+c(S, "with cardiology holding 5 spare beds", "spare_beds", "eq", 5, "empty_beds", "derived", alloc="cur",
+  deps=["C"], rival=True)
+c(S, "27 patients without a bed ... are in the overflow queue", "queue", "eq", 27, "overflow", "derived")
+per_dep(I, "occupied 24/24/14/11", "holders", [24, 24, 14, 11], "beds", "copied")
+for lv, vals in ((3, (6.6, 4.8, 7.8, 1.2)), (2, (4.55, 6.3, 1.05, 2.1)), (1, (1.2, 2.2, 0.6, 1.2))):
+    for d, v in zip(("C", "IM", "N", "O"), vals):
+        c(I, "fractional need: L3 6.6/4.8/7.8/1.2, L2 4.55/6.3/1.05/2.1, L1 1.2/2.2/0.6/1.2", "need", "round", v,
+          "nurse_coverage", "derived", deps=[d], levels=[lv])
+queue_lv(I, "The overflow queue holds 4 L3", 4, "12 L2", 12, "and 11 L1 patients", 11)
+c(A, "A) beds 30/37/19/14 with nurses 12/13/9/3: no overflow", "overflow", "eq", 0, "overflow", "derived",
+  alloc=A20)
+c(A, "but orthopedics has an L2 shortage of 0.3", "shortage", "round", 0.3, "nurse_coverage", "copied", alloc=A20,
+  deps=["O"], levels=[2])
+c(A, "while IM L1 is covered 1.9", "covered_need", "round", 1.9, "nurse_coverage", "copied", alloc=A20,
+  deps=["IM"], levels=[1], term="covered")
+c(A, "B) The same beds with nurses 12/13/10/2: orthopedics L2 shortage 1.3", "shortage", "round", 1.3,
+  "nurse_coverage", "copied", alloc=B20, deps=["O"], levels=[2])
+c(A, "while other departments cover L1", None, None, None, "nurse_coverage", "derived", term="covered",
+  note="ambiguous quantifier (some or all other departments), as for 'covered elsewhere'; unverifiable (item 2)")
+c(A, "which is worse", "shortage", "ge_alloc", None, "nurse_coverage", "derived", alloc=B20, cmp=A20, deps=["O"],
+  levels=[2], note="named quantity: orthopedics level 2 shortage of B against A; 'worse' is strict, ge_alloc is not")
+c(A, "C) ... (chosen): no overflow", "overflow", "eq", 0, "overflow", "derived", alloc="dec")
+c(A, "all L3 and L2 need covered in every department", "shortage", "eq", 0, "nurse_coverage", "derived",
+  alloc="dec", levels=[2, 3], term="covered")
+for d, v in (("IM", 1.3), ("C", 0.35), ("N", 0.45), ("O", 0.5)):
+    c(A, "the 5-nurse shortage falls only on L1 (IM 1.3, cardiology 0.35, neurology 0.45, orthopedics 0.5)",
+      "shortage", "round", v, "nurse_coverage", "copied", alloc="dec", deps=[d], levels=[1])
+c(R, "Efficiency: no idle beds", "empty_beds", "eq", 0, "empty_beds", "derived", alloc="dec", term="idle",
+  note="'idle beds' read as empty, no rival reading (as day 18); 'idle nurses' bare is a requirement figure")
+c(T, "an L1 nurse shortage of about 2.6 nurse-equivalents in total", "shortage", "round", 2.6, "nurse_coverage",
+  "derived", alloc="dec", levels=[1])
+c(T, "Zero spare beds leaves no slack for tomorrow", "spare_beds", "eq", 0, "empty_beds", "derived", alloc="dec",
+  rival=True)

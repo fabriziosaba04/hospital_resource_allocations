@@ -326,3 +326,10 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **Implication:** the DRY2 calibration did not exercise this wording (its one spare/empty case went the other way, D7-58). A rubric fixed on one run's language can miss the next run's; the rubric-dependent count is the safeguard, and it works only if the rival list covers the terms actually used.
 - **Follow-up (days 4–5):** the ALLOCATOR also writes "spare beds above census" and "spare above occupied". Under the uniform rule an exactly right "above census" figure would have counted as wrong in the headline. Escalated again; owner: an explicit qualifier sets the reading (above census → `empty_beds`, above occupied → `spare_beds`), bare terms keep strict + rival.
 - **Decisions Log:** §11 #59.
+
+### R43. A batch commit message stated a claim count that the commit did not contain
+
+- **What happened:** during the R1 extraction, one shell call chained a viewer edit, the append of day 20's claims to `days_16_20.py`, the encoding run and the commit with `&&`. The viewer edit failed (a `sed` quoting error), so day 20 was never appended; the encoding run still printed four days and the commit went through with the message "batch 4 (days 16-20): 197 claims (686 total)". The commit `f8357a5` holds days 16–19 only: 148 claims, 637 in total.
+- **How it was caught:** the encoding output listed days 16–19 and no day 20; checked against the spec (637 claims, last day 19) before going on.
+- **Fix:** day 20 appended in a separate commit (`add_claims.py` now takes an optional day filter); commit counts are taken from the encoder's output, not written ahead of it. The wrong message on `f8357a5` stays in history and is corrected by the next commit's message and here.
+- **Implication:** a commit message is a record. Writing its numbers before the command that produces them has run, and chaining unrelated steps so that one failure skips a later step silently, together produced a false record within one call.

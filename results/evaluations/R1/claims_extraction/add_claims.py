@@ -1,6 +1,6 @@
 """Expand compact claim entries (a Python batch file defining CLAIMS) and append them to the R1 spec.
 
-usage: python add_claims.py <batch.py> <spec.json>
+usage: python add_claims.py <batch.py> <spec.json> [day ...]   (optional days: append only those days)
 Compact keys: day, field, text, q, rel, v, cat, basis, deps (abbrev list), levels, alloc, cmp, term, alt, note.
 alloc / cmp: "cur" = in effect at the start of the day ({"in_effect": day-1}), "dec" = {"decided": day},
 "prevday" = {"in_effect": day} used with a past-tense claim whose day is already day-1, or a dict.
@@ -60,6 +60,9 @@ def expand(c, n):
 
 def main():
     batch = runpy.run_path(sys.argv[1])["CLAIMS"]
+    if len(sys.argv) > 3:
+        only = {int(x) for x in sys.argv[3:]}
+        batch = [c for c in batch if c["day"] in only]
     path = Path(sys.argv[2])
     spec = json.loads(path.read_text(encoding="utf-8"))
     days = sorted({c["day"] for c in batch})
