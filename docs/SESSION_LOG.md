@@ -541,3 +541,31 @@ Files that needed filtering: **none was filtered entry by entry**. The ALLOCATOR
 ### Parked questions
 
 1. Run `allocator_digest preserve` inside `copy_back` for R2 and R3, so the session folder is captured at copy-back time (R40).
+
+## 2026-11-15 (sixth session: R1 claim extraction)
+
+Commits: `18cfd40`, `0eb3464`, `1f16f51`, `f8357a5` (message wrong, R43), `c717078`, `fe6e9ee`, `5979bcc` (final file), then this entry.
+
+### Achieved
+
+1. **Claim extraction of R1, all 30 days**, under §11 #58, in batches of five days, each committed.
+   - **Final file:** `results/evaluations/R1/explanation_claims_spec.json`, commit **`5979bcc1015e23025aaba3ca458df73c40a504d5`**, SHA-256 **`74555bac8e67003e70a287924a4cdf9f53f86d7154129f481db2495b155d844b`**. Recorded here before any recomputation or matching.
+   - **1,049 claims: 538 copied, 511 derived**; 26 of them have `quantity` null (unverifiable by the rubric or not expressible in `claim_check`). No `disputed_by_checker`.
+   - Conventions: `results/evaluations/R1/claims_extraction/README.md`, Log #99.
+2. **Rival reading for *spare* / *free* added** (owner, §11 #59, R42), after reading days 1–3; follow-up after days 4–5: an explicit qualifier ("above census", "above occupied") sets the reading.
+3. **Files read:** the latest session-log entry, `EVALUATION_PLAN.md` §4, `src/evaluation/claim_check.py`, `allocator_digest/day_01`–`day_30.md`, the field names and outcomes of `decision_history.jsonl`. For the owner's §11 and R-log updates: heading lines of `REFLECTION_LOG.md`, entry R37 (format only), and the end of `PROJECT_SPEC.md` §11 and §9. No ALLOCATOR transcript was needed. No run report, audit, CHECKER file, dispatcher transcript or `process_calls.jsonl` was opened.
+
+### State
+
+Extraction frozen at `5979bcc`. Not recomputed, not matched.
+
+### Next
+
+1. **Before recomputation**, in `claim_check.py`: implement `in_range` (6 claims), and make `beds` / `nurses` independent of the allocation's validity (in-effect allocations on shock days 8, 11, 16, 21, 23, 26; README "Invalid allocations").
+2. Run `claim_check` on R1 (step 3); then the owner check (a) on days 3, 8, 18, (b) every wrong claim, (c) every unverifiable claim.
+3. CHECKER mapping (`disputed_by_checker`) in a later commit.
+
+### Parked questions
+
+1. "worse", "more", "less" are encoded with non-strict relations (`ge_alloc`, `le_alloc`, `lex_le_alloc`); a strict variant would need a new relation. 9 claims, each noted.
+2. Day 28, situation: "leaves IM and orthopedics patients in overflow (L1 each, from yesterday)" is read literally (current allocation applied today); the reading "yesterday's overflow" is in the claim's note for the owner's review.
