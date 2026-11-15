@@ -567,5 +567,5 @@ Extraction frozen at `5979bcc`. Not recomputed, not matched.
 
 ### Parked questions
 
-1. "worse", "more", "less" are encoded with non-strict relations (`ge_alloc`, `le_alloc`, `lex_le_alloc`); a strict variant would need a new relation. 9 claims, each noted.
+1. "worse", "more", "less" are encoded with non-strict relations (`ge_alloc`, `le_alloc`, `lex_le_alloc`); a strict variant would need a new relation. 7 claims (R1-D17-45, D17-46, D18-23, D20-40, D21-32, D27-38, D30-57), each noted.
 2. Day 28, situation: "leaves IM and orthopedics patients in overflow (L1 each, from yesterday)" is read literally (current allocation applied today); the reading "yesterday's overflow" is in the claim's note for the owner's review.
