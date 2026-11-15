@@ -1,0 +1,26 @@
+{
+  "run_id": "R1",
+  "clone_root": "C:\\hra-runs\\hospital_resource_allocations",
+  "copied_at": "2026-11-15T15:10:31+00:00",
+  "files": {
+    "allocations": {
+      "allocation_state.jsonl": "2461c8a5cb6c01d8dd7db142be0d47f65ea669b2822675d53fc139bcb2961e44",
+      "bed_assignment_state.jsonl": "3386f4a87e34d7f5199fe977dc7251c355e3043670daab3122b851c93aafc793",
+      "decision_history.jsonl": "7009433b4fdb4ee0024e57144bd182260e0e32b4bb79b914cf75df5f2b27611e",
+      "launches.jsonl": "fd6d09fea2be325c0cd3762cbb61fe69c7da9a7e8ceb72c57dea357ebb29f83e",
+      "observed_state.jsonl": "e16a5e2aab456008e13b68f63b4d498e4a6dc2c4dadb165c5129e9e54fb7e5a9",
+      "run_manifest.json": "ea9e88e7f7f0c3afc57ada7d996007dabf1d702de9f191c079e896c3f19b8714",
+      "state.json": "6a0e5e7e462da8f1345268b0501c1b3653a56f615be4f0495d0cbf257f639883",
+      "transcripts/launch-1.jsonl": "3298055a9b21788980c53c27e0dcfb14f0d83f7aac9b32e594e27aba5e40ff78",
+      "workflow.jsonl": "5b70ed0c9faee0525c4debcb420c402fe0988cb0bcab5fd6100396af3a00c4f1"
+    },
+    "evaluations": {
+      "deterministic_audit.jsonl": "31ffcd410833ff2024db2600bf37941de704416fb4b2c68f2aad20f55ecf034e",
+      "process_calls.jsonl": "8febf36fce5735910074b16bff907ad859d9d9f160a3ae6dd89a47456a49c842",
+      "validation_history.jsonl": "1be1506c7b97e42870c8b6b50e9d62c325003404aa28b02de301bfc1d7c67580"
+    }
+  },
+  "hash_mismatches": [],
+  "consistency_problems": [],
+  "run_report_rebuilt": true
+}
