@@ -317,3 +317,12 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **Outcome:** the assistant did the preparation that does not depend on reading the explanations (access rule recorded, transcripts preserved, the filter and digest, a test) and **did not extract**. The extraction is left to a fresh session that has never seen the audit, the run report or the CHECKER output.
 - **Implication:** an independence rule that bars files is about the *reader's context*, not only the files opened from now on. A prompt that says "new session" is a precondition to check, not a label.
 - **Decisions Log:** none.
+
+### R42. The rubric had no rival reading for "spare" and "free", and R1's ALLOCATOR uses both for beds left empty
+
+- **What happened:** reading R1 days 1–3 for the claim extraction, the extractor found that the ALLOCATOR often writes "spare" or "free" beds for beds minus census (beds left empty after assignment), while rubric §4 item 2 reads both strictly as beds (or pool) minus occupied. Day 2: "IM holding 6 spare beds" (beds − census 6, beds − occupied 13), "about 13 free beds" (96 − 83 = 13, pool − occupied 31). Day 3 uses both senses in one sentence: "2 spare beds, 6 spare above occupied". Item 9 listed a rival reading only for *empty* (→ spare), so every such claim would have counted as an arithmetic error, not a rubric-dependent one.
+- **How it was caught:** during extraction, before any claim was encoded or recomputed; escalated to the owner rather than encoded case by case.
+- **Fix:** owner decision §11 #59: strict reading stays primary and is the only one in the headline count; rival reading *empty* (`empty_beds`) on every spare/free claim, uniformly. Added under item 9's rule (before the extraction commit), but **after the extractor had read three days of R1**, which is stated wherever rubric dependence is reported.
+- **Implication:** the DRY2 calibration did not exercise this wording (its one spare/empty case went the other way, D7-58). A rubric fixed on one run's language can miss the next run's; the rubric-dependent count is the safeguard, and it works only if the rival list covers the terms actually used.
+- **Follow-up (days 4–5):** the ALLOCATOR also writes "spare beds above census" and "spare above occupied". Under the uniform rule an exactly right "above census" figure would have counted as wrong in the headline. Escalated again; owner: an explicit qualifier sets the reading (above census → `empty_beds`, above occupied → `spare_beds`), bare terms keep strict + rival.
+- **Decisions Log:** §11 #59.

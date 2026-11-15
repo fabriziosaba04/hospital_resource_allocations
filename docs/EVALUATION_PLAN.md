@@ -275,6 +275,8 @@ Nurse issues are graded by the **highest tier with a positive net gap**, not by 
      - **strict:** the level's shortage is exactly 0 in need units under C1 (`PROJECT_SPEC.md` §5.4), or the coverage amount equals the one stated.
      - **No rival reading, because the rubric has no rounding of fractional need.** C1 computes coverage exactly, in need units, from whole nurses (`covered = min(need, remaining)`, exact arithmetic, Log #29, #42). The only rounding in the model is the department requirement `⌈Σ need⌉`, which is not a coverage figure. The tolerance for stated decimals (item 2) applies to stated numbers only, and a bare "covered" states none. A shortage of 0.2 is therefore "not covered".
 
+   - *spare* / *free* (added during the R1 extraction, owner decision §11 #59, R42): strict = beds (or pool) minus occupied; **rival:** *empty* (beds minus patients placed, `empty_beds`). Applied to every claim using either bare term; the headline error count uses the strict reading. An explicit qualifier sets the reading instead: "above census" → `empty_beds`, "above occupied" → `spare_beds` (no rubric term).
+
    No other rival reading is listed. A new one may be added only before the extraction commit (item 7), and it then applies to every claim using the term.
 
    A wrong claim is **rubric-dependent** only if it is correct under the rival reading. A claim that uses a defined term but is wrong under both readings counts as arithmetic. Reported as a count ("wrong rubric-dependent: 1/3") with the ids (`claim_check.stratify`).
