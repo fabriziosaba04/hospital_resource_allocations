@@ -95,14 +95,44 @@ def transcript_stats(alloc_dir: Path) -> dict:
             d["allocator_invocations"] += 1
         d[f"{role}_tokens"] += usage.get("total_tokens", 0)
         d[f"{role}_duration_s"] += round(usage.get("duration_ms", 0) / 1000, 1)
-    costs = {n: e.get("total_cost_usd") for n, e in final.items()}
+    # a launch cut off before its final result has no reported cost: listed as None, never left out (Log #96)
+    names = sorted((t.name for t in (alloc_dir / "transcripts").glob("launch-*.jsonl")),
+                   key=lambda n: int(n.split("-")[-1].split(".")[0]))
+    costs = {n: final[n].get("total_cost_usd") if n in final else None for n in names}
     model_usage = {n: e.get("modelUsage") for n, e in final.items()}
     return {"per_day": {k: dict(v) for k, v in sorted(per_day.items())}, "session_cost_usd": costs,
             "model_usage": model_usage, "main_models": sorted(set(m for m in inits if m))}
 
 
 def _ts(x: str) -> datetime:
-    return datetime.fromisoformat(x)
+    return datetime.fromisoformat(x.replace("Z", "+00:00"))
+
+
+def launch_intervals(alloc_dir: Path) -> list[tuple[datetime, datetime]]:
+    """[first, last] message timestamp of each launch transcript. A launch killed by a usage limit keeps what it
+    streamed, so its interval ends at its last recorded message (Log #96)."""
+    spans = {}
+    for name, ev in _transcript_events(alloc_dir):
+        ts = ev.get("timestamp") if isinstance(ev, dict) else None
+        if isinstance(ts, str):
+            t = _ts(ts)
+            lo, hi = spans.get(name, (t, t))
+            spans[name] = (min(lo, t), max(hi, t))
+    return sorted(spans.values())
+
+
+def active_seconds(start: datetime, end: datetime, intervals) -> tuple[float, int]:
+    """Seconds of [start, end] that fall inside some launch, and the number of launches it touches. Without
+    transcript timestamps the whole span is returned (single-launch runs before Log #96)."""
+    if not intervals:
+        return (end - start).total_seconds(), 1
+    total, n = 0.0, 0
+    for lo, hi in intervals:
+        a, b = max(start, lo), min(end, hi)
+        if a <= b:
+            total += (b - a).total_seconds()
+            n += 1
+    return total, n
 
 
 def resolve_data_root(m: dict, data_root: Path | None = None) -> Path:
@@ -125,6 +155,7 @@ def build(run_id: str, results_root: Path = ROOT / "results", data_root: Path | 
     _, days = audit_run(ds, alloc)
     add_reversal_issues(days)
     tr = transcript_stats(alloc)
+    spans = launch_intervals(alloc)
     wf = store.read("workflow")
     dec = store.read("decision_history")
     allocs = store.read("allocation_state")
@@ -134,14 +165,21 @@ def build(run_id: str, results_root: Path = ROOT / "results", data_root: Path | 
         tdec = [x for x in dec if x["day"] == t]
         acc = [x for x in tdec if x["outcome"] == "accepted"]
         ev = {x["event"]: x["created_at"] for x in wf if x["day"] == t and x["event"] in ("advance_day", "close_day")}
-        wall = (_ts(ev["close_day"]) - _ts(ev["advance_day"])).total_seconds() if len(ev) == 2 else None
+        # wall clock = time inside a launch between advance_day and close_day; the gap between a cut-off launch
+        # and its resume is not the day's work (Log #96). The raw span is kept as elapsed_s.
+        if len(ev) == 2:
+            a, b = _ts(ev["advance_day"]), _ts(ev["close_day"])
+            wall, n_launches = active_seconds(a, b, spans)
+            elapsed = (b - a).total_seconds()
+        else:
+            wall = elapsed = n_launches = None
         final = [x for x in allocs if x["day"] == t and x["source"] != "initial_rule"][-1]
         out_days.append({
             "day": t, "attempts": len(tdec), "accepted_on_attempt": acc[0]["attempt"] if acc else None,
             "rejection_codes": [x["codes"] for x in tdec if x["outcome"] == "rejected"],
             "source": final["source"], "beds": final["beds"], "nurses": final["nurses"],
             "audit_issues": dict(Counter(f'{i["type"]} ({i["level"]})' for i in d["issues"])),
-            "wall_clock_s": wall, **tr["per_day"].get(t, {})})
+            "wall_clock_s": wall, "elapsed_s": elapsed, "launches": n_launches, **tr["per_day"].get(t, {})})
     audit_issues = [i for d in days for i in d["issues"]]
     reports = [x for x in store.read("validation_history")]
     matching = []

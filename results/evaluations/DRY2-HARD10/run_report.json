@@ -51,6 +51,8 @@
       },
       "audit_issues": {},
       "wall_clock_s": 31.0,
+      "elapsed_s": 31.0,
+      "launches": 1,
       "allocator_invocations": 1,
       "simulate_calls": 2,
       "validate_calls": 0,
@@ -85,6 +87,8 @@
         "nurse_gap (Moderate)": 1
       },
       "wall_clock_s": 42.0,
+      "elapsed_s": 42.0,
+      "launches": 1,
       "allocator_invocations": 1,
       "simulate_calls": 2,
       "validate_calls": 1,
@@ -118,6 +122,8 @@
       },
       "audit_issues": {},
       "wall_clock_s": 34.0,
+      "elapsed_s": 34.0,
+      "launches": 1,
       "allocator_invocations": 1,
       "simulate_calls": 2,
       "validate_calls": 0,
@@ -153,6 +159,8 @@
         "nurses_reversal (Minor)": 1
       },
       "wall_clock_s": 31.0,
+      "elapsed_s": 31.0,
+      "launches": 1,
       "allocator_invocations": 1,
       "simulate_calls": 2,
       "validate_calls": 0,
@@ -187,6 +195,8 @@
         "beds_reversal (Minor)": 2
       },
       "wall_clock_s": 141.0,
+      "elapsed_s": 141.0,
+      "launches": 1,
       "allocator_invocations": 1,
       "simulate_calls": 2,
       "validate_calls": 0,
@@ -221,6 +231,8 @@
         "beds_reversal (Minor)": 2
       },
       "wall_clock_s": 40.0,
+      "elapsed_s": 40.0,
+      "launches": 1,
       "allocator_invocations": 1,
       "simulate_calls": 3,
       "validate_calls": 1,
@@ -256,6 +268,8 @@
         "nurse_gap (Moderate)": 1
       },
       "wall_clock_s": 44.0,
+      "elapsed_s": 44.0,
+      "launches": 1,
       "allocator_invocations": 1,
       "simulate_calls": 3,
       "validate_calls": 1,
@@ -291,6 +305,8 @@
         "nurse_gap (Moderate)": 1
       },
       "wall_clock_s": 48.0,
+      "elapsed_s": 48.0,
+      "launches": 1,
       "allocator_invocations": 1,
       "simulate_calls": 2,
       "validate_calls": 1,
@@ -327,6 +343,8 @@
         "nurses_reversal (Minor)": 2
       },
       "wall_clock_s": 35.0,
+      "elapsed_s": 35.0,
+      "launches": 1,
       "allocator_invocations": 1,
       "simulate_calls": 2,
       "validate_calls": 0,
@@ -361,6 +379,8 @@
         "beds_reversal (Minor)": 2
       },
       "wall_clock_s": 157.0,
+      "elapsed_s": 157.0,
+      "launches": 1,
       "allocator_invocations": 1,
       "simulate_calls": 2,
       "validate_calls": 0,

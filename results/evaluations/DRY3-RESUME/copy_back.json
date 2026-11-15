@@ -1,0 +1,28 @@
+{
+  "run_id": "DRY3-RESUME",
+  "clone_root": "C:\\hra-runs\\hospital_resource_allocations",
+  "copied_at": "2026-11-15T07:33:52+00:00",
+  "files": {
+    "allocations": {
+      "allocation_state.jsonl": "746a0c1fb05078df521e94ab1545d45fac84e1e5e3a47d131aa628054149bc5c",
+      "bed_assignment_state.jsonl": "7a94fd9356eba1b4b6ec784181367da7745fa0786cabd5d587aab7d211470bb2",
+      "decision_history.jsonl": "88023e7caf55ea5691c853c3eb6beaef18eb932872261cfeba3f3b392c84cb5c",
+      "launches.jsonl": "4e1e9c8bf5e2ae58293e0f4a2cbf35d4dc448a82ccce6c584fa1490ce0861e02",
+      "observed_state.jsonl": "ef3d9a9cf8dceb302a334d60a031e8b630e9dde8ac50680d5ee91caa57d09251",
+      "run_manifest.json": "d7e2ae7d3dadd4dd9c45d7c0b36f0ae7878806ad2e68d18ad3609a96953ab29a",
+      "state.json": "173428286f8370a7e689316e2726e8998ad27d2898789e6f61a79dc09fe44271",
+      "transcripts/launch-1.jsonl": "af117b1100ccbc87749a3ce6984be2423bd18a4423d0ded9afb72be3a1599ce2",
+      "transcripts/launch-2.jsonl": "ed3e6f5bc2552236c99c907b9424daa6c9a18df7b2e0c052909b4a8eeb63e6af",
+      "transcripts/launch-3.jsonl": "fd31f10612e97b02feb6f5725aaaa0b607f7a913a3388af052fbc00b0cb3e81e",
+      "workflow.jsonl": "953041c2f7f98bffeeb8081a79cafb9fc450979a3f10fdb4a58bdd84a86fe276"
+    },
+    "evaluations": {
+      "deterministic_audit.jsonl": "8a4b3ab88f17e8bd94004465da97a257a765491ce3015765748c52ca39140b46",
+      "process_calls.jsonl": "aa6fbbdd839cb8699737694d8bdbe5cc03992ce97939c2e300fd22e564c17237",
+      "validation_history.jsonl": "d88fbd82f24c2dbd60a6773e60a86622172f967c1e0b98dcc774c1d0e1e1cc2e"
+    }
+  },
+  "hash_mismatches": [],
+  "consistency_problems": [],
+  "run_report_rebuilt": true
+}

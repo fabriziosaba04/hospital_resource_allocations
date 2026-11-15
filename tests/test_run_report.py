@@ -47,3 +47,17 @@ def test_day_survives_a_cut_off_launch(tmp_path):
     assert per_day[1]["allocator_tokens"] == 1234 and per_day[1]["allocator_invocations"] == 1
     assert per_day[2]["allocator_tokens"] == 99
     assert 0 not in per_day
+
+
+def test_wall_clock_excludes_the_gap_between_launches():
+    """Log #96: DRY3-RESUME day 1 was advanced in launch 1 (2026-11-14) and closed in launch 2 (next morning)."""
+    from datetime import datetime, timezone
+    from src.evaluation.run_report import active_seconds
+
+    def t(h, m, s, d=15):
+        return datetime(2026, 11, d, h, m, s, tzinfo=timezone.utc)
+    spans = [(t(16, 50, 48, 14), t(16, 51, 6, 14)), (t(7, 28, 51), t(7, 30, 32)), (t(7, 30, 53), t(7, 33, 40))]
+    assert active_seconds(t(16, 50, 55, 14), t(7, 29, 24), spans) == (11 + 33, 2)
+    assert active_seconds(t(7, 30, 3), t(7, 31, 0), spans) == (29 + 7, 2)
+    assert active_seconds(t(7, 31, 2), t(7, 31, 37), spans) == (35, 1)
+    assert active_seconds(t(7, 0, 0), t(7, 0, 10), []) == (10, 1)

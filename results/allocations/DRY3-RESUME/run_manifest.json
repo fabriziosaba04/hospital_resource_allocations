@@ -1,0 +1,15 @@
+{
+  "run_id": "DRY3-RESUME",
+  "dataset_id": "SMOKE5",
+  "data_root": "C:\\hra-runs\\hospital_resource_allocations\\results\\dry_runs\\SMOKE5_fixture",
+  "eval_dir": "C:\\hra-runs\\hospital_resource_allocations\\results\\evaluations\\DRY3-RESUME",
+  "retry_limit": 3,
+  "horizon": 5,
+  "expose_violation_labels": false,
+  "models": {
+    "main": "claude-sonnet-5-5",
+    "subagents": "claude-sonnet-5-5"
+  },
+  "code_version": "3517c475284371815c37b5d800967ad28535b08a",
+  "started_at": "2026-11-14T16:50:41+00:00"
+}
