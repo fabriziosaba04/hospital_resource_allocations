@@ -333,3 +333,10 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **How it was caught:** the encoding output listed days 16–19 and no day 20; checked against the spec (637 claims, last day 19) before going on.
 - **Fix:** day 20 appended in a separate commit (`add_claims.py` now takes an optional day filter); commit counts are taken from the encoder's output, not written ahead of it. The wrong message on `f8357a5` stays in history and is corrected by the next commit's message and here.
 - **Implication:** a commit message is a record. Writing its numbers before the command that produces them has run, and chaining unrelated steps so that one failure skips a later step silently, together produced a false record within one call.
+
+### R44. A count in the session log was written from memory, not from the file
+
+- **What happened:** the sixth-session entry's parked question said the non-strict comparisons ("worse", "more", "less") covered "9 claims". Counting them in `explanation_claims_spec.json` gave 7.
+- **How it was caught:** checked against the file before the session report, as the verify-before-asserting rule requires; corrected in `2eea94f`.
+- **Fix:** the count and the claim ids are now in the entry.
+- **Implication:** the same pattern as R43, in a document instead of a commit message. Figures go into records only after the command that produces them has run.
