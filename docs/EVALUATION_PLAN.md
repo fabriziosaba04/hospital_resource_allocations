@@ -266,14 +266,22 @@ Nurse issues are graded by the **highest tier with a positive net gap**, not by 
 
    If the same value appears in a single cell **and** the claim aggregates (for example a department total that equals one level's cell), the claim is derived: the test is what the sentence refers to, not whether the number coincides.
 9. **Rubric dependence (owner decision §11 #56).** For R1 the report gives how many wrong claims **depend on a rubric definition** rather than plain arithmetic. Each claim that uses a defined term carries `rubric_term`. If the rubric has a rival reading, the claim also carries `alternative_reading`, and it is scored both ways:
-   - *empty* (no patient after assignment): rival reading *spare* (beds minus occupied). This is the only rival reading listed now.
-   - *covered* (shortage 0, or the stated amount) and *no better* (the alternative's named quantity ≤ the chosen one's, `le_alloc`) carry `rubric_term` but have no rival reading. A new rival reading may be added only before the extraction commit (item 7), and it is then applied to every claim using the term.
+   - *empty* (no patient after assignment): rival reading *spare* (beds minus occupied).
+   - *no better* for nurse coverage (pre-R1 addendum, owner decision §11 #57):
+     - **strict:** lexicographic by tier, as A2 is read (§3.2). Need covered at levels ≥ 3, then ≥ 2, then ≥ 1, over the departments the claim names (default all). The claim is correct if the alternative is not lexicographically better than the allocation it is compared with (`lex_le_alloc`).
+     - **rival:** need covered summed over levels 2–3 (`le_alloc` on `covered_need`, levels 2 and 3).
+     - Bed comparisons ("the same overflow") keep the named quantity (`eq_alloc`, `le_alloc`).
+   - *covered*:
+     - **strict:** the level's shortage is exactly 0 in need units under C1 (`PROJECT_SPEC.md` §5.4), or the coverage amount equals the one stated.
+     - **No rival reading, because the rubric has no rounding of fractional need.** C1 computes coverage exactly, in need units, from whole nurses (`covered = min(need, remaining)`, exact arithmetic, Log #29, #42). The only rounding in the model is the department requirement `⌈Σ need⌉`, which is not a coverage figure. The tolerance for stated decimals (item 2) applies to stated numbers only, and a bare "covered" states none. A shortage of 0.2 is therefore "not covered".
+
+   No other rival reading is listed. A new one may be added only before the extraction commit (item 7), and it then applies to every claim using the term.
 
    A wrong claim is **rubric-dependent** only if it is correct under the rival reading. A claim that uses a defined term but is wrong under both readings counts as arithmetic. Reported as a count ("wrong rubric-dependent: 1/3") with the ids (`claim_check.stratify`).
 
 **Calibration on DRY2** (`tests/test_claim_check.py`, `explanation_claims_full_spec.json`):
 - **The ALLOCATOR:** 442 correct, 3 wrong, 0 unverifiable. **All three wrong claims are derived figures, not figures copied from a what-if:** "4 empty beds" (really 5), "no better" (6.0 against 5.6 need covered), and "its spare bed was empty" (the bed was free, not empty).
-- **Rubric dependence: 1/3.** Only D7-58 is correct under the rival reading (1 spare bed). D2-15 is wrong either way (5 empty, 6 spare, stated 4), and D2-45 names its quantity, so there is no rival reading (`test_stratification_of_dry2_wrong_claims`).
+- **Rubric dependence: 1/3.** Only D7-58 is correct under the rival reading (1 spare bed). D2-15 is wrong either way (5 empty, 6 spare, stated 4), and D2-45 ("no better") is wrong under both the strict lexicographic reading (tiers 3/2/1: 5.6/6.0/6.0 against 5.6/5.6/6.0, better at tier 2) and the rival reading (6.0 against 5.6) (`test_stratification_of_dry2_wrong_claims`).
 - **The CHECKER:** caught 2/3 wrong claims, with precision 2/3. It made 1 wrong dispute (it contested the correct "5 level-3 overflow") and missed D7-58.
 - The first finding-level test case (DRY2's two flagged findings, scored claim by claim) is kept in the same test file. Within a (day, type) key the pairing is the approved one (both sides sorted most severe first, paired in order), so when the CHECKER reports fewer issues than the audit under a key, the matched audit issues are taken to be its most severe ones; this is stated with the results (`src/evaluation/checker_matching.py`).
 

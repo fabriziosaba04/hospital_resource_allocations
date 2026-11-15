@@ -127,7 +127,7 @@ c("tradeoffs", "orthopedics' nurse covers its level-3 need 0.6", q("covered_need
 c("tradeoffs", "... plus 0.4 of level-1", q("covered_need", [OR], [1]), 0.4, A)
 c("tradeoffs", "cardiology, IM, neurology level-3 short 1.0 total", q("shortage", [CA, IM, NE], [3]), 1.0, A)
 c("tradeoffs", "moving orthopedics' only nurse ... is no better (levels 2-3 covered)", q("covered_need", levels=[2, 3]),
-  alloc=nurses(4, 1, 1, 0, A), rel="le_alloc", compare=A)
+  alloc=nurses(4, 1, 1, 0, A), rel="lex_le_alloc", compare=A)
 
 # ------------------------------------------------------------------ day 3
 DAY[0] = 3
@@ -387,7 +387,9 @@ STRATA = {
     "D2-15": {"basis": "derived", "rubric_term": "empty",
               "alternative_reading": {"quantity": {"name": "spare_beds",
                                                    "departments": ["internal_medicine", "orthopedics"]}}},
-    "D2-45": {"basis": "derived", "rubric_term": "no better"},
+    # "no better", strict = lexicographic by tier; rival = need covered at levels 2-3 summed (§11 #57)
+    "D2-45": {"basis": "derived", "rubric_term": "no better",
+              "alternative_reading": {"relation": "le_alloc", "quantity": {"name": "covered_need", "levels": [2, 3]}}},
     "D7-58": {"basis": "derived", "rubric_term": "empty",
               "alternative_reading": {"quantity": {"name": "spare_beds", "departments": ["orthopedics"]}}},
 }

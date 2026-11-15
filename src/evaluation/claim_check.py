@@ -15,7 +15,9 @@ Day quantities (no allocation): pool_beds, pool_nurses, max_beds, census, holder
 requirement, mean_arrivals, patient, need. Allocation quantities: beds, nurses, empty_beds, overflow,
 covered_need, shortage, patient_in_bed, holders_cut, spare_beds (allocated beds minus holders).
 Relations: eq, ne, le, ge (with `value`; counts are exact, tolerance 0); round (a stated decimal compared at its
-own precision); le_alloc / ge_alloc / eq_alloc compare with the same quantity under `compare_allocation`.
+own precision); le_alloc / ge_alloc / eq_alloc compare with the same quantity under `compare_allocation`;
+lex_le_alloc ("no better", §11 #57) compares nursing need covered by tier (levels >= 3, >= 2, >= 1, over the
+quantity's departments) lexicographically: correct if the allocation is not better than `compare_allocation`.
 Each claim may carry a `category`; the pre-registered universe (EVALUATION_PLAN.md §4) is the categories
 beds, empty_beds, overflow, nurse_coverage, pool.
 
@@ -174,6 +176,15 @@ def _score_one(ds, rec, c: dict) -> dict:
     if v is None:
         return {**c, "computed": None, "verdict": "unverifiable"}
     rel = c["relation"]
+    if rel == "lex_le_alloc":                # "no better" (§11 #57): not lexicographically better by tier 3, 2, 1
+        def tiers(alloc):
+            return tuple(quantity(ds, rec, c["day"], alloc, {**c["quantity"], "name": "covered_need",
+                                                             "levels": list(range(j, 4))}) for j in (3, 2, 1))
+        a, b = tiers(c.get("allocation")), tiers(c["compare_allocation"])
+        if None in a or None in b:
+            return {**c, "computed": None, "verdict": "unverifiable"}
+        return {**c, "computed": [_num(x) for x in a], "computed_compare": [_num(x) for x in b],
+                "verdict": "correct" if a <= b else "wrong"}
     if rel in ("le_alloc", "ge_alloc", "eq_alloc"):
         w = quantity(ds, rec, c["day"], c["compare_allocation"], c["quantity"])
         ok = {"le_alloc": v <= w, "ge_alloc": v >= w, "eq_alloc": v == w}[rel]

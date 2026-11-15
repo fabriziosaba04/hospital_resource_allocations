@@ -462,19 +462,43 @@ Started about 08:20, after the owner trusted the clone. Commits: `517ccd9` (clai
 - **Tests:** affected tests during work; fast suite 154 passed; full suite 167 passed, both in the repository and in the clone; manifest OK in both.
 - **New REFLECTION_LOG entries:** R37 updated (cause confirmed by intervention); R38 (report timing and cost across cut-off launches).
 
-### Next (owner)
+### Owner review of the tag (same day) and pre-R1 addendum
 
-R1 from the clone, in a fresh usage window and a fresh shell:
+- **Tag placement accepted.** `git diff --stat fc7976e prompts-v1.0`:
+
+  ```text
+   docs/PROJECT_SPEC.md                               |  10 +-
+   docs/SESSION_LOG.md                                |  47 ++
+   results/evaluations/run_settings_verification.json |  50 +-
+   results/evaluations/smoke_test.json                | 397 +++++---------
+   results/evaluations/smoke_test_transcript.jsonl    | 600 +++++++++------------
+   5 files changed, 462 insertions(+), 642 deletions(-)
+  ```
+
+  These are docs and check records only: no file under `src/`, `tests/`, `.claude/` and no `EVALUATION_PLAN.md`.
+- **§11 #56 accepted; rival readings added (§11 #57, Log #97).** This is in a commit after the tag and before R1. The tag is not moved, and the clone stays at `prompts-v1.0`.
+  - *No better:* strict = lexicographic by tier (3, 2, 1); rival = need covered summed over levels 2–3. This needed new evaluation code, `lex_le_alloc`, committed with its test.
+  - *Covered:* no rival reading, because C1 computes coverage exactly in need units and the rubric has no rounding of fractional need.
+  - DRY2 calibration unchanged: D2-45 is wrong under both readings; 442 correct, 3 wrong, 0 unverifiable; rubric-dependent 1/3.
+
+### Next (in this order)
+
+**0. Owner: R1** from the clone, in a fresh usage window and a fresh shell:
 
 ```bash
 cd C:/hra-runs/hospital_resource_allocations
-git pull --ff-only && git describe --tags          # expect prompts-v1.0
+git describe --tags                                 # expect prompts-v1.0 (do not pull the addendum: not needed by the run)
 uv run python -m src.mcp_server.init_run --dataset seed20261107 --run-id R1
-uv run python -m src.mcp_server.launch             # exits 1 unless FINISHED; re-run to resume
+uv run python -m src.mcp_server.launch              # exits 1 unless FINISHED; re-run to resume
 ```
 
-Then `copy_back` in the repository. If a launch shows `null` in `session_cost_usd`, the run's total cost is incomplete (R38).
+**After R1 finishes:**
+
+1. **Copy-back** to the repository: hash check, consistency check, report rebuilt. Confirm that **no launch shows a `null` cost** in `session_cost_usd` (R38).
+2. **Claim extraction first**, in a fresh session, **before any session reads R1's CHECKER reports**. Follow `EVALUATION_PLAN.md` §4 items 7–9. Commit the extraction and record its SHA-256.
+3. **Only then:** recomputation (`claim_check`), CHECKER matching, the stratified tables, and the owner check (days 3, 8, 18; every wrong and every unverifiable claim).
+4. **R2 and R3 are launched regardless of R1's outcome** (§11 #40). R1 is re-run only for a technical failure, documented as such.
 
 ### Open questions for the owner
 
-1. **Rubric dependence, as operationalised (§11 #56):** a wrong claim counts as semantic only if a listed rival reading makes it correct. This is stricter than "the claim uses a defined term", which would have counted D2-15. Confirm, or add rival readings (for *covered* or *no better*) before the R1 extraction commit. Either way it is before any R1 output.
+1. *(Answered same day: §11 #56 accepted, rival readings added in §11 #57.)*

@@ -1547,7 +1547,7 @@
           3
         ]
       },
-      "relation": "le_alloc",
+      "relation": "lex_le_alloc",
       "allocation": {
         "base": {
           "decided": 2
@@ -1563,7 +1563,17 @@
         "decided": 2
       },
       "basis": "derived",
-      "rubric_term": "no better"
+      "rubric_term": "no better",
+      "alternative_reading": {
+        "relation": "le_alloc",
+        "quantity": {
+          "name": "covered_need",
+          "levels": [
+            2,
+            3
+          ]
+        }
+      }
     },
     {
       "id": "D3-01",

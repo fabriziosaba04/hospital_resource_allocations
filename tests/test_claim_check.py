@@ -49,6 +49,11 @@ def test_stratification_of_dry2_wrong_claims():
     assert alt["D7-58"] == ("correct", 1)
     # D2-15: 5 empty, 6 spare, stated 4: wrong under either reading, so arithmetic, not semantic
     assert alt["D2-15"] == ("wrong", 6)
+    # D2-45 "no better" (§11 #57): the alternative is better at tier 2 (6.0 vs 5.6, tier 3 tied at 5.6), so wrong
+    # lexicographically; the rival reading (need covered at levels 2-3 summed) gives 6.0 vs 5.6, wrong too
+    d245 = next(c for c in out["claims"] if c["id"] == "D2-45")
+    assert (d245["computed"], d245["computed_compare"]) == ([5.6, 6.0, 6.0], [5.6, 5.6, 6.0])
+    assert (d245["verdict"], d245["verdict_alternative"]) == ("wrong", "wrong")
     assert st["wrong_rubric_dependent"] == "1/3" and st["rubric_dependent_ids"] == ["D7-58"]
 
 
