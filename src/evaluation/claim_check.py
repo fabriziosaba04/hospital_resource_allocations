@@ -13,11 +13,20 @@ Quantities (summed over `departments`, default all):
   covered_need           nursing need covered, at `levels` (in need units)
 Day quantities (no allocation): pool_beds, pool_nurses, max_beds, census, holders, queue, free_beds,
 requirement, mean_arrivals, patient, need. Allocation quantities: beds, nurses, empty_beds, overflow,
-covered_need, shortage, patient_in_bed, holders_cut.
+covered_need, shortage, patient_in_bed, holders_cut, spare_beds (allocated beds minus holders).
 Relations: eq, ne, le, ge (with `value`; counts are exact, tolerance 0); round (a stated decimal compared at its
 own precision); le_alloc / ge_alloc / eq_alloc compare with the same quantity under `compare_allocation`.
 Each claim may carry a `category`; the pre-registered universe (EVALUATION_PLAN.md §4) is the categories
 beds, empty_beds, overflow, nurse_coverage, pool.
+
+Stratification (owner review 2026-11-14, EVALUATION_PLAN.md §4 items 7-9), all optional per claim:
+  basis                  "copied" (one cell of a tool result the ALLOCATOR received that day, for the same
+                         quantity, departments, levels and allocation) or "derived" (anything else)
+  rubric_term            the defined term the claim uses ("empty", "spare", "covered", "no better", ...), or
+                         null; a wrong claim is rubric-dependent only if `verdict_alternative` is correct
+  alternative_reading    overrides of quantity / relation / value / compare_allocation under the rival reading
+                         of `rubric_term`; scored as `verdict_alternative`, descriptive only
+`extraction_recall(a, b)` compares two extractions of the same days, claim by claim, by `basis`.
 """
 
 from __future__ import annotations
@@ -137,6 +146,8 @@ def quantity(ds, rec, day: int, alloc_spec, q: dict) -> Fraction | int | None:
             if p.patient_id in res.assignment.in_bed:
                 placed[p.department] += 1
         return sum(beds[d] - placed[d] for d in deps)
+    if q["name"] == "spare_beds":                        # allocated beds not held from yesterday ("free", "spare")
+        return sum(beds[d] for d in deps) - sum(1 for p in ctx.holders if p.department in deps)
     if q["name"] == "overflow":
         return sum(res.overflow[d][k] for d in deps for k in levels)
     if q["name"] == "covered_need":
@@ -149,6 +160,14 @@ def _num(x):
 
 
 def score_claim(ds, rec, c: dict) -> dict:
+    out = _score_one(ds, rec, c)
+    if c.get("alternative_reading"):
+        alt = _score_one(ds, rec, {**c, **c["alternative_reading"]})
+        out["verdict_alternative"], out["computed_alternative"] = alt["verdict"], alt["computed"]
+    return out
+
+
+def _score_one(ds, rec, c: dict) -> dict:
     if c.get("quantity") is None:
         return {**c, "computed": None, "verdict": "unverifiable"}
     v = quantity(ds, rec, c["day"], c.get("allocation"), c["quantity"])
@@ -189,7 +208,8 @@ def score(run_id: str, spec_path: Path | None = None, results_root: Path = ROOT 
     for f in findings.values():
         # a finding is valid only if some ALLOCATOR claim it disputes is wrong (EVALUATION_PLAN.md §4)
         f["finding_valid"] = any(v == "wrong" for v in f["ALLOCATOR"].values())
-    out = {"run_id": run_id, "claims": claims, "summary": summary, "findings": findings}
+    out = {"run_id": run_id, "claims": claims, "summary": summary, "findings": findings,
+           "stratified": stratify(claims)}
     if "disputed_by_checker" in spec:
         out["checker_on_claims"] = checker_on_claims(claims, spec["disputed_by_checker"])
     return out
@@ -208,6 +228,55 @@ def checker_on_claims(claims: list[dict], disputed: dict[str, str]) -> dict:
             "missed": sorted(wrong - contested),
             "contested_unverifiable": sorted(i for i in contested if alloc[i] == "unverifiable"),
             "disputes_outside_universe": sorted(set(disputed) - set(alloc))}
+
+
+def stratify(claims: list[dict]) -> dict:
+    """ALLOCATOR verdicts by basis, and its wrong claims by rubric term (EVALUATION_PLAN.md §4 items 8-9).
+    Counts only; a claim without `basis` is counted as "unclassified"."""
+    alloc = [c for c in claims if c["author"] == "ALLOCATOR"]
+    by_basis = {}
+    for c in alloc:
+        b = by_basis.setdefault(c.get("basis") or "unclassified", {v: 0 for v in VERDICTS})
+        b[c["verdict"]] += 1
+    wrong = [c for c in alloc if c["verdict"] == "wrong"]
+    by_term = {}
+    for c in wrong:
+        t = c.get("rubric_term") or "arithmetic"
+        e = by_term.setdefault(t, {"wrong": 0, "correct_under_alternative": 0, "ids": []})
+        e["wrong"] += 1
+        e["correct_under_alternative"] += c.get("verdict_alternative") == "correct"
+        e["ids"].append(c["id"])
+    # rubric-dependent = wrong under the rubric's reading but correct under the rival one; a wrong claim that
+    # uses a defined term but is wrong under both readings (or has no rival reading) is not counted as semantic
+    flips = sorted(c["id"] for c in wrong if c.get("verdict_alternative") == "correct")
+    return {"allocator_by_basis": by_basis, "wrong_by_rubric_term": by_term,
+            "wrong_rubric_dependent": f"{len(flips)}/{len(wrong)}", "rubric_dependent_ids": flips}
+
+
+def claim_key(c: dict) -> str:
+    """What makes two extractions the same claim: day, quantity, allocation, relation and stated value.
+    The field is left out because a figure repeated in another field is extracted once (rubric item 2)."""
+    return json.dumps([c["day"], c.get("quantity"), c.get("allocation"), c.get("compare_allocation"),
+                       c.get("relation"), None if c.get("value") is None else str(c["value"])], sort_keys=True)
+
+
+def extraction_recall(a: list[dict], b: list[dict], days=None) -> dict:
+    """Two-way extraction recall (owner check 2(a)): the share of each extractor's ALLOCATOR claims that the
+    other also extracted, by the reference extractor's `basis`. Written as counts."""
+    def pick(cs):
+        return [c for c in cs if c["author"] == "ALLOCATOR" and (days is None or c["day"] in days)]
+    a, b = pick(a), pick(b)
+    def one(ref, other):
+        keys = {claim_key(c) for c in other}
+        out = {}
+        for c in ref:
+            e = out.setdefault(c.get("basis") or "unclassified", [0, 0])
+            e[0] += claim_key(c) in keys
+            e[1] += 1
+        res = {k: f"{v[0]}/{v[1]}" for k, v in sorted(out.items())}
+        res["missed"] = sorted(c["id"] for c in ref if claim_key(c) not in keys)
+        return res
+    return {"a_found_by_b": one(a, b), "b_found_by_a": one(b, a)}
 
 
 if __name__ == "__main__":

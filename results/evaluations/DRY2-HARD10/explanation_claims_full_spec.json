@@ -970,6 +970,17 @@
       "value": "4",
       "allocation": {
         "in_effect": 1
+      },
+      "basis": "derived",
+      "rubric_term": "empty",
+      "alternative_reading": {
+        "quantity": {
+          "name": "spare_beds",
+          "departments": [
+            "internal_medicine",
+            "orthopedics"
+          ]
+        }
       }
     },
     {
@@ -1550,7 +1561,9 @@
       },
       "compare_allocation": {
         "decided": 2
-      }
+      },
+      "basis": "derived",
+      "rubric_term": "no better"
     },
     {
       "id": "D3-01",
@@ -5805,6 +5818,16 @@
       "value": "1",
       "allocation": {
         "in_effect": 6
+      },
+      "basis": "derived",
+      "rubric_term": "empty",
+      "alternative_reading": {
+        "quantity": {
+          "name": "spare_beds",
+          "departments": [
+            "orthopedics"
+          ]
+        }
       }
     },
     {

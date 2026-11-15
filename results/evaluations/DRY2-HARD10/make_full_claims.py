@@ -381,6 +381,19 @@ for x in d7_universe:
     x["finding"] = "day 7"
     claims.append(x)
 
+# Stratification of the three wrong claims (owner review 2026-11-14; EVALUATION_PLAN.md §4 items 8-9). The other
+# 442 are left unclassified: DRY2 is calibration, and the basis needs the day's tool results, not read here.
+STRATA = {
+    "D2-15": {"basis": "derived", "rubric_term": "empty",
+              "alternative_reading": {"quantity": {"name": "spare_beds",
+                                                   "departments": ["internal_medicine", "orthopedics"]}}},
+    "D2-45": {"basis": "derived", "rubric_term": "no better"},
+    "D7-58": {"basis": "derived", "rubric_term": "empty",
+              "alternative_reading": {"quantity": {"name": "spare_beds", "departments": ["orthopedics"]}}},
+}
+for x in claims:
+    x.update(STRATA.get(x["id"], {}))
+
 claims.sort(key=lambda x: (x["day"], x["id"]))
 (here / "explanation_claims_full_spec.json").write_text(
     json.dumps({"run_id": "DRY2-HARD10", "note": "full extraction, universe categories (EVALUATION_PLAN.md §4)",

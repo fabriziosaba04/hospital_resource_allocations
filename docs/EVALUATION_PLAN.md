@@ -239,10 +239,41 @@ Nurse issues are graded by the **highest tier with a positive net gap**, not by 
    - **DRY2 calibration:** 445 universe claims in 10 days, 30–55 per day.
    - **R1 at primary scale:** about 45–60 per day, so **1,350–1,800 claims**.
    - **Hours:** with the encoding helpers used for DRY2 (`results/evaluations/DRY2-HARD10/make_full_claims.py`), about 1 minute per claim for a person, so **22–30 hours** for R1.
-7. **Extractor (open question for the owner, Log #93).** Proposal: the assistant extracts in a development session after R1, following this rubric. The owner independently extracts **days 3, 8 and 18** (drawn with `random.Random(20261114)`, pre-registered here), and the report gives the agreement: claims found by one extractor only, and verdict disagreements. The recomputation is deterministic either way. With the assistant as extractor, the claim universe is LLM-assisted and is labelled so (§3.9).
+7. **Extractor and independence (owner decision §11 #55, 2026-11-14).** The assistant extracts, in a development session after R1, following this rubric.
+   - **Independence procedure, in this order:**
+     1. The extraction session does **not read the CHECKER's validation reports** (or `disputed_by_checker` of any run).
+     2. The extraction file (`<eval>/explanation_claims_spec.json`, without `disputed_by_checker`) is **committed**, and its SHA-256 recorded in the commit message and the session log, **before any matching against the CHECKER**.
+     3. `claim_check.py` is run after that commit. The CHECKER mapping is added in a later commit.
+   - **Owner check, in three parts:**
+     - **(a) Independent extraction of days 3, 8 and 18**, drawn as `sorted(random.Random(20261114).sample(range(1, 31), 3))`. The report gives **extraction recall both ways** (the owner's claims found by the assistant, and the assistant's found by the owner), **separately for copied and derived claims** (`claim_check.extraction_recall`; same claim = same day, quantity, allocation, relation and stated value, field ignored).
+     - **(b) The owner reviews every claim the recomputation marks wrong.**
+     - **(c) The owner reviews every claim marked unverifiable.**
+   - **Labelling:** the claim universe is **"LLM-extracted, owner-audited on a sample"**. The recomputation stays deterministic. Small numbers are written as counts ("the CHECKER found 2/3"), never as rates alone.
+8. **Copied versus derived (the `basis` field), defined so that the split in 7(a) is mechanical.** A claim is **copied** if its stated value equals **one cell** of a tool result the ALLOCATOR received **that day, before its accepted submission**, for the same quantity, departments, levels and allocation. Anything else is **derived**. The tool results are in the run transcript. Examples:
+
+   | Claim | Basis | Why |
+   | --- | --- | --- |
+   | "Cardiology has 2 L3 patients in overflow under A" | copied | one cell of `overflow_by_department_and_level` in the what-if of A |
+   | "Orthopedics' L1 shortage is 0.5 under the current allocation" | copied | one cell of `nurse_shortage_by_department_and_level` |
+   | "the pool is 120 beds", "occupied beds in neurology: 28" | copied | `pools.beds`, `departments.neurology.occupied_beds` in the observed state |
+   | "P000083 has waited 3 days" | copied | `days_waiting` in the queue or `overflow_patients` |
+   | "5 L3 patients in overflow" (summed over departments) | derived | sum of several cells |
+   | "4 beds empty in IM and orthopedics" | derived | no tool reports empty beds: beds minus patients placed |
+   | "2 spare beds", "free beds: 3" | derived | beds (or pool) minus occupied |
+   | "levels 2–3 covered" | derived | coverage summed over levels, or shortage read as zero |
+   | "B is no better than A", "the same overflow", "higher" | derived | a comparison of two what-ifs |
+   | "1.2 need units short at tier 2" | derived | the tier gap is not in the ALLOCATOR's what-if (it is shown only in assisted runs, where it would be copied) |
+
+   If the same value appears in a single cell **and** the claim aggregates (for example a department total that equals one level's cell), the claim is derived: the test is what the sentence refers to, not whether the number coincides.
+9. **Rubric dependence (owner decision §11 #56).** For R1 the report gives how many wrong claims **depend on a rubric definition** rather than plain arithmetic. Each claim that uses a defined term carries `rubric_term`. If the rubric has a rival reading, the claim also carries `alternative_reading`, and it is scored both ways:
+   - *empty* (no patient after assignment): rival reading *spare* (beds minus occupied). This is the only rival reading listed now.
+   - *covered* (shortage 0, or the stated amount) and *no better* (the alternative's named quantity ≤ the chosen one's, `le_alloc`) carry `rubric_term` but have no rival reading. A new rival reading may be added only before the extraction commit (item 7), and it is then applied to every claim using the term.
+
+   A wrong claim is **rubric-dependent** only if it is correct under the rival reading. A claim that uses a defined term but is wrong under both readings counts as arithmetic. Reported as a count ("wrong rubric-dependent: 1/3") with the ids (`claim_check.stratify`).
 
 **Calibration on DRY2** (`tests/test_claim_check.py`, `explanation_claims_full_spec.json`):
 - **The ALLOCATOR:** 442 correct, 3 wrong, 0 unverifiable. **All three wrong claims are derived figures, not figures copied from a what-if:** "4 empty beds" (really 5), "no better" (6.0 against 5.6 need covered), and "its spare bed was empty" (the bed was free, not empty).
+- **Rubric dependence: 1/3.** Only D7-58 is correct under the rival reading (1 spare bed). D2-15 is wrong either way (5 empty, 6 spare, stated 4), and D2-45 names its quantity, so there is no rival reading (`test_stratification_of_dry2_wrong_claims`).
 - **The CHECKER:** caught 2/3 wrong claims, with precision 2/3. It made 1 wrong dispute (it contested the correct "5 level-3 overflow") and missed D7-58.
 - The first finding-level test case (DRY2's two flagged findings, scored claim by claim) is kept in the same test file. Within a (day, type) key the pairing is the approved one (both sides sorted most severe first, paired in order), so when the CHECKER reports fewer issues than the audit under a key, the matched audit issues are taken to be its most severe ones; this is stated with the results (`src/evaluation/checker_matching.py`).
 

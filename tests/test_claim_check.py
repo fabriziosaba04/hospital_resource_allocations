@@ -36,3 +36,31 @@ def test_full_universe_of_dry2_claims_and_checker_recall():
     ch = out["checker_on_claims"]
     assert (ch["recall"], ch["precision"]) == ("2/3", "2/3")
     assert ch["wrong_disputes"] == ["D2-14"] and ch["missed"] == ["D7-58"]
+
+
+def test_stratification_of_dry2_wrong_claims():
+    """Owner review 2026-11-14 (Q1, Q3): basis and rubric dependence of the three wrong claims."""
+    from pathlib import Path
+    out = score("DRY2-HARD10", Path("results/evaluations/DRY2-HARD10/explanation_claims_full_spec.json"))
+    st = out["stratified"]
+    assert st["allocator_by_basis"]["derived"] == {"correct": 0, "wrong": 3, "unverifiable": 0}
+    alt = {c["id"]: (c.get("verdict_alternative"), c.get("computed_alternative")) for c in out["claims"]}
+    # D7-58: the bed was spare (1), not empty (0): wrong only under the strict reading of "empty"
+    assert alt["D7-58"] == ("correct", 1)
+    # D2-15: 5 empty, 6 spare, stated 4: wrong under either reading, so arithmetic, not semantic
+    assert alt["D2-15"] == ("wrong", 6)
+    assert st["wrong_rubric_dependent"] == "1/3" and st["rubric_dependent_ids"] == ["D7-58"]
+
+
+def test_extraction_recall_two_ways_by_basis():
+    from src.evaluation.claim_check import extraction_recall
+    base = {"author": "ALLOCATOR", "relation": "eq", "allocation": {"in_effect": 1}}
+    a = [{**base, "id": "a1", "day": 3, "quantity": {"name": "overflow"}, "value": "2", "basis": "copied"},
+         {**base, "id": "a2", "day": 3, "quantity": {"name": "empty_beds"}, "value": "1", "basis": "derived"},
+         {**base, "id": "a3", "day": 4, "quantity": {"name": "beds"}, "value": "9", "basis": "copied"}]
+    b = [{**base, "id": "b1", "day": 3, "field": "reasons", "quantity": {"name": "overflow"}, "value": 2,
+          "basis": "copied"},
+         {**base, "id": "b2", "day": 3, "quantity": {"name": "empty_beds"}, "value": "2", "basis": "derived"}]
+    r = extraction_recall(a, b, days={3})
+    assert r["a_found_by_b"] == {"copied": "1/1", "derived": "0/1", "missed": ["a2"]}
+    assert r["b_found_by_a"] == {"copied": "1/1", "derived": "0/1", "missed": ["b2"]}
