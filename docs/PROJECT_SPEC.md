@@ -13,7 +13,7 @@ This document specifies **how** those are implemented, and does not restate them
 
 ## 0. Current Status and Next Step
 
-*Last updated 2026-11-14 (end of the third session). A new session should read this section first, then the latest entry of [`docs/SESSION_LOG.md`](SESSION_LOG.md) (2026-11-14), then `CLAUDE.md`, `AGENTS.md` and `docs/REFLECTION_LOG.md`. This section is meant to be enough to resume from the repository alone.*
+*Last updated 2026-11-15 (fourth session: tag `prompts-v1.0`; R1 is the owner's to launch). A new session should read this section first, then the latest entry of [`docs/SESSION_LOG.md`](SESSION_LOG.md) (2026-11-15), then `CLAUDE.md`, `AGENTS.md` and `docs/REFLECTION_LOG.md`. This section is meant to be enough to resume from the repository alone.*
 
 ### Timeline
 
@@ -60,10 +60,10 @@ uv run python -m src.evaluation.run_report R1                                  #
 | Run-session restrictions | `.claude/run-settings.json`: deny-by-default on `data/**`, plus `docs/`, generator code, `tests/`, `.hypothesis/` and (2026-11-12) `results/**`; `enabledMcpjsonServers` and allow rules for the run's own servers only (Log #64). Re-verified 2026-11-12: 19 protected reads denied, controls allowed | §8; `tests/manual/verify_run_settings.py` |
 | Deterministic audit, metrics, baselines | Done, tested (2026-11-12). B0–B2 run on all four datasets; every run passes the gate. Headroom reviewed by the owner; headline set confirmed (§11 #24–#28) | `src/evaluation/`; `tests/test_evaluation.py`; `uv run python -m src.evaluation`; `results/` |
 | MCP server, state machine, agent files | **Milestone 2 met 2026-11-12: smoke test 22/22** (Log #76), including check 5c shown live. Visibility redesign (§11 #29): the CHECKER is blind to the deterministic audit; both what-ifs return outcomes only (labels behind the off-by-default `expose_violation_labels` flag). Robustness before R1 (§11 #33): HALTED with a recorded reason, stale-lock handling, resumable idempotent writes, tested by killing a run at 12 points and resuming (Log #79–#81) | `src/mcp_server/`; `tests/test_mcp_server.py`, `tests/test_resume.py`; `tests/manual/smoke_test.py` |
-| Prompts | ALLOCATOR and CHECKER prompts reviewed by the owner and edited (§11 #30, #35). **Not frozen**: the owner reviews the dry run first. The CHECKER's deterministic definitions match the audit's (Log #84) | `.claude/agents/` |
+| Prompts | **Frozen at git tag `prompts-v1.0` (2026-11-15)**: `allocator.md`, `checker.md`, `dispatcher.md` and `.claude/run-settings.json` byte-identical to DRY2's `81c2cf4`. Unchanged across R1–R3 and the stress run (`CLAUDE.md` §9.3) | `.claude/agents/` |
 | Run model and launcher | `claude-sonnet-5-5` for all three roles, in `.claude/run-settings.json`, recorded in `run_manifest.json` (§11 #31, Log #77). One launch command for the dry run and R1–R3: `python -m src.mcp_server.launch` (Log #78) | `.claude/run-settings.json`; `src/mcp_server/launch.py` |
-| Dry runs | **DRY1-SMOKE5** (2026-11-12; review applied 2026-11-14, §11 #36–#41). **DRY2-HARD10** (2026-11-14), hard 10-day fixture: finished, consistent, models as configured, every decision accepted on the first attempt, $1.64 and 628 s. No bed or F1 issue; correct forced cut on day 8; 4 Moderate nurse gaps. CHECKER headline group 4/4 (all `nurse_gap`), secondary 9/11. **Awaiting the owner's review** | `SESSION_LOG.md` 2026-11-14; `results/evaluations/DRY2-HARD10/run_report.json` |
-| Documentation | Decisions Log #1–94, owner decisions §11 #1–54, reflection log R1–R37, session log from 2026-11-12 | `docs/` |
+| Dry runs | **DRY1-SMOKE5** (2026-11-12; review applied 2026-11-14, §11 #36–#41). **DRY2-HARD10** (2026-11-14), hard 10-day fixture: finished, consistent, models as configured, every decision accepted on the first attempt, $1.64 and 628 s. No bed or F1 issue; correct forced cut on day 8; 4 Moderate nurse gaps. CHECKER headline group 4/4 (all `nurse_gap`), secondary 9/11; reviewed by the owner. **DRY3-RESUME** (2026-11-15, SMOKE5, from the clone): finished across three launches (launch 1 stalled by R37, launch 2 killed mid-run on purpose), consistent, copied back with hash check; report timing and cost fixed (R38) | `SESSION_LOG.md` 2026-11-14, 2026-11-15; `results/evaluations/DRY2-HARD10/`, `DRY3-RESUME/` |
+| Documentation | Decisions Log #1–96, owner decisions §11 #1–56, reflection log R1–R38, session log from 2026-11-12 | `docs/` |
 
 **Key data facts (primary seed, approved schedule):**
 
@@ -74,7 +74,7 @@ uv run python -m src.evaluation.run_report R1                                  #
 
 ### Still open (owner decisions pending)
 
-See the open questions in the latest `SESSION_LOG.md` entry (2026-11-14, second session). The DRY2 review was applied the same day (§11 #42–#49): grouping, date-shift count, claim-by-claim protocol, clone procedure with a synced-folder guard, CHECKER-only test on B2-HARD10 (bed detection 3/3, F1 2/2), figure plan. Third session: B1's nurse gap measured (§11 #50), claim protocol (b) pre-registered (§11 #54), clone set up; the first clone launch exposed a trust fault (R37). Open: the claim extractor, trusting the clone, rubric strictness; then the pre-R1 checks in the clone and the tag.
+See the open questions in the latest `SESSION_LOG.md` entry (2026-11-15). **Next step: R1, launched by the owner** from the clone at `prompts-v1.0`, in a fresh usage window. Claim extraction follows `EVALUATION_PLAN.md` §4 items 7–9 (§11 #55–#56).
 
 Metric formulas, the CHECKER severity scale and the headline set are **fixed** (§11 #16–#28), all before any agent output on frozen data.
 

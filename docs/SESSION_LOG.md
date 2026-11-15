@@ -431,3 +431,50 @@ Started 17:37. Commits: `7134ff7` (B1 and §11 #50–#53), `3517c47` (Point A), 
 1. **Extractor for the claim protocol.** 22–30 person-hours for R1 is likely too much before 30 November. *Recommendation:* the assistant extracts after R1, following the rubric. You independently extract days 3, 8 and 18 (pre-registered with seed 20261114), and agreement is reported. The universe is then labelled LLM-assisted; recomputation stays deterministic. Alternatively you extract everything.
 2. **Trust the clone** (step 1 above). It changes your Claude Code configuration, so I have not done it for you.
 3. **Rubric strictness.** D7-58 ("its spare bed was empty") is wrong only under the strict reading of *empty* (the bed was free, not held, and would have gone to a waiting patient). Keep the strict wording rule (recommended: it is pre-registered and mechanical), or score *spare* and *empty* as synonyms?
+
+## 2026-11-15 (fourth session: owner review applied, live resume and copy-back, tag)
+
+Started about 08:20, after the owner trusted the clone. Commits: `517ccd9` (claim protocol), `fc7976e` (DRY3-RESUME, report fix), and the session-close commit, which carries tag **`prompts-v1.0`**. **No run on frozen data. R1 was not started:** the owner launches it.
+
+### Achieved
+
+1. **Q1, claim extractor** (§11 #55, Log #95). `EVALUATION_PLAN.md` §4 item 7 now has:
+   - the independence procedure: no CHECKER reports in the extraction session; the extraction is committed with its SHA-256 before any matching; recomputation runs after that commit;
+   - the three-part owner check: (a) days 3, 8, 18 from `sorted(random.Random(20261114).sample(range(1, 31), 3))`, with two-way extraction recall by copied and derived claims; (b) every wrong claim; (c) every unverifiable claim;
+   - the label "LLM-extracted, owner-audited on a sample".
+
+   Item 8 defines **copied and derived** mechanically: a copied claim is one cell of a tool result the ALLOCATOR received that day, before its accepted submission. Ten examples are given. `claim_check.extraction_recall` computes the two-way recall.
+2. **Q3, "empty" stays strict** (§11 #56). Item 9 says when a wrong claim counts as **rubric-dependent**: only if it is correct under a rival reading listed in the rubric (for now only *empty* → *spare*). New allocation quantity `spare_beds`. **On DRY2: 1/3** (D7-58). D2-15 is wrong under both readings (5 empty, 6 spare, stated 4), so it counts as arithmetic.
+3. **Q2.1:** `verify_run_settings.py` in the trusted clone gave the same 30 verdicts as the repository record (21 denied, 0 leaks). Trusting the folder changed nothing the agents can see or do.
+4. **Q2.2, R37 cause confirmed by intervention.** Relaunching DRY3-RESUME after the trust step spawned the ALLOCATOR with its tools.
+5. **Q2.3, live two-launch test.** Launch 2 was killed on purpose (process tree) at day 3 READY_TO_CLOSE; the records were consistent. Launch 3 resumed with `close_day`, did not re-dispatch day 3, and finished: FINISHED on day 5, exit 0, 0 refused spawns, one accepted decision per day. Day attribution was correct across all three launches (day 1: 2 refused + 1 successful invocation; day 3: 1).
+6. **Live copy-back:** 14 files, 0 hash mismatches, 0 consistency problems, report rebuilt in the repository. **R38** came out of reading that report:
+   - day 1's wall clock counted the night between launches (52,709 s for 44 s of work);
+   - the killed launch's cost was silently missing.
+
+   Fixed in Log #96. The report in the repository was rebuilt after the fix, so it is newer than the one `copy_back.json` records.
+7. **Pre-R1 checks in the clone at `fc7976e`:** smoke test 22/22 PASS (both inline servers connected); full suite 167 passed; manifest OK; `allocator.md`, `checker.md`, `dispatcher.md` and `run-settings.json` byte-identical to `81c2cf4`. The clone's check records were brought into the repository. The session-close commit changes only docs and these records (no code, prompts or settings), checked with `git diff --stat fc7976e`.
+8. **Clone housekeeping:** the clone's copy of DRY3-RESUME (hash-identical to the copied-back one) and its ACTIVE_RUN pointer were moved, not deleted, to `C:\hra-runs\_moved_2026-11-15` before the pull. The clone has no ACTIVE_RUN now.
+
+### State
+
+- **Tag `prompts-v1.0`** on the session-close commit. All conditions of §11 #53 are met.
+- **Tests:** affected tests during work; fast suite 154 passed; full suite 167 passed, both in the repository and in the clone; manifest OK in both.
+- **New REFLECTION_LOG entries:** R37 updated (cause confirmed by intervention); R38 (report timing and cost across cut-off launches).
+
+### Next (owner)
+
+R1 from the clone, in a fresh usage window and a fresh shell:
+
+```bash
+cd C:/hra-runs/hospital_resource_allocations
+git pull --ff-only && git describe --tags          # expect prompts-v1.0
+uv run python -m src.mcp_server.init_run --dataset seed20261107 --run-id R1
+uv run python -m src.mcp_server.launch             # exits 1 unless FINISHED; re-run to resume
+```
+
+Then `copy_back` in the repository. If a launch shows `null` in `session_cost_usd`, the run's total cost is incomplete (R38).
+
+### Open questions for the owner
+
+1. **Rubric dependence, as operationalised (§11 #56):** a wrong claim counts as semantic only if a listed rival reading makes it correct. This is stricter than "the claim uses a defined term", which would have counted D2-15. Confirm, or add rival readings (for *covered* or *no better*) before the R1 extraction commit. Either way it is before any R1 output.
