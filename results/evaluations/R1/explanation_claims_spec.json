@@ -15316,6 +15316,3434 @@
      "name": "empty_beds"
     }
    }
+  },
+  {
+   "id": "R1-D21-01",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "The bed pool fell by 4",
+   "day": 20,
+   "allocation": null,
+   "quantity": {
+    "name": "pool_beds"
+   },
+   "relation": "eq",
+   "value": 100,
+   "category": "pool",
+   "basis": "derived",
+   "rubric_term": null,
+   "note": "restated: 'fell by 4 to 96' gives yesterday's pool 100 (item 2, end of the previous day)"
+  },
+  {
+   "id": "R1-D21-02",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "to 96",
+   "day": 21,
+   "allocation": null,
+   "quantity": {
+    "name": "pool_beds"
+   },
+   "relation": "eq",
+   "value": 96,
+   "category": "pool",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D21-03",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "The nurse pool is unchanged at 37",
+   "day": 21,
+   "allocation": null,
+   "quantity": {
+    "name": "pool_nurses"
+   },
+   "relation": "eq",
+   "value": 37,
+   "category": "pool",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D21-04",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "Occupied beds total 84",
+   "day": 21,
+   "allocation": null,
+   "quantity": {
+    "name": "holders"
+   },
+   "relation": "eq",
+   "value": 84,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D21-05",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "The previous allocation was 30/37/19/14 beds",
+   "day": 21,
+   "allocation": {
+    "in_effect": 20
+   },
+   "quantity": {
+    "name": "beds",
+    "departments": [
+     "cardiology"
+    ]
+   },
+   "relation": "eq",
+   "value": 30,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D21-06",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "The previous allocation was 30/37/19/14 beds",
+   "day": 21,
+   "allocation": {
+    "in_effect": 20
+   },
+   "quantity": {
+    "name": "beds",
+    "departments": [
+     "internal_medicine"
+    ]
+   },
+   "relation": "eq",
+   "value": 37,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D21-07",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "The previous allocation was 30/37/19/14 beds",
+   "day": 21,
+   "allocation": {
+    "in_effect": 20
+   },
+   "quantity": {
+    "name": "beds",
+    "departments": [
+     "neurology"
+    ]
+   },
+   "relation": "eq",
+   "value": 19,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D21-08",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "The previous allocation was 30/37/19/14 beds",
+   "day": 21,
+   "allocation": {
+    "in_effect": 20
+   },
+   "quantity": {
+    "name": "beds",
+    "departments": [
+     "orthopedics"
+    ]
+   },
+   "relation": "eq",
+   "value": 14,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D21-09",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "(census 41, 36 occupied)",
+   "day": 21,
+   "allocation": null,
+   "quantity": {
+    "name": "holders",
+    "departments": [
+     "internal_medicine"
+    ]
+   },
+   "relation": "eq",
+   "value": 36,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D21-10",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "It left internal_medicine ... short of beds",
+   "day": 21,
+   "allocation": null,
+   "quantity": null,
+   "relation": null,
+   "value": null,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null,
+   "note": "intended: overflow IM under the previous allocation; the previous allocation fails validation today (CONSERVATION_BEDS, 100 vs 96): unverifiable (item 2)"
+  },
+  {
+   "id": "R1-D21-11",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "while cardiology had 6 spare",
+   "day": 21,
+   "allocation": null,
+   "quantity": null,
+   "relation": null,
+   "value": null,
+   "category": "empty_beds",
+   "basis": "derived",
+   "rubric_term": "spare",
+   "note": "intended: spare_beds C under the previous allocation, rival empty; the previous allocation fails validation today (CONSERVATION_BEDS, 100 vs 96): unverifiable (item 2)"
+  },
+  {
+   "id": "R1-D21-12",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "and neurology 4 spare",
+   "day": 21,
+   "allocation": null,
+   "quantity": null,
+   "relation": null,
+   "value": null,
+   "category": "empty_beds",
+   "basis": "derived",
+   "rubric_term": "spare",
+   "note": "intended: spare_beds N under the previous allocation, rival empty; the previous allocation fails validation today (CONSERVATION_BEDS, 100 vs 96): unverifiable (item 2)"
+  },
+  {
+   "id": "R1-D21-13",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "Nine patients are in the overflow queue",
+   "day": 21,
+   "allocation": null,
+   "quantity": {
+    "name": "queue"
+   },
+   "relation": "eq",
+   "value": 9,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D21-14",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "IM 5, neurology 1, orthopedics 3",
+   "day": 21,
+   "allocation": null,
+   "quantity": {
+    "name": "queue",
+    "departments": [
+     "internal_medicine"
+    ]
+   },
+   "relation": "eq",
+   "value": 5,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D21-15",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "IM 5, neurology 1, orthopedics 3",
+   "day": 21,
+   "allocation": null,
+   "quantity": {
+    "name": "queue",
+    "departments": [
+     "neurology"
+    ]
+   },
+   "relation": "eq",
+   "value": 1,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D21-16",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "IM 5, neurology 1, orthopedics 3",
+   "day": 21,
+   "allocation": null,
+   "quantity": {
+    "name": "queue",
+    "departments": [
+     "orthopedics"
+    ]
+   },
+   "relation": "eq",
+   "value": 3,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D21-17",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Occupied beds: cardiology 24, IM 36, neurology 14, orthopedics 10",
+   "day": 21,
+   "allocation": null,
+   "quantity": {
+    "name": "holders",
+    "departments": [
+     "cardiology"
+    ]
+   },
+   "relation": "eq",
+   "value": 24,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D21-18",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Occupied beds: cardiology 24, IM 36, neurology 14, orthopedics 10",
+   "day": 21,
+   "allocation": null,
+   "quantity": {
+    "name": "holders",
+    "departments": [
+     "neurology"
+    ]
+   },
+   "relation": "eq",
+   "value": 14,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D21-19",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Occupied beds: cardiology 24, IM 36, neurology 14, orthopedics 10",
+   "day": 21,
+   "allocation": null,
+   "quantity": {
+    "name": "holders",
+    "departments": [
+     "orthopedics"
+    ]
+   },
+   "relation": "eq",
+   "value": 10,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D21-20",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Overflow queue levels: L3 in IM and neurology",
+   "day": 21,
+   "allocation": null,
+   "quantity": {
+    "name": "queue",
+    "departments": [
+     "internal_medicine"
+    ],
+    "levels": [
+     3
+    ]
+   },
+   "relation": "ge",
+   "value": 1,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null,
+   "note": "presence without a count; one claim per named department"
+  },
+  {
+   "id": "R1-D21-21",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Overflow queue levels: L3 in IM and neurology",
+   "day": 21,
+   "allocation": null,
+   "quantity": {
+    "name": "queue",
+    "departments": [
+     "neurology"
+    ],
+    "levels": [
+     3
+    ]
+   },
+   "relation": "ge",
+   "value": 1,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null,
+   "note": "presence without a count; one claim per named department"
+  },
+  {
+   "id": "R1-D21-22",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "L2 in IM (3)",
+   "day": 21,
+   "allocation": null,
+   "quantity": {
+    "name": "queue",
+    "departments": [
+     "internal_medicine"
+    ],
+    "levels": [
+     2
+    ]
+   },
+   "relation": "eq",
+   "value": 3,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D21-23",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "and orthopedics (1)",
+   "day": 21,
+   "allocation": null,
+   "quantity": {
+    "name": "queue",
+    "departments": [
+     "orthopedics"
+    ],
+    "levels": [
+     2
+    ]
+   },
+   "relation": "eq",
+   "value": 1,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D21-24",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "L1 in IM (1)",
+   "day": 21,
+   "allocation": null,
+   "quantity": {
+    "name": "queue",
+    "departments": [
+     "internal_medicine"
+    ],
+    "levels": [
+     1
+    ]
+   },
+   "relation": "eq",
+   "value": 1,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D21-25",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "and orthopedics (2)",
+   "day": 21,
+   "allocation": null,
+   "quantity": {
+    "name": "queue",
+    "departments": [
+     "orthopedics"
+    ],
+    "levels": [
+     1
+    ]
+   },
+   "relation": "eq",
+   "value": 2,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D21-26",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "A) ... Overflow is only 1 IM L1 patient",
+   "day": 21,
+   "allocation": {
+    "decided": 21
+   },
+   "quantity": {
+    "name": "overflow"
+   },
+   "relation": "eq",
+   "value": 1,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D21-27",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "(P000919)",
+   "day": 21,
+   "allocation": {
+    "decided": 21
+   },
+   "quantity": {
+    "name": "patient_in_bed",
+    "patient_id": "P000919"
+   },
+   "relation": "eq",
+   "value": 0,
+   "category": "overflow",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D21-28",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "All L3 and L2 nursing is covered",
+   "day": 21,
+   "allocation": {
+    "decided": 21
+   },
+   "quantity": {
+    "name": "shortage",
+    "levels": [
+     2,
+     3
+    ]
+   },
+   "relation": "eq",
+   "value": 0,
+   "category": "nurse_coverage",
+   "basis": "derived",
+   "rubric_term": "covered"
+  },
+  {
+   "id": "R1-D21-29",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "The only shortage is L1: IM 0.8",
+   "day": 21,
+   "allocation": {
+    "decided": 21
+   },
+   "quantity": {
+    "name": "shortage",
+    "departments": [
+     "internal_medicine"
+    ],
+    "levels": [
+     1
+    ]
+   },
+   "relation": "round",
+   "value": 0.8,
+   "category": "nurse_coverage",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D21-30",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "orthopedics 1.15",
+   "day": 21,
+   "allocation": {
+    "decided": 21
+   },
+   "quantity": {
+    "name": "shortage",
+    "departments": [
+     "orthopedics"
+    ],
+    "levels": [
+     1
+    ]
+   },
+   "relation": "round",
+   "value": 1.15,
+   "category": "nurse_coverage",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D21-31",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "B) Same beds with nurses 11/15/9/2. Valid, but orthopedics L2 is short by 0.95",
+   "day": 21,
+   "allocation": {
+    "beds": {
+     "cardiology": 25,
+     "internal_medicine": 40,
+     "neurology": 16,
+     "orthopedics": 15
+    },
+    "nurses": {
+     "cardiology": 11,
+     "internal_medicine": 15,
+     "neurology": 9,
+     "orthopedics": 2
+    }
+   },
+   "quantity": {
+    "name": "shortage",
+    "departments": [
+     "orthopedics"
+    ],
+    "levels": [
+     2
+    ]
+   },
+   "relation": "round",
+   "value": 0.95,
+   "category": "nurse_coverage",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D21-32",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "which is worse by clinical priority",
+   "day": 21,
+   "allocation": {
+    "beds": {
+     "cardiology": 25,
+     "internal_medicine": 40,
+     "neurology": 16,
+     "orthopedics": 15
+    },
+    "nurses": {
+     "cardiology": 11,
+     "internal_medicine": 15,
+     "neurology": 9,
+     "orthopedics": 2
+    }
+   },
+   "quantity": {
+    "name": "covered_need"
+   },
+   "relation": "lex_le_alloc",
+   "value": null,
+   "category": "nurse_coverage",
+   "basis": "derived",
+   "rubric_term": "no better",
+   "compare_allocation": {
+    "decided": 21
+   },
+   "alternative_reading": {
+    "relation": "le_alloc",
+    "quantity": {
+     "name": "covered_need",
+     "levels": [
+      2,
+      3
+     ]
+    }
+   },
+   "note": "'worse by clinical priority' read as B not better than A by tier (§11 #57); strictness not tested"
+  },
+  {
+   "id": "R1-D21-33",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "IM L1 is covered instead",
+   "day": 21,
+   "allocation": {
+    "beds": {
+     "cardiology": 25,
+     "internal_medicine": 40,
+     "neurology": 16,
+     "orthopedics": 15
+    },
+    "nurses": {
+     "cardiology": 11,
+     "internal_medicine": 15,
+     "neurology": 9,
+     "orthopedics": 2
+    }
+   },
+   "quantity": {
+    "name": "shortage",
+    "departments": [
+     "internal_medicine"
+    ],
+    "levels": [
+     1
+    ]
+   },
+   "relation": "eq",
+   "value": 0,
+   "category": "nurse_coverage",
+   "basis": "derived",
+   "rubric_term": "covered"
+  },
+  {
+   "id": "R1-D21-34",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "it totals 100 beds against a pool of 96",
+   "day": 21,
+   "allocation": {
+    "in_effect": 20
+   },
+   "quantity": {
+    "name": "beds"
+   },
+   "relation": "eq",
+   "value": 100,
+   "category": "beds",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D21-35",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "reasons",
+   "text": "the 3 spare beds go to",
+   "day": 21,
+   "allocation": {
+    "decided": 21
+   },
+   "quantity": {
+    "name": "spare_beds"
+   },
+   "relation": "eq",
+   "value": 3,
+   "category": "empty_beds",
+   "basis": "derived",
+   "rubric_term": "spare",
+   "alternative_reading": {
+    "quantity": {
+     "name": "empty_beds"
+    }
+   }
+  },
+  {
+   "id": "R1-D21-36",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "reasons",
+   "text": "cardiology (+1), neurology (+1) and orthopedics (+2)",
+   "day": 21,
+   "allocation": {
+    "decided": 21
+   },
+   "quantity": {
+    "name": "spare_beds",
+    "departments": [
+     "cardiology"
+    ]
+   },
+   "relation": "eq",
+   "value": 1,
+   "category": "empty_beds",
+   "basis": "derived",
+   "rubric_term": "spare",
+   "alternative_reading": {
+    "quantity": {
+     "name": "empty_beds",
+     "departments": [
+      "cardiology"
+     ]
+    }
+   }
+  },
+  {
+   "id": "R1-D21-37",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "reasons",
+   "text": "cardiology (+1), neurology (+1) and orthopedics (+2)",
+   "day": 21,
+   "allocation": {
+    "decided": 21
+   },
+   "quantity": {
+    "name": "spare_beds",
+    "departments": [
+     "neurology"
+    ]
+   },
+   "relation": "eq",
+   "value": 1,
+   "category": "empty_beds",
+   "basis": "derived",
+   "rubric_term": "spare",
+   "alternative_reading": {
+    "quantity": {
+     "name": "empty_beds",
+     "departments": [
+      "neurology"
+     ]
+    }
+   }
+  },
+  {
+   "id": "R1-D21-38",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "reasons",
+   "text": "cardiology (+1), neurology (+1) and orthopedics (+2)",
+   "day": 21,
+   "allocation": {
+    "decided": 21
+   },
+   "quantity": {
+    "name": "spare_beds",
+    "departments": [
+     "orthopedics"
+    ]
+   },
+   "relation": "eq",
+   "value": 2,
+   "category": "empty_beds",
+   "basis": "derived",
+   "rubric_term": "spare",
+   "alternative_reading": {
+    "quantity": {
+     "name": "empty_beds",
+     "departments": [
+      "orthopedics"
+     ]
+    }
+   }
+  },
+  {
+   "id": "R1-D21-39",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "tradeoffs",
+   "text": "about 2 nurse-equivalents of L1 coverage unmet",
+   "day": 21,
+   "allocation": {
+    "decided": 21
+   },
+   "quantity": {
+    "name": "shortage",
+    "levels": [
+     1
+    ]
+   },
+   "relation": "round",
+   "value": 2,
+   "category": "nurse_coverage",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D22-01",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "no external pool change (beds 96",
+   "day": 22,
+   "allocation": null,
+   "quantity": {
+    "name": "pool_beds"
+   },
+   "relation": "eq",
+   "value": 96,
+   "category": "pool",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D22-02",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "nurses 37)",
+   "day": 22,
+   "allocation": null,
+   "quantity": {
+    "name": "pool_nurses"
+   },
+   "relation": "eq",
+   "value": 37,
+   "category": "pool",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D22-03",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "orthopedics short 2 nurses (shortage 0.6 L1",
+   "day": 22,
+   "allocation": {
+    "in_effect": 21
+   },
+   "quantity": {
+    "name": "shortage",
+    "departments": [
+     "orthopedics"
+    ],
+    "levels": [
+     1
+    ]
+   },
+   "relation": "round",
+   "value": 0.6,
+   "category": "nurse_coverage",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D22-04",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "and 0.8 L2 in simulation)",
+   "day": 22,
+   "allocation": {
+    "in_effect": 21
+   },
+   "quantity": {
+    "name": "shortage",
+    "departments": [
+     "orthopedics"
+    ],
+    "levels": [
+     2
+    ]
+   },
+   "relation": "round",
+   "value": 0.8,
+   "category": "nurse_coverage",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D22-05",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "8 patients are waiting for a bed",
+   "day": 22,
+   "allocation": null,
+   "quantity": {
+    "name": "queue"
+   },
+   "relation": "eq",
+   "value": 8,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D22-06",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "4 L3",
+   "day": 22,
+   "allocation": null,
+   "quantity": {
+    "name": "queue",
+    "levels": [
+     3
+    ]
+   },
+   "relation": "eq",
+   "value": 4,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D22-07",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "2 L2",
+   "day": 22,
+   "allocation": null,
+   "quantity": {
+    "name": "queue",
+    "levels": [
+     2
+    ]
+   },
+   "relation": "eq",
+   "value": 2,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D22-08",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "2 L1",
+   "day": 22,
+   "allocation": null,
+   "quantity": {
+    "name": "queue",
+    "levels": [
+     1
+    ]
+   },
+   "relation": "eq",
+   "value": 2,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D22-09",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "and one L1 in IM has waited 1 day",
+   "day": 22,
+   "allocation": null,
+   "quantity": {
+    "name": "queue",
+    "departments": [
+     "internal_medicine"
+    ],
+    "levels": [
+     1
+    ]
+   },
+   "relation": "eq",
+   "value": 1,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null,
+   "note": "count of IM level 1 patients waiting; the 1 day waited is a patient attribute (outside the universe)"
+  },
+  {
+   "id": "R1-D22-10",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Occupied beds CA 20, IM 29, NE 14, OR 7",
+   "day": 22,
+   "allocation": null,
+   "quantity": {
+    "name": "holders",
+    "departments": [
+     "cardiology"
+    ]
+   },
+   "relation": "eq",
+   "value": 20,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D22-11",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Occupied beds CA 20, IM 29, NE 14, OR 7",
+   "day": 22,
+   "allocation": null,
+   "quantity": {
+    "name": "holders",
+    "departments": [
+     "internal_medicine"
+    ]
+   },
+   "relation": "eq",
+   "value": 29,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D22-12",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Occupied beds CA 20, IM 29, NE 14, OR 7",
+   "day": 22,
+   "allocation": null,
+   "quantity": {
+    "name": "holders",
+    "departments": [
+     "neurology"
+    ]
+   },
+   "relation": "eq",
+   "value": 14,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D22-13",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Occupied beds CA 20, IM 29, NE 14, OR 7",
+   "day": 22,
+   "allocation": null,
+   "quantity": {
+    "name": "holders",
+    "departments": [
+     "orthopedics"
+    ]
+   },
+   "relation": "eq",
+   "value": 7,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D22-14",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "(total 70, no shock)",
+   "day": 22,
+   "allocation": null,
+   "quantity": {
+    "name": "holders"
+   },
+   "relation": "eq",
+   "value": 70,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D22-15",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "A) Keep the current allocation (CA 25, IM 40, NE 16, OR 15",
+   "day": 22,
+   "allocation": {
+    "in_effect": 21
+   },
+   "quantity": {
+    "name": "beds",
+    "departments": [
+     "cardiology"
+    ]
+   },
+   "relation": "eq",
+   "value": 25,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D22-16",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "A) Keep the current allocation (CA 25, IM 40, NE 16, OR 15",
+   "day": 22,
+   "allocation": {
+    "in_effect": 21
+   },
+   "quantity": {
+    "name": "beds",
+    "departments": [
+     "internal_medicine"
+    ]
+   },
+   "relation": "eq",
+   "value": 40,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D22-17",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "A) Keep the current allocation (CA 25, IM 40, NE 16, OR 15",
+   "day": 22,
+   "allocation": {
+    "in_effect": 21
+   },
+   "quantity": {
+    "name": "beds",
+    "departments": [
+     "neurology"
+    ]
+   },
+   "relation": "eq",
+   "value": 16,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D22-18",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "A) Keep the current allocation (CA 25, IM 40, NE 16, OR 15",
+   "day": 22,
+   "allocation": {
+    "in_effect": 21
+   },
+   "quantity": {
+    "name": "beds",
+    "departments": [
+     "orthopedics"
+    ]
+   },
+   "relation": "eq",
+   "value": 15,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D22-19",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "nurses 11/14/9/3)",
+   "day": 22,
+   "allocation": {
+    "in_effect": 21
+   },
+   "quantity": {
+    "name": "nurses",
+    "departments": [
+     "cardiology"
+    ]
+   },
+   "relation": "eq",
+   "value": 11,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D22-20",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "nurses 11/14/9/3)",
+   "day": 22,
+   "allocation": {
+    "in_effect": 21
+   },
+   "quantity": {
+    "name": "nurses",
+    "departments": [
+     "internal_medicine"
+    ]
+   },
+   "relation": "eq",
+   "value": 14,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D22-21",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "nurses 11/14/9/3)",
+   "day": 22,
+   "allocation": {
+    "in_effect": 21
+   },
+   "quantity": {
+    "name": "nurses",
+    "departments": [
+     "neurology"
+    ]
+   },
+   "relation": "eq",
+   "value": 9,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D22-22",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "nurses 11/14/9/3)",
+   "day": 22,
+   "allocation": {
+    "in_effect": 21
+   },
+   "quantity": {
+    "name": "nurses",
+    "departments": [
+     "orthopedics"
+    ]
+   },
+   "relation": "eq",
+   "value": 3,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D22-23",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "Zero bed overflow",
+   "day": 22,
+   "allocation": {
+    "in_effect": 21
+   },
+   "quantity": {
+    "name": "overflow"
+   },
+   "relation": "eq",
+   "value": 0,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D22-24",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "B) Chosen: ... Zero overflow at every level",
+   "day": 22,
+   "allocation": {
+    "decided": 22
+   },
+   "quantity": {
+    "name": "overflow"
+   },
+   "relation": "eq",
+   "value": 0,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D22-25",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "and zero nurse shortage at every level",
+   "day": 22,
+   "allocation": {
+    "decided": 22
+   },
+   "quantity": {
+    "name": "shortage"
+   },
+   "relation": "eq",
+   "value": 0,
+   "category": "nurse_coverage",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D22-26",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "reasons",
+   "text": "Beds above census (18 spare)",
+   "day": 22,
+   "allocation": {
+    "decided": 22
+   },
+   "quantity": {
+    "name": "empty_beds"
+   },
+   "relation": "eq",
+   "value": 18,
+   "category": "empty_beds",
+   "basis": "derived",
+   "rubric_term": null,
+   "note": "qualified 'above census'"
+  },
+  {
+   "id": "R1-D22-27",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "tradeoffs",
+   "text": "IM keeps 6 spare beds",
+   "day": 22,
+   "allocation": {
+    "decided": 22
+   },
+   "quantity": {
+    "name": "spare_beds",
+    "departments": [
+     "internal_medicine"
+    ]
+   },
+   "relation": "eq",
+   "value": 6,
+   "category": "empty_beds",
+   "basis": "derived",
+   "rubric_term": "spare",
+   "alternative_reading": {
+    "quantity": {
+     "name": "empty_beds",
+     "departments": [
+      "internal_medicine"
+     ]
+    }
+   }
+  },
+  {
+   "id": "R1-D22-28",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "tradeoffs",
+   "text": "Spare beds elsewhere are small (CA 3, NE 3, OR 6)",
+   "day": 22,
+   "allocation": {
+    "decided": 22
+   },
+   "quantity": {
+    "name": "spare_beds",
+    "departments": [
+     "cardiology"
+    ]
+   },
+   "relation": "eq",
+   "value": 3,
+   "category": "empty_beds",
+   "basis": "derived",
+   "rubric_term": "spare",
+   "alternative_reading": {
+    "quantity": {
+     "name": "empty_beds",
+     "departments": [
+      "cardiology"
+     ]
+    }
+   }
+  },
+  {
+   "id": "R1-D22-29",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "tradeoffs",
+   "text": "Spare beds elsewhere are small (CA 3, NE 3, OR 6)",
+   "day": 22,
+   "allocation": {
+    "decided": 22
+   },
+   "quantity": {
+    "name": "spare_beds",
+    "departments": [
+     "neurology"
+    ]
+   },
+   "relation": "eq",
+   "value": 3,
+   "category": "empty_beds",
+   "basis": "derived",
+   "rubric_term": "spare",
+   "alternative_reading": {
+    "quantity": {
+     "name": "empty_beds",
+     "departments": [
+      "neurology"
+     ]
+    }
+   }
+  },
+  {
+   "id": "R1-D22-30",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "tradeoffs",
+   "text": "Spare beds elsewhere are small (CA 3, NE 3, OR 6)",
+   "day": 22,
+   "allocation": {
+    "decided": 22
+   },
+   "quantity": {
+    "name": "spare_beds",
+    "departments": [
+     "orthopedics"
+    ]
+   },
+   "relation": "eq",
+   "value": 6,
+   "category": "empty_beds",
+   "basis": "derived",
+   "rubric_term": "spare",
+   "alternative_reading": {
+    "quantity": {
+     "name": "empty_beds",
+     "departments": [
+      "orthopedics"
+     ]
+    }
+   }
+  },
+  {
+   "id": "R1-D23-01",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "The bed pool fell externally by 10 (96",
+   "day": 22,
+   "allocation": null,
+   "quantity": {
+    "name": "pool_beds"
+   },
+   "relation": "eq",
+   "value": 96,
+   "category": "pool",
+   "basis": "derived",
+   "rubric_term": null,
+   "note": "past value: end of the previous day (item 2)"
+  },
+  {
+   "id": "R1-D23-02",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "to 86)",
+   "day": 23,
+   "allocation": null,
+   "quantity": {
+    "name": "pool_beds"
+   },
+   "relation": "eq",
+   "value": 86,
+   "category": "pool",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D23-03",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "the nurse pool is unchanged at 37",
+   "day": 23,
+   "allocation": null,
+   "quantity": {
+    "name": "pool_nurses"
+   },
+   "relation": "eq",
+   "value": 37,
+   "category": "pool",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D23-04",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "Occupied beds total 62",
+   "day": 23,
+   "allocation": null,
+   "quantity": {
+    "name": "holders"
+   },
+   "relation": "eq",
+   "value": 62,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D23-05",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "The previous allocation (24/37/18/17)",
+   "day": 23,
+   "allocation": {
+    "in_effect": 22
+   },
+   "quantity": {
+    "name": "beds",
+    "departments": [
+     "cardiology"
+    ]
+   },
+   "relation": "eq",
+   "value": 24,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D23-06",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "The previous allocation (24/37/18/17)",
+   "day": 23,
+   "allocation": {
+    "in_effect": 22
+   },
+   "quantity": {
+    "name": "beds",
+    "departments": [
+     "internal_medicine"
+    ]
+   },
+   "relation": "eq",
+   "value": 37,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D23-07",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "The previous allocation (24/37/18/17)",
+   "day": 23,
+   "allocation": {
+    "in_effect": 22
+   },
+   "quantity": {
+    "name": "beds",
+    "departments": [
+     "neurology"
+    ]
+   },
+   "relation": "eq",
+   "value": 18,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D23-08",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "The previous allocation (24/37/18/17)",
+   "day": 23,
+   "allocation": {
+    "in_effect": 22
+   },
+   "quantity": {
+    "name": "beds",
+    "departments": [
+     "orthopedics"
+    ]
+   },
+   "relation": "eq",
+   "value": 17,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D23-09",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "is not feasible because it sums to 96",
+   "day": 23,
+   "allocation": {
+    "in_effect": 22
+   },
+   "quantity": {
+    "name": "beds"
+   },
+   "relation": "eq",
+   "value": 96,
+   "category": "beds",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D23-10",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Occupied beds: cardiology 17, internal medicine 24, neurology 12, orthopedics 9",
+   "day": 23,
+   "allocation": null,
+   "quantity": {
+    "name": "holders",
+    "departments": [
+     "cardiology"
+    ]
+   },
+   "relation": "eq",
+   "value": 17,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D23-11",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Occupied beds: cardiology 17, internal medicine 24, neurology 12, orthopedics 9",
+   "day": 23,
+   "allocation": null,
+   "quantity": {
+    "name": "holders",
+    "departments": [
+     "internal_medicine"
+    ]
+   },
+   "relation": "eq",
+   "value": 24,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D23-12",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Occupied beds: cardiology 17, internal medicine 24, neurology 12, orthopedics 9",
+   "day": 23,
+   "allocation": null,
+   "quantity": {
+    "name": "holders",
+    "departments": [
+     "neurology"
+    ]
+   },
+   "relation": "eq",
+   "value": 12,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D23-13",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Occupied beds: cardiology 17, internal medicine 24, neurology 12, orthopedics 9",
+   "day": 23,
+   "allocation": null,
+   "quantity": {
+    "name": "holders",
+    "departments": [
+     "orthopedics"
+    ]
+   },
+   "relation": "eq",
+   "value": 9,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D23-14",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "The overflow queue has 17 patients",
+   "day": 23,
+   "allocation": null,
+   "quantity": {
+    "name": "queue"
+   },
+   "relation": "eq",
+   "value": 17,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D23-15",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "A) ... Simulated: valid, zero overflow at every level",
+   "day": 23,
+   "allocation": {
+    "decided": 23
+   },
+   "quantity": {
+    "name": "overflow"
+   },
+   "relation": "eq",
+   "value": 0,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D23-16",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "zero nurse shortage",
+   "day": 23,
+   "allocation": {
+    "decided": 23
+   },
+   "quantity": {
+    "name": "shortage"
+   },
+   "relation": "eq",
+   "value": 0,
+   "category": "nurse_coverage",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D23-17",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "It also leaves 7 orthopedics patients in overflow",
+   "day": 23,
+   "allocation": null,
+   "quantity": null,
+   "relation": null,
+   "value": null,
+   "category": "overflow",
+   "basis": "copied",
+   "rubric_term": null,
+   "note": "intended: overflow O under B eq 7; alternative B fails validation (EVICTION): unverifiable (item 2)"
+  },
+  {
+   "id": "R1-D23-18",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "including 3 level-2 patients",
+   "day": 23,
+   "allocation": null,
+   "quantity": null,
+   "relation": null,
+   "value": null,
+   "category": "overflow",
+   "basis": "copied",
+   "rubric_term": null,
+   "note": "intended: overflow O L2 under B eq 3; alternative B fails validation (EVICTION): unverifiable (item 2)"
+  },
+  {
+   "id": "R1-D23-19",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "and some level-1 nurse shortage",
+   "day": 23,
+   "allocation": null,
+   "quantity": null,
+   "relation": null,
+   "value": null,
+   "category": "nurse_coverage",
+   "basis": "derived",
+   "rubric_term": null,
+   "note": "intended: shortage L1 under B > 0; alternative B fails validation (EVICTION): unverifiable (item 2); also a vague qualifier ('some')"
+  },
+  {
+   "id": "R1-D23-20",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "reasons",
+   "text": "beds equal census in each department (19/32/14/14) plus 7 spare beds",
+   "day": 23,
+   "allocation": {
+    "decided": 23
+   },
+   "quantity": {
+    "name": "empty_beds"
+   },
+   "relation": "eq",
+   "value": 7,
+   "category": "empty_beds",
+   "basis": "derived",
+   "rubric_term": null,
+   "note": "qualified: 'census ... plus 7 spare' states the reading (beds above census)"
+  },
+  {
+   "id": "R1-D23-21",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "reasons",
+   "text": "spread by recent arrival rates: internal medicine +3, orthopedics +2, cardiology +1, neurology +1",
+   "day": 23,
+   "allocation": {
+    "decided": 23
+   },
+   "quantity": {
+    "name": "empty_beds",
+    "departments": [
+     "cardiology"
+    ]
+   },
+   "relation": "eq",
+   "value": 1,
+   "category": "empty_beds",
+   "basis": "derived",
+   "rubric_term": null,
+   "note": "qualified as the 7 spare beds above census of the same sentence"
+  },
+  {
+   "id": "R1-D23-22",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "reasons",
+   "text": "spread by recent arrival rates: internal medicine +3, orthopedics +2, cardiology +1, neurology +1",
+   "day": 23,
+   "allocation": {
+    "decided": 23
+   },
+   "quantity": {
+    "name": "empty_beds",
+    "departments": [
+     "internal_medicine"
+    ]
+   },
+   "relation": "eq",
+   "value": 3,
+   "category": "empty_beds",
+   "basis": "derived",
+   "rubric_term": null,
+   "note": "qualified as the 7 spare beds above census of the same sentence"
+  },
+  {
+   "id": "R1-D23-23",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "reasons",
+   "text": "spread by recent arrival rates: internal medicine +3, orthopedics +2, cardiology +1, neurology +1",
+   "day": 23,
+   "allocation": {
+    "decided": 23
+   },
+   "quantity": {
+    "name": "empty_beds",
+    "departments": [
+     "neurology"
+    ]
+   },
+   "relation": "eq",
+   "value": 1,
+   "category": "empty_beds",
+   "basis": "derived",
+   "rubric_term": null,
+   "note": "qualified as the 7 spare beds above census of the same sentence"
+  },
+  {
+   "id": "R1-D23-24",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "reasons",
+   "text": "spread by recent arrival rates: internal medicine +3, orthopedics +2, cardiology +1, neurology +1",
+   "day": 23,
+   "allocation": {
+    "decided": 23
+   },
+   "quantity": {
+    "name": "empty_beds",
+    "departments": [
+     "orthopedics"
+    ]
+   },
+   "relation": "eq",
+   "value": 2,
+   "category": "empty_beds",
+   "basis": "derived",
+   "rubric_term": null,
+   "note": "qualified as the 7 spare beds above census of the same sentence"
+  },
+  {
+   "id": "R1-D24-01",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "no external pool change (beds 86",
+   "day": 24,
+   "allocation": null,
+   "quantity": {
+    "name": "pool_beds"
+   },
+   "relation": "eq",
+   "value": 86,
+   "category": "pool",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D24-02",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "nurses 37)",
+   "day": 24,
+   "allocation": null,
+   "quantity": {
+    "name": "pool_nurses"
+   },
+   "relation": "eq",
+   "value": 37,
+   "category": "pool",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D24-03",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "The current allocation (cards 20, IM 35, neuro 15, ortho 16 beds)",
+   "day": 24,
+   "allocation": {
+    "in_effect": 23
+   },
+   "quantity": {
+    "name": "beds",
+    "departments": [
+     "cardiology"
+    ]
+   },
+   "relation": "eq",
+   "value": 20,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D24-04",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "The current allocation (cards 20, IM 35, neuro 15, ortho 16 beds)",
+   "day": 24,
+   "allocation": {
+    "in_effect": 23
+   },
+   "quantity": {
+    "name": "beds",
+    "departments": [
+     "internal_medicine"
+    ]
+   },
+   "relation": "eq",
+   "value": 35,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D24-05",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "The current allocation (cards 20, IM 35, neuro 15, ortho 16 beds)",
+   "day": 24,
+   "allocation": {
+    "in_effect": 23
+   },
+   "quantity": {
+    "name": "beds",
+    "departments": [
+     "neurology"
+    ]
+   },
+   "relation": "eq",
+   "value": 15,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D24-06",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "The current allocation (cards 20, IM 35, neuro 15, ortho 16 beds)",
+   "day": 24,
+   "allocation": {
+    "in_effect": 23
+   },
+   "quantity": {
+    "name": "beds",
+    "departments": [
+     "orthopedics"
+    ]
+   },
+   "relation": "eq",
+   "value": 16,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D24-07",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "while IM has 8 surplus beds",
+   "day": 24,
+   "allocation": {
+    "in_effect": 23
+   },
+   "quantity": {
+    "name": "empty_beds",
+    "departments": [
+     "internal_medicine"
+    ]
+   },
+   "relation": "eq",
+   "value": 8,
+   "category": "empty_beds",
+   "basis": "derived",
+   "rubric_term": "surplus",
+   "note": "'surplus' is not a rubric term; read against census, as the sentence compares census and beds (beds minus patients placed), no rival reading"
+  },
+  {
+   "id": "R1-D24-08",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "and ortho 2",
+   "day": 24,
+   "allocation": {
+    "in_effect": 23
+   },
+   "quantity": {
+    "name": "empty_beds",
+    "departments": [
+     "orthopedics"
+    ]
+   },
+   "relation": "eq",
+   "value": 2,
+   "category": "empty_beds",
+   "basis": "derived",
+   "rubric_term": "surplus",
+   "note": "as the IM figure"
+  },
+  {
+   "id": "R1-D24-09",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Occupied beds are 17, 21, 13 and 10",
+   "day": 24,
+   "allocation": null,
+   "quantity": {
+    "name": "holders",
+    "departments": [
+     "cardiology"
+    ]
+   },
+   "relation": "eq",
+   "value": 17,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D24-10",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Occupied beds are 17, 21, 13 and 10",
+   "day": 24,
+   "allocation": null,
+   "quantity": {
+    "name": "holders",
+    "departments": [
+     "internal_medicine"
+    ]
+   },
+   "relation": "eq",
+   "value": 21,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D24-11",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Occupied beds are 17, 21, 13 and 10",
+   "day": 24,
+   "allocation": null,
+   "quantity": {
+    "name": "holders",
+    "departments": [
+     "neurology"
+    ]
+   },
+   "relation": "eq",
+   "value": 13,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D24-12",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Occupied beds are 17, 21, 13 and 10",
+   "day": 24,
+   "allocation": null,
+   "quantity": {
+    "name": "holders",
+    "departments": [
+     "orthopedics"
+    ]
+   },
+   "relation": "eq",
+   "value": 10,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D24-13",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "total 61",
+   "day": 24,
+   "allocation": null,
+   "quantity": {
+    "name": "holders"
+   },
+   "relation": "eq",
+   "value": 61,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D24-14",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "The overflow queue has 20 patients",
+   "day": 24,
+   "allocation": null,
+   "quantity": {
+    "name": "queue"
+   },
+   "relation": "eq",
+   "value": 20,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D24-15",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Current allocation simulation: overflow of 1 L3",
+   "day": 24,
+   "allocation": {
+    "in_effect": 23
+   },
+   "quantity": {
+    "name": "overflow",
+    "departments": [
+     "cardiology"
+    ],
+    "levels": [
+     3
+    ]
+   },
+   "relation": "eq",
+   "value": 1,
+   "category": "overflow",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D24-16",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "and 3 L2 in cardiology",
+   "day": 24,
+   "allocation": {
+    "in_effect": 23
+   },
+   "quantity": {
+    "name": "overflow",
+    "departments": [
+     "cardiology"
+    ],
+    "levels": [
+     2
+    ]
+   },
+   "relation": "eq",
+   "value": 3,
+   "category": "overflow",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D24-17",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "and 1 L1 in neurology",
+   "day": 24,
+   "allocation": {
+    "in_effect": 23
+   },
+   "quantity": {
+    "name": "overflow",
+    "departments": [
+     "neurology"
+    ],
+    "levels": [
+     1
+    ]
+   },
+   "relation": "eq",
+   "value": 1,
+   "category": "overflow",
+   "basis": "copied",
+   "rubric_term": null,
+   "note": "alternatives A repeats these three figures; 'plus nurse shortages in cardiology and neurology' is extracted with A's figures"
+  },
+  {
+   "id": "R1-D24-18",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "nurse shortage of 1.95 L2 and 0.4 L1 in cardiology and 0.5 L2 and 0.2 L1 in neurology",
+   "day": 24,
+   "allocation": {
+    "in_effect": 23
+   },
+   "quantity": {
+    "name": "shortage",
+    "departments": [
+     "cardiology"
+    ],
+    "levels": [
+     2
+    ]
+   },
+   "relation": "round",
+   "value": 1.95,
+   "category": "nurse_coverage",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D24-19",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "nurse shortage of 1.95 L2 and 0.4 L1 in cardiology and 0.5 L2 and 0.2 L1 in neurology",
+   "day": 24,
+   "allocation": {
+    "in_effect": 23
+   },
+   "quantity": {
+    "name": "shortage",
+    "departments": [
+     "cardiology"
+    ],
+    "levels": [
+     1
+    ]
+   },
+   "relation": "round",
+   "value": 0.4,
+   "category": "nurse_coverage",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D24-20",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "nurse shortage of 1.95 L2 and 0.4 L1 in cardiology and 0.5 L2 and 0.2 L1 in neurology",
+   "day": 24,
+   "allocation": {
+    "in_effect": 23
+   },
+   "quantity": {
+    "name": "shortage",
+    "departments": [
+     "neurology"
+    ],
+    "levels": [
+     2
+    ]
+   },
+   "relation": "round",
+   "value": 0.5,
+   "category": "nurse_coverage",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D24-21",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "nurse shortage of 1.95 L2 and 0.4 L1 in cardiology and 0.5 L2 and 0.2 L1 in neurology",
+   "day": 24,
+   "allocation": {
+    "in_effect": 23
+   },
+   "quantity": {
+    "name": "shortage",
+    "departments": [
+     "neurology"
+    ],
+    "levels": [
+     1
+    ]
+   },
+   "relation": "round",
+   "value": 0.2,
+   "category": "nurse_coverage",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D24-22",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "B) Chosen: ... Simulated overflow is zero",
+   "day": 24,
+   "allocation": {
+    "decided": 24
+   },
+   "quantity": {
+    "name": "overflow"
+   },
+   "relation": "eq",
+   "value": 0,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D24-23",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "and nurse shortage is zero in every department and level",
+   "day": 24,
+   "allocation": {
+    "decided": 24
+   },
+   "quantity": {
+    "name": "shortage"
+   },
+   "relation": "eq",
+   "value": 0,
+   "category": "nurse_coverage",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D24-24",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "reasons",
+   "text": "beds match census with 5 spare beds",
+   "day": 24,
+   "allocation": {
+    "decided": 24
+   },
+   "quantity": {
+    "name": "empty_beds"
+   },
+   "relation": "eq",
+   "value": 5,
+   "category": "empty_beds",
+   "basis": "derived",
+   "rubric_term": null,
+   "note": "qualified: 'match census with 5 spare' states the reading (beds above census)"
+  },
+  {
+   "id": "R1-D24-25",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "reasons",
+   "text": "2 in cardiology ..., and 1 each in IM, neurology and ortho",
+   "day": 24,
+   "allocation": {
+    "decided": 24
+   },
+   "quantity": {
+    "name": "empty_beds",
+    "departments": [
+     "cardiology"
+    ]
+   },
+   "relation": "eq",
+   "value": 2,
+   "category": "empty_beds",
+   "basis": "derived",
+   "rubric_term": null,
+   "note": "qualified as the 5 spare beds above census of the same sentence"
+  },
+  {
+   "id": "R1-D24-26",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "reasons",
+   "text": "2 in cardiology ..., and 1 each in IM, neurology and ortho",
+   "day": 24,
+   "allocation": {
+    "decided": 24
+   },
+   "quantity": {
+    "name": "empty_beds",
+    "departments": [
+     "internal_medicine"
+    ]
+   },
+   "relation": "eq",
+   "value": 1,
+   "category": "empty_beds",
+   "basis": "derived",
+   "rubric_term": null,
+   "note": "qualified as the 5 spare beds above census of the same sentence"
+  },
+  {
+   "id": "R1-D24-27",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "reasons",
+   "text": "2 in cardiology ..., and 1 each in IM, neurology and ortho",
+   "day": 24,
+   "allocation": {
+    "decided": 24
+   },
+   "quantity": {
+    "name": "empty_beds",
+    "departments": [
+     "neurology"
+    ]
+   },
+   "relation": "eq",
+   "value": 1,
+   "category": "empty_beds",
+   "basis": "derived",
+   "rubric_term": null,
+   "note": "qualified as the 5 spare beds above census of the same sentence"
+  },
+  {
+   "id": "R1-D24-28",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "reasons",
+   "text": "2 in cardiology ..., and 1 each in IM, neurology and ortho",
+   "day": 24,
+   "allocation": {
+    "decided": 24
+   },
+   "quantity": {
+    "name": "empty_beds",
+    "departments": [
+     "orthopedics"
+    ]
+   },
+   "relation": "eq",
+   "value": 1,
+   "category": "empty_beds",
+   "basis": "derived",
+   "rubric_term": null,
+   "note": "qualified as the 5 spare beds above census of the same sentence"
+  },
+  {
+   "id": "R1-D25-01",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "No external pool change (beds 86",
+   "day": 25,
+   "allocation": null,
+   "quantity": {
+    "name": "pool_beds"
+   },
+   "relation": "eq",
+   "value": 86,
+   "category": "pool",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D25-02",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "nurses 37)",
+   "day": 25,
+   "allocation": null,
+   "quantity": {
+    "name": "pool_nurses"
+   },
+   "relation": "eq",
+   "value": 37,
+   "category": "pool",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D25-03",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "69 beds are occupied",
+   "day": 25,
+   "allocation": null,
+   "quantity": {
+    "name": "holders"
+   },
+   "relation": "eq",
+   "value": 69,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D25-04",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "That leaves 17 free beds",
+   "day": 25,
+   "allocation": null,
+   "quantity": {
+    "name": "free_beds"
+   },
+   "relation": "eq",
+   "value": 17,
+   "category": "pool",
+   "basis": "derived",
+   "rubric_term": "free",
+   "alternative_reading": {
+    "quantity": {
+     "name": "empty_beds"
+    },
+    "allocation": {
+     "decided": 25
+    }
+   }
+  },
+  {
+   "id": "R1-D25-05",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "for 27 waiting patients",
+   "day": 25,
+   "allocation": null,
+   "quantity": {
+    "name": "queue"
+   },
+   "relation": "eq",
+   "value": 27,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D25-06",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "The current allocation leaves 3 level-2 patients waiting in neurology",
+   "day": 25,
+   "allocation": {
+    "in_effect": 24
+   },
+   "quantity": {
+    "name": "overflow",
+    "departments": [
+     "neurology"
+    ],
+    "levels": [
+     2
+    ]
+   },
+   "relation": "eq",
+   "value": 3,
+   "category": "overflow",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D25-07",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "and 1 in internal medicine",
+   "day": 25,
+   "allocation": {
+    "in_effect": 24
+   },
+   "quantity": {
+    "name": "overflow",
+    "departments": [
+     "internal_medicine"
+    ],
+    "levels": [
+     2
+    ]
+   },
+   "relation": "eq",
+   "value": 1,
+   "category": "overflow",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D25-08",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "situation",
+   "text": "while cardiology holds spare beds for level-1 patients",
+   "day": 25,
+   "allocation": {
+    "in_effect": 24
+   },
+   "quantity": {
+    "name": "spare_beds",
+    "departments": [
+     "cardiology"
+    ]
+   },
+   "relation": "ge",
+   "value": 1,
+   "category": "empty_beds",
+   "basis": "derived",
+   "rubric_term": "spare",
+   "alternative_reading": {
+    "quantity": {
+     "name": "empty_beds",
+     "departments": [
+      "cardiology"
+     ]
+    }
+   }
+  },
+  {
+   "id": "R1-D25-09",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Occupied beds: cardiology 19, internal medicine 24, neurology 15, orthopedics 11",
+   "day": 25,
+   "allocation": null,
+   "quantity": {
+    "name": "holders",
+    "departments": [
+     "cardiology"
+    ]
+   },
+   "relation": "eq",
+   "value": 19,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D25-10",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Occupied beds: cardiology 19, internal medicine 24, neurology 15, orthopedics 11",
+   "day": 25,
+   "allocation": null,
+   "quantity": {
+    "name": "holders",
+    "departments": [
+     "internal_medicine"
+    ]
+   },
+   "relation": "eq",
+   "value": 24,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D25-11",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Occupied beds: cardiology 19, internal medicine 24, neurology 15, orthopedics 11",
+   "day": 25,
+   "allocation": null,
+   "quantity": {
+    "name": "holders",
+    "departments": [
+     "neurology"
+    ]
+   },
+   "relation": "eq",
+   "value": 15,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D25-12",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Occupied beds: cardiology 19, internal medicine 24, neurology 15, orthopedics 11",
+   "day": 25,
+   "allocation": null,
+   "quantity": {
+    "name": "holders",
+    "departments": [
+     "orthopedics"
+    ]
+   },
+   "relation": "eq",
+   "value": 11,
+   "category": "beds",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D25-13",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Overflow queue: level 3 is 3 in cardiology",
+   "day": 25,
+   "allocation": null,
+   "quantity": {
+    "name": "queue",
+    "departments": [
+     "cardiology"
+    ],
+    "levels": [
+     3
+    ]
+   },
+   "relation": "eq",
+   "value": 3,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D25-14",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Level 2 is 2 in cardiology, 5 in internal medicine, 5 in neurology and 3 in orthopedics",
+   "day": 25,
+   "allocation": null,
+   "quantity": {
+    "name": "queue",
+    "departments": [
+     "cardiology"
+    ],
+    "levels": [
+     2
+    ]
+   },
+   "relation": "eq",
+   "value": 2,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D25-15",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Level 2 is 2 in cardiology, 5 in internal medicine, 5 in neurology and 3 in orthopedics",
+   "day": 25,
+   "allocation": null,
+   "quantity": {
+    "name": "queue",
+    "departments": [
+     "internal_medicine"
+    ],
+    "levels": [
+     2
+    ]
+   },
+   "relation": "eq",
+   "value": 5,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D25-16",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Level 2 is 2 in cardiology, 5 in internal medicine, 5 in neurology and 3 in orthopedics",
+   "day": 25,
+   "allocation": null,
+   "quantity": {
+    "name": "queue",
+    "departments": [
+     "neurology"
+    ],
+    "levels": [
+     2
+    ]
+   },
+   "relation": "eq",
+   "value": 5,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D25-17",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Level 2 is 2 in cardiology, 5 in internal medicine, 5 in neurology and 3 in orthopedics",
+   "day": 25,
+   "allocation": null,
+   "quantity": {
+    "name": "queue",
+    "departments": [
+     "orthopedics"
+    ],
+    "levels": [
+     2
+    ]
+   },
+   "relation": "eq",
+   "value": 3,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D25-18",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "15 in total",
+   "day": 25,
+   "allocation": null,
+   "quantity": {
+    "name": "queue",
+    "levels": [
+     2
+    ]
+   },
+   "relation": "eq",
+   "value": 15,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D25-19",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Level 1 is 2 in cardiology, 3 in internal medicine and 4 in orthopedics",
+   "day": 25,
+   "allocation": null,
+   "quantity": {
+    "name": "queue",
+    "departments": [
+     "cardiology"
+    ],
+    "levels": [
+     1
+    ]
+   },
+   "relation": "eq",
+   "value": 2,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D25-20",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Level 1 is 2 in cardiology, 3 in internal medicine and 4 in orthopedics",
+   "day": 25,
+   "allocation": null,
+   "quantity": {
+    "name": "queue",
+    "departments": [
+     "internal_medicine"
+    ],
+    "levels": [
+     1
+    ]
+   },
+   "relation": "eq",
+   "value": 3,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D25-21",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "information_used",
+   "text": "Level 1 is 2 in cardiology, 3 in internal medicine and 4 in orthopedics",
+   "day": 25,
+   "allocation": null,
+   "quantity": {
+    "name": "queue",
+    "departments": [
+     "orthopedics"
+    ],
+    "levels": [
+     1
+    ]
+   },
+   "relation": "eq",
+   "value": 4,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D25-22",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "A) ... Result: 4 level-2 patients wait (internal medicine 1, neurology 3)",
+   "day": 25,
+   "allocation": {
+    "in_effect": 24
+   },
+   "quantity": {
+    "name": "overflow",
+    "levels": [
+     2
+    ]
+   },
+   "relation": "eq",
+   "value": 4,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null,
+   "note": "the two department figures repeat the situation"
+  },
+  {
+   "id": "R1-D25-23",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "while 2 level-1 patients are served in cardiology",
+   "day": 25,
+   "allocation": {
+    "in_effect": 24
+   },
+   "quantity": {
+    "name": "overflow",
+    "departments": [
+     "cardiology"
+    ],
+    "levels": [
+     1
+    ]
+   },
+   "relation": "eq",
+   "value": 0,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null,
+   "note": "restated: the 2 queued cardiology level 1 patients (information_used) all get a bed"
+  },
+  {
+   "id": "R1-D25-24",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "Neurology level-2 nursing is short by 0.65",
+   "day": 25,
+   "allocation": {
+    "in_effect": 24
+   },
+   "quantity": {
+    "name": "shortage",
+    "departments": [
+     "neurology"
+    ],
+    "levels": [
+     2
+    ]
+   },
+   "relation": "round",
+   "value": 0.65,
+   "category": "nurse_coverage",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D25-25",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "B) ... Result: 1 level-2 patient waits",
+   "day": 25,
+   "allocation": {
+    "beds": {
+     "cardiology": 24,
+     "internal_medicine": 29,
+     "neurology": 20,
+     "orthopedics": 13
+    },
+    "nurses": {
+     "cardiology": 12,
+     "internal_medicine": 12,
+     "neurology": 9,
+     "orthopedics": 4
+    }
+   },
+   "quantity": {
+    "name": "overflow",
+    "levels": [
+     2
+    ]
+   },
+   "relation": "eq",
+   "value": 1,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D25-26",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "and neurology level-2 nursing is short by 0.65",
+   "day": 25,
+   "allocation": {
+    "beds": {
+     "cardiology": 24,
+     "internal_medicine": 29,
+     "neurology": 20,
+     "orthopedics": 13
+    },
+    "nurses": {
+     "cardiology": 12,
+     "internal_medicine": 12,
+     "neurology": 9,
+     "orthopedics": 4
+    }
+   },
+   "quantity": {
+    "name": "shortage",
+    "departments": [
+     "neurology"
+    ],
+    "levels": [
+     2
+    ]
+   },
+   "relation": "round",
+   "value": 0.65,
+   "category": "nurse_coverage",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D25-27",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "C) Chosen ... all level-3 patients are bedded",
+   "day": 25,
+   "allocation": {
+    "decided": 25
+   },
+   "quantity": {
+    "name": "overflow",
+    "levels": [
+     3
+    ]
+   },
+   "relation": "eq",
+   "value": 0,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D25-28",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "14 of 15 level-2 patients are bedded",
+   "day": 25,
+   "allocation": {
+    "decided": 25
+   },
+   "quantity": {
+    "name": "overflow",
+    "levels": [
+     2
+    ]
+   },
+   "relation": "eq",
+   "value": 1,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null,
+   "note": "restated: 15 - 14 in overflow"
+  },
+  {
+   "id": "R1-D25-29",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "alternatives",
+   "text": "and no level-3 or level-2 nursing shortage remains",
+   "day": 25,
+   "allocation": {
+    "decided": 25
+   },
+   "quantity": {
+    "name": "shortage",
+    "levels": [
+     2,
+     3
+    ]
+   },
+   "relation": "eq",
+   "value": 0,
+   "category": "nurse_coverage",
+   "basis": "derived",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D25-30",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "reasons",
+   "text": "The only uncovered nursing is level-1 (internal medicine 1.15",
+   "day": 25,
+   "allocation": {
+    "decided": 25
+   },
+   "quantity": {
+    "name": "shortage",
+    "departments": [
+     "internal_medicine"
+    ],
+    "levels": [
+     1
+    ]
+   },
+   "relation": "round",
+   "value": 1.15,
+   "category": "nurse_coverage",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D25-31",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "reasons",
+   "text": "orthopedics 1.45)",
+   "day": 25,
+   "allocation": {
+    "decided": 25
+   },
+   "quantity": {
+    "name": "shortage",
+    "departments": [
+     "orthopedics"
+    ],
+    "levels": [
+     1
+    ]
+   },
+   "relation": "round",
+   "value": 1.45,
+   "category": "nurse_coverage",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D25-32",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "reasons",
+   "text": "I left it in orthopedics",
+   "day": 25,
+   "allocation": {
+    "decided": 25
+   },
+   "quantity": {
+    "name": "overflow",
+    "departments": [
+     "orthopedics"
+    ],
+    "levels": [
+     2
+    ]
+   },
+   "relation": "eq",
+   "value": 1,
+   "category": "overflow",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D25-33",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "reasons",
+   "text": "Efficiency: no bed is left empty",
+   "day": 25,
+   "allocation": {
+    "decided": 25
+   },
+   "quantity": {
+    "name": "empty_beds"
+   },
+   "relation": "eq",
+   "value": 0,
+   "category": "empty_beds",
+   "basis": "derived",
+   "rubric_term": "empty",
+   "alternative_reading": {
+    "quantity": {
+     "name": "spare_beds"
+    }
+   }
+  },
+  {
+   "id": "R1-D25-34",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "tradeoffs",
+   "text": "One level-2 patient (P000996, orthopedics) waits",
+   "day": 25,
+   "allocation": {
+    "decided": 25
+   },
+   "quantity": {
+    "name": "patient_in_bed",
+    "patient_id": "P000996"
+   },
+   "relation": "eq",
+   "value": 0,
+   "category": "overflow",
+   "basis": "copied",
+   "rubric_term": null
+  },
+  {
+   "id": "R1-D25-35",
+   "author": "ALLOCATOR",
+   "finding": "universe",
+   "field": "tradeoffs",
+   "text": "Nine level-1 patients wait",
+   "day": 25,
+   "allocation": {
+    "decided": 25
+   },
+   "quantity": {
+    "name": "overflow",
+    "levels": [
+     1
+    ]
+   },
+   "relation": "eq",
+   "value": 9,
+   "category": "overflow",
+   "basis": "derived",
+   "rubric_term": null
   }
  ]
 }
