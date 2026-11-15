@@ -301,3 +301,19 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **Outcome:** the matching numbers sit unread in `results/evaluations/R1/run_report.json`. The independence rule of `EVALUATION_PLAN.md` §4 item 7 concerns the **extraction session**: it must not read CHECKER reports, and now it must not read the CHECKER fields of `run_report.json` either. The one leaked quantity (4 date-shift matches) says nothing about the content of the ALLOCATOR's claims, which is what the extraction reads.
 - **Implication:** a "do not compute X yet" ordering is only enforced if no automatic step computes X. For R2 and R3, either the extraction session's instructions must exclude `run_report.json`'s CHECKER fields, or the report must be built without them until the extraction is committed. Structure listings of a record that holds sequestered content are themselves a read.
 - **Decisions Log:** none (no code change in this session).
+
+### R40. "Copy-back takes everything the run wrote" left out the ALLOCATOR's own transcripts
+
+- **What happened:** the run procedure and `copy_back` treat the run folder as everything the run wrote. But Claude Code writes each subagent's transcript, and any large tool result it spills to a file, to its own session folder (`~/.claude/projects/<clone>/<session>/subagents/`, `tool-results/`), not to the run folder. For R1 that is 30 ALLOCATOR and 6 CHECKER transcripts and 13 spilled ALLOCATOR tool results. The only copy in the repository was the dispatcher's stream transcript, which mixes every role and is barred for the extraction (§11 #58). The evidence for the copied/derived split (`EVALUATION_PLAN.md` §4 item 8, "the tool results the ALLOCATOR received") therefore existed only outside the repository, in a folder Claude Code may clean up after its retention period.
+- **How it was caught:** by the assistant, while listing the files the extraction may read.
+- **Fix:** `allocator_digest preserve` copied the 85 files into `results/allocations/R1/transcripts/subagents/`, split by `agentType` and hash-checked against the source (Log #98).
+- **Implication:** "everything the run wrote" was tested against the run folder, not against everything the *harness* writes for the run. For R2 and R3, `preserve` must run at copy-back time, before the session folder can age out. Spilled results also matter for the rubric: the ALLOCATOR received a preview, not the file, so a value present only in the full file is not "received".
+- **Decisions Log:** #98.
+
+### R41. The extraction was requested as a new session, but this session had already read barred files
+
+- **What happened:** the extraction prompt is headed "(new session)" and bars `run_report.json` and the deterministic audit as whole files (§11 #58). It arrived in the same conversation as the R1 copy-back, in which the assistant had already read from those files: R1's A1–A3 totals (computed from the audit), the audit issue counts by type (94 reversals, 5 nurse gaps, 2 reallocations without effect), day 1's full report entry (including one `reallocation_without_effect` issue), and the size of two CHECKER fields (R39). It had read no CHECKER report text and no ALLOCATOR explanation.
+- **How it was caught:** by the assistant, before reading any extraction input.
+- **Outcome:** the assistant did the preparation that does not depend on reading the explanations (access rule recorded, transcripts preserved, the filter and digest, a test) and **did not extract**. The extraction is left to a fresh session that has never seen the audit, the run report or the CHECKER output.
+- **Implication:** an independence rule that bars files is about the *reader's context*, not only the files opened from now on. A prompt that says "new session" is a precondition to check, not a label.
+- **Decisions Log:** none.

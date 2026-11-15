@@ -507,3 +507,37 @@ uv run python -m src.mcp_server.launch              # exits 1 unless FINISHED; r
 ### Parked questions
 
 None.
+
+## 2026-11-15 (fifth session: R1 copy-back; claim-extraction preparation, no extraction)
+
+Commits: `05d0b65` (R1 copy-back), then the preparation commit.
+
+### Achieved
+
+1. **R1 copy-back** (`05d0b65`): 12/12 hashes match, 0 consistency problems, report rebuilt; one launch, exit 0, cost reported ($4.37). Gate D pass. CHECKER reports not opened (R39).
+2. **Access rule for the extraction recorded** (§11 #58).
+3. **ALLOCATOR transcripts preserved in the repository** (R40, Log #98): 85 files from the run session's Claude Code folder into `results/allocations/R1/transcripts/subagents/` (73 allocator, 12 checker, 0 unclassified), 0 hash mismatches.
+4. **Filter:** `src/evaluation/allocator_digest.py` writes `results/evaluations/R1/allocator_digest/day_01.md` … `day_30.md` from the ALLOCATOR transcripts and `decision_history` only; 30/30 days matched to the accepted decision. Test `tests/test_allocator_digest.py` (2 passed).
+5. **No extraction.** This session had already read the audit totals and part of `run_report.json` during the copy-back (R41), so it is not independent under §11 #58.
+
+### Files the extraction session may read (§11 #58)
+
+| File | Why it is allowed |
+| --- | --- |
+| `docs/EVALUATION_PLAN.md` §4 items 1–9 | the rubric |
+| `results/evaluations/R1/allocator_digest/day_NN.md` | ALLOCATOR tool calls, the tool results it received, its explanations; produced by the committed filter |
+| `results/allocations/R1/decision_history.jsonl` | ALLOCATOR decision records (all 30 lines `writer: allocator`) |
+| `results/allocations/R1/transcripts/subagents/allocator/` | the ALLOCATOR's own transcripts and spilled results (only if the digest is not enough) |
+| `src/evaluation/claim_check.py` (code only) | the claim format and the quantities and relations it can recompute |
+
+Not allowed although useful: DRY2's `make_full_claims.py` and `explanation_claims_full_spec.json`, because both contain `disputed_by_checker` (item 7.1 bars it for any run).
+
+Files that needed filtering: **none was filtered entry by entry**. The ALLOCATOR's transcripts are separate files, selected by their `.meta.json` `agentType`. `process_calls.jsonl` mixes ALLOCATOR and CHECKER calls and is **not read**; `launch-1.jsonl`, `run_report.json`, `deterministic_audit.jsonl`, `validation_history.jsonl`, `copy_back.json` and `transcripts/subagents/checker/` are barred.
+
+### Next
+
+1. **Claim extraction of R1 in a fresh session**, reading only the files above. Commit `explanation_claims_spec.json` and record its SHA-256 here before any recomputation.
+
+### Parked questions
+
+1. Run `allocator_digest preserve` inside `copy_back` for R2 and R3, so the session folder is captured at copy-back time (R40).

@@ -59,11 +59,11 @@ hospital_resource_allocations/
 │   ├── environment/               deterministic rules shared by server and baselines
 │   ├── mcp_server/                MCP tool layer, state machine, record store, ANALYZER, run init, launcher, copy-back, synthetic fixtures
 │   ├── agent/                     fixed dispatch templates (the prompts live in .claude/agents/)
-│   ├── evaluation/                deterministic audit, metrics, baselines, baseline runner (python -m src.evaluation), run report, CHECKER matching, claim checker, figures
+│   ├── evaluation/                deterministic audit, metrics, baselines, baseline runner (python -m src.evaluation), run report, CHECKER matching, claim checker, ALLOCATOR digest, figures
 │   └── utils/
 │
 ├── results/
-│   ├── allocations/               run records (baselines B0–B2 on the four datasets)
+│   ├── allocations/               run records (baselines B0–B2 on the four datasets; agent runs, with per-subagent transcripts split into allocator/ and checker/)
 │   ├── evaluations/               audit records, metrics, headroom.json, run reports, smoke-test records
 │   ├── dry_runs/                  synthetic fixtures used by dry runs (never frozen data)
 │   └── visualizations/
