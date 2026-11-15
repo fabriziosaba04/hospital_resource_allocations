@@ -502,3 +502,8 @@ uv run python -m src.mcp_server.launch              # exits 1 unless FINISHED; r
 ### Open questions for the owner
 
 1. *(Answered same day: §11 #56 accepted, rival readings added in §11 #57.)*
+2. *(Answered same day: the rival reading of "no better" counts each unit of need at levels 2–3 once; recorded in §11 #57.)*
+
+### Parked questions
+
+None.

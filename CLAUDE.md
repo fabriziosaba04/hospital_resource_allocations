@@ -303,6 +303,7 @@ Claude Code acts as a development assistant, analytical collaborator and critica
 - Keep the agents' responsibilities separate when implementing them. Do not let one agent take over another's role.
 - Verify tool and configuration syntax (for example subagent frontmatter and MCP configuration) against current Claude Code documentation rather than guessing.
 - Do not silently make conceptual decisions in the four escalation areas (Section 9.2). When one is required, explain the alternatives, give a recommendation and wait.
+- **Open vs parked questions (owner, 2026-11-15):** in reports, "Open questions" lists only questions that **block the next step**. Every other question goes to a **"Parked questions"** list at the end of the current `docs/SESSION_LOG.md` entry; the owner reviews that list at the next review that needs it, not every round.
 - **Reflection log:** whenever something goes wrong or nearly goes wrong (a wrong rationale, a false claim, a test or check that caught an error, a gap in enforcement), add an entry to [`docs/REFLECTION_LOG.md`](docs/REFLECTION_LOG.md) **at that moment**, not at the end of a session, and mention new entries in the session report. Errors by the AI assistant count.
 
 ### 9.1 Development sessions vs. run sessions
