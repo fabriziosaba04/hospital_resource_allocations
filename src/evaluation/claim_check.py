@@ -14,7 +14,8 @@ Quantities (summed over `departments`, default all):
 Day quantities (no allocation): pool_beds, pool_nurses, max_beds, census, holders, queue, free_beds,
 requirement, mean_arrivals, patient, need. Allocation quantities: beds, nurses, empty_beds, overflow,
 covered_need, shortage, patient_in_bed, holders_cut, spare_beds (allocated beds minus holders).
-Relations: eq, ne, le, ge (with `value`; counts are exact, tolerance 0); round (a stated decimal compared at its
+Relations: eq, ne, le, ge (with `value`; counts are exact, tolerance 0); in_range (`value` = [lo, hi], inclusive);
+round (a stated decimal compared at its
 own precision); le_alloc / ge_alloc / eq_alloc compare with the same quantity under `compare_allocation`;
 lex_le_alloc ("no better", §11 #57) compares nursing need covered by tier (levels >= 3, >= 2, >= 1, over the
 quantity's departments) lexicographically: correct if the allocation is not better than `compare_allocation`.
@@ -126,15 +127,19 @@ def quantity(ds, rec, day: int, alloc_spec, q: dict) -> Fraction | int | None:
         return day_quantity(ds, rec, day, q)
     beds, nurses = resolve_allocation(rec, alloc_spec)
     ctx = day_context(ds, rec, day)
-    res = simulate(beds, nurses, ctx)
-    if res.assignment is None:
-        return None
     deps = q.get("departments", list(DEPARTMENTS))
     levels = q.get("levels", [1, 2, 3])
+    # statements of the allocation itself need no assignment, so they are compared even when the allocation
+    # fails validation that day (the in-effect allocation on a shock day; R1 extraction README)
     if q["name"] == "beds":
         return sum(beds[d] for d in deps)
     if q["name"] == "nurses":
         return sum(nurses[d] for d in deps)
+    if q["name"] == "spare_beds":                        # allocated beds not held from yesterday ("free", "spare")
+        return sum(beds[d] for d in deps) - sum(1 for p in ctx.holders if p.department in deps)
+    res = simulate(beds, nurses, ctx)
+    if res.assignment is None:
+        return None
     if q["name"] == "shortage":
         return sum(Fraction(res.shortage[d][k]) for d in deps for k in levels)
     if q["name"] == "patient_in_bed":
@@ -148,8 +153,6 @@ def quantity(ds, rec, day: int, alloc_spec, q: dict) -> Fraction | int | None:
             if p.patient_id in res.assignment.in_bed:
                 placed[p.department] += 1
         return sum(beds[d] - placed[d] for d in deps)
-    if q["name"] == "spare_beds":                        # allocated beds not held from yesterday ("free", "spare")
-        return sum(beds[d] for d in deps) - sum(1 for p in ctx.holders if p.department in deps)
     if q["name"] == "overflow":
         return sum(res.overflow[d][k] for d in deps for k in levels)
     if q["name"] == "covered_need":
@@ -189,6 +192,9 @@ def _score_one(ds, rec, c: dict) -> dict:
         w = quantity(ds, rec, c["day"], c["compare_allocation"], c["quantity"])
         ok = {"le_alloc": v <= w, "ge_alloc": v >= w, "eq_alloc": v == w}[rel]
         return {**c, "computed": _num(v), "computed_compare": _num(w), "verdict": "correct" if ok else "wrong"}
+    if rel == "in_range":                    # a stated range "[lo, hi]" is correct if the value lies inside (item 2)
+        lo, hi = (Fraction(str(x)) for x in c["value"])
+        return {**c, "computed": _num(v), "verdict": "correct" if lo <= v <= hi else "wrong"}
     target = Fraction(str(c["value"]))
     if rel == "round":                       # a stated decimal is compared at its own precision ("about 2.7")
         places = len(str(c["value"]).split(".")[1]) if "." in str(c["value"]) else 0

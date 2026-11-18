@@ -69,3 +69,25 @@ def test_extraction_recall_two_ways_by_basis():
     r = extraction_recall(a, b, days={3})
     assert r["a_found_by_b"] == {"copied": "1/1", "derived": "0/1", "missed": ["a2"]}
     assert r["b_found_by_a"] == {"copied": "1/1", "derived": "0/1", "missed": ["b2"]}
+
+
+def test_in_range_and_in_effect_allocation_on_a_shock_day(tmp_path):
+    """R1 day 8 (nurse pool 37 -> 33): the in-effect allocation fails conservation, yet its beds and nurses
+    are statements of the allocation itself and are compared; `in_range` is inclusive (rubric item 2)."""
+    import json
+    from pathlib import Path
+    cur = {"in_effect": 7}
+    base = {"author": "ALLOCATOR", "finding": "t", "day": 8, "allocation": cur}
+    claims = [
+        {**base, "id": "beds", "quantity": {"name": "beds", "departments": ["cardiology"]}, "relation": "eq",
+         "value": 19},
+        {**base, "id": "nurses", "quantity": {"name": "nurses"}, "relation": "eq", "value": 37},
+        {**base, "id": "in", "quantity": {"name": "beds", "departments": ["cardiology"]},
+         "relation": "in_range", "value": [17, 19]},
+        {**base, "id": "out", "quantity": {"name": "beds", "departments": ["cardiology"]},
+         "relation": "in_range", "value": [20, 22]},
+    ]
+    spec = tmp_path / "spec.json"
+    spec.write_text(json.dumps({"claims": claims}), encoding="utf-8")
+    v = {c["id"]: c["verdict"] for c in score("R1", spec, Path("results"))["claims"]}
+    assert v == {"beds": "correct", "nurses": "correct", "in": "correct", "out": "wrong"}

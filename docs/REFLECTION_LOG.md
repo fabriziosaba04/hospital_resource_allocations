@@ -340,3 +340,10 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **How it was caught:** checked against the file before the session report, as the verify-before-asserting rule requires; corrected in `2eea94f`.
 - **Fix:** the count and the claim ids are now in the entry.
 - **Implication:** the same pattern as R43, in a document instead of a commit message. Figures go into records only after the command that produces them has run.
+
+### R45. A planned code change rested on an unchecked assumption about the what-if engine
+
+- **What happened:** the sixth-session "Next" item asked to make `beds` / `nurses` independent of the allocation's validity, because "the in-effect allocations on shock days" would otherwise come out unverifiable. The README had hedged it ("if the engine returns no assignment"), but the session log stated it as a required fix.
+- **How it was caught:** before changing the code, a probe over all R1 claims (2026-11-18) showed `simulate` drops the assignment only on BOUNDS / INTEGRALITY. The six shock-day in-effect allocations fail conservation only, so all 38 affected claims already returned figures; 0 were unverifiable for this reason.
+- **Fix:** the change was made anyway as a defensive one (Log #100), and the probe result is recorded. No verdict changed.
+- **Implication:** a hedged risk copied into a to-do list loses its hedge. Check the engine's behaviour before scheduling a fix for it.
