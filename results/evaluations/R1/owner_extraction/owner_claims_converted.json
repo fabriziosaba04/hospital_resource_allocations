@@ -3017,7 +3017,7 @@
         "A0"
       ],
       "mapping_not_mechanical": [
-        "Q2: 'nurse requirement' restricted to a tier read as the nursing need"
+        "Q2: 'nurse requirement' restricted to tiers, stated as a decimal: the unrounded summed need, in the universe (owner decision §11 #61 B: only the ceiling is a requirement; the stated value is not an integer, so it is not the ceiling)"
       ]
     },
     {
@@ -3069,7 +3069,7 @@
         "A0"
       ],
       "mapping_not_mechanical": [
-        "Q2: 'nurse requirement' restricted to a tier read as the nursing need"
+        "Q2: 'nurse requirement' restricted to tiers, stated as a decimal: the unrounded summed need, in the universe (owner decision §11 #61 B: only the ceiling is a requirement; the stated value is not an integer, so it is not the ceiling)"
       ]
     },
     {
@@ -3121,7 +3121,7 @@
         "A0"
       ],
       "mapping_not_mechanical": [
-        "Q2: 'nurse requirement' restricted to a tier read as the nursing need"
+        "Q2: 'nurse requirement' restricted to tiers, stated as a decimal: the unrounded summed need, in the universe (owner decision §11 #61 B: only the ceiling is a requirement; the stated value is not an integer, so it is not the ceiling)"
       ]
     },
     {
@@ -3173,7 +3173,7 @@
         "A0"
       ],
       "mapping_not_mechanical": [
-        "Q2: 'nurse requirement' restricted to a tier read as the nursing need"
+        "Q2: 'nurse requirement' restricted to tiers, stated as a decimal: the unrounded summed need, in the universe (owner decision §11 #61 B: only the ceiling is a requirement; the stated value is not an integer, so it is not the ceiling)"
       ]
     },
     {

@@ -256,7 +256,7 @@ Nurse issues are graded by the **highest tier with a positive net gap**, not by 
    | "Cardiology has 2 L3 patients in overflow under A" | copied | one cell of `overflow_by_department_and_level` in the what-if of A |
    | "Orthopedics' L1 shortage is 0.5 under the current allocation" | copied | one cell of `nurse_shortage_by_department_and_level` |
    | "the pool is 120 beds", "occupied beds in neurology: 28" | copied | `pools.beds`, `departments.neurology.occupied_beds` in the observed state |
-   | "P000083 has waited 3 days" | copied | `days_waiting` in the queue or `overflow_patients` |
+   | "P000083 has waited 3 days" | copied | `days_waiting` in the queue or `overflow_patients`. *Out of universe per item 1 (patient attribute); shown for basis labelling only* (owner decision §11 #61 A) |
    | "5 L3 patients in overflow" (summed over departments) | derived | sum of several cells |
    | "4 beds empty in IM and orthopedics" | derived | no tool reports empty beds: beds minus patients placed |
    | "2 spare beds", "free beds: 3" | derived | beds (or pool) minus occupied |

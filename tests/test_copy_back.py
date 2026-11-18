@@ -97,3 +97,41 @@ def test_launcher_counts_refused_subagent_spawns():
             "Agent 'allocator' would be spawned with zero tools — refusing."}]}})
     assert launch.spawn_refusals([line, line, "{}"]) == 2
     assert launch.spawn_refusals(["{}"]) == 0
+
+
+def _fake_projects(tmp: Path, session_id: str) -> Path:
+    s = tmp / "projects" / "C--clone" / session_id
+    (s / "subagents").mkdir(parents=True)
+    (s / "tool-results").mkdir()
+    for name, kind in (("a1", "allocator"), ("c1", "checker")):
+        (s / "subagents" / f"agent-{name}.meta.json").write_text(json.dumps({"agentType": kind}))
+        (s / "subagents" / f"agent-{name}.jsonl").write_text(json.dumps({"type": "user"}) + "\n")
+    (s / "tool-results" / "mcp-allocator-x-1.txt").write_text("big")
+    return tmp / "projects"
+
+
+def _session_ids(clone: Path) -> list[str]:
+    import re
+    t = (clone / "results" / "allocations" / RUN / "transcripts" / "launch-1.jsonl").read_text(encoding="utf-8")
+    return list(dict.fromkeys(re.findall(r'"session_id":"([0-9a-f-]{36})"', t)))
+
+
+def test_copy_back_captures_subagent_transcripts(tmp_path):
+    """R40: the session folder Claude Code wrote outside the run folder is captured and hash-checked."""
+    clone = _fake_clone(tmp_path)
+    (sid,) = _session_ids(clone)
+    repo = tmp_path / "repo" / "results"
+    out = copy_back(clone, RUN, repo_results=repo, projects=_fake_projects(tmp_path, sid))
+    st = out["subagent_transcripts"]
+    assert st["problems"] == [] and st["hash_mismatches"] == []
+    assert st["by_folder"] == {"allocator": 3, "checker": 2, "unclassified": 0}
+    sub = repo / "allocations" / RUN / "transcripts" / "subagents"
+    assert (sub / "allocator" / "agent-a1.jsonl").is_file() and (sub / "SHA256SUMS.json").is_file()
+
+
+def test_copy_back_flags_a_missing_session_folder(tmp_path):
+    clone = _fake_clone(tmp_path)
+    repo = tmp_path / "repo" / "results"
+    out = copy_back(clone, RUN, repo_results=repo, projects=tmp_path / "empty_projects")
+    st = out["subagent_transcripts"]
+    assert st["preserved_files"] == 0 and len(st["problems"]) == 1 and "no session folder" in st["problems"][0]

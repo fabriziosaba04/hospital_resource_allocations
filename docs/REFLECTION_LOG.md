@@ -354,3 +354,23 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **How it was caught:** the test failed on its first run (2026-11-18).
 - **Fix:** the assertion now uses the current output (18), checked against `non_mechanical_mappings.csv`.
 - **Implication:** the same pattern as R43 and R44. Here the test did its job, but the expected value has to come from the current artefact.
+
+### R47. The extraction comparison was run before the owner's two parked rubric questions were resolved
+
+- **Stub, created by the assistant at the owner's request (2026-11-18); the substance is the owner's to write.**
+- **Facts recorded so far:** the item-7a comparison (`comparison_7a.json`, commit `fc29023`) was computed while two rubric questions were parked: patient attributes (item 1 vs the item-8 example) and the tier-2–3 requirement. The assistant's converter decided the second one provisionally (rule Q2, owner rows 115–118). The owner resolved both on 2026-11-18 (§11 #61 A–B) **after** the comparison had been seen, so the resolution is no longer blind to the recall figures. Applied side by side (`comparison_7a_decisions_AB.json`), neither decision moves any claim on either side.
+- **What happened / how it was caught / implication:** *(owner to write).*
+
+### R48. A report opened with a blanket completion claim that its own body contradicted
+
+- **What happened:** the seventh-session report opened "Everything is done and committed", and the same report then listed items that were not done (transcript capture in `copy_back`, the R2/R3/stress launch commands).
+- **How it was caught:** by the owner, in the next prompt.
+- **Fix:** reports now give the completion status item by item, with no blanket summary.
+- **Implication:** a summary line is a claim too. It has to be true of every item, or be left out.
+
+### R49. A claim's computed values were written into the session-log draft before being looked up
+
+- **What happened:** the eighth-session draft described R1-D21-35 as "12 spare / 0 empty". The file gives 12 spare (strict) and **4** empty (rival).
+- **How it was caught:** re-read before appending, under the verify-before-asserting rule (2026-11-18); corrected before the entry was written to `docs/SESSION_LOG.md`.
+- **Fix:** the figure is now taken from `explanation_claims.json`.
+- **Implication:** the fourth instance of the pattern (R43, R44, R46). Figures in prose need the same lookup as figures in code.

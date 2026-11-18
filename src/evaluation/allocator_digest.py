@@ -1,6 +1,6 @@
 """ALLOCATOR-only view of a run, for claim extraction (owner access rule §11 #58, Log #98).
 
-    uv run python -m src.evaluation.allocator_digest preserve <claude session dir> <run_id>
+    uv run python -m src.evaluation.allocator_digest preserve <claude session dir> [<more session dirs>] <run_id>
     uv run python -m src.evaluation.allocator_digest digest <run_id>
 
 `preserve` copies the per-subagent transcripts Claude Code wrote for the run session (outside the
@@ -35,44 +35,49 @@ def _sha(p: Path) -> str:
     return hashlib.sha256(p.read_bytes()).hexdigest()
 
 
-def preserve(session_dir: Path, run_id: str, results: Path = ROOT / "results") -> dict:
+def preserve(session_dirs, run_id: str, results: Path = ROOT / "results") -> dict:
+    """`session_dirs`: one Claude Code session folder, or a list of them (one per launch of a resumed run)."""
+    dirs = [Path(session_dirs)] if isinstance(session_dirs, (str, Path)) else [Path(d) for d in session_dirs]
     out = results / "allocations" / run_id / "transcripts" / "subagents"
     if out.exists():
         raise SystemExit(f"{out} already exists: never overwritten")
-    sub = Path(session_dir) / "subagents"
     kinds: dict[str, list[Path]] = {}
-    for meta in sorted(sub.glob("*.meta.json")):
-        kind = json.loads(meta.read_text(encoding="utf-8"))["agentType"]
-        if kind not in ("allocator", "checker"):
-            raise SystemExit(f"unexpected agentType {kind!r} in {meta.name}")
-        kinds.setdefault(kind, []).append(meta)
+    for sub in (d / "subagents" for d in dirs):
+        for meta in sorted(sub.glob("*.meta.json")):
+            kind = json.loads(meta.read_text(encoding="utf-8"))["agentType"]
+            if kind not in ("allocator", "checker"):
+                raise SystemExit(f"unexpected agentType {kind!r} in {meta.name}")
+            kinds.setdefault(kind, []).append(meta)
     alloc_text = "".join((m.with_name(m.name[:-len(".meta.json")] + ".jsonl")).read_text(encoding="utf-8")
                          for m in kinds.get("allocator", []))
+    origin: dict[str, Path] = {}                         # copied path (relative to out) -> source file
+
+    def put(src: Path, rel: str) -> None:
+        if rel in origin:
+            raise SystemExit(f"{rel} appears in two sessions")
+        (out / rel).parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(src, out / rel)
+        origin[rel] = src
+
     for kind, metas in kinds.items():
-        (out / kind).mkdir(parents=True)
+        (out / kind).mkdir(parents=True, exist_ok=True)
         for m in metas:
-            shutil.copy2(m, out / kind / m.name)
+            put(m, f"{kind}/{m.name}")
             t = m.with_name(m.name[:-len(".meta.json")] + ".jsonl")
-            shutil.copy2(t, out / kind / t.name)
-    tr = Path(session_dir) / "tool-results"
-    for f in sorted(tr.glob("*")) if tr.is_dir() else []:
-        if f.name.startswith("mcp-allocator-") or f.stem in alloc_text:
-            kind = "allocator"
-        elif f.name.startswith("mcp-checker-"):
-            kind = "checker"
-        else:
-            kind = "unclassified"
-        (out / kind / "tool-results").mkdir(parents=True, exist_ok=True)
-        shutil.copy2(f, out / kind / "tool-results" / f.name)
-    manifest = {"source": str(Path(session_dir).resolve()),
-                "files": {str(p.relative_to(out)).replace("\\", "/"): _sha(p)
-                          for p in sorted(out.rglob("*")) if p.is_file()}}
-    src_hash = {}
-    for rel in manifest["files"]:
-        parts = rel.split("/")
-        src = (tr / parts[-1]) if "tool-results" in parts else (sub / parts[-1])
-        src_hash[rel] = _sha(src)
-    manifest["hash_mismatches"] = [r for r, h in manifest["files"].items() if src_hash[r] != h]
+            put(t, f"{kind}/{t.name}")
+    for tr in (d / "tool-results" for d in dirs):
+        for f in sorted(tr.glob("*")) if tr.is_dir() else []:
+            if f.name.startswith("mcp-allocator-") or f.stem in alloc_text:
+                kind = "allocator"
+            elif f.name.startswith("mcp-checker-"):
+                kind = "checker"
+            else:
+                kind = "unclassified"
+            put(f, f"{kind}/tool-results/{f.name}")
+    out.mkdir(parents=True, exist_ok=True)
+    manifest = {"source": [str(d.resolve()) for d in dirs] if len(dirs) > 1 else str(dirs[0].resolve()),
+                "files": {rel: _sha(out / rel) for rel in sorted(origin)}}
+    manifest["hash_mismatches"] = [r for r, h in manifest["files"].items() if _sha(origin[r]) != h]
     (out / "SHA256SUMS.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8", newline="\n")
     return manifest
 
@@ -142,7 +147,7 @@ def digest(run_id: str, results: Path = ROOT / "results") -> list[Path]:
 
 if __name__ == "__main__":
     if sys.argv[1] == "preserve":
-        m = preserve(Path(sys.argv[2]), sys.argv[3])
+        m = preserve([Path(a) for a in sys.argv[2:-1]], sys.argv[-1])
         print(json.dumps({"files": len(m["files"]), "hash_mismatches": m["hash_mismatches"],
                           "by_folder": {k: sum(1 for r in m["files"] if r.startswith(k + "/"))
                                         for k in ("allocator", "checker", "unclassified")}}, indent=2))

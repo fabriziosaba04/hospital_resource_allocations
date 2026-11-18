@@ -1,0 +1,307 @@
+{
+  "decisions": "PROJECT_SPEC.md \u00a711 #61 A-B, taken after the item-7a comparison had been seen",
+  "moved_out_of_universe": {
+    "assistant": {},
+    "owner": {}
+  },
+  "recall": {
+    "as_frozen": {
+      "a_found_by_b": {
+        "copied": "58/60",
+        "derived": "28/47",
+        "unclassified": "0/1",
+        "missed": [
+          "OWN-D03-r058",
+          "OWN-D08-r064",
+          "OWN-D08-r071",
+          "OWN-D08-r109",
+          "OWN-D08-r110",
+          "OWN-D08-r120",
+          "OWN-D08-r121",
+          "OWN-D08-r122",
+          "OWN-D08-r123",
+          "OWN-D08-r125",
+          "OWN-D18-r143",
+          "OWN-D18-r145",
+          "OWN-D18-r151",
+          "OWN-D18-r152",
+          "OWN-D18-r153",
+          "OWN-D18-r155",
+          "OWN-D18-r156",
+          "OWN-D18-r157",
+          "OWN-D18-r161",
+          "OWN-D18-r163",
+          "OWN-D18-r166",
+          "OWN-D18-r167"
+        ]
+      },
+      "b_found_by_a": {
+        "copied": "56/57",
+        "derived": "29/49",
+        "missed": [
+          "R1-D03-34",
+          "R1-D03-36",
+          "R1-D08-01",
+          "R1-D08-05",
+          "R1-D08-22",
+          "R1-D08-23",
+          "R1-D08-24",
+          "R1-D08-33",
+          "R1-D08-35",
+          "R1-D08-36",
+          "R1-D08-37",
+          "R1-D18-13",
+          "R1-D18-14",
+          "R1-D18-15",
+          "R1-D18-16",
+          "R1-D18-17",
+          "R1-D18-18",
+          "R1-D18-19",
+          "R1-D18-23",
+          "R1-D18-25",
+          "R1-D18-28"
+        ]
+      }
+    },
+    "after_A_B": {
+      "a_found_by_b": {
+        "copied": "58/60",
+        "derived": "28/47",
+        "unclassified": "0/1",
+        "missed": [
+          "OWN-D03-r058",
+          "OWN-D08-r064",
+          "OWN-D08-r071",
+          "OWN-D08-r109",
+          "OWN-D08-r110",
+          "OWN-D08-r120",
+          "OWN-D08-r121",
+          "OWN-D08-r122",
+          "OWN-D08-r123",
+          "OWN-D08-r125",
+          "OWN-D18-r143",
+          "OWN-D18-r145",
+          "OWN-D18-r151",
+          "OWN-D18-r152",
+          "OWN-D18-r153",
+          "OWN-D18-r155",
+          "OWN-D18-r156",
+          "OWN-D18-r157",
+          "OWN-D18-r161",
+          "OWN-D18-r163",
+          "OWN-D18-r166",
+          "OWN-D18-r167"
+        ]
+      },
+      "b_found_by_a": {
+        "copied": "56/57",
+        "derived": "29/49",
+        "missed": [
+          "R1-D03-34",
+          "R1-D03-36",
+          "R1-D08-01",
+          "R1-D08-05",
+          "R1-D08-22",
+          "R1-D08-23",
+          "R1-D08-24",
+          "R1-D08-33",
+          "R1-D08-35",
+          "R1-D08-36",
+          "R1-D08-37",
+          "R1-D18-13",
+          "R1-D18-14",
+          "R1-D18-15",
+          "R1-D18-16",
+          "R1-D18-17",
+          "R1-D18-18",
+          "R1-D18-19",
+          "R1-D18-23",
+          "R1-D18-25",
+          "R1-D18-28"
+        ]
+      }
+    }
+  },
+  "accuracy_assistant_full_R1": {
+    "as_frozen": {
+      "total": {
+        "correct": 948,
+        "wrong": 75,
+        "unverifiable": 26
+      },
+      "by_category": {
+        "beds": {
+          "correct": 345,
+          "wrong": 0,
+          "unverifiable": 5
+        },
+        "empty_beds": {
+          "correct": 71,
+          "wrong": 56,
+          "unverifiable": 7
+        },
+        "nurse_coverage": {
+          "correct": 213,
+          "wrong": 4,
+          "unverifiable": 9
+        },
+        "overflow": {
+          "correct": 251,
+          "wrong": 14,
+          "unverifiable": 5
+        },
+        "pool": {
+          "correct": 68,
+          "wrong": 1,
+          "unverifiable": 0
+        }
+      }
+    },
+    "after_A_B": {
+      "total": {
+        "correct": 948,
+        "wrong": 75,
+        "unverifiable": 26
+      },
+      "by_category": {
+        "beds": {
+          "correct": 345,
+          "wrong": 0,
+          "unverifiable": 5
+        },
+        "empty_beds": {
+          "correct": 71,
+          "wrong": 56,
+          "unverifiable": 7
+        },
+        "nurse_coverage": {
+          "correct": 213,
+          "wrong": 4,
+          "unverifiable": 9
+        },
+        "overflow": {
+          "correct": 251,
+          "wrong": 14,
+          "unverifiable": 5
+        },
+        "pool": {
+          "correct": 68,
+          "wrong": 1,
+          "unverifiable": 0
+        }
+      }
+    }
+  },
+  "accuracy_owner_days_3_8_18": {
+    "as_frozen": {
+      "total": {
+        "correct": 87,
+        "wrong": 16,
+        "unverifiable": 5
+      },
+      "by_category": {
+        "beds": {
+          "correct": 27,
+          "wrong": 0,
+          "unverifiable": 0
+        },
+        "empty_beds": {
+          "correct": 2,
+          "wrong": 6,
+          "unverifiable": 0
+        },
+        "nurse_coverage": {
+          "correct": 33,
+          "wrong": 2,
+          "unverifiable": 4
+        },
+        "overflow": {
+          "correct": 18,
+          "wrong": 4,
+          "unverifiable": 0
+        },
+        "pool": {
+          "correct": 7,
+          "wrong": 4,
+          "unverifiable": 1
+        }
+      }
+    },
+    "after_A_B": {
+      "total": {
+        "correct": 87,
+        "wrong": 16,
+        "unverifiable": 5
+      },
+      "by_category": {
+        "beds": {
+          "correct": 27,
+          "wrong": 0,
+          "unverifiable": 0
+        },
+        "empty_beds": {
+          "correct": 2,
+          "wrong": 6,
+          "unverifiable": 0
+        },
+        "nurse_coverage": {
+          "correct": 33,
+          "wrong": 2,
+          "unverifiable": 4
+        },
+        "overflow": {
+          "correct": 18,
+          "wrong": 4,
+          "unverifiable": 0
+        },
+        "pool": {
+          "correct": 7,
+          "wrong": 4,
+          "unverifiable": 1
+        }
+      }
+    }
+  },
+  "difference": {
+    "claim_ids": {
+      "assistant": [],
+      "owner": []
+    },
+    "recall_changed": false,
+    "accuracy_changed": false
+  },
+  "owner_rows_115_118": [
+    {
+      "row": 115,
+      "department": "cardiology",
+      "stated": 5.6,
+      "unrounded_need_L2_L3": 5.6,
+      "ceiling": 6,
+      "decision_B": "in universe (unrounded sum)"
+    },
+    {
+      "row": 116,
+      "department": "internal_medicine",
+      "stated": 11.65,
+      "unrounded_need_L2_L3": 11.65,
+      "ceiling": 12,
+      "decision_B": "in universe (unrounded sum)"
+    },
+    {
+      "row": 117,
+      "department": "neurology",
+      "stated": 6.45,
+      "unrounded_need_L2_L3": 6.45,
+      "ceiling": 7,
+      "decision_B": "in universe (unrounded sum)"
+    },
+    {
+      "row": 118,
+      "department": "orthopedics",
+      "stated": 6.5,
+      "unrounded_need_L2_L3": 6.5,
+      "ceiling": 7,
+      "decision_B": "in universe (unrounded sum)"
+    }
+  ]
+}

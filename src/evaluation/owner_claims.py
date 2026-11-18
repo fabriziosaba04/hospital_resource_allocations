@@ -11,8 +11,8 @@ Rules (code in brackets is written to each converted claim's `mapping`):
   [D1] Departments: "all" or blank -> all (omitted); CA / IM / NE / OR -> department names; separators
        "," "+" "-" and spaces.
   [T1] Tier: "all" or blank -> all levels (omitted); "k" -> [k]; "a-b" -> [a..b].
-  [Q1] Quantity: `mapping_quantity.csv`. [Q2] "nurse requirement" with a tier restriction -> `need` (not
-       mechanical: `requirement` is the all-level ceiling and takes no tier). [Q0] no claim_check quantity ->
+  [Q1] Quantity: `mapping_quantity.csv`. [Q2] "nurse requirement" with a tier restriction and a decimal value
+       -> `need` (owner decision §11 #61 B: an unrounded tier sum is in the universe; the ceiling is not). [Q0] no claim_check quantity ->
        quantity null (unmapped, not mechanical).
   [A0] Day quantities (pools, holders, queue, need) take no allocation: null, whatever the owner wrote.
   [A1] "in effect" -> {"in_effect": d-1}. [A2] "chosen" -> {"decided": d}.
@@ -103,7 +103,9 @@ def convert(folder: Path) -> tuple[list[dict], list[dict]]:
         rules.append("Q1")
         if _norm(r["Quantity"]) == "nurse requirement" and levels:
             rules.append("Q2")
-            why.append("Q2: 'nurse requirement' restricted to a tier read as the nursing need")
+            why.append("Q2: 'nurse requirement' restricted to tiers, stated as a decimal: the unrounded summed need, "
+                       "in the universe (owner decision §11 #61 B: only the ceiling is a requirement; the stated "
+                       "value is not an integer, so it is not the ceiling)")
         rel, val = r["Relation"].strip().lstrip("'"), r["Value"].strip()
         alloc_txt = r["Allocation"].strip().lower()
         if name and rel == "covered" and val == "0":

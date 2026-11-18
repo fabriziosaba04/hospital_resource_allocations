@@ -2,6 +2,12 @@
 claim marked unverifiable, from `<eval>/explanation_claims.json`. No CHECKER matching.
 
     uv run python -m src.evaluation.claim_review R1
+
+Wrong claims carry a `tier` (owner request 2026-11-18; no verdict changes):
+  wrong_only_primary   a bare "spare" / "free" claim, wrong under the strict reading, correct under the rival
+  wrong_both_readings  a bare "spare" / "free" claim, wrong under both readings
+  no_spare_free_term   any other wrong claim (no rival reading of spare / free applies)
+The counts and ids are also written to `owner_review/wrong_claims_tiers.json`.
 """
 
 from __future__ import annotations
@@ -14,7 +20,17 @@ from .dataset import ROOT
 from .owner_claims import encoding
 
 COLUMNS = ["id", "day", "field", "text", "category", "basis", "encoding", "computed", "computed_compare",
-           "rubric_term", "verdict_alternative", "computed_alternative", "note", "owner_verdict", "owner_comment"]
+           "rubric_term", "verdict_alternative", "computed_alternative", "tier", "note", "owner_verdict",
+           "owner_comment"]
+SPARE_FREE = ("spare", "free")
+
+
+def tier(c: dict) -> str:
+    if c["verdict"] != "wrong":
+        return ""
+    if c.get("rubric_term") in SPARE_FREE:
+        return "wrong_only_primary" if c.get("verdict_alternative") == "correct" else "wrong_both_readings"
+    return "no_spare_free_term"
 
 
 def main(run_id: str) -> None:
@@ -36,8 +52,21 @@ def main(run_id: str) -> None:
                             "verdict_alternative": c.get("verdict_alternative", ""),
                             "computed_alternative": json.dumps(c.get("computed_alternative"))
                             if "computed_alternative" in c else "",
-                            "note": c.get("note", ""), "owner_verdict": "", "owner_comment": ""})
+                            "tier": tier(c), "note": c.get("note", ""), "owner_verdict": "", "owner_comment": ""})
         print(name, len(rows))
+    wrong = [c for c in claims if c["author"] == "ALLOCATOR" and c["verdict"] == "wrong"]
+    tiers = {}
+    for c in wrong:
+        tiers.setdefault(tier(c), []).append(c["id"])
+    summary = {"wrong_claims": len(wrong), "tiers": {k: {"count": len(v), "ids": v} for k, v in sorted(tiers.items())},
+               "no_spare_free_term_by_rubric_term": {}}
+    for c in wrong:
+        if tier(c) == "no_spare_free_term":
+            t = c.get("rubric_term") or "arithmetic"
+            summary["no_spare_free_term_by_rubric_term"][t] = summary["no_spare_free_term_by_rubric_term"].get(t, 0) + 1
+    (out / "wrong_claims_tiers.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8", newline="\n")
+    print(json.dumps({k: v["count"] for k, v in summary["tiers"].items()}),
+          summary["no_spare_free_term_by_rubric_term"])
 
 
 if __name__ == "__main__":

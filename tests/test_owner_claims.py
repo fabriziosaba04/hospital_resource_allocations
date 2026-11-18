@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import csv
+from fractions import Fraction
 import hashlib
 import json
 from pathlib import Path
@@ -35,3 +36,21 @@ def test_comparison_two_ways_by_basis():
     assert len(out["out_of_universe_owner_rows"]) == 62
     assert all(o["assistant_also_left_out"] for o in out["out_of_universe_owner_rows"])
     assert len(out["adjudication"]) == 22 + 21
+
+
+def test_decisions_a_b_move_no_claim_and_wrong_claim_tiers():
+    """§11 #61 A-B change no claim's universe membership in R1 (all stated multi-tier needs are unrounded);
+    the 75 wrong claims split 54 / 1 / 20 by the spare-free tier."""
+    from src.evaluation.claim_review import tier
+    from src.evaluation.decisions_ab import _out_of_universe
+    assert _out_of_universe({"quantity": {"name": "need"}, "value": 6}, Fraction(56, 10)) == "B"
+    assert _out_of_universe({"quantity": {"name": "need"}, "value": 5.6}, Fraction(56, 10)) is None
+    assert _out_of_universe({"quantity": {"name": "need"}, "value": 5}, Fraction(5)) is None
+    out = json.loads(Path("results/evaluations/R1/owner_extraction/comparison_7a_decisions_AB.json")
+                     .read_text(encoding="utf-8"))
+    assert out["difference"]["claim_ids"] == {"assistant": [], "owner": []}
+    assert out["recall"]["as_frozen"] == out["recall"]["after_A_B"]
+    claims = json.loads(Path("results/evaluations/R1/explanation_claims.json").read_text(encoding="utf-8"))["claims"]
+    from collections import Counter
+    assert Counter(tier(c) for c in claims if c["verdict"] == "wrong") == \
+        {"wrong_only_primary": 54, "wrong_both_readings": 1, "no_spare_free_term": 20}

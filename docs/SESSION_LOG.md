@@ -611,3 +611,73 @@ None was done or recorded before this session. Done now: the claim_check changes
 3. Enforce "outcome of an allocation that fails validation → unverifiable" in `claim_check` code instead of in the extraction (a verdict rule change; 0 R1 claims affected today).
 4. Confirm the null-quantity rule in the comparison (Log #101): it lowers derived recall by 4 claims on each side.
 5. Carried over: `allocator_digest preserve` inside `copy_back` (R40); strict "worse/more/less" (7 claims); day 28 reading of "from yesterday".
+
+## 2026-11-18 (eighth session: owner questions on 7a, shock days and gate D, R40 capture, launch commands, decisions A–B)
+
+Commits: this session's commit (see `git log`). Frozen files untouched: `explanation_claims_spec.json` (`74555bac…844b`), `owner_claims_d03_d08_d18.csv` (`6c7af169…fd283c47`). No CHECKER file read, no CHECKER matching, nothing launched.
+
+### Status by item
+
+| Item | Status |
+| --- | --- |
+| 1. Queue / shortage basis question | Done (answer below); no label changed |
+| 2. Day-12 queue check | Done |
+| 3. Shock days and gate D | Done (answers below); no change made, none proposed as needed |
+| 4. Wrong-claim tiers | Done: `owner_review/wrong_claims_tiers.json`, column `tier` in `review_7b_wrong.csv` |
+| 5a. R40 capture in `copy_back` | Done and tested on DRY3-RESUME (Log #103); one gap flagged |
+| 5b. Launch commands R2, R3, stress | Written below; nothing launched |
+| 6. Logging | Done: Log #101 flagged provisional (then resolved by §11 #61 B), R47 stub, R48 |
+| Addendum A–B | Done: §11 #61, Log #104, `comparison_7a_decisions_AB.json`; 0 claims move |
+
+### Answers
+
+1. **Queue tool format.** `get_overflow_queue` returns `{"day", "note", "queue": [...]}`, a **list of patients** (`patient_id`, `department`, `complexity`, `arrival_day`, `days_waiting`), with **no counts** (`src/mcp_server/workflow.py`, `get_overflow_queue`). `get_observed_state` has no queue count either; its only per-level overflow field is `overflow_yesterday_by_level`, a different quantity (0 on the affected days, except day 18, where L1 is 2). A queue count is therefore a count of a list, i.e. derived under item 8. **Affected wrong claims (11):** R1-D11-08, D11-09, D12-19, D12-20, D15-20, D15-21, D17-19, D17-20, D18-14, D20-33, D20-34. If they were relabelled copied, the copied stratum would show 11 wrong.
+   **Nurse shortages:** given in the input. `simulate_allocation` returns `nurse_shortage_by_department_and_level`, so a single department-level shortage under an allocation the ALLOCATOR simulated that day is one cell (copied). Checked for the four disputed rows: day 8, allocation 7/12/7/7 gives IM L1 1.05 and OR L1 0.9; day 18, option B (13/10/10/4) gives CA L2 0.05 and NE L2 0.4.
+2. **Day 12:** the tool listed 17 patients (L3 4, L2 7, L1 6); the ALLOCATOR wrote 16 (4/7/5). `claim_check` gives 17 and 6 for the two wrong claims (D12-19, D12-20), agreeing with the tool. All six days are now checked.
+3. **Shock days.**
+   - (i) The simulator **leaves an infeasible allocation as it is**: no clipping, no scaling. `simulate` (`src/environment/whatif.py`) records the violations, but returns no assignment only on BOUNDS / INTEGRALITY. `assign_beds` (`src/environment/bed_assignment.py`) uses each `beds[d]` literally, and `coverage` (`src/environment/nurses.py`) uses each `nurses[d]` literally. So a what-if of the carried-over allocation on day 21 places patients in 100 beds against a pool of 96, and on day 8 it covers need with 37 nurses against 33. This reaches only the ALLOCATOR's what-if view (`valid: false`, plus outcomes) and claim_check; the rubric already marks such outcomes unverifiable.
+   - **A1–A3 are not computed on it.** `audit_day` (`src/evaluation/audit.py`) uses `rec.alloc[day]`, the allocation recorded for day t after that day's decision or repair, not the day t−1 allocation. On R1's six shock days the recorded day-t allocation sums to the day-t pools: 0 conservation failures over 30 days, checked from `allocation_state.jsonl` and the dataset pools, not from audit output. If a recorded allocation were infeasible, `pairs` is set to `[]` and a Critical `hard_constraint_in_effect` is raised.
+   - (ii) **Gate D checks the allocation in effect only.** Definition (EVALUATION_PLAN §3.7): "zero hard-constraint violations in effect, checked by the audit's own implementation". Implementation (`metrics.compute_metrics`, `audit.own_hard_constraints`): conservation, integrality, bounds, no-eviction and relaxed no-eviction on `rec.alloc[day]` against day-t pools. Submitted-but-rejected allocations are counted separately (`rejected_submissions`) and are not in the gate. **One difference:** `gate_passed` also requires 0 `replay_mismatches` and 0 `pairing_closed_form_mismatches`, which §3.7 does not list. Both are Critical under §4 ("Any Critical issue blocks interpretation"), so the implementation is stricter than the §3.7 sentence but consistent with §4. No fix proposed as needed; a one-line wording change in §3.7 is parked (question 3).
+4. **Tiers of the 75 wrong claims:** 54 wrong only under the primary spare/free reading; 1 wrong under both (R1-D21-35, "the 3 spare beds": 12 spare under the strict reading, 4 empty under the rival); 20 without a spare/free term (18 arithmetic, 2 covered).
+5. **R40 on DRY3-RESUME** (copied from the clone into a scratch folder, not the repository): records 0 hash mismatches, 0 consistency problems, report rebuilt. Subagent capture:
+   - launch-1 (`063d29c1…`): 2 spawns, **no session folder: flagged** (those transcripts are already lost);
+   - launch-2 (`6d02c21b…`) and launch-3 (`6ac4f190…`): 3 spawns each, both folders found.
+   - 12 files preserved (5 ALLOCATOR + 1 CHECKER transcripts, each with `.meta.json`), 0 hash mismatches. Paths and SHA-256 are in the session report.
+   The clone is at **`prompts-v1.0` = `f2162c0`** (`git describe --tags --exact-match`), with no tracked changes. Untracked: `results/allocations/ACTIVE_RUN` (points at R1) and R1's two run folders. `copy_back` runs in the repository, so the clone needs no update.
+
+### Launch commands (owner; do not run from a development session)
+
+In the clone, in a fresh shell and a fresh usage window, once per run (R2, then R3, then STRESS1):
+
+```bash
+cd C:/hra-runs/hospital_resource_allocations
+git describe --tags --exact-match                    # expect prompts-v1.0
+git status --short                                   # expect only untracked results/ run folders and ACTIVE_RUN
+uv run python -m src.data_generation.manifest --verify
+uv run python tests/manual/verify_run_settings.py
+uv run python -m src.mcp_server.init_run --dataset seed20261107 --run-id R2         # R3: --run-id R3
+# stress: uv run python -m src.mcp_server.init_run --dataset seed20261107_stress --run-id STRESS1
+uv run python -m src.mcp_server.launch               # exits 1 unless FINISHED; re-run to resume
+```
+
+Then, **soon after the run** (Claude Code may clean up old session folders), in the repository:
+
+```bash
+uv run python -m src.mcp_server.copy_back C:/hra-runs/hospital_resource_allocations R2   # exits 1 on any capture problem
+```
+
+Before the first of these runs, the milestone checks of `CLAUDE.md` §9.4 also apply in the repository (full suite and manifest check).
+
+### Next
+
+1. Owner: fill `cause` in `adjudication_7a.csv`; review `review_7b_wrong.csv` and `review_7c_unverifiable.csv`; write R47.
+2. Then: counts by cause, owner verdicts applied, then CHECKER mapping in a later commit.
+3. R2, R3, STRESS1 with the commands above (owner).
+
+### Parked questions
+
+1. Queue counts: keep them derived (item 8, count of a list) or relabel them copied? 11 wrong claims would move to the copied stratum.
+2. R1-D09-22 ("cardiology holds 2 nurses above need", restated as need = 5): the unrounded need is exactly 5, so it equals its own ceiling. Decision B's integer test cannot tell it apart; it is kept in the universe as need, by what the sentence refers to.
+3. EVALUATION_PLAN §3.7: add "and zero replay and pairing mismatches" so that the gate's wording matches `gate_passed`?
+4. DRY3-RESUME launch 1 subagent transcripts are lost; record as a known gap of the dry runs (DRY1, DRY2 also have no session folders).
+5. Carried over: enforce "invalid allocation → unverifiable" in `claim_check`; the null-quantity rule in the comparison; strict "worse/more/less" (7 claims); day 28 reading.
