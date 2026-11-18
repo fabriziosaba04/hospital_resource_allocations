@@ -1,0 +1,5001 @@
+{
+  "run_id": "R1",
+  "source": "owner_claims_d03_d08_d18.csv",
+  "claims": [
+    {
+      "id": "OWN-D03-r001",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 1,
+      "field": "situation",
+      "text": "beds 96",
+      "day": 3,
+      "category": "pool",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "beds 96",
+        "Category": "pool",
+        "Quantity": "bed pool",
+        "Departments": "all",
+        "Tier": "",
+        "Allocation": "N/A",
+        "Relation": "'=",
+        "Value": "96",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "pool_beds"
+      },
+      "allocation": null,
+      "relation": "eq",
+      "value": 96,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A0"
+      ]
+    },
+    {
+      "id": "OWN-D03-r002",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 2,
+      "field": "situation",
+      "text": "nurses 37",
+      "day": 3,
+      "category": "pool",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "nurses 37",
+        "Category": "pool",
+        "Quantity": "nurses pool",
+        "Departments": "all",
+        "Tier": "",
+        "Allocation": "N/A",
+        "Relation": "'=",
+        "Value": "37",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "pool_nurses"
+      },
+      "allocation": null,
+      "relation": "eq",
+      "value": 37,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A0"
+      ]
+    },
+    {
+      "id": "OWN-D03-r003",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 3,
+      "field": "situation",
+      "text": "Occupied beds 73",
+      "day": 3,
+      "category": "beds",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "Occupied beds 73",
+        "Category": "beds",
+        "Quantity": "occupied beds",
+        "Departments": "all",
+        "Tier": "all",
+        "Allocation": "N/A",
+        "Relation": "'=",
+        "Value": "73",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "holders"
+      },
+      "allocation": null,
+      "relation": "eq",
+      "value": 73,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A0"
+      ]
+    },
+    {
+      "id": "OWN-D03-r004",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 4,
+      "field": "situation",
+      "text": "18 patients are in the overflow queue",
+      "day": 3,
+      "category": "overflow",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "18 patients are in the overflow queue",
+        "Category": "overflow",
+        "Quantity": "patients overflow",
+        "Departments": "all",
+        "Tier": "all",
+        "Allocation": "N/A",
+        "Relation": "'=",
+        "Value": "18",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "queue"
+      },
+      "allocation": null,
+      "relation": "eq",
+      "value": 18,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A3",
+        "A0"
+      ],
+      "mapping_not_mechanical": [
+        "A3: overflow with allocation N/A in the situation / information_used field read as the queue"
+      ]
+    },
+    {
+      "id": "OWN-D03-r010",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 10,
+      "field": "situation",
+      "text": "Current beds 18/32/19/27",
+      "day": 3,
+      "category": "beds",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "Current beds 18/32/19/27",
+        "Category": "beds",
+        "Quantity": "beds allocated",
+        "Departments": "CA",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "18",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "allocation": {
+        "in_effect": 2
+      },
+      "relation": "eq",
+      "value": 18,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D03-r011",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 11,
+      "field": "situation",
+      "text": "Current beds 18/32/19/27",
+      "day": 3,
+      "category": "beds",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "Current beds 18/32/19/27",
+        "Category": "beds",
+        "Quantity": "beds allocated",
+        "Departments": "IM",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "32",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "allocation": {
+        "in_effect": 2
+      },
+      "relation": "eq",
+      "value": 32,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D03-r012",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 12,
+      "field": "situation",
+      "text": "Current beds 18/32/19/27",
+      "day": 3,
+      "category": "beds",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "Current beds 18/32/19/27",
+        "Category": "beds",
+        "Quantity": "beds allocated",
+        "Departments": "NE",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "19",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "allocation": {
+        "in_effect": 2
+      },
+      "relation": "eq",
+      "value": 19,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D03-r013",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 13,
+      "field": "situation",
+      "text": "Current beds 18/32/19/27",
+      "day": 3,
+      "category": "beds",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "Current beds 18/32/19/27",
+        "Category": "beds",
+        "Quantity": "beds allocated",
+        "Departments": "OR",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "27",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "allocation": {
+        "in_effect": 2
+      },
+      "relation": "eq",
+      "value": 27,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D03-r014",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 14,
+      "field": "situation",
+      "text": "cardiology short by 2",
+      "day": 3,
+      "category": "overflow",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "cardiology short by 2",
+        "Category": "overflow",
+        "Quantity": "cardiology overflow",
+        "Departments": "CA",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "2",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "allocation": {
+        "in_effect": 2
+      },
+      "relation": "eq",
+      "value": 2,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D03-r015",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 15,
+      "field": "situation",
+      "text": "orthopedics hold 5 spare",
+      "day": 3,
+      "category": "empty_beds",
+      "basis": "derived",
+      "rubric_term": "spare/free",
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "orthopedics hold 5 spare",
+        "Category": "empty_beds",
+        "Quantity": "spare beds",
+        "Departments": "OR",
+        "Tier": "",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "5",
+        "Basis": "derived",
+        "Rubric term": "spare/free",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "spare_beds",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "allocation": {
+        "in_effect": 2
+      },
+      "relation": "eq",
+      "value": 5,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D03-r034",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 34,
+      "field": "information_used",
+      "text": "Occupied 15/23/17/18",
+      "day": 3,
+      "category": "beds",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "Occupied 15/23/17/18",
+        "Category": "beds",
+        "Quantity": "occupied beds CA",
+        "Departments": "CA",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "15",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "information_used",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "allocation": null,
+      "relation": "eq",
+      "value": 15,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A0"
+      ]
+    },
+    {
+      "id": "OWN-D03-r035",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 35,
+      "field": "information_used",
+      "text": "Occupied 15/23/17/18",
+      "day": 3,
+      "category": "beds",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "Occupied 15/23/17/18",
+        "Category": "beds",
+        "Quantity": "occupied beds IM",
+        "Departments": "IM",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "23",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "information_used",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "allocation": null,
+      "relation": "eq",
+      "value": 23,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A0"
+      ]
+    },
+    {
+      "id": "OWN-D03-r036",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 36,
+      "field": "information_used",
+      "text": "Occupied 15/23/17/18",
+      "day": 3,
+      "category": "beds",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "Occupied 15/23/17/18",
+        "Category": "beds",
+        "Quantity": "occupied beds NE",
+        "Departments": "NE",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "17",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "information_used",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "allocation": null,
+      "relation": "eq",
+      "value": 17,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A0"
+      ]
+    },
+    {
+      "id": "OWN-D03-r037",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 37,
+      "field": "information_used",
+      "text": "Occupied 15/23/17/18",
+      "day": 3,
+      "category": "beds",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "Occupied 15/23/17/18",
+        "Category": "beds",
+        "Quantity": "occupied beds OR",
+        "Departments": "OR",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "18",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "information_used",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "allocation": null,
+      "relation": "eq",
+      "value": 18,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A0"
+      ]
+    },
+    {
+      "id": "OWN-D03-r038",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 38,
+      "field": "information_used",
+      "text": "4 level 3",
+      "day": 3,
+      "category": "overflow",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "4 level 3",
+        "Category": "overflow",
+        "Quantity": "overflow L3",
+        "Departments": "all",
+        "Tier": "3",
+        "Allocation": "N/A",
+        "Relation": "'=",
+        "Value": "4",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "information_used",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "queue",
+        "levels": [
+          3
+        ]
+      },
+      "allocation": null,
+      "relation": "eq",
+      "value": 4,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A3",
+        "A0"
+      ],
+      "mapping_not_mechanical": [
+        "A3: overflow with allocation N/A in the situation / information_used field read as the queue"
+      ]
+    },
+    {
+      "id": "OWN-D03-r039",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 39,
+      "field": "information_used",
+      "text": "6 level 2",
+      "day": 3,
+      "category": "overflow",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "6 level 2",
+        "Category": "overflow",
+        "Quantity": "overflow L2",
+        "Departments": "all",
+        "Tier": "2",
+        "Allocation": "N/A",
+        "Relation": "'=",
+        "Value": "6",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "information_used",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "queue",
+        "levels": [
+          2
+        ]
+      },
+      "allocation": null,
+      "relation": "eq",
+      "value": 6,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A3",
+        "A0"
+      ],
+      "mapping_not_mechanical": [
+        "A3: overflow with allocation N/A in the situation / information_used field read as the queue"
+      ]
+    },
+    {
+      "id": "OWN-D03-r040",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 40,
+      "field": "information_used",
+      "text": "8 level 1",
+      "day": 3,
+      "category": "overflow",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "8 level 1",
+        "Category": "overflow",
+        "Quantity": "overflow L1",
+        "Departments": "all",
+        "Tier": "1",
+        "Allocation": "N/A",
+        "Relation": "'=",
+        "Value": "8",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "information_used",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "queue",
+        "levels": [
+          1
+        ]
+      },
+      "allocation": null,
+      "relation": "eq",
+      "value": 8,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A3",
+        "A0"
+      ],
+      "mapping_not_mechanical": [
+        "A3: overflow with allocation N/A in the situation / information_used field read as the queue"
+      ]
+    },
+    {
+      "id": "OWN-D03-r041",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 41,
+      "field": "information_used",
+      "text": "nurses 8/11/9/9",
+      "day": 3,
+      "category": "nurse_coverage",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "nurses 8/11/9/9",
+        "Category": "nurse_coverage",
+        "Quantity": "nurses CA",
+        "Departments": "CA",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "8",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "information_used",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "allocation": {
+        "in_effect": 2
+      },
+      "relation": "eq",
+      "value": 8,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D03-r042",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 42,
+      "field": "information_used",
+      "text": "nurses 8/11/9/9",
+      "day": 3,
+      "category": "nurse_coverage",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "nurses 8/11/9/9",
+        "Category": "nurse_coverage",
+        "Quantity": "nurses IM",
+        "Departments": "IM",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "11",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "information_used",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "allocation": {
+        "in_effect": 2
+      },
+      "relation": "eq",
+      "value": 11,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D03-r043",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 43,
+      "field": "information_used",
+      "text": "nurses 8/11/9/9",
+      "day": 3,
+      "category": "nurse_coverage",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "nurses 8/11/9/9",
+        "Category": "nurse_coverage",
+        "Quantity": "nurses NE",
+        "Departments": "NE",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "9",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "information_used",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "allocation": {
+        "in_effect": 2
+      },
+      "relation": "eq",
+      "value": 9,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D03-r044",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 44,
+      "field": "information_used",
+      "text": "nurses 8/11/9/9",
+      "day": 3,
+      "category": "nurse_coverage",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "nurses 8/11/9/9",
+        "Category": "nurse_coverage",
+        "Quantity": "nurses OR",
+        "Departments": "OR",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "9",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "information_used",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "allocation": {
+        "in_effect": 2
+      },
+      "relation": "eq",
+      "value": 9,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D03-r045",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 45,
+      "field": "alternatives",
+      "text": "overflow in cardiology of 1 level-2",
+      "day": 3,
+      "category": "overflow",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "overflow in cardiology of 1 level-2",
+        "Category": "overflow",
+        "Quantity": "overflow L2",
+        "Departments": "CA",
+        "Tier": "2",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "1",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "alternatives",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "allocation": {
+        "in_effect": 2
+      },
+      "relation": "eq",
+      "value": 1,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D03-r046",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 46,
+      "field": "alternatives",
+      "text": "patient (P000593)",
+      "day": 3,
+      "category": "overflow",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "patient (P000593)",
+        "Category": "overflow",
+        "Quantity": "patient in overflow",
+        "Departments": "CA",
+        "Tier": "2",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "P000593",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "alternatives",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "patient_in_bed",
+        "patient_id": "P000593"
+      },
+      "allocation": {
+        "in_effect": 2
+      },
+      "relation": "eq",
+      "value": 0,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "P1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D03-r047",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 47,
+      "field": "alternatives",
+      "text": "1 level-1",
+      "day": 3,
+      "category": "overflow",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "1 level-1",
+        "Category": "overflow",
+        "Quantity": "overflow L1",
+        "Departments": "CA",
+        "Tier": "1",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "1",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "alternatives",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "allocation": {
+        "in_effect": 2
+      },
+      "relation": "eq",
+      "value": 1,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D03-r048",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 48,
+      "field": "alternatives",
+      "text": "patient (P000589)",
+      "day": 3,
+      "category": "overflow",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "patient (P000589)",
+        "Category": "overflow",
+        "Quantity": "patient in overflow",
+        "Departments": "CA",
+        "Tier": "1",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "P000589",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "alternatives",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "patient_in_bed",
+        "patient_id": "P000589"
+      },
+      "allocation": {
+        "in_effect": 2
+      },
+      "relation": "eq",
+      "value": 0,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "P1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D03-r049",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 49,
+      "field": "alternatives",
+      "text": "orthopedics has 3+ empty beds",
+      "day": 3,
+      "category": "empty_beds",
+      "basis": "derived",
+      "rubric_term": "empty",
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "orthopedics has 3+ empty beds",
+        "Category": "empty_beds",
+        "Quantity": "empty beds ",
+        "Departments": "OR",
+        "Tier": "",
+        "Allocation": "in effect",
+        "Relation": "range",
+        "Value": ">= 3",
+        "Basis": "derived",
+        "Rubric term": "empty",
+        "Unverifiable": "no",
+        "Field": "alternatives",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "empty_beds",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "allocation": {
+        "in_effect": 2
+      },
+      "relation": "ge",
+      "value": 3,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V4",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D03-r050",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 50,
+      "field": "alternatives",
+      "text": "shortage is level 1 only",
+      "day": 3,
+      "category": "nurse_coverage",
+      "basis": "derived",
+      "rubric_term": "covered",
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "shortage is level 1 only",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse shortage",
+        "Departments": "all",
+        "Tier": "2-3",
+        "Allocation": "in effect",
+        "Relation": "covered",
+        "Value": "0",
+        "Basis": "derived",
+        "Rubric term": "covered",
+        "Unverifiable": "no",
+        "Field": "alternatives",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "shortage",
+        "levels": [
+          2,
+          3
+        ]
+      },
+      "allocation": {
+        "in_effect": 2
+      },
+      "relation": "eq",
+      "value": 0,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V3",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D03-r051",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 51,
+      "field": "alternatives",
+      "text": "IM 1.15",
+      "day": 3,
+      "category": "nurse_coverage",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "IM 1.15",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse shortage",
+        "Departments": "IM",
+        "Tier": "1",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "1.15",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "alternatives",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "allocation": {
+        "in_effect": 2
+      },
+      "relation": "round",
+      "value": 1.15,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V2",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D03-r052",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 52,
+      "field": "alternatives",
+      "text": "cardiology 0.1",
+      "day": 3,
+      "category": "nurse_coverage",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "cardiology 0.1",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse shortage",
+        "Departments": "CA",
+        "Tier": "1",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "0.1",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "alternatives",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "allocation": {
+        "in_effect": 2
+      },
+      "relation": "round",
+      "value": 0.1,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V2",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D03-r053",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 53,
+      "field": "alternatives",
+      "text": "0 overflow at every level",
+      "day": 3,
+      "category": "overflow",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "0 overflow at every level",
+        "Category": "overflow",
+        "Quantity": "overflow",
+        "Departments": "all",
+        "Tier": "all",
+        "Allocation": "chosen",
+        "Relation": "'=",
+        "Value": "0",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "alternatives",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "overflow"
+      },
+      "allocation": {
+        "decided": 3
+      },
+      "relation": "eq",
+      "value": 0,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A2"
+      ]
+    },
+    {
+      "id": "OWN-D03-r054",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 54,
+      "field": "alternatives",
+      "text": "nurse shortage only level 1",
+      "day": 3,
+      "category": "nurse_coverage",
+      "basis": "derived",
+      "rubric_term": "covered",
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "nurse shortage only level 1",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse shortage",
+        "Departments": "all",
+        "Tier": "2-3",
+        "Allocation": "chosen",
+        "Relation": "covered",
+        "Value": "0",
+        "Basis": "derived",
+        "Rubric term": "covered",
+        "Unverifiable": "no",
+        "Field": "alternatives",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "shortage",
+        "levels": [
+          2,
+          3
+        ]
+      },
+      "allocation": {
+        "decided": 3
+      },
+      "relation": "eq",
+      "value": 0,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V3",
+        "A2"
+      ]
+    },
+    {
+      "id": "OWN-D03-r055",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 55,
+      "field": "alternatives",
+      "text": "IM 0.15",
+      "day": 3,
+      "category": "nurse_coverage",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "IM 0.15",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse shortage",
+        "Departments": "IM",
+        "Tier": "1",
+        "Allocation": "chosen",
+        "Relation": "'=",
+        "Value": "0.15",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "alternatives",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "allocation": {
+        "decided": 3
+      },
+      "relation": "round",
+      "value": 0.15,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V2",
+        "A2"
+      ]
+    },
+    {
+      "id": "OWN-D03-r056",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 56,
+      "field": "alternatives",
+      "text": "orthopedics 0.15",
+      "day": 3,
+      "category": "nurse_coverage",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "orthopedics 0.15",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse shortage",
+        "Departments": "OR",
+        "Tier": "1",
+        "Allocation": "chosen",
+        "Relation": "'=",
+        "Value": "0.15",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "alternatives",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "allocation": {
+        "decided": 3
+      },
+      "relation": "round",
+      "value": 0.15,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V2",
+        "A2"
+      ]
+    },
+    {
+      "id": "OWN-D03-r057",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 57,
+      "field": "alternatives",
+      "text": "no level 2 or 3 need uncovered",
+      "day": 3,
+      "category": "nurse_coverage",
+      "basis": "derived",
+      "rubric_term": "covered",
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "no level 2 or 3 need uncovered",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse shortage",
+        "Departments": "all",
+        "Tier": "2-3",
+        "Allocation": "chosen",
+        "Relation": "covered",
+        "Value": "0",
+        "Basis": "derived",
+        "Rubric term": "covered",
+        "Unverifiable": "no",
+        "Field": "alternatives",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "shortage",
+        "levels": [
+          2,
+          3
+        ]
+      },
+      "allocation": {
+        "decided": 3
+      },
+      "relation": "eq",
+      "value": 0,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V3",
+        "A2"
+      ]
+    },
+    {
+      "id": "OWN-D03-r058",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 58,
+      "field": "reasons",
+      "text": "about 0.3 nurse-equivalents of level 1",
+      "day": 3,
+      "category": "nurse_coverage",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "about 0.3 nurse-equivalents of level 1",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse shortage",
+        "Departments": "IM +  OR",
+        "Tier": "1",
+        "Allocation": "chosen",
+        "Relation": "'=",
+        "Value": "0.3",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "reasons",
+        "Notes": "\"about 0.3\""
+      },
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine",
+          "orthopedics"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "allocation": {
+        "decided": 3
+      },
+      "relation": "round",
+      "value": 0.3,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V2",
+        "A2"
+      ]
+    },
+    {
+      "id": "OWN-D03-r059",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 59,
+      "field": "reasons",
+      "text": "5 spare beds spread out",
+      "day": 3,
+      "category": "empty_beds",
+      "basis": "derived",
+      "rubric_term": "spare/free",
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "5 spare beds spread out",
+        "Category": "empty_beds",
+        "Quantity": "spare beds",
+        "Departments": "all",
+        "Tier": "",
+        "Allocation": "chosen",
+        "Relation": "'=",
+        "Value": "5",
+        "Basis": "derived",
+        "Rubric term": "spare/free",
+        "Unverifiable": "no",
+        "Field": "reasons",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "spare_beds"
+      },
+      "allocation": {
+        "decided": 3
+      },
+      "relation": "eq",
+      "value": 5,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A2"
+      ]
+    },
+    {
+      "id": "OWN-D03-r060",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 60,
+      "field": "tradeoffs",
+      "text": "2 spare beds",
+      "day": 3,
+      "category": "empty_beds",
+      "basis": "derived",
+      "rubric_term": "spare/free",
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "2 spare beds",
+        "Category": "empty_beds",
+        "Quantity": "spare beds",
+        "Departments": "OR",
+        "Tier": "",
+        "Allocation": "chosen",
+        "Relation": "'=",
+        "Value": "2",
+        "Basis": "derived",
+        "Rubric term": "spare/free",
+        "Unverifiable": "no",
+        "Field": "tradeoffs",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "spare_beds",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "allocation": {
+        "decided": 3
+      },
+      "relation": "eq",
+      "value": 2,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A2"
+      ]
+    },
+    {
+      "id": "OWN-D03-r061",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 61,
+      "field": "tradeoffs",
+      "text": "6 spare above occupied",
+      "day": 3,
+      "category": "pool",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "3",
+        "Quoted text": "6 spare above occupied",
+        "Category": "pool",
+        "Quantity": "beds - occupied",
+        "Departments": "OR",
+        "Tier": "all",
+        "Allocation": "chosen",
+        "Relation": "'=",
+        "Value": "6",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "tradeoffs",
+        "Notes": "Beds - Occupied beds"
+      },
+      "quantity": {
+        "name": "spare_beds",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "allocation": {
+        "decided": 3
+      },
+      "relation": "eq",
+      "value": 6,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A2"
+      ]
+    },
+    {
+      "id": "OWN-D08-r062",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 62,
+      "field": "situation",
+      "text": "nurses 33",
+      "day": 8,
+      "category": "pool",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "nurses 33",
+        "Category": "pool",
+        "Quantity": "nurses pool",
+        "Departments": "all",
+        "Tier": "",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "33",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "pool_nurses"
+      },
+      "allocation": null,
+      "relation": "eq",
+      "value": 33,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A0"
+      ]
+    },
+    {
+      "id": "OWN-D08-r063",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 63,
+      "field": "situation",
+      "text": "beds 96",
+      "day": 8,
+      "category": "pool",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "beds 96",
+        "Category": "pool",
+        "Quantity": "beds pool",
+        "Departments": "all",
+        "Tier": "",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "96",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "pool_beds"
+      },
+      "allocation": null,
+      "relation": "eq",
+      "value": 96,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A0"
+      ]
+    },
+    {
+      "id": "OWN-D08-r064",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 64,
+      "field": "situation",
+      "text": "nurses reduced by 4",
+      "day": 8,
+      "category": "pool",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "nurses reduced by 4",
+        "Category": "pool",
+        "Quantity": "nurses change",
+        "Departments": "all",
+        "Tier": "",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "4",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": "Nurses day 7 - Nurses day 8"
+      },
+      "quantity": null,
+      "allocation": null,
+      "relation": null,
+      "value": null,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1",
+        "Q0"
+      ],
+      "mapping_not_mechanical": [
+        "Q0: no claim_check quantity for 'nurses change': unmapped"
+      ]
+    },
+    {
+      "id": "OWN-D08-r065",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 65,
+      "field": "situation",
+      "text": "occupied beds 70",
+      "day": 8,
+      "category": "beds",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "occupied beds 70",
+        "Category": "beds",
+        "Quantity": "occupied beds",
+        "Departments": "all",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "70",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "holders"
+      },
+      "allocation": null,
+      "relation": "eq",
+      "value": 70,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A0"
+      ]
+    },
+    {
+      "id": "OWN-D08-r071",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 71,
+      "field": "situation",
+      "text": "3-nurse hospital-wide shortage",
+      "day": 8,
+      "category": "nurse_coverage",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "3-nurse hospital-wide shortage",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse shortage",
+        "Departments": "all",
+        "Tier": "",
+        "Allocation": "N/A",
+        "Relation": "'=",
+        "Value": "3",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": null,
+      "allocation": null,
+      "relation": null,
+      "value": null,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "Q0"
+      ],
+      "mapping_not_mechanical": [
+        "A4: allocation N/A on an allocation quantity and no override: unmapped"
+      ]
+    },
+    {
+      "id": "OWN-D08-r072",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 72,
+      "field": "situation",
+      "text": "9 patients in the queue",
+      "day": 8,
+      "category": "overflow",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "9 patients in the queue",
+        "Category": "overflow",
+        "Quantity": "overflow",
+        "Departments": "all",
+        "Tier": "all",
+        "Allocation": "N/A",
+        "Relation": "'=",
+        "Value": "9",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "queue"
+      },
+      "allocation": null,
+      "relation": "eq",
+      "value": 9,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A3",
+        "A0"
+      ],
+      "mapping_not_mechanical": [
+        "A3: overflow with allocation N/A in the situation / information_used field read as the queue"
+      ]
+    },
+    {
+      "id": "OWN-D08-r073",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 73,
+      "field": "situation",
+      "text": "1 level 3",
+      "day": 8,
+      "category": "overflow",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "1 level 3",
+        "Category": "overflow",
+        "Quantity": "overflow",
+        "Departments": "all",
+        "Tier": "3",
+        "Allocation": "N/A",
+        "Relation": "'=",
+        "Value": "1",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "queue",
+        "levels": [
+          3
+        ]
+      },
+      "allocation": null,
+      "relation": "eq",
+      "value": 1,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A3",
+        "A0"
+      ],
+      "mapping_not_mechanical": [
+        "A3: overflow with allocation N/A in the situation / information_used field read as the queue"
+      ]
+    },
+    {
+      "id": "OWN-D08-r074",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 74,
+      "field": "situation",
+      "text": "4 level 2",
+      "day": 8,
+      "category": "overflow",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "4 level 2",
+        "Category": "overflow",
+        "Quantity": "overflow",
+        "Departments": "all",
+        "Tier": "2",
+        "Allocation": "N/A",
+        "Relation": "'=",
+        "Value": "4",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "queue",
+        "levels": [
+          2
+        ]
+      },
+      "allocation": null,
+      "relation": "eq",
+      "value": 4,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A3",
+        "A0"
+      ],
+      "mapping_not_mechanical": [
+        "A3: overflow with allocation N/A in the situation / information_used field read as the queue"
+      ]
+    },
+    {
+      "id": "OWN-D08-r075",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 75,
+      "field": "situation",
+      "text": "4 level 1",
+      "day": 8,
+      "category": "overflow",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "4 level 1",
+        "Category": "overflow",
+        "Quantity": "overflow",
+        "Departments": "all",
+        "Tier": "1",
+        "Allocation": "N/A",
+        "Relation": "'=",
+        "Value": "4",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "queue",
+        "levels": [
+          1
+        ]
+      },
+      "allocation": null,
+      "relation": "eq",
+      "value": 4,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A3",
+        "A0"
+      ],
+      "mapping_not_mechanical": [
+        "A3: overflow with allocation N/A in the situation / information_used field read as the queue"
+      ]
+    },
+    {
+      "id": "OWN-D08-r081",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 81,
+      "field": "information_used",
+      "text": "occupied 12/27/12/19",
+      "day": 8,
+      "category": "beds",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "occupied 12/27/12/19",
+        "Category": "beds",
+        "Quantity": "occupied beds",
+        "Departments": "CA",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "12",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "information_used",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "allocation": null,
+      "relation": "eq",
+      "value": 12,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A0"
+      ]
+    },
+    {
+      "id": "OWN-D08-r082",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 82,
+      "field": "information_used",
+      "text": "occupied 12/27/12/19",
+      "day": 8,
+      "category": "beds",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "occupied 12/27/12/19",
+        "Category": "beds",
+        "Quantity": "occupied beds",
+        "Departments": "IM",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "27",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "information_used",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "allocation": null,
+      "relation": "eq",
+      "value": 27,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A0"
+      ]
+    },
+    {
+      "id": "OWN-D08-r083",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 83,
+      "field": "information_used",
+      "text": "occupied 12/27/12/19",
+      "day": 8,
+      "category": "beds",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "occupied 12/27/12/19",
+        "Category": "beds",
+        "Quantity": "occupied beds",
+        "Departments": "NE",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "12",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "information_used",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "allocation": null,
+      "relation": "eq",
+      "value": 12,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A0"
+      ]
+    },
+    {
+      "id": "OWN-D08-r084",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 84,
+      "field": "information_used",
+      "text": "occupied 12/27/12/19",
+      "day": 8,
+      "category": "beds",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "occupied 12/27/12/19",
+        "Category": "beds",
+        "Quantity": "occupied beds",
+        "Departments": "OR",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "19",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "information_used",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "allocation": null,
+      "relation": "eq",
+      "value": 19,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A0"
+      ]
+    },
+    {
+      "id": "OWN-D08-r097",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 97,
+      "field": "information_used",
+      "text": "beds 19/36/18/23",
+      "day": 8,
+      "category": "beds",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "beds 19/36/18/23",
+        "Category": "beds",
+        "Quantity": "beds CA",
+        "Departments": "CA",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "19",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "information_used",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "allocation": {
+        "in_effect": 7
+      },
+      "relation": "eq",
+      "value": 19,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D08-r098",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 98,
+      "field": "information_used",
+      "text": "beds 19/36/18/23",
+      "day": 8,
+      "category": "beds",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "beds 19/36/18/23",
+        "Category": "beds",
+        "Quantity": "beds IM",
+        "Departments": "IM",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "36",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "information_used",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "allocation": {
+        "in_effect": 7
+      },
+      "relation": "eq",
+      "value": 36,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D08-r099",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 99,
+      "field": "information_used",
+      "text": "beds 19/36/18/23",
+      "day": 8,
+      "category": "beds",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "beds 19/36/18/23",
+        "Category": "beds",
+        "Quantity": "beds NE",
+        "Departments": "NE",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "18",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "information_used",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "allocation": {
+        "in_effect": 7
+      },
+      "relation": "eq",
+      "value": 18,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D08-r100",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 100,
+      "field": "information_used",
+      "text": "beds 19/36/18/23",
+      "day": 8,
+      "category": "beds",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "beds 19/36/18/23",
+        "Category": "beds",
+        "Quantity": "beds OR",
+        "Departments": "OR",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "23",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "information_used",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "allocation": {
+        "in_effect": 7
+      },
+      "relation": "eq",
+      "value": 23,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D08-r101",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 101,
+      "field": "information_used",
+      "text": "nurses 7/14/9/7",
+      "day": 8,
+      "category": "nurse_coverage",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "nurses 7/14/9/7",
+        "Category": "nurse_coverage",
+        "Quantity": "nurses CA",
+        "Departments": "CA",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "7",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "information_used",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "allocation": {
+        "in_effect": 7
+      },
+      "relation": "eq",
+      "value": 7,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D08-r102",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 102,
+      "field": "information_used",
+      "text": "nurses 7/14/9/7",
+      "day": 8,
+      "category": "nurse_coverage",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "nurses 7/14/9/7",
+        "Category": "nurse_coverage",
+        "Quantity": "nurses IM",
+        "Departments": "IM",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "14",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "information_used",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "allocation": {
+        "in_effect": 7
+      },
+      "relation": "eq",
+      "value": 14,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D08-r103",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 103,
+      "field": "information_used",
+      "text": "nurses 7/14/9/7",
+      "day": 8,
+      "category": "nurse_coverage",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "nurses 7/14/9/7",
+        "Category": "nurse_coverage",
+        "Quantity": "nurses NE",
+        "Departments": "NE",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "9",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "information_used",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "allocation": {
+        "in_effect": 7
+      },
+      "relation": "eq",
+      "value": 9,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D08-r104",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 104,
+      "field": "information_used",
+      "text": "nurses 7/14/9/7",
+      "day": 8,
+      "category": "nurse_coverage",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "nurses 7/14/9/7",
+        "Category": "nurse_coverage",
+        "Quantity": "nurses OR",
+        "Departments": "OR",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "7",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "information_used",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "nurses",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "allocation": {
+        "in_effect": 7
+      },
+      "relation": "eq",
+      "value": 7,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D08-r109",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 109,
+      "field": "alternatives",
+      "text": "neurology 6 spare beds above census",
+      "day": 8,
+      "category": "empty_beds",
+      "basis": "derived",
+      "rubric_term": "spare/free",
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "neurology 6 spare beds above census",
+        "Category": "empty_beds",
+        "Quantity": "spare beds",
+        "Departments": "NE",
+        "Tier": "",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "6",
+        "Basis": "derived",
+        "Rubric term": "spare/free",
+        "Unverifiable": "no",
+        "Field": "alternatives",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "spare_beds",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "allocation": {
+        "in_effect": 7
+      },
+      "relation": "eq",
+      "value": 6,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D08-r110",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 110,
+      "field": "alternatives",
+      "text": "orthopedics only 1",
+      "day": 8,
+      "category": "empty_beds",
+      "basis": "derived",
+      "rubric_term": "spare/free",
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "orthopedics only 1",
+        "Category": "empty_beds",
+        "Quantity": "spare beds",
+        "Departments": "OR",
+        "Tier": "",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "1",
+        "Basis": "derived",
+        "Rubric term": "spare/free",
+        "Unverifiable": "no",
+        "Field": "alternatives",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "spare_beds",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "allocation": {
+        "in_effect": 7
+      },
+      "relation": "eq",
+      "value": 1,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D08-r111",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 111,
+      "field": "alternatives",
+      "text": "0 overflow at all levels",
+      "day": 8,
+      "category": "overflow",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "0 overflow at all levels",
+        "Category": "overflow",
+        "Quantity": "overflow",
+        "Departments": "all",
+        "Tier": "all",
+        "Allocation": "chosen",
+        "Relation": "'=",
+        "Value": "0",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "alternatives",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "overflow"
+      },
+      "allocation": {
+        "decided": 8
+      },
+      "relation": "eq",
+      "value": 0,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A2"
+      ]
+    },
+    {
+      "id": "OWN-D08-r112",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 112,
+      "field": "alternatives",
+      "text": "0 shortage at level 2 and 3 in every department",
+      "day": 8,
+      "category": "nurse_coverage",
+      "basis": "derived",
+      "rubric_term": "covered",
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "0 shortage at level 2 and 3 in every department",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse coverage",
+        "Departments": "all",
+        "Tier": "2-3",
+        "Allocation": "chosen",
+        "Relation": "covered",
+        "Value": "0",
+        "Basis": "derived",
+        "Rubric term": "covered",
+        "Unverifiable": "no",
+        "Field": "alternatives",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "shortage",
+        "levels": [
+          2,
+          3
+        ]
+      },
+      "allocation": {
+        "decided": 8
+      },
+      "relation": "eq",
+      "value": 0,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V3",
+        "A2"
+      ]
+    },
+    {
+      "id": "OWN-D08-r113",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 113,
+      "field": "alternatives",
+      "text": "level 1 shortage IM 1.05",
+      "day": 8,
+      "category": "nurse_coverage",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "level 1 shortage IM 1.05",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse shortage",
+        "Departments": "IM",
+        "Tier": "1",
+        "Allocation": "chosen",
+        "Relation": "'=",
+        "Value": "1.05",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "alternatives",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "allocation": {
+        "decided": 8
+      },
+      "relation": "round",
+      "value": 1.05,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V2",
+        "A2"
+      ]
+    },
+    {
+      "id": "OWN-D08-r114",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 114,
+      "field": "alternatives",
+      "text": "orthopedics 0.9",
+      "day": 8,
+      "category": "nurse_coverage",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "orthopedics 0.9",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse shortage",
+        "Departments": "OR",
+        "Tier": "1",
+        "Allocation": "chosen",
+        "Relation": "'=",
+        "Value": "0.9",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "alternatives",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "allocation": {
+        "decided": 8
+      },
+      "relation": "round",
+      "value": 0.9,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V2",
+        "A2"
+      ]
+    },
+    {
+      "id": "OWN-D08-r115",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 115,
+      "field": "reasons",
+      "text": "level 3 plus level 2 need (5.6, 11.65, 6.45, 6.5)",
+      "day": 8,
+      "category": "nurse_coverage",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "level 3 plus level 2 need (5.6, 11.65, 6.45, 6.5)",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse requirement",
+        "Departments": "CA",
+        "Tier": "2-3",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "5.6",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "reasons",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "need",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          2,
+          3
+        ]
+      },
+      "allocation": null,
+      "relation": "round",
+      "value": 5.6,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "Q2",
+        "V2",
+        "A0"
+      ],
+      "mapping_not_mechanical": [
+        "Q2: 'nurse requirement' restricted to a tier read as the nursing need"
+      ]
+    },
+    {
+      "id": "OWN-D08-r116",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 116,
+      "field": "reasons",
+      "text": "level 3 plus level 2 need (5.6, 11.65, 6.45, 6.5)",
+      "day": 8,
+      "category": "nurse_coverage",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "level 3 plus level 2 need (5.6, 11.65, 6.45, 6.5)",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse requirement",
+        "Departments": "IM",
+        "Tier": "2-3",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "11.65",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "reasons",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "need",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          2,
+          3
+        ]
+      },
+      "allocation": null,
+      "relation": "round",
+      "value": 11.65,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "Q2",
+        "V2",
+        "A0"
+      ],
+      "mapping_not_mechanical": [
+        "Q2: 'nurse requirement' restricted to a tier read as the nursing need"
+      ]
+    },
+    {
+      "id": "OWN-D08-r117",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 117,
+      "field": "reasons",
+      "text": "level 3 plus level 2 need (5.6, 11.65, 6.45, 6.5)",
+      "day": 8,
+      "category": "nurse_coverage",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "level 3 plus level 2 need (5.6, 11.65, 6.45, 6.5)",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse requirement",
+        "Departments": "NE",
+        "Tier": "2-3",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "6.45",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "reasons",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "need",
+        "departments": [
+          "neurology"
+        ],
+        "levels": [
+          2,
+          3
+        ]
+      },
+      "allocation": null,
+      "relation": "round",
+      "value": 6.45,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "Q2",
+        "V2",
+        "A0"
+      ],
+      "mapping_not_mechanical": [
+        "Q2: 'nurse requirement' restricted to a tier read as the nursing need"
+      ]
+    },
+    {
+      "id": "OWN-D08-r118",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 118,
+      "field": "reasons",
+      "text": "level 3 plus level 2 need (5.6, 11.65, 6.45, 6.5)",
+      "day": 8,
+      "category": "nurse_coverage",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "level 3 plus level 2 need (5.6, 11.65, 6.45, 6.5)",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse requirement",
+        "Departments": "OR",
+        "Tier": "2-3",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "6.5",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "reasons",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "need",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          2,
+          3
+        ]
+      },
+      "allocation": null,
+      "relation": "round",
+      "value": 6.5,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "Q2",
+        "V2",
+        "A0"
+      ],
+      "mapping_not_mechanical": [
+        "Q2: 'nurse requirement' restricted to a tier read as the nursing need"
+      ]
+    },
+    {
+      "id": "OWN-D08-r120",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 120,
+      "field": "reasons",
+      "text": "above occupied (12/27/12/19)",
+      "day": 8,
+      "category": "pool",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "above occupied (12/27/12/19)",
+        "Category": "pool",
+        "Quantity": "beds-occupied",
+        "Departments": "CA",
+        "Tier": "all",
+        "Allocation": "chosen",
+        "Relation": "'=",
+        "Value": "12",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "reasons",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "spare_beds",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "allocation": {
+        "decided": 8
+      },
+      "relation": "eq",
+      "value": 12,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A2"
+      ]
+    },
+    {
+      "id": "OWN-D08-r121",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 121,
+      "field": "reasons",
+      "text": "above occupied (12/27/12/19)",
+      "day": 8,
+      "category": "pool",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "above occupied (12/27/12/19)",
+        "Category": "pool",
+        "Quantity": "beds-occupied",
+        "Departments": "IM",
+        "Tier": "all",
+        "Allocation": "chosen",
+        "Relation": "'=",
+        "Value": "27",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "reasons",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "spare_beds",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "allocation": {
+        "decided": 8
+      },
+      "relation": "eq",
+      "value": 27,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A2"
+      ]
+    },
+    {
+      "id": "OWN-D08-r122",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 122,
+      "field": "reasons",
+      "text": "above occupied (12/27/12/19)",
+      "day": 8,
+      "category": "pool",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "above occupied (12/27/12/19)",
+        "Category": "pool",
+        "Quantity": "beds-occupied",
+        "Departments": "NE",
+        "Tier": "all",
+        "Allocation": "chosen",
+        "Relation": "'=",
+        "Value": "12",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "reasons",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "spare_beds",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "allocation": {
+        "decided": 8
+      },
+      "relation": "eq",
+      "value": 12,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A2"
+      ]
+    },
+    {
+      "id": "OWN-D08-r123",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 123,
+      "field": "reasons",
+      "text": "above occupied (12/27/12/19)",
+      "day": 8,
+      "category": "pool",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "above occupied (12/27/12/19)",
+        "Category": "pool",
+        "Quantity": "beds-occupied",
+        "Departments": "OR",
+        "Tier": "all",
+        "Allocation": "chosen",
+        "Relation": "'=",
+        "Value": "19",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "reasons",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "spare_beds",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "allocation": {
+        "decided": 8
+      },
+      "relation": "eq",
+      "value": 19,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A2"
+      ]
+    },
+    {
+      "id": "OWN-D08-r124",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 124,
+      "field": "tradeoffs",
+      "text": "shortfall of about 1.95 nurse-equivalents in IM and orthopedics",
+      "day": 8,
+      "category": "nurse_coverage",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "shortfall of about 1.95 nurse-equivalents in IM and orthopedics",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse shortage",
+        "Departments": "IM - OR",
+        "Tier": "1",
+        "Allocation": "chosen",
+        "Relation": "'=",
+        "Value": "1.95",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "tradeoffs",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine",
+          "orthopedics"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "allocation": {
+        "decided": 8
+      },
+      "relation": "round",
+      "value": 1.95,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V2",
+        "A2"
+      ]
+    },
+    {
+      "id": "OWN-D08-r125",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 125,
+      "field": "tradeoffs",
+      "text": "neurology has about 0.55 nurse unused above need",
+      "day": 8,
+      "category": "nurse_coverage",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "8",
+        "Quoted text": "neurology has about 0.55 nurse unused above need",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse coverage",
+        "Departments": "NE",
+        "Tier": "1",
+        "Allocation": "chosen",
+        "Relation": "'=",
+        "Value": "0.55",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "tradeoffs",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "covered_need",
+        "departments": [
+          "neurology"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "allocation": {
+        "decided": 8
+      },
+      "relation": "round",
+      "value": 0.55,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V2",
+        "A2"
+      ]
+    },
+    {
+      "id": "OWN-D18-r126",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 126,
+      "field": "situation",
+      "text": "beds 100",
+      "day": 18,
+      "category": "pool",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "beds 100",
+        "Category": "pool",
+        "Quantity": "beds pool",
+        "Departments": "all",
+        "Tier": "",
+        "Allocation": "N/A",
+        "Relation": "'=",
+        "Value": "100",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "pool_beds"
+      },
+      "allocation": null,
+      "relation": "eq",
+      "value": 100,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A0"
+      ]
+    },
+    {
+      "id": "OWN-D18-r127",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 127,
+      "field": "situation",
+      "text": "nurses 37",
+      "day": 18,
+      "category": "pool",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "nurses 37",
+        "Category": "pool",
+        "Quantity": "nurses pool",
+        "Departments": "all",
+        "Tier": "",
+        "Allocation": "N/A",
+        "Relation": "'=",
+        "Value": "37",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "pool_nurses"
+      },
+      "allocation": null,
+      "relation": "eq",
+      "value": 37,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A0"
+      ]
+    },
+    {
+      "id": "OWN-D18-r128",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 128,
+      "field": "situation",
+      "text": "Occupied beds 76",
+      "day": 18,
+      "category": "beds",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "Occupied beds 76",
+        "Category": "beds",
+        "Quantity": "occupied beds",
+        "Departments": "all",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "76",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "holders"
+      },
+      "allocation": null,
+      "relation": "eq",
+      "value": 76,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A0"
+      ]
+    },
+    {
+      "id": "OWN-D18-r129",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 129,
+      "field": "situation",
+      "text": "C33",
+      "day": 18,
+      "category": "beds",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "C33",
+        "Category": "beds",
+        "Quantity": "occupied beds",
+        "Departments": "CA",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "33",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "allocation": null,
+      "relation": "eq",
+      "value": 33,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A0"
+      ]
+    },
+    {
+      "id": "OWN-D18-r130",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 130,
+      "field": "situation",
+      "text": "IM19",
+      "day": 18,
+      "category": "beds",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "IM19",
+        "Category": "beds",
+        "Quantity": "occupied beds",
+        "Departments": "IM",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "19",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "allocation": null,
+      "relation": "eq",
+      "value": 19,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A0"
+      ]
+    },
+    {
+      "id": "OWN-D18-r131",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 131,
+      "field": "situation",
+      "text": "N16",
+      "day": 18,
+      "category": "beds",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "N16",
+        "Category": "beds",
+        "Quantity": "occupied beds",
+        "Departments": "NE",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "16",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "allocation": null,
+      "relation": "eq",
+      "value": 16,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A0"
+      ]
+    },
+    {
+      "id": "OWN-D18-r132",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 132,
+      "field": "situation",
+      "text": "O8",
+      "day": 18,
+      "category": "beds",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "O8",
+        "Category": "beds",
+        "Quantity": "occupied beds",
+        "Departments": "OR",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "8",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "holders",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "allocation": null,
+      "relation": "eq",
+      "value": 8,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A0"
+      ]
+    },
+    {
+      "id": "OWN-D18-r138",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 138,
+      "field": "situation",
+      "text": "Current allocation beds 40/25/20/15",
+      "day": 18,
+      "category": "beds",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "Current allocation beds 40/25/20/15 ",
+        "Category": "beds",
+        "Quantity": "beds allocated",
+        "Departments": "CA",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "40",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "allocation": {
+        "in_effect": 17
+      },
+      "relation": "eq",
+      "value": 40,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D18-r139",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 139,
+      "field": "situation",
+      "text": "Current allocation beds 40/25/20/15",
+      "day": 18,
+      "category": "beds",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "Current allocation beds 40/25/20/15 ",
+        "Category": "beds",
+        "Quantity": "beds allocated",
+        "Departments": "IM",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "25",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "allocation": {
+        "in_effect": 17
+      },
+      "relation": "eq",
+      "value": 25,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D18-r140",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 140,
+      "field": "situation",
+      "text": "Current allocation beds 40/25/20/15",
+      "day": 18,
+      "category": "beds",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "Current allocation beds 40/25/20/15 ",
+        "Category": "beds",
+        "Quantity": "beds allocated",
+        "Departments": "NE",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "20",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "neurology"
+        ]
+      },
+      "allocation": {
+        "in_effect": 17
+      },
+      "relation": "eq",
+      "value": 20,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D18-r141",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 141,
+      "field": "situation",
+      "text": "Current allocation beds 40/25/20/15",
+      "day": 18,
+      "category": "beds",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "Current allocation beds 40/25/20/15 ",
+        "Category": "beds",
+        "Quantity": "beds allocated",
+        "Departments": "OR",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "15",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "beds",
+        "departments": [
+          "orthopedics"
+        ]
+      },
+      "allocation": {
+        "in_effect": 17
+      },
+      "relation": "eq",
+      "value": 15,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D18-r142",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 142,
+      "field": "situation",
+      "text": "internal_medicine 3 beds short",
+      "day": 18,
+      "category": "overflow",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "internal_medicine 3 beds short",
+        "Category": "overflow",
+        "Quantity": "overflow",
+        "Departments": "IM",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "3",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "internal_medicine"
+        ]
+      },
+      "allocation": {
+        "in_effect": 17
+      },
+      "relation": "eq",
+      "value": 3,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D18-r143",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 143,
+      "field": "situation",
+      "text": "cardiology with 4 idle beds",
+      "day": 18,
+      "category": "empty_beds",
+      "basis": "derived",
+      "rubric_term": "spare/free",
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "cardiology with 4 idle beds",
+        "Category": "empty_beds",
+        "Quantity": "spare beds",
+        "Departments": "CA",
+        "Tier": "",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "4",
+        "Basis": "derived",
+        "Rubric term": "spare/free",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "spare_beds",
+        "departments": [
+          "cardiology"
+        ]
+      },
+      "allocation": {
+        "in_effect": 17
+      },
+      "relation": "eq",
+      "value": 4,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D18-r145",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 145,
+      "field": "situation",
+      "text": "5 nurse-shortage hospital-wide",
+      "day": 18,
+      "category": "nurse_coverage",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "5 nurse-shortage hospital-wide",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse shortage",
+        "Departments": "all",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "5",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "situation",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "shortage"
+      },
+      "allocation": {
+        "in_effect": 17
+      },
+      "relation": "eq",
+      "value": 5,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D18-r151",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 151,
+      "field": "information_used",
+      "text": "overflow queue of 23 patients",
+      "day": 18,
+      "category": "overflow",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "overflow queue of 23 patients",
+        "Category": "overflow",
+        "Quantity": "overflow",
+        "Departments": "all",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "23",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "information_used",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "overflow"
+      },
+      "allocation": {
+        "in_effect": 17
+      },
+      "relation": "eq",
+      "value": 23,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D18-r152",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 152,
+      "field": "information_used",
+      "text": "7 level 2 in IM",
+      "day": 18,
+      "category": "overflow",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "7 level 2 in IM",
+        "Category": "overflow",
+        "Quantity": "overflow",
+        "Departments": "IM",
+        "Tier": "2",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "7",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "information_used",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "allocation": {
+        "in_effect": 17
+      },
+      "relation": "eq",
+      "value": 7,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D18-r153",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 153,
+      "field": "information_used",
+      "text": "4 level 3 across C/N/O",
+      "day": 18,
+      "category": "overflow",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "4 level 3 across C/N/O",
+        "Category": "overflow",
+        "Quantity": "overflow",
+        "Departments": "CA, NE, OR",
+        "Tier": "3",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "4",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "information_used",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "overflow",
+        "departments": [
+          "cardiology",
+          "neurology",
+          "orthopedics"
+        ],
+        "levels": [
+          3
+        ]
+      },
+      "allocation": {
+        "in_effect": 17
+      },
+      "relation": "eq",
+      "value": 4,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D18-r155",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 155,
+      "field": "alternatives",
+      "text": "no overflow",
+      "day": 18,
+      "category": "overflow",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "no overflow",
+        "Category": "overflow",
+        "Quantity": "overflow",
+        "Departments": "all",
+        "Tier": "all",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "0",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "alternatives",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "overflow"
+      },
+      "allocation": {
+        "in_effect": 17
+      },
+      "relation": "eq",
+      "value": 0,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D18-r156",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 156,
+      "field": "alternatives",
+      "text": "neurology level-2 shortage 0.4",
+      "day": 18,
+      "category": "nurse_coverage",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "neurology level-2 shortage 0.4",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse shortage",
+        "Departments": "NE",
+        "Tier": "2",
+        "Allocation": "in effect",
+        "Relation": "'=",
+        "Value": "0.4",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "alternatives",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "neurology"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "allocation": {
+        "in_effect": 17
+      },
+      "relation": "round",
+      "value": 0.4,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V2",
+        "A1"
+      ]
+    },
+    {
+      "id": "OWN-D18-r157",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 157,
+      "field": "alternatives",
+      "text": "level-1 nursing is partly covered in IM, C and O",
+      "day": 18,
+      "category": "nurse_coverage",
+      "basis": null,
+      "rubric_term": "covered",
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "level-1 nursing is partly covered in IM, C and O",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse coverage",
+        "Departments": "IM, CA, OR",
+        "Tier": "1",
+        "Allocation": "in effect",
+        "Relation": "covered",
+        "Value": "",
+        "Basis": "",
+        "Rubric term": "covered",
+        "Unverifiable": "vague",
+        "Field": "alternatives",
+        "Notes": "partly covered is very vague"
+      },
+      "quantity": null,
+      "allocation": null,
+      "relation": null,
+      "value": null,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "U1"
+      ]
+    },
+    {
+      "id": "OWN-D18-r158",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 158,
+      "field": "alternatives",
+      "text": "no overflow",
+      "day": 18,
+      "category": "overflow",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "no overflow",
+        "Category": "overflow",
+        "Quantity": "overflow",
+        "Departments": "all",
+        "Tier": "all",
+        "Allocation": "N/A",
+        "Relation": "'=",
+        "Value": "0",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "alternatives",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "overflow"
+      },
+      "allocation": {
+        "beds": {
+          "cardiology": 37,
+          "internal_medicine": 29,
+          "neurology": 20,
+          "orthopedics": 14
+        },
+        "nurses": {
+          "cardiology": 13,
+          "internal_medicine": 10,
+          "neurology": 10,
+          "orthopedics": 4
+        }
+      },
+      "relation": "eq",
+      "value": 0,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A4"
+      ],
+      "mapping_not_mechanical": [
+        "A4: Allocation N/A on an alternative's outcome; the row's text falls in clause B) of the explanation ('B) same beds, nurses 13/10/10/4'), and the ALLOCATOR's second simulate_allocation call on day 18 is this allocation"
+      ]
+    },
+    {
+      "id": "OWN-D18-r159",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 159,
+      "field": "alternatives",
+      "text": "cardiology level-2 short 0.05",
+      "day": 18,
+      "category": "nurse_coverage",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "cardiology level-2 short 0.05",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse shortage",
+        "Departments": "CA",
+        "Tier": "2",
+        "Allocation": "N/A",
+        "Relation": "'=",
+        "Value": "0.05",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "alternatives",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "allocation": {
+        "beds": {
+          "cardiology": 37,
+          "internal_medicine": 29,
+          "neurology": 20,
+          "orthopedics": 14
+        },
+        "nurses": {
+          "cardiology": 13,
+          "internal_medicine": 10,
+          "neurology": 10,
+          "orthopedics": 4
+        }
+      },
+      "relation": "round",
+      "value": 0.05,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V2",
+        "A4"
+      ],
+      "mapping_not_mechanical": [
+        "A4: as row 158"
+      ]
+    },
+    {
+      "id": "OWN-D18-r160",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 160,
+      "field": "alternatives",
+      "text": "neurology level-2 short 0.4",
+      "day": 18,
+      "category": "nurse_coverage",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "neurology level-2 short 0.4",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse shortage",
+        "Departments": "NE",
+        "Tier": "2",
+        "Allocation": "N/A",
+        "Relation": "'=",
+        "Value": "0.4",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "alternatives",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "neurology"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "allocation": {
+        "beds": {
+          "cardiology": 37,
+          "internal_medicine": 29,
+          "neurology": 20,
+          "orthopedics": 14
+        },
+        "nurses": {
+          "cardiology": 13,
+          "internal_medicine": 10,
+          "neurology": 10,
+          "orthopedics": 4
+        }
+      },
+      "relation": "round",
+      "value": 0.4,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V2",
+        "A4"
+      ],
+      "mapping_not_mechanical": [
+        "A4: as row 158"
+      ]
+    },
+    {
+      "id": "OWN-D18-r161",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 161,
+      "field": "alternatives",
+      "text": "IM level 1 covered more",
+      "day": 18,
+      "category": "nurse_coverage",
+      "basis": "derived",
+      "rubric_term": "covered",
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "IM level 1 covered more",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse coverage",
+        "Departments": "IM",
+        "Tier": "1",
+        "Allocation": "N/A",
+        "Relation": "covered",
+        "Value": "",
+        "Basis": "derived",
+        "Rubric term": "covered",
+        "Unverifiable": "vague",
+        "Field": "alternatives",
+        "Notes": "\"covered more\" without explicit coverage"
+      },
+      "quantity": null,
+      "allocation": null,
+      "relation": null,
+      "value": null,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "U1"
+      ]
+    },
+    {
+      "id": "OWN-D18-r162",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 162,
+      "field": "alternatives",
+      "text": "no overflow",
+      "day": 18,
+      "category": "overflow",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "no overflow",
+        "Category": "overflow",
+        "Quantity": "overflow",
+        "Departments": "all",
+        "Tier": "all",
+        "Allocation": "chosen",
+        "Relation": "'=",
+        "Value": "0",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "alternatives",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "overflow"
+      },
+      "allocation": {
+        "decided": 18
+      },
+      "relation": "eq",
+      "value": 0,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A2"
+      ]
+    },
+    {
+      "id": "OWN-D18-r163",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 163,
+      "field": "alternatives",
+      "text": "only shortage at level 2 is 0.05 in cardiology",
+      "day": 18,
+      "category": "nurse_coverage",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": " only shortage at level 2 is 0.05 in cardiology",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse shhortage",
+        "Departments": "CA",
+        "Tier": "2",
+        "Allocation": "chosen",
+        "Relation": "'=",
+        "Value": "0.05",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "alternatives",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          2
+        ]
+      },
+      "allocation": {
+        "decided": 18
+      },
+      "relation": "round",
+      "value": 0.05,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V2",
+        "A2"
+      ]
+    },
+    {
+      "id": "OWN-D18-r164",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 164,
+      "field": "alternatives",
+      "text": "level 3 fully covered everywhere",
+      "day": 18,
+      "category": "nurse_coverage",
+      "basis": "derived",
+      "rubric_term": "covered",
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "level 3 fully covered everywhere",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse coverage",
+        "Departments": "all",
+        "Tier": "3",
+        "Allocation": "chosen",
+        "Relation": "covered",
+        "Value": "0",
+        "Basis": "derived",
+        "Rubric term": "covered",
+        "Unverifiable": "no",
+        "Field": "alternatives",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "shortage",
+        "levels": [
+          3
+        ]
+      },
+      "allocation": {
+        "decided": 18
+      },
+      "relation": "eq",
+      "value": 0,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V3",
+        "A2"
+      ]
+    },
+    {
+      "id": "OWN-D18-r165",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 165,
+      "field": "reasons",
+      "text": "2 spare placed in cardiology and IM",
+      "day": 18,
+      "category": "empty_beds",
+      "basis": "copied",
+      "rubric_term": "spare/free",
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "2 spare placed in cardiology and IM",
+        "Category": "empty_beds",
+        "Quantity": "spare beds",
+        "Departments": "CA, IM",
+        "Tier": "",
+        "Allocation": "chosen",
+        "Relation": "'=",
+        "Value": "2",
+        "Basis": "copied",
+        "Rubric term": "spare/free",
+        "Unverifiable": "no",
+        "Field": "reasons",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "spare_beds",
+        "departments": [
+          "internal_medicine",
+          "cardiology"
+        ]
+      },
+      "allocation": {
+        "decided": 18
+      },
+      "relation": "eq",
+      "value": 2,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A2"
+      ]
+    },
+    {
+      "id": "OWN-D18-r166",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 166,
+      "field": "reasons",
+      "text": "no idle nurses",
+      "day": 18,
+      "category": "nurse_coverage",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "no idle nurses",
+        "Category": "nurse_coverage",
+        "Quantity": "idle nurses",
+        "Departments": "all",
+        "Tier": "all",
+        "Allocation": "chosen",
+        "Relation": "'=",
+        "Value": "0",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "reasons",
+        "Notes": "All nurses are allocated"
+      },
+      "quantity": null,
+      "allocation": null,
+      "relation": null,
+      "value": null,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V1",
+        "A2",
+        "Q0"
+      ],
+      "mapping_not_mechanical": [
+        "Q0: no claim_check quantity for 'idle nurses': unmapped"
+      ]
+    },
+    {
+      "id": "OWN-D18-r167",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 167,
+      "field": "tradeoffs",
+      "text": "level-1 nursing shortfall of about 3.5 nurse-units in total",
+      "day": 18,
+      "category": "nurse_coverage",
+      "basis": "derived",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "level-1 nursing shortfall of about 3.5 nurse-units in total",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse shortage",
+        "Departments": "IM, CA, OR",
+        "Tier": "1",
+        "Allocation": "chosen",
+        "Relation": "'=",
+        "Value": "3.5",
+        "Basis": "derived",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "tradeoffs",
+        "Notes": "about"
+      },
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine",
+          "cardiology",
+          "orthopedics"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "allocation": {
+        "decided": 18
+      },
+      "relation": "round",
+      "value": 3.5,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V2",
+        "A2"
+      ]
+    },
+    {
+      "id": "OWN-D18-r168",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 168,
+      "field": "tradeoffs",
+      "text": "IM 1.25, C 1.6, O 0.65",
+      "day": 18,
+      "category": "nurse_coverage",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "IM 1.25, C 1.6, O 0.65",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse shortage",
+        "Departments": "IM",
+        "Tier": "1",
+        "Allocation": "chosen",
+        "Relation": "'=",
+        "Value": "1.25",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "tradeoffs",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "internal_medicine"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "allocation": {
+        "decided": 18
+      },
+      "relation": "round",
+      "value": 1.25,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V2",
+        "A2"
+      ]
+    },
+    {
+      "id": "OWN-D18-r169",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 169,
+      "field": "tradeoffs",
+      "text": "IM 1.25, C 1.6, O 0.65",
+      "day": 18,
+      "category": "nurse_coverage",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "IM 1.25, C 1.6, O 0.65",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse shortage",
+        "Departments": "CA",
+        "Tier": "1",
+        "Allocation": "chosen",
+        "Relation": "'=",
+        "Value": "1.6",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "tradeoffs",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "cardiology"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "allocation": {
+        "decided": 18
+      },
+      "relation": "round",
+      "value": 1.6,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V2",
+        "A2"
+      ]
+    },
+    {
+      "id": "OWN-D18-r170",
+      "author": "ALLOCATOR",
+      "finding": "owner",
+      "owner_row": 170,
+      "field": "tradeoffs",
+      "text": "IM 1.25, C 1.6, O 0.65",
+      "day": 18,
+      "category": "nurse_coverage",
+      "basis": "copied",
+      "rubric_term": null,
+      "owner_raw": {
+        "Day": "18",
+        "Quoted text": "IM 1.25, C 1.6, O 0.65",
+        "Category": "nurse_coverage",
+        "Quantity": "nurse shortage",
+        "Departments": "OR",
+        "Tier": "1",
+        "Allocation": "chosen",
+        "Relation": "'=",
+        "Value": "0.65",
+        "Basis": "copied",
+        "Rubric term": "none",
+        "Unverifiable": "no",
+        "Field": "tradeoffs",
+        "Notes": ""
+      },
+      "quantity": {
+        "name": "shortage",
+        "departments": [
+          "orthopedics"
+        ],
+        "levels": [
+          1
+        ]
+      },
+      "allocation": {
+        "decided": 18
+      },
+      "relation": "round",
+      "value": 0.65,
+      "mapping": [
+        "D1",
+        "T1",
+        "Q1",
+        "V2",
+        "A2"
+      ]
+    }
+  ]
+}

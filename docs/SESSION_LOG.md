@@ -569,3 +569,45 @@ Extraction frozen at `5979bcc`. Not recomputed, not matched.
 
 1. "worse", "more", "less" are encoded with non-strict relations (`ge_alloc`, `le_alloc`, `lex_le_alloc`); a strict variant would need a new relation. 7 claims (R1-D17-45, D17-46, D18-23, D20-40, D21-32, D27-38, D30-57), each noted.
 2. Day 28, situation: "leaves IM and orthopedics patients in overflow (L1 each, from yesterday)" is read literally (current allocation applied today); the reading "yesterday's overflow" is in the claim's note for the owner's review.
+
+## 2026-11-18 (seventh session: claim_check changes, owner extraction frozen, comparison 7a, recomputation, review lists)
+
+Commits: `eea53b4` (claim_check), `328d5d0` (owner extraction frozen), then the comparison and recomputation commit.
+
+### Status of the tasks the owner listed from the previous session
+
+None was done or recorded before this session. Done now: the claim_check changes, the shock-day validation explanation (below) and the extraction integrity check (below). Still not done: transcript capture in `copy_back` (parked since the fifth session, R40) and the R2/R3/stress launch commands. **R2 has not been launched** (no `results/allocations/R2`).
+
+### Achieved
+
+1. **claim_check** (`eea53b4`, Log #100, R45): `in_range` (6 R1 claims); `beds` / `nurses` / `spare_beds` computed before the what-if. **Shock days:** `simulate` drops the assignment only on BOUNDS / INTEGRALITY. On days 8, 11 (nurses) and 16, 21, 23, 26 (beds) the in-effect allocation fails conservation only, so its 38 `beds` / `nurses` claims were already compared. No R1 outcome claim is scored under an invalid allocation. No verdict rule changed; DRY2 totals unchanged (442 / 3 / 0).
+2. **Extraction integrity:** `explanation_claims_spec.json` SHA-256 `74555bac…844b`, as recorded at `5979bcc`; 1,049 claims (538 copied, 511 derived, 26 with quantity null); no `disputed_by_checker`.
+3. **Owner extraction frozen unchanged** (`328d5d0`): `results/evaluations/R1/owner_extraction/owner_claims_d03_d08_d18.csv`, SHA-256 **`6c7af169bc7f38d4de43fcb1ed86e5dc256f9d4121fc5902bbeab640fd283c47`**, 170 rows (108 universe, 62 out of universe). The committed bytes were checked.
+4. **Converter and comparison 7a** (Log #101): `src/evaluation/owner_claims.py`, tables `mapping_quantity.csv` and `row_overrides.csv`. 18 non-mechanical mappings, listed in `non_mechanical_mappings.csv`. Same-claim rule = `claim_key`, with null-quantity claims never matched.
+   - Owner's claims found by the assistant: **copied 58/60, derived 28/47**, unclassified 0/1 (row 157, vague, no basis).
+   - Assistant's claims found by the owner: **copied 56/57, derived 29/49**.
+   - If null-quantity claims of a day were allowed to collide: 58/60, 32/47, 1/1 and 56/57, 33/49.
+   - **Basis agreement** on matched pairs: 72/86.
+   - **Out of universe:** 62 owner rows, all also left out by the assistant.
+   - Owner duplicate key: rows 54 and 57.
+5. **Adjudication table:** `owner_extraction/adjudication_7a.csv`: 43 rows (22 owner-only, 21 assistant-only), `cause` empty.
+6. **Recomputation** (`explanation_claims.json`, SHA-256 `88c316e7…1197`): ALLOCATOR **948 correct, 75 wrong, 26 unverifiable**.
+   - All 75 wrong claims are derived; 0 copied claims are wrong.
+   - Wrong rubric-dependent: **54/75** (spare 53, free 1).
+   - Wrong queue counts on days 11, 12, 15, 17, 18 and 20. For days 11, 15, 17, 18 and 20 the queue tool result in the digest agrees with `claim_check`, so the error is in the ALLOCATOR's counts; day 12 was not checked.
+   - No CHECKER matching.
+7. **Review lists** (Log #102): `owner_review/review_7b_wrong.csv` (75 rows) and `review_7c_unverifiable.csv` (26 rows).
+8. **Owner decision §11 #60:** the owner check applies to R1 only. Scored R2/R3 claims are labelled "LLM-extracted, not owner-audited".
+
+### Next
+
+1. Owner: fill `cause` in `adjudication_7a.csv`; review the 7(b) and 7(c) lists.
+2. Then: counts by cause, owner verdicts applied, and CHECKER mapping (`disputed_by_checker`) in a later commit.
+
+### Parked questions
+
+1. (Owner) Item 1 puts patient attributes outside the universe, but item 8 lists "P000083 has waited 3 days" as a copied example.
+2. (Owner) Is a requirement computed on tiers 2–3 only (⌈need L2+L3⌉) out of the universe like N1? (Rows 115–118 were mapped to `need`, rule Q2; the assistant's D08-29..32 are in the universe.)
+3. Enforce "outcome of an allocation that fails validation → unverifiable" in `claim_check` code instead of in the extraction (a verdict rule change; 0 R1 claims affected today).
+4. Confirm the null-quantity rule in the comparison (Log #101): it lowers derived recall by 4 claims on each side.
+5. Carried over: `allocator_digest preserve` inside `copy_back` (R40); strict "worse/more/less" (7 claims); day 28 reading of "from yesterday".

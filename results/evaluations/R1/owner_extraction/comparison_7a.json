@@ -1,0 +1,705 @@
+{
+  "recall": {
+    "a_found_by_b": {
+      "copied": "58/60",
+      "derived": "28/47",
+      "unclassified": "0/1",
+      "missed": [
+        "OWN-D03-r058",
+        "OWN-D08-r064",
+        "OWN-D08-r071",
+        "OWN-D08-r109",
+        "OWN-D08-r110",
+        "OWN-D08-r120",
+        "OWN-D08-r121",
+        "OWN-D08-r122",
+        "OWN-D08-r123",
+        "OWN-D08-r125",
+        "OWN-D18-r143",
+        "OWN-D18-r145",
+        "OWN-D18-r151",
+        "OWN-D18-r152",
+        "OWN-D18-r153",
+        "OWN-D18-r155",
+        "OWN-D18-r156",
+        "OWN-D18-r157",
+        "OWN-D18-r161",
+        "OWN-D18-r163",
+        "OWN-D18-r166",
+        "OWN-D18-r167"
+      ]
+    },
+    "b_found_by_a": {
+      "copied": "56/57",
+      "derived": "29/49",
+      "missed": [
+        "R1-D03-34",
+        "R1-D03-36",
+        "R1-D08-01",
+        "R1-D08-05",
+        "R1-D08-22",
+        "R1-D08-23",
+        "R1-D08-24",
+        "R1-D08-33",
+        "R1-D08-35",
+        "R1-D08-36",
+        "R1-D08-37",
+        "R1-D18-13",
+        "R1-D18-14",
+        "R1-D18-15",
+        "R1-D18-16",
+        "R1-D18-17",
+        "R1-D18-18",
+        "R1-D18-19",
+        "R1-D18-23",
+        "R1-D18-25",
+        "R1-D18-28"
+      ]
+    }
+  },
+  "recall_if_null_quantities_collide": {
+    "a_found_by_b": {
+      "copied": "58/60",
+      "derived": "32/47",
+      "unclassified": "1/1"
+    },
+    "b_found_by_a": {
+      "copied": "56/57",
+      "derived": "33/49"
+    }
+  },
+  "basis_agreement": {
+    "matched_pairs": 86,
+    "agree": "72/86",
+    "disagree": [
+      {
+        "owner_row": 4,
+        "assistant_id": "R1-D03-04",
+        "day": 3,
+        "text_owner": "18 patients are in the overflow queue",
+        "owner": "copied",
+        "assistant": "derived"
+      },
+      {
+        "owner_row": 38,
+        "assistant_id": "R1-D03-15",
+        "day": 3,
+        "text_owner": "4 level 3",
+        "owner": "copied",
+        "assistant": "derived"
+      },
+      {
+        "owner_row": 39,
+        "assistant_id": "R1-D03-16",
+        "day": 3,
+        "text_owner": "6 level 2",
+        "owner": "copied",
+        "assistant": "derived"
+      },
+      {
+        "owner_row": 40,
+        "assistant_id": "R1-D03-17",
+        "day": 3,
+        "text_owner": "8 level 1",
+        "owner": "copied",
+        "assistant": "derived"
+      },
+      {
+        "owner_row": 65,
+        "assistant_id": "R1-D08-04",
+        "day": 8,
+        "text_owner": "occupied beds 70",
+        "owner": "derived",
+        "assistant": "copied"
+      },
+      {
+        "owner_row": 73,
+        "assistant_id": "R1-D08-07",
+        "day": 8,
+        "text_owner": "1 level 3",
+        "owner": "copied",
+        "assistant": "derived"
+      },
+      {
+        "owner_row": 74,
+        "assistant_id": "R1-D08-08",
+        "day": 8,
+        "text_owner": "4 level 2",
+        "owner": "copied",
+        "assistant": "derived"
+      },
+      {
+        "owner_row": 75,
+        "assistant_id": "R1-D08-09",
+        "day": 8,
+        "text_owner": "4 level 1",
+        "owner": "copied",
+        "assistant": "derived"
+      },
+      {
+        "owner_row": 113,
+        "assistant_id": "R1-D08-27",
+        "day": 8,
+        "text_owner": "level 1 shortage IM 1.05",
+        "owner": "derived",
+        "assistant": "copied"
+      },
+      {
+        "owner_row": 114,
+        "assistant_id": "R1-D08-28",
+        "day": 8,
+        "text_owner": "orthopedics 0.9",
+        "owner": "derived",
+        "assistant": "copied"
+      },
+      {
+        "owner_row": 128,
+        "assistant_id": "R1-D18-03",
+        "day": 18,
+        "text_owner": "Occupied beds 76",
+        "owner": "derived",
+        "assistant": "copied"
+      },
+      {
+        "owner_row": 159,
+        "assistant_id": "R1-D18-21",
+        "day": 18,
+        "text_owner": "cardiology level-2 short 0.05",
+        "owner": "derived",
+        "assistant": "copied"
+      },
+      {
+        "owner_row": 160,
+        "assistant_id": "R1-D18-22",
+        "day": 18,
+        "text_owner": "neurology level-2 short 0.4",
+        "owner": "derived",
+        "assistant": "copied"
+      },
+      {
+        "owner_row": 165,
+        "assistant_id": "R1-D18-27",
+        "day": 18,
+        "text_owner": "2 spare placed in cardiology and IM",
+        "owner": "copied",
+        "assistant": "derived"
+      }
+    ]
+  },
+  "duplicate_keys_within_a_side": {
+    "owner": [
+      [
+        "OWN-D03-r054",
+        "OWN-D03-r057"
+      ]
+    ],
+    "assistant": []
+  },
+  "out_of_universe_owner_rows": [
+    {
+      "row": 5,
+      "day": 3,
+      "text": "Census is 20/31/18/22",
+      "owner_quantity": "census",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 6,
+      "day": 3,
+      "text": "Census is 20/31/18/22",
+      "owner_quantity": "census",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 7,
+      "day": 3,
+      "text": "Census is 20/31/18/22",
+      "owner_quantity": "census",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 8,
+      "day": 3,
+      "text": "Census is 20/31/18/22",
+      "owner_quantity": "census",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 9,
+      "day": 3,
+      "text": "Census=91",
+      "owner_quantity": "census",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 16,
+      "day": 3,
+      "text": "N1 nurse requirement is 9/13/9/8",
+      "owner_quantity": "nurse requirement",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 17,
+      "day": 3,
+      "text": "N1 nurse requirement is 9/13/9/8",
+      "owner_quantity": "nurse requirement",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 18,
+      "day": 3,
+      "text": "N1 nurse requirement is 9/13/9/8",
+      "owner_quantity": "nurse requirement",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 19,
+      "day": 3,
+      "text": "N1 nurse requirement is 9/13/9/8",
+      "owner_quantity": "nurse requirement",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 20,
+      "day": 3,
+      "text": "N1=39",
+      "owner_quantity": "nurse requirement",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 21,
+      "day": 3,
+      "text": "2 nurses are short hospital-wide",
+      "owner_quantity": "nurse gap",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 22,
+      "day": 3,
+      "text": "cardiology 6/6/8",
+      "owner_quantity": "census cardio L1",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 23,
+      "day": 3,
+      "text": "cardiology 6/6/8",
+      "owner_quantity": "census cardio L2",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 24,
+      "day": 3,
+      "text": "cardiology 6/6/8",
+      "owner_quantity": "census cardio L3",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 25,
+      "day": 3,
+      "text": "IM 8/13/10",
+      "owner_quantity": "census IM L1",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 26,
+      "day": 3,
+      "text": "IM 8/13/10",
+      "owner_quantity": "census IM L2",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 27,
+      "day": 3,
+      "text": "IM 8/13/10",
+      "owner_quantity": "census IM L3",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 28,
+      "day": 3,
+      "text": "neurology 1/8/9",
+      "owner_quantity": "census NE L1",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 29,
+      "day": 3,
+      "text": "neurology 1/8/9",
+      "owner_quantity": "census NE L2",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 30,
+      "day": 3,
+      "text": "neurology 1/8/9",
+      "owner_quantity": "census NE L3",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 31,
+      "day": 3,
+      "text": "orthopedics 7/13/2",
+      "owner_quantity": "census orto L1",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 32,
+      "day": 3,
+      "text": "orthopedics 7/13/2",
+      "owner_quantity": "census orto L2",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 33,
+      "day": 3,
+      "text": "orthopedics 7/13/2",
+      "owner_quantity": "census orto L3",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 66,
+      "day": 8,
+      "text": "N1 requirement is 7/14/7/8",
+      "owner_quantity": "nurse requirement",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 67,
+      "day": 8,
+      "text": "N1 requirement is 7/14/7/8",
+      "owner_quantity": "nurse requirement",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 68,
+      "day": 8,
+      "text": "N1 requirement is 7/14/7/8",
+      "owner_quantity": "nurse requirement",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 69,
+      "day": 8,
+      "text": "N1 requirement is 7/14/7/8",
+      "owner_quantity": "nurse requirement",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 70,
+      "day": 8,
+      "text": "N1 requirement = 36",
+      "owner_quantity": "nurse requirement",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 76,
+      "day": 8,
+      "text": "Census 14/31/12/22",
+      "owner_quantity": "census CA",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 77,
+      "day": 8,
+      "text": "Census 14/31/12/22",
+      "owner_quantity": "census IM",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 78,
+      "day": 8,
+      "text": "Census 14/31/12/22",
+      "owner_quantity": "census NE",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 79,
+      "day": 8,
+      "text": "Census 14/31/12/22",
+      "owner_quantity": "census OR",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 80,
+      "day": 8,
+      "text": "Census=79",
+      "owner_quantity": "census",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 85,
+      "day": 8,
+      "text": "census by level cardiology 3/4/7",
+      "owner_quantity": "census CA",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 86,
+      "day": 8,
+      "text": "census by level cardiology 3/4/7",
+      "owner_quantity": "census CA",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 87,
+      "day": 8,
+      "text": "census by level cardiology 3/4/7",
+      "owner_quantity": "census CA",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 88,
+      "day": 8,
+      "text": "IM 7/11/13",
+      "owner_quantity": "census IM",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 89,
+      "day": 8,
+      "text": "IM 7/11/13",
+      "owner_quantity": "census IM",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 90,
+      "day": 8,
+      "text": "IM 7/11/13",
+      "owner_quantity": "census IM",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 91,
+      "day": 8,
+      "text": "neurology 0/3/9",
+      "owner_quantity": "census NE",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 92,
+      "day": 8,
+      "text": "neurology 0/3/9",
+      "owner_quantity": "census NE",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 93,
+      "day": 8,
+      "text": "neurology 0/3/9",
+      "owner_quantity": "census NE",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 94,
+      "day": 8,
+      "text": "orthopedics 7/10/5",
+      "owner_quantity": "census OR",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 95,
+      "day": 8,
+      "text": "orthopedics 7/10/5",
+      "owner_quantity": "census OR",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 96,
+      "day": 8,
+      "text": "orthopedics 7/10/5",
+      "owner_quantity": "census OR",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 105,
+      "day": 8,
+      "text": "Arrival means over 7 days 3.43/6.86/2.29/4.71",
+      "owner_quantity": "arrival means",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 106,
+      "day": 8,
+      "text": "Arrival means over 7 days 3.43/6.86/2.29/4.71",
+      "owner_quantity": "arrival means",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 107,
+      "day": 8,
+      "text": "Arrival means over 7 days 3.43/6.86/2.29/4.71",
+      "owner_quantity": "arrival means",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 108,
+      "day": 8,
+      "text": "Arrival means over 7 days 3.43/6.86/2.29/4.71",
+      "owner_quantity": "arrival means",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 119,
+      "day": 8,
+      "text": "ceil … giving 6/12/7/7 = 32",
+      "owner_quantity": "N1 requirement",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 133,
+      "day": 18,
+      "text": "Census 36/28/20/14",
+      "owner_quantity": "Census",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 134,
+      "day": 18,
+      "text": "Census 36/28/20/14",
+      "owner_quantity": "Census",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 135,
+      "day": 18,
+      "text": "Census 36/28/20/14",
+      "owner_quantity": "Census",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 136,
+      "day": 18,
+      "text": "Census 36/28/20/14",
+      "owner_quantity": "Census",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 137,
+      "day": 18,
+      "text": "Census=98",
+      "owner_quantity": "Census",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 144,
+      "day": 18,
+      "text": "N1 requirements is 42",
+      "owner_quantity": "N1 requirement",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 146,
+      "day": 18,
+      "text": "N1 requirements 15/11/11/5",
+      "owner_quantity": "nurse requirement",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 147,
+      "day": 18,
+      "text": "N1 requirements 15/11/11/5",
+      "owner_quantity": "nurse requirement",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 148,
+      "day": 18,
+      "text": "N1 requirements 15/11/11/5",
+      "owner_quantity": "nurse requirement",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 149,
+      "day": 18,
+      "text": "N1 requirements 15/11/11/5",
+      "owner_quantity": "nurse requirement",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 150,
+      "day": 18,
+      "text": "IM highest at 8.0",
+      "owner_quantity": "arrival means",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    },
+    {
+      "row": 154,
+      "day": 18,
+      "text": "level-1 patients from day 17 in C and O waiting 1 day",
+      "owner_quantity": "patient attributes",
+      "assistant_also_left_out": true,
+      "assistant_claims": []
+    }
+  ],
+  "adjudication_rows": {
+    "owner_only": 22,
+    "assistant_only": 21
+  },
+  "days": [
+    3,
+    8,
+    18
+  ]
+}

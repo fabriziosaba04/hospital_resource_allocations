@@ -347,3 +347,10 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **How it was caught:** before changing the code, a probe over all R1 claims (2026-11-18) showed `simulate` drops the assignment only on BOUNDS / INTEGRALITY. The six shock-day in-effect allocations fail conservation only, so all 38 affected claims already returned figures; 0 were unverifiable for this reason.
 - **Fix:** the change was made anyway as a defensive one (Log #100), and the probe result is recorded. No verdict changed.
 - **Implication:** a hedged risk copied into a to-do list loses its hedge. Check the engine's behaviour before scheduling a fix for it.
+
+### R46. A test assertion was written from memory of an earlier run, not from the current output
+
+- **What happened:** `tests/test_owner_claims.py` asserted 19 non-mechanical mappings. That was the count before a fix moved the vague row 161 out of that list (rule U1 now applies first), and the current output has 18.
+- **How it was caught:** the test failed on its first run (2026-11-18).
+- **Fix:** the assertion now uses the current output (18), checked against `non_mechanical_mappings.csv`.
+- **Implication:** the same pattern as R43 and R44. Here the test did its job, but the expected value has to come from the current artefact.

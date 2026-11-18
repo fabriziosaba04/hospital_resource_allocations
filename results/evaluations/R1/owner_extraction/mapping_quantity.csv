@@ -1,0 +1,35 @@
+owner_quantity,claim_check_name,mechanical,note
+bed pool,pool_beds,yes,
+beds pool,pool_beds,yes,
+nurses pool,pool_nurses,yes,
+occupied beds,holders,yes,occupied = held from yesterday (rubric item 1; README)
+occupied beds ca,holders,yes,
+occupied beds im,holders,yes,
+occupied beds ne,holders,yes,
+occupied beds or,holders,yes,
+beds allocated,beds,yes,
+beds ca,beds,yes,
+beds im,beds,yes,
+beds ne,beds,yes,
+beds or,beds,yes,
+nurses ca,nurses,yes,
+nurses im,nurses,yes,
+nurses ne,nurses,yes,
+nurses or,nurses,yes,
+patients overflow,overflow,yes,becomes queue under rule A3 when the allocation is N/A
+overflow,overflow,yes,becomes queue under rule A3 when the allocation is N/A
+overflow l1,overflow,yes,
+overflow l2,overflow,yes,
+overflow l3,overflow,yes,
+cardiology overflow,overflow,yes,
+spare beds,spare_beds,yes,strict reading of spare (rubric item 9)
+empty beds,empty_beds,yes,
+beds - occupied,spare_beds,yes,beds minus occupied = spare_beds by definition
+beds-occupied,spare_beds,yes,
+nurse shortage,shortage,yes,
+nurse shhortage,shortage,yes,spelling variant of nurse shortage
+nurse coverage,covered_need,yes,becomes shortage eq 0 under rule V3 when the relation is covered
+patient in overflow,patient_in_bed,yes,rule P1: eq 0 for the named patient
+nurse requirement,need,no,claim_check requirement is the all-level ceiling per department and takes no tier; a tier-restricted decimal requirement is the nursing need (rule Q2)
+nurses change,,no,no claim_check quantity for a day-to-day pool change: unmapped
+idle nurses,,no,no claim_check quantity for nurses minus requirement: unmapped

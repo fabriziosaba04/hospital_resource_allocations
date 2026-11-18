@@ -1,0 +1,4 @@
+row,day,field,allocation,reason
+158,18,alternatives,"{""beds"": {""cardiology"": 37, ""internal_medicine"": 29, ""neurology"": 20, ""orthopedics"": 14}, ""nurses"": {""cardiology"": 13, ""internal_medicine"": 10, ""neurology"": 10, ""orthopedics"": 4}}","Allocation N/A on an alternative's outcome; the row's text falls in clause B) of the explanation ('B) same beds, nurses 13/10/10/4'), and the ALLOCATOR's second simulate_allocation call on day 18 is this allocation"
+159,18,alternatives,"{""beds"": {""cardiology"": 37, ""internal_medicine"": 29, ""neurology"": 20, ""orthopedics"": 14}, ""nurses"": {""cardiology"": 13, ""internal_medicine"": 10, ""neurology"": 10, ""orthopedics"": 4}}",as row 158
+160,18,alternatives,"{""beds"": {""cardiology"": 37, ""internal_medicine"": 29, ""neurology"": 20, ""orthopedics"": 14}, ""nurses"": {""cardiology"": 13, ""internal_medicine"": 10, ""neurology"": 10, ""orthopedics"": 4}}",as row 158
