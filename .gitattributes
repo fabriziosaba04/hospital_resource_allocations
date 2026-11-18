@@ -6,3 +6,6 @@ data/** -text
 src/data_generation/configs/** -text
 
 *.png binary
+
+# The owner's claim extraction is hashed in the commit message and the session log: never convert its bytes
+results/evaluations/R1/owner_extraction/owner_claims_*.csv -text
