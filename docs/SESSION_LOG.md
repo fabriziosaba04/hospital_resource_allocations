@@ -824,3 +824,14 @@ No CHECKER file read, nothing launched.
 
 None new.
 
+
+## 2026-11-19 (sixteenth session: mechanical checks for the owner's review of the 21 non-rubric-dependent wrong claims)
+
+Read-only. No verdict written to `owner_review_wrong.csv`, no encoding or verdict changed, no CHECKER file read, nothing launched. Sources: `allocator_digest/day_NN.md` (tool results as the ALLOCATOR received them), `decision_history.jsonl`, `claim_check.quantity`. Results are in the session report; the key facts:
+
+1. **Queues:** the `get_overflow_queue` result has five fields only (`patient_id`, `department`, `complexity`, `arrival_day`, `days_waiting`), listed L3, then L2, then L1. The observed state has no per-level queue or arrival counts. The ALLOCATOR's stated per-department figures (day 15 L3 5 CA + 1 NE; day 18 "7 level-2 in IM") agree with the tool, so no stated figure ties a miscount to a patient. On day 11 its closing text itself notes "8 level 2 and 6 level 1"; on day 12 its closing text says the 16 "matches the queue records" (the tool listed 17).
+2. **Values:** D28 `overflow_yesterday_by_level` IM L1 = 1, OR L1 = 1; D11-28 OR empty 9 / spare 13 (in effect), 6 / 10 (decided); D13-30 OR empty 14 / spare 15 (in effect), 9 / 10 (decided); D21-35 beds moved CA −5, IM +3, NE −3, OR +1 (pool 100 → 96); D17-47 NE nurses 10, need 10.2, ⌈need⌉ 11; D27-41 cardiology under the in-effect allocation: overflow L3 0, L2 3, L1 1, queue 3/3/1; D26-38 shortage 5.25, round interval [5.5, 6.5); D28-26/27 = options A and B, IM L2 shortage 0 under A, B and C.
+
+### Parked questions
+
+None new.
