@@ -698,3 +698,24 @@ Frozen files untouched: `owner_claims_d03_d08_d18.csv` (`6c7af169…fd283c47`), 
 1. Rows 64 and 166 (rubric_ambiguity) stay in the derived denominator as unmatched. Should rubric_ambiguity rows leave it? Descriptive only, not applied: derived 28/44.
 2. Causes typed by hand into `adjudication_7a.csv` outside `owner_verdicts_nonmech.csv` would be erased by a converter rerun (R50). Move all adjudication causes to an input table when the owner fills the rest?
 3. The untracked export `R1 owner claim extraction — days 3, 8, 18 - Claims.csv` at the repository root is byte-identical to the frozen file (SHA-256 `6c7af169…`). Delete it, or keep it out of git?
+
+## 2026-11-19 (tenth session: owner input tables, parked questions closed)
+
+Frozen files untouched (`owner_claims_d03_d08_d18.csv`, `explanation_claims_spec.json`). No CHECKER file read, nothing launched.
+
+### Achieved
+
+1. **Owner input tables** (§11 #62, Log #107, closes R50), created once and never rewritten by the pipeline:
+   - `results/evaluations/R1/owner_extraction/owner_adjudication_causes.csv`: 43 rows; causes pre-filled on OWN-D08-r064, OWN-D08-r071, OWN-D18-r166 only.
+   - `results/evaluations/R1/owner_review/owner_review_wrong.csv`: 75 rows.
+   - `results/evaluations/R1/owner_review/owner_review_unverifiable.csv`: 26 rows.
+   The generated `review_7b_wrong.csv` and `review_7c_unverifiable.csv` are byte-identical to before; `adjudication_7a.csv` gains `claim_id` and `comment` columns.
+2. **Parked questions closed** (§11 #62): rubric_ambiguity rows stay in the denominator (primary 28/46; 28/44 descriptive only); the duplicate root CSV was deleted after its SHA-256 matched the frozen copy (`6c7af169…`); adjudication causes moved to an input table.
+
+### Next
+
+1. Owner: fill `cause` / `comment` / `cause_set_by` in `owner_adjudication_causes.csv`, and `owner_verdict` / `owner_comment` in the two review tables. Then regenerate with `uv run python -m src.evaluation.owner_claims R1` and `uv run python -m src.evaluation.claim_review R1`.
+
+### Parked questions
+
+1. `owner_verdict` in the review tables is free text. Fix a list of values (for example agree / disagree / rubric_ambiguity), validated like `cause`?

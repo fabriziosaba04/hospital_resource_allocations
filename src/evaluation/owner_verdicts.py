@@ -11,8 +11,8 @@ re-checked here from the data, never read off the table.
 
 Writes:
   non_mechanical_mappings.csv   the converter's 18 rows plus `owner_verdict`, `owner_comment`
-  adjudication_7a.csv           `cause` filled for the owner-only rows of the verdict table that carry a cause,
-                                with a new column `cause_set_by`; every other row unchanged
+  (adjudication causes are not written here: they come from owner_adjudication_causes.csv, owner_inputs.py;
+  this module checks that the causes in the verdict table agree with it)
   comparison_7a_owner_verdicts.json   recall before / after the owner rows marked out of universe are dropped
 """
 
@@ -56,9 +56,10 @@ def _strip(r: dict) -> dict:
     return {k: v for k, v in r.items() if k != "missed"}
 
 
-def main(run_id: str) -> None:
-    ev = ROOT / "results" / "evaluations" / run_id
-    alloc = ROOT / "results" / "allocations" / run_id
+def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = None) -> None:
+    from .owner_inputs import ADJ_COLS, ADJ_FILE, ADJ_KEY, OwnerInputError, read_table
+    ev = eval_dir or ROOT / "results" / "evaluations" / run_id
+    alloc = alloc_dir or ROOT / "results" / "allocations" / run_id
     folder = ev / "owner_extraction"
     m = json.loads((alloc / "run_manifest.json").read_text(encoding="utf-8"))
     ds, rec = load_dataset(m["dataset_id"], Path(m["data_root"])), load_records(alloc)
@@ -87,22 +88,17 @@ def main(run_id: str) -> None:
             v = verdicts[n["row"]]
             w.writerow({**n, "owner_verdict": v["owner_verdict"], "owner_comment": v["owner_comment"]})
 
-    # 2. causes on adjudication_7a.csv (owner-only rows of the verdict table that carry a cause)
-    path = folder / "adjudication_7a.csv"
-    adj = list(csv.DictReader(open(path, encoding="utf-8-sig")))
+    # 2. causes in the verdict table must agree with the owner's adjudication table (the single source)
+    causes = read_table(folder / ADJ_FILE, ADJ_COLS, ADJ_KEY)
     filled = []
-    for a in adj:
-        a.setdefault("cause_set_by", "")
-        a["cause_set_by"] = a.get("cause_set_by") or ""
-        if a["side"] == "owner_only" and a["owner_row"] and int(a["owner_row"]) in verdicts:
-            v = verdicts[int(a["owner_row"])]
-            if v["cause"]:
-                a["cause"], a["cause_set_by"] = v["cause"], v["set_by"]
-                filled.append(int(a["owner_row"]))
-    with open(path, "w", encoding="utf-8-sig", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=list(adj[0]), lineterminator="\n")
-        w.writeheader()
-        w.writerows(adj)
+    for n in nonmech:
+        v = verdicts[n["row"]]
+        if v["cause"]:
+            got = causes.get(("owner_only", f"OWN-D{n['day']:02d}-r{n['row']:03d}"))
+            if got is None or got["cause"] != v["cause"]:
+                raise OwnerInputError(f"row {n['row']}: cause {v['cause']!r} in {VERDICTS_FILE}, "
+                                      f"{None if got is None else got['cause']!r} in {ADJ_FILE}")
+            filled.append(n["row"])
 
     # 3. recall before / after the owner rows moved out of universe
     spec = json.loads((ev / "explanation_claims_spec.json").read_text(encoding="utf-8"))["claims"]

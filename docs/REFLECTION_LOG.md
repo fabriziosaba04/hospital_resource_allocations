@@ -381,3 +381,4 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **How it was caught:** while recording the owner's verdicts of 2026-11-19, before any rerun.
 - **Fix:** the verdicts live in a committed input table (`owner_verdicts_nonmech.csv`); `owner_claims.main` re-applies it after regenerating (Log #106). A rerun was checked to leave the three files unchanged.
 - **Implication:** still open for causes the owner types directly into `adjudication_7a.csv` (outside the table): a converter rerun would erase them. Parked (SESSION_LOG, 2026-11-19).
+- **Closed (2026-11-19, §11 #62):** all owner judgements moved to input tables, with a rerun test (`tests/test_owner_inputs.py`).

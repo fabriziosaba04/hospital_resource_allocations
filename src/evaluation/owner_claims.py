@@ -309,8 +309,9 @@ def compare(owner: list[dict], spec: list[dict], days: set[int], raw_rows: list[
             "duplicate_keys_within_a_side": dup, "out_of_universe_owner_rows": oou, "adjudication": adjud}
 
 
-def main(run_id: str) -> None:
-    folder = ROOT / "results" / "evaluations" / run_id / "owner_extraction"
+def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = None) -> None:
+    from .owner_inputs import ADJ_COLS, ADJ_FILE, ADJ_KEY, ADJ_OWNER, adjudication_claim_id, adjudication_context, merge
+    folder = (eval_dir or ROOT / "results" / "evaluations" / run_id) / "owner_extraction"
     claims, nonmech = convert(folder)
     (folder / "owner_claims_converted.json").write_text(
         json.dumps({"run_id": run_id, "source": FILE, "claims": claims}, indent=2, ensure_ascii=False) + "\n",
@@ -325,8 +326,15 @@ def main(run_id: str) -> None:
     days = sorted({c["day"] for c in claims})
     out = compare(claims, spec, set(days), raw)
     adjud = out.pop("adjudication")
+    # causes come from the owner's input table (never written here); validated before anything is written
+    for a in adjud:
+        a["claim_id"] = adjudication_claim_id(a)
+    causes = merge(adjud, folder / ADJ_FILE, ADJ_COLS, ADJ_KEY, ADJ_OWNER, adjudication_context(adjud))
+    for a in adjud:
+        a.update(causes[(a["side"], a["claim_id"])])
+    cols = ["side", "claim_id"] + [c for c in adjud[0] if c not in ("side", "claim_id") + ADJ_OWNER] + list(ADJ_OWNER)
     with open(folder / "adjudication_7a.csv", "w", encoding="utf-8-sig", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=list(adjud[0]), lineterminator="\n")
+        w = csv.DictWriter(f, fieldnames=cols, lineterminator="\n")
         w.writeheader()
         w.writerows(adjud)
     out["adjudication_rows"] = {"owner_only": sum(a["side"] == "owner_only" for a in adjud),
@@ -339,7 +347,7 @@ def main(run_id: str) -> None:
     # the two tables just rewritten carry the owner's verdicts and causes: re-apply them (owner_verdicts.py)
     if (folder / "owner_verdicts_nonmech.csv").exists():
         from .owner_verdicts import main as apply_verdicts
-        apply_verdicts(run_id)
+        apply_verdicts(run_id, folder.parent, alloc_dir)
 
 
 if __name__ == "__main__":

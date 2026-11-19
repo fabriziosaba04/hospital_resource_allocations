@@ -8,6 +8,8 @@ Wrong claims carry a `tier` (owner request 2026-11-18; no verdict changes):
   wrong_both_readings  a bare "spare" / "free" claim, wrong under both readings
   no_spare_free_term   any other wrong claim (no rival reading of spare / free applies)
 The counts and ids are also written to `owner_review/wrong_claims_tiers.json`.
+`owner_verdict` / `owner_comment` come from the owner input tables `owner_review_wrong.csv` and
+`owner_review_unverifiable.csv` (owner_inputs.py), which this module reads and never writes.
 """
 
 from __future__ import annotations
@@ -15,6 +17,7 @@ from __future__ import annotations
 import csv
 import json
 import sys
+from pathlib import Path
 
 from .dataset import ROOT
 from .owner_claims import encoding
@@ -33,11 +36,17 @@ def tier(c: dict) -> str:
     return "no_spare_free_term"
 
 
-def main(run_id: str) -> None:
-    eval_dir = ROOT / "results" / "evaluations" / run_id
+def main(run_id: str, eval_dir: Path | None = None) -> None:
+    from .owner_inputs import REVIEW_COLS, REVIEW_KEY, REVIEW_OWNER, UNVER_FILE, WRONG_FILE, merge, review_context
+    eval_dir = eval_dir or ROOT / "results" / "evaluations" / run_id
     claims = json.loads((eval_dir / "explanation_claims.json").read_text(encoding="utf-8"))["claims"]
     out = eval_dir / "owner_review"
     out.mkdir(exist_ok=True)
+    owner = {}                                           # validate both owner tables before writing anything
+    for verdict, table in (("wrong", WRONG_FILE), ("unverifiable", UNVER_FILE)):
+        rows = [c for c in claims if c["author"] == "ALLOCATOR" and c["verdict"] == verdict]
+        owner[verdict] = merge(rows, out / table, REVIEW_COLS[verdict], REVIEW_KEY, REVIEW_OWNER,
+                               review_context(rows, verdict))
     for verdict, name in (("wrong", "review_7b_wrong.csv"), ("unverifiable", "review_7c_unverifiable.csv")):
         rows = [c for c in claims if c["author"] == "ALLOCATOR" and c["verdict"] == verdict]
         with open(out / name, "w", encoding="utf-8-sig", newline="") as f:
@@ -52,7 +61,7 @@ def main(run_id: str) -> None:
                             "verdict_alternative": c.get("verdict_alternative", ""),
                             "computed_alternative": json.dumps(c.get("computed_alternative"))
                             if "computed_alternative" in c else "",
-                            "tier": tier(c), "note": c.get("note", ""), "owner_verdict": "", "owner_comment": ""})
+                            "tier": tier(c), "note": c.get("note", ""), **owner[verdict][(c["id"],)]})
         print(name, len(rows))
     wrong = [c for c in claims if c["author"] == "ALLOCATOR" and c["verdict"] == "wrong"]
     tiers = {}
