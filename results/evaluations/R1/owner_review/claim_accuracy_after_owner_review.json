@@ -1,0 +1,127 @@
+{
+  "label": "DESCRIPTIVE, after owner review; reported next to the pre-registered counts, never instead",
+  "provisional": true,
+  "pending_owner_verdicts": {
+    "wrong": 0,
+    "unverifiable": 26
+  },
+  "pre_registered": {
+    "total": {
+      "correct": 948,
+      "wrong": 75,
+      "unverifiable": 26
+    },
+    "by_category": {
+      "beds": {
+        "correct": 345,
+        "wrong": 0,
+        "unverifiable": 5
+      },
+      "empty_beds": {
+        "correct": 71,
+        "wrong": 56,
+        "unverifiable": 7
+      },
+      "nurse_coverage": {
+        "correct": 213,
+        "wrong": 4,
+        "unverifiable": 9
+      },
+      "overflow": {
+        "correct": 251,
+        "wrong": 14,
+        "unverifiable": 5
+      },
+      "pool": {
+        "correct": 68,
+        "wrong": 1,
+        "unverifiable": 0
+      }
+    },
+    "by_basis": {
+      "copied": {
+        "correct": 536,
+        "wrong": 0,
+        "unverifiable": 2
+      },
+      "derived": {
+        "correct": 412,
+        "wrong": 75,
+        "unverifiable": 24
+      }
+    }
+  },
+  "after_owner_review": {
+    "total": {
+      "correct": 1004,
+      "wrong": 19,
+      "unverifiable": 26
+    },
+    "by_category": {
+      "beds": {
+        "correct": 345,
+        "wrong": 0,
+        "unverifiable": 5
+      },
+      "empty_beds": {
+        "correct": 124,
+        "wrong": 3,
+        "unverifiable": 7
+      },
+      "nurse_coverage": {
+        "correct": 213,
+        "wrong": 4,
+        "unverifiable": 9
+      },
+      "overflow": {
+        "correct": 253,
+        "wrong": 12,
+        "unverifiable": 5
+      },
+      "pool": {
+        "correct": 69,
+        "wrong": 0,
+        "unverifiable": 0
+      }
+    },
+    "by_basis": {
+      "copied": {
+        "correct": 536,
+        "wrong": 0,
+        "unverifiable": 2
+      },
+      "derived": {
+        "correct": 468,
+        "wrong": 19,
+        "unverifiable": 24
+      }
+    }
+  },
+  "by_basis_if_D28_05_06_relabelled_copied": {
+    "copied": {
+      "correct": 538,
+      "wrong": 0,
+      "unverifiable": 2
+    },
+    "derived": {
+      "correct": 466,
+      "wrong": 19,
+      "unverifiable": 24
+    }
+  },
+  "mapping": {
+    "wrong": {
+      "confirmed_wrong": "wrong",
+      "actually_correct": "correct",
+      "extraction_error": "correct",
+      "should_be_unverifiable": "unverifiable",
+      "": "wrong"
+    },
+    "unverifiable": {
+      "confirmed_unverifiable": "unverifiable",
+      "verifiable_correct": "correct",
+      "verifiable_wrong": "wrong",
+      "": "unverifiable"
+    }
+  }
+}

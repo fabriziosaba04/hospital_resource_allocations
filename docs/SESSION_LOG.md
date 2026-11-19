@@ -848,5 +848,25 @@ No frozen file modified, no CHECKER file read, nothing launched.
 
 ### Parked questions
 
-1. The two `extraction_error` claims (R1-D28-05/06) are correct under the owner's reading. Should a corrected-extraction figure be reported next to the pre-registered 948 / 75 / 26 (descriptive, like the adjudicated recall)?
+1. ~~Corrected-extraction figure next to 948 / 75 / 26?~~ Closed (§11 #68): descriptive count after owner review.
+
+## 2026-11-19 (eighteenth session: verdicts on the 54, descriptive accuracy, unverifiable view)
+
+No frozen file modified, no CHECKER file read, nothing launched.
+
+### Achieved
+
+1. **54 rubric-dependent verdicts** (`actually_correct`) written after both mechanical checks passed on all 54; R1-D21-35 comment corrected (Log #114). All 75 wrong claims now carry an owner verdict; `review_7b_wrong.csv` regenerated and equal to the table.
+2. **Descriptive accuracy after owner review** (§11 #68, provisional): 1004 / 19 / 26 next to the pre-registered 948 / 75 / 26.
+3. **R52** filled with the owner's disclosure; **R54** (CA/IM labels swapped in a display file, caught before commit).
+4. **Standing rule** (R53) in `CLAUDE.md` §9.4: no commit unless the fast suite passes in the same step.
+5. **Unverifiable review view:** `owner_review/unverifiable_26_check.csv` (26 rows: 9 alternative fails validation, one of them also vague; 5 vague qualifier; 4 ambiguous referent; 8 other).
+
+### Next
+
+1. Owner: verdicts in `owner_review/owner_review_unverifiable.csv` (values `confirmed_unverifiable`, `verifiable_correct`, `verifiable_wrong`, `extraction_error`), then `uv run python -m src.evaluation.claim_review R1` and `uv run python -m src.evaluation.owner_review_counts R1`.
+
+### Parked questions
+
+1. In the descriptive count, an `extraction_error` on the unverifiable list has no mapping yet (correct, wrong or unverifiable?); the script stops if one is entered.
 

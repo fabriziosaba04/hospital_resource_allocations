@@ -27,4 +27,4 @@ def test_committed_view_and_verdicts():
                                                                      encoding="utf-8-sig"))}
     assert sum(v == "confirmed_wrong" for v in own.values()) == 19
     assert {i for i, v in own.items() if v == "extraction_error"} == {"R1-D28-05", "R1-D28-06"}
-    assert not any(own[r["id"]] for r in rows)                      # the 54 are still pending
+    assert all(own[r["id"]] == "actually_correct" for r in rows)     # owner verdicts on the 54 (2026-11-19)

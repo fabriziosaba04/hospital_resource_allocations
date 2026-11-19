@@ -390,13 +390,13 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **Fix:** the stated rule was applied to r120–r123 only (§11 #65); rows 54 and 57 are unchanged, and the figure with row 57 also collapsed is computed and labelled not applied (owner's derived 27/40 instead of 28/41).
 - **Implication:** a report that lists a finding should say whether anything was done with it. The owner decides whether 54/57 get the same treatment.
 
-### R52. Owner verdicts on 21 wrong claims were proposed by an LLM advisor
+### R52. The owner check of item 7 was proposed by an LLM advisor
 
-- **Stub, created by the assistant at the owner's request (2026-11-19); the substance is the owner's to write.**
-- **Facts recorded so far:** the `owner_verdict` / `owner_comment` cells of 21 claims in `results/evaluations/R1/owner_review/owner_review_wrong.csv` (the 20 wrong claims without a spare/free term and R1-D21-35, the one wrong under both readings) were **proposed by an LLM advisor and accepted by the owner**, who supplied them for verbatim entry. They are 19 `confirmed_wrong` and 2 `extraction_error` (R1-D28-05, R1-D28-06). They rest on mechanical checks run by the assistant the same day (SESSION_LOG, sixteenth session). The verdicts are therefore owner-accepted, not independently owner-derived; this bears on how far the owner check of item 7(b) counts as an independent check.
-- **The adjudication:** the owner asked for "the same disclosure as the adjudication". No such disclosure exists in the repository: no entry in this log, PROJECT_SPEC §11, SESSION_LOG or `owner_adjudication_causes.csv` says how the 43 adjudication causes were produced. *(Owner to state, and if applicable to record here.)*
-- **What happened / how it was caught / implication:** *(owner to write).*
-
+- **Disclosure (owner, 2026-11-19).** Two sets of owner judgements were **proposed by an LLM advisor** (a separate Claude chat, **without repository access**, working from the tables the assistant generated) and were **reviewed and accepted by the owner**:
+  1. the **43 adjudication causes** of item 7(a) (`owner_extraction/owner_adjudication_causes.csv`);
+  2. **all 75 wrong-claim verdicts** of item 7(b) (`owner_review/owner_review_wrong.csv`): the 21 non-rubric-dependent (19 `confirmed_wrong`, 2 `extraction_error`) and the 54 rubric-dependent (`actually_correct`).
+- **Consequence:** the owner check is **not independent of LLM judgement**. What stays independent is the owner's own extraction of days 3, 8 and 18 (`owner_claims_d03_d08_d18.csv`, frozen, SHA-256 `6c7af169…fd283c47`). Everything computed from the adjudication or the verdicts (the adjudicated recall, §11 #64–#67; the descriptive accuracy count, §11 #68) inherits this.
+- **Implications:** *(owner to write in the final reflection).*
 
 ### R53. A commit went through with two failing tests
 
@@ -404,3 +404,11 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **How it was caught:** the assistant read the test summary line in the command output after the commit.
 - **Fix:** both tests corrected; the fix was committed only after `uv run pytest -q` exited 0, checked on its own exit code.
 - **Implication:** the "fast suite before each commit" rule (CLAUDE.md §9.4) was followed in form but not enforced. Gate the commit on pytest's exit status, never on a pipeline that ends in `tail`.
+
+### R54. A display file labelled cardiology and internal medicine the wrong way round
+
+- **What happened:** `unverifiable_view.py` built its department labels as `zip(DEPARTMENTS, ("CA", "IM", "NE", "OR"))`, but `DEPARTMENTS` starts with internal medicine. Every per-department value in the first generated `unverifiable_26_check.csv` had its CA and IM labels swapped (for example R1-D30-47/48 showed 28/29 instead of the ALLOCATOR's 29/28).
+- **How it was caught:** the generated values were compared with the same quantities computed beforehand in a scratch run that named the departments explicitly; the two disagreed on CA and IM.
+- **Fix:** labels keyed by department name, with an assertion that they cover `DEPARTMENTS`; a test pins CA/IM and the day-30 values. No other module zips `DEPARTMENTS` with abbreviations (checked). The faulty file was never committed.
+- **Implication:** never rely on the order of a shared constant for labels; cross-check a new generator against an independent computation before reporting from it.
+

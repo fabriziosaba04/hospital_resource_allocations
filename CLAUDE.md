@@ -59,7 +59,7 @@ hospital_resource_allocations/
 │   ├── environment/               deterministic rules shared by server and baselines
 │   ├── mcp_server/                MCP tool layer, state machine, record store, ANALYZER, run init, launcher, copy-back, synthetic fixtures
 │   ├── agent/                     fixed dispatch templates (the prompts live in .claude/agents/)
-│   ├── evaluation/                deterministic audit, metrics, baselines, baseline runner (python -m src.evaluation), run report, CHECKER matching, claim checker, ALLOCATOR digest, owner-extraction converter, owner decisions A–B, owner verdicts on non-mechanical mappings, owner input tables, adjudication pairs view, adjudicated recall, rubric check view, owner review lists, figures
+│   ├── evaluation/                deterministic audit, metrics, baselines, baseline runner (python -m src.evaluation), run report, CHECKER matching, claim checker, ALLOCATOR digest, owner-extraction converter, owner decisions A–B, owner verdicts on non-mechanical mappings, owner input tables, adjudication pairs view, adjudicated recall, rubric check view, unverifiable view, owner review counts, owner review lists, figures
 │   └── utils/
 │
 ├── results/
@@ -357,6 +357,7 @@ The aim is fast turnaround without losing the milestone checks.
 - **Slow tests** are marked `@pytest.mark.slow`: the Hypothesis property suites, `manifest --regenerate`, and any Monte Carlo test. The default run excludes them (`-m "not slow"` in `pyproject.toml`). New tests in these categories must carry the mark.
 - The headless run-settings check (`tests/manual/verify_run_settings.py`) is never collected by pytest. It is run only at milestones that touch run-session permissions, and always before an agent run.
 - **Report which tests were run at the end of every response**: the command, and the pass/fail count, or "none".
+- **No commit unless the full fast suite passes in the same step (owner, 2026-11-19, R53).** Gate the commit on the exit status of `uv run pytest -q` itself (`uv run pytest -q && git commit ...`), never on a pipeline whose last command is not pytest.
 
 **Docs.**
 
