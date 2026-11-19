@@ -1,44 +1,44 @@
-﻿side,claim_id,day,text,cause,comment,cause_set_by
-owner_only,OWN-D03-r058,3,about 0.3 nurse-equivalents of level 1,,,
+side,claim_id,day,text,cause,comment,cause_set_by
+owner_only,OWN-D03-r058,3,about 0.3 nurse-equivalents of level 1,owner_encoding,"Same claim as R1-D03-34. The sentence names no department ('the only uncovered need'), so departments = all; I restricted it to IM,OR.",owner
 owner_only,OWN-D08-r064,8,nurses reduced by 4,rubric_ambiguity,"""Nurses reduced by 4"" is correct (day-8 shock, pool 37 → 33). It is a pool delta, which the checker cannot compute.",owner
 owner_only,OWN-D08-r071,8,3-nurse hospital-wide shortage,owner_encoding,"Owner rule (item 2), applied by the assistant: (a) hospital N1 requirement minus nurse pool on day 8 = 36 − 33 = 3 nurses; (b) total shortage under the in-effect (day-7) allocation = 0.9 need units. (a) equals 3, (b) does not: out of universe, cause owner_encoding.",owner rule (item 2); values computed by the assistant
-owner_only,OWN-D08-r109,8,neurology 6 spare beds above census,,,
-owner_only,OWN-D08-r110,8,orthopedics only 1,,,
-owner_only,OWN-D08-r120,8,above occupied (12/27/12/19),,,
-owner_only,OWN-D08-r121,8,above occupied (12/27/12/19),,,
-owner_only,OWN-D08-r122,8,above occupied (12/27/12/19),,,
-owner_only,OWN-D08-r123,8,above occupied (12/27/12/19),,,
-owner_only,OWN-D08-r125,8,neurology has about 0.55 nurse unused above need,,,
-owner_only,OWN-D18-r143,18,cardiology with 4 idle beds,,,
-owner_only,OWN-D18-r145,18,5 nurse-shortage hospital-wide,,,
-owner_only,OWN-D18-r151,18,overflow queue of 23 patients,,,
-owner_only,OWN-D18-r152,18,7 level 2 in IM,,,
-owner_only,OWN-D18-r153,18,4 level 3 across C/N/O,,,
-owner_only,OWN-D18-r155,18,no overflow,,,
-owner_only,OWN-D18-r156,18,neurology level-2 shortage 0.4,,,
-owner_only,OWN-D18-r157,18,"level-1 nursing is partly covered in IM, C and O",,,
-owner_only,OWN-D18-r161,18,IM level 1 covered more,,,
-owner_only,OWN-D18-r163,18,only shortage at level 2 is 0.05 in cardiology,,,
+owner_only,OWN-D08-r109,8,neurology 6 spare beds above census,owner_encoding,"Same sentence as R1-D08-23. Option A on day 8 (keep the day-7 allocation) fails validation after the shock, so the rubric makes its outcomes unverifiable. Also, 'above census' sets empty_beds, not spare_beds.",owner
+owner_only,OWN-D08-r110,8,orthopedics only 1,owner_encoding,"Same sentence as R1-D08-24, a continuation of r109: same cause.",owner
+owner_only,OWN-D08-r120,8,above occupied (12/27/12/19),owner_encoding,"12/27/12/19 are occupied beds, already extracted from information_used (r081–r084). A figure repeated in another field is extracted once.",owner
+owner_only,OWN-D08-r121,8,above occupied (12/27/12/19),owner_encoding,"12/27/12/19 are occupied beds, already extracted from information_used (r081–r084). A figure repeated in another field is extracted once.",owner
+owner_only,OWN-D08-r122,8,above occupied (12/27/12/19),owner_encoding,"12/27/12/19 are occupied beds, already extracted from information_used (r081–r084). A figure repeated in another field is extracted once.",owner
+owner_only,OWN-D08-r123,8,above occupied (12/27/12/19),owner_encoding,"12/27/12/19 are occupied beds, already extracted from information_used (r081–r084). A figure repeated in another field is extracted once.",owner
+owner_only,OWN-D08-r125,8,neurology has about 0.55 nurse unused above need,owner_encoding,"Same sentence as R1-D08-35. 'Unused above need' is a surplus, not level-1 coverage. The assistant restated it as neurology need = allocated − 0.55 (6.45).",owner
+owner_only,OWN-D18-r143,18,cardiology with 4 idle beds,rubric_ambiguity,Same sentence as R1-D18-13. 'Idle' is not a defined term (only empty/spare/free are). Read as spare it gives 7 (wrong); read as empty it gives 4 (correct).,owner
+owner_only,OWN-D18-r145,18,5 nurse-shortage hospital-wide,owner_encoding,"N1 requirement minus pool on day 18 = 42 − 37 = 5 nurses: out of universe, as r071.",owner
+owner_only,OWN-D18-r151,18,overflow queue of 23 patients,owner_encoding,"Same sentence as R1-D18-14. 'Overflow queue' is the queue, not overflow. Wrong under both encodings (queue = 22).",owner
+owner_only,OWN-D18-r152,18,7 level 2 in IM,owner_encoding,"Same sentence as R1-D18-15. Queue context (an example of the queue of 23), so queue, not overflow. A queue count is derived, not copied.",owner
+owner_only,OWN-D18-r153,18,4 level 3 across C/N/O,owner_encoding,Same sentence as R1-D18-16. Same cause as r152.,owner
+owner_only,OWN-D18-r155,18,no overflow,owner_encoding,"Same sentence as R1-D18-17. An alternative's outcome refers to that alternative (A) applied to day 18, not to the in-effect state.",owner
+owner_only,OWN-D18-r156,18,neurology level-2 shortage 0.4,owner_encoding,"Same sentence as R1-D18-18. Outcome of alternative A, so allocation = A applied to day 18. Correct under both encodings.",owner
+owner_only,OWN-D18-r157,18,"level-1 nursing is partly covered in IM, C and O",,No disagreement: both sides encoded it as unverifiable (vague). It is unmatched only because claims with no quantity never match. Cause to be set as matching_rule once that value is added.,owner
+owner_only,OWN-D18-r161,18,IM level 1 covered more,owner_encoding,Same sentence as R1-D18-23. A comparison with a named alternative ('covered more') is one claim (rubric item 2); I left it unencoded.,owner
+owner_only,OWN-D18-r163,18,only shortage at level 2 is 0.05 in cardiology,rubric_ambiguity,Same sentence as R1-D18-25. It reads either as cardiology L2 = 0.05 or as all-department L2 shortage = 0.05 ('only'). Both are correct.,owner
 owner_only,OWN-D18-r166,18,no idle nurses,rubric_ambiguity,"""No idle nurses"" (pool minus allocated = 0) is neither listed in the universe nor a shortage figure.",owner
-owner_only,OWN-D18-r167,18,level-1 nursing shortfall of about 3.5 nurse-units in total,,,
-assistant_only,R1-D03-34,3,The only uncovered need is about 0.3 nurse-equivalents of level 1,,,
-assistant_only,R1-D03-36,3,Orthopedics' 7 nurses cover its level 3 and 2 need (5.75),,,
-assistant_only,R1-D08-01,8,nurse pool reduced by 4 (37,,,
-assistant_only,R1-D08-05,8,Current nurse allocation (37 total) is infeasible,,,
-assistant_only,R1-D08-22,8,A) Keep the day-7 allocation ... Its beds would give 0 overflow,,,
-assistant_only,R1-D08-23,8,it leaves neurology 6 spare beds above census,,,
-assistant_only,R1-D08-24,8,and orthopedics only 1,,,
-assistant_only,R1-D08-33,8,"the 33rd nurse goes to cardiology, covering its level 1 need fully",,,
-assistant_only,R1-D08-35,8,neurology has about 0.55 nurse unused above need,,,
-assistant_only,R1-D08-36,8,Moving that nurse to IM would leave neurology level 2 uncovered,,,
-assistant_only,R1-D08-37,8,it has 3 spare beds above census,,,
-assistant_only,R1-D18-13,18,and cardiology with 4 idle beds,,,
-assistant_only,R1-D18-14,18,overflow queue of 23 patients,,,
-assistant_only,R1-D18-15,18,(e.g. 7 level-2 in IM,,,
-assistant_only,R1-D18-16,18,4 level-3 across C/N/O,,,
-assistant_only,R1-D18-17,18,"A) beds 37/29/20/14, nurses 14/9/10/4: no overflow",,,
-assistant_only,R1-D18-18,18,but neurology level-2 shortage 0.4,,,
-assistant_only,R1-D18-19,18,"while level-1 nursing is partly covered in IM, C and O",,,
-assistant_only,R1-D18-23,18,with IM level 1 covered more,,,
-assistant_only,R1-D18-25,18,only shortage at level 2 is 0.05 in cardiology,,,
-assistant_only,R1-D18-28,18,level-1 nursing shortfall of about 3.5 nurse-units in total,,,
+owner_only,OWN-D18-r167,18,level-1 nursing shortfall of about 3.5 nurse-units in total,owner_encoding,"Same sentence as R1-D18-28. 'In total' means all departments; I restricted it to IM,CA,OR. Correct under both.",owner
+assistant_only,R1-D03-34,3,The only uncovered need is about 0.3 nurse-equivalents of level 1,owner_encoding,Pair of OWN-D03-r058.,owner
+assistant_only,R1-D03-36,3,Orthopedics' 7 nurses cover its level 3 and 2 need (5.75),owner_miss,"Valid coverage claim (unrounded L2+L3 need, in universe per Decision B); I did not extract it.",owner
+assistant_only,R1-D08-01,8,nurse pool reduced by 4 (37,owner_miss,The day-7 pool (37) is a stated in-universe figure; I encoded only the delta (r064).,owner
+assistant_only,R1-D08-05,8,Current nurse allocation (37 total) is infeasible,owner_miss,A statement of the allocation in effect (37 nurses) is a claim; I did not extract it.,owner
+assistant_only,R1-D08-22,8,A) Keep the day-7 allocation ... Its beds would give 0 overflow,owner_miss,"Outcome of option A: in universe, though unverifiable because A fails validation. I did not extract it.",owner
+assistant_only,R1-D08-23,8,it leaves neurology 6 spare beds above census,owner_encoding,Pair of OWN-D08-r109.,owner
+assistant_only,R1-D08-24,8,and orthopedics only 1,owner_encoding,Pair of OWN-D08-r110.,owner
+assistant_only,R1-D08-33,8,"the 33rd nurse goes to cardiology, covering its level 1 need fully",owner_miss,'Covering its level 1 need fully' is a 'covered' claim; I did not extract it.,owner
+assistant_only,R1-D08-35,8,neurology has about 0.55 nurse unused above need,owner_encoding,Pair of OWN-D08-r125.,owner
+assistant_only,R1-D08-36,8,Moving that nurse to IM would leave neurology level 2 uncovered,owner_miss,Outcome of a named hypothetical move; I did not extract it.,owner
+assistant_only,R1-D08-37,8,it has 3 spare beds above census,owner_miss,"'Spare beds above census' = empty_beds, a valid claim; I did not extract it.",owner
+assistant_only,R1-D18-13,18,and cardiology with 4 idle beds,rubric_ambiguity,Pair of OWN-D18-r143.,owner
+assistant_only,R1-D18-14,18,overflow queue of 23 patients,owner_encoding,Pair of OWN-D18-r151.,owner
+assistant_only,R1-D18-15,18,(e.g. 7 level-2 in IM,owner_encoding,Pair of OWN-D18-r152.,owner
+assistant_only,R1-D18-16,18,4 level-3 across C/N/O,owner_encoding,Pair of OWN-D18-r153.,owner
+assistant_only,R1-D18-17,18,"A) beds 37/29/20/14, nurses 14/9/10/4: no overflow",owner_encoding,Pair of OWN-D18-r155.,owner
+assistant_only,R1-D18-18,18,but neurology level-2 shortage 0.4,owner_encoding,Pair of OWN-D18-r156.,owner
+assistant_only,R1-D18-19,18,"while level-1 nursing is partly covered in IM, C and O",,Pair of OWN-D18-r157: no disagreement; matching_rule once that value is added.,owner
+assistant_only,R1-D18-23,18,with IM level 1 covered more,owner_encoding,Pair of OWN-D18-r161.,owner
+assistant_only,R1-D18-25,18,only shortage at level 2 is 0.05 in cardiology,rubric_ambiguity,Pair of OWN-D18-r163.,owner
+assistant_only,R1-D18-28,18,level-1 nursing shortfall of about 3.5 nurse-units in total,owner_encoding,Pair of OWN-D18-r167.,owner
