@@ -28,9 +28,16 @@ def test_committed_figures():
     p = r["primary_recall"]
     assert p["as_frozen"]["a_found_by_b"]["derived"] == "28/47"
     assert p["after_earlier_verdicts_row_71"]["a_found_by_b"]["derived"] == "28/46"
-    assert p["after_adjudication_overrides"] == {"a_found_by_b": {"copied": "58/60", "derived": "28/41",
-                                                                  "unclassified": "0/1"},
-                                                 "b_found_by_a": {"copied": "56/57", "derived": "29/49"}}
+    assert p["after_item_2_r145_r120_r123"]["a_found_by_b"]["derived"] == "28/41"
+    assert p["after_row_57_final"] == {"a_found_by_b": {"copied": "58/60", "derived": "27/40", "unclassified": "0/1"},
+                                       "b_found_by_a": {"copied": "56/57", "derived": "29/49"}}
+    d = r["descriptive_recall_after_adjudication"]
+    assert d["recall"] == {"a_found_by_b": {"copied": "60/60", "derived": "34/40", "unclassified": "0/1"},
+                           "b_found_by_a": {"copied": "57/57", "derived": "37/49"}}
+    # same-figure condition (§11 #66): r064 (4) / R1-D08-01 (37) and every other pair without equal figures
+    assert sorted(x["owner"] for x in d["pair_figure_check"] if not x["same_figure"]) ==         ["OWN-D08-r064", "OWN-D08-r109", "OWN-D08-r110", "OWN-D08-r125", "OWN-D18-r157", "OWN-D18-r161"]
+    assert "OWN-D08-r064" in d["not_counted_found"]["owner"] and "R1-D08-01" in d["not_counted_found"]["assistant"]
+    assert "OWN-D03-r057" in r["universe_and_duplicates"]["duplicates_left_out"]
     chk = r["universe_and_duplicates"]["override_checks"]["OWN-D18-r145"]
     assert (chk["requirement"], chk["pool_nurses"], chk["b_shortage_in_effect"]) == (42, 37, 3.5)
     assert r["universe_and_duplicates"]["out_of_universe"] == ["OWN-D08-r071", "OWN-D18-r145"]
@@ -39,6 +46,14 @@ def test_committed_figures():
 def test_rerun_reproduces_the_committed_file(ev):
     out = adjudication_recall.main("R1", ev, ALLOC)
     assert out == json.loads((EVAL / "owner_extraction" / "comparison_7a_adjudicated.json").read_text(encoding="utf-8"))
+
+
+def test_same_figure():
+    from src.evaluation.adjudication_recall import same_figure
+    assert same_figure({"value": 0.3}, {"value": 0.30})
+    assert not same_figure({"value": None, "owner_raw": {"Value": "4"}}, {"value": 37})
+    assert not same_figure({"value": 6}, {"value": None})
+    assert not same_figure({"value": None, "owner_raw": {"Value": ""}}, {"value": None})
 
 
 def _edit(ev, fn):

@@ -1,6 +1,7 @@
-claim_id,action,original,comment,set_by
-OWN-D18-r145,out_of_universe,,"Same rule as row 71 (item 2): hospital N1 requirement minus nurse pool on day 18 = 42 − 37 = 5 nurses.",owner
-OWN-D08-r120,duplicate,OWN-D08-r081,"Occupied beds 12/27/12/19 repeated in reasons; already extracted from information_used. A figure repeated in another field is extracted once.",owner
-OWN-D08-r121,duplicate,OWN-D08-r082,"As r120.",owner
-OWN-D08-r122,duplicate,OWN-D08-r083,"As r120.",owner
-OWN-D08-r123,duplicate,OWN-D08-r084,"As r120.",owner
+claim_id,action,original,comment,set_by,decision
+OWN-D18-r145,out_of_universe,,"Same rule as row 71 (item 2): hospital N1 requirement minus nurse pool on day 18 = 42 − 37 = 5 nurses.",owner,§11 #65
+OWN-D08-r120,duplicate,OWN-D08-r081,"Occupied beds 12/27/12/19 repeated in reasons; already extracted from information_used. A figure repeated in another field is extracted once.",owner,§11 #65
+OWN-D08-r121,duplicate,OWN-D08-r082,"As r120.",owner,§11 #65
+OWN-D08-r122,duplicate,OWN-D08-r083,"As r120.",owner,§11 #65
+OWN-D08-r123,duplicate,OWN-D08-r084,"As r120.",owner,§11 #65
+OWN-D03-r057,duplicate,OWN-D03-r054,"Same claim key as r054 (shortage L2-3 under the decided allocation, 0). One duplicate rule for every duplicate: as r120-r123.",owner,§11 #66

@@ -24,10 +24,21 @@
         "derived": "29/49"
       }
     },
-    "after_adjudication_overrides": {
+    "after_item_2_r145_r120_r123": {
       "a_found_by_b": {
         "copied": "58/60",
         "derived": "28/41",
+        "unclassified": "0/1"
+      },
+      "b_found_by_a": {
+        "copied": "56/57",
+        "derived": "29/49"
+      }
+    },
+    "after_row_57_final": {
+      "a_found_by_b": {
+        "copied": "58/60",
+        "derived": "27/40",
         "unclassified": "0/1"
       },
       "b_found_by_a": {
@@ -85,49 +96,170 @@
     "recall": {
       "a_found_by_b": {
         "copied": "60/60",
-        "derived": "40/41",
-        "unclassified": "1/1"
+        "derived": "34/40",
+        "unclassified": "0/1"
       },
       "b_found_by_a": {
         "copied": "57/57",
-        "derived": "42/49"
+        "derived": "37/49"
       }
     },
     "counted_found": {
       "owner_only": [
         "OWN-D03-r058",
-        "OWN-D08-r064",
-        "OWN-D08-r109",
-        "OWN-D08-r110",
-        "OWN-D08-r125",
         "OWN-D18-r143",
         "OWN-D18-r151",
         "OWN-D18-r152",
         "OWN-D18-r153",
         "OWN-D18-r155",
         "OWN-D18-r156",
-        "OWN-D18-r157",
-        "OWN-D18-r161",
         "OWN-D18-r163",
         "OWN-D18-r167"
       ],
       "assistant_only": [
         "R1-D03-34",
-        "R1-D08-23",
-        "R1-D08-24",
-        "R1-D08-35",
         "R1-D18-13",
         "R1-D18-14",
         "R1-D18-15",
         "R1-D18-16",
         "R1-D18-17",
         "R1-D18-18",
-        "R1-D18-19",
-        "R1-D18-23",
         "R1-D18-25",
         "R1-D18-28"
       ]
-    }
+    },
+    "not_counted_found": {
+      "owner": [
+        "OWN-D08-r064",
+        "OWN-D08-r109",
+        "OWN-D08-r110",
+        "OWN-D08-r125",
+        "OWN-D18-r157",
+        "OWN-D18-r161",
+        "OWN-D18-r166"
+      ],
+      "assistant": [
+        "R1-D03-36",
+        "R1-D08-01",
+        "R1-D08-05",
+        "R1-D08-22",
+        "R1-D08-23",
+        "R1-D08-24",
+        "R1-D08-33",
+        "R1-D08-35",
+        "R1-D08-36",
+        "R1-D08-37",
+        "R1-D18-19",
+        "R1-D18-23"
+      ]
+    },
+    "pair_figure_check": [
+      {
+        "owner": "OWN-D03-r058",
+        "assistant": "R1-D03-34",
+        "owner_figure": 0.3,
+        "assistant_figure": 0.3,
+        "same_figure": true
+      },
+      {
+        "owner": "OWN-D08-r064",
+        "assistant": "R1-D08-01",
+        "owner_figure": 4.0,
+        "assistant_figure": 37.0,
+        "same_figure": false
+      },
+      {
+        "owner": "OWN-D08-r109",
+        "assistant": "R1-D08-23",
+        "owner_figure": 6.0,
+        "assistant_figure": null,
+        "same_figure": false
+      },
+      {
+        "owner": "OWN-D08-r110",
+        "assistant": "R1-D08-24",
+        "owner_figure": 1.0,
+        "assistant_figure": null,
+        "same_figure": false
+      },
+      {
+        "owner": "OWN-D08-r125",
+        "assistant": "R1-D08-35",
+        "owner_figure": 0.55,
+        "assistant_figure": 6.45,
+        "same_figure": false
+      },
+      {
+        "owner": "OWN-D18-r143",
+        "assistant": "R1-D18-13",
+        "owner_figure": 4.0,
+        "assistant_figure": 4.0,
+        "same_figure": true
+      },
+      {
+        "owner": "OWN-D18-r151",
+        "assistant": "R1-D18-14",
+        "owner_figure": 23.0,
+        "assistant_figure": 23.0,
+        "same_figure": true
+      },
+      {
+        "owner": "OWN-D18-r152",
+        "assistant": "R1-D18-15",
+        "owner_figure": 7.0,
+        "assistant_figure": 7.0,
+        "same_figure": true
+      },
+      {
+        "owner": "OWN-D18-r153",
+        "assistant": "R1-D18-16",
+        "owner_figure": 4.0,
+        "assistant_figure": 4.0,
+        "same_figure": true
+      },
+      {
+        "owner": "OWN-D18-r155",
+        "assistant": "R1-D18-17",
+        "owner_figure": 0.0,
+        "assistant_figure": 0.0,
+        "same_figure": true
+      },
+      {
+        "owner": "OWN-D18-r156",
+        "assistant": "R1-D18-18",
+        "owner_figure": 0.4,
+        "assistant_figure": 0.4,
+        "same_figure": true
+      },
+      {
+        "owner": "OWN-D18-r157",
+        "assistant": "R1-D18-19",
+        "owner_figure": null,
+        "assistant_figure": null,
+        "same_figure": false
+      },
+      {
+        "owner": "OWN-D18-r161",
+        "assistant": "R1-D18-23",
+        "owner_figure": null,
+        "assistant_figure": null,
+        "same_figure": false
+      },
+      {
+        "owner": "OWN-D18-r163",
+        "assistant": "R1-D18-25",
+        "owner_figure": 0.05,
+        "assistant_figure": 0.05,
+        "same_figure": true
+      },
+      {
+        "owner": "OWN-D18-r167",
+        "assistant": "R1-D18-28",
+        "owner_figure": 3.5,
+        "assistant_figure": 3.5,
+        "same_figure": true
+      }
+    ]
   },
   "universe_and_duplicates": {
     "out_of_universe": [
@@ -135,6 +267,7 @@
       "OWN-D18-r145"
     ],
     "duplicates_left_out": [
+      "OWN-D03-r057",
       "OWN-D08-r120",
       "OWN-D08-r121",
       "OWN-D08-r122",
@@ -172,6 +305,12 @@
         "original": "OWN-D08-r084",
         "day": 8,
         "value": 19
+      },
+      "OWN-D03-r057": {
+        "action": "duplicate",
+        "original": "OWN-D03-r054",
+        "day": 3,
+        "value": 0
       }
     }
   },
@@ -194,18 +333,22 @@
     "owner_miss": 7,
     "rubric_ambiguity": 6
   },
-  "not_applied_note": "owner rows 54 and 57 (same claim key, both matched) are counted separately, as frozen",
-  "variant_not_applied_row_57_also_duplicate": {
-    "label": "NOT APPLIED: shown for the owner's decision (rows 54 and 57 were never collapsed)",
+  "row_57": "duplicate of row 54, APPLIED (§11 #66): the former not-applied variant is the final figure",
+  "variant_not_applied_no_figure_pairs_exempt": {
+    "label": "NOT APPLIED: descriptive recall if pairs where neither side states a figure were exempt from the same-figure condition",
+    "pairs": [
+      "OWN-D18-r157",
+      "OWN-D18-r161"
+    ],
     "recall": {
       "a_found_by_b": {
-        "copied": "58/60",
-        "derived": "27/40",
-        "unclassified": "0/1"
+        "copied": "60/60",
+        "derived": "35/40",
+        "unclassified": "1/1"
       },
       "b_found_by_a": {
-        "copied": "56/57",
-        "derived": "29/49"
+        "copied": "57/57",
+        "derived": "39/49"
       }
     }
   }

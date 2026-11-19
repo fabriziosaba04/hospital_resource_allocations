@@ -775,9 +775,37 @@ No CHECKER file read, nothing launched. Frozen files and earlier comparison file
 
 ### Open (blocking)
 
-1. Rows 54 and 57: the cited precedent was never applied (R51). Collapse 57 into 54 as well (owner's derived 27/40), or keep them as two claims (28/41)?
+1. ~~Rows 54 and 57~~ Closed (§11 #66): row 57 is a duplicate of row 54; owner's derived 27/40.
 
 ### Parked questions
 
-1. Descriptive recall counts OWN-D08-r064 (rubric_ambiguity, paired with R1-D08-01) as found, although the figures differ (delta 4 vs pool 37); its counterpart R1-D08-01 is owner_miss and not found. The rule is applied as defined.
+1. ~~Descriptive recall counts OWN-D08-r064 as found although the figures differ (4 vs 37).~~ Closed (§11 #66, 2026-11-19): same-figure condition.
+
+## 2026-11-19 (fourteenth session: row 57 and the same-figure condition)
+
+No CHECKER file read, nothing launched. Frozen and earlier comparison files unchanged.
+
+### Achieved
+
+1. **§11 #66, Log #111:** row 57 added to `owner_universe_overrides.csv` as a duplicate of row 54 (new `decision` column); same-figure condition in the descriptive recall.
+2. **Final table** (`comparison_7a_adjudicated.json`):
+
+   | | Owner copied | Owner derived | Owner unclassified | Assistant copied | Assistant derived |
+   | --- | --- | --- | --- | --- | --- |
+   | Primary, as frozen | 58/60 | 28/47 | 0/1 | 56/57 | 29/49 |
+   | Primary, after row 71 | 58/60 | 28/46 | 0/1 | 56/57 | 29/49 |
+   | Primary, after item 2 (r145, r120–r123) | 58/60 | 28/41 | 0/1 | 56/57 | 29/49 |
+   | **Primary, after row 57 (final)** | 58/60 | **27/40** | 0/1 | 56/57 | 29/49 |
+   | Descriptive after adjudication | 60/60 | 34/40 | 0/1 | 57/57 | 37/49 |
+
+3. **Pairs excluded by the same-figure condition:** r064/D08-01 (4 vs 37), r125/D08-35 (0.55 vs 6.45), r109/D08-23 (6 vs none), r110/D08-24 (1 vs none), r157/D18-19 and r161/D18-23 (no figure on either side).
+4. **Not counted as found (descriptive):** owner OWN-D08-r064, r109, r110, r125, OWN-D18-r157, r161, r166; assistant R1-D03-36, R1-D08-01, D08-05, D08-22, D08-23, D08-24, D08-33, D08-35, D08-36, D08-37, R1-D18-19, D18-23.
+
+### Open (blocking)
+
+1. The same-figure condition, applied generally, also excludes the two pairs where neither side states any figure: r157/D18-19 (cause matching_rule, "both sides agree") and r161/D18-23. Keep them excluded (applied: owner derived 34/40, unclassified 0/1; assistant derived 37/49), or exempt pairs with no figure on either side (not applied: 35/40, 1/1, 39/49)?
+
+### Parked questions
+
+None new.
 
