@@ -336,6 +336,10 @@ def main(run_id: str) -> None:
                                                encoding="utf-8", newline="\n")
     print(json.dumps({k: out[k] for k in ("recall", "recall_if_null_quantities_collide", "adjudication_rows")},
                      indent=2))
+    # the two tables just rewritten carry the owner's verdicts and causes: re-apply them (owner_verdicts.py)
+    if (folder / "owner_verdicts_nonmech.csv").exists():
+        from .owner_verdicts import main as apply_verdicts
+        apply_verdicts(run_id)
 
 
 if __name__ == "__main__":

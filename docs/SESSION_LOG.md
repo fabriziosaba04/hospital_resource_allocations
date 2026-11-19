@@ -681,3 +681,20 @@ Before the first of these runs, the milestone checks of `CLAUDE.md` §9.4 also a
 3. EVALUATION_PLAN §3.7: add "and zero replay and pairing mismatches" so that the gate's wording matches `gate_passed`?
 4. DRY3-RESUME launch 1 subagent transcripts are lost; record as a known gap of the dry runs (DRY1, DRY2 also have no session folders).
 5. Carried over: enforce "invalid allocation → unverifiable" in `claim_check`; the null-quantity rule in the comparison; strict "worse/more/less" (7 claims); day 28 reading.
+
+## 2026-11-19 (ninth session: owner verdicts on the 18 non-mechanical mappings)
+
+Frozen files untouched: `owner_claims_d03_d08_d18.csv` (`6c7af169…fd283c47`), `explanation_claims_spec.json`; `comparison_7a.json` and `comparison_7a_decisions_AB.json` unchanged (hashes checked before and after). No CHECKER file read, nothing launched.
+
+### Achieved
+
+1. **Verdicts recorded** (Log #106): `owner_extraction/owner_verdicts_nonmech.csv` (input), `owner_verdict` / `owner_comment` on `non_mechanical_mappings.csv`. 15 ok, 2 rubric_ambiguity (rows 64, 166), 1 out_of_universe (row 71).
+2. **Row 71** ("3-nurse hospital-wide shortage", day 8): (a) N1 requirement 7 + 14 + 7 + 8 = 36 minus pool 33 = **3**; (b) shortage under the in-effect (day-7) allocation = **0.9** need units. (a) only → **out of universe**, cause `owner_encoding`. Same construction as the owner's own day-3 row "2 nurses are short hospital-wide" (39 − 37), already out of universe.
+3. **Adjudication:** causes filled on the owner-only rows 64 (rubric_ambiguity), 71 (owner_encoding), 166 (rubric_ambiguity), with `cause_set_by` (row 71: owner rule, values computed by the assistant). The assistant-only row of R1-D08-01 shows row 64 only as its nearest text; its cause is left empty.
+4. **Recall** (`comparison_7a_owner_verdicts.json`): owner's claims found by the assistant, derived **28/47 → 28/46**; copied 58/60 and unclassified 0/1 unchanged; assistant's claims found by the owner unchanged (56/57, 29/49). Out-of-universe owner rows 62 → 63; row 71 also left out by the assistant.
+
+### Parked questions
+
+1. Rows 64 and 166 (rubric_ambiguity) stay in the derived denominator as unmatched. Should rubric_ambiguity rows leave it? Descriptive only, not applied: derived 28/44.
+2. Causes typed by hand into `adjudication_7a.csv` outside `owner_verdicts_nonmech.csv` would be erased by a converter rerun (R50). Move all adjudication causes to an input table when the owner fills the rest?
+3. The untracked export `R1 owner claim extraction — days 3, 8, 18 - Claims.csv` at the repository root is byte-identical to the frozen file (SHA-256 `6c7af169…`). Delete it, or keep it out of git?

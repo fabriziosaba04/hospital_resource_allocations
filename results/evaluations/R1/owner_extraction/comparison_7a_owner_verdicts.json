@@ -1,0 +1,195 @@
+{
+  "decisions": "owner verdicts on the 18 non-mechanical mappings (2026-11-19); row 71 by the owner's item-2 rule",
+  "moved_out_of_universe": [
+    71
+  ],
+  "item2_check": {
+    "71": {
+      "requirement": 36,
+      "pool_nurses": 33,
+      "a_requirement_minus_pool": 3,
+      "b_shortage_in_effect": 0.9,
+      "stated": "3",
+      "outcome": "out"
+    }
+  },
+  "causes_filled_owner_rows": [
+    64,
+    71,
+    166
+  ],
+  "recall": {
+    "before": {
+      "a_found_by_b": {
+        "copied": "58/60",
+        "derived": "28/47",
+        "unclassified": "0/1",
+        "missed": [
+          "OWN-D03-r058",
+          "OWN-D08-r064",
+          "OWN-D08-r071",
+          "OWN-D08-r109",
+          "OWN-D08-r110",
+          "OWN-D08-r120",
+          "OWN-D08-r121",
+          "OWN-D08-r122",
+          "OWN-D08-r123",
+          "OWN-D08-r125",
+          "OWN-D18-r143",
+          "OWN-D18-r145",
+          "OWN-D18-r151",
+          "OWN-D18-r152",
+          "OWN-D18-r153",
+          "OWN-D18-r155",
+          "OWN-D18-r156",
+          "OWN-D18-r157",
+          "OWN-D18-r161",
+          "OWN-D18-r163",
+          "OWN-D18-r166",
+          "OWN-D18-r167"
+        ]
+      },
+      "b_found_by_a": {
+        "copied": "56/57",
+        "derived": "29/49",
+        "missed": [
+          "R1-D03-34",
+          "R1-D03-36",
+          "R1-D08-01",
+          "R1-D08-05",
+          "R1-D08-22",
+          "R1-D08-23",
+          "R1-D08-24",
+          "R1-D08-33",
+          "R1-D08-35",
+          "R1-D08-36",
+          "R1-D08-37",
+          "R1-D18-13",
+          "R1-D18-14",
+          "R1-D18-15",
+          "R1-D18-16",
+          "R1-D18-17",
+          "R1-D18-18",
+          "R1-D18-19",
+          "R1-D18-23",
+          "R1-D18-25",
+          "R1-D18-28"
+        ]
+      }
+    },
+    "after_owner_verdicts": {
+      "a_found_by_b": {
+        "copied": "58/60",
+        "derived": "28/46",
+        "unclassified": "0/1",
+        "missed": [
+          "OWN-D03-r058",
+          "OWN-D08-r064",
+          "OWN-D08-r109",
+          "OWN-D08-r110",
+          "OWN-D08-r120",
+          "OWN-D08-r121",
+          "OWN-D08-r122",
+          "OWN-D08-r123",
+          "OWN-D08-r125",
+          "OWN-D18-r143",
+          "OWN-D18-r145",
+          "OWN-D18-r151",
+          "OWN-D18-r152",
+          "OWN-D18-r153",
+          "OWN-D18-r155",
+          "OWN-D18-r156",
+          "OWN-D18-r157",
+          "OWN-D18-r161",
+          "OWN-D18-r163",
+          "OWN-D18-r166",
+          "OWN-D18-r167"
+        ]
+      },
+      "b_found_by_a": {
+        "copied": "56/57",
+        "derived": "29/49",
+        "missed": [
+          "R1-D03-34",
+          "R1-D03-36",
+          "R1-D08-01",
+          "R1-D08-05",
+          "R1-D08-22",
+          "R1-D08-23",
+          "R1-D08-24",
+          "R1-D08-33",
+          "R1-D08-35",
+          "R1-D08-36",
+          "R1-D08-37",
+          "R1-D18-13",
+          "R1-D18-14",
+          "R1-D18-15",
+          "R1-D18-16",
+          "R1-D18-17",
+          "R1-D18-18",
+          "R1-D18-19",
+          "R1-D18-23",
+          "R1-D18-25",
+          "R1-D18-28"
+        ]
+      }
+    }
+  },
+  "recall_if_null_quantities_collide": {
+    "before": {
+      "a_found_by_b": {
+        "copied": "58/60",
+        "derived": "32/47",
+        "unclassified": "1/1"
+      },
+      "b_found_by_a": {
+        "copied": "56/57",
+        "derived": "33/49"
+      }
+    },
+    "after_owner_verdicts": {
+      "a_found_by_b": {
+        "copied": "58/60",
+        "derived": "31/46",
+        "unclassified": "1/1"
+      },
+      "b_found_by_a": {
+        "copied": "56/57",
+        "derived": "33/49"
+      }
+    }
+  },
+  "out_of_universe_rows": {
+    "before": 62,
+    "after_owner_verdicts": 63,
+    "moved_rows": [
+      {
+        "row": 71,
+        "day": 8,
+        "text": "3-nurse hospital-wide shortage",
+        "owner_quantity": "nurse shortage",
+        "assistant_also_left_out": true,
+        "assistant_claims": []
+      }
+    ]
+  },
+  "descriptive_only_rubric_ambiguity_rows_also_dropped": {
+    "rows": [
+      64,
+      166
+    ],
+    "applied": false,
+    "note": "not a decision: rows 64 and 166 stay in the universe; shown for the owner's review",
+    "recall": {
+      "a_found_by_b": {
+        "copied": "58/60",
+        "derived": "28/44",
+        "unclassified": "0/1"
+      },
+      "b_found_by_a": {
+        "copied": "56/57",
+        "derived": "29/49"
+      }
+    }
+  }
+}

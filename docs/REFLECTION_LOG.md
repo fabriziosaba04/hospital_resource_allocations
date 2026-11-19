@@ -374,3 +374,10 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **How it was caught:** re-read before appending, under the verify-before-asserting rule (2026-11-18); corrected before the entry was written to `docs/SESSION_LOG.md`.
 - **Fix:** the figure is now taken from `explanation_claims.json`.
 - **Implication:** the fourth instance of the pattern (R43, R44, R46). Figures in prose need the same lookup as figures in code.
+
+### R50. Owner-entered columns lived in files the converter regenerates
+
+- **What happened:** `owner_claims.main` rewrites `non_mechanical_mappings.csv` and `adjudication_7a.csv` from scratch. Writing the owner's verdicts and causes directly into them would have been lost, silently, on the next converter run.
+- **How it was caught:** while recording the owner's verdicts of 2026-11-19, before any rerun.
+- **Fix:** the verdicts live in a committed input table (`owner_verdicts_nonmech.csv`); `owner_claims.main` re-applies it after regenerating (Log #106). A rerun was checked to leave the three files unchanged.
+- **Implication:** still open for causes the owner types directly into `adjudication_7a.csv` (outside the table): a converter rerun would erase them. Parked (SESSION_LOG, 2026-11-19).
