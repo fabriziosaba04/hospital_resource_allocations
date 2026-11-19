@@ -1,0 +1,30 @@
+{
+  "display_only": "GENERATED DISPLAY FILE (src/evaluation/adjudication_view.py): not an input, plays no part in matching; edit causes in owner_adjudication_causes.csv",
+  "pairing_rule": "between an owner-only and an assistant-only claim of the same explanation day:\n  texts are normalised (lower case, hyphens to spaces, whitespace collapsed);\n  P1 \"contains\"   one normalised text contains the other;\n  P2 \"number\"     they share a number token together with an adjacent word on the same side of it (a common\n                  bigram \"word n\" or \"n word\"), e.g. \"reduced by 4\" / \"nurse pool reduced by 4 (37\": \"by 4\".\nPairs are one-to-one: P1 candidates first, then P2 among the claims still unpaired; within a rule, the\ncandidate with the highest text similarity (difflib ratio), then the lower id. Claims left unpaired are\nsingles.",
+  "counts": {
+    "pairs": 15,
+    "owner_singles": 7,
+    "assistant_singles": 6,
+    "owner_only_total": 22,
+    "assistant_only_total": 21
+  },
+  "differing_fields_per_field": {
+    "quantity": 12,
+    "allocation": 9,
+    "relation": 4,
+    "value": 4,
+    "day": 1,
+    "none: both quantity null, never matched": 1,
+    "compare_allocation": 1
+  },
+  "differing_fields_combinations": {
+    "quantity": 4,
+    "quantity+allocation": 3,
+    "quantity+allocation+relation+value": 2,
+    "allocation": 2,
+    "day+quantity+relation+value": 1,
+    "quantity+allocation+value": 1,
+    "none: both quantity null, never matched": 1,
+    "quantity+allocation+compare_allocation+relation": 1
+  }
+}

@@ -736,3 +736,20 @@ Frozen files untouched (`owner_claims_d03_d08_d18.csv`, `explanation_claims_spec
 ### Parked questions
 
 None new.
+
+## 2026-11-19 (twelfth session: adjudication side-by-side view, display only)
+
+`owner_adjudication_causes.csv` not read or touched; no cause filled; no matching rule changed. No CHECKER file read, nothing launched.
+
+### Achieved
+
+1. **View** (Log #109): `results/evaluations/R1/owner_extraction/adjudication_pairs_view.csv` (generated display file) and `adjudication_pairs_summary.json`. Regenerate with `uv run python -m src.evaluation.adjudication_view R1`.
+2. **Counts:** 15 pairs (14 by text containment, 1 by shared number phrase: OWN-D08-r064 ↔ R1-D08-01, "by 4"); 7 owner singles (r071, r120–r123, r145, r166); 6 assistant singles (D03-36, D08-05, D08-22, D08-33, D08-36, D08-37).
+3. **differing_fields across the 15 pairs:** quantity 12, allocation 9, relation 4, value 4, day 1, compare_allocation 1; one pair (r157 ↔ D18-19) has both quantities null. Quantity parts among the 12: null on one side 4, name 4, departments 3, name + levels 1.
+4. **OWN-D18-r145:** N1 requirement 11 + 15 + 11 + 5 = 42 minus pool 37 = 5; total shortage under the in-effect (day-17) allocation 3.5 need units (L1 2.25, L2 1.25, L3 0).
+5. **OWN-D08-r120–r123** (reasons, "above occupied (12/27/12/19)"): the assistant extracted no claim from that reasons sentence; the same figures appear as R1-D08-10..13 in information_used ("occupied 12/27/12/19", `holders[dep]` eq 12/27/12/19, no allocation).
+
+### Parked questions
+
+None new.
+

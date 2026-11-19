@@ -59,7 +59,7 @@ hospital_resource_allocations/
 │   ├── environment/               deterministic rules shared by server and baselines
 │   ├── mcp_server/                MCP tool layer, state machine, record store, ANALYZER, run init, launcher, copy-back, synthetic fixtures
 │   ├── agent/                     fixed dispatch templates (the prompts live in .claude/agents/)
-│   ├── evaluation/                deterministic audit, metrics, baselines, baseline runner (python -m src.evaluation), run report, CHECKER matching, claim checker, ALLOCATOR digest, owner-extraction converter, owner decisions A–B, owner verdicts on non-mechanical mappings, owner input tables, owner review lists, figures
+│   ├── evaluation/                deterministic audit, metrics, baselines, baseline runner (python -m src.evaluation), run report, CHECKER matching, claim checker, ALLOCATOR digest, owner-extraction converter, owner decisions A–B, owner verdicts on non-mechanical mappings, owner input tables, adjudication pairs view, owner review lists, figures
 │   └── utils/
 │
 ├── results/
