@@ -676,9 +676,9 @@ Before the first of these runs, the milestone checks of `CLAUDE.md` §9.4 also a
 
 ### Parked questions
 
-1. Queue counts: keep them derived (item 8, count of a list) or relabel them copied? 11 wrong claims would move to the copied stratum.
+1. ~~Queue counts: derived or copied?~~ Closed (§11 #70): derived.
 2. R1-D09-22 ("cardiology holds 2 nurses above need", restated as need = 5): the unrounded need is exactly 5, so it equals its own ceiling. Decision B's integer test cannot tell it apart; it is kept in the universe as need, by what the sentence refers to.
-3. EVALUATION_PLAN §3.7: add "and zero replay and pairing mismatches" so that the gate's wording matches `gate_passed`?
+3. ~~EVALUATION_PLAN §3.7 wording~~ Closed (§11 #72): applied.
 4. DRY3-RESUME launch 1 subagent transcripts are lost; record as a known gap of the dry runs (DRY1, DRY2 also have no session folders).
 5. Carried over: enforce "invalid allocation → unverifiable" in `claim_check`; the null-quantity rule in the comparison; strict "worse/more/less" (7 claims); day 28 reading.
 
@@ -868,5 +868,24 @@ No frozen file modified, no CHECKER file read, nothing launched.
 
 ### Parked questions
 
-1. In the descriptive count, an `extraction_error` on the unverifiable list has no mapping yet (correct, wrong or unverifiable?); the script stops if one is entered.
+1. ~~`extraction_error` on the unverifiable list~~ Closed as moot (§11 #69).
 
+
+## 2026-11-19 (nineteenth session: unverifiable verdicts, closures, pre-flight for R2)
+
+No frozen file modified, no CHECKER file read, nothing launched.
+
+### Achieved
+
+1. **26 unverifiable verdicts** written verbatim (15 `confirmed_unverifiable`, 11 `verifiable_correct`), read back, `review_7c_unverifiable.csv` regenerated equal to the table. **Final descriptive count** (§11 #69): 1015 / 19 / 15 next to the pre-registered 948 / 75 / 26.
+2. **REFLECTION_LOG:** R47 and R52 implications written verbatim from the owner; R55 (vacuous comparison, caught).
+3. **Closures:** §11 #70 (queue counts derived), #71 (allocation in effect on shock days: 38 in-effect claims all correct; alternative-rule claims D08-22/23/24, D23-17/18/19; D21-10/11/12 misapplied), #72 (EVALUATION_PLAN §3.7 wording applied).
+4. **Pre-flight for R2:** full suite 205 passed; manifest OK in the repository and the clone, `MANIFEST.json` identical to `data-v1.0`; run-settings probe 30/30 calls classified as the pre-R1 baseline (21 denied, 0 leaks; run in the repository, settings identical to `prompts-v1.0`); clone at `prompts-v1.0` = `f2162c0`, no tracked changes, R1 ran on the same commit; `init_run` repoints `ACTIVE_RUN` and refuses an existing run folder; every tool call re-reads `ACTIVE_RUN`; `Read`/`Edit(./results/**)` denied. **GO.**
+
+### Next
+
+1. Owner: launch R2 in the clone, then `copy_back` immediately (commands in the session report).
+
+### Parked questions
+
+1. `launch` resumes whatever `ACTIVE_RUN` names; if `init_run` is skipped it would append a launch record to the finished R1 folder in the clone. Make `launch` refuse a run whose state is already FINISHED? (The launch commands now include a pointer check instead.)

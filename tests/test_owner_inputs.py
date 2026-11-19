@@ -69,9 +69,9 @@ def test_committed_tables_cover_the_generated_rows():
         {("OWN-D08-r064", "rubric_ambiguity"), ("OWN-D08-r071", "owner_encoding"),
          ("OWN-D18-r166", "rubric_ambiguity")}
     assert len(_rows(_tables(EVAL)["wrong"])) == 75 and len(_rows(_tables(EVAL)["unver"])) == 26
-    # owner verdicts entered so far (2026-11-19): all 75 in the wrong list, none in the unverifiable list
+    # owner verdicts (2026-11-19): all 75 in the wrong list, all 26 in the unverifiable list
     assert sum(bool(r["owner_verdict"]) for r in _rows(_tables(EVAL)["wrong"])) == 75
-    assert not any(r["owner_verdict"] or r["owner_comment"] for r in _rows(_tables(EVAL)["unver"]))
+    assert sum(bool(r["owner_verdict"]) for r in _rows(_tables(EVAL)["unver"])) == 26
 
 
 def test_owner_cells_survive_reruns_unchanged(ev):

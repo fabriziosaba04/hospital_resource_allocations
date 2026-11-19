@@ -132,7 +132,7 @@ C2 and C4 are contained in A1 and A2: in this model, bed and nurse inefficiency 
 
 ### 3.7 D. Feasibility: a gate, not a metric
 
-- **Gate:** zero hard-constraint violations **in effect**, checked by the audit's own implementation. Otherwise the run is **not interpreted** (a Critical issue, §4).
+- **Gate:** zero hard-constraint violations **in effect**, checked by the audit's own implementation, **and zero replay and pairing mismatches** (`gate_passed`; both are Critical under §4; owner decision §11 #72). Otherwise the run is **not interpreted** (a Critical issue, §4).
 - **Reported:** rejected **submissions** by code, ALLOCATOR failure days (repair applied), halts. Calls to `validate_allocation` are free and never counted.
 
 ### 3.8 E. Stability

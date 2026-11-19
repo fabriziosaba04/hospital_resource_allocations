@@ -9,7 +9,8 @@ Mapping of each pre-registered verdict and owner verdict to a descriptive verdic
                extraction-error verdicts state the claim is correct); should_be_unverifiable -> unverifiable;
                no verdict -> wrong (pending)
   unverifiable confirmed_unverifiable -> unverifiable; verifiable_correct -> correct; verifiable_wrong -> wrong;
-               no verdict -> unverifiable (pending); extraction_error -> stops (no mapping decided yet)
+               no verdict -> unverifiable (pending); extraction_error -> stops: counted by its recomputed verdict
+               under the corrected encoding (§11 #69), which must be supplied first
   correct      unchanged (not reviewed)
 The result is provisional while any reviewed list has a row without a verdict. By basis, the encoded `basis` is
 used; the owner's comments on R1-D28-05/06 call them copied, and the effect of relabelling them is shown.
@@ -62,7 +63,8 @@ def main(run_id: str, eval_dir: Path | None = None) -> dict:
         kind, v = own[c["id"]]
         assert kind == c["verdict"], c["id"]
         if v not in MAP[kind]:
-            raise SystemExit(f"{c['id']}: owner verdict {v!r} on the {kind} list has no descriptive mapping yet")
+            raise SystemExit(f"{c['id']}: owner verdict {v!r} on the {kind} list: by §11 #69 it is counted by its "
+                             "recomputed verdict under the corrected encoding, which must be supplied first")
         return MAP[kind][v]
 
     after = _count(claims, descriptive)

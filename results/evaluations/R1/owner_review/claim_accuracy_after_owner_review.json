@@ -1,9 +1,9 @@
 {
   "label": "DESCRIPTIVE, after owner review; reported next to the pre-registered counts, never instead",
-  "provisional": true,
+  "provisional": false,
   "pending_owner_verdicts": {
     "wrong": 0,
-    "unverifiable": 26
+    "unverifiable": 0
   },
   "pre_registered": {
     "total": {
@@ -53,30 +53,30 @@
   },
   "after_owner_review": {
     "total": {
-      "correct": 1004,
+      "correct": 1015,
       "wrong": 19,
-      "unverifiable": 26
+      "unverifiable": 15
     },
     "by_category": {
       "beds": {
-        "correct": 345,
+        "correct": 350,
         "wrong": 0,
-        "unverifiable": 5
+        "unverifiable": 0
       },
       "empty_beds": {
-        "correct": 124,
+        "correct": 127,
         "wrong": 3,
-        "unverifiable": 7
+        "unverifiable": 4
       },
       "nurse_coverage": {
-        "correct": 213,
+        "correct": 214,
         "wrong": 4,
-        "unverifiable": 9
+        "unverifiable": 8
       },
       "overflow": {
-        "correct": 253,
+        "correct": 255,
         "wrong": 12,
-        "unverifiable": 5
+        "unverifiable": 3
       },
       "pool": {
         "correct": 69,
@@ -91,9 +91,9 @@
         "unverifiable": 2
       },
       "derived": {
-        "correct": 468,
+        "correct": 479,
         "wrong": 19,
-        "unverifiable": 24
+        "unverifiable": 13
       }
     }
   },
@@ -104,9 +104,9 @@
       "unverifiable": 2
     },
     "derived": {
-      "correct": 466,
+      "correct": 477,
       "wrong": 19,
-      "unverifiable": 24
+      "unverifiable": 13
     }
   },
   "mapping": {

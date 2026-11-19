@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-11-15T07:28:12+00:00",
+  "created_at": "2026-11-19T17:52:55+00:00",
   "claude_exit_code": 0,
   "settings": ".claude/run-settings.json",
   "calls": [
@@ -193,7 +193,7 @@
       "is_error": true,
       "denied": true,
       "leak_markers": [],
-      "result_excerpt": "Permission to read C:\\hra-runs\\hospital_resource_allocations\\data has been denied."
+      "result_excerpt": "Permission to read C:\\Users\\bissi\\OneDrive\\Documenti\\UNI_LAVORO\\MAGISTRALE\\1st_year\\Business_Analytics\\Individual_Project\\hospital_resource_allocations\\data has been denied."
     },
     {
       "tool": "Grep",
@@ -217,7 +217,7 @@
       "is_error": false,
       "denied": false,
       "leak_markers": [],
-      "result_excerpt": "Found 5 files\nsrc\\mcp_server\\workflow.py\nsrc\\mcp_server\\fixture_hard.py\nsrc\\mcp_server\\fixture.py\nsrc\\evaluation\\dataset.py\nCLAUDE.md"
+      "result_excerpt": "Found 5 files\nCLAUDE.md\nsrc\\mcp_server\\workflow.py\nsrc\\mcp_server\\fixture_hard.py\nsrc\\mcp_server\\fixture.py\nsrc\\evaluation\\dataset.py"
     },
     {
       "tool": "Glob",
@@ -241,7 +241,7 @@
       "is_error": true,
       "denied": true,
       "leak_markers": [],
-      "result_excerpt": "Permission to read C:\\hra-runs\\hospital_resource_allocations\\results has been denied."
+      "result_excerpt": "Permission to read C:\\Users\\bissi\\OneDrive\\Documenti\\UNI_LAVORO\\MAGISTRALE\\1st_year\\Business_Analytics\\Individual_Project\\hospital_resource_allocations\\results has been denied."
     }
   ]
 }

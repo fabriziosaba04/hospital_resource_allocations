@@ -20,8 +20,8 @@ def test_descriptive_count_next_to_primary(tmp_path):
         shutil.copy(EVAL / "owner_review" / n, ev / "owner_review")
     r = owner_review_counts.main("R1", ev)
     assert r["pre_registered"]["total"] == {"correct": 948, "wrong": 75, "unverifiable": 26}
-    assert r["after_owner_review"]["total"] == {"correct": 1004, "wrong": 19, "unverifiable": 26}
-    assert r["provisional"] is True and r["pending_owner_verdicts"] == {"wrong": 0, "unverifiable": 26}
+    assert r["after_owner_review"]["total"] == {"correct": 1015, "wrong": 19, "unverifiable": 15}     # §11 #69
+    assert r["provisional"] is False and r["pending_owner_verdicts"] == {"wrong": 0, "unverifiable": 0}
 
 
 def test_unverifiable_view():

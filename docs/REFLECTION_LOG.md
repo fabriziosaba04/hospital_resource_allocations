@@ -359,7 +359,7 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 
 - **Stub, created by the assistant at the owner's request (2026-11-18); the substance is the owner's to write.**
 - **Facts recorded so far:** the item-7a comparison (`comparison_7a.json`, commit `fc29023`) was computed while two rubric questions were parked: patient attributes (item 1 vs the item-8 example) and the tier-2–3 requirement. The assistant's converter decided the second one provisionally (rule Q2, owner rows 115–118). The owner resolved both on 2026-11-18 (§11 #61 A–B) **after** the comparison had been seen, so the resolution is no longer blind to the recall figures. Applied side by side (`comparison_7a_decisions_AB.json`), neither decision moves any claim on either side.
-- **What happened / how it was caught / implication:** *(owner to write).*
+- **Owner (2026-11-19):** "Decisions A–B on the claim universe (§11 #61) were taken after the extraction comparison had been seen, which broke the planned order (rubric questions resolved blind, then compare). Neither decision changed the classification of any claim on either side (`comparison_7a_decisions_AB.json`), so no reported figure depends on the sequencing. The lesson: parked rubric questions must be closed before the comparison is run, not alongside it."
 
 ### R48. A report opened with a blanket completion claim that its own body contradicted
 
@@ -396,7 +396,7 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
   1. the **43 adjudication causes** of item 7(a) (`owner_extraction/owner_adjudication_causes.csv`);
   2. **all 75 wrong-claim verdicts** of item 7(b) (`owner_review/owner_review_wrong.csv`): the 21 non-rubric-dependent (19 `confirmed_wrong`, 2 `extraction_error`) and the 54 rubric-dependent (`actually_correct`).
 - **Consequence:** the owner check is **not independent of LLM judgement**. What stays independent is the owner's own extraction of days 3, 8 and 18 (`owner_claims_d03_d08_d18.csv`, frozen, SHA-256 `6c7af169…fd283c47`). Everything computed from the adjudication or the verdicts (the adjudicated recall, §11 #64–#67; the descriptive accuracy count, §11 #68) inherits this.
-- **Implications:** *(owner to write in the final reflection).*
+- **Implications (owner, 2026-11-19):** "The owner check therefore compares the assistant's extraction against a second LLM's reading plus my judgement. Errors that both LLMs share (for example the same misreading of a rubric term) would not be detected by it. The only fully independent evidence is my frozen extraction of days 3, 8 and 18, and on that sample all remaining discrepancies were on my side or in the rubric (0 assistant_miss, 0 assistant_encoding)."
 
 ### R53. A commit went through with two failing tests
 
@@ -412,3 +412,10 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **Fix:** labels keyed by department name, with an assertion that they cover `DEPARTMENTS`; a test pins CA/IM and the day-30 values. No other module zips `DEPARTMENTS` with abbreviations (checked). The faulty file was never committed.
 - **Implication:** never rely on the order of a shared constant for labels; cross-check a new generator against an independent computation before reporting from it.
 
+
+### R55. A pre-flight comparison passed vacuously on wrong field names
+
+- **What happened:** to compare the new run-settings probe with the committed pre-R1 baseline, the first script read the fields `outcome` / `status` / `result` and `leaks`, which do not exist in `run_settings_verification.json` (the fields are `denied` and `leak_markers`). Every call was classified `(None, False)` on both sides, so the comparison reported "same classification: True" without comparing anything.
+- **How it was caught:** the script also printed the record's keys; they did not match the fields used, so the result was discarded before being reported.
+- **Fix:** redone on `denied` and `leak_markers`: 30/30 calls classified identically to the baseline, 21 denied, 0 leak markers.
+- **Implication:** an equality check between two records is evidence only if the compared fields exist; read the schema first, or fail on missing keys (`c["denied"]`, not `c.get(...)`).
