@@ -390,3 +390,10 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **Fix:** the stated rule was applied to r120–r123 only (§11 #65); rows 54 and 57 are unchanged, and the figure with row 57 also collapsed is computed and labelled not applied (owner's derived 27/40 instead of 28/41).
 - **Implication:** a report that lists a finding should say whether anything was done with it. The owner decides whether 54/57 get the same treatment.
 
+### R52. Owner verdicts on 21 wrong claims were proposed by an LLM advisor
+
+- **Stub, created by the assistant at the owner's request (2026-11-19); the substance is the owner's to write.**
+- **Facts recorded so far:** the `owner_verdict` / `owner_comment` cells of 21 claims in `results/evaluations/R1/owner_review/owner_review_wrong.csv` (the 20 wrong claims without a spare/free term and R1-D21-35, the one wrong under both readings) were **proposed by an LLM advisor and accepted by the owner**, who supplied them for verbatim entry. They are 19 `confirmed_wrong` and 2 `extraction_error` (R1-D28-05, R1-D28-06). They rest on mechanical checks run by the assistant the same day (SESSION_LOG, sixteenth session). The verdicts are therefore owner-accepted, not independently owner-derived; this bears on how far the owner check of item 7(b) counts as an independent check.
+- **The adjudication:** the owner asked for "the same disclosure as the adjudication". No such disclosure exists in the repository: no entry in this log, PROJECT_SPEC §11, SESSION_LOG or `owner_adjudication_causes.csv` says how the 43 adjudication causes were produced. *(Owner to state, and if applicable to record here.)*
+- **What happened / how it was caught / implication:** *(owner to write).*
+

@@ -835,3 +835,18 @@ Read-only. No verdict written to `owner_review_wrong.csv`, no encoding or verdic
 ### Parked questions
 
 None new.
+
+## 2026-11-19 (seventeenth session: owner verdicts on 21 wrong claims, rubric check view)
+
+No frozen file modified, no CHECKER file read, nothing launched.
+
+### Achieved
+
+1. **21 owner verdicts** written verbatim into `owner_review/owner_review_wrong.csv` (read back cell by cell), validated and regenerated into `review_7b_wrong.csv`: 19 `confirmed_wrong`, 2 `extraction_error` (R1-D28-05, R1-D28-06). Proposed by an LLM advisor and accepted by the owner (R52).
+2. **The 75 wrong claims, next to the pre-registered count (75 wrong, unchanged):** 19 confirmed wrong (18 without a spare/free term + R1-D21-35); 2 extraction errors; 54 rubric-dependent, pending.
+3. **Rubric check view** (Log #113): `owner_review/rubric_dependent_54_check.csv`. 20 of the 54 sentences contain "above census" and/or "above occupied"; in none is the qualifier inside the claim's quoted phrase. In 19 it comes before the claim (16 both qualifiers, 3 "above census" only); in R1-D03-37 "above occupied" comes after it, attached to a different figure ("2 spare beds, 6 spare above occupied").
+
+### Parked questions
+
+1. The two `extraction_error` claims (R1-D28-05/06) are correct under the owner's reading. Should a corrected-extraction figure be reported next to the pre-registered 948 / 75 / 26 (descriptive, like the adjudicated recall)?
+
