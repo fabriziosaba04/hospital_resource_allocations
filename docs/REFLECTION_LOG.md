@@ -397,3 +397,10 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **The adjudication:** the owner asked for "the same disclosure as the adjudication". No such disclosure exists in the repository: no entry in this log, PROJECT_SPEC §11, SESSION_LOG or `owner_adjudication_causes.csv` says how the 43 adjudication causes were produced. *(Owner to state, and if applicable to record here.)*
 - **What happened / how it was caught / implication:** *(owner to write).*
 
+
+### R53. A commit went through with two failing tests
+
+- **What happened:** commit `009e156` was made by a command chain `uv run pytest -q | tail -1; git add -A && git commit …`. The suite reported "2 failed, 188 passed", but the exit status seen by the chain was `tail`'s (0), and the commit did not depend on the test result anyway. Both failures were in tests, not code: `test_owner_inputs` still asserted the review tables were empty (21 owner verdicts had just been entered), and the new `test_rubric_check_view` assumed a sentence split before a lowercase word that the splitter does not make.
+- **How it was caught:** the assistant read the test summary line in the command output after the commit.
+- **Fix:** both tests corrected; the fix was committed only after `uv run pytest -q` exited 0, checked on its own exit code.
+- **Implication:** the "fast suite before each commit" rule (CLAUDE.md §9.4) was followed in form but not enforced. Gate the commit on pytest's exit status, never on a pipeline that ends in `tail`.

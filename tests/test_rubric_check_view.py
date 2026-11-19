@@ -13,7 +13,8 @@ EVAL = ROOT / "results" / "evaluations" / "R1"
 def test_sentence_handles_elided_quotes():
     t = "Beds are above occupied (1/2); the 9 spare beds are weighted toward IM. Next one."
     s, i, j = sentence(t, "the 9 spare beds are weighted toward ...")
-    assert s.startswith("the 9 spare") and i == 0 and j == len("the 9 spare beds are weighted toward")
+    assert s == "Beds are above occupied (1/2); the 9 spare beds are weighted toward IM."   # no split before lowercase
+    assert s[i:j] == "the 9 spare beds are weighted toward"
 
 
 def test_committed_view_and_verdicts():
