@@ -70,9 +70,12 @@ def test_owner_verdicts_cover_the_18_mappings_and_row_71_rule():
     a = out["recall"]["after_owner_verdicts"]
     assert (a["a_found_by_b"]["derived"], a["b_found_by_a"]["derived"]) == ("28/46", "29/49")
     adj = list(csv.DictReader(open(FOLDER / "adjudication_7a.csv", encoding="utf-8-sig")))
-    set_ = {(r["side"], r["owner_row"], r["cause"]) for r in adj if r["cause"]}
-    assert set_ == {("owner_only", "64", "rubric_ambiguity"), ("owner_only", "71", "owner_encoding"),
-                    ("owner_only", "166", "rubric_ambiguity")}
+    # every cause of the owner's table reaches the generated file (owner-filled 2026-11-19, §11 #64)
+    table = {(r["side"], r["claim_id"]): r["cause"] for r in csv.DictReader(
+        open(FOLDER / "owner_adjudication_causes.csv", encoding="utf-8-sig"))}
+    assert {(r["side"], r["claim_id"]): r["cause"] for r in adj} == table
+    assert table[("owner_only", "OWN-D08-r071")] == "owner_encoding"
+    assert table[("owner_only", "OWN-D18-r157")] == table[("assistant_only", "R1-D18-19")] == "matching_rule"
 
 
 def test_item2_rule_on_r1_day_8():

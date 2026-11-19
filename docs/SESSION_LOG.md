@@ -753,3 +753,31 @@ None new.
 
 None new.
 
+## 2026-11-19 (thirteenth session: closing the item-7a adjudication)
+
+No CHECKER file read, nothing launched. Frozen files and earlier comparison files unchanged (hashes checked before and after).
+
+### Achieved
+
+1. **§11 #64:** cause `matching_rule` added; set on OWN-D18-r157 and R1-D18-19 (the only two cells changed in the owner's `owner_adjudication_causes.csv`).
+2. **§11 #65, Log #110:** `owner_universe_overrides.csv`: OWN-D18-r145 out of universe (42 − 37 = 5, re-checked); OWN-D08-r120–r123 duplicates of r081–r084.
+3. **Recall** (`comparison_7a_adjudicated.json`), owner's claims found by the assistant / assistant's claims found by the owner:
+
+   | | Owner copied | Owner derived | Owner unclassified | Assistant copied | Assistant derived |
+   | --- | --- | --- | --- | --- | --- |
+   | Primary, as frozen | 58/60 | 28/47 | 0/1 | 56/57 | 29/49 |
+   | Primary, after row 71 | 58/60 | 28/46 | 0/1 | 56/57 | 29/49 |
+   | Primary, after r145 and r120–r123 | 58/60 | **28/41** | 0/1 | 56/57 | 29/49 |
+   | Descriptive after adjudication | 60/60 | 40/41 | 1/1 | 57/57 | 42/49 |
+
+4. **Causes** (all 43 rows of the table): owner-only: owner_encoding 17, rubric_ambiguity 4, matching_rule 1; assistant-only: owner_encoding 11, owner_miss 7, rubric_ambiguity 2, matching_rule 1.
+5. `adjudication_7a.csv` regenerated: all 43 causes from the owner's table.
+
+### Open (blocking)
+
+1. Rows 54 and 57: the cited precedent was never applied (R51). Collapse 57 into 54 as well (owner's derived 27/40), or keep them as two claims (28/41)?
+
+### Parked questions
+
+1. Descriptive recall counts OWN-D08-r064 (rubric_ambiguity, paired with R1-D08-01) as found, although the figures differ (delta 4 vs pool 37); its counterpart R1-D08-01 is owner_miss and not found. The rule is applied as defined.
+

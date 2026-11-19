@@ -382,3 +382,11 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **Fix:** the verdicts live in a committed input table (`owner_verdicts_nonmech.csv`); `owner_claims.main` re-applies it after regenerating (Log #106). A rerun was checked to leave the three files unchanged.
 - **Implication:** still open for causes the owner types directly into `adjudication_7a.csv` (outside the table): a converter rerun would erase them. Parked (SESSION_LOG, 2026-11-19).
 - **Closed (2026-11-19, §11 #62):** all owner judgements moved to input tables, with a rerun test (`tests/test_owner_inputs.py`).
+
+### R51. A listing of a duplicate key was read as a duplicate rule
+
+- **What happened:** the owner's instruction for r120–r123 said to "apply the duplicate rule you used for rows 54 and 57". No such rule was applied: the seventh-session comparison only listed rows 54 and 57 under `duplicate_keys_within_a_side`, and both are still counted (and matched) as separate claims. The session log line "Owner duplicate key: rows 54 and 57" said what was found, not what was done with it.
+- **How it was caught:** checked `comparison_7a.json` and the converted claims before applying the instruction.
+- **Fix:** the stated rule was applied to r120–r123 only (§11 #65); rows 54 and 57 are unchanged, and the figure with row 57 also collapsed is computed and labelled not applied (owner's derived 27/40 instead of 28/41).
+- **Implication:** a report that lists a finding should say whether anything was done with it. The owner decides whether 54/57 get the same treatment.
+

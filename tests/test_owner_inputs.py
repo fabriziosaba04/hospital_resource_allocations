@@ -59,11 +59,13 @@ def _run(ev: Path) -> None:
     claim_review.main("R1", ev)
 
 
-def test_committed_tables_cover_the_generated_rows_and_prefill_only_the_three_owner_causes():
+def test_committed_tables_cover_the_generated_rows():
     import io
     adj = list(csv.DictReader(io.StringIO(_committed_causes().decode("utf-8-sig"))))
     assert len(adj) == len(_rows(EVAL / "owner_extraction" / "adjudication_7a.csv")) == 43
-    assert {(r["claim_id"], r["cause"]) for r in adj if r["cause"]} == \
+    assert all(r["cause"] in ("",) + CAUSES for r in adj)      # filled by the owner (45fbee4 onwards)
+    assert {(r["claim_id"], r["cause"]) for r in adj if r["claim_id"] in
+            ("OWN-D08-r064", "OWN-D08-r071", "OWN-D18-r166")} == \
         {("OWN-D08-r064", "rubric_ambiguity"), ("OWN-D08-r071", "owner_encoding"),
          ("OWN-D18-r166", "rubric_ambiguity")}
     assert len(_rows(_tables(EVAL)["wrong"])) == 75 and len(_rows(_tables(EVAL)["unver"])) == 26
@@ -138,6 +140,7 @@ def test_number_formatting_is_not_a_context_change(ev):
 
 
 def test_value_lists_are_the_fixed_ones():
-    assert CAUSES == ("owner_miss", "assistant_miss", "owner_encoding", "assistant_encoding", "rubric_ambiguity")
+    assert CAUSES == ("owner_miss", "assistant_miss", "owner_encoding", "assistant_encoding", "rubric_ambiguity",
+                      "matching_rule")
     assert WRONG_VERDICTS == ("confirmed_wrong", "actually_correct", "should_be_unverifiable", "extraction_error")
     assert UNVER_VERDICTS == ("confirmed_unverifiable", "verifiable_correct", "verifiable_wrong", "extraction_error")

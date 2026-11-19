@@ -1,0 +1,212 @@
+{
+  "a_is": "owner's claims (a_found_by_b: found by the assistant)",
+  "b_is": "assistant's claims",
+  "primary_recall": {
+    "as_frozen": {
+      "a_found_by_b": {
+        "copied": "58/60",
+        "derived": "28/47",
+        "unclassified": "0/1"
+      },
+      "b_found_by_a": {
+        "copied": "56/57",
+        "derived": "29/49"
+      }
+    },
+    "after_earlier_verdicts_row_71": {
+      "a_found_by_b": {
+        "copied": "58/60",
+        "derived": "28/46",
+        "unclassified": "0/1"
+      },
+      "b_found_by_a": {
+        "copied": "56/57",
+        "derived": "29/49"
+      }
+    },
+    "after_adjudication_overrides": {
+      "a_found_by_b": {
+        "copied": "58/60",
+        "derived": "28/41",
+        "unclassified": "0/1"
+      },
+      "b_found_by_a": {
+        "copied": "56/57",
+        "derived": "29/49"
+      }
+    }
+  },
+  "primary_missed_after_overrides": {
+    "a_found_by_b": [
+      "OWN-D03-r058",
+      "OWN-D08-r064",
+      "OWN-D08-r109",
+      "OWN-D08-r110",
+      "OWN-D08-r125",
+      "OWN-D18-r143",
+      "OWN-D18-r151",
+      "OWN-D18-r152",
+      "OWN-D18-r153",
+      "OWN-D18-r155",
+      "OWN-D18-r156",
+      "OWN-D18-r157",
+      "OWN-D18-r161",
+      "OWN-D18-r163",
+      "OWN-D18-r166",
+      "OWN-D18-r167"
+    ],
+    "b_found_by_a": [
+      "R1-D03-34",
+      "R1-D03-36",
+      "R1-D08-01",
+      "R1-D08-05",
+      "R1-D08-22",
+      "R1-D08-23",
+      "R1-D08-24",
+      "R1-D08-33",
+      "R1-D08-35",
+      "R1-D08-36",
+      "R1-D08-37",
+      "R1-D18-13",
+      "R1-D18-14",
+      "R1-D18-15",
+      "R1-D18-16",
+      "R1-D18-17",
+      "R1-D18-18",
+      "R1-D18-19",
+      "R1-D18-23",
+      "R1-D18-25",
+      "R1-D18-28"
+    ]
+  },
+  "descriptive_recall_after_adjudication": {
+    "label": "DESCRIPTIVE ONLY, reported next to the primary figure, never instead of it",
+    "rule": "unmatched claim found if cause in owner_encoding, assistant_encoding, rubric_ambiguity, matching_rule and it has a counterpart in the display pairing (adjudication_view.pair)",
+    "recall": {
+      "a_found_by_b": {
+        "copied": "60/60",
+        "derived": "40/41",
+        "unclassified": "1/1"
+      },
+      "b_found_by_a": {
+        "copied": "57/57",
+        "derived": "42/49"
+      }
+    },
+    "counted_found": {
+      "owner_only": [
+        "OWN-D03-r058",
+        "OWN-D08-r064",
+        "OWN-D08-r109",
+        "OWN-D08-r110",
+        "OWN-D08-r125",
+        "OWN-D18-r143",
+        "OWN-D18-r151",
+        "OWN-D18-r152",
+        "OWN-D18-r153",
+        "OWN-D18-r155",
+        "OWN-D18-r156",
+        "OWN-D18-r157",
+        "OWN-D18-r161",
+        "OWN-D18-r163",
+        "OWN-D18-r167"
+      ],
+      "assistant_only": [
+        "R1-D03-34",
+        "R1-D08-23",
+        "R1-D08-24",
+        "R1-D08-35",
+        "R1-D18-13",
+        "R1-D18-14",
+        "R1-D18-15",
+        "R1-D18-16",
+        "R1-D18-17",
+        "R1-D18-18",
+        "R1-D18-19",
+        "R1-D18-23",
+        "R1-D18-25",
+        "R1-D18-28"
+      ]
+    }
+  },
+  "universe_and_duplicates": {
+    "out_of_universe": [
+      "OWN-D08-r071",
+      "OWN-D18-r145"
+    ],
+    "duplicates_left_out": [
+      "OWN-D08-r120",
+      "OWN-D08-r121",
+      "OWN-D08-r122",
+      "OWN-D08-r123"
+    ],
+    "override_checks": {
+      "OWN-D18-r145": {
+        "action": "out_of_universe",
+        "requirement": 42,
+        "pool_nurses": 37,
+        "a_requirement_minus_pool": 5.0,
+        "b_shortage_in_effect": 3.5,
+        "stated": "5"
+      },
+      "OWN-D08-r120": {
+        "action": "duplicate",
+        "original": "OWN-D08-r081",
+        "day": 8,
+        "value": 12
+      },
+      "OWN-D08-r121": {
+        "action": "duplicate",
+        "original": "OWN-D08-r082",
+        "day": 8,
+        "value": 27
+      },
+      "OWN-D08-r122": {
+        "action": "duplicate",
+        "original": "OWN-D08-r083",
+        "day": 8,
+        "value": 12
+      },
+      "OWN-D08-r123": {
+        "action": "duplicate",
+        "original": "OWN-D08-r084",
+        "day": 8,
+        "value": 19
+      }
+    }
+  },
+  "causes_by_side": {
+    "owner_only": {
+      "matching_rule": 1,
+      "owner_encoding": 17,
+      "rubric_ambiguity": 4
+    },
+    "assistant_only": {
+      "matching_rule": 1,
+      "owner_encoding": 11,
+      "owner_miss": 7,
+      "rubric_ambiguity": 2
+    }
+  },
+  "causes_total": {
+    "matching_rule": 2,
+    "owner_encoding": 28,
+    "owner_miss": 7,
+    "rubric_ambiguity": 6
+  },
+  "not_applied_note": "owner rows 54 and 57 (same claim key, both matched) are counted separately, as frozen",
+  "variant_not_applied_row_57_also_duplicate": {
+    "label": "NOT APPLIED: shown for the owner's decision (rows 54 and 57 were never collapsed)",
+    "recall": {
+      "a_found_by_b": {
+        "copied": "58/60",
+        "derived": "27/40",
+        "unclassified": "0/1"
+      },
+      "b_found_by_a": {
+        "copied": "56/57",
+        "derived": "29/49"
+      }
+    }
+  }
+}

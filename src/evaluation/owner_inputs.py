@@ -24,7 +24,7 @@ import re
 import sys
 from pathlib import Path
 
-CAUSES = ("owner_miss", "assistant_miss", "owner_encoding", "assistant_encoding", "rubric_ambiguity")
+CAUSES = ("owner_miss", "assistant_miss", "owner_encoding", "assistant_encoding", "rubric_ambiguity", "matching_rule")
 
 WRONG_VERDICTS = ("confirmed_wrong", "actually_correct", "should_be_unverifiable", "extraction_error")
 UNVER_VERDICTS = ("confirmed_unverifiable", "verifiable_correct", "verifiable_wrong", "extraction_error")

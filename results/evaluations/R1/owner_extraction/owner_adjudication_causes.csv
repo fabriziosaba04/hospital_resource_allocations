@@ -16,7 +16,7 @@ owner_only,OWN-D18-r152,18,7 level 2 in IM,owner_encoding,"Same sentence as R1-D
 owner_only,OWN-D18-r153,18,4 level 3 across C/N/O,owner_encoding,Same sentence as R1-D18-16. Same cause as r152.,owner
 owner_only,OWN-D18-r155,18,no overflow,owner_encoding,"Same sentence as R1-D18-17. An alternative's outcome refers to that alternative (A) applied to day 18, not to the in-effect state.",owner
 owner_only,OWN-D18-r156,18,neurology level-2 shortage 0.4,owner_encoding,"Same sentence as R1-D18-18. Outcome of alternative A, so allocation = A applied to day 18. Correct under both encodings.",owner
-owner_only,OWN-D18-r157,18,"level-1 nursing is partly covered in IM, C and O",,No disagreement: both sides encoded it as unverifiable (vague). It is unmatched only because claims with no quantity never match. Cause to be set as matching_rule once that value is added.,owner
+owner_only,OWN-D18-r157,18,"level-1 nursing is partly covered in IM, C and O",matching_rule,No disagreement: both sides encoded it as unverifiable (vague). It is unmatched only because claims with no quantity never match. Cause to be set as matching_rule once that value is added.,owner
 owner_only,OWN-D18-r161,18,IM level 1 covered more,owner_encoding,Same sentence as R1-D18-23. A comparison with a named alternative ('covered more') is one claim (rubric item 2); I left it unencoded.,owner
 owner_only,OWN-D18-r163,18,only shortage at level 2 is 0.05 in cardiology,rubric_ambiguity,Same sentence as R1-D18-25. It reads either as cardiology L2 = 0.05 or as all-department L2 shortage = 0.05 ('only'). Both are correct.,owner
 owner_only,OWN-D18-r166,18,no idle nurses,rubric_ambiguity,"""No idle nurses"" (pool minus allocated = 0) is neither listed in the universe nor a shortage figure.",owner
@@ -38,7 +38,7 @@ assistant_only,R1-D18-15,18,(e.g. 7 level-2 in IM,owner_encoding,Pair of OWN-D18
 assistant_only,R1-D18-16,18,4 level-3 across C/N/O,owner_encoding,Pair of OWN-D18-r153.,owner
 assistant_only,R1-D18-17,18,"A) beds 37/29/20/14, nurses 14/9/10/4: no overflow",owner_encoding,Pair of OWN-D18-r155.,owner
 assistant_only,R1-D18-18,18,but neurology level-2 shortage 0.4,owner_encoding,Pair of OWN-D18-r156.,owner
-assistant_only,R1-D18-19,18,"while level-1 nursing is partly covered in IM, C and O",,Pair of OWN-D18-r157: no disagreement; matching_rule once that value is added.,owner
+assistant_only,R1-D18-19,18,"while level-1 nursing is partly covered in IM, C and O",matching_rule,Pair of OWN-D18-r157: no disagreement; matching_rule once that value is added.,owner
 assistant_only,R1-D18-23,18,with IM level 1 covered more,owner_encoding,Pair of OWN-D18-r161.,owner
 assistant_only,R1-D18-25,18,only shortage at level 2 is 0.05 in cardiology,rubric_ambiguity,Pair of OWN-D18-r163.,owner
 assistant_only,R1-D18-28,18,level-1 nursing shortfall of about 3.5 nurse-units in total,owner_encoding,Pair of OWN-D18-r167.,owner
