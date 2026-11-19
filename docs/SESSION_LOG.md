@@ -718,4 +718,21 @@ Frozen files untouched (`owner_claims_d03_d08_d18.csv`, `explanation_claims_spec
 
 ### Parked questions
 
-1. `owner_verdict` in the review tables is free text. Fix a list of values (for example agree / disagree / rubric_ambiguity), validated like `cause`?
+1. ~~`owner_verdict` in the review tables is free text. Fix a list of values?~~ Closed (§11 #63, 2026-11-19).
+
+## 2026-11-19 (eleventh session: fixed values for owner_verdict)
+
+`owner_adjudication_causes.csv` not touched (the owner is editing it). No CHECKER file read, nothing launched.
+
+### Achieved
+
+1. **§11 #63, Log #108:** `owner_verdict` is validated as `cause` is. Review list (wrong): `confirmed_wrong`, `actually_correct`, `should_be_unverifiable`, `extraction_error`. Review list (unverifiable): `confirmed_unverifiable`, `verifiable_correct`, `verifiable_wrong`, `extraction_error`. An invalid value names the claim id, the line and the column.
+2. `review_7b_wrong.csv` and `review_7c_unverifiable.csv` regenerated: unchanged (no verdicts entered yet).
+
+### Next
+
+1. Owner: causes in `owner_adjudication_causes.csv`; verdicts in `owner_review_wrong.csv` and `owner_review_unverifiable.csv`; then `uv run python -m src.evaluation.owner_claims R1` and `uv run python -m src.evaluation.claim_review R1`.
+
+### Parked questions
+
+None new.

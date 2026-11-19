@@ -8,8 +8,9 @@ these tables at each run.
     (<eval>/owner_extraction/owner_verdicts_nonmech.csv    -> non_mechanical_mappings.csv, owner_verdicts.py)
 
 At each merge the table's keys must be exactly the generated rows' keys, its context columns must equal the
-generated values (numbers compared as numbers, whitespace normalised), and `cause` must be one of CAUSES or
-empty. Anything else raises OwnerInputError, naming the key and column, and the generated CSV that
+generated values (numbers compared as numbers, whitespace normalised), and each value-listed column (ALLOWED:
+`cause`, and `owner_verdict` of the two review tables, §11 #63) must be empty or one of its fixed values.
+Anything else raises OwnerInputError, naming the key, line and column, and the generated CSV that
 takes its owner columns from that table is not written.
 
     uv run python -m src.evaluation.owner_inputs init R1    # creates the tables that do not exist yet; never overwrites
@@ -25,9 +26,15 @@ from pathlib import Path
 
 CAUSES = ("owner_miss", "assistant_miss", "owner_encoding", "assistant_encoding", "rubric_ambiguity")
 
+WRONG_VERDICTS = ("confirmed_wrong", "actually_correct", "should_be_unverifiable", "extraction_error")
+UNVER_VERDICTS = ("confirmed_unverifiable", "verifiable_correct", "verifiable_wrong", "extraction_error")
+
 ADJ_FILE = "owner_adjudication_causes.csv"
 WRONG_FILE = "owner_review_wrong.csv"
 UNVER_FILE = "owner_review_unverifiable.csv"
+# columns with a fixed list of values, per table (owner, §11 #62-#63); comments are free text
+ALLOWED = {ADJ_FILE: {"cause": CAUSES}, WRONG_FILE: {"owner_verdict": WRONG_VERDICTS},
+           UNVER_FILE: {"owner_verdict": UNVER_VERDICTS}}
 
 ADJ_COLS = ["side", "claim_id", "day", "text", "cause", "comment", "cause_set_by"]
 ADJ_KEY, ADJ_OWNER = ("side", "claim_id"), ("cause", "comment", "cause_set_by")
@@ -73,6 +80,7 @@ def read_table(path: Path, cols: list[str], key: tuple[str, ...]) -> dict[tuple,
             if k in out:
                 raise OwnerInputError(f"{path.name}: duplicate key {k} (line {n})")
             out[k] = r
+            r["__line__"] = n
     return out
 
 
@@ -89,8 +97,10 @@ def merge(generated: list[dict], path: Path, cols: list[str], key: tuple[str, ..
         for c, v in context[k].items():
             if not _same(r[c], v):
                 raise OwnerInputError(f"{path.name}: {k} column {c!r} is {r[c]!r}, generated {v!r}")
-        if "cause" in owner_cols and r["cause"].strip() not in ("",) + CAUSES:
-            raise OwnerInputError(f"{path.name}: {k} cause {r['cause']!r} not in {list(CAUSES)}")
+        for c, values in ALLOWED.get(path.name, {}).items():
+            if r[c].strip() not in ("",) + values:
+                raise OwnerInputError(f"{path.name}: {k} (line {r['__line__']}) column {c!r} is {r[c]!r}, "
+                                      f"not empty and not in {list(values)}")
     return {k: {c: table[k][c] for c in owner_cols} for k in table}
 
 

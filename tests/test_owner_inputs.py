@@ -5,22 +5,31 @@ from __future__ import annotations
 
 import csv
 import shutil
+import subprocess
 from pathlib import Path
 
 import pytest
 
 from src.evaluation import claim_review, owner_claims
 from src.evaluation.dataset import ROOT
-from src.evaluation.owner_inputs import ADJ_FILE, CAUSES, UNVER_FILE, WRONG_FILE, OwnerInputError
+from src.evaluation.owner_inputs import (ADJ_FILE, CAUSES, UNVER_FILE, UNVER_VERDICTS, WRONG_FILE, WRONG_VERDICTS,
+                                         OwnerInputError)
 
 EVAL = ROOT / "results" / "evaluations" / "R1"
 ALLOC = ROOT / "results" / "allocations" / "R1"
+ADJ_REL = "results/evaluations/R1/owner_extraction/" + ADJ_FILE
+
+
+def _committed_causes() -> bytes:
+    # the owner may be editing the working copy: the tests use the committed table, never the working one
+    return subprocess.run(["git", "show", f"HEAD:{ADJ_REL}"], cwd=ROOT, capture_output=True, check=True).stdout
 
 
 @pytest.fixture
 def ev(tmp_path):
     dst = tmp_path / "R1"
     shutil.copytree(EVAL, dst, ignore=shutil.ignore_patterns("allocator_digest", "claims_extraction"))
+    (dst / "owner_extraction" / ADJ_FILE).write_bytes(_committed_causes())
     return dst
 
 
@@ -51,7 +60,8 @@ def _run(ev: Path) -> None:
 
 
 def test_committed_tables_cover_the_generated_rows_and_prefill_only_the_three_owner_causes():
-    adj = _rows(_tables(EVAL)["adj"])
+    import io
+    adj = list(csv.DictReader(io.StringIO(_committed_causes().decode("utf-8-sig"))))
     assert len(adj) == len(_rows(EVAL / "owner_extraction" / "adjudication_7a.csv")) == 43
     assert {(r["claim_id"], r["cause"]) for r in adj if r["cause"]} == \
         {("OWN-D08-r064", "rubric_ambiguity"), ("OWN-D08-r071", "owner_encoding"),
@@ -70,14 +80,16 @@ def test_owner_cells_survive_reruns_unchanged(ev):
         rows[-1].update(cause="owner_miss", comment="second", cause_set_by="owner")
 
     def rev(rows):
-        rows[0].update(owner_verdict="agree", owner_comment=note)
-        rows[-1].update(owner_verdict="disagree", owner_comment="x")
+        rows[0].update(owner_verdict="extraction_error", owner_comment=note)
+        rows[-1].update(owner_verdict="", owner_comment="comment without a verdict")
 
     def nm(rows):
         rows[0]["owner_comment"] = note
     _edit(t["adj"], adj)
     _edit(t["wrong"], rev)
     _edit(t["unver"], rev)
+    _edit(t["wrong"], lambda rows: rows[1].update(owner_verdict="actually_correct"))
+    _edit(t["unver"], lambda rows: rows[1].update(owner_verdict="verifiable_wrong"))
     _edit(t["nonmech"], nm, enc="utf-8")
     before = {k: p.read_bytes() for k, p in t.items()}
     for _ in range(2):
@@ -88,7 +100,8 @@ def test_owner_cells_survive_reruns_unchanged(ev):
     assert {r["cause"] for r in a if r["claim_id"] == "OWN-D08-r071"} == {"owner_encoding"}
     for name in ("review_7b_wrong.csv", "review_7c_unverifiable.csv"):
         r = _rows(ev / "owner_review" / name)
-        assert (r[0]["owner_verdict"], r[0]["owner_comment"], r[-1]["owner_verdict"]) == ("agree", note, "disagree")
+        assert (r[0]["owner_verdict"], r[0]["owner_comment"], r[-1]["owner_comment"]) ==             ("extraction_error", note, "comment without a verdict")
+        assert r[1]["owner_verdict"] == ("actually_correct" if "7b" in name else "verifiable_wrong")
     nm_out = list(csv.DictReader(open(ev / "owner_extraction" / "non_mechanical_mappings.csv", encoding="utf-8")))
     assert nm_out[0]["owner_comment"] == note
 
@@ -101,13 +114,17 @@ def test_owner_cells_survive_reruns_unchanged(ev):
     ("wrong", lambda rows: rows[0].update(computed="999"), "column 'computed'"),
     ("wrong", lambda rows: rows.append(dict(rows[0])), "duplicate key"),
     ("unver", lambda rows: rows[0].update(id="R1-D99-99"), "unknown keys"),
+    ("wrong", lambda rows: rows[3].update(owner_verdict="agree"), r"line 5\) column 'owner_verdict'"),
+    ("wrong", lambda rows: rows[0].update(owner_verdict="confirmed_unverifiable"), "column 'owner_verdict'"),
+    ("unver", lambda rows: rows[0].update(owner_verdict="confirmed_wrong"), "column 'owner_verdict'"),
+    ("unver", lambda rows: rows[2].update(owner_verdict="Verifiable_Correct"), r"line 4\) column 'owner_verdict'"),
 ])
 def test_bad_tables_fail_loudly_and_write_nothing(ev, table, change, match):
     t = _tables(ev)
     _edit(t[table], change)
     gen = [ev / "owner_extraction" / "adjudication_7a.csv", ev / "owner_review" / "review_7b_wrong.csv",
            ev / "owner_review" / "review_7c_unverifiable.csv"]
-    target = gen[0] if table == "adj" else gen[1]
+    target = {"adj": gen[0], "wrong": gen[1], "unver": gen[2]}[table]
     before = target.read_bytes()
     with pytest.raises(OwnerInputError, match=match):
         _run(ev)
@@ -120,5 +137,7 @@ def test_number_formatting_is_not_a_context_change(ev):
     claim_review.main("R1", ev)
 
 
-def test_cause_list_is_the_fixed_one():
+def test_value_lists_are_the_fixed_ones():
     assert CAUSES == ("owner_miss", "assistant_miss", "owner_encoding", "assistant_encoding", "rubric_ambiguity")
+    assert WRONG_VERDICTS == ("confirmed_wrong", "actually_correct", "should_be_unverifiable", "extraction_error")
+    assert UNVER_VERDICTS == ("confirmed_unverifiable", "verifiable_correct", "verifiable_wrong", "extraction_error")
