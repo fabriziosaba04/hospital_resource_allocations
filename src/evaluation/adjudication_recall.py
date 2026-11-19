@@ -15,9 +15,9 @@ Primary recall: the pre-registered matching (`owner_claims.compare`), at four st
 earlier verdicts (row 71); after the overrides of §11 #65 (r145, r120-r123); after those of §11 #66 (row 57).
 Descriptive recall after adjudication (never instead of the primary): an unmatched claim also counts as found
 if its cause is owner_encoding, assistant_encoding, rubric_ambiguity or matching_rule, it has a counterpart in
-the display pairing (adjudication_view.pair), and both sides state the same figure (§11 #66): each side's
-stated value (the owner's raw Value where the conversion left it null) is present and the two are equal as
-numbers. A pair where either side states no figure does not count.
+the display pairing (adjudication_view.pair), and the pair does not encode two different figures (§11 #66,
+corrected by §11 #67): a pair is excluded only if both sides encode a value (the owner's raw Value where the
+conversion left it null) and the values differ as numbers. A side with no value never triggers the exclusion.
 Writes `<eval>/owner_extraction/comparison_7a_adjudicated.json`.
 """
 
@@ -62,9 +62,16 @@ def _fig(c):
     return None if f is None else float(f)
 
 
-def same_figure(o: dict, a: dict) -> bool:
+def different_figures(o: dict, a: dict) -> bool:
+    """§11 #67: both sides encode a value and the values differ as numbers."""
     fo, fa = stated_figure(o), stated_figure(a)
-    return fo is not None and fa is not None and fo == fa
+    return fo is not None and fa is not None and fo != fa
+
+
+# owner notes on excluded pairs (§11 #67), written next to the mechanical result; they change no count
+PAIR_NOTES = {("OWN-D08-r125", "R1-D08-35"): (
+    "the assistant's 6.45 is a restatement of the stated 0.55 (need = allocated − 0.55); excluded by the "
+    "mechanical rule: a conservative undercount of one pair")}
 
 
 def _strip(r: dict) -> dict:
@@ -133,9 +140,11 @@ def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = Non
     oo = [c for c in o_c if claim_key(_canon(c)) not in km]
     ao = [c for c in mine if claim_key(_canon(c)) not in ko]
     pairs = [(p[0], p[1]) for p in pair(oo, ao) if p[0] and p[1]]
-    paired = {x["id"] for p in pairs if same_figure(*p) for x in p}
+    paired = {x["id"] for p in pairs if not different_figures(*p) for x in p}
     figure_check = [{"owner": o["id"], "assistant": a["id"], "owner_figure": _fig(o), "assistant_figure": _fig(a),
-                     "same_figure": same_figure(o, a)} for o, a in pairs]
+                     "excluded_different_figures": different_figures(o, a),
+                     **({"note": PAIR_NOTES[(o["id"], a["id"])]} if (o["id"], a["id"]) in PAIR_NOTES else {})}
+                    for o, a in pairs]
     found = {"owner_only": {c["id"] for c in oo if causes.get(("owner_only", c["id"])) in FOUND_IF_PAIRED
                             and c["id"] in paired},
              "assistant_only": {c["id"] for c in ao if causes.get(("assistant_only", c["id"])) in FOUND_IF_PAIRED
@@ -151,13 +160,6 @@ def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = Non
 
     desc = {"a_found_by_b": descriptive(o_c, km, found["owner_only"]),
             "b_found_by_a": descriptive(mine, ko, found["assistant_only"])}
-    # NOT APPLIED, for the owner's decision: pairs where neither side states any figure exempt from the condition
-    nofig = {x["id"] for o, a_ in pairs if stated_figure(o) is None and stated_figure(a_) is None for x in (o, a_)}
-    ok_v = lambda c, side: (causes.get((side, c["id"])) in FOUND_IF_PAIRED and c["id"] in paired | nofig)
-    found_v = {"owner_only": {c["id"] for c in oo if ok_v(c, "owner_only")},
-               "assistant_only": {c["id"] for c in ao if ok_v(c, "assistant_only")}}
-    desc_v = {"a_found_by_b": descriptive(o_c, km, found_v["owner_only"]),
-              "b_found_by_a": descriptive(mine, ko, found_v["assistant_only"])}
     by_side = {s: Counter(v or "(empty)" for (side, _), v in causes.items() if side == s)
                for s in ("owner_only", "assistant_only")}
     res = {
@@ -170,7 +172,8 @@ def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = Non
         "descriptive_recall_after_adjudication": {
             "label": "DESCRIPTIVE ONLY, reported next to the primary figure, never instead of it",
             "rule": "unmatched claim found if cause in " + ", ".join(FOUND_IF_PAIRED) +
-                    " and it has a counterpart in the display pairing (adjudication_view.pair)",
+                    ", it has a counterpart in the display pairing (adjudication_view.pair), and the pair does not "
+                    "encode two different figures (both values present and different: §11 #67)",
             "recall": desc, "counted_found": {k: sorted(v) for k, v in found.items()},
             "not_counted_found": {"owner": sorted(c["id"] for c in o_c if claim_key(_canon(c)) not in km
                                                   and c["id"] not in found["owner_only"]),
@@ -182,10 +185,6 @@ def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = Non
         "causes_by_side": {s: dict(sorted(c.items())) for s, c in by_side.items()},
         "causes_total": dict(sorted((by_side["owner_only"] + by_side["assistant_only"]).items())),
         "row_57": "duplicate of row 54, APPLIED (§11 #66): the former not-applied variant is the final figure",
-        "variant_not_applied_no_figure_pairs_exempt": {
-            "label": "NOT APPLIED: descriptive recall if pairs where neither side states a figure were exempt from "
-                     "the same-figure condition",
-            "pairs": sorted(i for i in nofig if i.startswith("OWN")), "recall": desc_v},
     }
     (folder / "comparison_7a_adjudicated.json").write_text(json.dumps(res, indent=2, ensure_ascii=False) + "\n",
                                                            encoding="utf-8", newline="\n")

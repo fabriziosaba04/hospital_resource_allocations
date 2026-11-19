@@ -32,10 +32,16 @@ def test_committed_figures():
     assert p["after_row_57_final"] == {"a_found_by_b": {"copied": "58/60", "derived": "27/40", "unclassified": "0/1"},
                                        "b_found_by_a": {"copied": "56/57", "derived": "29/49"}}
     d = r["descriptive_recall_after_adjudication"]
-    assert d["recall"] == {"a_found_by_b": {"copied": "60/60", "derived": "34/40", "unclassified": "0/1"},
-                           "b_found_by_a": {"copied": "57/57", "derived": "37/49"}}
-    # same-figure condition (§11 #66): r064 (4) / R1-D08-01 (37) and every other pair without equal figures
-    assert sorted(x["owner"] for x in d["pair_figure_check"] if not x["same_figure"]) ==         ["OWN-D08-r064", "OWN-D08-r109", "OWN-D08-r110", "OWN-D08-r125", "OWN-D18-r157", "OWN-D18-r161"]
+    assert d["recall"] == {"a_found_by_b": {"copied": "60/60", "derived": "37/40", "unclassified": "1/1"},
+                           "b_found_by_a": {"copied": "57/57", "derived": "41/49"}}
+    # §11 #67: excluded only where both sides encode a value and the values differ
+    ex = [x for x in d["pair_figure_check"] if x["excluded_different_figures"]]
+    assert [(x["owner"], x["assistant"]) for x in ex] == [("OWN-D08-r064", "R1-D08-01"), ("OWN-D08-r125", "R1-D08-35")]
+    assert "restatement" in ex[1]["note"] and "note" not in ex[0]
+    assert d["not_counted_found"] == {
+        "owner": ["OWN-D08-r064", "OWN-D08-r125", "OWN-D18-r166"],
+        "assistant": ["R1-D03-36", "R1-D08-01", "R1-D08-05", "R1-D08-22", "R1-D08-33", "R1-D08-35", "R1-D08-36",
+                      "R1-D08-37"]}
     assert "OWN-D08-r064" in d["not_counted_found"]["owner"] and "R1-D08-01" in d["not_counted_found"]["assistant"]
     assert "OWN-D03-r057" in r["universe_and_duplicates"]["duplicates_left_out"]
     chk = r["universe_and_duplicates"]["override_checks"]["OWN-D18-r145"]
@@ -48,12 +54,12 @@ def test_rerun_reproduces_the_committed_file(ev):
     assert out == json.loads((EVAL / "owner_extraction" / "comparison_7a_adjudicated.json").read_text(encoding="utf-8"))
 
 
-def test_same_figure():
-    from src.evaluation.adjudication_recall import same_figure
-    assert same_figure({"value": 0.3}, {"value": 0.30})
-    assert not same_figure({"value": None, "owner_raw": {"Value": "4"}}, {"value": 37})
-    assert not same_figure({"value": 6}, {"value": None})
-    assert not same_figure({"value": None, "owner_raw": {"Value": ""}}, {"value": None})
+def test_different_figures():
+    from src.evaluation.adjudication_recall import different_figures
+    assert not different_figures({"value": 0.3}, {"value": 0.30})
+    assert different_figures({"value": None, "owner_raw": {"Value": "4"}}, {"value": 37})
+    assert not different_figures({"value": 6}, {"value": None})                       # one side has no value
+    assert not different_figures({"value": None, "owner_raw": {"Value": ""}}, {"value": None})
 
 
 def _edit(ev, fn):

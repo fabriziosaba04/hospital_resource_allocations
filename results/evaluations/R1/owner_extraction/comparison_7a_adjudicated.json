@@ -92,38 +92,46 @@
   },
   "descriptive_recall_after_adjudication": {
     "label": "DESCRIPTIVE ONLY, reported next to the primary figure, never instead of it",
-    "rule": "unmatched claim found if cause in owner_encoding, assistant_encoding, rubric_ambiguity, matching_rule and it has a counterpart in the display pairing (adjudication_view.pair)",
+    "rule": "unmatched claim found if cause in owner_encoding, assistant_encoding, rubric_ambiguity, matching_rule, it has a counterpart in the display pairing (adjudication_view.pair), and the pair does not encode two different figures (both values present and different: §11 #67)",
     "recall": {
       "a_found_by_b": {
         "copied": "60/60",
-        "derived": "34/40",
-        "unclassified": "0/1"
+        "derived": "37/40",
+        "unclassified": "1/1"
       },
       "b_found_by_a": {
         "copied": "57/57",
-        "derived": "37/49"
+        "derived": "41/49"
       }
     },
     "counted_found": {
       "owner_only": [
         "OWN-D03-r058",
+        "OWN-D08-r109",
+        "OWN-D08-r110",
         "OWN-D18-r143",
         "OWN-D18-r151",
         "OWN-D18-r152",
         "OWN-D18-r153",
         "OWN-D18-r155",
         "OWN-D18-r156",
+        "OWN-D18-r157",
+        "OWN-D18-r161",
         "OWN-D18-r163",
         "OWN-D18-r167"
       ],
       "assistant_only": [
         "R1-D03-34",
+        "R1-D08-23",
+        "R1-D08-24",
         "R1-D18-13",
         "R1-D18-14",
         "R1-D18-15",
         "R1-D18-16",
         "R1-D18-17",
         "R1-D18-18",
+        "R1-D18-19",
+        "R1-D18-23",
         "R1-D18-25",
         "R1-D18-28"
       ]
@@ -131,11 +139,7 @@
     "not_counted_found": {
       "owner": [
         "OWN-D08-r064",
-        "OWN-D08-r109",
-        "OWN-D08-r110",
         "OWN-D08-r125",
-        "OWN-D18-r157",
-        "OWN-D18-r161",
         "OWN-D18-r166"
       ],
       "assistant": [
@@ -143,14 +147,10 @@
         "R1-D08-01",
         "R1-D08-05",
         "R1-D08-22",
-        "R1-D08-23",
-        "R1-D08-24",
         "R1-D08-33",
         "R1-D08-35",
         "R1-D08-36",
-        "R1-D08-37",
-        "R1-D18-19",
-        "R1-D18-23"
+        "R1-D08-37"
       ]
     },
     "pair_figure_check": [
@@ -159,105 +159,106 @@
         "assistant": "R1-D03-34",
         "owner_figure": 0.3,
         "assistant_figure": 0.3,
-        "same_figure": true
+        "excluded_different_figures": false
       },
       {
         "owner": "OWN-D08-r064",
         "assistant": "R1-D08-01",
         "owner_figure": 4.0,
         "assistant_figure": 37.0,
-        "same_figure": false
+        "excluded_different_figures": true
       },
       {
         "owner": "OWN-D08-r109",
         "assistant": "R1-D08-23",
         "owner_figure": 6.0,
         "assistant_figure": null,
-        "same_figure": false
+        "excluded_different_figures": false
       },
       {
         "owner": "OWN-D08-r110",
         "assistant": "R1-D08-24",
         "owner_figure": 1.0,
         "assistant_figure": null,
-        "same_figure": false
+        "excluded_different_figures": false
       },
       {
         "owner": "OWN-D08-r125",
         "assistant": "R1-D08-35",
         "owner_figure": 0.55,
         "assistant_figure": 6.45,
-        "same_figure": false
+        "excluded_different_figures": true,
+        "note": "the assistant's 6.45 is a restatement of the stated 0.55 (need = allocated − 0.55); excluded by the mechanical rule: a conservative undercount of one pair"
       },
       {
         "owner": "OWN-D18-r143",
         "assistant": "R1-D18-13",
         "owner_figure": 4.0,
         "assistant_figure": 4.0,
-        "same_figure": true
+        "excluded_different_figures": false
       },
       {
         "owner": "OWN-D18-r151",
         "assistant": "R1-D18-14",
         "owner_figure": 23.0,
         "assistant_figure": 23.0,
-        "same_figure": true
+        "excluded_different_figures": false
       },
       {
         "owner": "OWN-D18-r152",
         "assistant": "R1-D18-15",
         "owner_figure": 7.0,
         "assistant_figure": 7.0,
-        "same_figure": true
+        "excluded_different_figures": false
       },
       {
         "owner": "OWN-D18-r153",
         "assistant": "R1-D18-16",
         "owner_figure": 4.0,
         "assistant_figure": 4.0,
-        "same_figure": true
+        "excluded_different_figures": false
       },
       {
         "owner": "OWN-D18-r155",
         "assistant": "R1-D18-17",
         "owner_figure": 0.0,
         "assistant_figure": 0.0,
-        "same_figure": true
+        "excluded_different_figures": false
       },
       {
         "owner": "OWN-D18-r156",
         "assistant": "R1-D18-18",
         "owner_figure": 0.4,
         "assistant_figure": 0.4,
-        "same_figure": true
+        "excluded_different_figures": false
       },
       {
         "owner": "OWN-D18-r157",
         "assistant": "R1-D18-19",
         "owner_figure": null,
         "assistant_figure": null,
-        "same_figure": false
+        "excluded_different_figures": false
       },
       {
         "owner": "OWN-D18-r161",
         "assistant": "R1-D18-23",
         "owner_figure": null,
         "assistant_figure": null,
-        "same_figure": false
+        "excluded_different_figures": false
       },
       {
         "owner": "OWN-D18-r163",
         "assistant": "R1-D18-25",
         "owner_figure": 0.05,
         "assistant_figure": 0.05,
-        "same_figure": true
+        "excluded_different_figures": false
       },
       {
         "owner": "OWN-D18-r167",
         "assistant": "R1-D18-28",
         "owner_figure": 3.5,
         "assistant_figure": 3.5,
-        "same_figure": true
+        "excluded_different_figures": false
       }
     ]
   },
@@ -333,23 +334,5 @@
     "owner_miss": 7,
     "rubric_ambiguity": 6
   },
-  "row_57": "duplicate of row 54, APPLIED (§11 #66): the former not-applied variant is the final figure",
-  "variant_not_applied_no_figure_pairs_exempt": {
-    "label": "NOT APPLIED: descriptive recall if pairs where neither side states a figure were exempt from the same-figure condition",
-    "pairs": [
-      "OWN-D18-r157",
-      "OWN-D18-r161"
-    ],
-    "recall": {
-      "a_found_by_b": {
-        "copied": "60/60",
-        "derived": "35/40",
-        "unclassified": "1/1"
-      },
-      "b_found_by_a": {
-        "copied": "57/57",
-        "derived": "39/49"
-      }
-    }
-  }
+  "row_57": "duplicate of row 54, APPLIED (§11 #66): the former not-applied variant is the final figure"
 }

@@ -803,7 +803,22 @@ No CHECKER file read, nothing launched. Frozen and earlier comparison files unch
 
 ### Open (blocking)
 
-1. The same-figure condition, applied generally, also excludes the two pairs where neither side states any figure: r157/D18-19 (cause matching_rule, "both sides agree") and r161/D18-23. Keep them excluded (applied: owner derived 34/40, unclassified 0/1; assistant derived 37/49), or exempt pairs with no figure on either side (not applied: 35/40, 1/1, 39/49)?
+1. ~~Same-figure condition and no-figure pairs~~ Superseded (§11 #67): only pairs with two different encoded figures are excluded.
+
+### Parked questions
+
+None new.
+
+## 2026-11-19 (fifteenth session: same-figure condition corrected)
+
+No CHECKER file read, nothing launched.
+
+### Achieved
+
+1. **§11 #67, Log #112:** a pair is excluded from the descriptive count only if both sides encode a value and the values differ. Excluded: r064/D08-01 (4 vs 37), r125/D08-35 (0.55 vs 6.45, with the owner's restatement note).
+2. **Primary recall unchanged** (checked against the previous file): final owner 58/60, 27/40, 0/1; assistant 56/57, 29/49.
+3. **Descriptive after adjudication:** owner 60/60 copied, 37/40 derived, 1/1 unclassified; assistant 57/57 copied, 41/49 derived.
+4. **Not counted as found:** owner OWN-D08-r064, OWN-D08-r125, OWN-D18-r166; assistant R1-D03-36, R1-D08-01, D08-05, D08-22, D08-33, D08-35, D08-36, D08-37.
 
 ### Parked questions
 
