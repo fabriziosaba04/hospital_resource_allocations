@@ -1,0 +1,730 @@
+{
+  "day": 26,
+  "decisions": [
+    {
+      "attempt": 1,
+      "beds": {
+        "cardiology": 19,
+        "internal_medicine": 33,
+        "neurology": 20,
+        "orthopedics": 24
+      },
+      "codes": [],
+      "created_at": "2026-11-22T15:45:22+00:00",
+      "day": 1,
+      "explanation": {
+        "alternatives": "(A) Keep the current allocation: simulation shows valid, zero overflow at every level, zero nurse shortage. (B) Shift 3 beds to orthopedics (18/32/19/27) and 1 nurse from internal_medicine to orthopedics (8/11/9/9): also valid, zero overflow, zero shortage. B gives identical outcomes today.",
+        "information_used": "Occupied beds: cardiology 16, internal_medicine 28, neurology 17, orthopedics 21. Allocated beds 19/33/20/24 sum to 96. Nurse requirement N1: 8/11/9/8. Allocated nurses 8/12/9/8 sum to 37. Overflow queue is empty. Only day 1 data exists, so there is no arrival trend beyond today (arrivals: cardiology 3, internal_medicine 6, neurology 1, orthopedics 11).",
+        "reasons": "Clinical priority: no level 3, 2 or 1 patient is in overflow and all nursing need is covered at every level, so there is no priority violation. Fairness: no one is waiting, so there is nothing to equalise. Efficiency: B shows no measurable gain today, and moving resources without a demonstrated need adds churn. Free beds are 3/5/3/3 and orthopedics has the most arrivals, but its 3 spare beds are enough today.",
+        "situation": "Day 1, no external pool change (beds 96, nurses 37). Current allocation is the initial rule. No shock, no overflow queue. Occupied beds 82 of 96. Nurse requirement N1 totals 36 against a pool of 37.",
+        "tradeoffs": "No beds or nurses moved; the allocation is unchanged. One nurse is spare (internal_medicine has 12 against a requirement of 11), which is a small idle-capacity cost. The pool is 37 against a requirement of 36, so this spare nurse cannot be avoided. Keeping it in internal_medicine has no effect on coverage.",
+        "uncertainty": "I have one day of data, so I cannot estimate trends. Orthopedics had 11 arrivals against 4 discharges, and if that repeats it could use more beds soon. Tomorrow's arrivals, discharges and pool changes are unknown."
+      },
+      "messages": [],
+      "nurses": {
+        "cardiology": 8,
+        "internal_medicine": 12,
+        "neurology": 9,
+        "orthopedics": 8
+      },
+      "outcome": "accepted",
+      "writer": "allocator"
+    },
+    {
+      "attempt": 1,
+      "beds": {
+        "cardiology": 20,
+        "internal_medicine": 30,
+        "neurology": 21,
+        "orthopedics": 25
+      },
+      "codes": [],
+      "created_at": "2026-11-22T15:45:54+00:00",
+      "day": 2,
+      "explanation": {
+        "alternatives": "(A) Keep 19/33/20/24 beds and 8/12/9/8 nurses: valid, zero overflow at all levels, zero nurse shortage. (B) Chosen: beds 20/30/21/25, nurses 8/11/9/9: valid, zero overflow at all levels, zero nurse shortage. Today's simulated outcomes are identical.",
+        "information_used": "Occupied beds 14/19/14/18 (cardiology/internal_medicine/neurology/orthopedics). Census 17/26/18/22. Nurse requirement N1 8/11/9/8, total 36 against a pool of 37. Queue: 3 level-3, 10 level-2, 4 level-1 patients (3+... total 18), all arrived day 2. Arrival means: orthopedics 7.5, internal_medicine 6.5, cardiology 3, neurology 2.5. The day-1 allocation was 19/33/20/24 beds and 8/12/9/8 nurses.",
+        "reasons": "Clinical priority: no patient of any level is left in overflow and no nursing shortage exists, so no priority violation arises in either option. Fairness: all waiting patients arrived today, so no one has waited longer than another, and all are placed. Efficiency: B reduces idle capacity in internal_medicine (7 spare beds and 1 spare nurse) and moves it to orthopedics, which has the highest arrival rate (7.5/day, though only 4 today), and to cardiology and neurology, which have the lowest slack. Spare beds become 3/4/3/3, which is more even.",
+        "situation": "Day 2, no external change (beds 96, nurses 37). No shock: occupied beds 65 are below the pool of 96. 18 patients (all arrivals today, 0 days waiting) are in the overflow queue only because they do not yet hold a bed. Census is 17/26/18/22 for cardiology/internal_medicine/neurology/orthopedics, a total of 83, so all of them fit under the current beds. No problem detected.",
+        "tradeoffs": "Moved 3 beds from internal_medicine (to cardiology +1, neurology +1, orthopedics +1) and 1 nurse from internal_medicine to orthopedics. All of this is my reallocation; there was no external change. Cost: internal_medicine has less buffer (4 spare beds), although it had 9 discharges versus 7 arrivals today. The nurse pool has one spare (37 vs 36 required), now held by orthopedics. No beds below occupied levels.",
+        "uncertainty": "Only two days of data, so arrival and discharge trends are weak; the means equal the all-day means. Tomorrow's arrivals, discharges and pool changes are unknown, and internal_medicine could need its former buffer if arrivals spike. The benefit of B over A today is zero; it is only anticipatory."
+      },
+      "messages": [],
+      "nurses": {
+        "cardiology": 8,
+        "internal_medicine": 11,
+        "neurology": 9,
+        "orthopedics": 9
+      },
+      "outcome": "accepted",
+      "writer": "allocator"
+    },
+    {
+      "attempt": 1,
+      "beds": {
+        "cardiology": 21,
+        "internal_medicine": 33,
+        "neurology": 18,
+        "orthopedics": 24
+      },
+      "codes": [],
+      "created_at": "2026-11-22T15:46:28+00:00",
+      "day": 3,
+      "explanation": {
+        "alternatives": "(A) Beds 21/33/18/24, nurses 9/12/8/8: valid, zero overflow, but neurology has shortage of 0.2 at level 2 and 0.2 at level 1 while orthopedics level 1 is fully covered, which is a worse placement. (B) Chosen: same beds, nurses 9/12/9/7: valid, zero overflow, nurse shortage only at level 1 (internal_medicine 0.15, orthopedics 0.15); levels 2 and 3 fully covered everywhere. Keeping the current allocation was not simulated; it would leave internal_medicine 1 bed short of census, so one patient would be in overflow.",
+        "information_used": "Occupied beds 15/23/17/18. Census 20/31/18/22. Queue: 4 level-3, 6 level-2, 8 level-1, all arrival_day 3. Current allocation beds 20/30/21/25, nurses 8/11/9/9. Nurse requirement N1 9/13/9/8. Census level mix: orthopedics has only 2 level-3 patients but 13 level-2 and 7 level-1; the other departments have 8-10 level-3 patients. Arrival means: internal_medicine 7.0, orthopedics 6.33, cardiology 3.67, neurology 2.0.",
+        "reasons": "Clinical priority: all level-3 and level-2 patients get a bed and full nursing; the only uncovered need is 0.3 nurse-equivalents of level-1 nursing. Fairness: all waiting patients arrived on the same day, so there is no waiting-time difference, and everyone is placed so there is no overflow. Efficiency: beds equal census plus 5 spare, spread as 1/2/0/2 by recent arrival rates (internal_medicine and orthopedics highest). Nurses are moved to where the level-3 and level-2 need is, and the cut is taken in orthopedics, which has the lowest level-3 share.",
+        "situation": "Day 3, no external change (beds 96, nurses 37). No shock: occupied beds 73 are below the pool of 96. Census is 20/31/18/22 (cardiology/internal_medicine/neurology/orthopedics), total 91. The current allocation (20/30/21/25 beds) leaves internal_medicine 1 bed short of census, and the 18 patients in the queue all arrived today (0 days waiting). Nurse requirement N1 is 9/13/9/8 = 39 against a pool of 37, so a shortfall of 2 nurses is unavoidable. This shortfall is external (pool below need), not caused by me.",
+        "tradeoffs": "Beds moved (my reallocation): cardiology +1, internal_medicine +3, neurology -3, orthopedics -1. Nurses moved: cardiology +1, internal_medicine +1, orthopedics -2. Cost: neurology and orthopedics now have little buffer (neurology 0 spare beds, orthopedics 2); orthopedics has a small level-1 nursing shortage of 0.15 and internal_medicine one of 0.15.",
+        "uncertainty": "Only three days of data, so arrival and discharge trends are weak. Neurology has no spare beds and could overflow if arrivals exceed discharges tomorrow. The nurse shortage depends on tomorrow's census mix, and the simulator's coverage rule is taken from the simulation output only."
+      },
+      "messages": [],
+      "nurses": {
+        "cardiology": 9,
+        "internal_medicine": 12,
+        "neurology": 9,
+        "orthopedics": 7
+      },
+      "outcome": "accepted",
+      "writer": "allocator"
+    },
+    {
+      "attempt": 1,
+      "beds": {
+        "cardiology": 17,
+        "internal_medicine": 33,
+        "neurology": 20,
+        "orthopedics": 26
+      },
+      "codes": [],
+      "created_at": "2026-11-22T15:46:55+00:00",
+      "day": 4,
+      "explanation": {
+        "alternatives": "(A) Keep current allocation 21/33/18/24 beds and 9/12/9/7 nurses: valid, zero overflow, but level-1 nursing shortage of 0.4 in internal_medicine and 0.65 in orthopedics, and cardiology holds 2 nurses above its requirement. (B) Chosen: beds 17/33/20/26, nurses 7/13/9/8: valid, zero overflow, zero nurse shortage at every level.",
+        "information_used": "Occupied beds 14/24/15/18. Census 16/31/18/24. Nurse requirement 7/13/9/8. Current allocation beds 21/33/18/24 and nurses 9/12/9/7. Arrival means: internal_medicine 7.0, orthopedics 6.25, cardiology 3.25, neurology 2.25. Overflow queue: 6 level-3, 5 level-2, 8 level-1, all arrival_day 4.",
+        "reasons": "Clinical priority: no patient at any level is in overflow, and nursing is fully covered at all levels. Fairness: all waiting patients arrived today, so there is no waiting-time difference, and all are placed. Efficiency: nurses match the requirement exactly with none idle. Spare beds are 1/2/2/2 (cardiology/internal_medicine/neurology/orthopedics), against 5/2/0/0 before, which follows recent arrival rates better.",
+        "situation": "Day 4, no external change (beds 96, nurses 37). No shock: occupied beds 71 are below the pool of 96. 19 patients in the queue all arrived today (0 days waiting). Census 16/31/18/24 (cardiology/internal_medicine/neurology/orthopedics), total 89. Nurse requirement N1 is 7/13/9/8 = 37, equal to the pool. The current allocation has cardiology 5 beds and 2 nurses above need, while internal_medicine and orthopedics are short by 1 nurse each.",
+        "tradeoffs": "Beds moved (my reallocation): cardiology -4, neurology +2, orthopedics +2, internal_medicine 0. Nurses moved: cardiology -2, internal_medicine +1, orthopedics +1. Cost: cardiology keeps only 1 spare bed, though it had 6 discharges against 2 arrivals today. No beds fall below occupied levels.",
+        "uncertainty": "Only four days of data, so arrival and discharge trends are weak. Tomorrow's arrivals, discharges, census mix and pool changes are unknown. The nurse match is exact for today only and may shift as the level mix changes."
+      },
+      "messages": [],
+      "nurses": {
+        "cardiology": 7,
+        "internal_medicine": 13,
+        "neurology": 9,
+        "orthopedics": 8
+      },
+      "outcome": "accepted",
+      "writer": "allocator"
+    },
+    {
+      "attempt": 1,
+      "beds": {
+        "cardiology": 22,
+        "internal_medicine": 31,
+        "neurology": 14,
+        "orthopedics": 29
+      },
+      "codes": [],
+      "created_at": "2026-11-22T15:47:23+00:00",
+      "day": 5,
+      "explanation": {
+        "alternatives": "(A) Keep current 17/33/20/26 beds and 7/13/9/8 nurses: valid, but 3 level-1 cardiology patients in overflow and nurse shortages in cardiology (L1 1.0, L2 0.5) and orthopedics (L1 0.1) while neurology holds surplus beds and nurses. (B) Chosen: beds 22/31/14/29, nurses 9/12/7/9: valid, zero overflow at all levels, zero nurse shortage at every level.",
+        "information_used": "Occupied beds 12/21/12/21. Nurse requirement N1 9/11/7/9 = 36 against a pool of 37. Cardiology census by level 5/6/9, arrivals 8 today. Arrival means (all days): internal_medicine 7.0, orthopedics 5.8, cardiology 4.2, neurology 2.0. Queue: 4 level-3, 4 level-2, 12 level-1, all arrival_day 5.",
+        "reasons": "Clinical priority: no patient at any level in overflow and all nursing need covered, so no priority violation. Fairness: all waiting patients arrived the same day, and all are placed, so there is no waiting-time disparity. Efficiency: every department has beds above census (cardiology +2, internal_medicine +3, neurology +1, orthopedics +4), allotted roughly by arrival rates; nurses match the requirement, with the one spare nurse placed in internal_medicine, the department with the most arrivals.",
+        "situation": "Day 5, no external change (beds 96, nurses 37), no shock: occupied beds 66 are below the pool. Census is 20/28/13/25 (cardiology/internal_medicine/neurology/orthopedics) = 86. The current allocation (17/33/20/26 beds, 7/13/9/8 nurses) leaves cardiology 3 beds and 2 nurses short and neurology with 7 surplus beds and 2 surplus nurses. 20 patients in the queue all arrived today (0 days waiting).",
+        "tradeoffs": "Beds moved (my reallocation): cardiology +5, internal_medicine -2, neurology -6, orthopedics +3. Nurses moved: cardiology +2, internal_medicine -1, neurology -2, orthopedics +1. Cost: neurology has only 1 spare bed and 0 spare nurses, though it had 6 discharges against 1 arrival today.",
+        "uncertainty": "Only five days of data, so arrival and discharge trends are weak. Tomorrow's arrivals, level mix, discharges and pool changes are unknown. The nurse match is exact for today only. Neurology's low buffer could cause overflow if its arrivals rebound."
+      },
+      "messages": [],
+      "nurses": {
+        "cardiology": 9,
+        "internal_medicine": 12,
+        "neurology": 7,
+        "orthopedics": 9
+      },
+      "outcome": "accepted",
+      "writer": "allocator"
+    },
+    {
+      "attempt": 1,
+      "beds": {
+        "cardiology": 20,
+        "internal_medicine": 34,
+        "neurology": 12,
+        "orthopedics": 30
+      },
+      "codes": [],
+      "created_at": "2026-11-22T15:48:49+00:00",
+      "day": 6,
+      "explanation": {
+        "alternatives": "(A) Keep current allocation 22/31/14/29 beds and 9/12/7/9 nurses: valid, zero overflow, but level-1 nursing shortage of 0.8 in internal_medicine and 0.2 in orthopedics. (B) Chosen: beds 20/34/12/30, nurses 8/13/6/10: valid, zero overflow at all levels, zero nurse shortage at every level.",
+        "information_used": "Occupied beds 16/23/9/20. Census 18/31/11/27. Nurse requirement 8/13/6/10. Current beds 22/31/14/29, nurses 9/12/7/9. Arrival means (all days): internal_medicine 7.17, orthopedics 6.0, cardiology 3.83, neurology 2.0. Queue: 6 level-3, 10 level-2, 3 level-1, all arrival_day 6.",
+        "reasons": "Clinical priority: no patient at any level is in overflow and all nursing need is covered at all levels. Fairness: all waiting patients arrived today, so there is no waiting-time difference, and all are placed. Efficiency: nurses match requirement exactly with none idle, removing the level-1 shortages of A. Spare beds are 2/3/1/3, roughly following arrival rates, instead of 4/0/3/2 where internal_medicine had no buffer despite the highest arrivals.",
+        "situation": "Day 6, no external change (beds 96, nurses 37), no shock: occupied beds 68 are below the pool. Census 18/31/11/27 (cardiology/internal_medicine/neurology/orthopedics) = 87. 19 patients in the queue all arrived today (0 days waiting). Nurse requirement N1 is 8/13/6/10 = 37, equal to the pool. Current allocation leaves internal_medicine and orthopedics short of nurses by 1 each, and cardiology and neurology 1 above need.",
+        "tradeoffs": "Beds moved (my reallocation): cardiology -2, internal_medicine +3, neurology -2, orthopedics +1. Nurses moved: cardiology -1, internal_medicine +1, neurology -1, orthopedics +1. Cost: neurology keeps only 1 spare bed, cardiology 2. No beds fall below occupied levels.",
+        "uncertainty": "Only six days of data, so arrival and discharge trends are weak. Tomorrow's arrivals, level mix, discharges and pool changes are unknown. The nurse match is exact for today only and may shift with the level mix. Neurology's small buffer could cause overflow if its arrivals rebound."
+      },
+      "messages": [],
+      "nurses": {
+        "cardiology": 8,
+        "internal_medicine": 13,
+        "neurology": 6,
+        "orthopedics": 10
+      },
+      "outcome": "accepted",
+      "writer": "allocator"
+    },
+    {
+      "attempt": 1,
+      "beds": {
+        "cardiology": 19,
+        "internal_medicine": 37,
+        "neurology": 17,
+        "orthopedics": 23
+      },
+      "codes": [],
+      "created_at": "2026-11-22T15:49:22+00:00",
+      "day": 7,
+      "explanation": {
+        "alternatives": "(A) Keep current 20/34/12/30 beds and 8/13/6/10 nurses: valid, but neurology has 2 level-3 and 2 level-2 patients in overflow, neurology nursing short (level 3 by 0.6, level 2 by 1.75) and internal_medicine level 1 short by 1.2, while orthopedics has idle beds and nurses. This is a clinical-priority violation. (B) Chosen: beds 19/37/17/23, nurses 7/14/9/7: valid, zero overflow at all levels, zero shortage at levels 2 and 3, only level-1 shortage: internal_medicine 0.25, cardiology 0.4, orthopedics 0.55.",
+        "information_used": "Occupied beds 16/27/11/16. Census by level: cardiology 6/4/8, internal_medicine 6/15/13, neurology 0/5/11, orthopedics 7/9/5. Current beds 20/34/12/30, nurses 8/13/6/10. Arrival means (all days): internal_medicine 7.14, orthopedics 5.86, cardiology 3.57, neurology 2.43; neurology had 5 arrivals today. Queue: 6 level-3, 6 level-2, 7 level-1, all arrival day 7.",
+        "reasons": "Clinical priority: all level-3 and level-2 patients get beds and full nursing everywhere; the unavoidable 3-nurse shortfall falls only on level 1. Fairness: all waiting patients arrived the same day and all are placed, so there is no waiting-time disparity. Efficiency: every department has beds above census (1/3/1/2 spare, roughly following arrival rates), and all 37 nurses are used.",
+        "situation": "Day 7, no external change (beds 96, nurses 37), no shock: occupied beds 70 are below the pool. Census 18/34/16/21 (cardiology/internal_medicine/neurology/orthopedics) = 89. 19 patients in the queue, all arrived today (0 days waiting). Nurse requirement N1 is 8/15/9/8 = 40 against a pool of 37, so a shortfall of 3 nurses is external (pool below need). Current allocation leaves neurology 4 beds short of census and 3 nurses short, while orthopedics has 9 spare beds and 2 spare nurses.",
+        "tradeoffs": "Beds moved (my reallocation): cardiology -1, internal_medicine +3, neurology +5, orthopedics -7. Nurses moved: cardiology -1, internal_medicine +1, neurology +3, orthopedics -3. Cost: small level-1 nursing shortage of 0.25/0.4/0.55 nurse-equivalents in internal_medicine/cardiology/orthopedics, and thinner bed buffers in cardiology and neurology (1 spare each). No bed falls below occupied levels.",
+        "uncertainty": "Only seven days of data, so arrival and discharge trends are weak. Tomorrow's arrivals, level mix, discharges and pool changes are unknown. The nurse match is for today only. Neurology jumped from 0 to 5 arrivals in one day and may fluctuate; its buffer is small."
+      },
+      "messages": [],
+      "nurses": {
+        "cardiology": 7,
+        "internal_medicine": 14,
+        "neurology": 9,
+        "orthopedics": 7
+      },
+      "outcome": "accepted",
+      "writer": "allocator"
+    },
+    {
+      "attempt": 1,
+      "beds": {
+        "cardiology": 17,
+        "internal_medicine": 37,
+        "neurology": 16,
+        "orthopedics": 26
+      },
+      "codes": [],
+      "created_at": "2026-11-22T15:49:55+00:00",
+      "day": 8,
+      "explanation": {
+        "alternatives": "(A) Chosen: beds 17/37/16/26, nurses 6/13/7/7: valid, zero overflow, levels 2 and 3 fully covered everywhere; level-1 shortage internal_medicine 0.05, cardiology 0.2, orthopedics 0.9 (total 1.15). (B) Same beds, nurses 6/12/7/8: valid, zero overflow, levels 2 and 3 fully covered; level-1 shortage internal_medicine 1.05, cardiology 0.2, orthopedics 0 (total 1.25). I did not simulate keeping the current allocation, because it is infeasible (37 nurses against a pool of 33).",
+        "information_used": "Census by level: cardiology 3/4/7, internal_medicine 7/11/13, neurology 0/3/9, orthopedics 7/10/5 (total 79). Occupied beds 12/27/12/19. Weighted L3 need 20.4, L2 9.8, L1 3.4 nurse-equivalents (33.6 total) against 33 nurses. Arrival means (all days): internal_medicine 6.75, orthopedics 5.5, cardiology 3.38, neurology 2.12. Queue: 1 level-3, 4 level-2, 4 level-1 patients, all arrival day 8.",
+        "reasons": "Clinical priority: all level-3 and level-2 nursing is covered in every department and no patient is in overflow, so the whole shortfall falls on level 1 only. Fairness: all queued patients arrived today with equal waiting time and all are placed. Efficiency: nurses are matched to level-3 and level-2 need, with the remaining nurse placed where it covers the most level-1 need; A has slightly less total shortage than B. Beds: every department keeps spare beds above census (cardiology 3, internal_medicine 6, neurology 4, orthopedics 4), allotted roughly by arrival rates.",
+        "situation": "Day 8. External event: nurse pool reduced by 4 (37 to 33); bed pool unchanged at 96. Occupied beds 70 are below the pool, so no shock cut. Nurse requirement N1 is 7/14/7/8 = 36 (cardiology/internal_medicine/neurology/orthopedics) against 33 nurses, so a shortfall of about 3 is external. The current allocation (nurses 7/14/9/7 = 37) is infeasible for the nurse pool. Current beds 19/37/17/23 leave neurology 5 spare and orthopedics only 1 spare against census 22. 9 patients are in the queue, all arrived day 8 (0 days waiting).",
+        "tradeoffs": "Nurses moved (my reallocation of the external cut of 4): cardiology -1, internal_medicine -1, neurology -2, orthopedics 0. Beds moved: cardiology -2, neurology -1, orthopedics +3, internal_medicine 0. Cost: level-1 nursing shortage of about 1.15 nurse-equivalents, mostly orthopedics 0.9. Neurology and cardiology have smaller bed buffers than before.",
+        "uncertainty": "Only 8 days of data, so arrival and discharge trends are weak. Tomorrow's arrivals, level mix, discharges and pool changes are unknown. The nurse match is for today only. Neurology arrivals have been volatile (0 today, 5 on day 7), so its buffer of 4 spare beds may be too large or too small."
+      },
+      "messages": [],
+      "nurses": {
+        "cardiology": 6,
+        "internal_medicine": 13,
+        "neurology": 7,
+        "orthopedics": 7
+      },
+      "outcome": "accepted",
+      "writer": "allocator"
+    },
+    {
+      "attempt": 1,
+      "beds": {
+        "cardiology": 15,
+        "internal_medicine": 35,
+        "neurology": 15,
+        "orthopedics": 31
+      },
+      "codes": [],
+      "created_at": "2026-11-22T15:50:22+00:00",
+      "day": 9,
+      "explanation": {
+        "alternatives": "(A) Keep current allocation 17/37/16/26 beds, 6/13/7/7 nurses: valid, zero overflow, but orthopedics level-1 nursing shortage 1.25 while cardiology and internal_medicine hold a spare nurse each. (B) Chosen: beds 15/35/15/31, nurses 5/12/7/9: valid, zero overflow at all levels, zero nurse shortage at every level.",
+        "information_used": "Occupied beds 10/22/11/21. Census by level: cardiology 3/4/5, internal_medicine 6/11/11, neurology 0/4/8, orthopedics 10/11/4. Current beds 17/37/16/26, nurses 6/13/7/7. Arrival means (all days): internal_medicine 6.67, orthopedics 5.33, cardiology 3.22, neurology 2.0. Queue: 1 level-3, 7 level-2, 5 level-1.",
+        "reasons": "Clinical priority: no patient in overflow and all nursing need covered at every level in B. Fairness: all queued patients arrived the same day and all are placed, so no waiting-time disparity. Efficiency: nurses match the requirement exactly with none idle; spare beds are 3/7/3/6, roughly following arrival rates, instead of 5/9/4/1 where orthopedics had little buffer despite high arrivals and census growth of +3.",
+        "situation": "Day 9, no external change (beds 96, nurses 33), no shock: occupied beds 64 are below the pool. Census 12/28/12/25 (cardiology/internal_medicine/neurology/orthopedics) = 77. 13 patients are in the queue, all arrived day 9 (0 days waiting). Nurse requirement N1 is 5/12/7/9 = 33, equal to the pool. The current nurse split 6/13/7/7 leaves orthopedics 2 nurses short and cardiology and internal_medicine 1 above need.",
+        "tradeoffs": "Beds moved (my reallocation): cardiology -2, internal_medicine -2, neurology -1, orthopedics +5. Nurses moved: cardiology -1, internal_medicine -1, orthopedics +2. No beds fall below occupied levels. Cost: smaller buffers in cardiology and neurology (3 spare each).",
+        "uncertainty": "Only nine days of data, so trends are weak. Tomorrow's arrivals, level mix, discharges and pool changes are unknown. The nurse match is exact for today only, and neurology arrivals have been volatile."
+      },
+      "messages": [],
+      "nurses": {
+        "cardiology": 5,
+        "internal_medicine": 12,
+        "neurology": 7,
+        "orthopedics": 9
+      },
+      "outcome": "accepted",
+      "writer": "allocator"
+    },
+    {
+      "attempt": 1,
+      "beds": {
+        "cardiology": 14,
+        "internal_medicine": 37,
+        "neurology": 18,
+        "orthopedics": 27
+      },
+      "codes": [],
+      "created_at": "2026-11-22T15:50:53+00:00",
+      "day": 10,
+      "explanation": {
+        "alternatives": "(A) Keep current allocation 15/35/15/31 beds, 5/12/7/9 nurses: valid, zero overflow, but neurology level-2 nursing short by 0.4 and internal_medicine level-1 short by 0.45, while orthopedics has a nurse above its need. (B) Chosen: beds 14/37/18/27, nurses 5/13/8/7: valid, zero overflow at all levels, zero shortage at levels 2 and 3, only orthopedics level-1 short by 0.15.",
+        "information_used": "Occupied beds 10/24/11/18. Census by level: cardiology 1/5/5, internal_medicine 7/11/12, neurology 0/4/10, orthopedics 8/9/4. Current beds 15/35/15/31, nurses 5/12/7/9. Arrival means (all days): internal_medicine 6.6, orthopedics 5.1, cardiology 3.0, neurology 2.1. Queue: 3 level-3, 6 level-2, 4 level-1, all arrival day 10.",
+        "reasons": "Clinical priority: no patient at any level is in overflow, and all level-3 and level-2 nursing is covered everywhere; the unavoidable 1-nurse shortfall falls only on level 1 (0.15 nurse-equivalents in orthopedics, which has the lowest level-3 share). Fairness: all queued patients arrived the same day and all are placed, so there is no waiting-time disparity. Efficiency: all 33 nurses are used, none idle. Spare beds are 3/7/4/6, roughly following arrival rates.",
+        "situation": "Day 10, no external change (beds 96, nurses 33), no shock: occupied beds 63 are below the pool. Census 11/30/14/21 (cardiology/internal_medicine/neurology/orthopedics) = 76. 13 patients are in the queue, all arrived day 10 (0 days waiting). Nurse requirement N1 is 5/13/8/8 = 34 against a pool of 33, so a 1-nurse shortfall is external (pool below need). The current allocation has neurology 1 nurse short and internal_medicine 1 short, orthopedics 1 above need.",
+        "tradeoffs": "Beds moved (my reallocation): cardiology -1, internal_medicine +2, neurology +3, orthopedics -4. Nurses moved: internal_medicine +1, neurology +1, orthopedics -2. No bed falls below occupied levels. Cost: small level-1 shortage in orthopedics (0.15) and a smaller orthopedics bed buffer (6 spare), though orthopedics had 7 discharges against 3 arrivals today.",
+        "uncertainty": "Only ten days of data, so trends are weak. Tomorrow's arrivals, level mix, discharges and pool changes are unknown. The nurse match is for today only. Neurology and orthopedics arrivals are volatile, so the bed buffers may be too large or too small."
+      },
+      "messages": [],
+      "nurses": {
+        "cardiology": 5,
+        "internal_medicine": 13,
+        "neurology": 8,
+        "orthopedics": 7
+      },
+      "outcome": "accepted",
+      "writer": "allocator"
+    },
+    {
+      "attempt": 1,
+      "beds": {
+        "cardiology": 17,
+        "internal_medicine": 39,
+        "neurology": 15,
+        "orthopedics": 25
+      },
+      "codes": [],
+      "created_at": "2026-11-22T15:52:32+00:00",
+      "day": 11,
+      "explanation": {
+        "alternatives": "(A) Chosen: beds 17/39/15/25, nurses 8/14/8/7: valid, zero overflow at all levels, zero nurse shortage at all levels. (B) Beds 14/37/18/27 (unchanged), nurses 7/13/8/9: valid, zero overflow, zero shortage. Today's simulated outcomes are identical for A and B. I did not simulate the unchanged nurse allocation, since it is 4 below the pool and cardiology would be short.",
+        "information_used": "Occupied beds 9/27/11/16. Census by level: cardiology 2/6/6, internal_medicine 9/13/11, neurology 0/6/7, orthopedics 7/10/3. Nurse requirement N1 7/13/7/7 = 34 against a pool of 37. Arrival means (all days): internal_medicine 6.55, orthopedics 5.0, cardiology 3.18, neurology 2.09. Cardiology had 5 arrivals today. Queue: 3 level-3 in cardiology, 2 level-2 in internal_medicine, 1 in cardiology, 2 in neurology, 3 in orthopedics, and 6 level-1 patients.",
+        "reasons": "Clinical priority: no patient at any level is in overflow and all nursing need is covered at every level, so there is no priority violation. Fairness: all queued patients arrived today with equal waiting time and all are placed. Efficiency: the external +4 nurses cover the requirement of 34 and the 3 extra nurses are placed as a buffer in the departments with the largest or fastest-growing load (cardiology census +3 today, internal_medicine highest arrivals, neurology high level-3 share). Spare beds become 3/6/2/5, roughly following arrival rates, instead of 0/4/5/7 where cardiology had no buffer.",
+        "situation": "Day 11. External event: nurse pool rose by 4 (33 to 37); bed pool unchanged at 96. No shock: occupied beds 63 are below the pool. Census 14/33/13/20 (cardiology/internal_medicine/neurology/orthopedics) = 80. The 17 patients in the queue all arrived today (0 days waiting). The current nurse allocation (5/13/8/7 = 33) is below the new pool and leaves cardiology 2 nurses short of its requirement. Current beds 14/37/18/27 leave cardiology with zero spare beds while neurology has 5 and orthopedics 7.",
+        "tradeoffs": "Beds moved (my reallocation): cardiology +3, internal_medicine +2, neurology -3, orthopedics -2. Nurses: the +4 pool increase is external; my reallocation is cardiology +3, internal_medicine +1, neurology 0, orthopedics 0 relative to the day 10 split, which sums to 37. Cost: 3 nurses are above requirement today and may be idle; neurology and orthopedics have smaller bed buffers (2 and 5 spare). No bed falls below occupied levels.",
+        "uncertainty": "Only 11 days of data, so trends are weak. Tomorrow's arrivals, discharges, level mix and pool changes are unknown. Arrivals by department are volatile, so the spare-bed split may be too large or too small. The nurse buffer is not needed today and may be used by a higher census tomorrow."
+      },
+      "messages": [],
+      "nurses": {
+        "cardiology": 8,
+        "internal_medicine": 14,
+        "neurology": 8,
+        "orthopedics": 7
+      },
+      "outcome": "accepted",
+      "writer": "allocator"
+    },
+    {
+      "attempt": 1,
+      "beds": {
+        "cardiology": 21,
+        "internal_medicine": 38,
+        "neurology": 16,
+        "orthopedics": 21
+      },
+      "codes": [],
+      "created_at": "2026-11-22T15:53:01+00:00",
+      "day": 12,
+      "explanation": {
+        "alternatives": "(A) Keep current allocation 17/39/15/25 beds, 8/14/8/7 nurses: valid, no nurse shortage, but one level-1 cardiology patient (P000738) is in overflow while orthopedics holds 7 spare beds. (B) Chosen: beds 21/38/16/21, nurses 9/14/7/7: valid, zero overflow at all levels, zero nurse shortage at all levels.",
+        "information_used": "Occupied beds 12/27/12/15. Census by level: cardiology 3/8/7, internal_medicine 8/15/10, neurology 1/5/8, orthopedics 6/11/1. Cardiology had 6 arrivals today (census +4). Arrival means (all days): internal_medicine 6.5, orthopedics 4.83, cardiology 3.42, neurology 2.08. Current beds 17/39/15/25, nurses 8/14/8/7. Queue: 4 level-3, 7 level-2, 6 level-1, all arrival day 12.",
+        "reasons": "Clinical priority: no patient at any level is in overflow and all nursing need is covered at every level in B, so no priority violation. Fairness: all queued patients arrived today with equal waiting time and all are placed, whereas A leaves one patient waiting for lack of a bed. Efficiency: spare beds become 3/5/2/3, roughly following arrival rates and cardiology's rising census. The 3 nurses above requirement are placed as a buffer in cardiology (+1) and internal_medicine (+1), and one in orthopedics.",
+        "situation": "Day 12, no external change (beds 96, nurses 37), no shock: occupied beds 66 are below the pool. Census 18/33/14/18 (cardiology/internal_medicine/neurology/orthopedics) = 83. 17 patients are in the queue, all arrived day 12 (0 days waiting). The current beds 17/39/15/25 leave cardiology 1 bed short of census (-1), while orthopedics has 7 spare and internal_medicine 6. Nurse requirement N1 is 8/13/7/6 = 34 against a pool of 37.",
+        "tradeoffs": "Beds moved (my reallocation): cardiology +4, internal_medicine -1, neurology +1, orthopedics -4. Nurses moved: cardiology +1, neurology -1, internal_medicine and orthopedics 0. No bed falls below occupied levels. Cost: 3 nurses are above requirement today and may sit idle, since the pool of 37 exceeds the requirement of 34. Orthopedics has a smaller bed buffer (3 spare), though it had 5 discharges against 3 arrivals today.",
+        "uncertainty": "Only 12 days of data, so trends are weak. Tomorrow's arrivals, discharges, level mix and pool changes are unknown. Department arrivals are volatile, so the spare-bed split may be too large or too small. The nurse match is for today only."
+      },
+      "messages": [],
+      "nurses": {
+        "cardiology": 9,
+        "internal_medicine": 14,
+        "neurology": 7,
+        "orthopedics": 7
+      },
+      "outcome": "accepted",
+      "writer": "allocator"
+    },
+    {
+      "attempt": 1,
+      "beds": {
+        "cardiology": 24,
+        "internal_medicine": 34,
+        "neurology": 22,
+        "orthopedics": 16
+      },
+      "codes": [],
+      "created_at": "2026-11-22T15:53:34+00:00",
+      "day": 13,
+      "explanation": {
+        "alternatives": "(A) Keep the current allocation 21/38/16/21 beds and 9/14/7/7 nurses: valid, but one level-2 neurology patient (P000756) is in overflow while orthopedics and internal_medicine hold many spare beds, and neurology has nurse shortage of 0.85 at level 2 and 0.2 at level 1. This is a clinical-priority problem. (B) Chosen: beds 24/34/22/16, nurses 10/12/10/5: valid, zero overflow at all levels, zero nurse shortage at all levels.",
+        "information_used": "Occupied beds 15/23/13/8. Census by level: cardiology 3/9/8, internal_medicine 7/12/9, neurology 1/7/9, orthopedics 2/7/0. Current beds 21/38/16/21, nurses 9/14/7/7. Arrival means (all days): internal_medicine 6.38, orthopedics 4.54, cardiology 3.54, neurology 2.23; last-3-day means cardiology 5.33, internal_medicine 5.67, neurology 2.67, orthopedics 2.67. Queue: 4 level-3 (2 cardiology, 2 neurology), 7 level-2, 4 level-1.",
+        "reasons": "Clinical priority: no patient at any level is in overflow and all nursing need is covered at every level in B, so there is no priority violation. Fairness: all queued patients arrived today with equal waiting time and all are placed, whereas A leaves a level-2 patient waiting for lack of a bed. Efficiency: spare beds become 4/6/5/7, roughly following recent arrival rates and the rising cardiology and neurology census, and less idle capacity sits in orthopedics (spare beds down from 12 to 7). Nurses cover the requirement of 32 and the 5 extra nurses are placed as buffer where level-3 and level-2 loads are highest (cardiology +1, internal_medicine +1, neurology +2, orthopedics +2).",
+        "situation": "Day 13, no external change (beds 96, nurses 37), no shock: occupied beds 59 are below the pool. Census 20/28/17/9 (cardiology/internal_medicine/neurology/orthopedics) = 74. 15 patients are in the queue, all arrived day 13 (0 days waiting). The current allocation 21/38/16/21 leaves neurology 1 bed short of census (-1), while internal_medicine has 10 spare beds and orthopedics 12. Nurse requirement N1 is 9/11/9/3 = 32 against a pool of 37.",
+        "tradeoffs": "Beds moved (my reallocation): cardiology +3, internal_medicine -4, neurology +6, orthopedics -5. Nurses moved: cardiology +1, internal_medicine -2, neurology +3, orthopedics -2. No bed falls below occupied levels. Cost: 5 nurses are above requirement today and may sit idle, since the pool of 37 exceeds the requirement of 32. Orthopedics still has 7 spare beds despite only 1 arrival, and internal_medicine has a smaller buffer than before (6 spare against 38-23 = 15 before), though it had 10 discharges against 5 arrivals.",
+        "uncertainty": "Only 13 days of data, so trends are weak. Tomorrow's arrivals, discharges, level mix and pool changes are unknown. Department arrivals are volatile (orthopedics had 1 arrival today against a mean of 4.54), so the spare-bed split may be too large or too small. The nurse match is for today only."
+      },
+      "messages": [],
+      "nurses": {
+        "cardiology": 10,
+        "internal_medicine": 12,
+        "neurology": 10,
+        "orthopedics": 5
+      },
+      "outcome": "accepted",
+      "writer": "allocator"
+    },
+    {
+      "attempt": 1,
+      "beds": {
+        "cardiology": 24,
+        "internal_medicine": 36,
+        "neurology": 18,
+        "orthopedics": 18
+      },
+      "codes": [],
+      "created_at": "2026-11-22T15:54:04+00:00",
+      "day": 14,
+      "explanation": {
+        "alternatives": "(A) Chosen: beds 24/36/18/18, nurses 10/13/9/5: valid, zero overflow at all levels, zero nurse shortage at all levels. (B) Keep current allocation 24/34/22/16 beds and 10/12/10/5 nurses: valid, zero overflow, zero shortage, identical outcome today. A and B are identical today; they differ only in spare-bed distribution.",
+        "information_used": "Occupied beds 17/20/11/5. Census by level: cardiology 4/7/9, internal_medicine 8/11/9, neurology 0/4/10, orthopedics 4/6/1. Arrivals today 3/8/3/6. Arrival means (all days): internal_medicine 6.5, orthopedics 4.64, cardiology 3.5, neurology 2.29. Last-3-day means: cardiology 4.67, internal_medicine 6.33, neurology 3.0, orthopedics 3.33. Current beds 24/34/22/16, nurses 10/12/10/5. Queue: 6 level-3, 5 level-2, 9 level-1.",
+        "reasons": "Clinical priority: no patient at any level is in overflow and all nursing need is covered at every level, so there is no priority violation. Fairness: all queued patients arrived today with equal waiting time and all are placed. Efficiency: spare beds become 4/8/4/7, following arrival rates better than B (4/6/8/5), where neurology held 8 spare beds against 2.3 mean arrivals. Nurses cover the requirement of 32 and the 5 extra are buffer, placed in cardiology (+1), internal_medicine (+2), neurology (+1), orthopedics (+1) relative to requirement.",
+        "situation": "Day 14, no external change (beds 96, nurses 37), no shock: occupied beds 53 are below the pool. Census 20/28/14/11 (cardiology/internal_medicine/neurology/orthopedics) = 73. 20 patients are in the queue, all arrived day 14 (0 days waiting). Nurse requirement N1 is 9/11/8/4 = 32 against a pool of 37. The current allocation (24/34/22/16 beds) covers census everywhere, but neurology has 8 spare beds and internal_medicine only 6 despite the highest arrivals.",
+        "tradeoffs": "Beds moved (my reallocation): internal_medicine +2, neurology -4, orthopedics +2, cardiology 0. Nurses moved: internal_medicine +1, neurology -1. No bed falls below occupied levels. Cost: 5 nurses are above requirement today and may sit idle since the pool of 37 exceeds the requirement of 32. Orthopedics keeps 7 spare beds against 5 occupied, which is some idle capacity.",
+        "uncertainty": "Only 14 days of data, so trends are weak. Tomorrow's arrivals, discharges, level mix and pool changes are unknown. Department arrivals are volatile, so the spare-bed split may be too large or too small. The nurse match is for today only."
+      },
+      "messages": [],
+      "nurses": {
+        "cardiology": 10,
+        "internal_medicine": 13,
+        "neurology": 9,
+        "orthopedics": 5
+      },
+      "outcome": "accepted",
+      "writer": "allocator"
+    },
+    {
+      "attempt": 1,
+      "beds": {
+        "cardiology": 34,
+        "internal_medicine": 30,
+        "neurology": 16,
+        "orthopedics": 16
+      },
+      "codes": [],
+      "created_at": "2026-11-22T15:54:37+00:00",
+      "day": 15,
+      "explanation": {
+        "alternatives": "(A) Keep current allocation 24/36/18/18 beds, 10/13/9/5 nurses: valid, but 7 cardiology patients in overflow (1 level-3, 5 level-2, 1 level-1) while internal_medicine has 8 spare beds and neurology and orthopedics 3 each, plus cardiology nurse shortage (level 2 by 2.6, level 1 by 1.0). This is a clinical-priority violation. (B) Beds 34/30/16/16, nurses 14/11/8/4: valid, zero overflow, only orthopedics level-1 shortage of 0.6. (C) Chosen: beds 34/30/16/16, nurses 14/10/8/5: valid, zero overflow, levels 2 and 3 fully covered everywhere, only internal_medicine level-1 shortage of 0.45.",
+        "information_used": "Occupied beds 20/22/13/10. Census by level: cardiology 5/12/14, internal_medicine 9/11/8, neurology 0/4/11, orthopedics 6/8/1. Current beds 24/36/18/18, nurses 10/13/9/5. Arrival means last 3 days: cardiology 6.33, internal_medicine 6.33, neurology 3.0, orthopedics 4.0. Queue: 6 level-3 (5 cardiology, 1 neurology), 11 level-2, 7 level-1, all with 0 days waiting.",
+        "reasons": "Clinical priority: in C no patient is in overflow and all level-3 and level-2 nursing is covered in every department; the unavoidable 1-nurse shortfall falls only on level 1. Fairness: all queued patients arrived today with equal waiting time and all are placed, whereas A leaves 7 cardiology patients without a bed, including a level-3 one. Efficiency: spare beds become 3/2/1/1, giving cardiology and internal_medicine, which have the highest recent arrivals, the larger buffer. All 37 nurses are used; C has a smaller total level-1 shortage (0.45) than B (0.6).",
+        "situation": "Day 15, no external change (beds 96, nurses 37), no shock: occupied beds 65 are below the pool. Census 31/28/15/15 (cardiology/internal_medicine/neurology/orthopedics) = 89. Cardiology had 11 arrivals and 0 discharges (census +11), so the current beds (24 for cardiology) are 7 short of its census. 24 patients are in the queue, all arrived day 15 (0 days waiting). Nurse requirement N1 is 14/11/8/5 = 38 against a pool of 37, so a 1-nurse shortfall is external (pool below need).",
+        "tradeoffs": "Beds moved (my reallocation): cardiology +10, internal_medicine -6, neurology -2, orthopedics -2. Nurses moved: cardiology +4, internal_medicine -3, neurology -1, orthopedics 0. No bed falls below occupied levels (20/22/13/10). Cost: a level-1 nursing shortage of 0.45 nurse-equivalents in internal_medicine, and thin bed buffers in neurology and orthopedics (1 spare each) after cutting them.",
+        "uncertainty": "Only 15 days of data, so trends are weak. Cardiology jumped to 11 arrivals today against a mean of 4.0, so this surge may not repeat and the 3-bed cardiology buffer may be too large or too small. Tomorrow's arrivals, discharges, level mix and pool changes are unknown. The nurse match is for today only."
+      },
+      "messages": [],
+      "nurses": {
+        "cardiology": 14,
+        "internal_medicine": 10,
+        "neurology": 8,
+        "orthopedics": 5
+      },
+      "outcome": "accepted",
+      "writer": "allocator"
+    },
+    {
+      "attempt": 1,
+      "beds": {
+        "cardiology": 38,
+        "internal_medicine": 27,
+        "neurology": 19,
+        "orthopedics": 16
+      },
+      "codes": [],
+      "created_at": "2026-11-22T15:56:31+00:00",
+      "day": 16,
+      "explanation": {
+        "alternatives": "(A) Beds 38/27/19/16, nurses 14/9/9/5: valid, zero overflow, levels 2 and 3 fully covered, level-1 shortage internal_medicine 0.35 and cardiology 0.7 (total 1.05). (B) Chosen: same beds, nurses 14/10/9/4: valid, zero overflow, levels 2 and 3 fully covered, level-1 shortage cardiology 0.7 and orthopedics 0.25 (total 0.95). I did not simulate keeping the current allocation because it is infeasible (beds sum to 96 against a pool of 100).",
+        "information_used": "Occupied beds 28/19/14/11. Census by level: cardiology 7/14/14, internal_medicine 6/13/6, neurology 2/4/12, orthopedics 6/7/1. Arrivals today 7/6/4/3. Last-3-day arrival means: cardiology 7.0, internal_medicine 6.67, neurology 3.0, orthopedics 4.67. max_beds is 40. Current nurses 14/10/8/5. Queue: 3 level-3 (1 cardiology, 2 neurology), 8 level-2, 9 level-1.",
+        "reasons": "Clinical priority: no patient at any level is in overflow, and all level-3 and level-2 nursing is covered in every department. The unavoidable shortfall falls only on level 1. Fairness: all queued patients arrived today with equal waiting time and all are placed. Efficiency: beds equal census plus 8 spare, split 3/2/1/2 by recent arrival rates, so every department can absorb tomorrow's arrivals. All 37 nurses are used with none idle, and B has the smaller total level-1 shortage (0.95 against 1.05 for A).",
+        "situation": "Day 16. External event: bed pool rose by 4 (96 to 100); nurse pool unchanged at 37. No shock, since occupied beds 72 are below the pool of 100. The current beds 34/30/16/16 sum to 96, so they are infeasible and 4 beds must be placed. Census is 35/25/18/14 (cardiology/internal_medicine/neurology/orthopedics), total 92. Current beds leave cardiology 1 and neurology 2 short of census. 20 patients are in the queue, all arrived day 16 (0 days waiting). Nurse requirement N1 is 15/10/9/5 = 39 against a pool of 37, so a 2-nurse shortfall is external (pool below need).",
+        "tradeoffs": "The +4 beds are external. My reallocation relative to the current beds is cardiology +4, internal_medicine -3, neurology +3, orthopedics 0. Nurses moved: cardiology 0, internal_medicine 0, neurology +1, orthopedics -1. No bed falls below occupied levels (28/19/14/11). Cost: level-1 nursing shortage of 0.7 in cardiology and 0.25 in orthopedics. Internal_medicine keeps 2 spare beds after having 9 discharges today.",
+        "uncertainty": "Only 16 days of data, so trends are weak. Cardiology arrivals were 11 on day 15 and 7 today, and may not persist. Tomorrow's arrivals, discharges, level mix and pool changes are unknown. The nurse match is for today only."
+      },
+      "messages": [],
+      "nurses": {
+        "cardiology": 14,
+        "internal_medicine": 10,
+        "neurology": 9,
+        "orthopedics": 4
+      },
+      "outcome": "accepted",
+      "writer": "allocator"
+    },
+    {
+      "attempt": 1,
+      "beds": {
+        "cardiology": 40,
+        "internal_medicine": 24,
+        "neurology": 20,
+        "orthopedics": 16
+      },
+      "codes": [],
+      "created_at": "2026-11-22T15:57:19+00:00",
+      "day": 17,
+      "explanation": {
+        "alternatives": "(A) Chosen: beds 40/24/20/16, nurses 15/8/10/4: valid, overflow only 2 level-1 patients (P000841 cardiology, P000830 internal_medicine), zero level 2 or 3 overflow; nurse shortage level 3 zero everywhere, level 2 short 0.55 cardiology, 0.4 internal_medicine, 0.1 orthopedics, level 1 short 1.6/1.2/0.2/1.0. (B) Beds 40/25/20/15, nurses 16/8/9/4: valid, overflow 2 level-1 (P000841 cardiology, P000850 orthopedics), level 3 fully covered but neurology level 2 short 0.8, internal_medicine 0.4, orthopedics 0.1, so more level-2 shortage (1.3 vs 1.05) than A. Keeping the current allocation was not simulated: it leaves cardiology 3 beds short of census, so level-2 and level-3 cardiology patients would wait while internal_medicine holds spare beds.",
+        "information_used": "Occupied beds 31/16/16/9. Census by level: cardiology 8/17/16, internal_medicine 6/12/7, neurology 2/4/14, orthopedics 5/10/1. Queue by level: 10 level-3, 13 level-2, 7 level-1 (cardiology 3/5/2, internal_medicine 3/3/3, neurology 3/1/0, orthopedics 1/4/2). max_beds 40. Current beds 38/27/19/16, nurses 14/10/9/4. Cardiology arrivals last 3 days mean 9.33.",
+        "reasons": "Clinical priority: cardiology gets the maximum 40 beds so all 8 level-3 and 5 level-2 queued cardiology patients get beds; the unavoidable 2-bed shortfall falls on level-1 patients only. All level-3 nursing is covered everywhere. Fairness: all queued patients arrived today, so there is no waiting-time difference; the two overflow patients are level 1 with equal 0 days waiting, and one is forced by the max_beds cap in cardiology. Which department holds the second one is arbitrary between internal_medicine and orthopedics (B takes orthopedics). Efficiency: no spare beds are left, all 37 nurses are used, and A has less level-2 nursing shortage than B.",
+        "situation": "Day 17, no external change (beds 100, nurses 37). No shock: occupied beds 72 are below the pool of 100. Census is 41/25/20/16 (cardiology/internal_medicine/neurology/orthopedics) = 102, so 2 more patients than beds; cardiology census 41 exceeds max_beds 40. Nurse requirement N1 is 18/10/11/6 = 45 against 37, so an 8-nurse shortfall is external (pool below need). 30 patients are queued, all arrived day 17 (0 days waiting). The current allocation (38/27/19/16 beds, 14/10/9/4 nurses) leaves cardiology 3 beds short and neurology 1 short while internal_medicine has 2 spare.",
+        "tradeoffs": "Beds moved (my reallocation): cardiology +2, internal_medicine -3, neurology +1, orthopedics 0. Nurses moved: cardiology +1, internal_medicine -2, neurology +1, orthopedics 0. No bed falls below occupied levels (31/16/16/9). Costs: 2 level-1 patients without a bed, zero buffer for tomorrow's arrivals, and a small level-2 nursing shortage (about 1.05 nurse-equivalents). Neurology's 10th nurse covers 0.2 of level-1 need while level 2 is short elsewhere in the hospital, which is a minor integer-rounding imperfection; moving it would leave neurology level 2 short instead.",
+        "uncertainty": "Only 17 days of data. Tomorrow's arrivals, discharges and pool changes are unknown; cardiology surged (10 arrivals today) and may not persist, and internal_medicine had 9 discharges today so its smaller bed count may be fine. The nurse match is for today only and depends on today's level mix."
+      },
+      "messages": [],
+      "nurses": {
+        "cardiology": 15,
+        "internal_medicine": 8,
+        "neurology": 10,
+        "orthopedics": 4
+      },
+      "outcome": "accepted",
+      "writer": "allocator"
+    },
+    {
+      "attempt": 1,
+      "beds": {
+        "cardiology": 36,
+        "internal_medicine": 29,
+        "neurology": 21,
+        "orthopedics": 14
+      },
+      "codes": [],
+      "created_at": "2026-11-22T15:57:58+00:00",
+      "day": 18,
+      "explanation": {
+        "alternatives": "(A, chosen) beds 36/29/21/14, nurses 13/9/11/4: zero overflow, zero L3 shortage, L2 shortage only 0.05 in cardiology, L1 shortage 1.6 C, 1.25 IM, 0.65 O. (B) same beds, nurses 13/9/10/5: zero overflow but neurology L2 short 0.4 and L1 0.2 while orthopedics L1 is fully covered, worse. (C) keep current: IM overflow of 1 L2 and 3 L1 (including P000830 waiting 1 day) while cardiology/orthopedics have empty beds, and IM L2 nurse shortage 0.85. Clearly worse.",
+        "information_used": "Occupied beds C33/IM18/N16/O9 = 76 (no shock). Census C36/IM28/N20/O14 = 98, so all 22 queued patients can be seated within 100 beds. Queue has 4 L3, 9 L2, 9 L1 patients (IM 10 waiting incl. 7 L2; L1 P000830 and P000841 waited 1 day). Nurse requirement 15/11/11/5. IM arrivals trend highest (mean last 3 days 8.0).",
+        "reasons": "Clinical priority: all L3 and L2 patients get beds and all L3 nursing is covered everywhere; the only uncovered need is L1 plus 0.05 of L2 in cardiology. Fairness: zero overflow, so the L1 patient waiting since day 17 gets a bed along with everyone else. Efficiency: free beds are only 2 (C 36 filled exactly, one-to-one with census), nurses are all used, none idle.",
+        "situation": "Day 18, no external pool change (beds 100, nurses 37). Current allocation (C40/IM24/N20/O16 beds) leaves IM short of beds while cardiology and orthopedics hold unused beds. Nurse requirement N1 totals 42 vs pool 37, so a 5-nurse shortage is unavoidable.",
+        "tradeoffs": "Beds moved: cardiology -4, IM +5, neurology +1, orthopedics -2 (all my reallocation; no external pool change). Nurses moved: C -2, IM +1, N +1, O 0. Cost: a small L1 nursing shortfall, unavoidable given the pool, and a 0.05 L2 shortfall in cardiology caused by integer rounding while L1 gets 0.7 covered elsewhere; the alternatives I tried were worse. The 2 spare beds went to IM and neurology, which are at or near full census with arrivals trending up.",
+        "uncertainty": "Tomorrow's arrivals and discharges are unknown; cardiology had high recent arrivals (mean 6.3 over last 3 days) while only 2 arrived today, so cutting its beds to exactly census could produce overflow tomorrow. Simulation coverage is fractional, and I do not know exactly how it handles rounding."
+      },
+      "messages": [],
+      "nurses": {
+        "cardiology": 13,
+        "internal_medicine": 9,
+        "neurology": 11,
+        "orthopedics": 4
+      },
+      "outcome": "accepted",
+      "writer": "allocator"
+    },
+    {
+      "attempt": 1,
+      "beds": {
+        "cardiology": 35,
+        "internal_medicine": 33,
+        "neurology": 19,
+        "orthopedics": 13
+      },
+      "codes": [],
+      "created_at": "2026-11-22T15:58:37+00:00",
+      "day": 19,
+      "explanation": {
+        "alternatives": "Simulated nurses on the same beds. (A) 13/10/9/5: no overflow, but L2 shortage in C 0.2 and N 0.55 while L1 was covered in IM 0.2 and O 0.8. (B) 14/11/8/4: N L2 shortage 1.55 while L1 covered elsewhere. (C) chosen 14/10/10/3: L3 fully covered everywhere, L2 short only in orthopedics by 0.3. Keeping the current allocation was not simulated; its beds leave IM short of census by 2 and I judged it worse.",
+        "information_used": "Occupied beds C29, IM22, N17, O11. Census C34, IM31, N19, O12. 17 patients in the overflow queue today, all with 0 days waiting (IM 9, C 5, N 2, O 1). Census by level: C 7/12/15, IM 8/16/7, N 1/5/13, O 4/6/2. Weights 0.2/0.35/0.6. Arrivals last 3 days are above the all-day mean in C and IM.",
+        "reasons": "Priority: beds 35/33/19/13 give every department at least its census, so overflow is zero at all levels, and no occupied bed is removed. The 4 spare beds are split to C, IM and O by recent arrival trends. Nurses: L3 is fully covered in all departments. L2 is covered everywhere except orthopedics, short by 0.3. Fairness: all waiting patients arrived today, so there are no waiting-time differences to resolve. Efficiency: no idle nurses, with all 37 used and spare beds kept low.",
+        "situation": "Day 19, no external pool change (beds 100, nurses 37). Total occupied beds 79 is at most the pool, so no shock. Total census is 96 (C34, IM31, N19, O12), so every present patient can have a bed. Current allocation (36/29/21/14 beds) leaves internal_medicine 2 beds short of its census and the other departments with spare beds. Nurse requirement N1 totals 42 against 37, so a structural shortage of 5 exists.",
+        "tradeoffs": "Moved beds relative to day 18: C -1, IM +4, N -2, O -1. Moved nurses: C +1, IM +1, N -1, O -1. Orthopedics L2 is short 0.3 while L1 is covered by 0.2 in IM, 0.8 in C and 0.2 in N. This is a small residual, because covering all L2 needs 38 nurses and only 37 exist. Total L1 shortage is 2.8 (IM 1.4, C 0.6, O 0.8). The pool is simply short of the requirement.",
+        "uncertainty": "Tomorrow's arrivals and discharges are unknown. IM and C arrivals have been rising but could revert. Nurse coverage uses fractional weights, and the integer-ceiling effects may differ from the simulator's accounting. Only 1 spare bed per department remains in the trend-sensitive departments."
+      },
+      "messages": [],
+      "nurses": {
+        "cardiology": 14,
+        "internal_medicine": 10,
+        "neurology": 10,
+        "orthopedics": 3
+      },
+      "outcome": "accepted",
+      "writer": "allocator"
+    },
+    {
+      "attempt": 1,
+      "beds": {
+        "cardiology": 30,
+        "internal_medicine": 37,
+        "neurology": 19,
+        "orthopedics": 14
+      },
+      "codes": [],
+      "created_at": "2026-11-22T15:59:09+00:00",
+      "day": 20,
+      "explanation": {
+        "alternatives": "(A) Chosen: beds 30/37/19/14, nurses 12/12/9/4. Simulation shows valid, zero overflow at every level, zero L3 and L2 nurse shortage, and only L1 shortage (IM 1.3, C 0.35, N 0.45, O 0.5). (B) Same beds, nurses 13/12/9/3. Valid with zero overflow, but orthopedics has an L2 shortage of 0.3 and an L1 shortage of 1.2, while cardiology L1 is fully covered. That covers L1 in one department while L2 need goes uncovered in another. (C) Keeping the current allocation was not simulated. Its bed split would leave IM with 4 patients in overflow and O with 1, while 5 beds in cardiology sit empty.",
+        "information_used": "Census by department 30/37/19/14. Occupied beds 24/24/14/11. Overflow queue of 26 patients, all with arrival day 20 (0 days waiting). The queue has 4 L3, 13 L2 and 9 L1 patients: IM 1 L3, 7 L2, 5 L1. C 1 L3, 4 L2, 1 L1. N 2 L3, 1 L2, 2 L1. O 0 L3, 1 L2, 2 L1. Nurse requirement 13/14/10/5. Current nurses 14/10/10/3.",
+        "reasons": "Clinical priority: bed allocation matches census, so no patient of any level is in overflow and no bed is left empty while someone waits. Nurses go to all L3 and L2 need first, hospital-wide, and the unavoidable 5-nurse deficit falls only on L1 patients. Fairness: all waiting patients arrived today, so there are no waiting-time differences. The L1 shortage is spread across departments. Efficiency: no idle beds or nurses.",
+        "situation": "Day 20, no external change (beds 100, nurses 37). Census totals 100 (C30, IM37, N19, O14), equal to the bed pool, but the current allocation 35/33/19/13 leaves IM 4 beds short and O 1 short while cardiology has 5 spare. Occupied beds total 73, so no shock. Nurse requirement N1 totals 42 against a pool of 37.",
+        "tradeoffs": "Moved 5 beds from cardiology (35 to 30), 4 to IM and 1 to orthopedics. Moved nurses: cardiology -2, IM +2, neurology -1, orthopedics +1. All of these are my reallocation, since the pools did not change. Cost: L1 nursing is short by about 2.6 nurse-equivalents in total, mostly in IM, because the pool of 37 is below the requirement of 42.",
+        "uncertainty": "I don't know tomorrow's arrivals or discharges. IM arrivals have been rising (last-3-day mean 10.3 against 7.15 overall), so IM may need more beds tomorrow. Cardiology has census dropping, but its trend is volatile. The nurse requirement rounding is per department, and I relied on the simulator's coverage figures."
+      },
+      "messages": [],
+      "nurses": {
+        "cardiology": 12,
+        "internal_medicine": 12,
+        "neurology": 9,
+        "orthopedics": 4
+      },
+      "outcome": "accepted",
+      "writer": "allocator"
+    },
+    {
+      "attempt": 1,
+      "beds": {
+        "cardiology": 26,
+        "internal_medicine": 40,
+        "neurology": 16,
+        "orthopedics": 14
+      },
+      "codes": [],
+      "created_at": "2026-11-22T16:01:27+00:00",
+      "day": 21,
+      "explanation": {
+        "alternatives": "Planned IM 43 beds to cover its full census, but max_beds is 40, so it was rejected as invalid. Simulated beds 26/40/16/14 with two nurse splits. A: nurses C11/IM13/N9/O4 gives 1 level-1 IM overflow (P000919), no level-2 or level-3 nurse shortage, and level-1 shortage IM 1.8 and ortho 0.15. B: nurses C10/IM14/N9/O4 gives the same overflow, but a small level-2 shortage in cardiology (0.1) while covering more level-1 need in IM.",
+        "information_used": "Pools 96 beds / 37 nurses; max_beds 40; occupied beds IM 36, cardiology 24, neurology 14, orthopedics 10; census IM 41, cardiology 24, neurology 15, orthopedics 13 (total 93); overflow queue of 9 patients, all arrived day 21 (0 days waiting); nurse requirement N1 IM 15, cardiology 11, neurology 9, orthopedics 5 (total 40 vs pool 37); arrival means from the observed state (IM highest, 8.14 over last 7 days).",
+        "reasons": "Clinical priority: every level-2 and level-3 patient has a bed. The only overflow is one level-1 patient in IM, which is at the 40-bed cap, so it cannot be avoided. All level-3 nursing is fully covered and, in option A, so is all level-2 nursing. Option B covers some level-1 need at the cost of level-2 need, which violates the priority order, so I chose A. Fairness: the only overflow patient arrived today, so there is no longer-waiting same-level patient being passed over. Efficiency: beds are at or above census in every department, and the 4 spare beds are spread over cardiology, neurology and orthopedics as small buffers. IM is already at its cap.",
+        "situation": "Day 21. External event: bed pool reduced by 4 (to 96); nurse pool unchanged at 37. Occupied beds total 84, which is not above the pool of 96, so there is no shock cut and no occupied bed is removed. Internal medicine has 5 patients without a bed (census 41, occupied 36), neurology 1, orthopedics 3. The current allocation (30/37/19/14) sums to 100, so it is infeasible and must change. Cardiology is over-provisioned (24 occupied, 30 allocated).",
+        "tradeoffs": "Compared with the current allocation, beds move: cardiology -4, IM +3, neurology -3, orthopedics 0. Nurses move: cardiology -1, IM +1, neurology 0, orthopedics 0. The 4-bed pool reduction is external; the redistribution is mine. The cost is a nurse shortfall of 3 against requirement, all at level 1 (IM 1.8, ortho 0.15), and one level-1 patient left in overflow in IM.",
+        "uncertainty": "Tomorrow's arrivals and discharges are unknown. IM demand is rising (last-3-day mean 9 vs all-days 7.05) and it is at the 40-bed cap, so overflow there may grow. Cardiology had 0 arrivals today, which may not persist. The simulation shows only today's outcome."
+      },
+      "messages": [],
+      "nurses": {
+        "cardiology": 11,
+        "internal_medicine": 13,
+        "neurology": 9,
+        "orthopedics": 4
+      },
+      "outcome": "accepted",
+      "writer": "allocator"
+    },
+    {
+      "attempt": 1,
+      "beds": {
+        "cardiology": 25,
+        "internal_medicine": 38,
+        "neurology": 18,
+        "orthopedics": 15
+      },
+      "codes": [],
+      "created_at": "2026-11-22T16:01:57+00:00",
+      "day": 22,
+      "explanation": {
+        "alternatives": "A) Keep current allocation: no overflow, but orthopedics has a level 1 nursing shortage of 0.4 and internal medicine holds an unneeded nurse. B) Chosen: beds CA25/IM38/NE18/OR15, nurses 11/12/9/5: no overflow at any level, zero nurse shortage at all levels. Both were simulated and both are valid.",
+        "information_used": "Observed state: census by level and occupied beds per department; nurse requirement N1 CA 11, IM 12, NE 9, OR 5 (sum 37 = pool). Overflow queue of 8 patients (4 level 3, 2 level 2, 2 level 1; oldest is IM level 1 P000919 waiting 1 day). Arrival means over the last 7 days: CA 4.43, IM 7.43, NE 3.0, OR 3.71. Allocation history for days 1 to 21.",
+        "reasons": "Priority: all level 3 and level 2 patients get beds and full nursing in both options. Fairness: B gives every waiting patient a bed today, including the level 1 patient who waited 1 day, so no same-level ordering is violated. Efficiency: B matches nurses exactly to requirement (no idle nurse, no shortage). Beds are all at or above census in every department. I split the 18 spare beds roughly in line with recent arrival rates.",
+        "situation": "Day 22. No external pool change (beds 96, nurses 37). Occupied beds total 70, census 78 (CA 21, IM 31, NE 15, OR 11), so 8 patients, including overflow, need beds today. Current allocation (CA26/IM40/NE16/OR14; nurses 11/13/9/4) leaves orthopedics 1 nurse short of its requirement of 5 while internal medicine has 1 surplus nurse.",
+        "tradeoffs": "Moved 1 nurse from IM to OR. Beds moved: CA -1, IM -2, NE +2, OR +1, none below occupied beds. Spare beds stay idle in each department (CA 4, IM 7, NE 3, OR 4) as a buffer for arrivals, which is some idle capacity. No bed or nurse total was created; no pool change occurred, so all changes are my reallocation.",
+        "uncertainty": "Tomorrow's arrivals and discharges are unknown. Arrivals vary a lot (IM last 3 days 6.33, today only 1), so the spare-bed split is a judgement from history and could be off. Census levels may shift nurse requirements."
+      },
+      "messages": [],
+      "nurses": {
+        "cardiology": 11,
+        "internal_medicine": 12,
+        "neurology": 9,
+        "orthopedics": 5
+      },
+      "outcome": "accepted",
+      "writer": "allocator"
+    },
+    {
+      "attempt": 1,
+      "beds": {
+        "cardiology": 16,
+        "internal_medicine": 20,
+        "neurology": 12,
+        "orthopedics": 8
+      },
+      "codes": [],
+      "created_at": "2026-11-22T16:02:37+00:00",
+      "day": 23,
+      "explanation": {
+        "alternatives": "A) beds 16/20/12/8, nurses 9/14/8/6: valid, no nurse shortage, level-1 holders absorb all 6 removed beds; overflow L3 = 2 IM + 1 neurology, L2 = 3 IM + 1 neurology + 2 orthopedics. B) beds 17/20/11/8, same nurses: removes 1 bed from neurology instead of cardiology, which would cut a neurology level-2 holder (P000888, 4 days waiting appears in overflow) while a cardiology level-1 patient is kept; worse on priority and fairness. Keeping the current allocation is infeasible.",
+        "information_used": "Observed state: pools 56 beds / 37 nurses, occupied beds per department, shock_shortfall 6, N1 nurse requirement 9/13/8/6 (cardiology/IM/neurology/orthopedics, total 36). Overflow queue showed today's arrivals. From census minus queue I inferred the beds held by level-1 patients were about 6 (cardiology 1, IM 4, orthopedics 1). The simulation confirmed that with these beds no level-1 patient holds a bed in cardiology or IM.",
+        "reasons": "Priority: exactly the 6-bed shortfall is removed, taken from the lowest-level (level-1) bed holders hospital-wide (cardiology -1, IM -4, orthopedics -1 relative to occupied), so no higher-level patient loses a bed while a lower-level patient keeps one. Total beds equal the pool, so none are idle. Nurses: each department gets its N1 requirement, so there is no shortage at any level; the 1 spare nurse goes to IM, which has the largest census and most arrivals and the largest overflow. Fairness: with no spare beds, inside departments the longest waiters go first by the intra-department rule.",
+        "situation": "Day 23. External event: bed pool reduced by 40 to 56 (nurse pool unchanged at 37). Total occupied beds are 62 (cardiology 17, internal_medicine 24, neurology 12, orthopedics 9), so the shock exception applies with a shortfall of 6. The previous allocation (sum 96) is infeasible.",
+        "tradeoffs": "New level-2 and level-3 arrivals (IM 2 L3 and 3 L2, neurology 1 L3 and 1 L2, orthopedics 2 L2) remain in overflow today because every bed is held by a patient of level 2 or 3 and no occupied bed may be removed beyond the shortfall. Efficiency is not a concern as all beds are used. The beds moved are driven by the external -40 pool change and the 6-bed cut; my own reallocation is moving department beds to the occupied-minus-level-1 counts. Nurses moved: cardiology 11 to 9, IM 12 to 14, neurology 9 to 8, orthopedics 5 to 6.",
+        "uncertainty": "My level-by-level occupancy was inferred from census minus today's queue, and the simulation was consistent with it. Future arrivals, discharges and pool changes are unknown; discharges tomorrow may free beds for waiting level-2 and level-3 patients, and the pool may change again."
+      },
+      "messages": [],
+      "nurses": {
+        "cardiology": 9,
+        "internal_medicine": 14,
+        "neurology": 8,
+        "orthopedics": 6
+      },
+      "outcome": "accepted",
+      "writer": "allocator"
+    },
+    {
+      "attempt": 1,
+      "beds": {
+        "cardiology": 19,
+        "internal_medicine": 16,
+        "neurology": 15,
+        "orthopedics": 6
+      },
+      "codes": [],
+      "created_at": "2026-11-22T16:03:15+00:00",
+      "day": 24,
+      "explanation": {
+        "alternatives": "A) Keep the current allocation (beds 16/20/12/8, nurses 9/14/8/6). Simulation: level-3 overflow of 5 (cardiology 3, neurology 2), level-2 overflow of 5, and nurse shortage in cardiology (L2 1.95, L1 0.4) and neurology (L2 0.5, L1 0.2) while internal medicine and orthopedics have surplus nurses. B) Chosen: beds cardiology 19, internal medicine 16, neurology 15, orthopedics 6; nurses 12/11/9/5. Simulation: level-3 overflow 0 everywhere, level-2 overflow 10 (internal medicine 5, cardiology 3, orthopedics 2), level-1 overflow 15, zero nurse shortage at every level. It is valid with no violations.",
+        "information_used": "Observed state: occupied beds per department, census by level, N1 nurse requirement (cardiology 12, internal medicine 11, neurology 9, orthopedics 5, total 37 = the pool). Overflow queue: 10 level-3 patients (internal medicine 3, neurology 3, cardiology 4), 13 level-2 patients (internal medicine 6, cardiology 3, orthopedics 3, neurology 1), 15 level-1 patients. Oldest waits are level-1: P000881 (5 days) and P000897 (4 days), both internal medicine, and P000932 (2 days) orthopedics. All level-2 and level-3 waiters are 0 to 1 day.",
+        "reasons": "Clinical priority: the 13 free beds go first to all 10 waiting level-3 patients (cardiology +4, internal medicine +3, neurology +3), so no level-3 patient is in overflow. The other 3 beds go to level-2 patients (internal medicine +1, neurology +1, orthopedics +1). No bed is left empty and none is reserved for level 1 while level 2 waits. Nurses are set equal to each department's N1 requirement, so level-3 and level-2 needs are fully covered everywhere and no nurse is idle. Fairness: level-2 waiters are almost all 0 to 1 days, and the three level-2 beds were spread across departments with level-2 waiters of day-23 arrival. Efficiency: beds are fully used and nurses match need exactly.",
+        "situation": "Day 24. Pools unchanged (56 beds, 37 nurses; no external change). The previous allocation (day 23: 16/20/12/8) was badly mismatched. Occupied beds are 43 (cardiology 15, internal medicine 12, neurology 11, orthopedics 5), so 13 beds are free to place. Total census is 81, so overflow is unavoidable (38 patients without a bed today). The current allocation leaves 8 level-3 patients in overflow (cardiology 3, neurology 2, plus 3 more) while orthopedics holds 3 empty beds.",
+        "tradeoffs": "Beds moved relative to the day-23 allocation: cardiology +3, neurology +3, internal medicine -4, orthopedics -2 (all moves are into beds that are currently unoccupied; no occupied bed removed). Nurses moved: cardiology +3, neurology +1, internal medicine -3, orthopedics -1. Cost: 25 lower-level patients remain in overflow (10 level-2, 15 level-1), including the long-waiting level-1 patients P000881 (5 days) and P000897 (4 days). Those cannot be helped without taking a bed from a level-2 or level-3 patient, which priority forbids. The allocation was constrained by the total bed pool, which is below demand. I did not tune the exact placement of the 3 level-2 beds by wait time, since all candidates waited 1 day. Orthopedics gets only 1 extra bed, so two orthopedic level-2 patients (including day-23 arrival P000949) remain in overflow while internal medicine has 5 level-2 in overflow. This is a small equity imbalance among equal-wait patients.",
+        "uncertainty": "Future arrivals and discharges are unknown. Arrival means and the wide day-to-day swings in internal medicine discharges (11 today) make the next day's demand uncertain, so this allocation may need a large reshuffle again. The allocation history shows large swings across days, and I did not read the full decision history file in detail, only the allocation history. Nurse coverage uses N1 requirement including overflow patients; actual workload for patients without beds is uncertain."
+      },
+      "messages": [],
+      "nurses": {
+        "cardiology": 12,
+        "internal_medicine": 11,
+        "neurology": 9,
+        "orthopedics": 5
+      },
+      "outcome": "accepted",
+      "writer": "allocator"
+    },
+    {
+      "attempt": 1,
+      "beds": {
+        "cardiology": 19,
+        "internal_medicine": 17,
+        "neurology": 14,
+        "orthopedics": 6
+      },
+      "codes": [],
+      "created_at": "2026-11-22T16:04:01+00:00",
+      "day": 25,
+      "explanation": {
+        "alternatives": "A) Keep current allocation (beds 19/16/15/6, nurses 12/11/9/5): 0 level-3 overflow, but IM level-2 overflow 9 (P000937, 2 days, unserved) while a neurology bed serves a day-0 level-2 patient; neurology level-2 nurse shortage 0.65. B) Move 1 bed neurology to IM, nurses unchanged (19/17/14/6; 12/11/9/5): IM level-2 overflow 8, both day-23 IM patients served, but neurology L2 shortage 0.65 and ortho has 1.35 covering level 1. C) Chosen: same beds as B, nurses 12/11/10/4: all level-3 and level-2 nursing fully covered in every department; remaining shortage only level 1 (IM 1.15, ortho 1.45).",
+        "information_used": "Occupied beds: cardiology 14, internal medicine 15, neurology 14, orthopedics 4. Free beds under current allocation: cardiology 5, IM 1, neurology 1, ortho 2. Overflow queue: 3 level-3 patients (all cardiology, arrived today), level-2 waiting since day 23 (IM P000935, P000937; ortho P000949), since day 24 (IM 3, cardiology 3, ortho 1), many arrived today; level-1 queue incl. P000881 (IM, 6 days). Census by level for nurse needs: L3 card 14, IM 8, neuro 12, ortho 2; L2 8/17/7/7; L1 4/7/1/9.",
+        "reasons": "Priority: all 3 level-3 patients get beds (cardiology keeps 5 free beds: 3 L3 + 2 L2); all L3 and L2 nursing need is covered. Fairness: the one bed moved from neurology goes to IM so the two day-23 L2 IM patients get beds ahead of day-0 neurology L2 arrivals; ortho serves its day-23 and day-24 L2 patients. One nurse moved from ortho to neurology so L2 need is covered before L1 need elsewhere. Efficiency: no idle beds or nurses, all 56 beds and 37 nurses used.",
+        "situation": "Day 25. Pools unchanged (56 beds, 37 nurses), no external change, no shock (47 occupied <= 56). Demand far exceeds capacity: census 96, nurse requirement N1 41 vs 37 available. The current allocation (19/16/15/6 beds) leaves 1 free neurology bed that would go to a level-2 patient who arrived today, while level-2 patients who have waited 2 days wait in internal medicine. Nurses are also mismatched: neurology level-2 need uncovered while orthopedics has nurses covering level 1.",
+        "tradeoffs": "Moved 1 bed (neurology to IM) and 1 nurse (ortho to neurology, plus the IM nurse count unchanged at 11 and cardiology 12). Level-1 patients, including P000881 (6 days waiting in IM) and ortho L1, remain in overflow with a level-1 nursing shortfall; this is accepted because higher levels take precedence and total nurse need exceeds the pool by 4. Some level-2 patients with equal waiting (day 24) in IM remain unserved while cardiology serves 2 of its day-24 patients, because free beds already sit in cardiology after its 3 L3 patients; moving them would take beds from L3 or leave fewer L2 served.",
+        "uncertainty": "Future arrivals and discharges are unknown; arrivals have exceeded historic means for 3 days, so overflow may keep growing. Within-department bed assignment is by the stated rule and the simulator's picks, which I did not control. Bed allocations moved a lot over the last days, so my reading of the trend is limited."
+      },
+      "messages": [],
+      "nurses": {
+        "cardiology": 12,
+        "internal_medicine": 11,
+        "neurology": 10,
+        "orthopedics": 4
+      },
+      "outcome": "accepted",
+      "writer": "allocator"
+    }
+  ]
+}

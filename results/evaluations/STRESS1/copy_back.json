@@ -1,0 +1,47 @@
+{
+  "run_id": "STRESS1",
+  "clone_root": "C:\\hra-runs\\hospital_resource_allocations",
+  "copied_at": "2026-11-22T16:15:26+00:00",
+  "files": {
+    "allocations": {
+      "allocation_state.jsonl": "dc3cf968e01f7210bc51d118bb889a2a906f13c81d74d6f994155f7b79c491ff",
+      "bed_assignment_state.jsonl": "273f98976d9815bc4cc9bef49f39d562da21c85babd5278fb161ca1f65755c55",
+      "decision_history.jsonl": "10935699acfd707ae498090821f0483e3519c7b051215f6b7c6964c1b518c7b1",
+      "launches.jsonl": "3e8dac88e942089a1eb11a31b189ab3e3ac8de6a5037ab64efabb18a06320756",
+      "observed_state.jsonl": "e4b00413df90f0ab812058ac2a6c763e799570fb0a6ec925e8c92f2bc51a97d1",
+      "run_manifest.json": "504185bf1a78307254639ad87ff87d8ac0003bd44ea7e096bd82b9302864b65b",
+      "state.json": "5b1feca085c617c02cf03601cad84c27e1311fef5125129d3dda1cb76008fe95",
+      "transcripts/launch-1.jsonl": "66d8838c0378157271573742114d9534fc114760acaf8194c373ef2216ee170b",
+      "workflow.jsonl": "d8e27cb4320f31a92eee066c9d45048c1609a2c6df1a32493fbc8b407016314f"
+    },
+    "evaluations": {
+      "deterministic_audit.jsonl": "2a1ef6436b423ec72e21e2c4a1cace334a65d39799278d94ceb8935a86816e9c",
+      "process_calls.jsonl": "19f516c7a7f4305e78a262f31f021eef61b14d3d95ff586013c8359baebe7034",
+      "validation_history.jsonl": "e5ad78624ff08fb7487821cccee67be87dae101117510266c2d425abe6a13131"
+    }
+  },
+  "hash_mismatches": [],
+  "consistency_problems": [],
+  "run_report_rebuilt": true,
+  "subagent_transcripts": {
+    "projects_root": "C:\\Users\\bissi\\.claude\\projects",
+    "sessions": [
+      {
+        "launch": "launch-1.jsonl",
+        "session_id": "b5322b68-0e7a-4397-ae7a-8af5a472aacf",
+        "agent_spawns_in_launch": 36,
+        "session_folders": [
+          "C:\\Users\\bissi\\.claude\\projects\\C--hra-runs-hospital-resource-allocations\\b5322b68-0e7a-4397-ae7a-8af5a472aacf"
+        ]
+      }
+    ],
+    "problems": [],
+    "preserved_files": 85,
+    "hash_mismatches": [],
+    "by_folder": {
+      "allocator": 73,
+      "checker": 12,
+      "unclassified": 0
+    }
+  }
+}

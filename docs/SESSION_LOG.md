@@ -936,3 +936,22 @@ The clone was only read (copy-back and verification). No CHECKER content was ope
 ### Next
 
 1. Owner: STRESS1 with the launch block of the session report, then `copy_back … STRESS1` without `--resume`.
+
+## 2026-11-22 (twenty-second session: STRESS1 copy-back; all four evaluation runs complete)
+
+The clone was only read (copy-back, verification and a hash of its stress dataset). No CHECKER content was opened. No STRESS1 metric, CHECKER matching or §11 #74 quantity was computed.
+
+### Status
+
+**All four evaluation runs are complete:** R1, R2, R3 (`seed20261107`) and STRESS1 (`seed20261107_stress`), each FINISHED on day 30 at `prompts-v1.0`, copied back and hash-verified.
+
+### Achieved
+
+1. **STRESS1 finished:** clone `state.json` = day 30 / 30, `FINISHED`; `launches.jsonl`: 1 launch, exit 0, models match, 0 consistency problems, 0 spawn refusals. `run_manifest.json`: `dataset_id` `seed20261107_stress`, `code_version` `f2162c0` (= `prompts-v1.0`).
+2. **Dataset:** the run records no dataset hashes (`init_run` gates on `manifest --verify` but writes only `dataset_id`). The clone's five stress files, which the run read (`data_root` = clone), hash to the `data-v1.0` manifest entries: 5/5.
+3. **Copy-back** (no `--resume`), exit 0: 0 hash mismatches, 0 consistency problems, run report rebuilt, 85 capture files (allocator 73, checker 12, unclassified 0).
+4. **Independent check** (the R3 scratch script, not yet in the repository): allocations 9/9, evaluations 3/3 match the clone. Capture against session folder `b5322b68-…`: ALLOCATOR 30 transcripts + 30 meta + 13 tool results, CHECKER 6 + 6 + 0; 0 missing, 0 extra, 0 mismatched; `SHA256SUMS.json` 85/85. Longest destination 265 characters (ALLOCATOR tool result), copied without error.
+
+### Next
+
+1. Repository clean-up (the verification script moves into the repository then), then the analysis: R2/R3 and STRESS1 metrics, CHECKER matching, §11 #73–#75.

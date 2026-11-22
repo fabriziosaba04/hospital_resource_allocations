@@ -13,7 +13,7 @@ This document specifies **how** those are implemented, and does not restate them
 
 ## 0. Current Status and Next Step
 
-*Last updated 2026-11-15 (fourth session: tag `prompts-v1.0`; R1 is the owner's to launch). A new session should read this section first, then the latest entry of [`docs/SESSION_LOG.md`](SESSION_LOG.md) (2026-11-15), then `CLAUDE.md`, `AGENTS.md` and `docs/REFLECTION_LOG.md`. This section is meant to be enough to resume from the repository alone.*
+*Last updated 2026-11-22 (twenty-second session: all four evaluation runs complete; only the status lines below were updated, the rest of §0 is refreshed at the repository clean-up).* *Previous update 2026-11-15 (fourth session: tag `prompts-v1.0`; R1 is the owner's to launch). A new session should read this section first, then the latest entry of [`docs/SESSION_LOG.md`](SESSION_LOG.md) (2026-11-15), then `CLAUDE.md`, `AGENTS.md` and `docs/REFLECTION_LOG.md`. This section is meant to be enough to resume from the repository alone.*
 
 ### Timeline
 
@@ -63,6 +63,7 @@ uv run python -m src.evaluation.run_report R1                                  #
 | Prompts | **Frozen at git tag `prompts-v1.0` (2026-11-15)**: `allocator.md`, `checker.md`, `dispatcher.md` and `.claude/run-settings.json` byte-identical to DRY2's `81c2cf4`. Unchanged across R1–R3 and the stress run (`CLAUDE.md` §9.3) | `.claude/agents/` |
 | Run model and launcher | `claude-sonnet-5-5` for all three roles, in `.claude/run-settings.json`, recorded in `run_manifest.json` (§11 #31, Log #77). One launch command for the dry run and R1–R3: `python -m src.mcp_server.launch` (Log #78) | `.claude/run-settings.json`; `src/mcp_server/launch.py` |
 | Dry runs | **DRY1-SMOKE5** (2026-11-12; review applied 2026-11-14, §11 #36–#41). **DRY2-HARD10** (2026-11-14), hard 10-day fixture: finished, consistent, models as configured, every decision accepted on the first attempt, $1.64 and 628 s. No bed or F1 issue; correct forced cut on day 8; 4 Moderate nurse gaps. CHECKER headline group 4/4 (all `nurse_gap`), secondary 9/11; reviewed by the owner. **DRY3-RESUME** (2026-11-15, SMOKE5, from the clone): finished across three launches (launch 1 stalled by R37, launch 2 killed mid-run on purpose), consistent, copied back with hash check; report timing and cost fixed (R38) | `SESSION_LOG.md` 2026-11-14, 2026-11-15; `results/evaluations/DRY2-HARD10/`, `DRY3-RESUME/` |
+| Agent runs | **All four evaluation runs complete and copied back (2026-11-22):** R1, R2, R3 on `seed20261107`, STRESS1 on `seed20261107_stress`; each FINISHED on day 30 at `prompts-v1.0`, hash-verified against the clone. No STRESS1 metrics, CHECKER matching or §11 #74 quantities computed yet (after the clean-up) | `results/allocations/{R1,R2,R3,STRESS1}/`; `SESSION_LOG.md` 2026-11-22 |
 | Documentation | Decisions Log #1–97, owner decisions §11 #1–57, reflection log R1–R38, session log from 2026-11-12 | `docs/` |
 
 **Key data facts (primary seed, approved schedule):**
@@ -74,7 +75,7 @@ uv run python -m src.evaluation.run_report R1                                  #
 
 ### Still open (owner decisions pending)
 
-See the open questions in the latest `SESSION_LOG.md` entry (2026-11-15). **Next step: R1, launched by the owner** from the clone at `prompts-v1.0`, in a fresh usage window. Claim extraction follows `EVALUATION_PLAN.md` §4 items 7–9 (§11 #55–#56).
+See the open questions in the latest `SESSION_LOG.md` entry (2026-11-15). **Status 2026-11-22: R1–R3 and STRESS1 are complete. Next step: the repository clean-up, then the analysis.** *(Was: next step R1, launched by the owner from the clone at `prompts-v1.0`.)* Claim extraction follows `EVALUATION_PLAN.md` §4 items 7–9 (§11 #55–#56).
 
 Metric formulas, the CHECKER severity scale and the headline set are **fixed** (§11 #16–#28), all before any agent output on frozen data.
 
