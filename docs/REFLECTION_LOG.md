@@ -422,6 +422,7 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 
 ### R56. Copy-back's tool-results branch was never tested at the path lengths of a real run
 
+- **Type:** development/process (not a finding about agent reliability).
 - **What happened:** R2's copy-back (2026-11-22) stopped inside `allocator_digest.preserve` with `FileNotFoundError: [WinError 3]` on the first spilled tool result. The destination `results/allocations/R2/transcripts/subagents/allocator/tool-results/mcp-allocator-get_decision_history-1795337149486-we0rir.txt` is 260 characters under the OneDrive repository root (132). `LongPathsEnabled` is 0, and MAX_PATH (260) includes the terminating NUL, so 259 is the longest usable path. The parent folder had been created (`put` already did `mkdir(parents=True)`), so a missing directory was not the cause.
 - **Why it slipped through:** the branch was covered by tests (`test_allocator_digest`, `test_copy_back`), but only under short `tmp_path` folders with short names, so the tests never reached the length a real run reaches. DRY3 had no tool results. R1's were captured earlier, and its names had no random suffix (253 characters). R2's Claude Code names add 7 characters (`-we0rir`), which pushed the path over the limit. The failure surfaced only at the first real run that needed the branch. Git had the same limit: `git add` refused the files ("Filename too long") until `core.longpaths` was set.
 - **Consequence:** none on the data. The attempt left both run folders complete and hash-identical to the clone, and 72 of 85 capture files (all transcripts and metadata) hash-identical to the session folder. The 13 tool results, `SHA256SUMS.json`, the run report and `copy_back.json` were missing. Nothing was overwritten, and the clone and the session folder were not touched.
@@ -430,6 +431,7 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 
 ### R57. A file count in the R2 copy-back report was given the wrong label
 
+- **Type:** development/process (not a finding about agent reliability).
 - **What happened:** the report on fc5a944 said the failed attempt wrote "both run folders in full (84 files)" and, a few lines later, "run folders: hash-identical to the clone (9 + 3 files)". The 84 was every R2 file in the repository after the failed attempt: 12 run-folder files plus 72 capture files. Both numbers were right, but the first was attached to the wrong noun, so the report contradicted itself.
 - **How it was caught:** the owner's review.
 - **Fix:** re-hashed and reported separately. Allocations: 9/9 clone files matched; 95 in the repository = 9 + 86 capture (85 files plus `SHA256SUMS.json`). Evaluations: 3/3 matched; 5 = 3 + `copy_back.json` + `run_report.json`.
@@ -437,6 +439,7 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 
 ### R58. Two flaws in the first long-path fix, found while extending it to readers
 
+- **Type:** development/process (not a finding about agent reliability).
 - **What happened:** (i) `long_path` built the extended form from `Path.absolute()`, which does not collapse `..`, and the extended form disables Windows' own normalisation. A path containing `..` would have pointed to a file that does not exist. No caller passed one, so there was no consequence. (ii) The first routing of `Store` wrapped its `alloc_dir`/`eval_dir` attributes, which changed values that callers compare.
 - **How it was caught:** (i) on re-reading `paths.py` while routing the readers; (ii) by `test_store_paths_resolve_relative_to_the_run_folder` in the fast suite.
 - **Fix:** `os.path.abspath`, plus a test with `..` and a test that applying the function twice gives the same result. `Store` routes only its read calls.

@@ -920,3 +920,19 @@ The clone was not touched, nothing was launched, and no CHECKER content was open
 3. Path length after the clean-up: measure the longest path once material moves to `results/development/`. **Owner: parked for the clean-up step; no pre-flight change.**
 4. Writers outside the routed entry points (for example baseline and evaluation outputs under `results/allocations/B?-*`) use plain paths. Today they are far below the limit; re-check after the clean-up move (with item 3).
 
+
+## 2026-11-22 (twenty-first session: R3 copy-back, STRESS1 pre-registration closed)
+
+The clone was only read (copy-back and verification). No CHECKER content was opened (CHECKER files were hashed, and their `.meta.json` read for `agentType`). Nothing was launched.
+
+### Achieved
+
+1. **R3 finished:** clone `state.json` = day 30 / 30, phase `FINISHED`; last workflow event `close_day` → `FINISHED`; `launches.jsonl`: exit 0, models match, 0 consistency problems.
+2. **R3 copy-back** (no `--resume`), exit 0: 0 hash mismatches, 0 consistency problems, run report rebuilt, 84 capture files (allocator 72, checker 12, unclassified 0).
+3. **Independent check** (scratch script with its own `\?\` prefix, not `long_path`): allocations 9/9 and evaluations 3/3 match the clone (the repository adds `copy_back.json` and `run_report.json`). Capture against session folder `4aa63585-…`: ALLOCATOR 30 transcripts + 30 meta + 12 tool results, CHECKER 6 + 6 + 0; 0 missing, 0 extra, 0 mismatched; `SHA256SUMS.json` 84/84 equal to the re-hash. Longest destination 260 characters (an ALLOCATOR tool result), copied without error.
+4. **Owner decisions** §11 #73 (two reference sets for the CHECKER on R1's wrong claims), #74 (STRESS1 quantities and criterion, mapped onto existing audit fields), #75 (CHECKER on STRESS1). REFLECTION_LOG R56–R58 tagged development/process.
+5. **§6.4 precondition:** `test_pairing_equals_closed_form_shock_day` passed.
+
+### Next
+
+1. Owner: STRESS1 with the launch block of the session report, then `copy_back … STRESS1` without `--resume`.

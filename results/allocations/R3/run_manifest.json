@@ -1,0 +1,15 @@
+{
+  "run_id": "R3",
+  "dataset_id": "seed20261107",
+  "data_root": "C:\\hra-runs\\hospital_resource_allocations",
+  "eval_dir": "C:\\hra-runs\\hospital_resource_allocations\\results\\evaluations\\R3",
+  "retry_limit": 3,
+  "horizon": 30,
+  "expose_violation_labels": false,
+  "models": {
+    "main": "claude-sonnet-5-5",
+    "subagents": "claude-sonnet-5-5"
+  },
+  "code_version": "f2162c0ab1cab01fc173bb9f5ee7d0b781d25bcf",
+  "started_at": "2026-11-22T14:46:33+00:00"
+}
