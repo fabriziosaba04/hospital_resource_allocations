@@ -1,0 +1,126 @@
+{"created_at": "2026-11-22T08:29:20+00:00", "day": 1, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:29:41+00:00", "day": 1, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:29:47+00:00", "day": 1, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:29:48+00:00", "day": 1, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "CLOSED", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:29:50+00:00", "day": 2, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:30:10+00:00", "day": 2, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:30:17+00:00", "day": 2, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:30:18+00:00", "day": 2, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "CLOSED", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:30:19+00:00", "day": 3, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:30:41+00:00", "day": 3, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:30:47+00:00", "day": 3, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:30:48+00:00", "day": 3, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "CLOSED", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:30:50+00:00", "day": 4, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:31:09+00:00", "day": 4, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:31:16+00:00", "day": 4, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:31:17+00:00", "day": 4, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "CLOSED", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:31:18+00:00", "day": 5, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:31:35+00:00", "day": 5, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:31:41+00:00", "day": 5, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:32:50+00:00", "day": 5, "event": "submit_validation_report", "inputs": {"dataset_id": "seed20261107"}, "issues": 16, "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:32:57+00:00", "day": 5, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "CLOSED", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:32:58+00:00", "day": 6, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:33:14+00:00", "day": 6, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:33:20+00:00", "day": 6, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:33:22+00:00", "day": 6, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "CLOSED", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:33:24+00:00", "day": 7, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:33:48+00:00", "day": 7, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:33:54+00:00", "day": 7, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:33:55+00:00", "day": 7, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "CLOSED", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:33:57+00:00", "day": 8, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:34:19+00:00", "day": 8, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:34:24+00:00", "day": 8, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:34:26+00:00", "day": 8, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "CLOSED", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:34:27+00:00", "day": 9, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:34:44+00:00", "day": 9, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:34:50+00:00", "day": 9, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:34:51+00:00", "day": 9, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "CLOSED", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:34:53+00:00", "day": 10, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:35:12+00:00", "day": 10, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:35:19+00:00", "day": 10, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:36:43+00:00", "day": 10, "event": "submit_validation_report", "inputs": {"dataset_id": "seed20261107"}, "issues": 16, "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:36:50+00:00", "day": 10, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "CLOSED", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:36:52+00:00", "day": 11, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:37:14+00:00", "day": 11, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:37:19+00:00", "day": 11, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:37:21+00:00", "day": 11, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "CLOSED", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:37:22+00:00", "day": 12, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:37:40+00:00", "day": 12, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:37:46+00:00", "day": 12, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:37:47+00:00", "day": 12, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "CLOSED", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:37:48+00:00", "day": 13, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:38:08+00:00", "day": 13, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:38:14+00:00", "day": 13, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:38:16+00:00", "day": 13, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "CLOSED", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:38:18+00:00", "day": 14, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:38:35+00:00", "day": 14, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:38:42+00:00", "day": 14, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:38:43+00:00", "day": 14, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "CLOSED", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:38:45+00:00", "day": 15, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:39:08+00:00", "day": 15, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:39:14+00:00", "day": 15, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:40:25+00:00", "day": 15, "event": "submit_validation_report", "inputs": {"dataset_id": "seed20261107"}, "issues": 12, "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:40:34+00:00", "day": 15, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "CLOSED", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:40:35+00:00", "day": 16, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:41:03+00:00", "day": 16, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:41:09+00:00", "day": 16, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:41:11+00:00", "day": 16, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "CLOSED", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:41:12+00:00", "day": 17, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:41:45+00:00", "day": 17, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:41:52+00:00", "day": 17, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:41:55+00:00", "day": 17, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "CLOSED", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:41:57+00:00", "day": 18, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:42:29+00:00", "day": 18, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:42:36+00:00", "day": 18, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:42:38+00:00", "day": 18, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "CLOSED", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:42:40+00:00", "day": 19, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:43:09+00:00", "day": 19, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:43:15+00:00", "day": 19, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:43:17+00:00", "day": 19, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "CLOSED", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:43:18+00:00", "day": 20, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:43:45+00:00", "day": 20, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:43:52+00:00", "day": 20, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:45:34+00:00", "day": 20, "event": "submit_validation_report", "inputs": {"dataset_id": "seed20261107"}, "issues": 12, "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:45:41+00:00", "day": 20, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "CLOSED", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:45:43+00:00", "day": 21, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:46:15+00:00", "day": 21, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:46:22+00:00", "day": 21, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:46:23+00:00", "day": 21, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "CLOSED", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:46:25+00:00", "day": 22, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:46:43+00:00", "day": 22, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:46:49+00:00", "day": 22, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:46:51+00:00", "day": 22, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "CLOSED", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:46:53+00:00", "day": 23, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:47:13+00:00", "day": 23, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:47:20+00:00", "day": 23, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:47:21+00:00", "day": 23, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "CLOSED", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:47:23+00:00", "day": 24, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:47:41+00:00", "day": 24, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:47:48+00:00", "day": 24, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:47:49+00:00", "day": 24, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "CLOSED", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:47:51+00:00", "day": 25, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:48:19+00:00", "day": 25, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:48:26+00:00", "day": 25, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:49:49+00:00", "day": 25, "event": "submit_validation_report", "inputs": {"dataset_id": "seed20261107"}, "issues": 14, "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:49:55+00:00", "day": 25, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "CLOSED", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:49:57+00:00", "day": 26, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:50:25+00:00", "day": 26, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:50:32+00:00", "day": 26, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:50:34+00:00", "day": 26, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "CLOSED", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:50:36+00:00", "day": 27, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:51:02+00:00", "day": 27, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:51:09+00:00", "day": 27, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:51:11+00:00", "day": 27, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "CLOSED", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:51:12+00:00", "day": 28, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:51:35+00:00", "day": 28, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:51:42+00:00", "day": 28, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:51:44+00:00", "day": 28, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "CLOSED", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:51:45+00:00", "day": 29, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:52:08+00:00", "day": 29, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:52:14+00:00", "day": 29, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:52:16+00:00", "day": 29, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "CLOSED", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:52:18+00:00", "day": 30, "event": "advance_day", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "writer": "orchestrator"}
+{"attempt": 1, "created_at": "2026-11-22T08:52:48+00:00", "day": 30, "event": "submit_decision", "inputs": {"dataset_id": "seed20261107"}, "outcome": "accepted", "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:52:56+00:00", "day": 30, "event": "end_allocation_phase", "inputs": {"dataset_id": "seed20261107"}, "run_id": "R2", "source": "ALLOCATOR", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:54:52+00:00", "day": 30, "event": "submit_validation_report", "inputs": {"dataset_id": "seed20261107"}, "issues": 16, "run_id": "R2", "writer": "orchestrator"}
+{"created_at": "2026-11-22T08:54:59+00:00", "day": 30, "event": "close_day", "inputs": {"dataset_id": "seed20261107"}, "next_phase": "FINISHED", "run_id": "R2", "writer": "orchestrator"}

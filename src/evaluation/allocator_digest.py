@@ -1,6 +1,6 @@
 """ALLOCATOR-only view of a run, for claim extraction (owner access rule §11 #58, Log #98).
 
-    uv run python -m src.evaluation.allocator_digest preserve <claude session dir> [<more session dirs>] <run_id>
+    uv run python -m src.evaluation.allocator_digest preserve <claude session dir> [<more session dirs>] <run_id> [--resume]
     uv run python -m src.evaluation.allocator_digest digest <run_id>
 
 `preserve` copies the per-subagent transcripts Claude Code wrote for the run session (outside the
@@ -26,21 +26,32 @@ import shutil
 import sys
 from pathlib import Path
 
+from src.utils.paths import long_path, walk_files
+
 from .dataset import ROOT
 
 FIELDS = ("situation", "information_used", "alternatives", "reasons", "tradeoffs", "uncertainty")
 
 
 def _sha(p: Path) -> str:
-    return hashlib.sha256(p.read_bytes()).hexdigest()
+    return hashlib.sha256(long_path(p).read_bytes()).hexdigest()
 
 
-def preserve(session_dirs, run_id: str, results: Path = ROOT / "results") -> dict:
-    """`session_dirs`: one Claude Code session folder, or a list of them (one per launch of a resumed run)."""
+def preserve(session_dirs, run_id: str, results: Path = ROOT / "results", resume: bool = False) -> dict:
+    """`session_dirs`: one Claude Code session folder, or a list of them (one per launch of a resumed run).
+
+    All copies and hashes go through `long_path` (Log #116, R56). `resume=True` completes an attempt that stopped
+    before writing `SHA256SUMS.json`: a file already in place is kept only if its SHA-256 equals the source's
+    (otherwise the call refuses and nothing is overwritten); a file in place that the plan does not contain also
+    refuses. A folder with `SHA256SUMS.json` is complete and is never touched again.
+    """
     dirs = [Path(session_dirs)] if isinstance(session_dirs, (str, Path)) else [Path(d) for d in session_dirs]
     out = results / "allocations" / run_id / "transcripts" / "subagents"
-    if out.exists():
-        raise SystemExit(f"{out} already exists: never overwritten")
+    if long_path(out).exists():
+        if not resume:
+            raise SystemExit(f"{out} already exists: never overwritten")
+        if long_path(out / "SHA256SUMS.json").exists():
+            raise SystemExit(f"{out} is complete (SHA256SUMS.json present): never overwritten")
     kinds: dict[str, list[Path]] = {}
     for sub in (d / "subagents" for d in dirs):
         for meta in sorted(sub.glob("*.meta.json")):
@@ -52,19 +63,16 @@ def preserve(session_dirs, run_id: str, results: Path = ROOT / "results") -> dic
                          for m in kinds.get("allocator", []))
     origin: dict[str, Path] = {}                         # copied path (relative to out) -> source file
 
-    def put(src: Path, rel: str) -> None:
+    def plan(src: Path, rel: str) -> None:
         if rel in origin:
             raise SystemExit(f"{rel} appears in two sessions")
-        (out / rel).parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(src, out / rel)
         origin[rel] = src
 
     for kind, metas in kinds.items():
-        (out / kind).mkdir(parents=True, exist_ok=True)
         for m in metas:
-            put(m, f"{kind}/{m.name}")
+            plan(m, f"{kind}/{m.name}")
             t = m.with_name(m.name[:-len(".meta.json")] + ".jsonl")
-            put(t, f"{kind}/{t.name}")
+            plan(t, f"{kind}/{t.name}")
     for tr in (d / "tool-results" for d in dirs):
         for f in sorted(tr.glob("*")) if tr.is_dir() else []:
             if f.name.startswith("mcp-allocator-") or f.stem in alloc_text:
@@ -73,11 +81,27 @@ def preserve(session_dirs, run_id: str, results: Path = ROOT / "results") -> dic
                 kind = "checker"
             else:
                 kind = "unclassified"
-            put(f, f"{kind}/tool-results/{f.name}")
-    out.mkdir(parents=True, exist_ok=True)
+            plan(f, f"{kind}/tool-results/{f.name}")
+    present = walk_files(out) if long_path(out).exists() else {}
+    extra = sorted(set(present) - set(origin))
+    if extra:
+        raise SystemExit(f"{out}: files not in the capture plan, nothing done: {extra}")
+    differ = sorted(r for r in present if _sha(present[r]) != _sha(origin[r]))
+    if differ:
+        raise SystemExit(f"{out}: files in place differ from the source, never overwritten: {differ}")
+    copied = 0
+    for rel, src in origin.items():
+        if rel in present:
+            continue
+        long_path((out / rel).parent).mkdir(parents=True, exist_ok=True)
+        shutil.copy2(long_path(src), long_path(out / rel))
+        copied += 1
+    long_path(out).mkdir(parents=True, exist_ok=True)
     manifest = {"source": [str(d.resolve()) for d in dirs] if len(dirs) > 1 else str(dirs[0].resolve()),
                 "files": {rel: _sha(out / rel) for rel in sorted(origin)}}
     manifest["hash_mismatches"] = [r for r, h in manifest["files"].items() if _sha(origin[r]) != h]
+    if resume:
+        manifest["resumed"] = {"kept_verified": len(present), "copied": copied}
     (out / "SHA256SUMS.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8", newline="\n")
     return manifest
 
@@ -147,7 +171,9 @@ def digest(run_id: str, results: Path = ROOT / "results") -> list[Path]:
 
 if __name__ == "__main__":
     if sys.argv[1] == "preserve":
-        m = preserve([Path(a) for a in sys.argv[2:-1]], sys.argv[-1])
+        resume = "--resume" in sys.argv
+        args = [a for a in sys.argv[2:] if a != "--resume"]
+        m = preserve([Path(a) for a in args[:-1]], args[-1], resume=resume)
         print(json.dumps({"files": len(m["files"]), "hash_mismatches": m["hash_mismatches"],
                           "by_folder": {k: sum(1 for r in m["files"] if r.startswith(k + "/"))
                                         for k in ("allocator", "checker", "unclassified")}}, indent=2))

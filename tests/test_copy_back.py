@@ -135,3 +135,39 @@ def test_copy_back_flags_a_missing_session_folder(tmp_path):
     out = copy_back(clone, RUN, repo_results=repo, projects=tmp_path / "empty_projects")
     st = out["subagent_transcripts"]
     assert st["preserved_files"] == 0 and len(st["problems"]) == 1 and "no session folder" in st["problems"][0]
+
+
+def test_copy_back_resume_completes_a_partial_attempt(tmp_path):
+    """Log #116, R56: the state R2's failed copy-back left (run folders copied, capture stopped in tool-results,
+    no SHA256SUMS.json, no run report, no copy_back.json) is completed by --resume and only by --resume."""
+    clone = _fake_clone(tmp_path)
+    (sid,) = _session_ids(clone)
+    projects = _fake_projects(tmp_path, sid)
+    repo = tmp_path / "repo" / "results"
+    first = copy_back(clone, RUN, repo_results=repo, projects=projects)
+    sub = repo / "allocations" / RUN / "transcripts" / "subagents"
+    for p in (sub / "SHA256SUMS.json", sub / "allocator" / "tool-results" / "mcp-allocator-x-1.txt",
+              repo / "evaluations" / RUN / "copy_back.json", repo / "evaluations" / RUN / "run_report.json"):
+        p.unlink()
+    with pytest.raises(SystemExit, match="never overwritten"):
+        copy_back(clone, RUN, repo_results=repo, projects=projects)
+    out = copy_back(clone, RUN, repo_results=repo, projects=projects, resume=True)
+    st = out["subagent_transcripts"]
+    assert out["hash_mismatches"] == [] and out["consistency_problems"] == [] and out["run_report_rebuilt"]
+    assert st["problems"] == [] and st["hash_mismatches"] == [] and st["by_folder"] == first["subagent_transcripts"]["by_folder"]
+    assert out["resumed"] == {"run_folders_verified_in_place": ["allocations", "evaluations"]}
+    assert out["files"] == first["files"]
+    with pytest.raises(SystemExit, match="complete"):
+        copy_back(clone, RUN, repo_results=repo, projects=projects, resume=True)
+
+
+def test_copy_back_resume_refuses_a_run_folder_that_differs_from_the_clone(tmp_path):
+    clone = _fake_clone(tmp_path)
+    repo = tmp_path / "repo" / "results"
+    copy_back(clone, RUN, repo_results=repo, projects=tmp_path / "empty_projects")
+    (repo / "evaluations" / RUN / "copy_back.json").unlink()
+    (repo / "evaluations" / RUN / "run_report.json").unlink()
+    state = repo / "allocations" / RUN / "state.json"
+    state.write_text(state.read_text(encoding="utf-8") + " ", encoding="utf-8")
+    with pytest.raises(SystemExit, match="does not match the clone"):
+        copy_back(clone, RUN, repo_results=repo, projects=tmp_path / "empty_projects", resume=True)

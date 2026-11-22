@@ -1,0 +1,53 @@
+{
+  "run_id": "R2",
+  "clone_root": "C:\\hra-runs\\hospital_resource_allocations",
+  "copied_at": "2026-11-22T09:06:36+00:00",
+  "files": {
+    "allocations": {
+      "allocation_state.jsonl": "01d8c523a5e32218422201c69df19a759c9446a077545057686a24543c38097c",
+      "bed_assignment_state.jsonl": "1ac524c738aefd9417ed9c71d458cec1a4495f32902b7033d45bf5c28730cbb1",
+      "decision_history.jsonl": "5b9427b398514d6db0ff9f15235f372693efed3b0d43e073adeaffa12b851434",
+      "launches.jsonl": "8fc93d4ea0bdcd6370cd956c1b8aa10c9397360f0473d6ab61a005c00a175a85",
+      "observed_state.jsonl": "f5cc64d8d6006a425f662062981fa202554bf28c4d812a9b6b5cbbc092b2f13f",
+      "run_manifest.json": "552eb84162d34a9966ebc85c93bced8ae42e1ecf819bd9957113a6597e30dff5",
+      "state.json": "496e45a63ef1d6c09551fef25b6d4a1074d3e1f3d1eb611c3f3344958affeba0",
+      "transcripts/launch-1.jsonl": "4ba414fddb861f72c10d9e693eba9805452af9e8930ffccd3b3d10785ffb8772",
+      "workflow.jsonl": "5e8cc116b362b5bf71baff9cc50c32b5c9b19aa9070b9499336bfef2ee513dd3"
+    },
+    "evaluations": {
+      "deterministic_audit.jsonl": "1c376db5e4f7f16aed923ef266319afc50b6639485750e65ddd6b178b8445926",
+      "process_calls.jsonl": "b7fefbfc6734e5cadb5f7b9d92f388d62298a7376b715706fa308a2ccf2f9057",
+      "validation_history.jsonl": "67ab0e84c686bfb035828ca3c0d171f70b099952db3fb382feb1c83ecedc0957"
+    }
+  },
+  "hash_mismatches": [],
+  "consistency_problems": [],
+  "run_report_rebuilt": true,
+  "subagent_transcripts": {
+    "projects_root": "C:\\Users\\bissi\\.claude\\projects",
+    "sessions": [
+      {
+        "launch": "launch-1.jsonl",
+        "session_id": "7d04871c-fb81-4008-8e4d-dcb320ce2071",
+        "agent_spawns_in_launch": 36,
+        "session_folders": [
+          "C:\\Users\\bissi\\.claude\\projects\\C--hra-runs-hospital-resource-allocations\\7d04871c-fb81-4008-8e4d-dcb320ce2071"
+        ]
+      }
+    ],
+    "problems": [],
+    "preserved_files": 85,
+    "hash_mismatches": [],
+    "by_folder": {
+      "allocator": 73,
+      "checker": 12,
+      "unclassified": 0
+    }
+  },
+  "resumed": {
+    "run_folders_verified_in_place": [
+      "allocations",
+      "evaluations"
+    ]
+  }
+}

@@ -889,3 +889,25 @@ No frozen file modified, no CHECKER file read, nothing launched.
 ### Parked questions
 
 1. `launch` resumes whatever `ACTIVE_RUN` names; if `init_run` is skipped it would append a launch record to the finished R1 folder in the clone. Make `launch` refuse a run whose state is already FINISHED? (The launch commands now include a pointer check instead.)
+
+## 2026-11-22 (twentieth session: R2 copy-back failure diagnosed, fixed, completed)
+
+The clone was not touched, nothing was launched, and no CHECKER content was opened (CHECKER files were only hashed; their `.meta.json` files were read for `agentType`, as `preserve` does). R2's results are not analysed (that comes after R3).
+
+### Achieved
+
+1. **State before any change:** both R2 run folders complete in the repository and hash-identical to the clone (9 + 3 files). Capture partial: 72/85 files (30 ALLOCATOR + 6 CHECKER transcripts with metadata), all hash-identical. The 13 tool results (all ALLOCATOR), `SHA256SUMS.json`, the run report and `copy_back.json` were missing. Session folder `C--hra-runs-hospital-resource-allocations/7d04871c-…` intact.
+2. **Diagnosis:** path length (260 characters, `LongPathsEnabled` 0). Not a missing parent directory (R56).
+3. **Fix** (Log #116): `src/utils/paths.py`, long-path-safe `preserve` and `copy_back`, and `--resume` with hash checks. Six new tests. Local `core.longpaths true`.
+4. **R2 copy-back completed** with `--resume`, exit 0: 85/85 capture files (allocator 30 transcripts + 30 meta + 13 tool results; checker 6 + 6), 0 mismatches against an independent rehash of the session folder. Run folders match the clone. Run report rebuilt, 0 consistency problems.
+
+### Next
+
+1. Owner: R3 in the clone, then `copy_back` (no `--resume` unless an attempt stops part-way).
+
+### Parked questions
+
+1. `launch` resumes whatever `ACTIVE_RUN` names (carried over from the nineteenth session).
+2. `core.longpaths` is local git configuration: should the README tell anyone cloning the repository on Windows to set it, since R2's paths exceed 260 characters under a deep root?
+3. Should the pre-flight before R3 add a path-length check (repository root plus the longest expected capture path), so a similar limit fails before the run rather than at copy-back?
+

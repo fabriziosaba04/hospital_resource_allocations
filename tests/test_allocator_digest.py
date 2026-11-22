@@ -65,3 +65,74 @@ def test_digest_refuses_day_mismatch(tmp_path):
     preserve(s, "R", res)
     with pytest.raises(SystemExit):
         digest("R", res)
+
+
+# --- Log #116, R56: tool results at a destination of 260+ characters, and resuming a partial capture ---
+
+REAL_NAME = "mcp-allocator-get_decision_history-1795337149486-we0rir.txt"   # R2's shape (random suffix)
+
+
+def _deep_results(tmp_path):
+    """A results root placed like R2's: the tool-results folder stays under Windows' 248-character directory
+    limit (197 in R2), while the file inside it exceeds MAX_PATH (260 in R2)."""
+    tail = len("/results/allocations/R/transcripts/subagents/allocator/tool-results")
+    res = tmp_path / ("d" * (235 - len(str(tmp_path.absolute())) - tail - 1)) / "results"
+    folder = res / "allocations" / "R" / "transcripts" / "subagents" / "allocator" / "tool-results"
+    assert len(str(folder.absolute())) < 248 and len(str((folder / REAL_NAME).absolute())) > 260
+    return res
+
+
+def _session_with_real_names(tmp_path):
+    s = _session(tmp_path, [EXPL, EXPL])
+    (s / "tool-results" / REAL_NAME).write_text("history")
+    (s / "tool-results" / "toolu_011LQ3awJsWrjtes7ZeApqRY.json").write_text("{}")
+    return s
+
+
+def test_preserve_copies_tool_results_beyond_max_path(tmp_path):
+    from src.utils.paths import long_path
+    s, res = _session_with_real_names(tmp_path), _deep_results(tmp_path)
+    m = preserve(s, "R", res)
+    assert m["hash_mismatches"] == []
+    rel = f"allocator/tool-results/{REAL_NAME}"
+    assert rel in m["files"]
+    dst = res / "allocations" / "R" / "transcripts" / "subagents" / rel
+    assert long_path(dst).read_text() == "history"
+
+
+def test_preserve_resume_completes_a_partial_capture(tmp_path):
+    from src.utils.paths import long_path
+    s, res = _session_with_real_names(tmp_path), _deep_results(tmp_path)
+    out = res / "allocations" / "R" / "transcripts" / "subagents"
+    # the state R2's failed attempt left: transcripts and metadata copied, an empty tool-results folder, no manifest
+    for kind, name in (("allocator", "agent-a1"), ("checker", "agent-c1"), ("allocator", "agent-a2")):
+        long_path(out / kind / "tool-results").mkdir(parents=True, exist_ok=True)
+        for ext in (".meta.json", ".jsonl"):
+            (out / kind / f"{name}{ext}").write_bytes((s / "subagents" / f"{name}{ext}").read_bytes())
+    with pytest.raises(SystemExit, match="never overwritten"):
+        preserve(s, "R", res)                            # without resume: refuses as before
+    m = preserve(s, "R", res, resume=True)
+    assert m["hash_mismatches"] == [] and m["resumed"] == {"kept_verified": 6, "copied": 4}
+    assert len(m["files"]) == 10
+    with pytest.raises(SystemExit, match="complete"):
+        preserve(s, "R", res, resume=True)               # a complete capture is never touched again
+
+
+def test_preserve_resume_never_overwrites_different_content(tmp_path):
+    s, res = _session_with_real_names(tmp_path), _deep_results(tmp_path)
+    out = res / "allocations" / "R" / "transcripts" / "subagents" / "allocator"
+    out.mkdir(parents=True)
+    (out / "agent-a1.jsonl").write_text("tampered")
+    with pytest.raises(SystemExit, match="differ from the source"):
+        preserve(s, "R", res, resume=True)
+    assert (out / "agent-a1.jsonl").read_text() == "tampered"
+    assert not (out.parent / "SHA256SUMS.json").exists()
+
+
+def test_preserve_resume_refuses_files_outside_the_plan(tmp_path):
+    s, res = _session_with_real_names(tmp_path), _deep_results(tmp_path)
+    out = res / "allocations" / "R" / "transcripts" / "subagents" / "allocator"
+    out.mkdir(parents=True)
+    (out / "stray.txt").write_text("x")
+    with pytest.raises(SystemExit, match="not in the capture plan"):
+        preserve(s, "R", res, resume=True)
