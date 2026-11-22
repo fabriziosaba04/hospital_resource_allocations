@@ -20,6 +20,7 @@ from src.evaluation.checker_matching import match
 from src.evaluation.dataset import ROOT, load_dataset
 from src.evaluation.metrics import add_reversal_issues
 from src.mcp_server.store import Store
+from src.utils.paths import long_path
 
 AGENT = {"Agent", "Task"}
 
@@ -148,7 +149,7 @@ def build(run_id: str, results_root: Path = ROOT / "results", data_root: Path | 
           write: bool = True) -> dict:
     """Paths are resolved relative to `results_root` (owner decision §11 #44, Log #90), so a run folder
     copied back from a clone gives the same report as in place."""
-    alloc = Path(results_root) / "allocations" / run_id
+    alloc = long_path(Path(results_root) / "allocations" / run_id)     # Log #117
     m = json.loads((alloc / "run_manifest.json").read_text(encoding="utf-8"))
     store = Store.from_run_dir(alloc)
     ds = load_dataset(m["dataset_id"], root=resolve_data_root(m, data_root))

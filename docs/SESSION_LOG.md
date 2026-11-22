@@ -905,9 +905,18 @@ The clone was not touched, nothing was launched, and no CHECKER content was open
 
 1. Owner: R3 in the clone, then `copy_back` (no `--resume` unless an attempt stops part-way).
 
+### Owner review of fc5a944 (same day)
+
+1. **Counts reconciled** (R57): 84 = 12 run-folder files + 72 capture files after the failed attempt. Re-hash: R2 allocations 9/9 and evaluations 3/3 match the clone.
+2. **R1 unaffected:** R1's capture re-hashed against its `SHA256SUMS.json`: 85/85, no file outside the manifest. Read-only.
+3. **Readers routed through `long_path`** (Log #117, R58); `tests/test_long_paths.py` (4 tests). Measured: only R2's 13 tool results reach 260 characters today; the longest path outside the capture is 209 (dry-run fixtures).
+4. Owner answers: the README note on `core.longpaths`/`LongPathsEnabled` is deferred to the repository clean-up. No pre-flight change (it would break the freeze at `prompts-v1.0`).
+5. **Next:** R3 with the standard commands (R2 → R3). Copy-back for R3 runs **without** `--resume`. If it fails: stop and report, do not resume without the owner.
+
 ### Parked questions
 
-1. `launch` resumes whatever `ACTIVE_RUN` names (carried over from the nineteenth session).
-2. `core.longpaths` is local git configuration: should the README tell anyone cloning the repository on Windows to set it, since R2's paths exceed 260 characters under a deep root?
-3. Should the pre-flight before R3 add a path-length check (repository root plus the longest expected capture path), so a similar limit fails before the run rather than at copy-back?
+1. `launch` resumes whatever `ACTIVE_RUN` names (stays parked).
+2. README: `core.longpaths` (local git configuration, does not travel with a clone) and `LongPathsEnabled`. **Owner: yes, at the repository clean-up step.**
+3. Path length after the clean-up: measure the longest path once material moves to `results/development/`. **Owner: parked for the clean-up step; no pre-flight change.**
+4. Writers outside the routed entry points (for example baseline and evaluation outputs under `results/allocations/B?-*`) use plain paths. Today they are far below the limit; re-check after the clean-up move (with item 3).
 

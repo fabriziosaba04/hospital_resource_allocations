@@ -27,6 +27,7 @@ from src.environment.types import Patient
 from src.utils.constants import DEPARTMENTS, LEVELS
 
 from .dataset import Dataset
+from src.utils.paths import long_path
 
 SCALE = 100   # need is held in integer hundredths of a nurse
 
@@ -112,7 +113,7 @@ def bed_tier_max(holders: list[Patient], nonholders: list[Patient], pool_beds: i
 # ----------------------------------------------------------------------------- records
 
 def read_jsonl(path: Path) -> list[dict]:
-    with open(path, encoding="utf-8") as f:
+    with open(long_path(path), encoding="utf-8") as f:
         return [json.loads(line) for line in f if line.strip()]
 
 
@@ -127,6 +128,7 @@ class RunRecords:
 
 
 def load_records(run_dir: Path) -> RunRecords:
+    run_dir = long_path(run_dir)                       # Log #117
     alloc_lines = read_jsonl(run_dir / "allocation_state.jsonl")
     bed_lines = read_jsonl(run_dir / "bed_assignment_state.jsonl")
     initial = next(x for x in alloc_lines if x["source"] == "initial_rule")

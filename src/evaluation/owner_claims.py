@@ -48,6 +48,7 @@ from src.utils.constants import DEPARTMENTS
 
 from .claim_check import claim_key, extraction_recall
 from .dataset import ROOT
+from src.utils.paths import long_path
 
 DEP_CODES = {"CA": "cardiology", "IM": "internal_medicine", "NE": "neurology", "OR": "orthopedics"}
 DAY_QUANTITIES = {"pool_beds", "pool_nurses", "holders", "queue", "need", "free_beds"}
@@ -311,7 +312,7 @@ def compare(owner: list[dict], spec: list[dict], days: set[int], raw_rows: list[
 
 def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = None) -> None:
     from .owner_inputs import ADJ_COLS, ADJ_FILE, ADJ_KEY, ADJ_OWNER, adjudication_claim_id, adjudication_context, merge
-    folder = (eval_dir or ROOT / "results" / "evaluations" / run_id) / "owner_extraction"
+    folder = long_path((eval_dir or ROOT / "results" / "evaluations" / run_id) / "owner_extraction")      # Log #117
     claims, nonmech = convert(folder)
     (folder / "owner_claims_converted.json").write_text(
         json.dumps({"run_id": run_id, "source": FILE, "claims": claims}, indent=2, ensure_ascii=False) + "\n",

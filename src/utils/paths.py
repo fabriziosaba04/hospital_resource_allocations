@@ -15,7 +15,7 @@ from pathlib import Path
 def long_path(p) -> Path:
     if os.name != "nt":
         return Path(p)
-    s = str(Path(p).absolute()).replace("/", "\\")
+    s = os.path.abspath(str(p)).replace("/", "\\")          # abspath collapses "..", which the extended form does not
     if s.startswith("\\\\?\\"):
         return Path(s)
     return Path("\\\\?\\UNC\\" + s[2:] if s.startswith("\\\\") else "\\\\?\\" + s)

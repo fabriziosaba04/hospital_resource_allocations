@@ -35,6 +35,7 @@ from src.utils.constants import DEPARTMENTS, LEVELS  # noqa: E402
 from .audit import load_records  # noqa: E402
 from .dataset import ROOT, load_dataset  # noqa: E402
 from .metrics import evaluate_run  # noqa: E402
+from src.utils.paths import long_path
 
 # reference categorical palette (dataviz skill, references/palette.md, slots 1-4, light mode), fixed order
 SERIES = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100"]
@@ -245,13 +246,13 @@ def build(dataset_id: str, runs: list[str], data_root: Path = ROOT, out: Path | 
     metrics, problems = {}, {}
     with tempfile.TemporaryDirectory() as tmp:
         for r in runs:
-            rd = results_root / "allocations" / r
+            rd = long_path(results_root / "allocations" / r)              # Log #117
             metrics[r] = evaluate_run(ds, rd, out_root=Path(tmp))        # recomputed, written to a temp dir only
             rows = daily_frame(ds, rd)
             problems[r] = check_frame(rows, ds.max_beds)
             fig_beds_over_time(rows, r, out)
             fig_nurses_vs_requirement(rows, r, out)
-            rep = results_root / "evaluations" / r / "run_report.json"
+            rep = long_path(results_root / "evaluations" / r / "run_report.json")
             if rep.exists():
                 fig_checker_matching(json.loads(rep.read_text(encoding="utf-8")), r, out)
     fig_overflow_by_tier(metrics, out)

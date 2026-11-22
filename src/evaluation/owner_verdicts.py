@@ -30,6 +30,7 @@ from .audit import load_records
 from .claim_check import quantity
 from .dataset import ROOT, load_dataset
 from .owner_claims import FILE, compare, convert
+from src.utils.paths import long_path
 
 VERDICTS_FILE = "owner_verdicts_nonmech.csv"
 
@@ -58,8 +59,8 @@ def _strip(r: dict) -> dict:
 
 def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = None) -> None:
     from .owner_inputs import ADJ_COLS, ADJ_FILE, ADJ_KEY, OwnerInputError, read_table
-    ev = eval_dir or ROOT / "results" / "evaluations" / run_id
-    alloc = alloc_dir or ROOT / "results" / "allocations" / run_id
+    ev = long_path(eval_dir or ROOT / "results" / "evaluations" / run_id)        # Log #117
+    alloc = long_path(alloc_dir or ROOT / "results" / "allocations" / run_id)
     folder = ev / "owner_extraction"
     m = json.loads((alloc / "run_manifest.json").read_text(encoding="utf-8"))
     ds, rec = load_dataset(m["dataset_id"], Path(m["data_root"])), load_records(alloc)

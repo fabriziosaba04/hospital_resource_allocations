@@ -26,6 +26,7 @@ from .audit import load_records
 from .claim_check import VERDICTS, quantity, score_claim
 from .dataset import ROOT, load_dataset
 from .owner_claims import FILE, compare, convert, encoding
+from src.utils.paths import long_path
 
 OUT_A = {"patient", "mean_arrivals", "census", "requirement"}
 
@@ -52,8 +53,8 @@ def _accuracy(claims: list[dict]) -> dict:
 
 
 def main(run_id: str) -> None:
-    ev = ROOT / "results" / "evaluations" / run_id
-    alloc = ROOT / "results" / "allocations" / run_id
+    ev = long_path(ROOT / "results" / "evaluations" / run_id)        # Log #117
+    alloc = long_path(ROOT / "results" / "allocations" / run_id)
     m = json.loads((alloc / "run_manifest.json").read_text(encoding="utf-8"))
     ds, rec = load_dataset(m["dataset_id"], Path(m["data_root"])), load_records(alloc)
     scored = [c for c in json.loads((ev / "explanation_claims.json").read_text(encoding="utf-8"))["claims"]

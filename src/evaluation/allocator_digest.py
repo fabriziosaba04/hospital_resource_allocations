@@ -116,7 +116,7 @@ def _events(path: Path) -> tuple[str, list[tuple[str, str, str]]]:
     """(first timestamp, [(kind, name, text)]) for tool calls, tool results and final texts."""
     ev, first = [], None
     names = {}
-    for line in path.read_text(encoding="utf-8").splitlines():
+    for line in long_path(path).read_text(encoding="utf-8").splitlines():
         o = json.loads(line)
         if o.get("type") not in ("assistant", "user"):
             continue
@@ -136,7 +136,7 @@ def _events(path: Path) -> tuple[str, list[tuple[str, str, str]]]:
 
 
 def digest(run_id: str, results: Path = ROOT / "results") -> list[Path]:
-    run = results / "allocations" / run_id
+    run = long_path(results / "allocations" / run_id)        # Log #117
     decisions = {}
     for line in (run / "decision_history.jsonl").read_text(encoding="utf-8").splitlines():
         d = json.loads(line)
@@ -147,7 +147,7 @@ def digest(run_id: str, results: Path = ROOT / "results") -> list[Path]:
     trs = sorted(((*_events(p), p) for p in (run / "transcripts" / "subagents" / "allocator").glob("*.jsonl")))
     if len(trs) != len(decisions):
         raise SystemExit(f"{len(trs)} ALLOCATOR transcripts for {len(decisions)} accepted decisions")
-    out_dir = results / "evaluations" / run_id / "allocator_digest"
+    out_dir = long_path(results / "evaluations" / run_id / "allocator_digest")
     out_dir.mkdir(parents=True, exist_ok=False)
     written = []
     for day, (first, ev, path) in zip(sorted(decisions), trs):

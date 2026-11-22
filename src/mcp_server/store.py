@@ -19,6 +19,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from src.evaluation.dataset import ROOT
+from src.utils.paths import long_path
 
 POINTER = ROOT / "results" / "allocations" / "ACTIVE_RUN"
 STALE_LOCK_SECONDS = 120.0      # every locked operation takes well under a second on the 30-day data
@@ -107,10 +108,10 @@ class Store:
         return (self.alloc_dir if key == "alloc" else self.eval_dir) / name
 
     def manifest(self) -> dict:
-        return json.loads((self.alloc_dir / "run_manifest.json").read_text(encoding="utf-8"))
+        return json.loads(long_path(self.alloc_dir / "run_manifest.json").read_text(encoding="utf-8"))
 
     def read(self, record: str) -> list[dict]:
-        p = self.path(record)
+        p = long_path(self.path(record))                 # reads are long-path safe (Log #117); attributes stay plain
         if not p.exists():
             return []
         out = []
@@ -126,7 +127,7 @@ class Store:
         return out
 
     def read_state(self) -> dict:
-        return json.loads((self.alloc_dir / "state.json").read_text(encoding="utf-8"))
+        return json.loads(long_path(self.alloc_dir / "state.json").read_text(encoding="utf-8"))
 
     @contextmanager
     def lock(self, timeout: float = 30.0):

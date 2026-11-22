@@ -23,6 +23,7 @@ import json
 import re
 import sys
 from pathlib import Path
+from src.utils.paths import long_path
 
 CAUSES = ("owner_miss", "assistant_miss", "owner_encoding", "assistant_encoding", "rubric_ambiguity", "matching_rule")
 
@@ -144,7 +145,7 @@ def init(eval_dir: Path) -> list[str]:
     """Create the tables that do not exist yet from the generated rows; owner cells empty except the causes
     already set by the owner in owner_verdicts_nonmech.csv. Never overwrites."""
     made = []
-    ex = eval_dir / "owner_extraction"
+    ex = long_path(eval_dir / "owner_extraction")        # Log #117
     adj = list(csv.DictReader(open(ex / "adjudication_7a.csv", encoding="utf-8-sig")))
     nonmech = {int(r["row"]): r for r in csv.DictReader(open(ex / "owner_verdicts_nonmech.csv", encoding="utf-8"))}
     rows = []

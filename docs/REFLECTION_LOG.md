@@ -427,3 +427,18 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **Consequence:** none on the data. The attempt left both run folders complete and hash-identical to the clone, and 72 of 85 capture files (all transcripts and metadata) hash-identical to the session folder. The 13 tool results, `SHA256SUMS.json`, the run report and `copy_back.json` were missing. Nothing was overwritten, and the clone and the session folder were not touched.
 - **Fix:** long-path-safe copy and hashing (Log #116), and a hash-verified `--resume`. The new tests place the files over 260 characters with R2's exact name shape; with `long_path` disabled, the test reproduces the R2 error. R2 was completed with `--resume`: 85/85 files and 9 + 3 run-folder files hash-identical, 0 mismatches.
 - **Implication:** a test of a file-system branch must use the real path lengths and name shapes, not only the real logic. Any capture step whose inputs are named by an external tool (here Claude Code) must expect those names to change between versions.
+
+### R57. A file count in the R2 copy-back report was given the wrong label
+
+- **What happened:** the report on fc5a944 said the failed attempt wrote "both run folders in full (84 files)" and, a few lines later, "run folders: hash-identical to the clone (9 + 3 files)". The 84 was every R2 file in the repository after the failed attempt: 12 run-folder files plus 72 capture files. Both numbers were right, but the first was attached to the wrong noun, so the report contradicted itself.
+- **How it was caught:** the owner's review.
+- **Fix:** re-hashed and reported separately. Allocations: 9/9 clone files matched; 95 in the repository = 9 + 86 capture (85 files plus `SHA256SUMS.json`). Evaluations: 3/3 matched; 5 = 3 + `copy_back.json` + `run_report.json`.
+- **Implication:** every count in a report needs the set it counts named, and two counts of overlapping sets need their relation stated (84 = 12 + 72).
+
+### R58. Two flaws in the first long-path fix, found while extending it to readers
+
+- **What happened:** (i) `long_path` built the extended form from `Path.absolute()`, which does not collapse `..`, and the extended form disables Windows' own normalisation. A path containing `..` would have pointed to a file that does not exist. No caller passed one, so there was no consequence. (ii) The first routing of `Store` wrapped its `alloc_dir`/`eval_dir` attributes, which changed values that callers compare.
+- **How it was caught:** (i) on re-reading `paths.py` while routing the readers; (ii) by `test_store_paths_resolve_relative_to_the_run_folder` in the fast suite.
+- **Fix:** `os.path.abspath`, plus a test with `..` and a test that applying the function twice gives the same result. `Store` routes only its read calls.
+- **Implication:** a path helper that bypasses the OS's normalisation must do that normalisation itself. A wrapper belongs at the I/O call, not on public attributes.
+

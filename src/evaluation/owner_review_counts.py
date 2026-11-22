@@ -28,6 +28,7 @@ from pathlib import Path
 from .claim_check import VERDICTS
 from .dataset import ROOT
 from .owner_inputs import UNVER_FILE, WRONG_FILE
+from src.utils.paths import long_path
 
 MAP = {"wrong": {"confirmed_wrong": "wrong", "actually_correct": "correct", "extraction_error": "correct",
                  "should_be_unverifiable": "unverifiable", "": "wrong"},
@@ -48,7 +49,7 @@ def _count(claims: list[dict], key, basis=lambda c: c.get("basis") or "unclassif
 
 
 def main(run_id: str, eval_dir: Path | None = None) -> dict:
-    ev = eval_dir or ROOT / "results" / "evaluations" / run_id
+    ev = long_path(eval_dir or ROOT / "results" / "evaluations" / run_id)        # Log #117
     claims = [c for c in json.loads((ev / "explanation_claims.json").read_text(encoding="utf-8"))["claims"]
               if c["author"] == "ALLOCATOR"]
     own = {}

@@ -25,6 +25,7 @@ from .audit import load_records
 from .claim_check import day_context, quantity, resolve_allocation
 from .dataset import ROOT, load_dataset
 from .rubric_check_view import sentence
+from src.utils.paths import long_path
 
 AB = {"cardiology": "CA", "internal_medicine": "IM", "neurology": "NE", "orthopedics": "OR"}   # by name (R54)
 assert set(AB) == set(DEPARTMENTS)
@@ -142,8 +143,8 @@ def readings(ds, rec) -> dict[str, tuple[str, str]]:
 
 
 def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = None) -> list[dict]:
-    ev = eval_dir or ROOT / "results" / "evaluations" / run_id
-    alloc = alloc_dir or ROOT / "results" / "allocations" / run_id
+    ev = long_path(eval_dir or ROOT / "results" / "evaluations" / run_id)        # Log #117
+    alloc = long_path(alloc_dir or ROOT / "results" / "allocations" / run_id)
     m = json.loads((alloc / "run_manifest.json").read_text(encoding="utf-8"))
     ds, rec = load_dataset(m["dataset_id"], Path(m["data_root"])), load_records(alloc)
     hist = {}

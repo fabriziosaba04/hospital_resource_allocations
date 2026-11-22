@@ -35,6 +35,7 @@ from .audit import load_records
 from .claim_check import claim_key, score_claim
 from .dataset import ROOT, load_dataset
 from .owner_claims import ABBR, FILE, _alloc_str, _canon, compare, convert
+from src.utils.paths import long_path
 
 BANNER = ("# GENERATED DISPLAY FILE (src/evaluation/adjudication_view.py): not an input, plays no part in matching; "
           "edit causes in owner_adjudication_causes.csv")
@@ -152,8 +153,8 @@ def quantity_parts(o: dict, a: dict) -> list[str]:
 
 
 def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = None) -> dict:
-    ev = eval_dir or ROOT / "results" / "evaluations" / run_id
-    alloc = alloc_dir or ROOT / "results" / "allocations" / run_id
+    ev = long_path(eval_dir or ROOT / "results" / "evaluations" / run_id)        # Log #117
+    alloc = long_path(alloc_dir or ROOT / "results" / "allocations" / run_id)
     folder = ev / "owner_extraction"
     m = json.loads((alloc / "run_manifest.json").read_text(encoding="utf-8"))
     ds, rec = load_dataset(m["dataset_id"], Path(m["data_root"])), load_records(alloc)

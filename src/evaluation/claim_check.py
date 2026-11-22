@@ -44,6 +44,7 @@ from src.utils.constants import DEPARTMENTS
 
 from .audit import load_records
 from .dataset import ROOT, load_dataset
+from src.utils.paths import long_path
 
 VERDICTS = ("correct", "wrong", "unverifiable")
 
@@ -206,8 +207,8 @@ def _score_one(ds, rec, c: dict) -> dict:
 
 
 def score(run_id: str, spec_path: Path | None = None, results_root: Path = ROOT / "results") -> dict:
-    alloc_dir = results_root / "allocations" / run_id
-    eval_dir = results_root / "evaluations" / run_id
+    alloc_dir = long_path(results_root / "allocations" / run_id)        # Log #117
+    eval_dir = long_path(results_root / "evaluations" / run_id)
     m = json.loads((alloc_dir / "run_manifest.json").read_text(encoding="utf-8"))
     data_root = Path(m["data_root"])
     ds = load_dataset(m["dataset_id"], data_root)
