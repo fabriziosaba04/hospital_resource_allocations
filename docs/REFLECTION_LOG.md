@@ -445,3 +445,11 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **Fix:** `os.path.abspath`, plus a test with `..` and a test that applying the function twice gives the same result. `Store` routes only its read calls.
 - **Implication:** a path helper that bypasses the OS's normalisation must do that normalisation itself. A wrapper belongs at the I/O call, not on public attributes.
 
+
+### R59. Default output paths of the evaluation entry points point into the frozen run folders
+
+- **Type:** development/process (not a finding about agent reliability).
+- **What happened:** the clean-up inventory (2026-11-23) found that `metrics.evaluate_run` defaults to `results/evaluations/<run>/` and writes `deterministic_audit.jsonl` and `metrics.json` there. `run_report` and the `claim_check` CLI also write inside the run folder, and `python -m src.evaluation` rewrites the baseline records with a new `created_at`. For R1–R3 and STRESS1, `deterministic_audit.jsonl` is a copy-back file whose hash is recorded in `copy_back.json`. A recomputation with the defaults, for example a "headline number recomputed without the agent", would have overwritten frozen evidence with a file that differs at least in `created_at`.
+- **How it was caught:** by reading the writers while auditing path dependencies for the clean-up plan. Nothing was run with the defaults, and nothing was overwritten. The Phase 0 independent check passed on all four runs the same day.
+- **Fix (planned, Phase 1b):** output-root options on these entry points, numbered scripts that always write under `results/analysis/recomputed/`, and tests that the committed files are untouched (`docs/CLEANUP_PLAN.md` §3.3, §9 step 5).
+- **Implication:** a default output path that suits the first run turns into a hazard once that output is frozen. Recomputation for verification must write somewhere new and then compare.

@@ -955,3 +955,16 @@ The clone was only read (copy-back, verification and a hash of its stress datase
 ### Next
 
 1. Repository clean-up (the verification script moves into the repository then), then the analysis: R2/R3 and STRESS1 metrics, CHECKER matching, §11 #73–#75.
+
+## 2026-11-23 (twenty-third session: clean-up Phase 0 and Phase 1a)
+
+Nothing was moved. The clone and the session folders were only read. No CHECKER content was opened (the independent check hashes CHECKER files and reads their `.meta.json` for `agentType`).
+
+### Achieved
+
+1. **Phase 0:** `tests/manual/verify_copy_back_independent.py RUN_ID` (Log #118), with its own `\?\` handling. Run folders 9/9 and 3/3 match the clone for every run. Capture against the session folder and `SHA256SUMS.json`: R1 85/85, R2 85/85, R3 84/84, STRESS1 85/85, all `RESULT: OK`. Commit `c34ca77`.
+2. **Phase 1a:** `docs/CLEANUP_PLAN.md` (inventory, target tree, path-dependency audit, path lengths, entry scripts, README outline, publication scan, reproducibility, Phase 1b order). Run folders and `data/` stay in place; only development material moves. No secret found. REFLECTION_LOG R59.
+
+### Next
+
+1. Owner: review `docs/CLEANUP_PLAN.md`; decide U1–U6 (§1.3). Then Phase 1b on branch `cleanup`.
