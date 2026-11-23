@@ -15,13 +15,14 @@ from src.mcp_server.copy_back import copy_back
 from src.mcp_server.store import Store
 
 RUN = "DRY2-HARD10"
-FIX = ROOT / "results" / "dry_runs" / "HARD10_fixture"
+DEV = ROOT / "results" / "development"                   # DRY2 and the fixtures moved here (2026-11-23)
+FIX = DEV / "dry_runs" / "HARD10_fixture"
 
 
 def _fake_clone(tmp: Path, lose_data_root: bool = False) -> Path:
     clone = tmp / "clone"
     for kind in ("allocations", "evaluations"):
-        shutil.copytree(ROOT / "results" / kind / RUN, clone / "results" / kind / RUN)
+        shutil.copytree(DEV / kind / RUN, clone / "results" / kind / RUN)
     (clone / "results" / "evaluations" / RUN / "run_report.json").unlink()   # must be rebuilt, not copied
     if lose_data_root:                                                        # the clone was deleted
         mp = clone / "results" / "allocations" / RUN / "run_manifest.json"
@@ -37,7 +38,7 @@ def test_copied_run_rebuilds_a_byte_identical_report(tmp_path, lose_data_root):
     repo = tmp_path / "repo" / "results"
     out = copy_back(clone, RUN, repo_results=repo, data_root=FIX if lose_data_root else None)
     assert out["hash_mismatches"] == [] and out["consistency_problems"] == [] and out["run_report_rebuilt"]
-    want = (ROOT / "results" / "evaluations" / RUN / "run_report.json").read_bytes()
+    want = (DEV / "evaluations" / RUN / "run_report.json").read_bytes()
     assert (repo / "evaluations" / RUN / "run_report.json").read_bytes() == want
     # everything the run wrote came back, transcripts and process calls included
     for rel in ("allocations/DRY2-HARD10/transcripts/launch-1.jsonl", "allocations/DRY2-HARD10/launches.jsonl",

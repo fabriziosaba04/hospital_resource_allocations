@@ -20,7 +20,7 @@ from src.evaluation.checker_matching import match
 from src.evaluation.dataset import ROOT, load_dataset
 from src.evaluation.metrics import add_reversal_issues
 from src.mcp_server.store import Store
-from src.utils.paths import long_path
+from src.utils.paths import guard_write, long_path, recomputed_dir
 
 AGENT = {"Agent", "Task"}
 
@@ -138,17 +138,28 @@ def active_seconds(start: datetime, end: datetime, intervals) -> tuple[float, in
 
 def resolve_data_root(m: dict, data_root: Path | None = None) -> Path:
     """The dataset root for a run: an explicit override, else the manifest's `data_root` if it exists (a
-    clone may have been deleted), else the repository root (frozen data are identical by manifest)."""
+    clone may have been deleted), else the repository root (frozen data are identical by manifest).
+    A synthetic fixture recorded under the old `results/dry_runs/` (moved by the clean-up of 2026-11-23, or on
+    another machine) resolves to `results/development/dry_runs/<fixture>`; the records are never edited."""
     if data_root is not None:
         return Path(data_root)
     p = Path(m["data_root"])
-    return p if p.exists() else ROOT
+    if p.exists():
+        return p
+    parts = [x for x in str(m["data_root"]).replace("\\", "/").split("/") if x]
+    if "dry_runs" in parts:
+        moved = ROOT.joinpath("results", "development", "dry_runs", *parts[parts.index("dry_runs") + 1:])
+        if moved.exists():
+            return moved
+    return ROOT
 
 
 def build(run_id: str, results_root: Path = ROOT / "results", data_root: Path | None = None,
-          write: bool = True) -> dict:
+          write: bool = True, out_dir: Path | None = None) -> dict:
     """Paths are resolved relative to `results_root` (owner decision §11 #44, Log #90), so a run folder
-    copied back from a clone gives the same report as in place."""
+    copied back from a clone gives the same report as in place. The report goes to `out_dir`, by default
+    `<results_root>/analysis/recomputed/<run_id>/`; only copy-back passes the run's own evaluation folder
+    (owner decision 2026-11-23, R59)."""
     alloc = long_path(Path(results_root) / "allocations" / run_id)     # Log #117
     m = json.loads((alloc / "run_manifest.json").read_text(encoding="utf-8"))
     store = Store.from_run_dir(alloc)
@@ -206,8 +217,10 @@ def build(run_id: str, results_root: Path = ROOT / "results", data_root: Path | 
            "days": out_days, "checker": matching, "checker_overall": overall,
            "checker_simulate_calls": sum(1 for c in calls if c["writer"] == "checker")}
     if write:
-        (store.eval_dir / "run_report.json").write_text(json.dumps(rep, indent=2) + "\n", encoding="utf-8",
-                                                        newline="\n")
+        out = long_path(guard_write(Path(out_dir) if out_dir is not None
+                                    else recomputed_dir(run_id, results_root)))
+        out.mkdir(parents=True, exist_ok=True)
+        (out / "run_report.json").write_text(json.dumps(rep, indent=2) + "\n", encoding="utf-8", newline="\n")
     return rep
 
 
@@ -217,7 +230,9 @@ if __name__ == "__main__":
     ap.add_argument("run_id")
     ap.add_argument("--results-root", default=str(ROOT / "results"))
     ap.add_argument("--data-root")
+    ap.add_argument("--out", help="output folder (default results/analysis/recomputed/<run_id>/)")
     a = ap.parse_args()
-    r = build(a.run_id, Path(a.results_root), Path(a.data_root) if a.data_root else None)
+    r = build(a.run_id, Path(a.results_root), Path(a.data_root) if a.data_root else None,
+              out_dir=Path(a.out) if a.out else None)
     print(json.dumps({k: r[k] for k in ("run_id", "models_configured", "main_models_observed",
                                         "session_cost_usd")}, indent=2))

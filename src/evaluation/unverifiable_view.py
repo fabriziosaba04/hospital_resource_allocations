@@ -25,7 +25,7 @@ from .audit import load_records
 from .claim_check import day_context, quantity, resolve_allocation
 from .dataset import ROOT, load_dataset
 from .rubric_check_view import sentence
-from src.utils.paths import long_path
+from src.utils.paths import guard_write, long_path
 
 AB = {"cardiology": "CA", "internal_medicine": "IM", "neurology": "NE", "orthopedics": "OR"}   # by name (R54)
 assert set(AB) == set(DEPARTMENTS)
@@ -165,6 +165,7 @@ def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = Non
                      "full_sentence": found[0] if found else hist[day].get(c["field"], ""),
                      "reason": reason(c.get("note", "")), "reading": vals[c["id"]][0], "value": vals[c["id"]][1],
                      "note": c.get("note", "")})
+    guard_write(ev / "owner_review")                      # frozen run folders are read-only (R59)
     with open(ev / "owner_review" / "unverifiable_26_check.csv", "w", encoding="utf-8-sig", newline="") as f:
         f.write(BANNER + "\n")
         w = csv.DictWriter(f, fieldnames=list(rows[0]), lineterminator="\n")

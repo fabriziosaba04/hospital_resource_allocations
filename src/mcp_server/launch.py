@@ -27,6 +27,8 @@ from pathlib import Path
 
 from src.evaluation.dataset import ROOT
 
+from src.utils.paths import guard_write
+
 from .consistency import check
 from .store import Store
 
@@ -103,7 +105,7 @@ def spawn_refusals(transcript_lines: list[str]) -> int:
 def launch(store: Store, max_turns: int = 2000, synced: str | None = None) -> dict:
     m = store.manifest()
     model = m["models"]["main"]
-    tdir = store.alloc_dir / "transcripts"
+    tdir = guard_write(store.alloc_dir / "transcripts")      # frozen run folders are read-only (R59)
     tdir.mkdir(exist_ok=True)
     k = len(list(tdir.glob("launch-*.jsonl"))) + 1
     tpath = tdir / f"launch-{k}.jsonl"
@@ -129,7 +131,7 @@ def launch(store: Store, max_turns: int = 2000, synced: str | None = None) -> di
            "synced_folder": synced, "state_after": store.read_state(), "consistency_problems": check(store),
            "spawn_refusals": spawn_refusals(lines),
            "stderr_tail": stderr[-1500:]}
-    with open(store.alloc_dir / "launches.jsonl", "a", encoding="utf-8", newline="\n") as f:
+    with open(guard_write(store.alloc_dir / "launches.jsonl"), "a", encoding="utf-8", newline="\n") as f:
         f.write(json.dumps(rec) + "\n")
     return rec
 

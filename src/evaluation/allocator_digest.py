@@ -26,7 +26,7 @@ import shutil
 import sys
 from pathlib import Path
 
-from src.utils.paths import long_path, walk_files
+from src.utils.paths import guard_write, long_path, recomputed_dir, walk_files
 
 from .dataset import ROOT
 
@@ -135,7 +135,8 @@ def _events(path: Path) -> tuple[str, list[tuple[str, str, str]]]:
     return first or "", ev
 
 
-def digest(run_id: str, results: Path = ROOT / "results") -> list[Path]:
+def digest(run_id: str, results: Path = ROOT / "results", out_dir: Path | None = None) -> list[Path]:
+    """Writes to `out_dir`, by default `<results>/analysis/recomputed/<run_id>/allocator_digest/` (R59)."""
     run = long_path(results / "allocations" / run_id)        # Log #117
     decisions = {}
     for line in (run / "decision_history.jsonl").read_text(encoding="utf-8").splitlines():
@@ -147,7 +148,8 @@ def digest(run_id: str, results: Path = ROOT / "results") -> list[Path]:
     trs = sorted(((*_events(p), p) for p in (run / "transcripts" / "subagents" / "allocator").glob("*.jsonl")))
     if len(trs) != len(decisions):
         raise SystemExit(f"{len(trs)} ALLOCATOR transcripts for {len(decisions)} accepted decisions")
-    out_dir = long_path(results / "evaluations" / run_id / "allocator_digest")
+    out_dir = long_path(guard_write(Path(out_dir) if out_dir is not None
+                                    else recomputed_dir(run_id, results) / "allocator_digest"))
     out_dir.mkdir(parents=True, exist_ok=False)
     written = []
     for day, (first, ev, path) in zip(sorted(decisions), trs):

@@ -128,7 +128,9 @@ def copy_back(clone_root: Path, run_id: str, repo_results: Path = ROOT / "result
     sub = capture_subagents(pairs[0][1], run_id, Path(repo_results), projects or projects_root(), resume=resume)
     store = Store.from_run_dir(pairs[0][1])
     problems = check(store)
-    report = build(run_id, Path(repo_results), data_root) if not mismatches else None
+    # copy-back is the one writer allowed into the run folder: copy_back.json does not exist yet (R59)
+    report = (build(run_id, Path(repo_results), data_root, out_dir=pairs[1][1])
+              if not mismatches else None)
     out = {"run_id": run_id, "clone_root": str(Path(clone_root).resolve()),
            "copied_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
            "files": hashes, "hash_mismatches": mismatches, "consistency_problems": problems,

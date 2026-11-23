@@ -44,7 +44,7 @@ from src.utils.constants import DEPARTMENTS
 
 from .audit import load_records
 from .dataset import ROOT, load_dataset
-from src.utils.paths import long_path
+from src.utils.paths import guard_write, long_path, recomputed_dir
 
 VERDICTS = ("correct", "wrong", "unverifiable")
 
@@ -210,8 +210,8 @@ def score(run_id: str, spec_path: Path | None = None, results_root: Path = ROOT 
     alloc_dir = long_path(results_root / "allocations" / run_id)        # Log #117
     eval_dir = long_path(results_root / "evaluations" / run_id)
     m = json.loads((alloc_dir / "run_manifest.json").read_text(encoding="utf-8"))
-    data_root = Path(m["data_root"])
-    ds = load_dataset(m["dataset_id"], data_root)
+    from .run_report import resolve_data_root       # the clone or the old fixture path may not exist here
+    ds = load_dataset(m["dataset_id"], resolve_data_root(m))
     rec = load_records(alloc_dir)
     spec = json.loads((spec_path or eval_dir / "explanation_claims_spec.json").read_text(encoding="utf-8"))
     claims = [score_claim(ds, rec, c) for c in spec["claims"]]
@@ -299,7 +299,8 @@ def extraction_recall(a: list[dict], b: list[dict], days=None) -> dict:
 
 if __name__ == "__main__":
     out = score(sys.argv[1])
-    eval_dir = ROOT / "results" / "evaluations" / sys.argv[1]
+    eval_dir = guard_write(recomputed_dir(sys.argv[1]))          # never the run folder (R59)
+    eval_dir.mkdir(parents=True, exist_ok=True)
     (eval_dir / "explanation_claims.json").write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8",
                                                       newline="\n")
     print(json.dumps({"summary": out["summary"], "findings": out["findings"]}, indent=2))

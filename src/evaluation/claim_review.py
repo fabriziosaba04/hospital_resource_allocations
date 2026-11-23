@@ -21,7 +21,7 @@ from pathlib import Path
 
 from .dataset import ROOT
 from .owner_claims import encoding
-from src.utils.paths import long_path
+from src.utils.paths import guard_write, long_path
 
 COLUMNS = ["id", "day", "field", "text", "category", "basis", "encoding", "computed", "computed_compare",
            "rubric_term", "verdict_alternative", "computed_alternative", "tier", "note", "owner_verdict",
@@ -41,7 +41,7 @@ def main(run_id: str, eval_dir: Path | None = None) -> None:
     from .owner_inputs import REVIEW_COLS, REVIEW_KEY, REVIEW_OWNER, UNVER_FILE, WRONG_FILE, merge, review_context
     eval_dir = long_path(eval_dir or ROOT / "results" / "evaluations" / run_id)        # Log #117
     claims = json.loads((eval_dir / "explanation_claims.json").read_text(encoding="utf-8"))["claims"]
-    out = eval_dir / "owner_review"
+    out = guard_write(eval_dir / "owner_review")          # frozen run folders are read-only (R59)
     out.mkdir(exist_ok=True)
     owner = {}                                           # validate both owner tables before writing anything
     for verdict, table in (("wrong", WRONG_FILE), ("unverifiable", UNVER_FILE)):

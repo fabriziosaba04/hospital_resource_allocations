@@ -2,11 +2,17 @@
 
 from __future__ import annotations
 
+from pathlib import Path
+
 from src.evaluation.claim_check import score
+from src.evaluation.dataset import ROOT
+
+DEV = ROOT / "results" / "development"                   # DRY2 moved here (clean-up, 2026-11-23)
+FULL_SPEC = DEV / "evaluations" / "DRY2-HARD10" / "explanation_claims_full_spec.json"
 
 
 def test_dry2_findings_scored_claim_by_claim():
-    out = score("DRY2-HARD10")
+    out = score("DRY2-HARD10", results_root=DEV)
     v = {c["id"]: c["verdict"] for c in out["claims"]}
     # finding 1: the ALLOCATOR's "no better" is wrong (6.0 vs 5.6 need covered at levels 2-3); the CHECKER's
     # three figures are right
@@ -26,8 +32,7 @@ def test_full_universe_of_dry2_claims_and_checker_recall():
     """Owner Point A: every universe claim in every DRY2 explanation, independent of the CHECKER."""
     from collections import Counter
     from pathlib import Path
-    spec = Path("results/evaluations/DRY2-HARD10/explanation_claims_full_spec.json")
-    out = score("DRY2-HARD10", spec)
+    out = score("DRY2-HARD10", FULL_SPEC, results_root=DEV)
     assert len(out["claims"]) == 445
     assert Counter(c["day"] for c in out["claims"]) == {1: 30, 2: 45, 3: 39, 4: 44, 5: 48, 6: 47, 7: 46, 8: 55,
                                                         9: 47, 10: 44}
@@ -41,7 +46,7 @@ def test_full_universe_of_dry2_claims_and_checker_recall():
 def test_stratification_of_dry2_wrong_claims():
     """Owner review 2026-11-14 (Q1, Q3): basis and rubric dependence of the three wrong claims."""
     from pathlib import Path
-    out = score("DRY2-HARD10", Path("results/evaluations/DRY2-HARD10/explanation_claims_full_spec.json"))
+    out = score("DRY2-HARD10", FULL_SPEC, results_root=DEV)
     st = out["stratified"]
     assert st["allocator_by_basis"]["derived"] == {"correct": 0, "wrong": 3, "unverifiable": 0}
     alt = {c["id"]: (c.get("verdict_alternative"), c.get("computed_alternative")) for c in out["claims"]}

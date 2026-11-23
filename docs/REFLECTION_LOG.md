@@ -453,3 +453,19 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **How it was caught:** by reading the writers while auditing path dependencies for the clean-up plan. Nothing was run with the defaults, and nothing was overwritten. The Phase 0 independent check passed on all four runs the same day.
 - **Fix (planned, Phase 1b):** output-root options on these entry points, numbered scripts that always write under `results/analysis/recomputed/`, and tests that the committed files are untouched (`docs/CLEANUP_PLAN.md` §3.3, §9 step 5).
 - **Implication:** a default output path that suits the first run turns into a hazard once that output is frozen. Recomputation for verification must write somewhere new and then compare.
+
+### R60. The clean-up plan's list of writers into run folders was incomplete
+
+- **Type:** development/process (not a finding about agent reliability).
+- **What happened:** `docs/CLEANUP_PLAN.md` §3.3 (R59) named `metrics.evaluate_run`, `run_report`, `claim_check` and `python -m src.evaluation` as the entry points that write into run folders. A full scan of the writers at the start of Phase 1b found more: `allocator_digest.digest` (writes `results/evaluations/<run>/allocator_digest/`) and the R1 owner-review modules (`owner_claims`, `owner_verdicts`, `owner_inputs`, `owner_review_counts`, `claim_review`, `decisions_ab`, `adjudication_view`, `adjudication_recall`, `rubric_check_view`, `unverifiable_view`), which write into `results/evaluations/R1/`. The MCP server's `Store` and `launch` also write into run folders.
+- **How it was caught:** while implementing the owner's guard, by grepping every `write_text`, `open(..., "w"/"a")`, `mkdir`, copy and replace call in `src/` instead of relying on the plan's list.
+- **Fix:** the guard sits in one helper that every writer calls, so coverage does not depend on a hand-made list. A test greps `src/` for write calls in modules that do not call the guard.
+- **Implication:** an inventory of "who writes where" has to come from a search of the code, not from memory of the modules recently worked on. This is the same lesson as R56, from the other side.
+
+### R61. A fast-suite test rewrote a file inside the frozen R1 folder on every run
+
+- **Type:** development/process (not a finding about agent reliability).
+- **What happened:** `tests/test_long_paths.py::test_owner_review_entry_points_at_long_paths` called `owner_review_counts.main("R1", <repo>/results/evaluations/R1)` to compare counts. That call rewrites `results/evaluations/R1/owner_review/claim_accuracy_after_owner_review.json` in the repository. The bytes were identical each time (so `git status` stayed clean and nothing showed), but every run of the fast suite since Log #117 wrote into a frozen run folder.
+- **How it was caught:** during Phase 1b, by reading the tests that call writers on committed run folders while adding the frozen-run guard. The guard now raises on that call.
+- **Fix:** the test runs the module only on its deep temporary copy (whose outputs are already compared byte for byte with the committed ones) and asserts that the call on the committed folder raises `FrozenRunError`.
+- **Implication:** "byte-identical rewrite" leaves no trace in `git status`, so it is invisible. A test that only reads frozen evidence must not call a function that writes.

@@ -30,7 +30,7 @@ from .audit import load_records
 from .claim_check import quantity
 from .dataset import ROOT, load_dataset
 from .owner_claims import FILE, compare, convert
-from src.utils.paths import long_path
+from src.utils.paths import guard_write, long_path
 
 VERDICTS_FILE = "owner_verdicts_nonmech.csv"
 
@@ -82,6 +82,7 @@ def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = Non
     # 1. verdict columns on non_mechanical_mappings.csv
     fields = ["row", "day", "field", "text", "owner_quantity", "owner_allocation", "mapped_to", "reason",
               "owner_verdict", "owner_comment"]
+    guard_write(folder)                                   # frozen run folders are read-only (R59)
     with open(folder / "non_mechanical_mappings.csv", "w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=fields, lineterminator="\n")
         w.writeheader()

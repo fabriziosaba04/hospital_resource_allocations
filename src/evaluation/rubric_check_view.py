@@ -21,7 +21,7 @@ from pathlib import Path
 from .claim_review import tier
 from .dataset import ROOT
 from .owner_claims import encoding
-from src.utils.paths import long_path
+from src.utils.paths import guard_write, long_path
 
 QUAL = re.compile(r"above (census|occupied)", re.I)
 BANNER = ("# GENERATED DISPLAY FILE (src/evaluation/rubric_check_view.py): rubric-dependent wrong claims; "
@@ -64,6 +64,7 @@ def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = Non
                      "rival": json.dumps(c.get("computed_alternative")), "stated": json.dumps(c.get("value")),
                      "qualifiers_in_sentence": "; ".join(quals), "note": c.get("note", ""),
                      "full_sentence": found[0] if found else "(not found)"})
+    guard_write(ev / "owner_review")                      # frozen run folders are read-only (R59)
     with open(ev / "owner_review" / "rubric_dependent_54_check.csv", "w", encoding="utf-8-sig", newline="") as f:
         f.write(BANNER + "\n")
         w = csv.DictWriter(f, fieldnames=list(rows[0]), lineterminator="\n")

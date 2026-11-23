@@ -23,7 +23,7 @@ import json
 import re
 import sys
 from pathlib import Path
-from src.utils.paths import long_path
+from src.utils.paths import guard_write, long_path
 
 CAUSES = ("owner_miss", "assistant_miss", "owner_encoding", "assistant_encoding", "rubric_ambiguity", "matching_rule")
 
@@ -108,6 +108,7 @@ def merge(generated: list[dict], path: Path, cols: list[str], key: tuple[str, ..
 def _write_new(path: Path, cols: list[str], rows: list[dict]) -> bool:
     if path.exists():
         return False
+    guard_write(path)                                     # frozen run folders are read-only (R59)
     with open(path, "x", encoding="utf-8-sig", newline="") as f:
         w = csv.DictWriter(f, fieldnames=cols, lineterminator="\n")
         w.writeheader()

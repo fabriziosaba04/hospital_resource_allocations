@@ -35,7 +35,7 @@ from .audit import load_records
 from .claim_check import claim_key, score_claim
 from .dataset import ROOT, load_dataset
 from .owner_claims import ABBR, FILE, _alloc_str, _canon, compare, convert
-from src.utils.paths import long_path
+from src.utils.paths import guard_write, long_path
 
 BANNER = ("# GENERATED DISPLAY FILE (src/evaluation/adjudication_view.py): not an input, plays no part in matching; "
           "edit causes in owner_adjudication_causes.csv")
@@ -188,6 +188,7 @@ def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = Non
         row.update({f"owner_{k}": v for k, v in so.items()})
         row.update({f"assistant_{k}": v for k, v in sa.items()})
         rows.append(row)
+    guard_write(folder)                                   # frozen run folders are read-only (R59)
     with open(folder / "adjudication_pairs_view.csv", "w", encoding="utf-8-sig", newline="") as f:
         f.write(BANNER + "\n")
         w = csv.DictWriter(f, fieldnames=list(rows[0]), lineterminator="\n")

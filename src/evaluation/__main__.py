@@ -1,16 +1,22 @@
 """Run baselines B0-B2 on the frozen datasets, audit them and write the headroom table.
 
-    uv run python -m src.evaluation
+    uv run python -m src.evaluation [--out RESULTS_ROOT]
 
-The manifest check must pass first (CLAUDE.md §9.3). Outputs:
-results/allocations/<B?-dataset>/, results/evaluations/<B?-dataset>/, results/evaluations/headroom.json
+The manifest check must pass first (CLAUDE.md §9.3). Outputs, under RESULTS_ROOT (default
+results/analysis/recomputed/baselines/, so the committed baselines are never rewritten by accident;
+`--out results` regenerates them in place): allocations/<B?-dataset>/, evaluations/<B?-dataset>/,
+evaluations/headroom.json.
 """
 
 from __future__ import annotations
 
+import argparse
 import json
 import subprocess
 import sys
+from pathlib import Path
+
+from src.utils.paths import guard_write
 
 from .dataset import ROOT, load_dataset
 from .metrics import evaluate_run
@@ -49,7 +55,10 @@ def rows(m: dict) -> dict:
     return r
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--out", default=str(ROOT / "results" / "analysis" / "recomputed" / "baselines"))
+    res = Path(ap.parse_args(argv).out)
     chk = subprocess.run([sys.executable, "-m", "src.data_generation.manifest", "--verify"], cwd=ROOT,
                          capture_output=True, text=True)
     if chk.returncode != 0:
@@ -60,7 +69,7 @@ def main() -> int:
     for ds_id in MAIN + STRESS:
         ds = load_dataset(ds_id)
         for b in BASELINES:
-            m = evaluate_run(ds, run_baseline(b, ds))
+            m = evaluate_run(ds, run_baseline(b, ds, res / "allocations"), out_root=res / "evaluations")
             out[f"{b}-{ds_id}"] = m
             print(f"{b}-{ds_id}: gate {m['D']['gate_passed']}")
     table = {}
@@ -71,7 +80,7 @@ def main() -> int:
                                "B1_minus_floor": None if per["B1"][name][1] is None
                                else round(per["B1"][name][0] - per["B1"][name][1], 4)}
                         for name in per["B1"]}
-    (ROOT / "results" / "evaluations" / "headroom.json").write_text(
+    guard_write(res / "evaluations" / "headroom.json").write_text(
         json.dumps({"note": "baselines only; no agent output", "table": table}, indent=2) + "\n",
         encoding="utf-8", newline="\n")
     return 0

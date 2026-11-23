@@ -23,7 +23,7 @@ from src.evaluation.dataset import ROOT
 from src.evaluation.run_report import build
 from src.mcp_server.consistency import check
 from src.mcp_server.store import Store
-from src.utils.paths import long_path, walk_files
+from src.utils.paths import FrozenRunError, long_path, recomputed_dir, walk_files
 
 pytestmark = pytest.mark.skipif(os.name != "nt", reason="MAX_PATH exists only on Windows")
 
@@ -60,13 +60,12 @@ def test_records_and_store_read_at_long_paths(deep):
 
 
 def test_digest_and_run_report_rewrite_committed_files_at_long_paths(deep):
-    ev = deep / "evaluations" / RUN
-    shutil.rmtree(long_path(ev / "allocator_digest"))
+    out = recomputed_dir(RUN, deep)                      # default output since the clean-up (R59)
     assert len(digest(RUN, deep)) == 30
     build(RUN, deep)
     for k, p in walk_files(SRC / "evaluations" / RUN / "allocator_digest").items():
-        assert _sha(ev / "allocator_digest" / k) == _sha(p), k
-    assert _sha(ev / "run_report.json") == _sha(SRC / "evaluations" / RUN / "run_report.json")
+        assert _sha(out / "allocator_digest" / k) == _sha(p), k
+    assert _sha(out / "run_report.json") == _sha(SRC / "evaluations" / RUN / "run_report.json")
 
 
 def test_owner_review_entry_points_at_long_paths(deep):
@@ -79,8 +78,9 @@ def test_owner_review_entry_points_at_long_paths(deep):
     adjudication_view.main(RUN, ev, alloc)
     rubric_check_view.main(RUN, ev, alloc)
     unverifiable_view.main(RUN, ev, alloc)
-    counts = owner_review_counts.main(RUN, ev)
-    assert counts == owner_review_counts.main(RUN, SRC / "evaluations" / RUN)
+    owner_review_counts.main(RUN, ev)
+    with pytest.raises(FrozenRunError):                  # R61: this line used to rewrite the committed R1 file
+        owner_review_counts.main(RUN, SRC / "evaluations" / RUN)
     after = {k: _sha(p) for k, p in walk_files(ev).items()}
     assert after == before                                 # every output rewritten byte for byte, nothing new
     assert json.loads(long_path(ev / "run_report.json").read_text(encoding="utf-8"))["run_id"] == RUN

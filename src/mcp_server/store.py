@@ -19,7 +19,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from src.evaluation.dataset import ROOT
-from src.utils.paths import long_path
+from src.utils.paths import guard_write, long_path
 
 POINTER = ROOT / "results" / "allocations" / "ACTIVE_RUN"
 STALE_LOCK_SECONDS = 120.0      # every locked operation takes well under a second on the 30-day data
@@ -162,13 +162,13 @@ class Store:
         holder_dead = "pid" in info and not pid_alive(int(info["pid"]))
         if holder_dead or age > STALE_LOCK_SECONDS:
             lock.unlink(missing_ok=True)
-            with open(self.alloc_dir / "lock_breaks.jsonl", "a", encoding="utf-8", newline="\n") as f:
+            with open(guard_write(self.alloc_dir / "lock_breaks.jsonl"), "a", encoding="utf-8", newline="\n") as f:
                 f.write(json.dumps({"at": now(), "age_s": round(age, 1), "holder": info,
                                     "reason": "holder process gone" if holder_dead else "older than limit"}) + "\n")
 
     # ------------------------------------------------------------------ writes (call inside lock())
     def write_state(self, state: dict) -> None:
-        tmp = self.alloc_dir / "state.json.tmp"
+        tmp = guard_write(self.alloc_dir / "state.json.tmp")     # frozen run folders are read-only (R59)
         tmp.write_text(json.dumps(state, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
         for i in range(10):
             try:
@@ -180,7 +180,7 @@ class Store:
                 time.sleep(0.2)
 
     def append(self, record: str, line: dict) -> dict:
-        p = self.path(record)
+        p = guard_write(self.path(record))                     # frozen run folders are read-only (R59)
         p.parent.mkdir(parents=True, exist_ok=True)
         torn = False
         if p.exists() and p.stat().st_size > 0:

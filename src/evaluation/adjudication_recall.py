@@ -37,7 +37,7 @@ from .dataset import ROOT, load_dataset
 from .owner_claims import FILE, _canon, compare, convert
 from .owner_inputs import ADJ_COLS, ADJ_FILE, ADJ_KEY, OwnerInputError, read_table
 from .owner_verdicts import item2_check, load_verdicts
-from src.utils.paths import long_path
+from src.utils.paths import guard_write, long_path
 
 OVERRIDES_FILE = "owner_universe_overrides.csv"
 OVERRIDE_COLS = ["claim_id", "action", "original", "comment", "set_by", "decision"]
@@ -187,6 +187,7 @@ def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = Non
         "causes_total": dict(sorted((by_side["owner_only"] + by_side["assistant_only"]).items())),
         "row_57": "duplicate of row 54, APPLIED (§11 #66): the former not-applied variant is the final figure",
     }
+    guard_write(folder)                                   # frozen run folders are read-only (R59)
     (folder / "comparison_7a_adjudicated.json").write_text(json.dumps(res, indent=2, ensure_ascii=False) + "\n",
                                                            encoding="utf-8", newline="\n")
     return res

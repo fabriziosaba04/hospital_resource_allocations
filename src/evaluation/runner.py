@@ -18,6 +18,8 @@ from src.environment.validator import validate
 from src.environment.whatif import DayContext
 from src.utils.constants import DEPARTMENTS
 
+from src.utils import paths
+
 from .baselines import BASELINES
 from .dataset import ROOT, Dataset
 
@@ -41,7 +43,8 @@ def _bed_line(run_id, ds, day, stage, present, asg):
                          for p in present}}
 
 
-def run_baseline(name: str, ds: Dataset, out_root: Path = ROOT / "results" / "allocations") -> Path:
+def run_baseline(name: str, ds: Dataset, out_root: Path | None = None) -> Path:
+    """Records written to `out_root/<run_id>/`; default `results/analysis/recomputed/baselines/allocations/`."""
     run_id = f"{name}-{ds.dataset_id}"
     policy = BASELINES[name]
     alloc_lines, bed_lines = [], []
@@ -70,7 +73,9 @@ def run_baseline(name: str, ds: Dataset, out_root: Path = ROOT / "results" / "al
         asg = assign_beds(beds, list(ctx.present), set(ctx.holder_ids))
         bed_lines.append(_bed_line(run_id, ds, day, "final", ctx.present, asg))
         holder_ids = set(asg.in_bed)
-    out = out_root / run_id
+    if out_root is None:
+        out_root = paths.RESULTS_ROOT / "analysis" / "recomputed" / "baselines" / "allocations"
+    out = paths.guard_write(Path(out_root) / run_id)     # frozen run folders are read-only (R59)
     out.mkdir(parents=True, exist_ok=True)
     for fname, lines in (("allocation_state.jsonl", alloc_lines), ("bed_assignment_state.jsonl", bed_lines)):
         tmp = out / (fname + ".tmp")

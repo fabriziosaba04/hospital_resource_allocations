@@ -28,7 +28,7 @@ from pathlib import Path
 from .claim_check import VERDICTS
 from .dataset import ROOT
 from .owner_inputs import UNVER_FILE, WRONG_FILE
-from src.utils.paths import long_path
+from src.utils.paths import guard_write, long_path
 
 MAP = {"wrong": {"confirmed_wrong": "wrong", "actually_correct": "correct", "extraction_error": "correct",
                  "should_be_unverifiable": "unverifiable", "": "wrong"},
@@ -78,6 +78,7 @@ def main(run_id: str, eval_dir: Path | None = None) -> dict:
            "after_owner_review": after,
            "by_basis_if_D28_05_06_relabelled_copied": relabel["by_basis"],
            "mapping": {k: dict(v) for k, v in MAP.items()}}
+    guard_write(ev / "owner_review")                      # frozen run folders are read-only (R59)
     (ev / "owner_review" / "claim_accuracy_after_owner_review.json").write_text(
         json.dumps(res, indent=2) + "\n", encoding="utf-8", newline="\n")
     return res

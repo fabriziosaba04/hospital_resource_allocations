@@ -9,6 +9,8 @@ from pathlib import Path
 
 from src.utils.constants import DEPARTMENTS, LEVELS
 
+from src.utils import paths
+
 from .audit import SCALE, audit_run
 from .dataset import ROOT, Dataset
 
@@ -200,12 +202,15 @@ def _jsonable(x):
     return x
 
 
-def evaluate_run(ds: Dataset, run_dir: Path, out_root: Path = ROOT / "results" / "evaluations") -> dict:
+def evaluate_run(ds: Dataset, run_dir: Path, out_root: Path | None = None) -> dict:
+    """Audit and metrics of one run, written to `out_root/<run_id>/`. The default `out_root` is
+    `results/analysis/recomputed/`, never the run folder (owner decision 2026-11-23, R59)."""
     rec, days = audit_run(ds, run_dir)
     add_reversal_issues(days)
     metrics = compute_metrics(ds, days)
     metrics["run_id"] = rec.run_id
-    out = out_root / rec.run_id
+    out = paths.guard_write((Path(out_root) if out_root is not None
+                             else paths.recomputed_dir(rec.run_id).parent) / rec.run_id)   # frozen run folders are read-only (R59)
     out.mkdir(parents=True, exist_ok=True)
     now = datetime.now(timezone.utc).isoformat(timespec="seconds")
     lines = []

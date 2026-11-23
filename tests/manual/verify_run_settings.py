@@ -102,7 +102,7 @@ def main() -> int:
 
     report = {"created_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
               "claude_exit_code": proc.returncode, "settings": ".claude/run-settings.json", "calls": rows}
-    out = ROOT / "results" / "evaluations" / "run_settings_verification.json"
+    out = ROOT / "results" / "verification" / "pre_run" / "run_settings_verification.json"   # clean-up 2026-11-23
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     for r in rows:

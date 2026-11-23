@@ -26,7 +26,7 @@ from .audit import load_records
 from .claim_check import VERDICTS, quantity, score_claim
 from .dataset import ROOT, load_dataset
 from .owner_claims import FILE, compare, convert, encoding
-from src.utils.paths import long_path
+from src.utils.paths import guard_write, long_path
 
 OUT_A = {"patient", "mean_arrivals", "census", "requirement"}
 
@@ -102,6 +102,8 @@ def main(run_id: str) -> None:
                          "unrounded_need_L2_L3": float(v), "ceiling": math.ceil(v),
                          "decision_B": "out (rounded requirement)" if moved_o[c["id"]] else "in universe (unrounded sum)"})
     out["owner_rows_115_118"] = rows
+    guard_write(folder)                                   # frozen run folders are read-only (R59)
+    guard_write(ev / "owner_review")
     (folder / "comparison_7a_decisions_AB.json").write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8",
                                                            newline="\n")
     wrong = {c["id"] for c in scored if c["verdict"] == "wrong"}

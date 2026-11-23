@@ -17,6 +17,8 @@ from pathlib import Path
 
 from src.evaluation.dataset import ROOT, load_dataset
 
+from src.utils.paths import guard_write
+
 from .store import POINTER, Store, now
 from .workflow import code_version
 
@@ -39,8 +41,8 @@ def init_run(dataset_id: str, run_id: str, data_root: Path = ROOT, results_root:
         if chk.returncode != 0:
             raise SystemExit(f"manifest check failed, no run initialised:\n{chk.stdout}{chk.stderr}")
     ds = load_dataset(dataset_id, root=Path(data_root))
-    alloc_dir = Path(results_root) / "allocations" / run_id
-    eval_dir = Path(results_root) / "evaluations" / run_id
+    alloc_dir = guard_write(Path(results_root) / "allocations" / run_id)     # frozen run folders are read-only (R59)
+    eval_dir = guard_write(Path(results_root) / "evaluations" / run_id)
     if alloc_dir.exists():
         raise SystemExit(f"{alloc_dir} already exists: runs are never overwritten")
     alloc_dir.mkdir(parents=True)

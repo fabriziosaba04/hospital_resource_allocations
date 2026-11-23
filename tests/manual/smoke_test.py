@@ -93,7 +93,7 @@ def main() -> int:
     run_id = "SMOKE-" + datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S")
     env = dict(os.environ, CLAUDE_CODE_SUBAGENT_MODEL="haiku")
     checks: dict[str, bool] = {}
-    out_dir = ROOT / "results" / "evaluations"
+    out_dir = ROOT / "results" / "verification" / "pre_run"      # moved in the clean-up (2026-11-23)
     try:
         # ---------------------------------------------------------------- 1. run session
         write_fixture(tmp)
