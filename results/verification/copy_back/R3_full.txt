@@ -1,0 +1,18 @@
+# tests/manual/verify_copy_back_independent.py R3 | 2026-11-23 | exit 0
+run R3
+  repo  <repo>
+  clone C:\hra-runs\hospital_resource_allocations
+allocations: matched 9/9 clone files; repo-only entries: []
+evaluations: matched 3/3 clone files; repo-only entries: ['copy_back.json', 'run_report.json']
+sessions: ['4aa63585-baf8-40a0-b209-0e5c63669869'] folders: ['~\\.claude\\projects\\C--hra-runs-hospital-resource-allocations\\4aa63585-baf8-40a0-b209-0e5c63669869']
+other entries in session subagents/: []
+unclassified tool-results in session: []
+  allocator meta        session  30  repo  30
+  allocator tool-result session  12  repo  12
+  allocator transcript  session  30  repo  30
+  checker   meta        session   6  repo   6
+  checker   transcript  session   6  repo   6
+capture vs session: matched 84/84; missing 0, extra 0, mismatched 0 [] [] []
+SHA256SUMS.json: matched 84/84 on disk (84 entries); keys not on disk 0; on disk not listed 0; recorded mismatches []
+longest destination: 260 <repo>\results\allocations\R3\transcripts\subagents\allocator\tool-results\mcp-allocator-get_decision_history-1795359728704-6z9g39.txt
+RESULT: OK

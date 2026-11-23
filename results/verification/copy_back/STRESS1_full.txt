@@ -1,0 +1,18 @@
+# tests/manual/verify_copy_back_independent.py STRESS1 | 2026-11-23 | exit 0
+run STRESS1
+  repo  <repo>
+  clone C:\hra-runs\hospital_resource_allocations
+allocations: matched 9/9 clone files; repo-only entries: []
+evaluations: matched 3/3 clone files; repo-only entries: ['copy_back.json', 'run_report.json']
+sessions: ['b5322b68-0e7a-4397-ae7a-8af5a472aacf'] folders: ['~\\.claude\\projects\\C--hra-runs-hospital-resource-allocations\\b5322b68-0e7a-4397-ae7a-8af5a472aacf']
+other entries in session subagents/: []
+unclassified tool-results in session: []
+  allocator meta        session  30  repo  30
+  allocator tool-result session  13  repo  13
+  allocator transcript  session  30  repo  30
+  checker   meta        session   6  repo   6
+  checker   transcript  session   6  repo   6
+capture vs session: matched 85/85; missing 0, extra 0, mismatched 0 [] [] []
+SHA256SUMS.json: matched 85/85 on disk (85 entries); keys not on disk 0; on disk not listed 0; recorded mismatches []
+longest destination: 265 <repo>\results\allocations\STRESS1\transcripts\subagents\allocator\tool-results\mcp-allocator-get_decision_history-1795363266901-bzcuat.txt
+RESULT: OK

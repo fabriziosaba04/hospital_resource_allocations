@@ -50,3 +50,6 @@ desktop.ini
 
 # Hypothesis example database (caches literals harvested from source files)
 .hypothesis/
+
+# Recomputations by the numbered entry scripts (src/0N_*.py): regenerable, never committed
+results/analysis/recomputed/

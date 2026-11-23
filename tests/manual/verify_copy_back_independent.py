@@ -1,6 +1,11 @@
 """Independent check of an agent run's copy-back (manual; never collected by pytest).
 
     uv run python tests/manual/verify_copy_back_independent.py RUN_ID [--repo PATH] [--clone PATH]
+    uv run python tests/manual/verify_copy_back_independent.py RUN_ID --sums-only   # repository only
+
+With --sums-only (what a grader with only the repository can run): every file recorded in
+results/evaluations/RUN/copy_back.json and every capture file recorded in SHA256SUMS.json is
+re-hashed and compared with the recorded SHA-256. Without it (owner's machine only):
 
 Compares, by SHA-256:
   1. the repository's run folders (results/allocations/RUN, results/evaluations/RUN)
@@ -58,12 +63,47 @@ def tree(root, skip=None):
     return out
 
 
+def sums_only(REPO, RUN):
+    """What a grader with only the repository can check: every file recorded at copy-back time is still
+    byte-identical (copy_back.json for the run folders, SHA256SUMS.json for the capture)."""
+    ok = True
+    print(f"run {RUN} (--sums-only)\n  repo  {REPO}")
+    with open(lp(REPO / "results/evaluations" / RUN / "copy_back.json"), encoding="utf-8") as fh:
+        cb = json.load(fh)
+    for kind in ("allocations", "evaluations"):
+        rec = cb["files"][kind]
+        disk = tree(REPO / "results" / kind / RUN, skip="transcripts/subagents/")
+        matched = sum(1 for k, v in rec.items() if k in disk and hashfull(disk[k]) == v)
+        added = sorted({k.split("/")[0] for k in set(disk) - set(rec)})
+        print(f"{kind}: matched {matched}/{len(rec)} files recorded in copy_back.json; "
+              f"added after copy-back: {added}")
+        ok &= bool(rec) and matched == len(rec)
+    print(f"copy_back.json recorded hash mismatches: {cb['hash_mismatches']}")
+    ok &= cb["hash_mismatches"] == []
+    dst_root = REPO / "results/allocations" / RUN / "transcripts/subagents"
+    dst = {k: v for k, v in tree(dst_root).items() if k != "SHA256SUMS.json"}
+    with open(lp(dst_root / "SHA256SUMS.json"), encoding="utf-8") as fh:
+        sums = json.load(fh)
+    fs = sums["files"]
+    sm = sum(1 for k, v in fs.items() if k in dst and hashfull(dst[k]) == v)
+    not_on_disk, not_listed = len(set(fs) - set(dst)), len(set(dst) - set(fs))
+    print(f"capture vs SHA256SUMS.json: matched {sm}/{len(fs)}; keys not on disk {not_on_disk}; "
+          f"on disk not listed {not_listed}; recorded mismatches {sums.get('hash_mismatches')}")
+    ok &= sm == len(fs) == len(dst) and not not_on_disk and not not_listed and not sums.get("hash_mismatches")
+    print("RESULT:", "OK" if ok else "FAIL")
+    return 0 if ok else 1
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("run_id")
     ap.add_argument("--repo", type=Path, default=DEFAULT_REPO)
     ap.add_argument("--clone", type=Path, default=DEFAULT_CLONE)
+    ap.add_argument("--sums-only", action="store_true",
+                    help="repository only: re-hash against copy_back.json and SHA256SUMS.json (no clone needed)")
     a = ap.parse_args()
+    if a.sums_only:
+        return sums_only(a.repo, a.run_id)
     REPO, CLONE, RUN = a.repo, a.clone, a.run_id
     ok = True
     print(f"run {RUN}\n  repo  {REPO}\n  clone {CLONE}")

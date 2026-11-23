@@ -1,0 +1,8 @@
+# tests/manual/verify_copy_back_independent.py R1 --sums-only | 2026-11-23 | exit 0
+run R1 (--sums-only)
+  repo  <repo>
+allocations: matched 9/9 files recorded in copy_back.json; added after copy-back: []
+evaluations: matched 3/3 files recorded in copy_back.json; added after copy-back: ['allocator_digest', 'claims_extraction', 'copy_back.json', 'explanation_claims.json', 'explanation_claims_spec.json', 'owner_extraction', 'owner_review', 'run_report.json']
+copy_back.json recorded hash mismatches: []
+capture vs SHA256SUMS.json: matched 85/85; keys not on disk 0; on disk not listed 0; recorded mismatches []
+RESULT: OK
