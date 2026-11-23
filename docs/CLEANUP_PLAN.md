@@ -2,6 +2,8 @@
 
 *Written 2026-11-23, at commit `c34ca77` (Phase 0). Phase 1a moves nothing: it reads, measures and writes this file. Phase 1b (the moves) waits for the owner's review of this plan.*
 
+**Status 2026-11-23: plan accepted by the owner; Phase 1b executed on branch `cleanup`** with the owner's decisions on U1–U6 (U1: `results/verification/`, not `development/`). Where the execution differs from this plan: the guard covers every writer found by searching `src/` (R60), not only the four in §3.3; `REFLECTION.md` is created as a placeholder; `docs/EVALUATION_PLAN.md` keeps its two old development paths (pre-registration text, Log #124). Details: Decisions Log #119–#124.
+
 **Constraint that shapes the whole plan.** The hard rules forbid moving the run folders and captures of R1, R2, R3 and STRESS1, the owner input tables and the frozen R1 extraction. All of these live in `results/allocations/<run>/` and `results/evaluations/<run>/`. Those two folders therefore **stay**, and so does the code convention `results/{allocations,evaluations}/<run_id>` that about 25 modules rely on. The brief's grouping (`runs/`, `baselines/`) is delivered through an index (`results/README.md`), not through moves. Development material can move, because none of it is frozen.
 
 ## 1. Current state
@@ -250,7 +252,7 @@ Scope: all 744 tracked files, transcripts included (`git grep -I`).
 | --- | --- | --- | --- |
 | **Windows user path / username** (`C:\Users\<user>`, `/c/Users/…`; 476 occurrences of the username) | 88 files | 62: `transcripts/launch-1.jsonl` of R1, R2, R3, STRESS1 (4); ALLOCATOR subagent transcripts `agent-*.jsonl` in the capture, the ones that reference a spilled tool result (13 + 13 + 12 + 13 = 51); `SHA256SUMS.json` of the four captures (4, the recorded session-folder path); `copy_back.json` of R2, R3, STRESS1 (3) | 26: `run_manifest.json` + launch transcripts of CHK-B2-HARD10, DRY1, DRY2, DRY3 (9); `results/evaluations/R1/allocator_digest/day_18–30.md` (13, generated views of the capture, regenerable but inside a run folder); `smoke_probe_transcript.jsonl`, `smoke_test_transcript.jsonl`, `run_settings_verification.json` (3); `tests/test_copy_back.py` (1, a path literal in a test) |
 | **Email addresses** in tracked files | 0 | – | – |
-| **Email in git history** | the author line of all 62 commits carries the owner's personal email | – | not a file: visible on GitHub through the commit metadata. It is **not** in a `git archive` zip. Changing it would need a history rewrite, which is forbidden. Owner to note (or use a GitHub noreply address for future commits) |
+| **Email in git history** | the author line of all 62 commits carries the owner's personal email | – | not a file: visible on GitHub through the commit metadata. It is **not** in a `git archive` zip. Changing it would need a history rewrite, which is forbidden. **Owner decision (2026-11-23): the commit history stays as it is; it is process evidence. No action** |
 | **API keys, tokens, secrets** | **0** | – | – |
 | `.env` or credential files | 0 tracked (`.env*` is ignored; `.claude/settings.local.json` is untracked) | – | – |
 | Other absolute machine paths (`C:\hra-runs\…`, `AppData`, `/home/`) | about 180 files | most: the run folders and captures of R1–R3 and STRESS1 (39 each), `copy_back.json` | DRY run folders, smoke transcripts, `tests/manual/verify_copy_back_independent.py` (default clone path `C:/hra-runs/…`), and one path each in `PROJECT_SPEC.md`, `REFLECTION_LOG.md`, `SESSION_LOG.md` |

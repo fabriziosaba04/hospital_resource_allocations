@@ -12,8 +12,9 @@ Other project documents:
 | --- | --- |
 | [`docs/PROJECT_SPEC.md`](docs/PROJECT_SPEC.md) | Consolidated technical design and the Implementation Decisions Log |
 | [`docs/EVALUATION_PLAN.md`](docs/EVALUATION_PLAN.md) | Metrics, baselines, run plan and verification |
-| [`docs/PROJECT_OVERVIEW.md`](docs/PROJECT_OVERVIEW.md) | Summary for new readers |
 | [`docs/REFLECTION_LOG.md`](docs/REFLECTION_LOG.md) | Running record of errors and near misses, for the Reflection and Verification sections |
+| [`docs/CLEANUP_PLAN.md`](docs/CLEANUP_PLAN.md) | Repository clean-up: inventory, moves, publication scan |
+| [`README.md`](README.md) | Grader-facing map of the deliverables and the evidence |
 
 ## 0. Project Structure
 
@@ -22,7 +23,11 @@ Entries marked *(planned)* are approved but not yet created.
 ```text
 hospital_resource_allocations/
 │
-├── README.md
+├── README.md                      grader-facing map: deliverables, evidence, reproduction
+├── plan.md                        question, theory, test (summary of docs/EVALUATION_PLAN.md)
+├── ERROR_ANALYSIS.md              deliverable: errors of the system's agents and of the coding agent (to be completed)
+├── mistakes.md                    pointer to ERROR_ANALYSIS.md (the brief's name)
+├── REFLECTION.md                  deliverable: one-page reflection (to be completed)
 ├── CLAUDE.md
 ├── pyproject.toml                 uv project (dependencies, pytest config)
 ├── uv.lock
@@ -38,13 +43,13 @@ hospital_resource_allocations/
 │       └── checker.md             CHECKER prompt (draft, pending owner review); defines its role server inline
 │
 ├── docs/
-│   ├── PROJECT_OVERVIEW.md
 │   ├── PROJECT_SPEC.md
 │   ├── DATA_DICTIONARY.md
 │   ├── AGENTS.md
 │   ├── EVALUATION_PLAN.md
 │   ├── LIMITATIONS_AND_REFLECTION.md
 │   ├── REFLECTION_LOG.md          running record of errors and near misses
+│   ├── CLEANUP_PLAN.md            repository clean-up: inventory, moves, publication scan
 │   └── SESSION_LOG.md             one entry per working session: achieved, state, next steps, open questions
 │
 ├── data/
@@ -60,18 +65,20 @@ hospital_resource_allocations/
 │   ├── mcp_server/                MCP tool layer, state machine, record store, ANALYZER, run init, launcher, copy-back, synthetic fixtures
 │   ├── agent/                     fixed dispatch templates (the prompts live in .claude/agents/)
 │   ├── evaluation/                deterministic audit, metrics, baselines, baseline runner (python -m src.evaluation), run report, CHECKER matching, claim checker, ALLOCATOR digest, owner-extraction converter, owner decisions A–B, owner verdicts on non-mechanical mappings, owner input tables, adjudication pairs view, adjudicated recall, rubric check view, unverifiable view, owner review counts, owner review lists, figures
-│   └── utils/
+│   ├── utils/                     long-path helpers, frozen-run write guard, comparisons for the entry scripts
+│   └── 01_verify_data.py … 09_build_figures.py   thin entry scripts: the pipeline in run order
 │
-├── results/
-│   ├── allocations/               run records (baselines B0–B2 on the four datasets; agent runs, with per-subagent transcripts split into allocator/ and checker/)
-│   ├── evaluations/               audit records, metrics, headroom.json, run reports, smoke-test records
-│   ├── dry_runs/                  synthetic fixtures used by dry runs (never frozen data)
-│   └── visualizations/
+├── results/                       index: results/README.md
+│   ├── allocations/               run records (agent runs R1–R3 and STRESS1, frozen, with per-subagent transcripts split into allocator/ and checker/; baselines B0–B2 on the four datasets)
+│   ├── evaluations/               audit records, metrics, headroom.json, run reports, copy-back manifests; R1 claim and owner review
+│   ├── analysis/                  cross-run results; recomputed/ (not committed) receives the entry scripts' recomputations
+│   ├── figures/                   static figures per dataset
+│   ├── verification/              copy_back/ (independent re-hashes of the four runs), pre_run/ (smoke test, run-settings probe)
+│   └── development/               dry runs DRY1–3, CHK-B2-HARD10, baselines on HARD10, synthetic fixtures (dry_runs/), HARD10 figures
 │
 ├── tests/
-│   └── manual/                    checks that need the claude CLI (run-settings verification, smoke test)
+│   └── manual/                    checks that need the claude CLI or the run clone (run-settings verification, smoke test, independent copy-back check)
 │
-└── notebooks/
 ```
 
 Keep this tree up to date when files or directories are added, moved or removed. Do not change the structure without the project owner's approval.

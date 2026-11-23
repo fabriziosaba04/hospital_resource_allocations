@@ -2,6 +2,8 @@
 
 One entry per working session, newest last. Each entry records what was achieved, the state of the repository, the ordered next steps and the questions waiting for the owner. `PROJECT_SPEC.md` §0 points to the latest entry. Decisions themselves live in `PROJECT_SPEC.md` §9 (Implementation Decisions Log) and §11 (owner decisions); errors and near misses in `REFLECTION_LOG.md`.
 
+*Paths: entries written before 2026-11-23 cite the layout before the repository clean-up. The development runs, fixtures, HARD10 figures and pre-run verification files have moved (mapping: `docs/CLEANUP_PLAN.md` §2.2); the agent runs and baselines have not.*
+
 ---
 
 ## 2026-11-12
@@ -968,3 +970,24 @@ Nothing was moved. The clone and the session folders were only read. No CHECKER 
 ### Next
 
 1. Owner: review `docs/CLEANUP_PLAN.md`; decide U1–U6 (§1.3). Then Phase 1b on branch `cleanup`.
+
+## 2026-11-23 (twenty-fourth session: clean-up Phase 1b, on branch `cleanup`)
+
+No frozen file was edited, moved or re-hashed in place; transcripts untouched; no history rewrite. The clone and the session folders were only read.
+
+### Achieved
+
+1. **Moves** (98 renames): DRY1–3, CHK-B2-HARD10 and B?-HARD10 → `results/development/{allocations,evaluations}/`; `results/dry_runs/` → `results/development/dry_runs/`; HARD10 figures → `results/development/figures/HARD10/`; smoke test and run-settings probe → `results/verification/pre_run/` (U1). `make_*_claims.py` moved with DRY2 (nothing imports them; U2). `notebooks/` dropped (U3); `docs/PROJECT_OVERVIEW.md` folded into the README and deleted (U4).
+2. **R59 made impossible:** frozen-run write guard (Log #119), recomputation defaults to `results/analysis/recomputed/<run>/` (#120). REFLECTION_LOG R60 (the plan's writer list was incomplete) and R61 (a fast-suite test rewrote a committed R1 file, byte-identically, on every run).
+3. **Entry scripts** `src/01`–`09` (#121); every recomputation EQUAL to the committed file (audits, run reports, R1 claims, baselines). `--sums-only` (#122); outputs saved in `results/verification/copy_back/`.
+4. **Root documents:** `README.md` (grader map), `plan.md`, `results/README.md` and sub-READMEs, placeholders `ERROR_ANALYSIS.md`, `mistakes.md`, `REFLECTION.md`; `tests/test_readme_paths.py`.
+
+### Next
+
+1. Owner: wording for `plan.md`, "The result that would prove us wrong" (not pre-registered); then merge `cleanup` into `main`.
+2. The analysis.
+
+### Parked questions
+
+1. `launch` resumes whatever `ACTIVE_RUN` names (stays parked; no more runs are planned).
+2. `docs/EVALUATION_PLAN.md` §4 item 7 and §10 cite old development paths. Update them as a documentation-only change (like §11 #72), or leave them?

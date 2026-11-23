@@ -1,0 +1,4 @@
+# Verification outputs
+
+- `copy_back/`: the independent re-hash of the four agent runs by `tests/manual/verify_copy_back_independent.py` (via `src/05_verify_copy_back.py --save`), run on 2026-11-23. `<run>_full.txt` is against the run clone and the Claude Code session folders (owner's machine); `<run>_sums_only.txt` is against `copy_back.json` and `SHA256SUMS.json` in this repository. In the saved text, the repository root is written `<repo>` and the home folder `~`.
+- `pre_run/`: checks of the run-session restrictions made before the agent runs. `smoke_test.json` (22/22, Decisions Log #76) with `smoke_test_transcript.jsonl` and `smoke_probe_transcript.jsonl`, and `run_settings_verification.json` (`tests/manual/verify_run_settings.py`). They were moved here from `results/evaluations/` in the clean-up of 2026-11-23, with their content unchanged.

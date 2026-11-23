@@ -4,6 +4,8 @@ A running record of things that went wrong, or nearly went wrong, during the pro
 
 **Rule (owner, 2026-11-11):** add an entry **at the moment** something like this happens, not at the end of a session, and mention new entries in the session report. Errors by the AI assistant count as much as errors in the code or the design.
 
+*Paths: entries written before 2026-11-23 cite the layout before the repository clean-up. The development runs, fixtures, HARD10 figures and pre-run verification files have moved (mapping: `docs/CLEANUP_PLAN.md` §2.2); the agent runs and baselines have not.*
+
 Each entry records:
 
 - **What happened:** the error or near miss, stated plainly.
