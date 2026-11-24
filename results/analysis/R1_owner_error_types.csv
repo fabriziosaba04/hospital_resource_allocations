@@ -1,20 +1,20 @@
 ﻿claim_id,day,text,error_type,basis,set_by,owner_confirmed
-R1-D11-08,11,6 level 2,queue_count_wrong,"owner comment: Queue L2: tool 8, stated 6 (L2/L1 swapped)",assistant_prefill,
-R1-D11-09,11,8 level 1,queue_count_wrong,"owner comment: Queue L1: tool 6, stated 8 (swapped with L2)",assistant_prefill,
-R1-D11-28,11,orthopedics slack falls from 13,quantities_conflated,"owner comment: the sentence mixes two quantities (spare in effect, empty decided)",assistant_prefill,
-R1-D12-19,12,Queue lists 16 patients,queue_count_wrong,"owner comment: Queue total: tool 17, stated 16",assistant_prefill,
-R1-D12-20,12,"(4 level 3, 7 level 2, 5 level 1)",queue_count_wrong,"owner comment: Queue L1: tool 6, stated 5",assistant_prefill,
-R1-D13-30,13,orthopedics slack falls from 15,quantities_conflated,owner comment: Same pattern as D11-28: mixed quantities,assistant_prefill,
-R1-D15-20,15,11 level 2,queue_count_wrong,"owner comment: Queue L2: tool 12, stated 11 (L2/L1 boundary off-by-one)",assistant_prefill,
-R1-D15-21,15,7 level 1,queue_count_wrong,"owner comment: Queue L1: tool 6, stated 7 (same off-by-one)",assistant_prefill,
-R1-D17-19,17,12 level 2,queue_count_wrong,"owner comment: Queue L2: tool 13, stated 12 (L2/L1 boundary off-by-one)",assistant_prefill,
-R1-D17-20,17,8 level 1,queue_count_wrong,"owner comment: Queue L1: tool 7, stated 8 (same off-by-one)",assistant_prefill,
-R1-D17-47,17,no idle nurses except 0.2 of rounding in neurology,sign_error,"owner comment: Sign error: 0.2 is uncovered need, not idle capacity",assistant_prefill,
-R1-D18-14,18,overflow queue of 23 patients,queue_count_wrong,"owner comment: Queue total: tool 22, stated 23",assistant_prefill,
-R1-D20-33,20,12 L2,queue_count_wrong,"owner comment: Queue L2: tool 13, stated 12 (L2/L1 boundary off-by-one)",assistant_prefill,
-R1-D20-34,20,and 11 L1 patients,queue_count_wrong,"owner comment: Queue L1: tool 10, stated 11 (same off-by-one)",assistant_prefill,
-R1-D21-35,21,the 3 spare beds go to,arithmetic_slip,owner comment: Stated 3 is an arithmetic slip,assistant_prefill,
-R1-D26-38,26,Nursing is short by about 6 nurse units overall,approximation_off,"owner comment: About 6: shortage 5.25, outside 5.5 <= x < 6.5",assistant_prefill,
-R1-D27-41,27,its bed counts leave level-3 and level-2 cardiology patients waiting,claim_not_simulated,owner comment: An unsimulated assertion,assistant_prefill,
-R1-D28-26,28,"Option C covers neurology L2 and IM L2, which A and B left short",wrong_tier_level,"owner comment: a level mislabel (A left IM L1 short, not L2)",assistant_prefill,
-R1-D28-27,28,"Option C covers neurology L2 and IM L2, which A and B left short",wrong_tier_level,owner comment: same level mislabel,assistant_prefill,
+R1-D11-08,11,6 level 2,queue_count_wrong,"owner comment: Queue L2: tool 8, stated 6 (L2/L1 swapped)",assistant_prefill, yes
+R1-D11-09,11,8 level 1,queue_count_wrong,"owner comment: Queue L1: tool 6, stated 8 (swapped with L2)",assistant_prefill, yes
+R1-D11-28,11,orthopedics slack falls from 13,quantities_conflated,"owner comment: the sentence mixes two quantities (spare in effect, empty decided)",assistant_prefill, yes
+R1-D12-19,12,Queue lists 16 patients,queue_count_wrong,"owner comment: Queue total: tool 17, stated 16",assistant_prefill, yes
+R1-D12-20,12,"(4 level 3, 7 level 2, 5 level 1)",queue_count_wrong,"owner comment: Queue L1: tool 6, stated 5",assistant_prefill, yes
+R1-D13-30,13,orthopedics slack falls from 15,quantities_conflated,owner comment: Same pattern as D11-28: mixed quantities,assistant_prefill, yes
+R1-D15-20,15,11 level 2,queue_count_wrong,"owner comment: Queue L2: tool 12, stated 11 (L2/L1 boundary off-by-one)",assistant_prefill, yes
+R1-D15-21,15,7 level 1,queue_count_wrong,"owner comment: Queue L1: tool 6, stated 7 (same off-by-one)",assistant_prefill, yes
+R1-D17-19,17,12 level 2,queue_count_wrong,"owner comment: Queue L2: tool 13, stated 12 (L2/L1 boundary off-by-one)",assistant_prefill, yes
+R1-D17-20,17,8 level 1,queue_count_wrong,"owner comment: Queue L1: tool 7, stated 8 (same off-by-one)",assistant_prefill, yes
+R1-D17-47,17,no idle nurses except 0.2 of rounding in neurology,sign_error,"owner comment: Sign error: 0.2 is uncovered need, not idle capacity",assistant_prefill, yes
+R1-D18-14,18,overflow queue of 23 patients,queue_count_wrong,"owner comment: Queue total: tool 22, stated 23",assistant_prefill, yes
+R1-D20-33,20,12 L2,queue_count_wrong,"owner comment: Queue L2: tool 13, stated 12 (L2/L1 boundary off-by-one)",assistant_prefill, yes
+R1-D20-34,20,and 11 L1 patients,queue_count_wrong,"owner comment: Queue L1: tool 10, stated 11 (same off-by-one)",assistant_prefill, yes
+R1-D21-35,21,the 3 spare beds go to,arithmetic_slip,owner comment: Stated 3 is an arithmetic slip,assistant_prefill, yes
+R1-D26-38,26,Nursing is short by about 6 nurse units overall,approximation_off,"owner comment: About 6: shortage 5.25, outside 5.5 <= x < 6.5",assistant_prefill, yes
+R1-D27-41,27,its bed counts leave level-3 and level-2 cardiology patients waiting,claim_not_simulated,owner comment: An unsimulated assertion,assistant_prefill, yes
+R1-D28-26,28,"Option C covers neurology L2 and IM L2, which A and B left short",wrong_tier_level,"owner comment: a level mislabel (A left IM L1 short, not L2)",assistant_prefill, yes
+R1-D28-27,28,"Option C covers neurology L2 and IM L2, which A and B left short",wrong_tier_level,owner comment: same level mislabel,assistant_prefill, yes
