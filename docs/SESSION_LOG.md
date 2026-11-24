@@ -1135,3 +1135,24 @@ No frozen file was edited, moved or re-hashed in place; transcripts untouched; n
 
 1. `launch` resumes whatever `ACTIVE_RUN` names (stays parked; no more runs are planned).
 2. Part B classifies each case under one pattern and one "found by"; a few cases fit two (e.g. R58 was found partly by the test suite).
+
+## 2026-11-24 (thirty-second session: Phase 5–6, release preparation, branch `release`)
+
+No frozen file was edited, moved or re-hashed in place; transcripts of the frozen runs untouched; no history rewrite; no remote, no push.
+
+### Achieved
+
+1. `ERROR_ANALYSIS.md` summary: the owner / advisor review of the 19 named as the exception to "independent of any LLM output".
+2. `ANALYSIS.md` §5 Limitations (Log #140).
+3. README rewritten as the grader map: five-minute path, AI-assistance disclosure, data and privacy, clone/zip reproduction; owner-only section removed.
+4. Publication re-scan (`CLEANUP_PLAN.md` §7.1): 12 editable files scrubbed of the username; secrets, emails, credential files 0; no file over 50 MB.
+5. Reproducibility: fresh clone (`C:\hra-check`) and `git archive` zip (`C:\hra-zip`) pass every step; `test_owner_inputs.py` skips cleanly without git (R73). Merged into `main`.
+
+### Next
+
+1. Owner: `REFLECTION.md`, then create the GitHub repository, push `main` and the tags, and build the zip from the final commit.
+
+### Parked questions
+
+1. `launch` resumes whatever `ACTIVE_RUN` names (stays parked; no more runs are planned).
+2. Part B classifies each case under one pattern and one "found by"; a few cases fit two (e.g. R58 was found partly by the test suite).

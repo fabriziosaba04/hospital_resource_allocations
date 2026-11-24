@@ -560,3 +560,11 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **How it was caught:** owner / advisor review of the merged file.
 - **Fix:** the two categories merged into "owner / advisor review", with the R52 note in parts B, C and D; a selection-bias caveat at the top of part B and in the summary; per-run issue counts with ids, and the total only as "(… in total)". A build-time assertion checks that each per-run total equals the sum by level (Log #139).
 - **Implication:** a category the record cannot separate must not be reported as separate. A count drawn from a self-written log has to say so where the count appears.
+
+### R73. Two release gaps that no check had exercised: the zip and a globally ignored file
+
+- **Type:** development/reproducibility and publication (AI assistant).
+- **What happened:** (1) `tests/test_owner_inputs.py` reads the committed owner table with `git show HEAD:…`. In the submission zip (`git archive`, no `.git`) the call fails, so 14 tests would have **errored** for a grader working from the zip. The README promised that the zip runs the fast suite. No step had ever run the suite outside a git checkout. (2) `.claude/settings.local.json` was untracked only because of the owner's **global** git ignore, not the repository's `.gitignore`. On another machine, or after a change in that config, `git add -A` would have committed it. CLEANUP_PLAN §7 recorded it as "untracked" without asking why. (3) The README still marked `ERROR_ANALYSIS.md` "to be completed" in the Reflection row (the R70 pattern).
+- **How it was caught:** (1) by grepping the tests for `git` before the zip run (the zip run then confirmed 14 clean skips); (2) by `git check-ignore -v` during the publication scan, which named the global file; (3) by reading the README for the rewrite.
+- **Fix:** (1) the helper skips with the reason "needs a git checkout", including when git is not installed; (2) `.claude/settings.local.json` added to `.gitignore`; (3) the README row corrected (Log #140).
+- **Implication:** the distribution formats (clone and zip) are only verified once they are actually run, each from a short path, without the working copy. `check-ignore -v` names *which* rule ignores a file. A rule outside the repository protects nothing for anyone else.

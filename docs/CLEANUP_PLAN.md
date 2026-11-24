@@ -263,6 +263,15 @@ Notes:
 - Under the owner decision, all 62 frozen files stay as they are. The 26 editable files could be scrubbed, but 13 of them (R1's digest) sit inside a run folder and 9 are development transcripts, so the plan proposes **no scrub** unless the owner asks for one.
 - **Secrets, individually:** the secret patterns (`sk-ant-…`, `sk-…`, `gh?_…`, `AKIA…`, private-key headers, `authorization`/`x-api-key`/cookie fields, `access_token`/`refresh_token`, `password=`) match nothing. The only hits for `oauth` are the beta-header name `oauth-2025-04-20` (639 lines in request metadata) and a sentence of Claude Code's system prompt (288 lines). The long opaque strings in the transcripts are the fields `hash`, `shapeHash` and `requestDigest` (content hashes) and `signature` (thinking-block signatures). None of these is a credential. **No secret found.**
 
+### 7.1 Re-scan at release (2026-11-24, branch `release`)
+
+Scope: 809 tracked files (`git grep -I`).
+
+- **Username:** 87 files and 726 occurrences before; 75 files and 650 occurrences after. All 75 are inside the frozen run folders of R1–R3 and STRESS1: the 62 frozen files above, plus R1's `allocator_digest/` (13), which is inside a guarded run folder. The 12 editable files were scrubbed (Log #140). The user-path pattern goes from 89 files to 77; the 2 extra files are the generic literals in this file and `tests/test_copy_back.py`.
+- **Secrets:** 0. The one pattern hit is the pattern list in §7 itself. **Emails in files:** 0. **`.env` / credential files tracked:** 0.
+- **Size:** 56.3 MiB tracked, largest file 3.2 MB (`results/allocations/R2/transcripts/launch-1.jsonl`), none over 50 MB; zip 12.7 MB, longest path 132 characters.
+- **`.gitignore`:** `results/analysis/recomputed/`, caches and virtualenvs are ignored, and no tracked file matches an ignore rule. `.claude/settings.local.json` was ignored only by the owner's global git config; it is now in the repository's `.gitignore` (R73).
+
 ## 8. Reproducibility after the clean-up
 
 | Goal | Needs | Commands |
