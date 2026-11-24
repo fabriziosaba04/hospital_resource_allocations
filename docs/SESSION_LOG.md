@@ -1079,3 +1079,22 @@ No frozen file was edited, moved or re-hashed in place; transcripts untouched; n
 
 1. `launch` resumes whatever `ACTIVE_RUN` names (stays parked; no more runs are planned).
 
+## 2026-11-24 (twenty-ninth session: Phase 3, figures and animations, branch `figures`)
+
+No frozen file was edited, moved or re-hashed in place; transcripts untouched; no history rewrite.
+
+### Achieved
+
+1. Figures F1–F6 (`src/09_build_figures.py`, Log #136) in `results/figures/`, embedded in `ANALYSIS.md` with captions; every PNG opened and checked; fixes in R69.
+2. Animations R1–R3 (`src/15_animations.py`, Log #137), about 440 KB each, frames 1, 15, 30 of R1 checked.
+3. `tests/test_report_figures.py`: drawn values against the table cells and the records; the palette floors as a test.
+4. Maps updated (README, results/README, results/figures/README, CLAUDE.md tree); R70. Merged into `main`.
+
+### Next
+
+1. ERROR_ANALYSIS.md and REFLECTION.md.
+
+### Parked questions
+
+1. `launch` resumes whatever `ACTIVE_RUN` names (stays parked; no more runs are planned).
+

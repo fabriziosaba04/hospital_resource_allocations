@@ -25,7 +25,7 @@ B0 (no reallocation), B1 (clinical-priority-first) and B2 (proportional), each o
 
 ## Figures
 
-[`figures/`](figures/): static figures per dataset, built by `src/09_build_figures.py`. *To be completed.*
+[`figures/`](figures/): the figures F1–F6 of `ANALYSIS.md` (`src/09_build_figures.py`) and, in [`figures/animations/`](figures/animations/), one GIF per agent run (`src/15_animations.py`); index: [`figures/README.md`](figures/README.md).
 
 ## Verification
 

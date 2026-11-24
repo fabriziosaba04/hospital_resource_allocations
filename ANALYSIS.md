@@ -152,7 +152,13 @@ Results, run by run:
   - **Context: B1 is not an optimum on A2.** B1 is optimal on A1 by construction but greedy on nurses: it gives each department whole nurses for its incremental need, tier 3 first ([`docs/LIMITATIONS_AND_REFLECTION.md`](docs/LIMITATIONS_AND_REFLECTION.md) §4; §11 #50). REFLECTION_LOG R35 records that on the synthetic HARD10 fixture an agent run beat B1 at every A2 tier. On this seed B1 itself is 1.05 [`main_headline.A2_SV_N_tier_2.B1`] above the floor of 0 at tier 2 and 1.2 [`main_headline.A2_SV_N_tier_1.B1`] at tier 1; that is the whole headroom below B1 (`EVALUATION_PLAN.md` §8.1). Being better than B1 on A2 therefore means doing better than a greedy rule within that headroom, not beating an optimum.
 - **A3.** A3 rows with a non-zero gap to B1: 0/8 [`main_gap_summary.A3_rows_with_a_non_zero_gap_to_B1.R1`], 0/8 [`main_gap_summary.A3_rows_with_a_non_zero_gap_to_B1.R2`] and 0/8 [`main_gap_summary.A3_rows_with_a_non_zero_gap_to_B1.R3`]. At tier 2 each run has 1 [`main_headline.A3_tier_2_path.R1`], 1 [`main_headline.A3_tier_2_path.R2`] and 1 [`main_headline.A3_tier_2_path.R3`] patient-day of path excess, as B1 does (1 [`main_headline.A3_tier_2_path.B1`]).
 
-> *Figure placeholders (Phase 3):* F1 overflow by tier with the floor (A3); F2 avoidable nurse gap by tier (A2).
+![F1: overflow of tiers 3 and 2 per policy, with the floor](results/figures/F1_overflow_by_tier.png)
+
+*F1. A3 raw overflow of tiers 3 and 2 per policy, with the floor; the right panel leaves out B0 and has its own scale. Made by `src/09_build_figures.py` from `results/analysis/main_comparison.csv`.*
+
+![F2: avoidable nurse gap per tier and policy, with the floor](results/figures/F2_nurse_gap_by_tier.png)
+
+*F2. A2 SV_N per tier and policy, with the floor; the right panel leaves out B0 and has its own scale. Made by `src/09_build_figures.py` from `results/analysis/main_comparison.csv`.*
 
 ### 1.4 Secondary metrics (§3.10)
 
@@ -198,7 +204,17 @@ Results, run by run:
 
 **Levels and tiers are different scales in the A4 rows.** "A4 shortage Lk" is the shortage of level-k patients only (§3.4: S_k = Σ_t Σ_d shortage_{k,d}(t)). The tier floor is defined on tier j, that is levels ≥ j: "Tier floor Σ_t (Σ_d a_{j,d} − MaxN_j)" (§3.4). So a shortage at level 1 below the floor at tier 1 is not a violation. The comparable quantity is the tier shortage, the sum of the level shortages over k ≥ j, which is at or above the floor for every policy. Its excess over the floor equals A2's raw gap, as §3.4 states ("the tier excess equals Σ_t gapN_j"); step 10 checks this equality for every policy and tier.
 
-> *Figure placeholders (Phase 3):* F3 beds over time per policy; F4 nurses against the requirement; F5 fairness dispersion.
+![F3: beds allocated per department over time, against the patients present](results/figures/F3_beds_over_time.png)
+
+*F3. Beds allocated per department and day (agent runs above, baselines below), against the patients present and the cap. Made by `src/09_build_figures.py` from the committed run records.*
+
+![F4: nurses assigned per department over time, against the N1 requirement](results/figures/F4_nurses_vs_requirement.png)
+
+*F4. Nurses assigned per department and day, against the N1 requirement. Made by `src/09_build_figures.py` from the committed run records.*
+
+![F5: overflow-rate dispersion across departments per level](results/figures/F5_fairness_dispersion.png)
+
+*F5. Overflow-rate dispersion across departments (secondary metric B1) per level and policy; the right panel leaves out B0. Made by `src/09_build_figures.py` from `results/analysis/main_comparison.csv`.*
 
 ### 1.5 Descriptive metrics (§3.10)
 
@@ -303,6 +319,8 @@ With n = 3 runs, no inferential statistics are claimed (§9). Per metric: the ra
 
 *Source: [`results/analysis/main_comparison.csv`](results/analysis/main_comparison.csv), written by `src/10_main_comparison.py`. Each cell's id is `agreement.<row>.<column>` (row and column names with every run of other characters as `_`) in `results/analysis/HEADLINE_NUMBERS.csv`.*
 
+**Animations: net balance per department, day by day** (owner decision §11 #51). One GIF per run: [R1](results/figures/animations/R1_net_balances.gif), [R2](results/figures/animations/R2_net_balances.gif), [R3](results/figures/animations/R3_net_balances.gif). Each frame shows, per department, the beds and the nurses in effect minus the common initial allocation of day 1 (Decisions Log #137), with the day and the pools; a change in a pool shifts the sum of the balances. All three share their axis limits. They show net changes only: the records hold allocations, not transfers, so no movement between departments is drawn. Made by `src/15_animations.py` from the committed run records.
+
 ## 2. The CHECKER against the deterministic audit, R1–R3 (§4 items 4–8)
 
 The CHECKER is blind to the audit (§11 #29). Its issues are matched to the audit's issues on (day, type). Within a key, both sides are sorted most severe first and paired in order, so when the CHECKER reports fewer issues than the audit under a key, the matched audit issues are taken to be its most severe ones. The figures are stratified by group (the headline group, with `rejected_submission` as its own row), by level and by type; the pooled figure is for reference only (§4 item 5). §4 defines no figure pooled across runs, so none is given.
@@ -381,7 +399,9 @@ Summary, run by run (R1, R2, R3):
 - **Headline group:** recall 4/5 [`checker_R1.headline_group.recall`], 1/1 [`checker_R2.headline_group.recall`], 1/1 [`checker_R3.headline_group.recall`]; precision 4/4 [`checker_R1.headline_group.precision`], 1/1 [`checker_R2.headline_group.precision`], 1/1 [`checker_R3.headline_group.precision`]. All of it is `nurse_gap`: no run has a bed clinical or hard-constraint issue.
 - **Secondary group:** recall 76/96 [`checker_R1.secondary_group.recall`], 73/91 [`checker_R2.secondary_group.recall`], 62/85 [`checker_R3.secondary_group.recall`]; precision 76/85 [`checker_R1.secondary_group.precision`], 73/78 [`checker_R2.secondary_group.precision`], 62/68 [`checker_R3.secondary_group.precision`].
 
-> *Figure placeholder (Phase 3):* F6 CHECKER against the audit, by stratum.
+![F6: the CHECKER against the audit per stratum, R1-R3 and STRESS1](results/figures/F6_checker_vs_audit.png)
+
+*F6. Audit issues and the ones the CHECKER matched, per stratum, for R1–R3 and, separately, STRESS1 (descriptive); one shared scale. Made by `src/09_build_figures.py` from `results/analysis/checker_vs_audit.csv` and `results/analysis/stress1.csv`.*
 
 ## 3. The CHECKER on R1's wrong explanation claims (§4 claims item 4; §11 #73)
 

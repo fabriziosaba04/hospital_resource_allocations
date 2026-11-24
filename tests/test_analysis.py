@@ -49,7 +49,7 @@ LABELS = re.compile(
     r"|^#+ [0-9.]+|§\s?\d+(?:\.\d+)?(?:[–-]#?\d+)?|#\d+(?:[–-]#?\d+)?|\d{4}-\d{2}-\d{2}"  # headings, §, #, dates
     r"|R\d-D\d+-\d+|\b(?i:items?|days?|day-|tiers?|tier-|levels?|Phase|steps?)\s?\d+(?:\.\d+)?"
     r"(?:\s?(?:and|–|-|,)\s?\d+(?:\.\d+)?)*"                                # item 4, items 3 and 7.3, tiers 3 and 2
-    r"|\b[ABCFLRW]\d(?:[–-][ABCFLRW]?\d)?\b|\b(?:n|W) = \d\b|SV_[BN]|seed\d+|STRESS1|\bR\d{2}\b|HARD10"  # R35 etc.: log ids
+    r"|\b[ABCFLNRW]\d(?:[–-][ABCFLNRW]?\d)?\b|\b(?:n|W) = \d\b|SV_[BN]|seed\d+|STRESS1|\bR\d{2}\b|HARD10"  # R35 etc.: log ids
     r"|\bfloor of 0\b|\bscores 0 on A1\b", re.M)
 
 

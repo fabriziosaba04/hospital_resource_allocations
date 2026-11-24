@@ -21,7 +21,7 @@ Patients have one of three complexity levels (Level 3 is the highest priority). 
 
 | Brief | Where |
 | --- | --- |
-| Code for the agents | Agent definitions (dispatcher, ALLOCATOR, CHECKER): [`.claude/agents/`](.claude/agents/). Run restrictions: [`.claude/run-settings.json`](.claude/run-settings.json). MCP server (ANALYZER, ORCHESTRATOR state machine, tools): [`src/mcp_server/`](src/mcp_server/). Deterministic environment rules: [`src/environment/`](src/environment/). Audit, metrics and baselines: [`src/evaluation/`](src/evaluation/). The pipeline in run order: [`src/01_verify_data.py`](src/01_verify_data.py) … [`src/14_write_analysis.py`](src/14_write_analysis.py) (§5) |
+| Code for the agents | Agent definitions (dispatcher, ALLOCATOR, CHECKER): [`.claude/agents/`](.claude/agents/). Run restrictions: [`.claude/run-settings.json`](.claude/run-settings.json). MCP server (ANALYZER, ORCHESTRATOR state machine, tools): [`src/mcp_server/`](src/mcp_server/). Deterministic environment rules: [`src/environment/`](src/environment/). Audit, metrics and baselines: [`src/evaluation/`](src/evaluation/). The pipeline in run order: [`src/01_verify_data.py`](src/01_verify_data.py) … [`src/15_animations.py`](src/15_animations.py) (§5) |
 | README | this file |
 | Error analysis | [`ERROR_ANALYSIS.md`](ERROR_ANALYSIS.md) (*to be completed*; [`mistakes.md`](mistakes.md) points to it) |
 | Reflection (one page) | [`REFLECTION.md`](REFLECTION.md) (*to be completed*; long version [`docs/LIMITATIONS_AND_REFLECTION.md`](docs/LIMITATIONS_AND_REFLECTION.md)) |
@@ -34,7 +34,7 @@ Patients have one of three complexity levels (Level 3 is the highest priority). 
 
 | Grading axis | Evidence |
 | --- | --- |
-| **Analysis (50%)** | Results: [`ANALYSIS.md`](ANALYSIS.md), from the tables in [`results/analysis/`](results/analysis/) (steps 10–14; two items pending the owner's definitions are marked there). Figures: [`results/figures/`](results/figures/) (*to be completed*; rebuilt by `src/09_build_figures.py`). Run reports per run: [`results/evaluations/R1/run_report.json`](results/evaluations/R1/run_report.json) (likewise R2, R3, STRESS1). Baseline headroom: [`results/evaluations/headroom.json`](results/evaluations/headroom.json). Metric definitions and the pre-registered headline set: [`docs/EVALUATION_PLAN.md`](docs/EVALUATION_PLAN.md) §3 |
+| **Analysis (50%)** | Results: [`ANALYSIS.md`](ANALYSIS.md), from the tables in [`results/analysis/`](results/analysis/) (steps 10–14). Figures F1–F6: [`F1`](results/figures/F1_overflow_by_tier.png), [`F2`](results/figures/F2_nurse_gap_by_tier.png), [`F3`](results/figures/F3_beds_over_time.png), [`F4`](results/figures/F4_nurses_vs_requirement.png), [`F5`](results/figures/F5_fairness_dispersion.png), [`F6`](results/figures/F6_checker_vs_audit.png) (`src/09_build_figures.py`). Animations of the net balance per department: [`R1`](results/figures/animations/R1_net_balances.gif), [`R2`](results/figures/animations/R2_net_balances.gif), [`R3`](results/figures/animations/R3_net_balances.gif) (`src/15_animations.py`). Run reports per run: [`results/evaluations/R1/run_report.json`](results/evaluations/R1/run_report.json) (likewise R2, R3, STRESS1). Baseline headroom: [`results/evaluations/headroom.json`](results/evaluations/headroom.json). Metric definitions and the pre-registered headline set: [`docs/EVALUATION_PLAN.md`](docs/EVALUATION_PLAN.md) §3 |
 | **Reflection (30%)** | [`REFLECTION.md`](REFLECTION.md) (*to be completed*). Running record of errors and near misses: [`docs/REFLECTION_LOG.md`](docs/REFLECTION_LOG.md). Limitations: [`docs/LIMITATIONS_AND_REFLECTION.md`](docs/LIMITATIONS_AND_REFLECTION.md). Error analysis: [`ERROR_ANALYSIS.md`](ERROR_ANALYSIS.md) (*to be completed*) |
 | **Verification (20%)** | See the list below |
 
@@ -69,12 +69,12 @@ CLAUDE.md                    standing instructions for the coding agent
 .claude/agents/  .claude/run-settings.json  .mcp.json   agent definitions and run restrictions (frozen at prompts-v1.0)
 data/                        the synthetic datasets (frozen at data-v1.0)
   raw/  metadata/  processed/  MANIFEST.json
-src/                         code; 01_ … 14_ are the pipeline entry points
+src/                         code; 01_ … 15_ are the pipeline entry points
   data_generation/ environment/ mcp_server/ agent/ evaluation/ utils/
 results/                     index: results/README.md
   allocations/  evaluations/ runs R1–R3, STRESS1 and baselines B0–B2 (records, audits, reports)
   analysis/                  analysis tables, HEADLINE_NUMBERS.csv
-  figures/                   figures (to be completed)
+  figures/                   figures F1–F6; animations/ (one GIF per agent run)
   verification/              copy-back re-hashes, pre-run checks
   development/               dry runs and fixtures used to build and test the system
 tests/                       automated tests; tests/manual/ holds checks that need the claude CLI or the run clone
@@ -116,12 +116,13 @@ uv run python src/05_verify_copy_back.py        # re-hash the four agent runs ag
 uv run python src/06_audit_and_metrics.py       # audit and metrics of R1–R3 and STRESS1 recomputed without the agent
 uv run python src/07_run_reports.py             # run reports and CHECKER-vs-audit matching, rebuilt
 uv run python src/08_claim_verification.py      # R1's explanation claims re-verified, then the owner review recomputed (recall, adjudication, accuracy), byte for byte
-uv run python src/09_build_figures.py           # figures into results/figures/
+uv run python src/09_build_figures.py           # figures F1–F6 into results/figures/ (after steps 10–13)
 uv run python src/10_main_comparison.py         # R1–R3 vs B0–B2: gate D, A1–A3, secondaries, variability (results/analysis/)
 uv run python src/11_checker_vs_audit.py        # the CHECKER against the audit, R1–R3, stratified
 uv run python src/12_checker_on_wrong_claims.py # the CHECKER on R1's wrong explanation claims (75 primary, 19 descriptive)
 uv run python src/13_stress1.py                 # the STRESS1 probe, incl. the shock-day closed-form test
 uv run python src/14_write_analysis.py          # ANALYSIS.md and HEADLINE_NUMBERS.csv from the tables (--check: up to date?)
+uv run python src/15_animations.py             # one GIF per agent run: net balance per department and day
 ```
 
 - Steps 10–14 write the committed analysis tables in `results/analysis/`; re-running them reproduces the files byte for byte. Other recomputations go to `results/analysis/recomputed/` (ignored by git). Each script reports EQUAL or DIFFERENT against the committed file, ignoring timestamps. No script writes into the frozen run folders.

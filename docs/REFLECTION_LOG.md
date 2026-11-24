@@ -529,3 +529,19 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **Fix:** the block moved into the confirmed branch; the rendered text references its ids, so `test_analysis` now fails if it disappears again.
 - **Implication:** check that a new output is actually present, not only that the script exits 0.
 
+### R69. Two figure defects that only looking at the PNGs caught
+
+- **Type:** development/process (presentation).
+- **What happened:** (1) in F3 and F4 the series drawn last hid the others: B2 covered B1 almost everywhere, R3 covered R1 and R2, and B2's light grey (contrast 1.2:1) nearly vanished. (2) In F1 and F2 every floor is 0, so the dashed floor line lay on the axis and could not be seen; the first fix (a text label) then collided with the tick labels. All tests passed in each state.
+- **How it was caught:** opening every PNG after generation, as the brief asks.
+- **Fix:** lines drawn lightest-first and widest, with the light ones outlined; floors written into the tick labels; F6 given one shared scale.
+- **Implication:** the value test proves the right numbers are drawn, not that they can be seen.
+
+### R70. A stale "pending" claim survived a merge in the README
+
+- **Type:** development/process.
+- **What happened:** the README's evidence row still said "two items pending the owner's definitions" after both items had been computed and merged (3d8e733).
+- **How it was caught:** while adding the figure links to the same row.
+- **Fix:** the row now lists the figures and animations; the pending note is gone.
+- **Implication:** `test_readme_paths.py` checks that paths exist, not that statements are current; status words in the README need a read at each merge.
+
