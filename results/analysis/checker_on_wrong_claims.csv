@@ -1,0 +1,22 @@
+id,table,row,col,value,role,pre_registered,note
+wrong_claims_sets.pre_registered_wrong_claims.size,wrong_claims_sets,pre-registered wrong claims,size,75,check,yes,
+wrong_claims_sets.rubric_dependent_spare_free.size,wrong_claims_sets,rubric-dependent (spare/free),size,54,check,yes,
+wrong_claims_sets.extraction_error.size,wrong_claims_sets,extraction error,size,2,check,yes,
+wrong_claims_sets.confirmed_wrong.size,wrong_claims_sets,confirmed wrong,size,19,check,yes,
+wrong_claims_sets.CHECKER_LLM_only_issues_on_R1.size,wrong_claims_sets,CHECKER LLM-only issues on R1,size,5,descriptive,yes,the findings the mapping covers
+wrong_claims_primary.all_wrong_claims.recall,wrong_claims_primary,all wrong claims,recall,7/75,check,yes,pre-registered verdicts (§4 item 4)
+wrong_claims_primary.all_wrong_claims.precision,wrong_claims_primary,all wrong claims,precision,7/7,check,yes,
+wrong_claims_primary.all_wrong_claims.wrong_disputes,wrong_claims_primary,all wrong claims,wrong disputes,0,check,yes,none
+wrong_claims_primary.all_wrong_claims.contested_unverifiable,wrong_claims_primary,all wrong claims,contested unverifiable,0,check,yes,
+wrong_claims_primary.all_wrong_claims.disputes_outside_the_universe,wrong_claims_primary,all wrong claims,disputes outside the universe,0,check,yes,
+wrong_claims_primary.rubric_dependent_spare_free.recall,wrong_claims_primary,rubric-dependent (spare/free),recall,3/54,check,yes,R1-D28-28 R1-D28-29 R1-D28-30
+wrong_claims_primary.extraction_error.recall,wrong_claims_primary,extraction error,recall,0/2,check,yes,none
+wrong_claims_primary.confirmed_wrong.recall,wrong_claims_primary,confirmed wrong,recall,4/19,check,yes,R1-D11-28 R1-D12-19 R1-D12-20 R1-D13-30
+wrong_claims_sets.confirmed_wrong_after_owner_review.size,wrong_claims_sets,confirmed wrong after owner review,size,19,descriptive,yes,R52: the 19 rest on verdicts proposed by an LLM advisor and accepted by the owner
+wrong_claims_descriptive.confirmed_wrong_claims.recall,wrong_claims_descriptive,confirmed wrong claims,recall,4/19,descriptive,yes,R52: the 19 rest on verdicts proposed by an LLM advisor and accepted by the owner
+wrong_claims_descriptive.confirmed_wrong_claims.precision,wrong_claims_descriptive,confirmed wrong claims,precision,4/7,descriptive,yes,R52: the 19 rest on verdicts proposed by an LLM advisor and accepted by the owner
+wrong_claims_descriptive.confirmed_wrong_claims.wrong_disputes,wrong_claims_descriptive,confirmed wrong claims,wrong disputes,3,descriptive,yes,R1-D28-28 R1-D28-29 R1-D28-30 (owner verdict actually_correct)
+wrong_claims_cases.spare_free_rubric_dependent_claims_contested.value,wrong_claims_cases,spare/free: rubric-dependent claims contested,value,3/54,descriptive,no,R1-D28-28 R1-D28-29 R1-D28-30
+wrong_claims_cases.spare_free_CHECKER_findings_that_contest_a_claim_on_the_strict_reading.value,wrong_claims_cases,spare/free: CHECKER findings that contest a claim on the strict reading,value,0,descriptive,no,"the one finding on such claims (day 28) uses beds minus census itself, computed on the day-27 allocation: the day-27 allocation (31/30/17/18) minus the day-28 census (29/30/14/16); the decided day-28 beds (30/33/15/18) minus that census give the stated 1/3/1/2."
+wrong_claims_cases.day_12_queue_total_R1_D12_19_contested.value,wrong_claims_cases,day 12: queue total R1-D12-19 contested,value,yes,descriptive,no,the figure 16 (recomputed 17)
+wrong_claims_cases.day_12_matches_the_queue_records_visible_to_the_CHECKER.value,wrong_claims_cases,day 12: 'matches the queue records' visible to the CHECKER,value,no,descriptive,no,"the sentence is in the ALLOCATOR's closing message (transcript; allocator_digest/day_12.md), not in the submitted explanation; no CHECKER tool returns transcripts (CHECKER tools: Decisions Log #73)"

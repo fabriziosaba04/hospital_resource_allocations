@@ -21,10 +21,11 @@ Patients have one of three complexity levels (Level 3 is the highest priority). 
 
 | Brief | Where |
 | --- | --- |
-| Code for the agents | Agent definitions (dispatcher, ALLOCATOR, CHECKER): [`.claude/agents/`](.claude/agents/). Run restrictions: [`.claude/run-settings.json`](.claude/run-settings.json). MCP server (ANALYZER, ORCHESTRATOR state machine, tools): [`src/mcp_server/`](src/mcp_server/). Deterministic environment rules: [`src/environment/`](src/environment/). Audit, metrics and baselines: [`src/evaluation/`](src/evaluation/). The pipeline in run order: [`src/01_verify_data.py`](src/01_verify_data.py) … [`src/09_build_figures.py`](src/09_build_figures.py) (§5) |
+| Code for the agents | Agent definitions (dispatcher, ALLOCATOR, CHECKER): [`.claude/agents/`](.claude/agents/). Run restrictions: [`.claude/run-settings.json`](.claude/run-settings.json). MCP server (ANALYZER, ORCHESTRATOR state machine, tools): [`src/mcp_server/`](src/mcp_server/). Deterministic environment rules: [`src/environment/`](src/environment/). Audit, metrics and baselines: [`src/evaluation/`](src/evaluation/). The pipeline in run order: [`src/01_verify_data.py`](src/01_verify_data.py) … [`src/14_write_analysis.py`](src/14_write_analysis.py) (§5) |
 | README | this file |
 | Error analysis | [`ERROR_ANALYSIS.md`](ERROR_ANALYSIS.md) (*to be completed*; [`mistakes.md`](mistakes.md) points to it) |
 | Reflection (one page) | [`REFLECTION.md`](REFLECTION.md) (*to be completed*; long version [`docs/LIMITATIONS_AND_REFLECTION.md`](docs/LIMITATIONS_AND_REFLECTION.md)) |
+| Analysis (results) | [`ANALYSIS.md`](ANALYSIS.md): R1–R3 against the baselines, run by run; the CHECKER against the audit; the CHECKER on R1's wrong claims; the STRESS1 probe. Every number is listed with its source file and script in [`results/analysis/HEADLINE_NUMBERS.csv`](results/analysis/HEADLINE_NUMBERS.csv) |
 | Plan (question, theory, test) | [`plan.md`](plan.md), which summarises [`docs/EVALUATION_PLAN.md`](docs/EVALUATION_PLAN.md). No numerical falsification threshold was pre-registered: a run failing gate D counts against the hypothesis, and gaps to B1 are reported run by run (a declared limitation) |
 
 **Two files about "agents".** [`CLAUDE.md`](CLAUDE.md) holds the standing instructions for the coding agent (what the brief calls `AGENTS.md`). [`docs/AGENTS.md`](docs/AGENTS.md) specifies the system's own four agents: ANALYZER, ALLOCATOR, CHECKER and ORCHESTRATOR.
@@ -33,7 +34,7 @@ Patients have one of three complexity levels (Level 3 is the highest priority). 
 
 | Grading axis | Evidence |
 | --- | --- |
-| **Analysis (50%)** | Results: [`results/analysis/`](results/analysis/) (*to be completed*). Figures: [`results/figures/`](results/figures/) (*to be completed*; rebuilt by `src/09_build_figures.py`). Run reports per run: [`results/evaluations/R1/run_report.json`](results/evaluations/R1/run_report.json) (likewise R2, R3, STRESS1). Baseline headroom: [`results/evaluations/headroom.json`](results/evaluations/headroom.json). Metric definitions and the pre-registered headline set: [`docs/EVALUATION_PLAN.md`](docs/EVALUATION_PLAN.md) §3 |
+| **Analysis (50%)** | Results: [`ANALYSIS.md`](ANALYSIS.md), from the tables in [`results/analysis/`](results/analysis/) (steps 10–14; two items pending the owner's definitions are marked there). Figures: [`results/figures/`](results/figures/) (*to be completed*; rebuilt by `src/09_build_figures.py`). Run reports per run: [`results/evaluations/R1/run_report.json`](results/evaluations/R1/run_report.json) (likewise R2, R3, STRESS1). Baseline headroom: [`results/evaluations/headroom.json`](results/evaluations/headroom.json). Metric definitions and the pre-registered headline set: [`docs/EVALUATION_PLAN.md`](docs/EVALUATION_PLAN.md) §3 |
 | **Reflection (30%)** | [`REFLECTION.md`](REFLECTION.md) (*to be completed*). Running record of errors and near misses: [`docs/REFLECTION_LOG.md`](docs/REFLECTION_LOG.md). Limitations: [`docs/LIMITATIONS_AND_REFLECTION.md`](docs/LIMITATIONS_AND_REFLECTION.md). Error analysis: [`ERROR_ANALYSIS.md`](ERROR_ANALYSIS.md) (*to be completed*) |
 | **Verification (20%)** | See the list below |
 
@@ -63,16 +64,17 @@ The Verification evidence, none of which depends on an LLM output:
 ## 3. Repository map
 
 ```text
-README.md  plan.md  ERROR_ANALYSIS.md  mistakes.md  REFLECTION.md   deliverables
+README.md  ANALYSIS.md  plan.md  ERROR_ANALYSIS.md  mistakes.md  REFLECTION.md   deliverables
 CLAUDE.md                    standing instructions for the coding agent
 .claude/agents/  .claude/run-settings.json  .mcp.json   agent definitions and run restrictions (frozen at prompts-v1.0)
 data/                        the synthetic datasets (frozen at data-v1.0)
   raw/  metadata/  processed/  MANIFEST.json
-src/                         code; 01_ … 09_ are the pipeline entry points
+src/                         code; 01_ … 14_ are the pipeline entry points
   data_generation/ environment/ mcp_server/ agent/ evaluation/ utils/
 results/                     index: results/README.md
   allocations/  evaluations/ runs R1–R3, STRESS1 and baselines B0–B2 (records, audits, reports)
-  analysis/  figures/        analysis outputs (to be completed)
+  analysis/                  analysis tables, HEADLINE_NUMBERS.csv
+  figures/                   figures (to be completed)
   verification/              copy-back re-hashes, pre-run checks
   development/               dry runs and fixtures used to build and test the system
 tests/                       automated tests; tests/manual/ holds checks that need the claude CLI or the run clone
@@ -115,9 +117,14 @@ uv run python src/06_audit_and_metrics.py       # audit and metrics of R1–R3 a
 uv run python src/07_run_reports.py             # run reports and CHECKER-vs-audit matching, rebuilt
 uv run python src/08_claim_verification.py      # R1's explanation claims re-verified, then the owner review recomputed (recall, adjudication, accuracy), byte for byte
 uv run python src/09_build_figures.py           # figures into results/figures/
+uv run python src/10_main_comparison.py         # R1–R3 vs B0–B2: gate D, A1–A3, secondaries, variability (results/analysis/)
+uv run python src/11_checker_vs_audit.py        # the CHECKER against the audit, R1–R3, stratified
+uv run python src/12_checker_on_wrong_claims.py # the CHECKER on R1's wrong explanation claims (75 primary, 19 descriptive)
+uv run python src/13_stress1.py                 # the STRESS1 probe, incl. the shock-day closed-form test
+uv run python src/14_write_analysis.py          # ANALYSIS.md and HEADLINE_NUMBERS.csv from the tables (--check: up to date?)
 ```
 
-- Recomputations go to `results/analysis/recomputed/` (ignored by git). Each script reports EQUAL or DIFFERENT against the committed file, ignoring timestamps. No script writes into the frozen run folders.
+- Steps 10–14 write the committed analysis tables in `results/analysis/`; re-running them reproduces the files byte for byte. Other recomputations go to `results/analysis/recomputed/` (ignored by git). Each script reports EQUAL or DIFFERENT against the committed file, ignoring timestamps. No script writes into the frozen run folders.
 - **Windows and long paths.** The longest path in the repository is 132 characters, so a clone or unzip under a short folder (for example `C:\hra\`) works as is. Under a deep folder, paths can exceed Windows' 260-character limit. In that case, run `git config --global core.longpaths true` before cloning (it is a git setting and does not travel with a clone), or enable `LongPathsEnabled` (administrator; `HKLM\SYSTEM\CurrentControlSet\Control\FileSystem`). The project's own readers handle long paths in any case.
 - Line endings are fixed by [`.gitattributes`](.gitattributes), so the frozen data and transcripts keep their committed bytes on checkout.
 

@@ -1012,3 +1012,29 @@ No frozen file was edited, moved or re-hashed in place; transcripts untouched; n
 ### Parked questions
 
 1. `launch` resumes whatever `ACTIVE_RUN` names (stays parked; no more runs are planned).
+
+## 2026-11-24 (twenty-sixth session: merge of owner-review-out, R62 corrected, Phase 2 analysis)
+
+No frozen file was edited, moved or re-hashed in place; transcripts untouched; no history rewrite.
+
+### Achieved
+
+1. **Merge:** `main` fast-forwarded to `a78ec24` (owner-review-out); fast suite 219 passed, `test_readme_paths.py` 11 passed, `src/08_claim_verification.py R1` 16/16 byte-identical, exit 0.
+2. **R62 rewritten** on the owner's account (the previous session was cut off by a computer crash; the hand-off was right when made).
+3. **Phase 2 analysis** (branch `analysis`, Log #128–#130): steps `src/10`–`14`, tables in `results/analysis/`, `ANALYSIS.md` rendered from a template, `HEADLINE_NUMBERS.csv`. R1's CHECKER dispute mapping made (7 claims). REFLECTION_LOG R63, R64, R65.
+
+### Next
+
+1. Owner: answer the two open questions below; then the two pending items are computed and rendered.
+2. Owner: review branch `analysis`; merge.
+3. Phase 3: figures.
+
+### Open questions (blocking the two pending items only)
+
+1. §9 decision-level agreement: pairwise (R1–R2, R1–R3, R2–R3) or all three runs; beds and nurses separately or together.
+2. §11 #73 "the 19 by error type": which field (`category`, or the rubric tier/term of `wrong_claims_tiers.json`, or a new classification).
+
+### Parked questions
+
+1. `launch` resumes whatever `ACTIVE_RUN` names (stays parked; no more runs are planned).
+2. `ANALYSIS.md` renders every cell of every table (1405 numbers); the per-type CHECKER rows could move to an appendix.

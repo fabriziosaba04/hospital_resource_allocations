@@ -1,0 +1,500 @@
+id,table,row,col,value,role,pre_registered,note
+stress_precondition.shock_day_A1_pairing_closed_form_Hypothesis_property_test.result,stress_precondition,shock-day A1 pairing = closed form (Hypothesis property test),result,passed,check,yes,tests/test_environment_rest.py::test_pairing_equals_closed_form_shock_day: 1 passed
+stress_shock_days.day_23_forced_cut_c_t.STRESS1,stress_shock_days,day 23 forced cut c(t),STRESS1,6,primary,yes,
+stress_shock_days.day_23_executed_cut.STRESS1,stress_shock_days,day 23 executed cut,STRESS1,6,primary,yes,
+stress_shock_days.day_23_shock_cut_pairs.STRESS1,stress_shock_days,day 23 shock-cut pairs,STRESS1,0,primary,yes,
+stress_shock_days.day_23_shock_cut_severity.STRESS1,stress_shock_days,day 23 shock-cut severity,STRESS1,0,primary,yes,
+stress_shock_days.day_23_SHOCK_OVERCUT_rejected.STRESS1,stress_shock_days,day 23 SHOCK_OVERCUT rejected,STRESS1,0,primary,yes,
+stress_shock_days.day_23_SHOCK_OVERCUT_in_effect.STRESS1,stress_shock_days,day 23 SHOCK_OVERCUT in effect,STRESS1,no,primary,yes,
+stress_shock_days.day_23_hard_constraint_errors.STRESS1,stress_shock_days,day 23 hard-constraint errors,STRESS1,0,primary,yes,
+stress_shock_days.day_23_replay_ok.STRESS1,stress_shock_days,day 23 replay ok,STRESS1,yes,primary,yes,
+stress_shock_days.day_23_pairing_closed_form_mismatches.STRESS1,stress_shock_days,day 23 pairing / closed-form mismatches,STRESS1,0,primary,yes,
+stress_shock_days.day_23_follows_the_cut_rule.STRESS1,stress_shock_days,day 23 follows the cut rule,STRESS1,yes,primary,yes,
+stress_criterion.days_meeting_the_criterion_shock_days.STRESS1,stress_criterion,days meeting the criterion / shock days,STRESS1,1/1,primary,yes,no failing day
+stress_shock_days.day_23_forced_cut_c_t.B0,stress_shock_days,day 23 forced cut c(t),B0,4,reference,yes,
+stress_shock_days.day_23_executed_cut.B0,stress_shock_days,day 23 executed cut,B0,4,reference,yes,
+stress_shock_days.day_23_shock_cut_pairs.B0,stress_shock_days,day 23 shock-cut pairs,B0,0,reference,yes,
+stress_shock_days.day_23_shock_cut_severity.B0,stress_shock_days,day 23 shock-cut severity,B0,0,reference,yes,
+stress_shock_days.day_23_SHOCK_OVERCUT_rejected.B0,stress_shock_days,day 23 SHOCK_OVERCUT rejected,B0,–,reference,yes,baselines make no submissions
+stress_shock_days.day_23_SHOCK_OVERCUT_in_effect.B0,stress_shock_days,day 23 SHOCK_OVERCUT in effect,B0,no,reference,yes,
+stress_shock_days.day_23_hard_constraint_errors.B0,stress_shock_days,day 23 hard-constraint errors,B0,0,reference,yes,
+stress_shock_days.day_23_replay_ok.B0,stress_shock_days,day 23 replay ok,B0,yes,reference,yes,
+stress_shock_days.day_23_pairing_closed_form_mismatches.B0,stress_shock_days,day 23 pairing / closed-form mismatches,B0,0,reference,yes,
+stress_shock_days.day_23_follows_the_cut_rule.B0,stress_shock_days,day 23 follows the cut rule,B0,yes,reference,yes,
+stress_criterion.days_meeting_the_criterion_shock_days.B0,stress_criterion,days meeting the criterion / shock days,B0,1/1,reference,yes,no failing day
+stress_shock_days.day_23_forced_cut_c_t.B1,stress_shock_days,day 23 forced cut c(t),B1,6,reference,yes,
+stress_shock_days.day_23_executed_cut.B1,stress_shock_days,day 23 executed cut,B1,6,reference,yes,
+stress_shock_days.day_23_shock_cut_pairs.B1,stress_shock_days,day 23 shock-cut pairs,B1,0,reference,yes,
+stress_shock_days.day_23_shock_cut_severity.B1,stress_shock_days,day 23 shock-cut severity,B1,0,reference,yes,
+stress_shock_days.day_23_SHOCK_OVERCUT_rejected.B1,stress_shock_days,day 23 SHOCK_OVERCUT rejected,B1,–,reference,yes,baselines make no submissions
+stress_shock_days.day_23_SHOCK_OVERCUT_in_effect.B1,stress_shock_days,day 23 SHOCK_OVERCUT in effect,B1,no,reference,yes,
+stress_shock_days.day_23_hard_constraint_errors.B1,stress_shock_days,day 23 hard-constraint errors,B1,0,reference,yes,
+stress_shock_days.day_23_replay_ok.B1,stress_shock_days,day 23 replay ok,B1,yes,reference,yes,
+stress_shock_days.day_23_pairing_closed_form_mismatches.B1,stress_shock_days,day 23 pairing / closed-form mismatches,B1,0,reference,yes,
+stress_shock_days.day_23_follows_the_cut_rule.B1,stress_shock_days,day 23 follows the cut rule,B1,yes,reference,yes,
+stress_criterion.days_meeting_the_criterion_shock_days.B1,stress_criterion,days meeting the criterion / shock days,B1,1/1,reference,yes,no failing day
+stress_shock_days.day_23_forced_cut_c_t.B2,stress_shock_days,day 23 forced cut c(t),B2,6,reference,yes,
+stress_shock_days.day_23_executed_cut.B2,stress_shock_days,day 23 executed cut,B2,6,reference,yes,
+stress_shock_days.day_23_shock_cut_pairs.B2,stress_shock_days,day 23 shock-cut pairs,B2,0,reference,yes,
+stress_shock_days.day_23_shock_cut_severity.B2,stress_shock_days,day 23 shock-cut severity,B2,0,reference,yes,
+stress_shock_days.day_23_SHOCK_OVERCUT_rejected.B2,stress_shock_days,day 23 SHOCK_OVERCUT rejected,B2,–,reference,yes,baselines make no submissions
+stress_shock_days.day_23_SHOCK_OVERCUT_in_effect.B2,stress_shock_days,day 23 SHOCK_OVERCUT in effect,B2,no,reference,yes,
+stress_shock_days.day_23_hard_constraint_errors.B2,stress_shock_days,day 23 hard-constraint errors,B2,0,reference,yes,
+stress_shock_days.day_23_replay_ok.B2,stress_shock_days,day 23 replay ok,B2,yes,reference,yes,
+stress_shock_days.day_23_pairing_closed_form_mismatches.B2,stress_shock_days,day 23 pairing / closed-form mismatches,B2,0,reference,yes,
+stress_shock_days.day_23_follows_the_cut_rule.B2,stress_shock_days,day 23 follows the cut rule,B2,yes,reference,yes,
+stress_criterion.days_meeting_the_criterion_shock_days.B2,stress_criterion,days meeting the criterion / shock days,B2,1/1,reference,yes,no failing day
+stress_metrics.gate_passed_run_level.STRESS1,stress_metrics,gate passed (run level),STRESS1,yes,descriptive,yes,
+stress_metrics.gate_passed_run_level.B0,stress_metrics,gate passed (run level),B0,yes,descriptive,yes,
+stress_metrics.gate_passed_run_level.B1,stress_metrics,gate passed (run level),B1,yes,descriptive,yes,
+stress_metrics.gate_passed_run_level.B2,stress_metrics,gate passed (run level),B2,yes,descriptive,yes,
+stress_metrics.A1_SV_B.STRESS1,stress_metrics,A1 SV_B,STRESS1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A1_SV_B.B0,stress_metrics,A1 SV_B,B0,231,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A1_SV_B.B1,stress_metrics,A1 SV_B,B1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A1_SV_B.B2,stress_metrics,A1 SV_B,B2,11,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A1_SV_B.floor,stress_metrics,A1 SV_B,floor,0,descriptive,yes,
+stress_metrics.A1_displaced_severity.STRESS1,stress_metrics,A1 displaced severity,STRESS1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A1_displaced_severity.B0,stress_metrics,A1 displaced severity,B0,8,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A1_displaced_severity.B1,stress_metrics,A1 displaced severity,B1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A1_displaced_severity.B2,stress_metrics,A1 displaced severity,B2,11,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A1_displaced_severity.floor,stress_metrics,A1 displaced severity,floor,0,descriptive,yes,
+stress_metrics.A1_empty_severity.STRESS1,stress_metrics,A1 empty severity,STRESS1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A1_empty_severity.B0,stress_metrics,A1 empty severity,B0,223,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A1_empty_severity.B1,stress_metrics,A1 empty severity,B1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A1_empty_severity.B2,stress_metrics,A1 empty severity,B2,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A1_empty_severity.floor,stress_metrics,A1 empty severity,floor,0,descriptive,yes,
+stress_metrics.A1_shock_cut_severity.STRESS1,stress_metrics,A1 shock-cut severity,STRESS1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A1_shock_cut_severity.B0,stress_metrics,A1 shock-cut severity,B0,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A1_shock_cut_severity.B1,stress_metrics,A1 shock-cut severity,B1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A1_shock_cut_severity.B2,stress_metrics,A1 shock-cut severity,B2,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A1_shock_cut_severity.floor,stress_metrics,A1 shock-cut severity,floor,0,descriptive,yes,
+stress_metrics.A2_SV_N_tier_3.STRESS1,stress_metrics,A2 SV_N tier 3,STRESS1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A2_SV_N_tier_3.B0,stress_metrics,A2 SV_N tier 3,B0,8.8,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A2_SV_N_tier_3.B1,stress_metrics,A2 SV_N tier 3,B1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A2_SV_N_tier_3.B2,stress_metrics,A2 SV_N tier 3,B2,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A2_SV_N_tier_3.floor,stress_metrics,A2 SV_N tier 3,floor,0,descriptive,yes,
+stress_metrics.A2_SV_N_tier_2.STRESS1,stress_metrics,A2 SV_N tier 2,STRESS1,0.1,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A2_SV_N_tier_2.B0,stress_metrics,A2 SV_N tier 2,B0,67.9,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A2_SV_N_tier_2.B1,stress_metrics,A2 SV_N tier 2,B1,1.05,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A2_SV_N_tier_2.B2,stress_metrics,A2 SV_N tier 2,B2,6.85,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A2_SV_N_tier_2.floor,stress_metrics,A2 SV_N tier 2,floor,0,descriptive,yes,
+stress_metrics.A2_SV_N_tier_1.STRESS1,stress_metrics,A2 SV_N tier 1,STRESS1,1.3,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A2_SV_N_tier_1.B0,stress_metrics,A2 SV_N tier 1,B0,65.8,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A2_SV_N_tier_1.B1,stress_metrics,A2 SV_N tier 1,B1,1.2,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A2_SV_N_tier_1.B2,stress_metrics,A2 SV_N tier 1,B2,0.85,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A2_SV_N_tier_1.floor,stress_metrics,A2 SV_N tier 1,floor,0,descriptive,yes,
+stress_metrics.A3_tier_3_raw.STRESS1,stress_metrics,A3 tier 3 raw,STRESS1,3,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_3_raw.B0,stress_metrics,A3 tier 3 raw,B0,20,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_3_raw.B1,stress_metrics,A3 tier 3 raw,B1,3,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_3_raw.B2,stress_metrics,A3 tier 3 raw,B2,12,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_3_raw.floor,stress_metrics,A3 tier 3 raw,floor,0,descriptive,yes,
+stress_metrics.A3_tier_3_excess.STRESS1,stress_metrics,A3 tier 3 excess,STRESS1,3,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_3_excess.B0,stress_metrics,A3 tier 3 excess,B0,20,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_3_excess.B1,stress_metrics,A3 tier 3 excess,B1,3,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_3_excess.B2,stress_metrics,A3 tier 3 excess,B2,12,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_3_excess.floor,stress_metrics,A3 tier 3 excess,floor,0,descriptive,yes,
+stress_metrics.A3_tier_3_avoid.STRESS1,stress_metrics,A3 tier 3 avoid,STRESS1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_3_avoid.B0,stress_metrics,A3 tier 3 avoid,B0,17,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_3_avoid.B1,stress_metrics,A3 tier 3 avoid,B1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_3_avoid.B2,stress_metrics,A3 tier 3 avoid,B2,9,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_3_avoid.floor,stress_metrics,A3 tier 3 avoid,floor,0,descriptive,yes,
+stress_metrics.A3_tier_3_path.STRESS1,stress_metrics,A3 tier 3 path,STRESS1,3,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_3_path.B0,stress_metrics,A3 tier 3 path,B0,3,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_3_path.B1,stress_metrics,A3 tier 3 path,B1,3,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_3_path.B2,stress_metrics,A3 tier 3 path,B2,3,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_3_path.floor,stress_metrics,A3 tier 3 path,floor,0,descriptive,yes,
+stress_metrics.A3_tier_2_raw.STRESS1,stress_metrics,A3 tier 2 raw,STRESS1,38,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_2_raw.B0,stress_metrics,A3 tier 2 raw,B0,108,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_2_raw.B1,stress_metrics,A3 tier 2 raw,B1,38,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_2_raw.B2,stress_metrics,A3 tier 2 raw,B2,42,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_2_raw.floor,stress_metrics,A3 tier 2 raw,floor,38,descriptive,yes,
+stress_metrics.A3_tier_2_excess.STRESS1,stress_metrics,A3 tier 2 excess,STRESS1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_2_excess.B0,stress_metrics,A3 tier 2 excess,B0,70,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_2_excess.B1,stress_metrics,A3 tier 2 excess,B1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_2_excess.B2,stress_metrics,A3 tier 2 excess,B2,4,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_2_excess.floor,stress_metrics,A3 tier 2 excess,floor,0,descriptive,yes,
+stress_metrics.A3_tier_2_avoid.STRESS1,stress_metrics,A3 tier 2 avoid,STRESS1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_2_avoid.B0,stress_metrics,A3 tier 2 avoid,B0,69,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_2_avoid.B1,stress_metrics,A3 tier 2 avoid,B1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_2_avoid.B2,stress_metrics,A3 tier 2 avoid,B2,2,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_2_avoid.floor,stress_metrics,A3 tier 2 avoid,floor,0,descriptive,yes,
+stress_metrics.A3_tier_2_path.STRESS1,stress_metrics,A3 tier 2 path,STRESS1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_2_path.B0,stress_metrics,A3 tier 2 path,B0,1,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_2_path.B1,stress_metrics,A3 tier 2 path,B1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_2_path.B2,stress_metrics,A3 tier 2 path,B2,2,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A3_tier_2_path.floor,stress_metrics,A3 tier 2 path,floor,0,descriptive,yes,
+stress_metrics.E_bed_reversals_W3.STRESS1,stress_metrics,E bed reversals W3,STRESS1,116,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_bed_reversals_W3.B0,stress_metrics,E bed reversals W3,B0,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_bed_reversals_W3.B1,stress_metrics,E bed reversals W3,B1,115,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_bed_reversals_W3.B2,stress_metrics,E bed reversals W3,B2,104,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_bed_reversals_W3.floor,stress_metrics,E bed reversals W3,floor,0,descriptive,yes,
+stress_metrics.E_bed_reversals_W2.STRESS1,stress_metrics,E bed reversals W2,STRESS1,100,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_bed_reversals_W2.B0,stress_metrics,E bed reversals W2,B0,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_bed_reversals_W2.B1,stress_metrics,E bed reversals W2,B1,100,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_bed_reversals_W2.B2,stress_metrics,E bed reversals W2,B2,90,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_bed_reversals_W2.floor,stress_metrics,E bed reversals W2,floor,0,descriptive,yes,
+stress_metrics.E_bed_reversals_W5.STRESS1,stress_metrics,E bed reversals W5,STRESS1,123,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_bed_reversals_W5.B0,stress_metrics,E bed reversals W5,B0,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_bed_reversals_W5.B1,stress_metrics,E bed reversals W5,B1,124,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_bed_reversals_W5.B2,stress_metrics,E bed reversals W5,B2,115,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_bed_reversals_W5.floor,stress_metrics,E bed reversals W5,floor,0,descriptive,yes,
+stress_metrics.E_nurse_reversals_W3.STRESS1,stress_metrics,E nurse reversals W3,STRESS1,49,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_nurse_reversals_W3.B0,stress_metrics,E nurse reversals W3,B0,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_nurse_reversals_W3.B1,stress_metrics,E nurse reversals W3,B1,47,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_nurse_reversals_W3.B2,stress_metrics,E nurse reversals W3,B2,48,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_nurse_reversals_W3.floor,stress_metrics,E nurse reversals W3,floor,0,descriptive,yes,
+stress_metrics.E_nurse_reversals_W2.STRESS1,stress_metrics,E nurse reversals W2,STRESS1,42,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_nurse_reversals_W2.B0,stress_metrics,E nurse reversals W2,B0,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_nurse_reversals_W2.B1,stress_metrics,E nurse reversals W2,B1,40,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_nurse_reversals_W2.B2,stress_metrics,E nurse reversals W2,B2,41,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_nurse_reversals_W2.floor,stress_metrics,E nurse reversals W2,floor,0,descriptive,yes,
+stress_metrics.E_nurse_reversals_W5.STRESS1,stress_metrics,E nurse reversals W5,STRESS1,51,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_nurse_reversals_W5.B0,stress_metrics,E nurse reversals W5,B0,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_nurse_reversals_W5.B1,stress_metrics,E nurse reversals W5,B1,48,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_nurse_reversals_W5.B2,stress_metrics,E nurse reversals W5,B2,48,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_nurse_reversals_W5.floor,stress_metrics,E nurse reversals W5,floor,0,descriptive,yes,
+stress_metrics.B1_dispersion_L1_pp.STRESS1,stress_metrics,B1 dispersion L1 (pp),STRESS1,3.94,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B1_dispersion_L1_pp.B0,stress_metrics,B1 dispersion L1 (pp),B0,42,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B1_dispersion_L1_pp.B1,stress_metrics,B1 dispersion L1 (pp),B1,6.45,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B1_dispersion_L1_pp.B2,stress_metrics,B1 dispersion L1 (pp),B2,7.37,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B1_dispersion_L1_pp.floor,stress_metrics,B1 dispersion L1 (pp),floor,–,descriptive,yes,
+stress_metrics.B1_dispersion_L2_pp.STRESS1,stress_metrics,B1 dispersion L2 (pp),STRESS1,1.82,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B1_dispersion_L2_pp.B0,stress_metrics,B1 dispersion L2 (pp),B0,22.85,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B1_dispersion_L2_pp.B1,stress_metrics,B1 dispersion L2 (pp),B1,2.21,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B1_dispersion_L2_pp.B2,stress_metrics,B1 dispersion L2 (pp),B2,4.36,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B1_dispersion_L2_pp.floor,stress_metrics,B1 dispersion L2 (pp),floor,–,descriptive,yes,
+stress_metrics.B1_dispersion_L3_pp.STRESS1,stress_metrics,B1 dispersion L3 (pp),STRESS1,0.74,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B1_dispersion_L3_pp.B0,stress_metrics,B1 dispersion L3 (pp),B0,4.29,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B1_dispersion_L3_pp.B1,stress_metrics,B1 dispersion L3 (pp),B1,0.74,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B1_dispersion_L3_pp.B2,stress_metrics,B1 dispersion L3 (pp),B2,1.59,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B1_dispersion_L3_pp.floor,stress_metrics,B1 dispersion L3 (pp),floor,–,descriptive,yes,
+stress_metrics.B2_F1_inversions_L1.STRESS1,stress_metrics,B2 F1 inversions L1,STRESS1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B2_F1_inversions_L1.B0,stress_metrics,B2 F1 inversions L1,B0,39,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B2_F1_inversions_L1.B1,stress_metrics,B2 F1 inversions L1,B1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B2_F1_inversions_L1.B2,stress_metrics,B2 F1 inversions L1,B2,4,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B2_F1_inversions_L1.floor,stress_metrics,B2 F1 inversions L1,floor,0,descriptive,yes,
+stress_metrics.B2_F1_inversion_wait_days_L1.STRESS1,stress_metrics,B2 F1 inversion wait days L1,STRESS1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B2_F1_inversion_wait_days_L1.B0,stress_metrics,B2 F1 inversion wait days L1,B0,86,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B2_F1_inversion_wait_days_L1.B1,stress_metrics,B2 F1 inversion wait days L1,B1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B2_F1_inversion_wait_days_L1.B2,stress_metrics,B2 F1 inversion wait days L1,B2,9,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B2_F1_inversion_wait_days_L1.floor,stress_metrics,B2 F1 inversion wait days L1,floor,0,descriptive,yes,
+stress_metrics.B2_F1_inversions_L2.STRESS1,stress_metrics,B2 F1 inversions L2,STRESS1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B2_F1_inversions_L2.B0,stress_metrics,B2 F1 inversions L2,B0,33,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B2_F1_inversions_L2.B1,stress_metrics,B2 F1 inversions L2,B1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B2_F1_inversions_L2.B2,stress_metrics,B2 F1 inversions L2,B2,3,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B2_F1_inversions_L2.floor,stress_metrics,B2 F1 inversions L2,floor,0,descriptive,yes,
+stress_metrics.B2_F1_inversion_wait_days_L2.STRESS1,stress_metrics,B2 F1 inversion wait days L2,STRESS1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B2_F1_inversion_wait_days_L2.B0,stress_metrics,B2 F1 inversion wait days L2,B0,57,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B2_F1_inversion_wait_days_L2.B1,stress_metrics,B2 F1 inversion wait days L2,B1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B2_F1_inversion_wait_days_L2.B2,stress_metrics,B2 F1 inversion wait days L2,B2,4,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B2_F1_inversion_wait_days_L2.floor,stress_metrics,B2 F1 inversion wait days L2,floor,0,descriptive,yes,
+stress_metrics.B2_F1_inversions_L3.STRESS1,stress_metrics,B2 F1 inversions L3,STRESS1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B2_F1_inversions_L3.B0,stress_metrics,B2 F1 inversions L3,B0,2,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B2_F1_inversions_L3.B1,stress_metrics,B2 F1 inversions L3,B1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B2_F1_inversions_L3.B2,stress_metrics,B2 F1 inversions L3,B2,2,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B2_F1_inversions_L3.floor,stress_metrics,B2 F1 inversions L3,floor,0,descriptive,yes,
+stress_metrics.B2_F1_inversion_wait_days_L3.STRESS1,stress_metrics,B2 F1 inversion wait days L3,STRESS1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B2_F1_inversion_wait_days_L3.B0,stress_metrics,B2 F1 inversion wait days L3,B0,2,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B2_F1_inversion_wait_days_L3.B1,stress_metrics,B2 F1 inversion wait days L3,B1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B2_F1_inversion_wait_days_L3.B2,stress_metrics,B2 F1 inversion wait days L3,B2,2,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B2_F1_inversion_wait_days_L3.floor,stress_metrics,B2 F1 inversion wait days L3,floor,0,descriptive,yes,
+stress_metrics.B3_mean_overflow_days_L1.STRESS1,stress_metrics,B3 mean overflow days L1,STRESS1,1.537,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B3_mean_overflow_days_L1.B0,stress_metrics,B3 mean overflow days L1,B0,2.156,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B3_mean_overflow_days_L1.B1,stress_metrics,B3 mean overflow days L1,B1,1.537,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B3_mean_overflow_days_L1.B2,stress_metrics,B3 mean overflow days L1,B2,1.513,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B3_mean_overflow_days_L1.floor,stress_metrics,B3 mean overflow days L1,floor,–,descriptive,yes,
+stress_metrics.B3_max_overflow_days_L1.STRESS1,stress_metrics,B3 max overflow days L1,STRESS1,3,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B3_max_overflow_days_L1.B0,stress_metrics,B3 max overflow days L1,B0,7,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B3_max_overflow_days_L1.B1,stress_metrics,B3 max overflow days L1,B1,3,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B3_max_overflow_days_L1.B2,stress_metrics,B3 max overflow days L1,B2,3,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B3_max_overflow_days_L1.floor,stress_metrics,B3 max overflow days L1,floor,–,descriptive,yes,
+stress_metrics.B3_mean_overflow_days_L2.STRESS1,stress_metrics,B3 mean overflow days L2,STRESS1,1.25,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B3_mean_overflow_days_L2.B0,stress_metrics,B3 mean overflow days L2,B0,1.833,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B3_mean_overflow_days_L2.B1,stress_metrics,B3 mean overflow days L2,B1,1.25,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B3_mean_overflow_days_L2.B2,stress_metrics,B3 mean overflow days L2,B2,1.25,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B3_mean_overflow_days_L2.floor,stress_metrics,B3 mean overflow days L2,floor,–,descriptive,yes,
+stress_metrics.B3_max_overflow_days_L2.STRESS1,stress_metrics,B3 max overflow days L2,STRESS1,2,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B3_max_overflow_days_L2.B0,stress_metrics,B3 max overflow days L2,B0,5,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B3_max_overflow_days_L2.B1,stress_metrics,B3 max overflow days L2,B1,2,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B3_max_overflow_days_L2.B2,stress_metrics,B3 max overflow days L2,B2,3,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B3_max_overflow_days_L2.floor,stress_metrics,B3 max overflow days L2,floor,–,descriptive,yes,
+stress_metrics.B3_mean_overflow_days_L3.STRESS1,stress_metrics,B3 mean overflow days L3,STRESS1,1,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B3_mean_overflow_days_L3.B0,stress_metrics,B3 mean overflow days L3,B0,1.111,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B3_mean_overflow_days_L3.B1,stress_metrics,B3 mean overflow days L3,B1,1,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B3_mean_overflow_days_L3.B2,stress_metrics,B3 mean overflow days L3,B2,1.2,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B3_mean_overflow_days_L3.floor,stress_metrics,B3 mean overflow days L3,floor,–,descriptive,yes,
+stress_metrics.B3_max_overflow_days_L3.STRESS1,stress_metrics,B3 max overflow days L3,STRESS1,1,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B3_max_overflow_days_L3.B0,stress_metrics,B3 max overflow days L3,B0,2,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B3_max_overflow_days_L3.B1,stress_metrics,B3 max overflow days L3,B1,1,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B3_max_overflow_days_L3.B2,stress_metrics,B3 max overflow days L3,B2,2,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B3_max_overflow_days_L3.floor,stress_metrics,B3 max overflow days L3,floor,–,descriptive,yes,
+stress_metrics.A4_shortage_L3.STRESS1,stress_metrics,A4 shortage L3,STRESS1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_shortage_L3.B0,stress_metrics,A4 shortage L3,B0,8.8,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_shortage_L3.B1,stress_metrics,A4 shortage L3,B1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_shortage_L3.B2,stress_metrics,A4 shortage L3,B2,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_shortage_L3.floor,stress_metrics,A4 shortage L3,floor,–,descriptive,yes,
+stress_metrics.A4_shortage_L2.STRESS1,stress_metrics,A4 shortage L2,STRESS1,4.2,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_shortage_L2.B0,stress_metrics,A4 shortage L2,B0,63.2,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_shortage_L2.B1,stress_metrics,A4 shortage L2,B1,5.15,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_shortage_L2.B2,stress_metrics,A4 shortage L2,B2,10.95,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_shortage_L2.floor,stress_metrics,A4 shortage L2,floor,–,descriptive,yes,
+stress_metrics.A4_shortage_L1.STRESS1,stress_metrics,A4 shortage L1,STRESS1,37.25,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_shortage_L1.B0,stress_metrics,A4 shortage L1,B0,33.95,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_shortage_L1.B1,stress_metrics,A4 shortage L1,B1,36.2,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_shortage_L1.B2,stress_metrics,A4 shortage L1,B2,30.05,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_shortage_L1.floor,stress_metrics,A4 shortage L1,floor,–,descriptive,yes,
+stress_metrics.A4_tier_floor_tier_3.STRESS1,stress_metrics,A4 tier floor tier 3,STRESS1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_floor_tier_3.B0,stress_metrics,A4 tier floor tier 3,B0,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_floor_tier_3.B1,stress_metrics,A4 tier floor tier 3,B1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_floor_tier_3.B2,stress_metrics,A4 tier floor tier 3,B2,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_floor_tier_3.floor,stress_metrics,A4 tier floor tier 3,floor,–,descriptive,yes,
+stress_metrics.A4_tier_floor_tier_2.STRESS1,stress_metrics,A4 tier floor tier 2,STRESS1,4.1,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_floor_tier_2.B0,stress_metrics,A4 tier floor tier 2,B0,4.1,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_floor_tier_2.B1,stress_metrics,A4 tier floor tier 2,B1,4.1,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_floor_tier_2.B2,stress_metrics,A4 tier floor tier 2,B2,4.1,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_floor_tier_2.floor,stress_metrics,A4 tier floor tier 2,floor,–,descriptive,yes,
+stress_metrics.A4_tier_floor_tier_1.STRESS1,stress_metrics,A4 tier floor tier 1,STRESS1,38.2,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_floor_tier_1.B0,stress_metrics,A4 tier floor tier 1,B0,38.2,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_floor_tier_1.B1,stress_metrics,A4 tier floor tier 1,B1,38.2,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_floor_tier_1.B2,stress_metrics,A4 tier floor tier 1,B2,38.2,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_floor_tier_1.floor,stress_metrics,A4 tier floor tier 1,floor,–,descriptive,yes,
+stress_metrics.E_bed_RS_total.STRESS1,stress_metrics,E bed RS total,STRESS1,142,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_bed_RS_total.B0,stress_metrics,E bed RS total,B0,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_bed_RS_total.B1,stress_metrics,E bed RS total,B1,142,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_bed_RS_total.B2,stress_metrics,E bed RS total,B2,133,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_bed_RS_total.floor,stress_metrics,E bed RS total,floor,–,descriptive,yes,
+stress_metrics.E_bed_reallocation_frequency_days.STRESS1,stress_metrics,E bed reallocation frequency (days),STRESS1,28,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_bed_reallocation_frequency_days.B0,stress_metrics,E bed reallocation frequency (days),B0,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_bed_reallocation_frequency_days.B1,stress_metrics,E bed reallocation frequency (days),B1,28,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_bed_reallocation_frequency_days.B2,stress_metrics,E bed reallocation frequency (days),B2,28,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_bed_reallocation_frequency_days.floor,stress_metrics,E bed reallocation frequency (days),floor,–,descriptive,yes,
+stress_metrics.E_nurse_RS_total.STRESS1,stress_metrics,E nurse RS total,STRESS1,58,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_nurse_RS_total.B0,stress_metrics,E nurse RS total,B0,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_nurse_RS_total.B1,stress_metrics,E nurse RS total,B1,56,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_nurse_RS_total.B2,stress_metrics,E nurse RS total,B2,56,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_nurse_RS_total.floor,stress_metrics,E nurse RS total,floor,–,descriptive,yes,
+stress_metrics.E_nurse_reallocation_frequency_days.STRESS1,stress_metrics,E nurse reallocation frequency (days),STRESS1,29,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_nurse_reallocation_frequency_days.B0,stress_metrics,E nurse reallocation frequency (days),B0,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_nurse_reallocation_frequency_days.B1,stress_metrics,E nurse reallocation frequency (days),B1,28,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_nurse_reallocation_frequency_days.B2,stress_metrics,E nurse reallocation frequency (days),B2,27,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.E_nurse_reallocation_frequency_days.floor,stress_metrics,E nurse reallocation frequency (days),floor,–,descriptive,yes,
+stress_metrics.C1_bed_utilisation.STRESS1,stress_metrics,C1 bed utilisation,STRESS1,0.9112,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.C1_bed_utilisation.B0,stress_metrics,C1 bed utilisation,B0,0.859,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.C1_bed_utilisation.B1,stress_metrics,C1 bed utilisation,B1,0.9112,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.C1_bed_utilisation.B2,stress_metrics,C1 bed utilisation,B2,0.9112,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.C1_bed_utilisation.floor,stress_metrics,C1 bed utilisation,floor,–,descriptive,yes,
+stress_metrics.C2_avoidable_idle_bed_days.STRESS1,stress_metrics,C2 avoidable idle bed-days,STRESS1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.C2_avoidable_idle_bed_days.B0,stress_metrics,C2 avoidable idle bed-days,B0,145,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.C2_avoidable_idle_bed_days.B1,stress_metrics,C2 avoidable idle bed-days,B1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.C2_avoidable_idle_bed_days.B2,stress_metrics,C2 avoidable idle bed-days,B2,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.C2_avoidable_idle_bed_days.floor,stress_metrics,C2 avoidable idle bed-days,floor,0,descriptive,yes,
+stress_metrics.C3_nurse_utilisation.STRESS1,stress_metrics,C3 nurse utilisation,STRESS1,0.9818,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.C3_nurse_utilisation.B0,stress_metrics,C3 nurse utilisation,B0,0.9262,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.C3_nurse_utilisation.B1,stress_metrics,C3 nurse utilisation,B1,0.9818,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.C3_nurse_utilisation.B2,stress_metrics,C3 nurse utilisation,B2,0.9818,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.C3_nurse_utilisation.floor,stress_metrics,C3 nurse utilisation,floor,–,descriptive,yes,
+stress_metrics.C4_avoidable_idle_nurse_days.STRESS1,stress_metrics,C4 avoidable idle nurse-days,STRESS1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.C4_avoidable_idle_nurse_days.B0,stress_metrics,C4 avoidable idle nurse-days,B0,61,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.C4_avoidable_idle_nurse_days.B1,stress_metrics,C4 avoidable idle nurse-days,B1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.C4_avoidable_idle_nurse_days.B2,stress_metrics,C4 avoidable idle nurse-days,B2,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.C4_avoidable_idle_nurse_days.floor,stress_metrics,C4 avoidable idle nurse-days,floor,0,descriptive,yes,
+stress_metrics.C4_unavoidable_idle_nurse_days.STRESS1,stress_metrics,C4 unavoidable idle nurse-days,STRESS1,20,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.C4_unavoidable_idle_nurse_days.B0,stress_metrics,C4 unavoidable idle nurse-days,B0,20,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.C4_unavoidable_idle_nurse_days.B1,stress_metrics,C4 unavoidable idle nurse-days,B1,20,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.C4_unavoidable_idle_nurse_days.B2,stress_metrics,C4 unavoidable idle nurse-days,B2,20,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.C4_unavoidable_idle_nurse_days.floor,stress_metrics,C4 unavoidable idle nurse-days,floor,–,descriptive,yes,
+stress_metrics.B4_coverage_dispersion_L1.STRESS1,stress_metrics,B4 coverage dispersion L1,STRESS1,0.0988,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B4_coverage_dispersion_L1.B0,stress_metrics,B4 coverage dispersion L1,B0,0.5373,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B4_coverage_dispersion_L1.B1,stress_metrics,B4 coverage dispersion L1,B1,0.1951,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B4_coverage_dispersion_L1.B2,stress_metrics,B4 coverage dispersion L1,B2,0.3844,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B4_coverage_dispersion_L1.floor,stress_metrics,B4 coverage dispersion L1,floor,–,descriptive,yes,
+stress_metrics.B4_coverage_dispersion_L2.STRESS1,stress_metrics,B4 coverage dispersion L2,STRESS1,0.0236,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B4_coverage_dispersion_L2.B0,stress_metrics,B4 coverage dispersion L2,B0,0.6437,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B4_coverage_dispersion_L2.B1,stress_metrics,B4 coverage dispersion L2,B1,0.0276,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B4_coverage_dispersion_L2.B2,stress_metrics,B4 coverage dispersion L2,B2,0.1149,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B4_coverage_dispersion_L2.floor,stress_metrics,B4 coverage dispersion L2,floor,–,descriptive,yes,
+stress_metrics.B4_coverage_dispersion_L3.STRESS1,stress_metrics,B4 coverage dispersion L3,STRESS1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B4_coverage_dispersion_L3.B0,stress_metrics,B4 coverage dispersion L3,B0,0.045,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B4_coverage_dispersion_L3.B1,stress_metrics,B4 coverage dispersion L3,B1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B4_coverage_dispersion_L3.B2,stress_metrics,B4 coverage dispersion L3,B2,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.B4_coverage_dispersion_L3.floor,stress_metrics,B4 coverage dispersion L3,floor,–,descriptive,yes,
+checker_STRESS1.headline_group.recall,checker_STRESS1,headline group,recall,2/4,descriptive,yes,
+checker_STRESS1.headline_group.precision,checker_STRESS1,headline group,precision,2/2,descriptive,yes,
+checker_STRESS1.headline_group.level_agreement,checker_STRESS1,headline group,level agreement,2/2,descriptive,yes,
+checker_STRESS1.rejected_submission_own_row.recall,checker_STRESS1,rejected_submission (own row),recall,0/0,descriptive,yes,not folded into the headline group (§11 #43)
+checker_STRESS1.rejected_submission_own_row.precision,checker_STRESS1,rejected_submission (own row),precision,0/0,descriptive,yes,not folded into the headline group (§11 #43)
+checker_STRESS1.rejected_submission_own_row.level_agreement,checker_STRESS1,rejected_submission (own row),level agreement,0/0,descriptive,yes,not folded into the headline group (§11 #43)
+checker_STRESS1.secondary_group.recall,checker_STRESS1,secondary group,recall,58/95,descriptive,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_STRESS1.secondary_group.precision,checker_STRESS1,secondary group,precision,58/68,descriptive,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_STRESS1.secondary_group.level_agreement,checker_STRESS1,secondary group,level agreement,58/58,descriptive,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_STRESS1.level_Critical.recall,checker_STRESS1,level Critical,recall,0/0,descriptive,yes,
+checker_STRESS1.level_Critical.precision,checker_STRESS1,level Critical,precision,0/0,descriptive,yes,
+checker_STRESS1.level_Critical.level_agreement,checker_STRESS1,level Critical,level agreement,0/0,descriptive,yes,
+checker_STRESS1.level_Major.recall,checker_STRESS1,level Major,recall,0/0,descriptive,yes,
+checker_STRESS1.level_Major.precision,checker_STRESS1,level Major,precision,0/0,descriptive,yes,
+checker_STRESS1.level_Major.level_agreement,checker_STRESS1,level Major,level agreement,0/0,descriptive,yes,
+checker_STRESS1.level_Moderate.recall,checker_STRESS1,level Moderate,recall,2/4,descriptive,yes,
+checker_STRESS1.level_Moderate.precision,checker_STRESS1,level Moderate,precision,2/2,descriptive,yes,
+checker_STRESS1.level_Moderate.level_agreement,checker_STRESS1,level Moderate,level agreement,2/2,descriptive,yes,
+checker_STRESS1.level_Minor.recall,checker_STRESS1,level Minor,recall,58/95,descriptive,yes,
+checker_STRESS1.level_Minor.precision,checker_STRESS1,level Minor,precision,58/68,descriptive,yes,
+checker_STRESS1.level_Minor.level_agreement,checker_STRESS1,level Minor,level agreement,58/58,descriptive,yes,
+checker_STRESS1.type_hard_constraint_in_effect.recall,checker_STRESS1,type hard_constraint_in_effect,recall,0/0,descriptive,yes,
+checker_STRESS1.type_hard_constraint_in_effect.precision,checker_STRESS1,type hard_constraint_in_effect,precision,0/0,descriptive,yes,
+checker_STRESS1.type_hard_constraint_in_effect.level_agreement,checker_STRESS1,type hard_constraint_in_effect,level agreement,0/0,descriptive,yes,
+checker_STRESS1.type_rejected_submission.recall,checker_STRESS1,type rejected_submission,recall,0/0,descriptive,yes,
+checker_STRESS1.type_rejected_submission.precision,checker_STRESS1,type rejected_submission,precision,0/0,descriptive,yes,
+checker_STRESS1.type_rejected_submission.level_agreement,checker_STRESS1,type rejected_submission,level agreement,0/0,descriptive,yes,
+checker_STRESS1.type_allocator_failure_day.recall,checker_STRESS1,type allocator_failure_day,recall,0/0,descriptive,yes,
+checker_STRESS1.type_allocator_failure_day.precision,checker_STRESS1,type allocator_failure_day,precision,0/0,descriptive,yes,
+checker_STRESS1.type_allocator_failure_day.level_agreement,checker_STRESS1,type allocator_failure_day,level agreement,0/0,descriptive,yes,
+checker_STRESS1.type_bed_displaced.recall,checker_STRESS1,type bed_displaced,recall,0/0,descriptive,yes,
+checker_STRESS1.type_bed_displaced.precision,checker_STRESS1,type bed_displaced,precision,0/0,descriptive,yes,
+checker_STRESS1.type_bed_displaced.level_agreement,checker_STRESS1,type bed_displaced,level agreement,0/0,descriptive,yes,
+checker_STRESS1.type_bed_empty.recall,checker_STRESS1,type bed_empty,recall,0/0,descriptive,yes,
+checker_STRESS1.type_bed_empty.precision,checker_STRESS1,type bed_empty,precision,0/0,descriptive,yes,
+checker_STRESS1.type_bed_empty.level_agreement,checker_STRESS1,type bed_empty,level agreement,0/0,descriptive,yes,
+checker_STRESS1.type_bed_shock_cut.recall,checker_STRESS1,type bed_shock_cut,recall,0/0,descriptive,yes,
+checker_STRESS1.type_bed_shock_cut.precision,checker_STRESS1,type bed_shock_cut,precision,0/0,descriptive,yes,
+checker_STRESS1.type_bed_shock_cut.level_agreement,checker_STRESS1,type bed_shock_cut,level agreement,0/0,descriptive,yes,
+checker_STRESS1.type_nurse_gap.recall,checker_STRESS1,type nurse_gap,recall,2/4,descriptive,yes,
+checker_STRESS1.type_nurse_gap.precision,checker_STRESS1,type nurse_gap,precision,2/2,descriptive,yes,
+checker_STRESS1.type_nurse_gap.level_agreement,checker_STRESS1,type nurse_gap,level agreement,2/2,descriptive,yes,
+checker_STRESS1.type_f1_inversion.recall,checker_STRESS1,type f1_inversion,recall,0/0,descriptive,yes,
+checker_STRESS1.type_f1_inversion.precision,checker_STRESS1,type f1_inversion,precision,0/0,descriptive,yes,
+checker_STRESS1.type_f1_inversion.level_agreement,checker_STRESS1,type f1_inversion,level agreement,0/0,descriptive,yes,
+checker_STRESS1.type_beds_reversal.recall,checker_STRESS1,type beds_reversal,recall,31/55,descriptive,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_STRESS1.type_beds_reversal.precision,checker_STRESS1,type beds_reversal,precision,31/36,descriptive,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_STRESS1.type_beds_reversal.level_agreement,checker_STRESS1,type beds_reversal,level agreement,31/31,descriptive,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_STRESS1.type_nurses_reversal.recall,checker_STRESS1,type nurses_reversal,recall,25/38,descriptive,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_STRESS1.type_nurses_reversal.precision,checker_STRESS1,type nurses_reversal,precision,25/30,descriptive,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_STRESS1.type_nurses_reversal.level_agreement,checker_STRESS1,type nurses_reversal,level agreement,25/25,descriptive,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_STRESS1.type_reallocation_without_effect.recall,checker_STRESS1,type reallocation_without_effect,recall,2/2,descriptive,yes,
+checker_STRESS1.type_reallocation_without_effect.precision,checker_STRESS1,type reallocation_without_effect,precision,2/2,descriptive,yes,
+checker_STRESS1.type_reallocation_without_effect.level_agreement,checker_STRESS1,type reallocation_without_effect,level agreement,2/2,descriptive,yes,
+checker_STRESS1.pooled_reference_only.recall,checker_STRESS1,pooled (reference only),recall,60/99,descriptive,yes,"kept for reference, not a headline (§4 item 5)"
+checker_STRESS1.pooled_reference_only.precision,checker_STRESS1,pooled (reference only),precision,60/70,descriptive,yes,"kept for reference, not a headline (§4 item 5)"
+checker_STRESS1.pooled_reference_only.level_agreement,checker_STRESS1,pooled (reference only),level agreement,60/60,descriptive,yes,"kept for reference, not a headline (§4 item 5)"
+checker_STRESS1_shock.headline_group.recall,checker_STRESS1_shock,headline group,recall,0/0,descriptive,yes,
+checker_STRESS1_shock.headline_group.precision,checker_STRESS1_shock,headline group,precision,0/0,descriptive,yes,
+checker_STRESS1_shock.headline_group.level_agreement,checker_STRESS1_shock,headline group,level agreement,0/0,descriptive,yes,
+checker_STRESS1_shock.rejected_submission_own_row.recall,checker_STRESS1_shock,rejected_submission (own row),recall,0/0,descriptive,yes,not folded into the headline group (§11 #43)
+checker_STRESS1_shock.rejected_submission_own_row.precision,checker_STRESS1_shock,rejected_submission (own row),precision,0/0,descriptive,yes,not folded into the headline group (§11 #43)
+checker_STRESS1_shock.rejected_submission_own_row.level_agreement,checker_STRESS1_shock,rejected_submission (own row),level agreement,0/0,descriptive,yes,not folded into the headline group (§11 #43)
+checker_STRESS1_shock.secondary_group.recall,checker_STRESS1_shock,secondary group,recall,0/0,descriptive,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_STRESS1_shock.secondary_group.precision,checker_STRESS1_shock,secondary group,precision,0/0,descriptive,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_STRESS1_shock.secondary_group.level_agreement,checker_STRESS1_shock,secondary group,level agreement,0/0,descriptive,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_STRESS1_shock.level_Critical.recall,checker_STRESS1_shock,level Critical,recall,0/0,descriptive,yes,
+checker_STRESS1_shock.level_Critical.precision,checker_STRESS1_shock,level Critical,precision,0/0,descriptive,yes,
+checker_STRESS1_shock.level_Critical.level_agreement,checker_STRESS1_shock,level Critical,level agreement,0/0,descriptive,yes,
+checker_STRESS1_shock.level_Major.recall,checker_STRESS1_shock,level Major,recall,0/0,descriptive,yes,
+checker_STRESS1_shock.level_Major.precision,checker_STRESS1_shock,level Major,precision,0/0,descriptive,yes,
+checker_STRESS1_shock.level_Major.level_agreement,checker_STRESS1_shock,level Major,level agreement,0/0,descriptive,yes,
+checker_STRESS1_shock.level_Moderate.recall,checker_STRESS1_shock,level Moderate,recall,0/0,descriptive,yes,
+checker_STRESS1_shock.level_Moderate.precision,checker_STRESS1_shock,level Moderate,precision,0/0,descriptive,yes,
+checker_STRESS1_shock.level_Moderate.level_agreement,checker_STRESS1_shock,level Moderate,level agreement,0/0,descriptive,yes,
+checker_STRESS1_shock.level_Minor.recall,checker_STRESS1_shock,level Minor,recall,0/0,descriptive,yes,
+checker_STRESS1_shock.level_Minor.precision,checker_STRESS1_shock,level Minor,precision,0/0,descriptive,yes,
+checker_STRESS1_shock.level_Minor.level_agreement,checker_STRESS1_shock,level Minor,level agreement,0/0,descriptive,yes,
+checker_STRESS1_shock.type_hard_constraint_in_effect.recall,checker_STRESS1_shock,type hard_constraint_in_effect,recall,0/0,descriptive,yes,
+checker_STRESS1_shock.type_hard_constraint_in_effect.precision,checker_STRESS1_shock,type hard_constraint_in_effect,precision,0/0,descriptive,yes,
+checker_STRESS1_shock.type_hard_constraint_in_effect.level_agreement,checker_STRESS1_shock,type hard_constraint_in_effect,level agreement,0/0,descriptive,yes,
+checker_STRESS1_shock.type_rejected_submission.recall,checker_STRESS1_shock,type rejected_submission,recall,0/0,descriptive,yes,
+checker_STRESS1_shock.type_rejected_submission.precision,checker_STRESS1_shock,type rejected_submission,precision,0/0,descriptive,yes,
+checker_STRESS1_shock.type_rejected_submission.level_agreement,checker_STRESS1_shock,type rejected_submission,level agreement,0/0,descriptive,yes,
+checker_STRESS1_shock.type_allocator_failure_day.recall,checker_STRESS1_shock,type allocator_failure_day,recall,0/0,descriptive,yes,
+checker_STRESS1_shock.type_allocator_failure_day.precision,checker_STRESS1_shock,type allocator_failure_day,precision,0/0,descriptive,yes,
+checker_STRESS1_shock.type_allocator_failure_day.level_agreement,checker_STRESS1_shock,type allocator_failure_day,level agreement,0/0,descriptive,yes,
+checker_STRESS1_shock.type_bed_displaced.recall,checker_STRESS1_shock,type bed_displaced,recall,0/0,descriptive,yes,
+checker_STRESS1_shock.type_bed_displaced.precision,checker_STRESS1_shock,type bed_displaced,precision,0/0,descriptive,yes,
+checker_STRESS1_shock.type_bed_displaced.level_agreement,checker_STRESS1_shock,type bed_displaced,level agreement,0/0,descriptive,yes,
+checker_STRESS1_shock.type_bed_empty.recall,checker_STRESS1_shock,type bed_empty,recall,0/0,descriptive,yes,
+checker_STRESS1_shock.type_bed_empty.precision,checker_STRESS1_shock,type bed_empty,precision,0/0,descriptive,yes,
+checker_STRESS1_shock.type_bed_empty.level_agreement,checker_STRESS1_shock,type bed_empty,level agreement,0/0,descriptive,yes,
+checker_STRESS1_shock.type_bed_shock_cut.recall,checker_STRESS1_shock,type bed_shock_cut,recall,0/0,descriptive,yes,
+checker_STRESS1_shock.type_bed_shock_cut.precision,checker_STRESS1_shock,type bed_shock_cut,precision,0/0,descriptive,yes,
+checker_STRESS1_shock.type_bed_shock_cut.level_agreement,checker_STRESS1_shock,type bed_shock_cut,level agreement,0/0,descriptive,yes,
+checker_STRESS1_shock.type_nurse_gap.recall,checker_STRESS1_shock,type nurse_gap,recall,0/0,descriptive,yes,
+checker_STRESS1_shock.type_nurse_gap.precision,checker_STRESS1_shock,type nurse_gap,precision,0/0,descriptive,yes,
+checker_STRESS1_shock.type_nurse_gap.level_agreement,checker_STRESS1_shock,type nurse_gap,level agreement,0/0,descriptive,yes,
+checker_STRESS1_shock.type_f1_inversion.recall,checker_STRESS1_shock,type f1_inversion,recall,0/0,descriptive,yes,
+checker_STRESS1_shock.type_f1_inversion.precision,checker_STRESS1_shock,type f1_inversion,precision,0/0,descriptive,yes,
+checker_STRESS1_shock.type_f1_inversion.level_agreement,checker_STRESS1_shock,type f1_inversion,level agreement,0/0,descriptive,yes,
+checker_STRESS1_shock.type_beds_reversal.recall,checker_STRESS1_shock,type beds_reversal,recall,0/0,descriptive,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_STRESS1_shock.type_beds_reversal.precision,checker_STRESS1_shock,type beds_reversal,precision,0/0,descriptive,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_STRESS1_shock.type_beds_reversal.level_agreement,checker_STRESS1_shock,type beds_reversal,level agreement,0/0,descriptive,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_STRESS1_shock.type_nurses_reversal.recall,checker_STRESS1_shock,type nurses_reversal,recall,0/0,descriptive,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_STRESS1_shock.type_nurses_reversal.precision,checker_STRESS1_shock,type nurses_reversal,precision,0/0,descriptive,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_STRESS1_shock.type_nurses_reversal.level_agreement,checker_STRESS1_shock,type nurses_reversal,level agreement,0/0,descriptive,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_STRESS1_shock.type_reallocation_without_effect.recall,checker_STRESS1_shock,type reallocation_without_effect,recall,0/0,descriptive,yes,
+checker_STRESS1_shock.type_reallocation_without_effect.precision,checker_STRESS1_shock,type reallocation_without_effect,precision,0/0,descriptive,yes,
+checker_STRESS1_shock.type_reallocation_without_effect.level_agreement,checker_STRESS1_shock,type reallocation_without_effect,level agreement,0/0,descriptive,yes,
+checker_STRESS1_shock.pooled_reference_only.recall,checker_STRESS1_shock,pooled (reference only),recall,0/0,descriptive,yes,"kept for reference, not a headline (§4 item 5)"
+checker_STRESS1_shock.pooled_reference_only.precision,checker_STRESS1_shock,pooled (reference only),precision,0/0,descriptive,yes,"kept for reference, not a headline (§4 item 5)"
+checker_STRESS1_shock.pooled_reference_only.level_agreement,checker_STRESS1_shock,pooled (reference only),level agreement,0/0,descriptive,yes,"kept for reference, not a headline (§4 item 5)"
+checker_STRESS1_extra.checker_STRESS1_shock_days.value,checker_STRESS1_extra,checker_STRESS1_shock: days,value,23,descriptive,yes,
+checker_STRESS1_extra.checker_STRESS1_shock_CHECKER_LLM_only_issues.value,checker_STRESS1_extra,checker_STRESS1_shock: CHECKER LLM-only issues,value,1,descriptive,yes,explanation_inaccuracy 1
+checker_STRESS1_nonshock.headline_group.recall,checker_STRESS1_nonshock,headline group,recall,2/4,descriptive,yes,
+checker_STRESS1_nonshock.headline_group.precision,checker_STRESS1_nonshock,headline group,precision,2/2,descriptive,yes,
+checker_STRESS1_nonshock.headline_group.level_agreement,checker_STRESS1_nonshock,headline group,level agreement,2/2,descriptive,yes,
+checker_STRESS1_nonshock.rejected_submission_own_row.recall,checker_STRESS1_nonshock,rejected_submission (own row),recall,0/0,descriptive,yes,not folded into the headline group (§11 #43)
+checker_STRESS1_nonshock.rejected_submission_own_row.precision,checker_STRESS1_nonshock,rejected_submission (own row),precision,0/0,descriptive,yes,not folded into the headline group (§11 #43)
+checker_STRESS1_nonshock.rejected_submission_own_row.level_agreement,checker_STRESS1_nonshock,rejected_submission (own row),level agreement,0/0,descriptive,yes,not folded into the headline group (§11 #43)
+checker_STRESS1_nonshock.secondary_group.recall,checker_STRESS1_nonshock,secondary group,recall,58/95,descriptive,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_STRESS1_nonshock.secondary_group.precision,checker_STRESS1_nonshock,secondary group,precision,58/68,descriptive,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_STRESS1_nonshock.secondary_group.level_agreement,checker_STRESS1_nonshock,secondary group,level agreement,58/58,descriptive,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_STRESS1_nonshock.level_Critical.recall,checker_STRESS1_nonshock,level Critical,recall,0/0,descriptive,yes,
+checker_STRESS1_nonshock.level_Critical.precision,checker_STRESS1_nonshock,level Critical,precision,0/0,descriptive,yes,
+checker_STRESS1_nonshock.level_Critical.level_agreement,checker_STRESS1_nonshock,level Critical,level agreement,0/0,descriptive,yes,
+checker_STRESS1_nonshock.level_Major.recall,checker_STRESS1_nonshock,level Major,recall,0/0,descriptive,yes,
+checker_STRESS1_nonshock.level_Major.precision,checker_STRESS1_nonshock,level Major,precision,0/0,descriptive,yes,
+checker_STRESS1_nonshock.level_Major.level_agreement,checker_STRESS1_nonshock,level Major,level agreement,0/0,descriptive,yes,
+checker_STRESS1_nonshock.level_Moderate.recall,checker_STRESS1_nonshock,level Moderate,recall,2/4,descriptive,yes,
+checker_STRESS1_nonshock.level_Moderate.precision,checker_STRESS1_nonshock,level Moderate,precision,2/2,descriptive,yes,
+checker_STRESS1_nonshock.level_Moderate.level_agreement,checker_STRESS1_nonshock,level Moderate,level agreement,2/2,descriptive,yes,
+checker_STRESS1_nonshock.level_Minor.recall,checker_STRESS1_nonshock,level Minor,recall,58/95,descriptive,yes,
+checker_STRESS1_nonshock.level_Minor.precision,checker_STRESS1_nonshock,level Minor,precision,58/68,descriptive,yes,
+checker_STRESS1_nonshock.level_Minor.level_agreement,checker_STRESS1_nonshock,level Minor,level agreement,58/58,descriptive,yes,
+checker_STRESS1_nonshock.type_hard_constraint_in_effect.recall,checker_STRESS1_nonshock,type hard_constraint_in_effect,recall,0/0,descriptive,yes,
+checker_STRESS1_nonshock.type_hard_constraint_in_effect.precision,checker_STRESS1_nonshock,type hard_constraint_in_effect,precision,0/0,descriptive,yes,
+checker_STRESS1_nonshock.type_hard_constraint_in_effect.level_agreement,checker_STRESS1_nonshock,type hard_constraint_in_effect,level agreement,0/0,descriptive,yes,
+checker_STRESS1_nonshock.type_rejected_submission.recall,checker_STRESS1_nonshock,type rejected_submission,recall,0/0,descriptive,yes,
+checker_STRESS1_nonshock.type_rejected_submission.precision,checker_STRESS1_nonshock,type rejected_submission,precision,0/0,descriptive,yes,
+checker_STRESS1_nonshock.type_rejected_submission.level_agreement,checker_STRESS1_nonshock,type rejected_submission,level agreement,0/0,descriptive,yes,
+checker_STRESS1_nonshock.type_allocator_failure_day.recall,checker_STRESS1_nonshock,type allocator_failure_day,recall,0/0,descriptive,yes,
+checker_STRESS1_nonshock.type_allocator_failure_day.precision,checker_STRESS1_nonshock,type allocator_failure_day,precision,0/0,descriptive,yes,
+checker_STRESS1_nonshock.type_allocator_failure_day.level_agreement,checker_STRESS1_nonshock,type allocator_failure_day,level agreement,0/0,descriptive,yes,
+checker_STRESS1_nonshock.type_bed_displaced.recall,checker_STRESS1_nonshock,type bed_displaced,recall,0/0,descriptive,yes,
+checker_STRESS1_nonshock.type_bed_displaced.precision,checker_STRESS1_nonshock,type bed_displaced,precision,0/0,descriptive,yes,
+checker_STRESS1_nonshock.type_bed_displaced.level_agreement,checker_STRESS1_nonshock,type bed_displaced,level agreement,0/0,descriptive,yes,
+checker_STRESS1_nonshock.type_bed_empty.recall,checker_STRESS1_nonshock,type bed_empty,recall,0/0,descriptive,yes,
+checker_STRESS1_nonshock.type_bed_empty.precision,checker_STRESS1_nonshock,type bed_empty,precision,0/0,descriptive,yes,
+checker_STRESS1_nonshock.type_bed_empty.level_agreement,checker_STRESS1_nonshock,type bed_empty,level agreement,0/0,descriptive,yes,
+checker_STRESS1_nonshock.type_bed_shock_cut.recall,checker_STRESS1_nonshock,type bed_shock_cut,recall,0/0,descriptive,yes,
+checker_STRESS1_nonshock.type_bed_shock_cut.precision,checker_STRESS1_nonshock,type bed_shock_cut,precision,0/0,descriptive,yes,
+checker_STRESS1_nonshock.type_bed_shock_cut.level_agreement,checker_STRESS1_nonshock,type bed_shock_cut,level agreement,0/0,descriptive,yes,
+checker_STRESS1_nonshock.type_nurse_gap.recall,checker_STRESS1_nonshock,type nurse_gap,recall,2/4,descriptive,yes,
+checker_STRESS1_nonshock.type_nurse_gap.precision,checker_STRESS1_nonshock,type nurse_gap,precision,2/2,descriptive,yes,
+checker_STRESS1_nonshock.type_nurse_gap.level_agreement,checker_STRESS1_nonshock,type nurse_gap,level agreement,2/2,descriptive,yes,
+checker_STRESS1_nonshock.type_f1_inversion.recall,checker_STRESS1_nonshock,type f1_inversion,recall,0/0,descriptive,yes,
+checker_STRESS1_nonshock.type_f1_inversion.precision,checker_STRESS1_nonshock,type f1_inversion,precision,0/0,descriptive,yes,
+checker_STRESS1_nonshock.type_f1_inversion.level_agreement,checker_STRESS1_nonshock,type f1_inversion,level agreement,0/0,descriptive,yes,
+checker_STRESS1_nonshock.type_beds_reversal.recall,checker_STRESS1_nonshock,type beds_reversal,recall,31/55,descriptive,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_STRESS1_nonshock.type_beds_reversal.precision,checker_STRESS1_nonshock,type beds_reversal,precision,31/36,descriptive,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_STRESS1_nonshock.type_beds_reversal.level_agreement,checker_STRESS1_nonshock,type beds_reversal,level agreement,31/31,descriptive,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_STRESS1_nonshock.type_nurses_reversal.recall,checker_STRESS1_nonshock,type nurses_reversal,recall,25/38,descriptive,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_STRESS1_nonshock.type_nurses_reversal.precision,checker_STRESS1_nonshock,type nurses_reversal,precision,25/30,descriptive,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_STRESS1_nonshock.type_nurses_reversal.level_agreement,checker_STRESS1_nonshock,type nurses_reversal,level agreement,25/25,descriptive,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_STRESS1_nonshock.type_reallocation_without_effect.recall,checker_STRESS1_nonshock,type reallocation_without_effect,recall,2/2,descriptive,yes,
+checker_STRESS1_nonshock.type_reallocation_without_effect.precision,checker_STRESS1_nonshock,type reallocation_without_effect,precision,2/2,descriptive,yes,
+checker_STRESS1_nonshock.type_reallocation_without_effect.level_agreement,checker_STRESS1_nonshock,type reallocation_without_effect,level agreement,2/2,descriptive,yes,
+checker_STRESS1_nonshock.pooled_reference_only.recall,checker_STRESS1_nonshock,pooled (reference only),recall,60/99,descriptive,yes,"kept for reference, not a headline (§4 item 5)"
+checker_STRESS1_nonshock.pooled_reference_only.precision,checker_STRESS1_nonshock,pooled (reference only),precision,60/70,descriptive,yes,"kept for reference, not a headline (§4 item 5)"
+checker_STRESS1_nonshock.pooled_reference_only.level_agreement,checker_STRESS1_nonshock,pooled (reference only),level agreement,60/60,descriptive,yes,"kept for reference, not a headline (§4 item 5)"
+checker_STRESS1_extra.checker_STRESS1_nonshock_days.value,checker_STRESS1_extra,checker_STRESS1_nonshock: days,value,29 days,descriptive,yes,
+checker_STRESS1_extra.checker_STRESS1_nonshock_CHECKER_LLM_only_issues.value,checker_STRESS1_extra,checker_STRESS1_nonshock: CHECKER LLM-only issues,value,9,descriptive,yes,explanation_inaccuracy 9
+checker_STRESS1_extra.date_shift_matches_1_2_days.value,checker_STRESS1_extra,date-shift matches (1-2 days),value,7,descriptive,yes,
+checker_STRESS1_extra.CHECKER_LLM_only_issues_explanation_inaccuracy.value,checker_STRESS1_extra,CHECKER LLM-only issues: explanation_inaccuracy,value,10,descriptive,yes,explanation claims of STRESS1 are not scored (§4 item 5)
+checker_STRESS1_extra.CHECKER_LLM_only_issues_information_leak.value,checker_STRESS1_extra,CHECKER LLM-only issues: information_leak,value,0,descriptive,yes,explanation claims of STRESS1 are not scored (§4 item 5)
+checker_STRESS1_extra.CHECKER_LLM_only_issues_inconsistency.value,checker_STRESS1_extra,CHECKER LLM-only issues: inconsistency,value,0,descriptive,yes,explanation claims of STRESS1 are not scored (§4 item 5)
+checker_STRESS1_extra.CHECKER_LLM_only_issues_other.value,checker_STRESS1_extra,CHECKER LLM-only issues: other,value,0,descriptive,yes,explanation claims of STRESS1 are not scored (§4 item 5)

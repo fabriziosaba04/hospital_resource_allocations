@@ -1,0 +1,694 @@
+id,table,row,col,value,role,pre_registered,note
+gate_d.gate_passed.R1,gate_d,gate passed,R1,yes,gate,yes,
+gate_d.hard_constraint_violations_in_effect.R1,gate_d,hard-constraint violations in effect,R1,0,gate,yes,
+gate_d.replay_mismatches.R1,gate_d,replay mismatches,R1,0,gate,yes,
+gate_d.pairing_closed_form_mismatches.R1,gate_d,pairing / closed-form mismatches,R1,0,gate,yes,
+gate_d.rejected_submissions.R1,gate_d,rejected submissions,R1,0,gate,yes,
+gate_d.ALLOCATOR_failure_days.R1,gate_d,ALLOCATOR failure days,R1,0,gate,yes,
+gate_d.halts.R1,gate_d,halts,R1,0,gate,yes,workflow.jsonl events 'halted'
+gate_d.gate_passed.R2,gate_d,gate passed,R2,yes,gate,yes,
+gate_d.hard_constraint_violations_in_effect.R2,gate_d,hard-constraint violations in effect,R2,0,gate,yes,
+gate_d.replay_mismatches.R2,gate_d,replay mismatches,R2,0,gate,yes,
+gate_d.pairing_closed_form_mismatches.R2,gate_d,pairing / closed-form mismatches,R2,0,gate,yes,
+gate_d.rejected_submissions.R2,gate_d,rejected submissions,R2,0,gate,yes,
+gate_d.ALLOCATOR_failure_days.R2,gate_d,ALLOCATOR failure days,R2,0,gate,yes,
+gate_d.halts.R2,gate_d,halts,R2,0,gate,yes,workflow.jsonl events 'halted'
+gate_d.gate_passed.R3,gate_d,gate passed,R3,yes,gate,yes,
+gate_d.hard_constraint_violations_in_effect.R3,gate_d,hard-constraint violations in effect,R3,0,gate,yes,
+gate_d.replay_mismatches.R3,gate_d,replay mismatches,R3,0,gate,yes,
+gate_d.pairing_closed_form_mismatches.R3,gate_d,pairing / closed-form mismatches,R3,0,gate,yes,
+gate_d.rejected_submissions.R3,gate_d,rejected submissions,R3,0,gate,yes,
+gate_d.ALLOCATOR_failure_days.R3,gate_d,ALLOCATOR failure days,R3,0,gate,yes,
+gate_d.halts.R3,gate_d,halts,R3,0,gate,yes,workflow.jsonl events 'halted'
+issues_by_level.Critical.R1,issues_by_level,Critical,R1,0,gate,yes,explanation and process items do not apply to baselines (§4 item 1)
+issues_by_level.Critical.R2,issues_by_level,Critical,R2,0,gate,yes,explanation and process items do not apply to baselines (§4 item 1)
+issues_by_level.Critical.R3,issues_by_level,Critical,R3,0,gate,yes,explanation and process items do not apply to baselines (§4 item 1)
+issues_by_level.Critical.B0,issues_by_level,Critical,B0,0,gate,yes,explanation and process items do not apply to baselines (§4 item 1)
+issues_by_level.Critical.B1,issues_by_level,Critical,B1,0,gate,yes,explanation and process items do not apply to baselines (§4 item 1)
+issues_by_level.Critical.B2,issues_by_level,Critical,B2,0,gate,yes,explanation and process items do not apply to baselines (§4 item 1)
+issues_by_level.Major.R1,issues_by_level,Major,R1,0,secondary,yes,explanation and process items do not apply to baselines (§4 item 1)
+issues_by_level.Major.R2,issues_by_level,Major,R2,0,secondary,yes,explanation and process items do not apply to baselines (§4 item 1)
+issues_by_level.Major.R3,issues_by_level,Major,R3,0,secondary,yes,explanation and process items do not apply to baselines (§4 item 1)
+issues_by_level.Major.B0,issues_by_level,Major,B0,108,secondary,yes,explanation and process items do not apply to baselines (§4 item 1)
+issues_by_level.Major.B1,issues_by_level,Major,B1,0,secondary,yes,explanation and process items do not apply to baselines (§4 item 1)
+issues_by_level.Major.B2,issues_by_level,Major,B2,0,secondary,yes,explanation and process items do not apply to baselines (§4 item 1)
+issues_by_level.Moderate.R1,issues_by_level,Moderate,R1,5,secondary,yes,explanation and process items do not apply to baselines (§4 item 1)
+issues_by_level.Moderate.R2,issues_by_level,Moderate,R2,1,secondary,yes,explanation and process items do not apply to baselines (§4 item 1)
+issues_by_level.Moderate.R3,issues_by_level,Moderate,R3,1,secondary,yes,explanation and process items do not apply to baselines (§4 item 1)
+issues_by_level.Moderate.B0,issues_by_level,Moderate,B0,176,secondary,yes,explanation and process items do not apply to baselines (§4 item 1)
+issues_by_level.Moderate.B1,issues_by_level,Moderate,B1,3,secondary,yes,explanation and process items do not apply to baselines (§4 item 1)
+issues_by_level.Moderate.B2,issues_by_level,Moderate,B2,19,secondary,yes,explanation and process items do not apply to baselines (§4 item 1)
+issues_by_level.Minor.R1,issues_by_level,Minor,R1,96,secondary,yes,explanation and process items do not apply to baselines (§4 item 1)
+issues_by_level.Minor.R2,issues_by_level,Minor,R2,91,secondary,yes,explanation and process items do not apply to baselines (§4 item 1)
+issues_by_level.Minor.R3,issues_by_level,Minor,R3,85,secondary,yes,explanation and process items do not apply to baselines (§4 item 1)
+issues_by_level.Minor.B0,issues_by_level,Minor,B0,0,secondary,yes,explanation and process items do not apply to baselines (§4 item 1)
+issues_by_level.Minor.B1,issues_by_level,Minor,B1,92,secondary,yes,explanation and process items do not apply to baselines (§4 item 1)
+issues_by_level.Minor.B2,issues_by_level,Minor,B2,93,secondary,yes,explanation and process items do not apply to baselines (§4 item 1)
+main_headline.A1_SV_B.R1,main_headline,A1 SV_B,R1,0,headline,yes,
+main_headline.A1_SV_B.R2,main_headline,A1 SV_B,R2,0,headline,yes,
+main_headline.A1_SV_B.R3,main_headline,A1 SV_B,R3,0,headline,yes,
+main_headline.A1_SV_B.B0,main_headline,A1 SV_B,B0,280,headline,yes,
+main_headline.A1_SV_B.B1,main_headline,A1 SV_B,B1,0,headline,yes,
+main_headline.A1_SV_B.B2,main_headline,A1 SV_B,B2,3,headline,yes,
+main_headline.A1_SV_B.floor,main_headline,A1 SV_B,floor,0,headline,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.A1_SV_B.min,main_variability,A1 SV_B,min,0,headline,yes,§9
+main_variability.A1_SV_B.max,main_variability,A1 SV_B,max,0,headline,yes,§9
+main_variability.A1_SV_B.mean,main_variability,A1 SV_B,mean,0,headline,yes,§9: mean over R1-R3
+main_gap.A1_SV_B.R1_B1,main_gap,A1 SV_B,R1 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A1_SV_B.R2_B1,main_gap,A1 SV_B,R2 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A1_SV_B.R3_B1,main_gap,A1 SV_B,R3 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A1_SV_B.R1_floor,main_gap,A1 SV_B,R1 - floor,0,headline,yes,gap to the floor (§1)
+main_gap.A1_SV_B.R2_floor,main_gap,A1 SV_B,R2 - floor,0,headline,yes,gap to the floor (§1)
+main_gap.A1_SV_B.R3_floor,main_gap,A1 SV_B,R3 - floor,0,headline,yes,gap to the floor (§1)
+main_headline.A1_displaced_severity.R1,main_headline,A1 displaced severity,R1,0,headline,yes,
+main_headline.A1_displaced_severity.R2,main_headline,A1 displaced severity,R2,0,headline,yes,
+main_headline.A1_displaced_severity.R3,main_headline,A1 displaced severity,R3,0,headline,yes,
+main_headline.A1_displaced_severity.B0,main_headline,A1 displaced severity,B0,8,headline,yes,
+main_headline.A1_displaced_severity.B1,main_headline,A1 displaced severity,B1,0,headline,yes,
+main_headline.A1_displaced_severity.B2,main_headline,A1 displaced severity,B2,3,headline,yes,
+main_headline.A1_displaced_severity.floor,main_headline,A1 displaced severity,floor,0,headline,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.A1_displaced_severity.min,main_variability,A1 displaced severity,min,0,headline,yes,§9
+main_variability.A1_displaced_severity.max,main_variability,A1 displaced severity,max,0,headline,yes,§9
+main_variability.A1_displaced_severity.mean,main_variability,A1 displaced severity,mean,0,headline,yes,§9: mean over R1-R3
+main_gap.A1_displaced_severity.R1_B1,main_gap,A1 displaced severity,R1 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A1_displaced_severity.R2_B1,main_gap,A1 displaced severity,R2 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A1_displaced_severity.R3_B1,main_gap,A1 displaced severity,R3 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A1_displaced_severity.R1_floor,main_gap,A1 displaced severity,R1 - floor,0,headline,yes,gap to the floor (§1)
+main_gap.A1_displaced_severity.R2_floor,main_gap,A1 displaced severity,R2 - floor,0,headline,yes,gap to the floor (§1)
+main_gap.A1_displaced_severity.R3_floor,main_gap,A1 displaced severity,R3 - floor,0,headline,yes,gap to the floor (§1)
+main_headline.A1_empty_severity.R1,main_headline,A1 empty severity,R1,0,headline,yes,
+main_headline.A1_empty_severity.R2,main_headline,A1 empty severity,R2,0,headline,yes,
+main_headline.A1_empty_severity.R3,main_headline,A1 empty severity,R3,0,headline,yes,
+main_headline.A1_empty_severity.B0,main_headline,A1 empty severity,B0,272,headline,yes,
+main_headline.A1_empty_severity.B1,main_headline,A1 empty severity,B1,0,headline,yes,
+main_headline.A1_empty_severity.B2,main_headline,A1 empty severity,B2,0,headline,yes,
+main_headline.A1_empty_severity.floor,main_headline,A1 empty severity,floor,0,headline,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.A1_empty_severity.min,main_variability,A1 empty severity,min,0,headline,yes,§9
+main_variability.A1_empty_severity.max,main_variability,A1 empty severity,max,0,headline,yes,§9
+main_variability.A1_empty_severity.mean,main_variability,A1 empty severity,mean,0,headline,yes,§9: mean over R1-R3
+main_gap.A1_empty_severity.R1_B1,main_gap,A1 empty severity,R1 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A1_empty_severity.R2_B1,main_gap,A1 empty severity,R2 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A1_empty_severity.R3_B1,main_gap,A1 empty severity,R3 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A1_empty_severity.R1_floor,main_gap,A1 empty severity,R1 - floor,0,headline,yes,gap to the floor (§1)
+main_gap.A1_empty_severity.R2_floor,main_gap,A1 empty severity,R2 - floor,0,headline,yes,gap to the floor (§1)
+main_gap.A1_empty_severity.R3_floor,main_gap,A1 empty severity,R3 - floor,0,headline,yes,gap to the floor (§1)
+main_headline.A1_shock_cut_severity.R1,main_headline,A1 shock-cut severity,R1,0,headline,yes,
+main_headline.A1_shock_cut_severity.R2,main_headline,A1 shock-cut severity,R2,0,headline,yes,
+main_headline.A1_shock_cut_severity.R3,main_headline,A1 shock-cut severity,R3,0,headline,yes,
+main_headline.A1_shock_cut_severity.B0,main_headline,A1 shock-cut severity,B0,0,headline,yes,
+main_headline.A1_shock_cut_severity.B1,main_headline,A1 shock-cut severity,B1,0,headline,yes,
+main_headline.A1_shock_cut_severity.B2,main_headline,A1 shock-cut severity,B2,0,headline,yes,
+main_headline.A1_shock_cut_severity.floor,main_headline,A1 shock-cut severity,floor,0,headline,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.A1_shock_cut_severity.min,main_variability,A1 shock-cut severity,min,0,headline,yes,§9
+main_variability.A1_shock_cut_severity.max,main_variability,A1 shock-cut severity,max,0,headline,yes,§9
+main_variability.A1_shock_cut_severity.mean,main_variability,A1 shock-cut severity,mean,0,headline,yes,§9: mean over R1-R3
+main_gap.A1_shock_cut_severity.R1_B1,main_gap,A1 shock-cut severity,R1 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A1_shock_cut_severity.R2_B1,main_gap,A1 shock-cut severity,R2 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A1_shock_cut_severity.R3_B1,main_gap,A1 shock-cut severity,R3 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A1_shock_cut_severity.R1_floor,main_gap,A1 shock-cut severity,R1 - floor,0,headline,yes,gap to the floor (§1)
+main_gap.A1_shock_cut_severity.R2_floor,main_gap,A1 shock-cut severity,R2 - floor,0,headline,yes,gap to the floor (§1)
+main_gap.A1_shock_cut_severity.R3_floor,main_gap,A1 shock-cut severity,R3 - floor,0,headline,yes,gap to the floor (§1)
+main_headline.A2_SV_N_tier_3.R1,main_headline,A2 SV_N tier 3,R1,0,headline,yes,
+main_headline.A2_SV_N_tier_3.R2,main_headline,A2 SV_N tier 3,R2,0,headline,yes,
+main_headline.A2_SV_N_tier_3.R3,main_headline,A2 SV_N tier 3,R3,0,headline,yes,
+main_headline.A2_SV_N_tier_3.B0,main_headline,A2 SV_N tier 3,B0,8.8,headline,yes,
+main_headline.A2_SV_N_tier_3.B1,main_headline,A2 SV_N tier 3,B1,0,headline,yes,
+main_headline.A2_SV_N_tier_3.B2,main_headline,A2 SV_N tier 3,B2,0,headline,yes,
+main_headline.A2_SV_N_tier_3.floor,main_headline,A2 SV_N tier 3,floor,0,headline,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.A2_SV_N_tier_3.min,main_variability,A2 SV_N tier 3,min,0,headline,yes,§9
+main_variability.A2_SV_N_tier_3.max,main_variability,A2 SV_N tier 3,max,0,headline,yes,§9
+main_variability.A2_SV_N_tier_3.mean,main_variability,A2 SV_N tier 3,mean,0,headline,yes,§9: mean over R1-R3
+main_gap.A2_SV_N_tier_3.R1_B1,main_gap,A2 SV_N tier 3,R1 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A2_SV_N_tier_3.R2_B1,main_gap,A2 SV_N tier 3,R2 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A2_SV_N_tier_3.R3_B1,main_gap,A2 SV_N tier 3,R3 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A2_SV_N_tier_3.R1_floor,main_gap,A2 SV_N tier 3,R1 - floor,0,headline,yes,gap to the floor (§1)
+main_gap.A2_SV_N_tier_3.R2_floor,main_gap,A2 SV_N tier 3,R2 - floor,0,headline,yes,gap to the floor (§1)
+main_gap.A2_SV_N_tier_3.R3_floor,main_gap,A2 SV_N tier 3,R3 - floor,0,headline,yes,gap to the floor (§1)
+main_headline.A2_SV_N_tier_2.R1,main_headline,A2 SV_N tier 2,R1,0.15,headline,yes,
+main_headline.A2_SV_N_tier_2.R2,main_headline,A2 SV_N tier 2,R2,0,headline,yes,
+main_headline.A2_SV_N_tier_2.R3,main_headline,A2 SV_N tier 2,R3,0.15,headline,yes,
+main_headline.A2_SV_N_tier_2.B0,main_headline,A2 SV_N tier 2,B0,67.9,headline,yes,
+main_headline.A2_SV_N_tier_2.B1,main_headline,A2 SV_N tier 2,B1,1.05,headline,yes,
+main_headline.A2_SV_N_tier_2.B2,main_headline,A2 SV_N tier 2,B2,6.85,headline,yes,
+main_headline.A2_SV_N_tier_2.floor,main_headline,A2 SV_N tier 2,floor,0,headline,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.A2_SV_N_tier_2.min,main_variability,A2 SV_N tier 2,min,0,headline,yes,§9
+main_variability.A2_SV_N_tier_2.max,main_variability,A2 SV_N tier 2,max,0.15,headline,yes,§9
+main_variability.A2_SV_N_tier_2.mean,main_variability,A2 SV_N tier 2,mean,0.1,headline,yes,§9: mean over R1-R3
+main_gap.A2_SV_N_tier_2.R1_B1,main_gap,A2 SV_N tier 2,R1 - B1,-0.9,headline,yes,gap to B1 (§1)
+main_gap.A2_SV_N_tier_2.R2_B1,main_gap,A2 SV_N tier 2,R2 - B1,-1.05,headline,yes,gap to B1 (§1)
+main_gap.A2_SV_N_tier_2.R3_B1,main_gap,A2 SV_N tier 2,R3 - B1,-0.9,headline,yes,gap to B1 (§1)
+main_gap.A2_SV_N_tier_2.R1_floor,main_gap,A2 SV_N tier 2,R1 - floor,0.15,headline,yes,gap to the floor (§1)
+main_gap.A2_SV_N_tier_2.R2_floor,main_gap,A2 SV_N tier 2,R2 - floor,0,headline,yes,gap to the floor (§1)
+main_gap.A2_SV_N_tier_2.R3_floor,main_gap,A2 SV_N tier 2,R3 - floor,0.15,headline,yes,gap to the floor (§1)
+main_headline.A2_SV_N_tier_1.R1,main_headline,A2 SV_N tier 1,R1,1.9,headline,yes,
+main_headline.A2_SV_N_tier_1.R2,main_headline,A2 SV_N tier 1,R2,0.9,headline,yes,
+main_headline.A2_SV_N_tier_1.R3,main_headline,A2 SV_N tier 1,R3,0,headline,yes,
+main_headline.A2_SV_N_tier_1.B0,main_headline,A2 SV_N tier 1,B0,65.8,headline,yes,
+main_headline.A2_SV_N_tier_1.B1,main_headline,A2 SV_N tier 1,B1,1.2,headline,yes,
+main_headline.A2_SV_N_tier_1.B2,main_headline,A2 SV_N tier 1,B2,0.85,headline,yes,
+main_headline.A2_SV_N_tier_1.floor,main_headline,A2 SV_N tier 1,floor,0,headline,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.A2_SV_N_tier_1.min,main_variability,A2 SV_N tier 1,min,0,headline,yes,§9
+main_variability.A2_SV_N_tier_1.max,main_variability,A2 SV_N tier 1,max,1.9,headline,yes,§9
+main_variability.A2_SV_N_tier_1.mean,main_variability,A2 SV_N tier 1,mean,0.9333,headline,yes,§9: mean over R1-R3
+main_gap.A2_SV_N_tier_1.R1_B1,main_gap,A2 SV_N tier 1,R1 - B1,0.7,headline,yes,gap to B1 (§1)
+main_gap.A2_SV_N_tier_1.R2_B1,main_gap,A2 SV_N tier 1,R2 - B1,-0.3,headline,yes,gap to B1 (§1)
+main_gap.A2_SV_N_tier_1.R3_B1,main_gap,A2 SV_N tier 1,R3 - B1,-1.2,headline,yes,gap to B1 (§1)
+main_gap.A2_SV_N_tier_1.R1_floor,main_gap,A2 SV_N tier 1,R1 - floor,1.9,headline,yes,gap to the floor (§1)
+main_gap.A2_SV_N_tier_1.R2_floor,main_gap,A2 SV_N tier 1,R2 - floor,0.9,headline,yes,gap to the floor (§1)
+main_gap.A2_SV_N_tier_1.R3_floor,main_gap,A2 SV_N tier 1,R3 - floor,0,headline,yes,gap to the floor (§1)
+main_headline.A3_tier_3_raw.R1,main_headline,A3 tier 3 raw,R1,0,headline,yes,
+main_headline.A3_tier_3_raw.R2,main_headline,A3 tier 3 raw,R2,0,headline,yes,
+main_headline.A3_tier_3_raw.R3,main_headline,A3 tier 3 raw,R3,0,headline,yes,
+main_headline.A3_tier_3_raw.B0,main_headline,A3 tier 3 raw,B0,12,headline,yes,
+main_headline.A3_tier_3_raw.B1,main_headline,A3 tier 3 raw,B1,0,headline,yes,
+main_headline.A3_tier_3_raw.B2,main_headline,A3 tier 3 raw,B2,0,headline,yes,
+main_headline.A3_tier_3_raw.floor,main_headline,A3 tier 3 raw,floor,0,headline,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.A3_tier_3_raw.min,main_variability,A3 tier 3 raw,min,0,headline,yes,§9
+main_variability.A3_tier_3_raw.max,main_variability,A3 tier 3 raw,max,0,headline,yes,§9
+main_variability.A3_tier_3_raw.mean,main_variability,A3 tier 3 raw,mean,0,headline,yes,§9: mean over R1-R3
+main_gap.A3_tier_3_raw.R1_B1,main_gap,A3 tier 3 raw,R1 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A3_tier_3_raw.R2_B1,main_gap,A3 tier 3 raw,R2 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A3_tier_3_raw.R3_B1,main_gap,A3 tier 3 raw,R3 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A3_tier_3_raw.R1_floor,main_gap,A3 tier 3 raw,R1 - floor,0,headline,yes,gap to the floor (§1)
+main_gap.A3_tier_3_raw.R2_floor,main_gap,A3 tier 3 raw,R2 - floor,0,headline,yes,gap to the floor (§1)
+main_gap.A3_tier_3_raw.R3_floor,main_gap,A3 tier 3 raw,R3 - floor,0,headline,yes,gap to the floor (§1)
+main_headline.A3_tier_3_excess.R1,main_headline,A3 tier 3 excess,R1,0,headline,yes,
+main_headline.A3_tier_3_excess.R2,main_headline,A3 tier 3 excess,R2,0,headline,yes,
+main_headline.A3_tier_3_excess.R3,main_headline,A3 tier 3 excess,R3,0,headline,yes,
+main_headline.A3_tier_3_excess.B0,main_headline,A3 tier 3 excess,B0,12,headline,yes,
+main_headline.A3_tier_3_excess.B1,main_headline,A3 tier 3 excess,B1,0,headline,yes,
+main_headline.A3_tier_3_excess.B2,main_headline,A3 tier 3 excess,B2,0,headline,yes,
+main_headline.A3_tier_3_excess.floor,main_headline,A3 tier 3 excess,floor,0,headline,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.A3_tier_3_excess.min,main_variability,A3 tier 3 excess,min,0,headline,yes,§9
+main_variability.A3_tier_3_excess.max,main_variability,A3 tier 3 excess,max,0,headline,yes,§9
+main_variability.A3_tier_3_excess.mean,main_variability,A3 tier 3 excess,mean,0,headline,yes,§9: mean over R1-R3
+main_gap.A3_tier_3_excess.R1_B1,main_gap,A3 tier 3 excess,R1 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A3_tier_3_excess.R2_B1,main_gap,A3 tier 3 excess,R2 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A3_tier_3_excess.R3_B1,main_gap,A3 tier 3 excess,R3 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A3_tier_3_excess.R1_floor,main_gap,A3 tier 3 excess,R1 - floor,0,headline,yes,gap to the floor (§1)
+main_gap.A3_tier_3_excess.R2_floor,main_gap,A3 tier 3 excess,R2 - floor,0,headline,yes,gap to the floor (§1)
+main_gap.A3_tier_3_excess.R3_floor,main_gap,A3 tier 3 excess,R3 - floor,0,headline,yes,gap to the floor (§1)
+main_headline.A3_tier_3_avoid.R1,main_headline,A3 tier 3 avoid,R1,0,headline,yes,
+main_headline.A3_tier_3_avoid.R2,main_headline,A3 tier 3 avoid,R2,0,headline,yes,
+main_headline.A3_tier_3_avoid.R3,main_headline,A3 tier 3 avoid,R3,0,headline,yes,
+main_headline.A3_tier_3_avoid.B0,main_headline,A3 tier 3 avoid,B0,12,headline,yes,
+main_headline.A3_tier_3_avoid.B1,main_headline,A3 tier 3 avoid,B1,0,headline,yes,
+main_headline.A3_tier_3_avoid.B2,main_headline,A3 tier 3 avoid,B2,0,headline,yes,
+main_headline.A3_tier_3_avoid.floor,main_headline,A3 tier 3 avoid,floor,0,headline,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.A3_tier_3_avoid.min,main_variability,A3 tier 3 avoid,min,0,headline,yes,§9
+main_variability.A3_tier_3_avoid.max,main_variability,A3 tier 3 avoid,max,0,headline,yes,§9
+main_variability.A3_tier_3_avoid.mean,main_variability,A3 tier 3 avoid,mean,0,headline,yes,§9: mean over R1-R3
+main_gap.A3_tier_3_avoid.R1_B1,main_gap,A3 tier 3 avoid,R1 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A3_tier_3_avoid.R2_B1,main_gap,A3 tier 3 avoid,R2 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A3_tier_3_avoid.R3_B1,main_gap,A3 tier 3 avoid,R3 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A3_tier_3_avoid.R1_floor,main_gap,A3 tier 3 avoid,R1 - floor,0,headline,yes,gap to the floor (§1)
+main_gap.A3_tier_3_avoid.R2_floor,main_gap,A3 tier 3 avoid,R2 - floor,0,headline,yes,gap to the floor (§1)
+main_gap.A3_tier_3_avoid.R3_floor,main_gap,A3 tier 3 avoid,R3 - floor,0,headline,yes,gap to the floor (§1)
+main_headline.A3_tier_3_path.R1,main_headline,A3 tier 3 path,R1,0,headline,yes,
+main_headline.A3_tier_3_path.R2,main_headline,A3 tier 3 path,R2,0,headline,yes,
+main_headline.A3_tier_3_path.R3,main_headline,A3 tier 3 path,R3,0,headline,yes,
+main_headline.A3_tier_3_path.B0,main_headline,A3 tier 3 path,B0,0,headline,yes,
+main_headline.A3_tier_3_path.B1,main_headline,A3 tier 3 path,B1,0,headline,yes,
+main_headline.A3_tier_3_path.B2,main_headline,A3 tier 3 path,B2,0,headline,yes,
+main_headline.A3_tier_3_path.floor,main_headline,A3 tier 3 path,floor,0,headline,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.A3_tier_3_path.min,main_variability,A3 tier 3 path,min,0,headline,yes,§9
+main_variability.A3_tier_3_path.max,main_variability,A3 tier 3 path,max,0,headline,yes,§9
+main_variability.A3_tier_3_path.mean,main_variability,A3 tier 3 path,mean,0,headline,yes,§9: mean over R1-R3
+main_gap.A3_tier_3_path.R1_B1,main_gap,A3 tier 3 path,R1 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A3_tier_3_path.R2_B1,main_gap,A3 tier 3 path,R2 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A3_tier_3_path.R3_B1,main_gap,A3 tier 3 path,R3 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A3_tier_3_path.R1_floor,main_gap,A3 tier 3 path,R1 - floor,0,headline,yes,gap to the floor (§1)
+main_gap.A3_tier_3_path.R2_floor,main_gap,A3 tier 3 path,R2 - floor,0,headline,yes,gap to the floor (§1)
+main_gap.A3_tier_3_path.R3_floor,main_gap,A3 tier 3 path,R3 - floor,0,headline,yes,gap to the floor (§1)
+main_headline.A3_tier_2_raw.R1,main_headline,A3 tier 2 raw,R1,1,headline,yes,
+main_headline.A3_tier_2_raw.R2,main_headline,A3 tier 2 raw,R2,1,headline,yes,
+main_headline.A3_tier_2_raw.R3,main_headline,A3 tier 2 raw,R3,1,headline,yes,
+main_headline.A3_tier_2_raw.B0,main_headline,A3 tier 2 raw,B0,106,headline,yes,
+main_headline.A3_tier_2_raw.B1,main_headline,A3 tier 2 raw,B1,1,headline,yes,
+main_headline.A3_tier_2_raw.B2,main_headline,A3 tier 2 raw,B2,4,headline,yes,
+main_headline.A3_tier_2_raw.floor,main_headline,A3 tier 2 raw,floor,0,headline,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.A3_tier_2_raw.min,main_variability,A3 tier 2 raw,min,1,headline,yes,§9
+main_variability.A3_tier_2_raw.max,main_variability,A3 tier 2 raw,max,1,headline,yes,§9
+main_variability.A3_tier_2_raw.mean,main_variability,A3 tier 2 raw,mean,1,headline,yes,§9: mean over R1-R3
+main_gap.A3_tier_2_raw.R1_B1,main_gap,A3 tier 2 raw,R1 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A3_tier_2_raw.R2_B1,main_gap,A3 tier 2 raw,R2 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A3_tier_2_raw.R3_B1,main_gap,A3 tier 2 raw,R3 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A3_tier_2_raw.R1_floor,main_gap,A3 tier 2 raw,R1 - floor,1,headline,yes,gap to the floor (§1)
+main_gap.A3_tier_2_raw.R2_floor,main_gap,A3 tier 2 raw,R2 - floor,1,headline,yes,gap to the floor (§1)
+main_gap.A3_tier_2_raw.R3_floor,main_gap,A3 tier 2 raw,R3 - floor,1,headline,yes,gap to the floor (§1)
+main_headline.A3_tier_2_excess.R1,main_headline,A3 tier 2 excess,R1,1,headline,yes,
+main_headline.A3_tier_2_excess.R2,main_headline,A3 tier 2 excess,R2,1,headline,yes,
+main_headline.A3_tier_2_excess.R3,main_headline,A3 tier 2 excess,R3,1,headline,yes,
+main_headline.A3_tier_2_excess.B0,main_headline,A3 tier 2 excess,B0,106,headline,yes,
+main_headline.A3_tier_2_excess.B1,main_headline,A3 tier 2 excess,B1,1,headline,yes,
+main_headline.A3_tier_2_excess.B2,main_headline,A3 tier 2 excess,B2,4,headline,yes,
+main_headline.A3_tier_2_excess.floor,main_headline,A3 tier 2 excess,floor,0,headline,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.A3_tier_2_excess.min,main_variability,A3 tier 2 excess,min,1,headline,yes,§9
+main_variability.A3_tier_2_excess.max,main_variability,A3 tier 2 excess,max,1,headline,yes,§9
+main_variability.A3_tier_2_excess.mean,main_variability,A3 tier 2 excess,mean,1,headline,yes,§9: mean over R1-R3
+main_gap.A3_tier_2_excess.R1_B1,main_gap,A3 tier 2 excess,R1 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A3_tier_2_excess.R2_B1,main_gap,A3 tier 2 excess,R2 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A3_tier_2_excess.R3_B1,main_gap,A3 tier 2 excess,R3 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A3_tier_2_excess.R1_floor,main_gap,A3 tier 2 excess,R1 - floor,1,headline,yes,gap to the floor (§1)
+main_gap.A3_tier_2_excess.R2_floor,main_gap,A3 tier 2 excess,R2 - floor,1,headline,yes,gap to the floor (§1)
+main_gap.A3_tier_2_excess.R3_floor,main_gap,A3 tier 2 excess,R3 - floor,1,headline,yes,gap to the floor (§1)
+main_headline.A3_tier_2_avoid.R1,main_headline,A3 tier 2 avoid,R1,0,headline,yes,
+main_headline.A3_tier_2_avoid.R2,main_headline,A3 tier 2 avoid,R2,0,headline,yes,
+main_headline.A3_tier_2_avoid.R3,main_headline,A3 tier 2 avoid,R3,0,headline,yes,
+main_headline.A3_tier_2_avoid.B0,main_headline,A3 tier 2 avoid,B0,106,headline,yes,
+main_headline.A3_tier_2_avoid.B1,main_headline,A3 tier 2 avoid,B1,0,headline,yes,
+main_headline.A3_tier_2_avoid.B2,main_headline,A3 tier 2 avoid,B2,3,headline,yes,
+main_headline.A3_tier_2_avoid.floor,main_headline,A3 tier 2 avoid,floor,0,headline,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.A3_tier_2_avoid.min,main_variability,A3 tier 2 avoid,min,0,headline,yes,§9
+main_variability.A3_tier_2_avoid.max,main_variability,A3 tier 2 avoid,max,0,headline,yes,§9
+main_variability.A3_tier_2_avoid.mean,main_variability,A3 tier 2 avoid,mean,0,headline,yes,§9: mean over R1-R3
+main_gap.A3_tier_2_avoid.R1_B1,main_gap,A3 tier 2 avoid,R1 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A3_tier_2_avoid.R2_B1,main_gap,A3 tier 2 avoid,R2 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A3_tier_2_avoid.R3_B1,main_gap,A3 tier 2 avoid,R3 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A3_tier_2_avoid.R1_floor,main_gap,A3 tier 2 avoid,R1 - floor,0,headline,yes,gap to the floor (§1)
+main_gap.A3_tier_2_avoid.R2_floor,main_gap,A3 tier 2 avoid,R2 - floor,0,headline,yes,gap to the floor (§1)
+main_gap.A3_tier_2_avoid.R3_floor,main_gap,A3 tier 2 avoid,R3 - floor,0,headline,yes,gap to the floor (§1)
+main_headline.A3_tier_2_path.R1,main_headline,A3 tier 2 path,R1,1,headline,yes,
+main_headline.A3_tier_2_path.R2,main_headline,A3 tier 2 path,R2,1,headline,yes,
+main_headline.A3_tier_2_path.R3,main_headline,A3 tier 2 path,R3,1,headline,yes,
+main_headline.A3_tier_2_path.B0,main_headline,A3 tier 2 path,B0,0,headline,yes,
+main_headline.A3_tier_2_path.B1,main_headline,A3 tier 2 path,B1,1,headline,yes,
+main_headline.A3_tier_2_path.B2,main_headline,A3 tier 2 path,B2,1,headline,yes,
+main_headline.A3_tier_2_path.floor,main_headline,A3 tier 2 path,floor,0,headline,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.A3_tier_2_path.min,main_variability,A3 tier 2 path,min,1,headline,yes,§9
+main_variability.A3_tier_2_path.max,main_variability,A3 tier 2 path,max,1,headline,yes,§9
+main_variability.A3_tier_2_path.mean,main_variability,A3 tier 2 path,mean,1,headline,yes,§9: mean over R1-R3
+main_gap.A3_tier_2_path.R1_B1,main_gap,A3 tier 2 path,R1 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A3_tier_2_path.R2_B1,main_gap,A3 tier 2 path,R2 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A3_tier_2_path.R3_B1,main_gap,A3 tier 2 path,R3 - B1,0,headline,yes,gap to B1 (§1)
+main_gap.A3_tier_2_path.R1_floor,main_gap,A3 tier 2 path,R1 - floor,1,headline,yes,gap to the floor (§1)
+main_gap.A3_tier_2_path.R2_floor,main_gap,A3 tier 2 path,R2 - floor,1,headline,yes,gap to the floor (§1)
+main_gap.A3_tier_2_path.R3_floor,main_gap,A3 tier 2 path,R3 - floor,1,headline,yes,gap to the floor (§1)
+main_secondary.E_bed_reversals_W3.R1,main_secondary,E bed reversals W3,R1,118,secondary,yes,
+main_secondary.E_bed_reversals_W3.R2,main_secondary,E bed reversals W3,R2,122,secondary,yes,
+main_secondary.E_bed_reversals_W3.R3,main_secondary,E bed reversals W3,R3,112,secondary,yes,
+main_secondary.E_bed_reversals_W3.B0,main_secondary,E bed reversals W3,B0,0,secondary,yes,
+main_secondary.E_bed_reversals_W3.B1,main_secondary,E bed reversals W3,B1,116,secondary,yes,
+main_secondary.E_bed_reversals_W3.B2,main_secondary,E bed reversals W3,B2,114,secondary,yes,
+main_secondary.E_bed_reversals_W3.floor,main_secondary,E bed reversals W3,floor,0,secondary,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.E_bed_reversals_W3.min,main_variability,E bed reversals W3,min,112,secondary,yes,§9
+main_variability.E_bed_reversals_W3.max,main_variability,E bed reversals W3,max,122,secondary,yes,§9
+main_variability.E_bed_reversals_W3.mean,main_variability,E bed reversals W3,mean,117.3333,secondary,yes,§9: mean over R1-R3
+main_secondary.E_bed_reversals_W2.R1,main_secondary,E bed reversals W2,R1,99,secondary,yes,
+main_secondary.E_bed_reversals_W2.R2,main_secondary,E bed reversals W2,R2,104,secondary,yes,
+main_secondary.E_bed_reversals_W2.R3,main_secondary,E bed reversals W2,R3,91,secondary,yes,
+main_secondary.E_bed_reversals_W2.B0,main_secondary,E bed reversals W2,B0,0,secondary,yes,
+main_secondary.E_bed_reversals_W2.B1,main_secondary,E bed reversals W2,B1,100,secondary,yes,
+main_secondary.E_bed_reversals_W2.B2,main_secondary,E bed reversals W2,B2,96,secondary,yes,
+main_secondary.E_bed_reversals_W2.floor,main_secondary,E bed reversals W2,floor,0,secondary,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.E_bed_reversals_W2.min,main_variability,E bed reversals W2,min,91,secondary,yes,§9
+main_variability.E_bed_reversals_W2.max,main_variability,E bed reversals W2,max,104,secondary,yes,§9
+main_variability.E_bed_reversals_W2.mean,main_variability,E bed reversals W2,mean,98,secondary,yes,§9: mean over R1-R3
+main_secondary.E_bed_reversals_W5.R1,main_secondary,E bed reversals W5,R1,124,secondary,yes,
+main_secondary.E_bed_reversals_W5.R2,main_secondary,E bed reversals W5,R2,129,secondary,yes,
+main_secondary.E_bed_reversals_W5.R3,main_secondary,E bed reversals W5,R3,121,secondary,yes,
+main_secondary.E_bed_reversals_W5.B0,main_secondary,E bed reversals W5,B0,0,secondary,yes,
+main_secondary.E_bed_reversals_W5.B1,main_secondary,E bed reversals W5,B1,126,secondary,yes,
+main_secondary.E_bed_reversals_W5.B2,main_secondary,E bed reversals W5,B2,123,secondary,yes,
+main_secondary.E_bed_reversals_W5.floor,main_secondary,E bed reversals W5,floor,0,secondary,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.E_bed_reversals_W5.min,main_variability,E bed reversals W5,min,121,secondary,yes,§9
+main_variability.E_bed_reversals_W5.max,main_variability,E bed reversals W5,max,129,secondary,yes,§9
+main_variability.E_bed_reversals_W5.mean,main_variability,E bed reversals W5,mean,124.6667,secondary,yes,§9: mean over R1-R3
+main_secondary.E_nurse_reversals_W3.R1,main_secondary,E nurse reversals W3,R1,52,secondary,yes,
+main_secondary.E_nurse_reversals_W3.R2,main_secondary,E nurse reversals W3,R2,44,secondary,yes,
+main_secondary.E_nurse_reversals_W3.R3,main_secondary,E nurse reversals W3,R3,43,secondary,yes,
+main_secondary.E_nurse_reversals_W3.B0,main_secondary,E nurse reversals W3,B0,0,secondary,yes,
+main_secondary.E_nurse_reversals_W3.B1,main_secondary,E nurse reversals W3,B1,47,secondary,yes,
+main_secondary.E_nurse_reversals_W3.B2,main_secondary,E nurse reversals W3,B2,48,secondary,yes,
+main_secondary.E_nurse_reversals_W3.floor,main_secondary,E nurse reversals W3,floor,0,secondary,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.E_nurse_reversals_W3.min,main_variability,E nurse reversals W3,min,43,secondary,yes,§9
+main_variability.E_nurse_reversals_W3.max,main_variability,E nurse reversals W3,max,52,secondary,yes,§9
+main_variability.E_nurse_reversals_W3.mean,main_variability,E nurse reversals W3,mean,46.3333,secondary,yes,§9: mean over R1-R3
+main_secondary.E_nurse_reversals_W2.R1,main_secondary,E nurse reversals W2,R1,46,secondary,yes,
+main_secondary.E_nurse_reversals_W2.R2,main_secondary,E nurse reversals W2,R2,38,secondary,yes,
+main_secondary.E_nurse_reversals_W2.R3,main_secondary,E nurse reversals W2,R3,38,secondary,yes,
+main_secondary.E_nurse_reversals_W2.B0,main_secondary,E nurse reversals W2,B0,0,secondary,yes,
+main_secondary.E_nurse_reversals_W2.B1,main_secondary,E nurse reversals W2,B1,40,secondary,yes,
+main_secondary.E_nurse_reversals_W2.B2,main_secondary,E nurse reversals W2,B2,41,secondary,yes,
+main_secondary.E_nurse_reversals_W2.floor,main_secondary,E nurse reversals W2,floor,0,secondary,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.E_nurse_reversals_W2.min,main_variability,E nurse reversals W2,min,38,secondary,yes,§9
+main_variability.E_nurse_reversals_W2.max,main_variability,E nurse reversals W2,max,46,secondary,yes,§9
+main_variability.E_nurse_reversals_W2.mean,main_variability,E nurse reversals W2,mean,40.6667,secondary,yes,§9: mean over R1-R3
+main_secondary.E_nurse_reversals_W5.R1,main_secondary,E nurse reversals W5,R1,53,secondary,yes,
+main_secondary.E_nurse_reversals_W5.R2,main_secondary,E nurse reversals W5,R2,46,secondary,yes,
+main_secondary.E_nurse_reversals_W5.R3,main_secondary,E nurse reversals W5,R3,45,secondary,yes,
+main_secondary.E_nurse_reversals_W5.B0,main_secondary,E nurse reversals W5,B0,0,secondary,yes,
+main_secondary.E_nurse_reversals_W5.B1,main_secondary,E nurse reversals W5,B1,48,secondary,yes,
+main_secondary.E_nurse_reversals_W5.B2,main_secondary,E nurse reversals W5,B2,48,secondary,yes,
+main_secondary.E_nurse_reversals_W5.floor,main_secondary,E nurse reversals W5,floor,0,secondary,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.E_nurse_reversals_W5.min,main_variability,E nurse reversals W5,min,45,secondary,yes,§9
+main_variability.E_nurse_reversals_W5.max,main_variability,E nurse reversals W5,max,53,secondary,yes,§9
+main_variability.E_nurse_reversals_W5.mean,main_variability,E nurse reversals W5,mean,48,secondary,yes,§9: mean over R1-R3
+main_secondary.B1_dispersion_L1_pp.R1,main_secondary,B1 dispersion L1 (pp),R1,5.58,secondary,yes,
+main_secondary.B1_dispersion_L1_pp.R2,main_secondary,B1 dispersion L1 (pp),R2,5.08,secondary,yes,
+main_secondary.B1_dispersion_L1_pp.R3,main_secondary,B1 dispersion L1 (pp),R3,5.58,secondary,yes,
+main_secondary.B1_dispersion_L1_pp.B0,main_secondary,B1 dispersion L1 (pp),B0,49.19,secondary,yes,
+main_secondary.B1_dispersion_L1_pp.B1,main_secondary,B1 dispersion L1 (pp),B1,6.09,secondary,yes,
+main_secondary.B1_dispersion_L1_pp.B2,main_secondary,B1 dispersion L1 (pp),B2,2,secondary,yes,
+main_secondary.B1_dispersion_L1_pp.floor,main_secondary,B1 dispersion L1 (pp),floor,–,secondary,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.B1_dispersion_L1_pp.min,main_variability,B1 dispersion L1 (pp),min,5.08,secondary,yes,§9
+main_variability.B1_dispersion_L1_pp.max,main_variability,B1 dispersion L1 (pp),max,5.58,secondary,yes,§9
+main_variability.B1_dispersion_L1_pp.mean,main_variability,B1 dispersion L1 (pp),mean,5.4133,secondary,yes,§9: mean over R1-R3
+main_secondary.B1_dispersion_L2_pp.R1,main_secondary,B1 dispersion L2 (pp),R1,0.41,secondary,yes,
+main_secondary.B1_dispersion_L2_pp.R2,main_secondary,B1 dispersion L2 (pp),R2,0.24,secondary,yes,
+main_secondary.B1_dispersion_L2_pp.R3,main_secondary,B1 dispersion L2 (pp),R3,0.24,secondary,yes,
+main_secondary.B1_dispersion_L2_pp.B0,main_secondary,B1 dispersion L2 (pp),B0,34.37,secondary,yes,
+main_secondary.B1_dispersion_L2_pp.B1,main_secondary,B1 dispersion L2 (pp),B1,0.41,secondary,yes,
+main_secondary.B1_dispersion_L2_pp.B2,main_secondary,B1 dispersion L2 (pp),B2,2.1,secondary,yes,
+main_secondary.B1_dispersion_L2_pp.floor,main_secondary,B1 dispersion L2 (pp),floor,–,secondary,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.B1_dispersion_L2_pp.min,main_variability,B1 dispersion L2 (pp),min,0.24,secondary,yes,§9
+main_variability.B1_dispersion_L2_pp.max,main_variability,B1 dispersion L2 (pp),max,0.41,secondary,yes,§9
+main_variability.B1_dispersion_L2_pp.mean,main_variability,B1 dispersion L2 (pp),mean,0.2967,secondary,yes,§9: mean over R1-R3
+main_secondary.B1_dispersion_L3_pp.R1,main_secondary,B1 dispersion L3 (pp),R1,0,secondary,yes,
+main_secondary.B1_dispersion_L3_pp.R2,main_secondary,B1 dispersion L3 (pp),R2,0,secondary,yes,
+main_secondary.B1_dispersion_L3_pp.R3,main_secondary,B1 dispersion L3 (pp),R3,0,secondary,yes,
+main_secondary.B1_dispersion_L3_pp.B0,main_secondary,B1 dispersion L3 (pp),B0,3.68,secondary,yes,
+main_secondary.B1_dispersion_L3_pp.B1,main_secondary,B1 dispersion L3 (pp),B1,0,secondary,yes,
+main_secondary.B1_dispersion_L3_pp.B2,main_secondary,B1 dispersion L3 (pp),B2,0,secondary,yes,
+main_secondary.B1_dispersion_L3_pp.floor,main_secondary,B1 dispersion L3 (pp),floor,–,secondary,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.B1_dispersion_L3_pp.min,main_variability,B1 dispersion L3 (pp),min,0,secondary,yes,§9
+main_variability.B1_dispersion_L3_pp.max,main_variability,B1 dispersion L3 (pp),max,0,secondary,yes,§9
+main_variability.B1_dispersion_L3_pp.mean,main_variability,B1 dispersion L3 (pp),mean,0,secondary,yes,§9: mean over R1-R3
+main_secondary.B2_F1_inversions_L1.R1,main_secondary,B2 F1 inversions L1,R1,0,secondary,yes,
+main_secondary.B2_F1_inversions_L1.R2,main_secondary,B2 F1 inversions L1,R2,0,secondary,yes,
+main_secondary.B2_F1_inversions_L1.R3,main_secondary,B2 F1 inversions L1,R3,0,secondary,yes,
+main_secondary.B2_F1_inversions_L1.B0,main_secondary,B2 F1 inversions L1,B0,40,secondary,yes,
+main_secondary.B2_F1_inversions_L1.B1,main_secondary,B2 F1 inversions L1,B1,0,secondary,yes,
+main_secondary.B2_F1_inversions_L1.B2,main_secondary,B2 F1 inversions L1,B2,1,secondary,yes,
+main_secondary.B2_F1_inversions_L1.floor,main_secondary,B2 F1 inversions L1,floor,0,secondary,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.B2_F1_inversions_L1.min,main_variability,B2 F1 inversions L1,min,0,secondary,yes,§9
+main_variability.B2_F1_inversions_L1.max,main_variability,B2 F1 inversions L1,max,0,secondary,yes,§9
+main_variability.B2_F1_inversions_L1.mean,main_variability,B2 F1 inversions L1,mean,0,secondary,yes,§9: mean over R1-R3
+main_secondary.B2_F1_inversion_wait_days_L1.R1,main_secondary,B2 F1 inversion wait days L1,R1,0,secondary,yes,
+main_secondary.B2_F1_inversion_wait_days_L1.R2,main_secondary,B2 F1 inversion wait days L1,R2,0,secondary,yes,
+main_secondary.B2_F1_inversion_wait_days_L1.R3,main_secondary,B2 F1 inversion wait days L1,R3,0,secondary,yes,
+main_secondary.B2_F1_inversion_wait_days_L1.B0,main_secondary,B2 F1 inversion wait days L1,B0,89,secondary,yes,
+main_secondary.B2_F1_inversion_wait_days_L1.B1,main_secondary,B2 F1 inversion wait days L1,B1,0,secondary,yes,
+main_secondary.B2_F1_inversion_wait_days_L1.B2,main_secondary,B2 F1 inversion wait days L1,B2,1,secondary,yes,
+main_secondary.B2_F1_inversion_wait_days_L1.floor,main_secondary,B2 F1 inversion wait days L1,floor,0,secondary,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.B2_F1_inversion_wait_days_L1.min,main_variability,B2 F1 inversion wait days L1,min,0,secondary,yes,§9
+main_variability.B2_F1_inversion_wait_days_L1.max,main_variability,B2 F1 inversion wait days L1,max,0,secondary,yes,§9
+main_variability.B2_F1_inversion_wait_days_L1.mean,main_variability,B2 F1 inversion wait days L1,mean,0,secondary,yes,§9: mean over R1-R3
+main_secondary.B2_F1_inversions_L2.R1,main_secondary,B2 F1 inversions L2,R1,0,secondary,yes,
+main_secondary.B2_F1_inversions_L2.R2,main_secondary,B2 F1 inversions L2,R2,0,secondary,yes,
+main_secondary.B2_F1_inversions_L2.R3,main_secondary,B2 F1 inversions L2,R3,0,secondary,yes,
+main_secondary.B2_F1_inversions_L2.B0,main_secondary,B2 F1 inversions L2,B0,46,secondary,yes,
+main_secondary.B2_F1_inversions_L2.B1,main_secondary,B2 F1 inversions L2,B1,0,secondary,yes,
+main_secondary.B2_F1_inversions_L2.B2,main_secondary,B2 F1 inversions L2,B2,0,secondary,yes,
+main_secondary.B2_F1_inversions_L2.floor,main_secondary,B2 F1 inversions L2,floor,0,secondary,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.B2_F1_inversions_L2.min,main_variability,B2 F1 inversions L2,min,0,secondary,yes,§9
+main_variability.B2_F1_inversions_L2.max,main_variability,B2 F1 inversions L2,max,0,secondary,yes,§9
+main_variability.B2_F1_inversions_L2.mean,main_variability,B2 F1 inversions L2,mean,0,secondary,yes,§9: mean over R1-R3
+main_secondary.B2_F1_inversion_wait_days_L2.R1,main_secondary,B2 F1 inversion wait days L2,R1,0,secondary,yes,
+main_secondary.B2_F1_inversion_wait_days_L2.R2,main_secondary,B2 F1 inversion wait days L2,R2,0,secondary,yes,
+main_secondary.B2_F1_inversion_wait_days_L2.R3,main_secondary,B2 F1 inversion wait days L2,R3,0,secondary,yes,
+main_secondary.B2_F1_inversion_wait_days_L2.B0,main_secondary,B2 F1 inversion wait days L2,B0,75,secondary,yes,
+main_secondary.B2_F1_inversion_wait_days_L2.B1,main_secondary,B2 F1 inversion wait days L2,B1,0,secondary,yes,
+main_secondary.B2_F1_inversion_wait_days_L2.B2,main_secondary,B2 F1 inversion wait days L2,B2,0,secondary,yes,
+main_secondary.B2_F1_inversion_wait_days_L2.floor,main_secondary,B2 F1 inversion wait days L2,floor,0,secondary,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.B2_F1_inversion_wait_days_L2.min,main_variability,B2 F1 inversion wait days L2,min,0,secondary,yes,§9
+main_variability.B2_F1_inversion_wait_days_L2.max,main_variability,B2 F1 inversion wait days L2,max,0,secondary,yes,§9
+main_variability.B2_F1_inversion_wait_days_L2.mean,main_variability,B2 F1 inversion wait days L2,mean,0,secondary,yes,§9: mean over R1-R3
+main_secondary.B2_F1_inversions_L3.R1,main_secondary,B2 F1 inversions L3,R1,0,secondary,yes,
+main_secondary.B2_F1_inversions_L3.R2,main_secondary,B2 F1 inversions L3,R2,0,secondary,yes,
+main_secondary.B2_F1_inversions_L3.R3,main_secondary,B2 F1 inversions L3,R3,0,secondary,yes,
+main_secondary.B2_F1_inversions_L3.B0,main_secondary,B2 F1 inversions L3,B0,1,secondary,yes,
+main_secondary.B2_F1_inversions_L3.B1,main_secondary,B2 F1 inversions L3,B1,0,secondary,yes,
+main_secondary.B2_F1_inversions_L3.B2,main_secondary,B2 F1 inversions L3,B2,0,secondary,yes,
+main_secondary.B2_F1_inversions_L3.floor,main_secondary,B2 F1 inversions L3,floor,0,secondary,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.B2_F1_inversions_L3.min,main_variability,B2 F1 inversions L3,min,0,secondary,yes,§9
+main_variability.B2_F1_inversions_L3.max,main_variability,B2 F1 inversions L3,max,0,secondary,yes,§9
+main_variability.B2_F1_inversions_L3.mean,main_variability,B2 F1 inversions L3,mean,0,secondary,yes,§9: mean over R1-R3
+main_secondary.B2_F1_inversion_wait_days_L3.R1,main_secondary,B2 F1 inversion wait days L3,R1,0,secondary,yes,
+main_secondary.B2_F1_inversion_wait_days_L3.R2,main_secondary,B2 F1 inversion wait days L3,R2,0,secondary,yes,
+main_secondary.B2_F1_inversion_wait_days_L3.R3,main_secondary,B2 F1 inversion wait days L3,R3,0,secondary,yes,
+main_secondary.B2_F1_inversion_wait_days_L3.B0,main_secondary,B2 F1 inversion wait days L3,B0,1,secondary,yes,
+main_secondary.B2_F1_inversion_wait_days_L3.B1,main_secondary,B2 F1 inversion wait days L3,B1,0,secondary,yes,
+main_secondary.B2_F1_inversion_wait_days_L3.B2,main_secondary,B2 F1 inversion wait days L3,B2,0,secondary,yes,
+main_secondary.B2_F1_inversion_wait_days_L3.floor,main_secondary,B2 F1 inversion wait days L3,floor,0,secondary,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.B2_F1_inversion_wait_days_L3.min,main_variability,B2 F1 inversion wait days L3,min,0,secondary,yes,§9
+main_variability.B2_F1_inversion_wait_days_L3.max,main_variability,B2 F1 inversion wait days L3,max,0,secondary,yes,§9
+main_variability.B2_F1_inversion_wait_days_L3.mean,main_variability,B2 F1 inversion wait days L3,mean,0,secondary,yes,§9: mean over R1-R3
+main_secondary.B3_mean_overflow_days_L1.R1,main_secondary,B3 mean overflow days L1,R1,1,secondary,yes,
+main_secondary.B3_mean_overflow_days_L1.R2,main_secondary,B3 mean overflow days L1,R2,1,secondary,yes,
+main_secondary.B3_mean_overflow_days_L1.R3,main_secondary,B3 mean overflow days L1,R3,1,secondary,yes,
+main_secondary.B3_mean_overflow_days_L1.B0,main_secondary,B3 mean overflow days L1,B0,2.324,secondary,yes,
+main_secondary.B3_mean_overflow_days_L1.B1,main_secondary,B3 mean overflow days L1,B1,1,secondary,yes,
+main_secondary.B3_mean_overflow_days_L1.B2,main_secondary,B3 mean overflow days L1,B2,1.056,secondary,yes,
+main_secondary.B3_mean_overflow_days_L1.floor,main_secondary,B3 mean overflow days L1,floor,–,secondary,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.B3_mean_overflow_days_L1.min,main_variability,B3 mean overflow days L1,min,1,secondary,yes,§9
+main_variability.B3_mean_overflow_days_L1.max,main_variability,B3 mean overflow days L1,max,1,secondary,yes,§9
+main_variability.B3_mean_overflow_days_L1.mean,main_variability,B3 mean overflow days L1,mean,1,secondary,yes,§9: mean over R1-R3
+main_secondary.B3_max_overflow_days_L1.R1,main_secondary,B3 max overflow days L1,R1,1,secondary,yes,
+main_secondary.B3_max_overflow_days_L1.R2,main_secondary,B3 max overflow days L1,R2,1,secondary,yes,
+main_secondary.B3_max_overflow_days_L1.R3,main_secondary,B3 max overflow days L1,R3,1,secondary,yes,
+main_secondary.B3_max_overflow_days_L1.B0,main_secondary,B3 max overflow days L1,B0,7,secondary,yes,
+main_secondary.B3_max_overflow_days_L1.B1,main_secondary,B3 max overflow days L1,B1,1,secondary,yes,
+main_secondary.B3_max_overflow_days_L1.B2,main_secondary,B3 max overflow days L1,B2,2,secondary,yes,
+main_secondary.B3_max_overflow_days_L1.floor,main_secondary,B3 max overflow days L1,floor,–,secondary,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.B3_max_overflow_days_L1.min,main_variability,B3 max overflow days L1,min,1,secondary,yes,§9
+main_variability.B3_max_overflow_days_L1.max,main_variability,B3 max overflow days L1,max,1,secondary,yes,§9
+main_variability.B3_max_overflow_days_L1.mean,main_variability,B3 max overflow days L1,mean,1,secondary,yes,§9: mean over R1-R3
+main_secondary.B3_mean_overflow_days_L2.R1,main_secondary,B3 mean overflow days L2,R1,1,secondary,yes,
+main_secondary.B3_mean_overflow_days_L2.R2,main_secondary,B3 mean overflow days L2,R2,1,secondary,yes,
+main_secondary.B3_mean_overflow_days_L2.R3,main_secondary,B3 mean overflow days L2,R3,1,secondary,yes,
+main_secondary.B3_mean_overflow_days_L2.B0,main_secondary,B3 mean overflow days L2,B0,2.35,secondary,yes,
+main_secondary.B3_mean_overflow_days_L2.B1,main_secondary,B3 mean overflow days L2,B1,1,secondary,yes,
+main_secondary.B3_mean_overflow_days_L2.B2,main_secondary,B3 mean overflow days L2,B2,1,secondary,yes,
+main_secondary.B3_mean_overflow_days_L2.floor,main_secondary,B3 mean overflow days L2,floor,–,secondary,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.B3_mean_overflow_days_L2.min,main_variability,B3 mean overflow days L2,min,1,secondary,yes,§9
+main_variability.B3_mean_overflow_days_L2.max,main_variability,B3 mean overflow days L2,max,1,secondary,yes,§9
+main_variability.B3_mean_overflow_days_L2.mean,main_variability,B3 mean overflow days L2,mean,1,secondary,yes,§9: mean over R1-R3
+main_secondary.B3_max_overflow_days_L2.R1,main_secondary,B3 max overflow days L2,R1,1,secondary,yes,
+main_secondary.B3_max_overflow_days_L2.R2,main_secondary,B3 max overflow days L2,R2,1,secondary,yes,
+main_secondary.B3_max_overflow_days_L2.R3,main_secondary,B3 max overflow days L2,R3,1,secondary,yes,
+main_secondary.B3_max_overflow_days_L2.B0,main_secondary,B3 max overflow days L2,B0,4,secondary,yes,
+main_secondary.B3_max_overflow_days_L2.B1,main_secondary,B3 max overflow days L2,B1,1,secondary,yes,
+main_secondary.B3_max_overflow_days_L2.B2,main_secondary,B3 max overflow days L2,B2,1,secondary,yes,
+main_secondary.B3_max_overflow_days_L2.floor,main_secondary,B3 max overflow days L2,floor,–,secondary,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.B3_max_overflow_days_L2.min,main_variability,B3 max overflow days L2,min,1,secondary,yes,§9
+main_variability.B3_max_overflow_days_L2.max,main_variability,B3 max overflow days L2,max,1,secondary,yes,§9
+main_variability.B3_max_overflow_days_L2.mean,main_variability,B3 max overflow days L2,mean,1,secondary,yes,§9: mean over R1-R3
+main_secondary.B3_mean_overflow_days_L3.R1,main_secondary,B3 mean overflow days L3,R1,0,secondary,yes,
+main_secondary.B3_mean_overflow_days_L3.R2,main_secondary,B3 mean overflow days L3,R2,0,secondary,yes,
+main_secondary.B3_mean_overflow_days_L3.R3,main_secondary,B3 mean overflow days L3,R3,0,secondary,yes,
+main_secondary.B3_mean_overflow_days_L3.B0,main_secondary,B3 mean overflow days L3,B0,1.091,secondary,yes,
+main_secondary.B3_mean_overflow_days_L3.B1,main_secondary,B3 mean overflow days L3,B1,0,secondary,yes,
+main_secondary.B3_mean_overflow_days_L3.B2,main_secondary,B3 mean overflow days L3,B2,0,secondary,yes,
+main_secondary.B3_mean_overflow_days_L3.floor,main_secondary,B3 mean overflow days L3,floor,–,secondary,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.B3_mean_overflow_days_L3.min,main_variability,B3 mean overflow days L3,min,0,secondary,yes,§9
+main_variability.B3_mean_overflow_days_L3.max,main_variability,B3 mean overflow days L3,max,0,secondary,yes,§9
+main_variability.B3_mean_overflow_days_L3.mean,main_variability,B3 mean overflow days L3,mean,0,secondary,yes,§9: mean over R1-R3
+main_secondary.B3_max_overflow_days_L3.R1,main_secondary,B3 max overflow days L3,R1,0,secondary,yes,
+main_secondary.B3_max_overflow_days_L3.R2,main_secondary,B3 max overflow days L3,R2,0,secondary,yes,
+main_secondary.B3_max_overflow_days_L3.R3,main_secondary,B3 max overflow days L3,R3,0,secondary,yes,
+main_secondary.B3_max_overflow_days_L3.B0,main_secondary,B3 max overflow days L3,B0,2,secondary,yes,
+main_secondary.B3_max_overflow_days_L3.B1,main_secondary,B3 max overflow days L3,B1,0,secondary,yes,
+main_secondary.B3_max_overflow_days_L3.B2,main_secondary,B3 max overflow days L3,B2,0,secondary,yes,
+main_secondary.B3_max_overflow_days_L3.floor,main_secondary,B3 max overflow days L3,floor,–,secondary,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.B3_max_overflow_days_L3.min,main_variability,B3 max overflow days L3,min,0,secondary,yes,§9
+main_variability.B3_max_overflow_days_L3.max,main_variability,B3 max overflow days L3,max,0,secondary,yes,§9
+main_variability.B3_max_overflow_days_L3.mean,main_variability,B3 max overflow days L3,mean,0,secondary,yes,§9: mean over R1-R3
+main_secondary.A4_shortage_L3.R1,main_secondary,A4 shortage L3,R1,0,secondary,yes,
+main_secondary.A4_shortage_L3.R2,main_secondary,A4 shortage L3,R2,0,secondary,yes,
+main_secondary.A4_shortage_L3.R3,main_secondary,A4 shortage L3,R3,0,secondary,yes,
+main_secondary.A4_shortage_L3.B0,main_secondary,A4 shortage L3,B0,8.8,secondary,yes,
+main_secondary.A4_shortage_L3.B1,main_secondary,A4 shortage L3,B1,0,secondary,yes,
+main_secondary.A4_shortage_L3.B2,main_secondary,A4 shortage L3,B2,0,secondary,yes,
+main_secondary.A4_shortage_L3.floor,main_secondary,A4 shortage L3,floor,–,secondary,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.A4_shortage_L3.min,main_variability,A4 shortage L3,min,0,secondary,yes,§9
+main_variability.A4_shortage_L3.max,main_variability,A4 shortage L3,max,0,secondary,yes,§9
+main_variability.A4_shortage_L3.mean,main_variability,A4 shortage L3,mean,0,secondary,yes,§9: mean over R1-R3
+main_secondary.A4_shortage_L2.R1,main_secondary,A4 shortage L2,R1,4.25,secondary,yes,
+main_secondary.A4_shortage_L2.R2,main_secondary,A4 shortage L2,R2,4.1,secondary,yes,
+main_secondary.A4_shortage_L2.R3,main_secondary,A4 shortage L2,R3,4.25,secondary,yes,
+main_secondary.A4_shortage_L2.B0,main_secondary,A4 shortage L2,B0,63.2,secondary,yes,
+main_secondary.A4_shortage_L2.B1,main_secondary,A4 shortage L2,B1,5.15,secondary,yes,
+main_secondary.A4_shortage_L2.B2,main_secondary,A4 shortage L2,B2,10.95,secondary,yes,
+main_secondary.A4_shortage_L2.floor,main_secondary,A4 shortage L2,floor,–,secondary,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.A4_shortage_L2.min,main_variability,A4 shortage L2,min,4.1,secondary,yes,§9
+main_variability.A4_shortage_L2.max,main_variability,A4 shortage L2,max,4.25,secondary,yes,§9
+main_variability.A4_shortage_L2.mean,main_variability,A4 shortage L2,mean,4.2,secondary,yes,§9: mean over R1-R3
+main_secondary.A4_shortage_L1.R1,main_secondary,A4 shortage L1,R1,37.8,secondary,yes,
+main_secondary.A4_shortage_L1.R2,main_secondary,A4 shortage L1,R2,36.95,secondary,yes,
+main_secondary.A4_shortage_L1.R3,main_secondary,A4 shortage L1,R3,35.9,secondary,yes,
+main_secondary.A4_shortage_L1.B0,main_secondary,A4 shortage L1,B0,33.95,secondary,yes,
+main_secondary.A4_shortage_L1.B1,main_secondary,A4 shortage L1,B1,36.2,secondary,yes,
+main_secondary.A4_shortage_L1.B2,main_secondary,A4 shortage L1,B2,30.05,secondary,yes,
+main_secondary.A4_shortage_L1.floor,main_secondary,A4 shortage L1,floor,–,secondary,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.A4_shortage_L1.min,main_variability,A4 shortage L1,min,35.9,secondary,yes,§9
+main_variability.A4_shortage_L1.max,main_variability,A4 shortage L1,max,37.8,secondary,yes,§9
+main_variability.A4_shortage_L1.mean,main_variability,A4 shortage L1,mean,36.8833,secondary,yes,§9: mean over R1-R3
+main_secondary.A4_tier_floor_tier_3.R1,main_secondary,A4 tier floor tier 3,R1,0,context,yes,
+main_secondary.A4_tier_floor_tier_3.R2,main_secondary,A4 tier floor tier 3,R2,0,context,yes,
+main_secondary.A4_tier_floor_tier_3.R3,main_secondary,A4 tier floor tier 3,R3,0,context,yes,
+main_secondary.A4_tier_floor_tier_3.B0,main_secondary,A4 tier floor tier 3,B0,0,context,yes,
+main_secondary.A4_tier_floor_tier_3.B1,main_secondary,A4 tier floor tier 3,B1,0,context,yes,
+main_secondary.A4_tier_floor_tier_3.B2,main_secondary,A4 tier floor tier 3,B2,0,context,yes,
+main_secondary.A4_tier_floor_tier_3.floor,main_secondary,A4 tier floor tier 3,floor,–,context,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.A4_tier_floor_tier_3.min,main_variability,A4 tier floor tier 3,min,0,context,yes,§9
+main_variability.A4_tier_floor_tier_3.max,main_variability,A4 tier floor tier 3,max,0,context,yes,§9
+main_variability.A4_tier_floor_tier_3.mean,main_variability,A4 tier floor tier 3,mean,0,context,yes,§9: mean over R1-R3
+main_secondary.A4_tier_floor_tier_2.R1,main_secondary,A4 tier floor tier 2,R1,4.1,context,yes,
+main_secondary.A4_tier_floor_tier_2.R2,main_secondary,A4 tier floor tier 2,R2,4.1,context,yes,
+main_secondary.A4_tier_floor_tier_2.R3,main_secondary,A4 tier floor tier 2,R3,4.1,context,yes,
+main_secondary.A4_tier_floor_tier_2.B0,main_secondary,A4 tier floor tier 2,B0,4.1,context,yes,
+main_secondary.A4_tier_floor_tier_2.B1,main_secondary,A4 tier floor tier 2,B1,4.1,context,yes,
+main_secondary.A4_tier_floor_tier_2.B2,main_secondary,A4 tier floor tier 2,B2,4.1,context,yes,
+main_secondary.A4_tier_floor_tier_2.floor,main_secondary,A4 tier floor tier 2,floor,–,context,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.A4_tier_floor_tier_2.min,main_variability,A4 tier floor tier 2,min,4.1,context,yes,§9
+main_variability.A4_tier_floor_tier_2.max,main_variability,A4 tier floor tier 2,max,4.1,context,yes,§9
+main_variability.A4_tier_floor_tier_2.mean,main_variability,A4 tier floor tier 2,mean,4.1,context,yes,§9: mean over R1-R3
+main_secondary.A4_tier_floor_tier_1.R1,main_secondary,A4 tier floor tier 1,R1,38.2,context,yes,
+main_secondary.A4_tier_floor_tier_1.R2,main_secondary,A4 tier floor tier 1,R2,38.2,context,yes,
+main_secondary.A4_tier_floor_tier_1.R3,main_secondary,A4 tier floor tier 1,R3,38.2,context,yes,
+main_secondary.A4_tier_floor_tier_1.B0,main_secondary,A4 tier floor tier 1,B0,38.2,context,yes,
+main_secondary.A4_tier_floor_tier_1.B1,main_secondary,A4 tier floor tier 1,B1,38.2,context,yes,
+main_secondary.A4_tier_floor_tier_1.B2,main_secondary,A4 tier floor tier 1,B2,38.2,context,yes,
+main_secondary.A4_tier_floor_tier_1.floor,main_secondary,A4 tier floor tier 1,floor,–,context,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.A4_tier_floor_tier_1.min,main_variability,A4 tier floor tier 1,min,38.2,context,yes,§9
+main_variability.A4_tier_floor_tier_1.max,main_variability,A4 tier floor tier 1,max,38.2,context,yes,§9
+main_variability.A4_tier_floor_tier_1.mean,main_variability,A4 tier floor tier 1,mean,38.2,context,yes,§9: mean over R1-R3
+main_descriptive.E_bed_RS_total.R1,main_descriptive,E bed RS total,R1,139,descriptive,yes,
+main_descriptive.E_bed_RS_total.R2,main_descriptive,E bed RS total,R2,145,descriptive,yes,
+main_descriptive.E_bed_RS_total.R3,main_descriptive,E bed RS total,R3,134,descriptive,yes,
+main_descriptive.E_bed_RS_total.B0,main_descriptive,E bed RS total,B0,0,descriptive,yes,
+main_descriptive.E_bed_RS_total.B1,main_descriptive,E bed RS total,B1,141,descriptive,yes,
+main_descriptive.E_bed_RS_total.B2,main_descriptive,E bed RS total,B2,140,descriptive,yes,
+main_descriptive.E_bed_RS_total.floor,main_descriptive,E bed RS total,floor,–,descriptive,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.E_bed_RS_total.min,main_variability,E bed RS total,min,134,descriptive,yes,§9
+main_variability.E_bed_RS_total.max,main_variability,E bed RS total,max,145,descriptive,yes,§9
+main_variability.E_bed_RS_total.mean,main_variability,E bed RS total,mean,139.3333,descriptive,yes,§9: mean over R1-R3
+main_descriptive.E_bed_reallocation_frequency_days.R1,main_descriptive,E bed reallocation frequency (days),R1,29,descriptive,yes,
+main_descriptive.E_bed_reallocation_frequency_days.R2,main_descriptive,E bed reallocation frequency (days),R2,30,descriptive,yes,
+main_descriptive.E_bed_reallocation_frequency_days.R3,main_descriptive,E bed reallocation frequency (days),R3,29,descriptive,yes,
+main_descriptive.E_bed_reallocation_frequency_days.B0,main_descriptive,E bed reallocation frequency (days),B0,0,descriptive,yes,
+main_descriptive.E_bed_reallocation_frequency_days.B1,main_descriptive,E bed reallocation frequency (days),B1,29,descriptive,yes,
+main_descriptive.E_bed_reallocation_frequency_days.B2,main_descriptive,E bed reallocation frequency (days),B2,29,descriptive,yes,
+main_descriptive.E_bed_reallocation_frequency_days.floor,main_descriptive,E bed reallocation frequency (days),floor,–,descriptive,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.E_bed_reallocation_frequency_days.min,main_variability,E bed reallocation frequency (days),min,29,descriptive,yes,§9
+main_variability.E_bed_reallocation_frequency_days.max,main_variability,E bed reallocation frequency (days),max,30,descriptive,yes,§9
+main_variability.E_bed_reallocation_frequency_days.mean,main_variability,E bed reallocation frequency (days),mean,29.3333,descriptive,yes,§9: mean over R1-R3
+main_descriptive.E_nurse_RS_total.R1,main_descriptive,E nurse RS total,R1,61,descriptive,yes,
+main_descriptive.E_nurse_RS_total.R2,main_descriptive,E nurse RS total,R2,54,descriptive,yes,
+main_descriptive.E_nurse_RS_total.R3,main_descriptive,E nurse RS total,R3,53,descriptive,yes,
+main_descriptive.E_nurse_RS_total.B0,main_descriptive,E nurse RS total,B0,0,descriptive,yes,
+main_descriptive.E_nurse_RS_total.B1,main_descriptive,E nurse RS total,B1,56,descriptive,yes,
+main_descriptive.E_nurse_RS_total.B2,main_descriptive,E nurse RS total,B2,56,descriptive,yes,
+main_descriptive.E_nurse_RS_total.floor,main_descriptive,E nurse RS total,floor,–,descriptive,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.E_nurse_RS_total.min,main_variability,E nurse RS total,min,53,descriptive,yes,§9
+main_variability.E_nurse_RS_total.max,main_variability,E nurse RS total,max,61,descriptive,yes,§9
+main_variability.E_nurse_RS_total.mean,main_variability,E nurse RS total,mean,56,descriptive,yes,§9: mean over R1-R3
+main_descriptive.E_nurse_reallocation_frequency_days.R1,main_descriptive,E nurse reallocation frequency (days),R1,29,descriptive,yes,
+main_descriptive.E_nurse_reallocation_frequency_days.R2,main_descriptive,E nurse reallocation frequency (days),R2,29,descriptive,yes,
+main_descriptive.E_nurse_reallocation_frequency_days.R3,main_descriptive,E nurse reallocation frequency (days),R3,27,descriptive,yes,
+main_descriptive.E_nurse_reallocation_frequency_days.B0,main_descriptive,E nurse reallocation frequency (days),B0,0,descriptive,yes,
+main_descriptive.E_nurse_reallocation_frequency_days.B1,main_descriptive,E nurse reallocation frequency (days),B1,28,descriptive,yes,
+main_descriptive.E_nurse_reallocation_frequency_days.B2,main_descriptive,E nurse reallocation frequency (days),B2,27,descriptive,yes,
+main_descriptive.E_nurse_reallocation_frequency_days.floor,main_descriptive,E nurse reallocation frequency (days),floor,–,descriptive,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.E_nurse_reallocation_frequency_days.min,main_variability,E nurse reallocation frequency (days),min,27,descriptive,yes,§9
+main_variability.E_nurse_reallocation_frequency_days.max,main_variability,E nurse reallocation frequency (days),max,29,descriptive,yes,§9
+main_variability.E_nurse_reallocation_frequency_days.mean,main_variability,E nurse reallocation frequency (days),mean,28.3333,descriptive,yes,§9: mean over R1-R3
+main_descriptive.C1_bed_utilisation.R1,main_descriptive,C1 bed utilisation,R1,0.9098,descriptive,yes,
+main_descriptive.C1_bed_utilisation.R2,main_descriptive,C1 bed utilisation,R2,0.9098,descriptive,yes,
+main_descriptive.C1_bed_utilisation.R3,main_descriptive,C1 bed utilisation,R3,0.9098,descriptive,yes,
+main_descriptive.C1_bed_utilisation.B0,main_descriptive,C1 bed utilisation,B0,0.8533,descriptive,yes,
+main_descriptive.C1_bed_utilisation.B1,main_descriptive,C1 bed utilisation,B1,0.9098,descriptive,yes,
+main_descriptive.C1_bed_utilisation.B2,main_descriptive,C1 bed utilisation,B2,0.9098,descriptive,yes,
+main_descriptive.C1_bed_utilisation.floor,main_descriptive,C1 bed utilisation,floor,–,descriptive,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.C1_bed_utilisation.min,main_variability,C1 bed utilisation,min,0.9098,descriptive,yes,§9
+main_variability.C1_bed_utilisation.max,main_variability,C1 bed utilisation,max,0.9098,descriptive,yes,§9
+main_variability.C1_bed_utilisation.mean,main_variability,C1 bed utilisation,mean,0.9098,descriptive,yes,§9: mean over R1-R3
+main_descriptive.C2_avoidable_idle_bed_days.R1,main_descriptive,C2 avoidable idle bed-days,R1,0,descriptive,yes,
+main_descriptive.C2_avoidable_idle_bed_days.R2,main_descriptive,C2 avoidable idle bed-days,R2,0,descriptive,yes,
+main_descriptive.C2_avoidable_idle_bed_days.R3,main_descriptive,C2 avoidable idle bed-days,R3,0,descriptive,yes,
+main_descriptive.C2_avoidable_idle_bed_days.B0,main_descriptive,C2 avoidable idle bed-days,B0,162,descriptive,yes,
+main_descriptive.C2_avoidable_idle_bed_days.B1,main_descriptive,C2 avoidable idle bed-days,B1,0,descriptive,yes,
+main_descriptive.C2_avoidable_idle_bed_days.B2,main_descriptive,C2 avoidable idle bed-days,B2,0,descriptive,yes,
+main_descriptive.C2_avoidable_idle_bed_days.floor,main_descriptive,C2 avoidable idle bed-days,floor,0,descriptive,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.C2_avoidable_idle_bed_days.min,main_variability,C2 avoidable idle bed-days,min,0,descriptive,yes,§9
+main_variability.C2_avoidable_idle_bed_days.max,main_variability,C2 avoidable idle bed-days,max,0,descriptive,yes,§9
+main_variability.C2_avoidable_idle_bed_days.mean,main_variability,C2 avoidable idle bed-days,mean,0,descriptive,yes,§9: mean over R1-R3
+main_descriptive.C3_nurse_utilisation.R1,main_descriptive,C3 nurse utilisation,R1,0.9818,descriptive,yes,
+main_descriptive.C3_nurse_utilisation.R2,main_descriptive,C3 nurse utilisation,R2,0.9818,descriptive,yes,
+main_descriptive.C3_nurse_utilisation.R3,main_descriptive,C3 nurse utilisation,R3,0.9818,descriptive,yes,
+main_descriptive.C3_nurse_utilisation.B0,main_descriptive,C3 nurse utilisation,B0,0.9262,descriptive,yes,
+main_descriptive.C3_nurse_utilisation.B1,main_descriptive,C3 nurse utilisation,B1,0.9818,descriptive,yes,
+main_descriptive.C3_nurse_utilisation.B2,main_descriptive,C3 nurse utilisation,B2,0.9818,descriptive,yes,
+main_descriptive.C3_nurse_utilisation.floor,main_descriptive,C3 nurse utilisation,floor,–,descriptive,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.C3_nurse_utilisation.min,main_variability,C3 nurse utilisation,min,0.9818,descriptive,yes,§9
+main_variability.C3_nurse_utilisation.max,main_variability,C3 nurse utilisation,max,0.9818,descriptive,yes,§9
+main_variability.C3_nurse_utilisation.mean,main_variability,C3 nurse utilisation,mean,0.9818,descriptive,yes,§9: mean over R1-R3
+main_descriptive.C4_avoidable_idle_nurse_days.R1,main_descriptive,C4 avoidable idle nurse-days,R1,0,descriptive,yes,
+main_descriptive.C4_avoidable_idle_nurse_days.R2,main_descriptive,C4 avoidable idle nurse-days,R2,0,descriptive,yes,
+main_descriptive.C4_avoidable_idle_nurse_days.R3,main_descriptive,C4 avoidable idle nurse-days,R3,0,descriptive,yes,
+main_descriptive.C4_avoidable_idle_nurse_days.B0,main_descriptive,C4 avoidable idle nurse-days,B0,61,descriptive,yes,
+main_descriptive.C4_avoidable_idle_nurse_days.B1,main_descriptive,C4 avoidable idle nurse-days,B1,0,descriptive,yes,
+main_descriptive.C4_avoidable_idle_nurse_days.B2,main_descriptive,C4 avoidable idle nurse-days,B2,0,descriptive,yes,
+main_descriptive.C4_avoidable_idle_nurse_days.floor,main_descriptive,C4 avoidable idle nurse-days,floor,0,descriptive,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.C4_avoidable_idle_nurse_days.min,main_variability,C4 avoidable idle nurse-days,min,0,descriptive,yes,§9
+main_variability.C4_avoidable_idle_nurse_days.max,main_variability,C4 avoidable idle nurse-days,max,0,descriptive,yes,§9
+main_variability.C4_avoidable_idle_nurse_days.mean,main_variability,C4 avoidable idle nurse-days,mean,0,descriptive,yes,§9: mean over R1-R3
+main_descriptive.C4_unavoidable_idle_nurse_days.R1,main_descriptive,C4 unavoidable idle nurse-days,R1,20,descriptive,yes,
+main_descriptive.C4_unavoidable_idle_nurse_days.R2,main_descriptive,C4 unavoidable idle nurse-days,R2,20,descriptive,yes,
+main_descriptive.C4_unavoidable_idle_nurse_days.R3,main_descriptive,C4 unavoidable idle nurse-days,R3,20,descriptive,yes,
+main_descriptive.C4_unavoidable_idle_nurse_days.B0,main_descriptive,C4 unavoidable idle nurse-days,B0,20,descriptive,yes,
+main_descriptive.C4_unavoidable_idle_nurse_days.B1,main_descriptive,C4 unavoidable idle nurse-days,B1,20,descriptive,yes,
+main_descriptive.C4_unavoidable_idle_nurse_days.B2,main_descriptive,C4 unavoidable idle nurse-days,B2,20,descriptive,yes,
+main_descriptive.C4_unavoidable_idle_nurse_days.floor,main_descriptive,C4 unavoidable idle nurse-days,floor,–,descriptive,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.C4_unavoidable_idle_nurse_days.min,main_variability,C4 unavoidable idle nurse-days,min,20,descriptive,yes,§9
+main_variability.C4_unavoidable_idle_nurse_days.max,main_variability,C4 unavoidable idle nurse-days,max,20,descriptive,yes,§9
+main_variability.C4_unavoidable_idle_nurse_days.mean,main_variability,C4 unavoidable idle nurse-days,mean,20,descriptive,yes,§9: mean over R1-R3
+main_descriptive.B4_coverage_dispersion_L1.R1,main_descriptive,B4 coverage dispersion L1,R1,0.0939,descriptive,yes,
+main_descriptive.B4_coverage_dispersion_L1.R2,main_descriptive,B4 coverage dispersion L1,R2,0.1069,descriptive,yes,
+main_descriptive.B4_coverage_dispersion_L1.R3,main_descriptive,B4 coverage dispersion L1,R3,0.0667,descriptive,yes,
+main_descriptive.B4_coverage_dispersion_L1.B0,main_descriptive,B4 coverage dispersion L1,B0,0.5373,descriptive,yes,
+main_descriptive.B4_coverage_dispersion_L1.B1,main_descriptive,B4 coverage dispersion L1,B1,0.1951,descriptive,yes,
+main_descriptive.B4_coverage_dispersion_L1.B2,main_descriptive,B4 coverage dispersion L1,B2,0.3844,descriptive,yes,
+main_descriptive.B4_coverage_dispersion_L1.floor,main_descriptive,B4 coverage dispersion L1,floor,–,descriptive,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.B4_coverage_dispersion_L1.min,main_variability,B4 coverage dispersion L1,min,0.0667,descriptive,yes,§9
+main_variability.B4_coverage_dispersion_L1.max,main_variability,B4 coverage dispersion L1,max,0.1069,descriptive,yes,§9
+main_variability.B4_coverage_dispersion_L1.mean,main_variability,B4 coverage dispersion L1,mean,0.0892,descriptive,yes,§9: mean over R1-R3
+main_descriptive.B4_coverage_dispersion_L2.R1,main_descriptive,B4 coverage dispersion L2,R1,0.0168,descriptive,yes,
+main_descriptive.B4_coverage_dispersion_L2.R2,main_descriptive,B4 coverage dispersion L2,R2,0.0276,descriptive,yes,
+main_descriptive.B4_coverage_dispersion_L2.R3,main_descriptive,B4 coverage dispersion L2,R3,0.0202,descriptive,yes,
+main_descriptive.B4_coverage_dispersion_L2.B0,main_descriptive,B4 coverage dispersion L2,B0,0.6437,descriptive,yes,
+main_descriptive.B4_coverage_dispersion_L2.B1,main_descriptive,B4 coverage dispersion L2,B1,0.0276,descriptive,yes,
+main_descriptive.B4_coverage_dispersion_L2.B2,main_descriptive,B4 coverage dispersion L2,B2,0.1149,descriptive,yes,
+main_descriptive.B4_coverage_dispersion_L2.floor,main_descriptive,B4 coverage dispersion L2,floor,–,descriptive,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.B4_coverage_dispersion_L2.min,main_variability,B4 coverage dispersion L2,min,0.0168,descriptive,yes,§9
+main_variability.B4_coverage_dispersion_L2.max,main_variability,B4 coverage dispersion L2,max,0.0276,descriptive,yes,§9
+main_variability.B4_coverage_dispersion_L2.mean,main_variability,B4 coverage dispersion L2,mean,0.0215,descriptive,yes,§9: mean over R1-R3
+main_descriptive.B4_coverage_dispersion_L3.R1,main_descriptive,B4 coverage dispersion L3,R1,0,descriptive,yes,
+main_descriptive.B4_coverage_dispersion_L3.R2,main_descriptive,B4 coverage dispersion L3,R2,0,descriptive,yes,
+main_descriptive.B4_coverage_dispersion_L3.R3,main_descriptive,B4 coverage dispersion L3,R3,0,descriptive,yes,
+main_descriptive.B4_coverage_dispersion_L3.B0,main_descriptive,B4 coverage dispersion L3,B0,0.045,descriptive,yes,
+main_descriptive.B4_coverage_dispersion_L3.B1,main_descriptive,B4 coverage dispersion L3,B1,0,descriptive,yes,
+main_descriptive.B4_coverage_dispersion_L3.B2,main_descriptive,B4 coverage dispersion L3,B2,0,descriptive,yes,
+main_descriptive.B4_coverage_dispersion_L3.floor,main_descriptive,B4 coverage dispersion L3,floor,–,descriptive,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.B4_coverage_dispersion_L3.min,main_variability,B4 coverage dispersion L3,min,0,descriptive,yes,§9
+main_variability.B4_coverage_dispersion_L3.max,main_variability,B4 coverage dispersion L3,max,0,descriptive,yes,§9
+main_variability.B4_coverage_dispersion_L3.mean,main_variability,B4 coverage dispersion L3,mean,0,descriptive,yes,§9: mean over R1-R3
+main_gap_summary.A1_rows_with_a_non_zero_gap_to_B1.R1,main_gap_summary,A1 rows with a non-zero gap to B1,R1,0/4,headline,no,count of the main_gap rows of this metric
+main_gap_summary.A1_rows_with_a_non_zero_gap_to_B1.R2,main_gap_summary,A1 rows with a non-zero gap to B1,R2,0/4,headline,no,count of the main_gap rows of this metric
+main_gap_summary.A1_rows_with_a_non_zero_gap_to_B1.R3,main_gap_summary,A1 rows with a non-zero gap to B1,R3,0/4,headline,no,count of the main_gap rows of this metric
+main_gap_summary.A2_rows_with_a_non_zero_gap_to_B1.R1,main_gap_summary,A2 rows with a non-zero gap to B1,R1,2/3,headline,no,count of the main_gap rows of this metric
+main_gap_summary.A2_rows_with_a_non_zero_gap_to_B1.R2,main_gap_summary,A2 rows with a non-zero gap to B1,R2,2/3,headline,no,count of the main_gap rows of this metric
+main_gap_summary.A2_rows_with_a_non_zero_gap_to_B1.R3,main_gap_summary,A2 rows with a non-zero gap to B1,R3,2/3,headline,no,count of the main_gap rows of this metric
+main_gap_summary.A3_rows_with_a_non_zero_gap_to_B1.R1,main_gap_summary,A3 rows with a non-zero gap to B1,R1,0/8,headline,no,count of the main_gap rows of this metric
+main_gap_summary.A3_rows_with_a_non_zero_gap_to_B1.R2,main_gap_summary,A3 rows with a non-zero gap to B1,R2,0/8,headline,no,count of the main_gap rows of this metric
+main_gap_summary.A3_rows_with_a_non_zero_gap_to_B1.R3,main_gap_summary,A3 rows with a non-zero gap to B1,R3,0/8,headline,no,count of the main_gap rows of this metric
+main_lex.A2_tier_3_2_1_vs_B0.R1,main_lex,"A2 (tier 3, 2, 1) vs B0",R1,better,headline,yes,lower is better; read tier 3 first (§3.2)
+main_lex.A2_tier_3_2_1_vs_B1.R1,main_lex,"A2 (tier 3, 2, 1) vs B1",R1,better,headline,yes,lower is better; read tier 3 first (§3.2)
+main_lex.A2_tier_3_2_1_vs_B2.R1,main_lex,"A2 (tier 3, 2, 1) vs B2",R1,better,headline,yes,lower is better; read tier 3 first (§3.2)
+main_lex.A2_tier_3_2_1_vs_B0.R2,main_lex,"A2 (tier 3, 2, 1) vs B0",R2,better,headline,yes,lower is better; read tier 3 first (§3.2)
+main_lex.A2_tier_3_2_1_vs_B1.R2,main_lex,"A2 (tier 3, 2, 1) vs B1",R2,better,headline,yes,lower is better; read tier 3 first (§3.2)
+main_lex.A2_tier_3_2_1_vs_B2.R2,main_lex,"A2 (tier 3, 2, 1) vs B2",R2,better,headline,yes,lower is better; read tier 3 first (§3.2)
+main_lex.A2_tier_3_2_1_vs_B0.R3,main_lex,"A2 (tier 3, 2, 1) vs B0",R3,better,headline,yes,lower is better; read tier 3 first (§3.2)
+main_lex.A2_tier_3_2_1_vs_B1.R3,main_lex,"A2 (tier 3, 2, 1) vs B1",R3,better,headline,yes,lower is better; read tier 3 first (§3.2)
+main_lex.A2_tier_3_2_1_vs_B2.R3,main_lex,"A2 (tier 3, 2, 1) vs B2",R3,better,headline,yes,lower is better; read tier 3 first (§3.2)

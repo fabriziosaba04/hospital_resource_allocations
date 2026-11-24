@@ -106,16 +106,23 @@ def _ratio(num: int, den: int):
     return None if den == 0 else round(num / den, 3)
 
 
-def _stats(audit_side: list[tuple], checker_side: list[tuple]) -> dict:
-    """audit_side: (level, matched, checker_level or None); checker_side: (level, matched)."""
+def _stats(audit_side: list[tuple], checker_side: list[tuple], counts: bool = False) -> dict:
+    """audit_side: (level, matched, checker_level or None); checker_side: (level, matched). With `counts`, the
+    numerators behind the ratios are added (`checker_matched`, `level_same`), so every figure can be written as
+    matched/total (EVALUATION_PLAN.md §4 item 6; Log #129); the default output is unchanged."""
     m_a = [x for x in audit_side if x[1]]
-    return {"audit": len(audit_side), "checker": len(checker_side), "matched": len(m_a),
-            "recall": _ratio(len(m_a), len(audit_side)),
-            "precision": _ratio(sum(1 for x in checker_side if x[1]), len(checker_side)),
-            "level_agreement": _ratio(sum(1 for x in m_a if x[0] == x[2]), len(m_a))}
+    m_c = sum(1 for x in checker_side if x[1])
+    same = sum(1 for x in m_a if x[0] == x[2])
+    out = {"audit": len(audit_side), "checker": len(checker_side), "matched": len(m_a),
+           "recall": _ratio(len(m_a), len(audit_side)),
+           "precision": _ratio(m_c, len(checker_side)),
+           "level_agreement": _ratio(same, len(m_a))}
+    if counts:
+        out.update(checker_matched=m_c, level_same=same)
+    return out
 
 
-def match(audit_issues: list[dict], checker_issues: list[dict]) -> dict:
+def match(audit_issues: list[dict], checker_issues: list[dict], counts: bool = False) -> dict:
     a, c = defaultdict(list), defaultdict(list)
     for i in audit_issues:
         if i["type"] in AGENT_TYPES:
@@ -150,15 +157,16 @@ def match(audit_issues: list[dict], checker_issues: list[dict]) -> dict:
 
     def strat(types, level=None):
         return _stats([(lv, ok, p) for t, lv, ok, p in a_rows if t in types and (level is None or lv == level)],
-                      [(lv, ok) for t, lv, ok in c_rows if t in types and (level is None or lv == level)])
+                      [(lv, ok) for t, lv, ok in c_rows if t in types and (level is None or lv == level)], counts)
 
     n_a, n_c = sum(len(v) for v in a.values()), sum(len(v) for v in c.values())
-    return {"audit_issues": n_a, "checker_issues": n_c, "matched": matched,
+    res = {"audit_issues": n_a, "checker_issues": n_c, "matched": matched,
             "recall": None if n_a == 0 else round(matched / n_a, 3),
             "precision": None if n_c == 0 else round(matched / n_c, 3),
             "level_agreement": None if matched == 0 else round(same / matched, 3),
             "per_type": {t: v for t, v in per_type.items() if v["audit"] or v["checker"]},
-            "by_type": {t: strat((t,)) for t in AGENT_TYPES if per_type[t]["audit"] or per_type[t]["checker"]},
+            "by_type": {t: strat((t,)) for t in AGENT_TYPES
+                        if counts or per_type[t]["audit"] or per_type[t]["checker"]},
             "by_level": {lv: strat(AGENT_TYPES, lv) for lv in LEVELS},
             "by_group": {"headline": strat(HEADLINE), "headline_rejected_submission": strat(HEADLINE_SEPARATE),
                          "secondary": strat(SECONDARY)},
@@ -166,3 +174,6 @@ def match(audit_issues: list[dict], checker_issues: list[dict]) -> dict:
                        "secondary": list(SECONDARY)},
             "date_shift_matches": date_shift_matches(audit_issues, checker_issues),
             "checker_llm_only": dict(llm_only), "checker_unmatchable": len(unknown)}
+    if counts:                                    # every type listed, and the numerator of level agreement
+        res["level_same"] = same
+    return res

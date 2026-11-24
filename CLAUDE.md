@@ -25,6 +25,7 @@ hospital_resource_allocations/
 │
 ├── README.md                      grader-facing map: deliverables, evidence, reproduction
 ├── plan.md                        question, theory, test (summary of docs/EVALUATION_PLAN.md)
+├── ANALYSIS.md                    deliverable: the analysis write-up, generated from results/analysis/ (src/14_write_analysis.py)
 ├── ERROR_ANALYSIS.md              deliverable: errors of the system's agents and of the coding agent (to be completed)
 ├── mistakes.md                    pointer to ERROR_ANALYSIS.md (the brief's name)
 ├── REFLECTION.md                  deliverable: one-page reflection (to be completed)
@@ -64,14 +65,14 @@ hospital_resource_allocations/
 │   ├── environment/               deterministic rules shared by server and baselines
 │   ├── mcp_server/                MCP tool layer, state machine, record store, ANALYZER, run init, launcher, copy-back, synthetic fixtures
 │   ├── agent/                     fixed dispatch templates (the prompts live in .claude/agents/)
-│   ├── evaluation/                deterministic audit, metrics, baselines, baseline runner (python -m src.evaluation), run report, CHECKER matching, claim checker, ALLOCATOR digest, owner-extraction converter, owner decisions A–B, owner verdicts on non-mechanical mappings, owner input tables, adjudication pairs view, adjudicated recall, rubric check view, unverifiable view, owner review counts, owner review lists, figures
+│   ├── evaluation/                deterministic audit, metrics, baselines, baseline runner (python -m src.evaluation), run report, CHECKER matching, claim checker, ALLOCATOR digest, owner-extraction converter, owner decisions A–B, owner verdicts on non-mechanical mappings, owner input tables, adjudication pairs view, adjudicated recall, rubric check view, unverifiable view, owner review counts, owner review lists, figures, analysis tables and the ANALYSIS.md renderer (analysis.py, analysis_template.md)
 │   ├── utils/                     long-path helpers, frozen-run write guard, comparisons for the entry scripts
-│   └── 01_verify_data.py … 09_build_figures.py   thin entry scripts: the pipeline in run order
+│   └── 01_verify_data.py … 14_write_analysis.py  thin entry scripts: the pipeline in run order (10–14: analysis tables, ANALYSIS.md)
 │
 ├── results/                       index: results/README.md
 │   ├── allocations/               run records (agent runs R1–R3 and STRESS1, frozen, with per-subagent transcripts split into allocator/ and checker/; baselines B0–B2 on the four datasets)
 │   ├── evaluations/               audit records, metrics, headroom.json, run reports, copy-back manifests; R1 claim and owner review
-│   ├── analysis/                  cross-run results; recomputed/ (not committed) receives the entry scripts' recomputations
+│   ├── analysis/                  analysis tables (steps 10–13), HEADLINE_NUMBERS.csv, R1 CHECKER dispute mapping; recomputed/ (not committed) receives the entry scripts' recomputations
 │   ├── figures/                   static figures per dataset
 │   ├── verification/              copy_back/ (independent re-hashes of the four runs), pre_run/ (smoke test, run-settings probe)
 │   └── development/               dry runs DRY1–3, CHK-B2-HARD10, baselines on HARD10, synthetic fixtures (dry_runs/), HARD10 figures

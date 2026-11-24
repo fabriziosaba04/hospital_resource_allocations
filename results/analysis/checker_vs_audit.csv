@@ -1,0 +1,193 @@
+id,table,row,col,value,role,pre_registered,note
+checker_R1.headline_group.recall,checker_R1,headline group,recall,4/5,check,yes,
+checker_R1.headline_group.precision,checker_R1,headline group,precision,4/4,check,yes,
+checker_R1.headline_group.level_agreement,checker_R1,headline group,level agreement,4/4,check,yes,
+checker_R1.rejected_submission_own_row.recall,checker_R1,rejected_submission (own row),recall,0/0,check,yes,not folded into the headline group (§11 #43)
+checker_R1.rejected_submission_own_row.precision,checker_R1,rejected_submission (own row),precision,0/0,check,yes,not folded into the headline group (§11 #43)
+checker_R1.rejected_submission_own_row.level_agreement,checker_R1,rejected_submission (own row),level agreement,0/0,check,yes,not folded into the headline group (§11 #43)
+checker_R1.secondary_group.recall,checker_R1,secondary group,recall,76/96,check,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_R1.secondary_group.precision,checker_R1,secondary group,precision,76/85,check,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_R1.secondary_group.level_agreement,checker_R1,secondary group,level agreement,76/76,check,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_R1.level_Critical.recall,checker_R1,level Critical,recall,0/0,check,yes,
+checker_R1.level_Critical.precision,checker_R1,level Critical,precision,0/0,check,yes,
+checker_R1.level_Critical.level_agreement,checker_R1,level Critical,level agreement,0/0,check,yes,
+checker_R1.level_Major.recall,checker_R1,level Major,recall,0/0,check,yes,
+checker_R1.level_Major.precision,checker_R1,level Major,precision,0/0,check,yes,
+checker_R1.level_Major.level_agreement,checker_R1,level Major,level agreement,0/0,check,yes,
+checker_R1.level_Moderate.recall,checker_R1,level Moderate,recall,4/5,check,yes,
+checker_R1.level_Moderate.precision,checker_R1,level Moderate,precision,4/4,check,yes,
+checker_R1.level_Moderate.level_agreement,checker_R1,level Moderate,level agreement,4/4,check,yes,
+checker_R1.level_Minor.recall,checker_R1,level Minor,recall,76/96,check,yes,
+checker_R1.level_Minor.precision,checker_R1,level Minor,precision,76/85,check,yes,
+checker_R1.level_Minor.level_agreement,checker_R1,level Minor,level agreement,76/76,check,yes,
+checker_R1.type_hard_constraint_in_effect.recall,checker_R1,type hard_constraint_in_effect,recall,0/0,check,yes,
+checker_R1.type_hard_constraint_in_effect.precision,checker_R1,type hard_constraint_in_effect,precision,0/0,check,yes,
+checker_R1.type_hard_constraint_in_effect.level_agreement,checker_R1,type hard_constraint_in_effect,level agreement,0/0,check,yes,
+checker_R1.type_rejected_submission.recall,checker_R1,type rejected_submission,recall,0/0,check,yes,
+checker_R1.type_rejected_submission.precision,checker_R1,type rejected_submission,precision,0/0,check,yes,
+checker_R1.type_rejected_submission.level_agreement,checker_R1,type rejected_submission,level agreement,0/0,check,yes,
+checker_R1.type_allocator_failure_day.recall,checker_R1,type allocator_failure_day,recall,0/0,check,yes,
+checker_R1.type_allocator_failure_day.precision,checker_R1,type allocator_failure_day,precision,0/0,check,yes,
+checker_R1.type_allocator_failure_day.level_agreement,checker_R1,type allocator_failure_day,level agreement,0/0,check,yes,
+checker_R1.type_bed_displaced.recall,checker_R1,type bed_displaced,recall,0/0,check,yes,
+checker_R1.type_bed_displaced.precision,checker_R1,type bed_displaced,precision,0/0,check,yes,
+checker_R1.type_bed_displaced.level_agreement,checker_R1,type bed_displaced,level agreement,0/0,check,yes,
+checker_R1.type_bed_empty.recall,checker_R1,type bed_empty,recall,0/0,check,yes,
+checker_R1.type_bed_empty.precision,checker_R1,type bed_empty,precision,0/0,check,yes,
+checker_R1.type_bed_empty.level_agreement,checker_R1,type bed_empty,level agreement,0/0,check,yes,
+checker_R1.type_bed_shock_cut.recall,checker_R1,type bed_shock_cut,recall,0/0,check,yes,
+checker_R1.type_bed_shock_cut.precision,checker_R1,type bed_shock_cut,precision,0/0,check,yes,
+checker_R1.type_bed_shock_cut.level_agreement,checker_R1,type bed_shock_cut,level agreement,0/0,check,yes,
+checker_R1.type_nurse_gap.recall,checker_R1,type nurse_gap,recall,4/5,check,yes,
+checker_R1.type_nurse_gap.precision,checker_R1,type nurse_gap,precision,4/4,check,yes,
+checker_R1.type_nurse_gap.level_agreement,checker_R1,type nurse_gap,level agreement,4/4,check,yes,
+checker_R1.type_f1_inversion.recall,checker_R1,type f1_inversion,recall,0/0,check,yes,
+checker_R1.type_f1_inversion.precision,checker_R1,type f1_inversion,precision,0/0,check,yes,
+checker_R1.type_f1_inversion.level_agreement,checker_R1,type f1_inversion,level agreement,0/0,check,yes,
+checker_R1.type_beds_reversal.recall,checker_R1,type beds_reversal,recall,41/54,check,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_R1.type_beds_reversal.precision,checker_R1,type beds_reversal,precision,41/46,check,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_R1.type_beds_reversal.level_agreement,checker_R1,type beds_reversal,level agreement,41/41,check,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_R1.type_nurses_reversal.recall,checker_R1,type nurses_reversal,recall,33/40,check,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_R1.type_nurses_reversal.precision,checker_R1,type nurses_reversal,precision,33/37,check,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_R1.type_nurses_reversal.level_agreement,checker_R1,type nurses_reversal,level agreement,33/33,check,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_R1.type_reallocation_without_effect.recall,checker_R1,type reallocation_without_effect,recall,2/2,check,yes,
+checker_R1.type_reallocation_without_effect.precision,checker_R1,type reallocation_without_effect,precision,2/2,check,yes,
+checker_R1.type_reallocation_without_effect.level_agreement,checker_R1,type reallocation_without_effect,level agreement,2/2,check,yes,
+checker_R1.pooled_reference_only.recall,checker_R1,pooled (reference only),recall,80/101,check,yes,"kept for reference, not a headline (§4 item 5)"
+checker_R1.pooled_reference_only.precision,checker_R1,pooled (reference only),precision,80/89,check,yes,"kept for reference, not a headline (§4 item 5)"
+checker_R1.pooled_reference_only.level_agreement,checker_R1,pooled (reference only),level agreement,80/80,check,yes,"kept for reference, not a headline (§4 item 5)"
+checker_extra.date_shift_matches_1_2_days.R1,checker_extra,date-shift matches (1-2 days),R1,4,descriptive,yes,among issues the primary rule leaves unmatched; never instead of it (§4 item 7)
+checker_extra.CHECKER_LLM_only_issues_explanation_inaccuracy.R1,checker_extra,CHECKER LLM-only issues: explanation_inaccuracy,R1,4,descriptive,yes,"LLM-dependent, reported apart (§4 item 4)"
+checker_extra.CHECKER_LLM_only_issues_information_leak.R1,checker_extra,CHECKER LLM-only issues: information_leak,R1,0,descriptive,yes,"LLM-dependent, reported apart (§4 item 4)"
+checker_extra.CHECKER_LLM_only_issues_inconsistency.R1,checker_extra,CHECKER LLM-only issues: inconsistency,R1,0,descriptive,yes,"LLM-dependent, reported apart (§4 item 4)"
+checker_extra.CHECKER_LLM_only_issues_other.R1,checker_extra,CHECKER LLM-only issues: other,R1,1,descriptive,yes,"LLM-dependent, reported apart (§4 item 4)"
+checker_extra.CHECKER_issues_with_an_unmatchable_type_or_day.R1,checker_extra,CHECKER issues with an unmatchable type or day,R1,0,descriptive,yes,
+checker_extra.independent_recount_of_matched_per_day_type.R1,checker_extra,"independent recount of matched per (day, type)",R1,equal,check,no,"min(audit, CHECKER) per key, recounted without checker_matching"
+checker_R2.headline_group.recall,checker_R2,headline group,recall,1/1,check,yes,
+checker_R2.headline_group.precision,checker_R2,headline group,precision,1/1,check,yes,
+checker_R2.headline_group.level_agreement,checker_R2,headline group,level agreement,1/1,check,yes,
+checker_R2.rejected_submission_own_row.recall,checker_R2,rejected_submission (own row),recall,0/0,check,yes,not folded into the headline group (§11 #43)
+checker_R2.rejected_submission_own_row.precision,checker_R2,rejected_submission (own row),precision,0/0,check,yes,not folded into the headline group (§11 #43)
+checker_R2.rejected_submission_own_row.level_agreement,checker_R2,rejected_submission (own row),level agreement,0/0,check,yes,not folded into the headline group (§11 #43)
+checker_R2.secondary_group.recall,checker_R2,secondary group,recall,73/91,check,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_R2.secondary_group.precision,checker_R2,secondary group,precision,73/78,check,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_R2.secondary_group.level_agreement,checker_R2,secondary group,level agreement,73/73,check,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_R2.level_Critical.recall,checker_R2,level Critical,recall,0/0,check,yes,
+checker_R2.level_Critical.precision,checker_R2,level Critical,precision,0/0,check,yes,
+checker_R2.level_Critical.level_agreement,checker_R2,level Critical,level agreement,0/0,check,yes,
+checker_R2.level_Major.recall,checker_R2,level Major,recall,0/0,check,yes,
+checker_R2.level_Major.precision,checker_R2,level Major,precision,0/0,check,yes,
+checker_R2.level_Major.level_agreement,checker_R2,level Major,level agreement,0/0,check,yes,
+checker_R2.level_Moderate.recall,checker_R2,level Moderate,recall,1/1,check,yes,
+checker_R2.level_Moderate.precision,checker_R2,level Moderate,precision,1/1,check,yes,
+checker_R2.level_Moderate.level_agreement,checker_R2,level Moderate,level agreement,1/1,check,yes,
+checker_R2.level_Minor.recall,checker_R2,level Minor,recall,73/91,check,yes,
+checker_R2.level_Minor.precision,checker_R2,level Minor,precision,73/78,check,yes,
+checker_R2.level_Minor.level_agreement,checker_R2,level Minor,level agreement,73/73,check,yes,
+checker_R2.type_hard_constraint_in_effect.recall,checker_R2,type hard_constraint_in_effect,recall,0/0,check,yes,
+checker_R2.type_hard_constraint_in_effect.precision,checker_R2,type hard_constraint_in_effect,precision,0/0,check,yes,
+checker_R2.type_hard_constraint_in_effect.level_agreement,checker_R2,type hard_constraint_in_effect,level agreement,0/0,check,yes,
+checker_R2.type_rejected_submission.recall,checker_R2,type rejected_submission,recall,0/0,check,yes,
+checker_R2.type_rejected_submission.precision,checker_R2,type rejected_submission,precision,0/0,check,yes,
+checker_R2.type_rejected_submission.level_agreement,checker_R2,type rejected_submission,level agreement,0/0,check,yes,
+checker_R2.type_allocator_failure_day.recall,checker_R2,type allocator_failure_day,recall,0/0,check,yes,
+checker_R2.type_allocator_failure_day.precision,checker_R2,type allocator_failure_day,precision,0/0,check,yes,
+checker_R2.type_allocator_failure_day.level_agreement,checker_R2,type allocator_failure_day,level agreement,0/0,check,yes,
+checker_R2.type_bed_displaced.recall,checker_R2,type bed_displaced,recall,0/0,check,yes,
+checker_R2.type_bed_displaced.precision,checker_R2,type bed_displaced,precision,0/0,check,yes,
+checker_R2.type_bed_displaced.level_agreement,checker_R2,type bed_displaced,level agreement,0/0,check,yes,
+checker_R2.type_bed_empty.recall,checker_R2,type bed_empty,recall,0/0,check,yes,
+checker_R2.type_bed_empty.precision,checker_R2,type bed_empty,precision,0/0,check,yes,
+checker_R2.type_bed_empty.level_agreement,checker_R2,type bed_empty,level agreement,0/0,check,yes,
+checker_R2.type_bed_shock_cut.recall,checker_R2,type bed_shock_cut,recall,0/0,check,yes,
+checker_R2.type_bed_shock_cut.precision,checker_R2,type bed_shock_cut,precision,0/0,check,yes,
+checker_R2.type_bed_shock_cut.level_agreement,checker_R2,type bed_shock_cut,level agreement,0/0,check,yes,
+checker_R2.type_nurse_gap.recall,checker_R2,type nurse_gap,recall,1/1,check,yes,
+checker_R2.type_nurse_gap.precision,checker_R2,type nurse_gap,precision,1/1,check,yes,
+checker_R2.type_nurse_gap.level_agreement,checker_R2,type nurse_gap,level agreement,1/1,check,yes,
+checker_R2.type_f1_inversion.recall,checker_R2,type f1_inversion,recall,0/0,check,yes,
+checker_R2.type_f1_inversion.precision,checker_R2,type f1_inversion,precision,0/0,check,yes,
+checker_R2.type_f1_inversion.level_agreement,checker_R2,type f1_inversion,level agreement,0/0,check,yes,
+checker_R2.type_beds_reversal.recall,checker_R2,type beds_reversal,recall,41/54,check,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_R2.type_beds_reversal.precision,checker_R2,type beds_reversal,precision,41/45,check,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_R2.type_beds_reversal.level_agreement,checker_R2,type beds_reversal,level agreement,41/41,check,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_R2.type_nurses_reversal.recall,checker_R2,type nurses_reversal,recall,29/34,check,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_R2.type_nurses_reversal.precision,checker_R2,type nurses_reversal,precision,29/30,check,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_R2.type_nurses_reversal.level_agreement,checker_R2,type nurses_reversal,level agreement,29/29,check,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_R2.type_reallocation_without_effect.recall,checker_R2,type reallocation_without_effect,recall,3/3,check,yes,
+checker_R2.type_reallocation_without_effect.precision,checker_R2,type reallocation_without_effect,precision,3/3,check,yes,
+checker_R2.type_reallocation_without_effect.level_agreement,checker_R2,type reallocation_without_effect,level agreement,3/3,check,yes,
+checker_R2.pooled_reference_only.recall,checker_R2,pooled (reference only),recall,74/92,check,yes,"kept for reference, not a headline (§4 item 5)"
+checker_R2.pooled_reference_only.precision,checker_R2,pooled (reference only),precision,74/79,check,yes,"kept for reference, not a headline (§4 item 5)"
+checker_R2.pooled_reference_only.level_agreement,checker_R2,pooled (reference only),level agreement,74/74,check,yes,"kept for reference, not a headline (§4 item 5)"
+checker_extra.date_shift_matches_1_2_days.R2,checker_extra,date-shift matches (1-2 days),R2,1,descriptive,yes,among issues the primary rule leaves unmatched; never instead of it (§4 item 7)
+checker_extra.CHECKER_LLM_only_issues_explanation_inaccuracy.R2,checker_extra,CHECKER LLM-only issues: explanation_inaccuracy,R2,7,descriptive,yes,"LLM-dependent, reported apart (§4 item 4)"
+checker_extra.CHECKER_LLM_only_issues_information_leak.R2,checker_extra,CHECKER LLM-only issues: information_leak,R2,0,descriptive,yes,"LLM-dependent, reported apart (§4 item 4)"
+checker_extra.CHECKER_LLM_only_issues_inconsistency.R2,checker_extra,CHECKER LLM-only issues: inconsistency,R2,0,descriptive,yes,"LLM-dependent, reported apart (§4 item 4)"
+checker_extra.CHECKER_LLM_only_issues_other.R2,checker_extra,CHECKER LLM-only issues: other,R2,0,descriptive,yes,"LLM-dependent, reported apart (§4 item 4)"
+checker_extra.CHECKER_issues_with_an_unmatchable_type_or_day.R2,checker_extra,CHECKER issues with an unmatchable type or day,R2,0,descriptive,yes,
+checker_extra.independent_recount_of_matched_per_day_type.R2,checker_extra,"independent recount of matched per (day, type)",R2,equal,check,no,"min(audit, CHECKER) per key, recounted without checker_matching"
+checker_R3.headline_group.recall,checker_R3,headline group,recall,1/1,check,yes,
+checker_R3.headline_group.precision,checker_R3,headline group,precision,1/1,check,yes,
+checker_R3.headline_group.level_agreement,checker_R3,headline group,level agreement,1/1,check,yes,
+checker_R3.rejected_submission_own_row.recall,checker_R3,rejected_submission (own row),recall,0/0,check,yes,not folded into the headline group (§11 #43)
+checker_R3.rejected_submission_own_row.precision,checker_R3,rejected_submission (own row),precision,0/0,check,yes,not folded into the headline group (§11 #43)
+checker_R3.rejected_submission_own_row.level_agreement,checker_R3,rejected_submission (own row),level agreement,0/0,check,yes,not folded into the headline group (§11 #43)
+checker_R3.secondary_group.recall,checker_R3,secondary group,recall,62/85,check,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_R3.secondary_group.precision,checker_R3,secondary group,precision,62/68,check,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_R3.secondary_group.level_agreement,checker_R3,secondary group,level agreement,62/62,check,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_R3.level_Critical.recall,checker_R3,level Critical,recall,0/0,check,yes,
+checker_R3.level_Critical.precision,checker_R3,level Critical,precision,0/0,check,yes,
+checker_R3.level_Critical.level_agreement,checker_R3,level Critical,level agreement,0/0,check,yes,
+checker_R3.level_Major.recall,checker_R3,level Major,recall,0/0,check,yes,
+checker_R3.level_Major.precision,checker_R3,level Major,precision,0/0,check,yes,
+checker_R3.level_Major.level_agreement,checker_R3,level Major,level agreement,0/0,check,yes,
+checker_R3.level_Moderate.recall,checker_R3,level Moderate,recall,1/1,check,yes,
+checker_R3.level_Moderate.precision,checker_R3,level Moderate,precision,1/1,check,yes,
+checker_R3.level_Moderate.level_agreement,checker_R3,level Moderate,level agreement,1/1,check,yes,
+checker_R3.level_Minor.recall,checker_R3,level Minor,recall,62/85,check,yes,
+checker_R3.level_Minor.precision,checker_R3,level Minor,precision,62/68,check,yes,
+checker_R3.level_Minor.level_agreement,checker_R3,level Minor,level agreement,62/62,check,yes,
+checker_R3.type_hard_constraint_in_effect.recall,checker_R3,type hard_constraint_in_effect,recall,0/0,check,yes,
+checker_R3.type_hard_constraint_in_effect.precision,checker_R3,type hard_constraint_in_effect,precision,0/0,check,yes,
+checker_R3.type_hard_constraint_in_effect.level_agreement,checker_R3,type hard_constraint_in_effect,level agreement,0/0,check,yes,
+checker_R3.type_rejected_submission.recall,checker_R3,type rejected_submission,recall,0/0,check,yes,
+checker_R3.type_rejected_submission.precision,checker_R3,type rejected_submission,precision,0/0,check,yes,
+checker_R3.type_rejected_submission.level_agreement,checker_R3,type rejected_submission,level agreement,0/0,check,yes,
+checker_R3.type_allocator_failure_day.recall,checker_R3,type allocator_failure_day,recall,0/0,check,yes,
+checker_R3.type_allocator_failure_day.precision,checker_R3,type allocator_failure_day,precision,0/0,check,yes,
+checker_R3.type_allocator_failure_day.level_agreement,checker_R3,type allocator_failure_day,level agreement,0/0,check,yes,
+checker_R3.type_bed_displaced.recall,checker_R3,type bed_displaced,recall,0/0,check,yes,
+checker_R3.type_bed_displaced.precision,checker_R3,type bed_displaced,precision,0/0,check,yes,
+checker_R3.type_bed_displaced.level_agreement,checker_R3,type bed_displaced,level agreement,0/0,check,yes,
+checker_R3.type_bed_empty.recall,checker_R3,type bed_empty,recall,0/0,check,yes,
+checker_R3.type_bed_empty.precision,checker_R3,type bed_empty,precision,0/0,check,yes,
+checker_R3.type_bed_empty.level_agreement,checker_R3,type bed_empty,level agreement,0/0,check,yes,
+checker_R3.type_bed_shock_cut.recall,checker_R3,type bed_shock_cut,recall,0/0,check,yes,
+checker_R3.type_bed_shock_cut.precision,checker_R3,type bed_shock_cut,precision,0/0,check,yes,
+checker_R3.type_bed_shock_cut.level_agreement,checker_R3,type bed_shock_cut,level agreement,0/0,check,yes,
+checker_R3.type_nurse_gap.recall,checker_R3,type nurse_gap,recall,1/1,check,yes,
+checker_R3.type_nurse_gap.precision,checker_R3,type nurse_gap,precision,1/1,check,yes,
+checker_R3.type_nurse_gap.level_agreement,checker_R3,type nurse_gap,level agreement,1/1,check,yes,
+checker_R3.type_f1_inversion.recall,checker_R3,type f1_inversion,recall,0/0,check,yes,
+checker_R3.type_f1_inversion.precision,checker_R3,type f1_inversion,precision,0/0,check,yes,
+checker_R3.type_f1_inversion.level_agreement,checker_R3,type f1_inversion,level agreement,0/0,check,yes,
+checker_R3.type_beds_reversal.recall,checker_R3,type beds_reversal,recall,36/51,check,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_R3.type_beds_reversal.precision,checker_R3,type beds_reversal,precision,36/39,check,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_R3.type_beds_reversal.level_agreement,checker_R3,type beds_reversal,level agreement,36/36,check,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_R3.type_nurses_reversal.recall,checker_R3,type nurses_reversal,recall,24/32,check,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_R3.type_nurses_reversal.precision,checker_R3,type nurses_reversal,precision,24/27,check,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_R3.type_nurses_reversal.level_agreement,checker_R3,type nurses_reversal,level agreement,24/24,check,yes,"reversal recall measures reading of tau, not discovery (§4 item 8)"
+checker_R3.type_reallocation_without_effect.recall,checker_R3,type reallocation_without_effect,recall,2/2,check,yes,
+checker_R3.type_reallocation_without_effect.precision,checker_R3,type reallocation_without_effect,precision,2/2,check,yes,
+checker_R3.type_reallocation_without_effect.level_agreement,checker_R3,type reallocation_without_effect,level agreement,2/2,check,yes,
+checker_R3.pooled_reference_only.recall,checker_R3,pooled (reference only),recall,63/86,check,yes,"kept for reference, not a headline (§4 item 5)"
+checker_R3.pooled_reference_only.precision,checker_R3,pooled (reference only),precision,63/69,check,yes,"kept for reference, not a headline (§4 item 5)"
+checker_R3.pooled_reference_only.level_agreement,checker_R3,pooled (reference only),level agreement,63/63,check,yes,"kept for reference, not a headline (§4 item 5)"
+checker_extra.date_shift_matches_1_2_days.R3,checker_extra,date-shift matches (1-2 days),R3,3,descriptive,yes,among issues the primary rule leaves unmatched; never instead of it (§4 item 7)
+checker_extra.CHECKER_LLM_only_issues_explanation_inaccuracy.R3,checker_extra,CHECKER LLM-only issues: explanation_inaccuracy,R3,4,descriptive,yes,"LLM-dependent, reported apart (§4 item 4)"
+checker_extra.CHECKER_LLM_only_issues_information_leak.R3,checker_extra,CHECKER LLM-only issues: information_leak,R3,0,descriptive,yes,"LLM-dependent, reported apart (§4 item 4)"
+checker_extra.CHECKER_LLM_only_issues_inconsistency.R3,checker_extra,CHECKER LLM-only issues: inconsistency,R3,0,descriptive,yes,"LLM-dependent, reported apart (§4 item 4)"
+checker_extra.CHECKER_LLM_only_issues_other.R3,checker_extra,CHECKER LLM-only issues: other,R3,0,descriptive,yes,"LLM-dependent, reported apart (§4 item 4)"
+checker_extra.CHECKER_issues_with_an_unmatchable_type_or_day.R3,checker_extra,CHECKER issues with an unmatchable type or day,R3,0,descriptive,yes,
+checker_extra.independent_recount_of_matched_per_day_type.R3,checker_extra,"independent recount of matched per (day, type)",R3,equal,check,no,"min(audit, CHECKER) per key, recounted without checker_matching"

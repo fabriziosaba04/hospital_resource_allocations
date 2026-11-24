@@ -472,10 +472,35 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **Fix:** the test runs the module only on its deep temporary copy (whose outputs are already compared byte for byte with the committed ones) and asserts that the call on the committed folder raises `FrozenRunError`.
 - **Implication:** "byte-identical rewrite" leaves no trace in `git status`, so it is invisible. A test that only reads frozen evidence must not call a function that writes.
 
-### R62. Uncommitted, unlogged work on `cleanup` after a "clean `git status`" hand-off
+### R62. An interrupted session left uncommitted, unlogged work on `cleanup`
 
 - **Type:** development/process (not a finding about agent reliability).
-- **What happened:** the hand-off for the 2026-11-24 session reported a clean `git status` at the end of Phase 1b. At session start, 12 tracked files under `src/` were modified (`src/08_claim_verification.py`, the nine owner-review modules, `src/utils/compare.py`, `src/utils/paths.py`): an unfinished version of the owner-review `--out` redirect, citing a Decisions Log #125 that did not exist. Merging with it would either have failed or carried untested, unlogged code into `main`.
-- **How it was caught:** `git status` at session start, before any edit.
-- **Fix:** the work was stashed (`stash@{0}`), the plan.md wording was committed and merged without it, and the stash was then reviewed, finished, logged (renumbered to #127) and tested as the follow-up of item 2.
-- **Implication:** a hand-off's "clean `git status`" is a claim to be checked at the next session start, like any other.
+- **What happened:** the session that first received the 2026-11-24 follow-up (`plan.md` wording plus the owner-review `--out` redirect) was cut off mid-task when the owner's computer crashed and had to be restarted. It left 12 modified tracked files under `src/` (`src/08_claim_verification.py`, the nine owner-review modules, `src/utils/compare.py`, `src/utils/paths.py`): an unfinished redirect citing a Decisions Log #125 it had not yet written. The owner re-sent the same prompt to a new session. The Phase 1b report of a clean `git status` was correct when it was made; the leftovers came afterwards. *(Corrected 2026-11-24 on the owner's account: the first version of this entry read the leftovers as a wrong hand-off.)*
+- **How it was caught:** the new session ran `git status` at start, before any edit, and found the tree dirty. Merging with it would have failed or carried untested, unlogged code into `main`.
+- **Fix:** the work was stashed, the `plan.md` wording committed and merged without it, and the stash then reviewed (including a check that no owner-review module reads a file another one generates), finished, logged as #127 and tested on branch `owner-review-out`.
+- **Implication:** an interrupted agent session leaves no hand-off at all, so the last report describes the tree before the interruption, not after it. Every session must check the working tree itself at start instead of trusting the last report.
+
+### R63. Hand-typed numbers in the analysis prose
+
+- **Type:** development/process (not a finding about agent reliability).
+- **What happened:** the first draft of the `ANALYSIS.md` template typed figures into the prose by hand: the §8.1 headroom (1.05, 1.2), the sizes of the reference sets (75, 54, 2, 19), "five" LLM-only issues, and several "0 in every run" summaries. None of them came from a table in `results/analysis/` or appeared in `HEADLINE_NUMBERS.csv`, which the owner uses to check every number.
+- **How it was caught:** by reading the rendered file, and then by a test written for the purpose (`test_template_prose_has_no_hand_typed_number`), which found the remaining "0 in every run" summaries.
+- **Fix:** each such number is now a table cell referenced by id (new rows `wrong_claims_sets.*` and `main_gap_summary.*`). The test strips tokens and labels (sections, dates, days, tiers, run and claim ids) and fails on any number left; it still catches a typed `1.05` in a probe.
+- **Implication:** "every number comes from a file" holds only if something checks the prose, not only the tables.
+
+### R64. An empty stratum hid the CHECKER's only shock-day issue
+
+- **Type:** development/process.
+- **What happened:** the STRESS1 shock-day stratum of the CHECKER matching came out 0/0 in every row. That read as "the CHECKER raised nothing on day 23", but it raised one `explanation_inaccuracy`, which matching excludes by design (LLM-only types).
+- **How it was caught:** the stop rule for suspicious results (a stratum of exactly 0) prompted a check of the day-23 records on both sides.
+- **Fix:** step 13 reports the LLM-only CHECKER issues per stratum, and `ANALYSIS.md` names the day-23 issue next to the empty stratum.
+- **Implication:** an empty matching stratum says nothing about what the CHECKER wrote outside the matched types.
+
+
+### R65. A new writer skipped the frozen-run guard
+
+- **Type:** development/process.
+- **What happened:** `src/14_write_analysis.py` wrote `ANALYSIS.md` and `HEADLINE_NUMBERS.csv` with plain `write_text`, without `guard_write`. Neither path is in a run folder, so nothing frozen was at risk, but it broke the rule that every writer in `src/` calls the guard (R59–R60).
+- **How it was caught:** `tests/test_frozen_guard.py::test_every_writer_in_src_calls_the_guard` failed in the fast suite before the commit.
+- **Fix:** both writes go through `guard_write`.
+- **Implication:** the R60 search-based test does its job on new code; it was the only thing that caught this.

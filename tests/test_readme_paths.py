@@ -1,7 +1,7 @@
 """Every path cited in the grader-facing documents exists (owner, 2026-11-23: the README will keep changing).
 
 Checked: markdown links `[..](path)` and back-quoted repository paths (`src/...`, `results/...`, ...), in README.md,
-results/README.md and the other READMEs under results/, plan.md, mistakes.md, ERROR_ANALYSIS.md and REFLECTION.md.
+ANALYSIS.md, results/README.md and the other READMEs under results/, plan.md, mistakes.md, ERROR_ANALYSIS.md and REFLECTION.md.
 A path is resolved against the document's folder, then against the repository root. Placeholders (`<run_id>`,
 `B?`, `…`) and the uncommitted results/analysis/recomputed/ are skipped.
 """
@@ -15,14 +15,14 @@ import pytest
 
 from src.evaluation.dataset import ROOT
 
-DOCS = ["README.md", "plan.md", "mistakes.md", "ERROR_ANALYSIS.md", "REFLECTION.md",
+DOCS = ["README.md", "ANALYSIS.md", "plan.md", "mistakes.md", "ERROR_ANALYSIS.md", "REFLECTION.md",
         *sorted(p.relative_to(ROOT).as_posix() for p in (ROOT / "results").glob("*README.md")),
         *sorted(p.relative_to(ROOT).as_posix() for p in (ROOT / "results").glob("*/README.md"))]
 LINK = re.compile(r"\]\(([^)\s]+)\)")
 TICK = re.compile(r"`([^`\s]+)`(?!\])")          # link text is checked through its target
 TOPS = ("src/", "tests/", "docs/", "data/", "results/", ".claude/", "allocations/", "evaluations/", "analysis/",
         "figures/", "verification/", "development/", "dry_runs/", "copy_back/", "pre_run/")
-ROOT_FILES = {"README.md", "CLAUDE.md", "plan.md", "mistakes.md", "ERROR_ANALYSIS.md", "REFLECTION.md",
+ROOT_FILES = {"README.md", "ANALYSIS.md", "CLAUDE.md", "plan.md", "mistakes.md", "ERROR_ANALYSIS.md", "REFLECTION.md",
               ".gitattributes", ".gitignore", ".mcp.json", "pyproject.toml", "uv.lock"}
 PLACEHOLDER = re.compile(r"[<>?*…{}]|\.\.\.")
 
