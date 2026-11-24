@@ -187,7 +187,8 @@ def _cell(v: str) -> str:
     return v.replace("|", r"\|")
 
 
-def render(template: str, numbers: dict[str, dict]) -> tuple[str, list[dict]]:
+def render(template: str, numbers: dict[str, dict],
+           numbers_file: str = "results/analysis/HEADLINE_NUMBERS.csv") -> tuple[str, list[dict]]:
     """Replace `{{table:<name>}}` (optionally `|<regex on the row label>`) with a Markdown table of that
     long-format table, and `{{n:<id>}}` with the value and its id. Returns the text and the HEADLINE_NUMBERS
     rows of every number used, in order of first use."""
@@ -234,9 +235,25 @@ def render(template: str, numbers: dict[str, dict]) -> tuple[str, list[dict]]:
                       + ", ".join(f"`{x}`" for x in folded) + "."]
         lines.append("")
         lines.append(f"*Source: [`{src['source_file']}`]({src['source_file']}), written by `{src['script']}`. "
-                     f"Each cell's id is `{key}.<row>.<column>` (row and column names with every run of other characters as `_`) in `results/analysis/HEADLINE_NUMBERS.csv`.*")
+                     f"Each cell's id is `{key}.<row>.<column>` (row and column names with every run of other characters as `_`) in `{numbers_file}`.*")
         return "\n".join(lines)
 
     text = _TOKEN.sub(sub, template)
     return text, list(used.values())
 
+
+
+# Labels allowed outside the tokens of a template (sections, dates, days, tiers, run and claim ids); every other
+# number in a write-up must come through a {{n:id}} or {{table:..}} token (owner, 2026-11-24; R63).
+TEMPLATE_LABELS = re.compile(
+    r"\{\{[^}]*\}\}|`[^`]*`|\]\([^)]*\)"                                   # tokens, code, link targets
+    r"|^#+ [0-9.]+|§\s?\d+(?:\.\d+)?(?:[–-]#?\d+)?|#\d+(?:[–-]#?\d+)?|\d{4}-\d{2}-\d{2}"  # headings, §, #, dates
+    r"|R\d-D\d+-\d+|\b(?i:items?|days?|day-|tiers?|tier-|levels?|Phase|steps?)\s?\d+(?:\.\d+)?"
+    r"(?:\s?(?:and|–|-|,)\s?\d+(?:\.\d+)?)*"                                # item 4, items 3 and 7.3, tiers 3 and 2
+    r"|\b[ABCFLNRW]\d(?:[–-][ABCFLNRW]?\d)?\b|\b(?:n|W) = \d\b|SV_[BN]|seed\d+|STRESS1|\bR\d{2}\b|HARD10"  # R35: log ids
+    r"|\bfloor of 0\b|\bscores 0 on A1\b", re.M)
+
+
+def typed_numbers(template: str) -> list[str]:
+    """Numbers left in a template once tokens and labels are removed (should be none)."""
+    return [m.group(0) for m in re.finditer(r"\d+(?:[./]\d+)?", TEMPLATE_LABELS.sub(" ", template))]

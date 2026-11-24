@@ -9,7 +9,8 @@ import sys
 
 import pytest
 
-from src.evaluation.analysis import ANALYSIS_DIR, SOURCES, TEMPLATE, fmt, lexicographic, load_numbers, render
+from src.evaluation.analysis import (ANALYSIS_DIR, SOURCES, TEMPLATE, fmt, lexicographic, load_numbers, render,
+                                     typed_numbers)
 from src.evaluation.checker_matching import match
 from src.evaluation.dataset import ROOT
 
@@ -44,20 +45,11 @@ def test_every_table_cell_is_used_once_its_table_is_rendered():
             assert r["id"] in ids, r["id"]
 
 
-LABELS = re.compile(
-    r"\{\{[^}]*\}\}|`[^`]*`|\]\([^)]*\)"                                   # tokens, code, link targets
-    r"|^#+ [0-9.]+|§\s?\d+(?:\.\d+)?(?:[–-]#?\d+)?|#\d+(?:[–-]#?\d+)?|\d{4}-\d{2}-\d{2}"  # headings, §, #, dates
-    r"|R\d-D\d+-\d+|\b(?i:items?|days?|day-|tiers?|tier-|levels?|Phase|steps?)\s?\d+(?:\.\d+)?"
-    r"(?:\s?(?:and|–|-|,)\s?\d+(?:\.\d+)?)*"                                # item 4, items 3 and 7.3, tiers 3 and 2
-    r"|\b[ABCFLNRW]\d(?:[–-][ABCFLNRW]?\d)?\b|\b(?:n|W) = \d\b|SV_[BN]|seed\d+|STRESS1|\bR\d{2}\b|HARD10"  # R35 etc.: log ids
-    r"|\bfloor of 0\b|\bscores 0 on A1\b", re.M)
-
-
 def test_template_prose_has_no_hand_typed_number():
     """Every result in ANALYSIS.md comes through a {{n:id}} or {{table:..}} token (owner, 2026-11-24): outside
     the tokens the template may hold labels (sections, dates, days, tiers, run ids), never a number."""
-    bare = [m.group(0) for m in re.finditer(r"\d+(?:[./]\d+)?", LABELS.sub(" ", TEMPLATE.read_text(encoding="utf-8")))]
-    assert bare == []
+    assert typed_numbers(TEMPLATE.read_text(encoding="utf-8")) == []
+    assert typed_numbers("x {{n:a}} 1.05 here") == ["1.05"]                # the check still catches one
 
 
 def test_fmt_and_lexicographic():

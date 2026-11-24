@@ -545,3 +545,11 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **Fix:** the row now lists the figures and animations; the pending note is gone.
 - **Implication:** `test_readme_paths.py` checks that paths exist, not that statements are current; status words in the README need a read at each merge.
 
+### R71. Four defects in the first ERROR_ANALYSIS render, each caught by a check
+
+- **Type:** development/process.
+- **What happened:** (1) two of the five anchor links to `ANALYSIS.md` sections were wrong (typed, not computed from the headings); (2) the register gave R67 one id in part B and the same id in part C; (3) the table captions said the ids were in `HEADLINE_NUMBERS.csv`, while for this file they are in `ERROR_NUMBERS.csv`; (4) three hand-typed numbers in the template prose ("R1–R70", the day-12 queue figures, "tier 2 or 1").
+- **How it was caught:** (1) by computing GitHub's anchors from the headings; (2) by the new register test (unique ids); (3) by reading the rendered part D; (4) by `typed_numbers` on the template.
+- **Fix:** anchors corrected and now tested; the C row renamed; `render` takes the number-list name; the prose reworded or referenced.
+- **Implication:** the R63 test generalises: the same check now guards both write-ups. Links into another document need the same treatment as numbers: computed and tested, not typed.
+

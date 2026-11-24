@@ -21,9 +21,9 @@ Patients have one of three complexity levels (Level 3 is the highest priority). 
 
 | Brief | Where |
 | --- | --- |
-| Code for the agents | Agent definitions (dispatcher, ALLOCATOR, CHECKER): [`.claude/agents/`](.claude/agents/). Run restrictions: [`.claude/run-settings.json`](.claude/run-settings.json). MCP server (ANALYZER, ORCHESTRATOR state machine, tools): [`src/mcp_server/`](src/mcp_server/). Deterministic environment rules: [`src/environment/`](src/environment/). Audit, metrics and baselines: [`src/evaluation/`](src/evaluation/). The pipeline in run order: [`src/01_verify_data.py`](src/01_verify_data.py) … [`src/15_animations.py`](src/15_animations.py) (§5) |
+| Code for the agents | Agent definitions (dispatcher, ALLOCATOR, CHECKER): [`.claude/agents/`](.claude/agents/). Run restrictions: [`.claude/run-settings.json`](.claude/run-settings.json). MCP server (ANALYZER, ORCHESTRATOR state machine, tools): [`src/mcp_server/`](src/mcp_server/). Deterministic environment rules: [`src/environment/`](src/environment/). Audit, metrics and baselines: [`src/evaluation/`](src/evaluation/). The pipeline in run order: [`src/01_verify_data.py`](src/01_verify_data.py) … [`src/16_error_analysis.py`](src/16_error_analysis.py) (§5) |
 | README | this file |
-| Error analysis | [`ERROR_ANALYSIS.md`](ERROR_ANALYSIS.md) (*to be completed*; [`mistakes.md`](mistakes.md) points to it) |
+| Error analysis | [`ERROR_ANALYSIS.md`](ERROR_ANALYSIS.md): the agents' errors in the runs (A), the coding agent's errors during development (B), errors in the verification itself (C), and how each was found (D); every number listed in [`results/analysis/ERROR_NUMBERS.csv`](results/analysis/ERROR_NUMBERS.csv). [`mistakes.md`](mistakes.md) points to it |
 | Reflection (one page) | [`REFLECTION.md`](REFLECTION.md) (*to be completed*; long version [`docs/LIMITATIONS_AND_REFLECTION.md`](docs/LIMITATIONS_AND_REFLECTION.md)) |
 | Analysis (results) | [`ANALYSIS.md`](ANALYSIS.md): R1–R3 against the baselines, run by run; the CHECKER against the audit; the CHECKER on R1's wrong claims; the STRESS1 probe. Every number is listed with its source file and script in [`results/analysis/HEADLINE_NUMBERS.csv`](results/analysis/HEADLINE_NUMBERS.csv) |
 | Plan (question, theory, test) | [`plan.md`](plan.md), which summarises [`docs/EVALUATION_PLAN.md`](docs/EVALUATION_PLAN.md). No numerical falsification threshold was pre-registered: a run failing gate D counts against the hypothesis, and gaps to B1 are reported run by run (a declared limitation) |
@@ -69,7 +69,7 @@ CLAUDE.md                    standing instructions for the coding agent
 .claude/agents/  .claude/run-settings.json  .mcp.json   agent definitions and run restrictions (frozen at prompts-v1.0)
 data/                        the synthetic datasets (frozen at data-v1.0)
   raw/  metadata/  processed/  MANIFEST.json
-src/                         code; 01_ … 15_ are the pipeline entry points
+src/                         code; 01_ … 16_ are the pipeline entry points
   data_generation/ environment/ mcp_server/ agent/ evaluation/ utils/
 results/                     index: results/README.md
   allocations/  evaluations/ runs R1–R3, STRESS1 and baselines B0–B2 (records, audits, reports)
@@ -123,6 +123,7 @@ uv run python src/12_checker_on_wrong_claims.py # the CHECKER on R1's wrong expl
 uv run python src/13_stress1.py                 # the STRESS1 probe, incl. the shock-day closed-form test
 uv run python src/14_write_analysis.py          # ANALYSIS.md and HEADLINE_NUMBERS.csv from the tables (--check: up to date?)
 uv run python src/15_animations.py             # one GIF per agent run: net balance per department and day
+uv run python src/16_error_analysis.py         # ERROR_ANALYSIS.md, its tables and ERROR_NUMBERS.csv (--check: up to date?)
 ```
 
 - Steps 10–14 write the committed analysis tables in `results/analysis/`; re-running them reproduces the files byte for byte. Other recomputations go to `results/analysis/recomputed/` (ignored by git). Each script reports EQUAL or DIFFERENT against the committed file, ignoring timestamps. No script writes into the frozen run folders.

@@ -51,6 +51,7 @@ checker_R3.secondary_group.precision,62/68,results/analysis/checker_vs_audit.csv
 wrong_claims_primary.all_wrong_claims.recall,7/75,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,check,all wrong claims / recall
 wrong_claims_primary.all_wrong_claims.precision,7/7,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,check,all wrong claims / precision
 wrong_claims_descriptive.confirmed_wrong_claims.recall,4/19,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,descriptive,confirmed wrong claims / recall
+wrong_claims_descriptive.confirmed_wrong_claims.precision,4/7,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,descriptive,confirmed wrong claims / precision
 wrong_claims_descriptive.confirmed_wrong_claims.wrong_disputes,3,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,descriptive,confirmed wrong claims / wrong disputes
 wrong_claims_by_error_type.two_quantities_conflated.recall,2/2,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,two quantities conflated / recall
 wrong_claims_by_error_type.queue_count_wrong.recall,2/11,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,queue count wrong / recall
@@ -1007,7 +1008,6 @@ wrong_claims_primary.all_wrong_claims.disputes_outside_the_universe,0,results/an
 wrong_claims_primary.rubric_dependent_spare_free.recall,3/54,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,check,rubric-dependent (spare/free) / recall
 wrong_claims_primary.extraction_error.recall,0/2,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,check,extraction error / recall
 wrong_claims_primary.confirmed_wrong.recall,4/19,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,check,confirmed wrong / recall
-wrong_claims_descriptive.confirmed_wrong_claims.precision,4/7,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,descriptive,confirmed wrong claims / precision
 wrong_claims_by_error_type.arithmetic_slip.recall,0/1,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,arithmetic slip / recall
 wrong_claims_by_error_type.sign_error.recall,0/1,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,sign error / recall
 wrong_claims_by_error_type.wrong_tier_level.recall,0/2,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,wrong tier/level / recall

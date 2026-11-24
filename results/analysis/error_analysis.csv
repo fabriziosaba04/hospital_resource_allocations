@@ -1,0 +1,226 @@
+id,table,row,col,value,role,pre_registered,note
+ea_a1_types.nurse_gap.R1,ea_a1_types,nurse_gap,R1,5,check,yes,committed deterministic_audit.jsonl
+ea_a1_types.beds_reversal.R1,ea_a1_types,beds_reversal,R1,54,check,yes,committed deterministic_audit.jsonl
+ea_a1_types.nurses_reversal.R1,ea_a1_types,nurses_reversal,R1,40,check,yes,committed deterministic_audit.jsonl
+ea_a1_types.reallocation_without_effect.R1,ea_a1_types,reallocation_without_effect,R1,2,check,yes,committed deterministic_audit.jsonl
+ea_a1_types.total.R1,ea_a1_types,total,R1,101,check,yes,
+ea_a1_types.nurse_gap.R2,ea_a1_types,nurse_gap,R2,1,check,yes,committed deterministic_audit.jsonl
+ea_a1_types.beds_reversal.R2,ea_a1_types,beds_reversal,R2,54,check,yes,committed deterministic_audit.jsonl
+ea_a1_types.nurses_reversal.R2,ea_a1_types,nurses_reversal,R2,34,check,yes,committed deterministic_audit.jsonl
+ea_a1_types.reallocation_without_effect.R2,ea_a1_types,reallocation_without_effect,R2,3,check,yes,committed deterministic_audit.jsonl
+ea_a1_types.total.R2,ea_a1_types,total,R2,92,check,yes,
+ea_a1_types.nurse_gap.R3,ea_a1_types,nurse_gap,R3,1,check,yes,committed deterministic_audit.jsonl
+ea_a1_types.beds_reversal.R3,ea_a1_types,beds_reversal,R3,51,check,yes,committed deterministic_audit.jsonl
+ea_a1_types.nurses_reversal.R3,ea_a1_types,nurses_reversal,R3,32,check,yes,committed deterministic_audit.jsonl
+ea_a1_types.reallocation_without_effect.R3,ea_a1_types,reallocation_without_effect,R3,2,check,yes,committed deterministic_audit.jsonl
+ea_a1_types.total.R3,ea_a1_types,total,R3,86,check,yes,
+ea_a1_types.nurse_gap.STRESS1,ea_a1_types,nurse_gap,STRESS1,4,check,yes,committed deterministic_audit.jsonl
+ea_a1_types.beds_reversal.STRESS1,ea_a1_types,beds_reversal,STRESS1,55,check,yes,committed deterministic_audit.jsonl
+ea_a1_types.nurses_reversal.STRESS1,ea_a1_types,nurses_reversal,STRESS1,38,check,yes,committed deterministic_audit.jsonl
+ea_a1_types.reallocation_without_effect.STRESS1,ea_a1_types,reallocation_without_effect,STRESS1,2,check,yes,committed deterministic_audit.jsonl
+ea_a1_types.total.STRESS1,ea_a1_types,total,STRESS1,99,check,yes,
+ea_a2_claims.claims_scored.R1,ea_a2_claims,claims scored,R1,1049,check,yes,explanation_claims.json
+ea_a2_claims.copied_claims.R1,ea_a2_claims,copied claims,R1,538,check,yes,basis (§4 item 8)
+ea_a2_claims.derived_claims.R1,ea_a2_claims,derived claims,R1,511,check,yes,basis (§4 item 8)
+ea_a2_recall.owner_s_claims_found_by_the_assistant_copied.primary_final,ea_a2_recall,"owner's claims found by the assistant, copied",primary (final),58/60,check,yes,"days 3, 8, 18 (§4 item 7a); R52 for the descriptive column"
+ea_a2_recall.owner_s_claims_found_by_the_assistant_derived.primary_final,ea_a2_recall,"owner's claims found by the assistant, derived",primary (final),27/40,check,yes,"days 3, 8, 18 (§4 item 7a); R52 for the descriptive column"
+ea_a2_recall.assistant_s_claims_found_by_the_owner_copied.primary_final,ea_a2_recall,"assistant's claims found by the owner, copied",primary (final),56/57,check,yes,"days 3, 8, 18 (§4 item 7a); R52 for the descriptive column"
+ea_a2_recall.assistant_s_claims_found_by_the_owner_derived.primary_final,ea_a2_recall,"assistant's claims found by the owner, derived",primary (final),29/49,check,yes,"days 3, 8, 18 (§4 item 7a); R52 for the descriptive column"
+ea_a2_recall.owner_s_claims_found_by_the_assistant_copied.descriptive_after_adjudication,ea_a2_recall,"owner's claims found by the assistant, copied",descriptive (after adjudication),60/60,check,no,"days 3, 8, 18 (§4 item 7a); R52 for the descriptive column"
+ea_a2_recall.owner_s_claims_found_by_the_assistant_derived.descriptive_after_adjudication,ea_a2_recall,"owner's claims found by the assistant, derived",descriptive (after adjudication),37/40,check,no,"days 3, 8, 18 (§4 item 7a); R52 for the descriptive column"
+ea_a2_recall.assistant_s_claims_found_by_the_owner_copied.descriptive_after_adjudication,ea_a2_recall,"assistant's claims found by the owner, copied",descriptive (after adjudication),57/57,check,no,"days 3, 8, 18 (§4 item 7a); R52 for the descriptive column"
+ea_a2_recall.assistant_s_claims_found_by_the_owner_derived.descriptive_after_adjudication,ea_a2_recall,"assistant's claims found by the owner, derived",descriptive (after adjudication),41/49,check,no,"days 3, 8, 18 (§4 item 7a); R52 for the descriptive column"
+ea_a2_adjud.discrepancies.count,ea_a2_adjud,discrepancies,count,43,descriptive,no,"owner only 22, assistant only 21"
+ea_a2_adjud.owner_encoding.count,ea_a2_adjud,owner_encoding,count,28,descriptive,no,R52: causes proposed by an LLM advisor
+ea_a2_adjud.owner_miss.count,ea_a2_adjud,owner_miss,count,7,descriptive,no,R52: causes proposed by an LLM advisor
+ea_a2_adjud.rubric_ambiguity.count,ea_a2_adjud,rubric_ambiguity,count,6,descriptive,no,R52: causes proposed by an LLM advisor
+ea_a2_adjud.matching_rule.count,ea_a2_adjud,matching_rule,count,2,descriptive,no,R52: causes proposed by an LLM advisor
+ea_a2_adjud.assistant_miss.count,ea_a2_adjud,assistant_miss,count,0,descriptive,no,R52: causes proposed by an LLM advisor
+ea_a2_adjud.assistant_encoding.count,ea_a2_adjud,assistant_encoding,count,0,descriptive,no,R52: causes proposed by an LLM advisor
+ea_a2_accuracy.correct.pre_registered,ea_a2_accuracy,correct,pre-registered,948,check,yes,claim_accuracy_after_owner_review.json
+ea_a2_accuracy.wrong.pre_registered,ea_a2_accuracy,wrong,pre-registered,75,check,yes,claim_accuracy_after_owner_review.json
+ea_a2_accuracy.unverifiable.pre_registered,ea_a2_accuracy,unverifiable,pre-registered,26,check,yes,claim_accuracy_after_owner_review.json
+ea_a2_accuracy.correct.after_owner_review,ea_a2_accuracy,correct,after owner review,1015,check,no,claim_accuracy_after_owner_review.json; R52
+ea_a2_accuracy.wrong.after_owner_review,ea_a2_accuracy,wrong,after owner review,19,check,no,claim_accuracy_after_owner_review.json; R52
+ea_a2_accuracy.unverifiable.after_owner_review,ea_a2_accuracy,unverifiable,after owner review,15,check,no,claim_accuracy_after_owner_review.json; R52
+ea_a2_types.queue_count_wrong.claims,ea_a2_types,queue count wrong,claims,11,descriptive,no,R52; R1_owner_error_types.csv
+ea_a2_types.queue_count_wrong.claim_ids,ea_a2_types,queue count wrong,claim ids,D11-08 D11-09 D12-19 D12-20 D15-20 D15-21 D17-19 D17-20 D18-14 D20-33 D20-34,descriptive,no,
+ea_a2_types.two_quantities_conflated.claims,ea_a2_types,two quantities conflated,claims,2,descriptive,no,R52; R1_owner_error_types.csv
+ea_a2_types.two_quantities_conflated.claim_ids,ea_a2_types,two quantities conflated,claim ids,D11-28 D13-30,descriptive,no,
+ea_a2_types.arithmetic_slip.claims,ea_a2_types,arithmetic slip,claims,1,descriptive,no,R52; R1_owner_error_types.csv
+ea_a2_types.arithmetic_slip.claim_ids,ea_a2_types,arithmetic slip,claim ids,D21-35,descriptive,no,
+ea_a2_types.sign_error.claims,ea_a2_types,sign error,claims,1,descriptive,no,R52; R1_owner_error_types.csv
+ea_a2_types.sign_error.claim_ids,ea_a2_types,sign error,claim ids,D17-47,descriptive,no,
+ea_a2_types.wrong_tier_level.claims,ea_a2_types,wrong tier/level,claims,2,descriptive,no,R52; R1_owner_error_types.csv
+ea_a2_types.wrong_tier_level.claim_ids,ea_a2_types,wrong tier/level,claim ids,D28-26 D28-27,descriptive,no,
+ea_a2_types.claim_not_simulated.claims,ea_a2_types,claim not simulated,claims,1,descriptive,no,R52; R1_owner_error_types.csv
+ea_a2_types.claim_not_simulated.claim_ids,ea_a2_types,claim not simulated,claim ids,D27-41,descriptive,no,
+ea_a2_types.approximation_off.claims,ea_a2_types,approximation off,claims,1,descriptive,no,R52; R1_owner_error_types.csv
+ea_a2_types.approximation_off.claim_ids,ea_a2_types,approximation off,claim ids,D26-38,descriptive,no,
+ea_a3_missed.nurse_gap.R1,ea_a3_missed,nurse_gap,R1,1,check,yes,audit issues of this type not matched (§4 items 4-5)
+ea_a3_missed.beds_reversal.R1,ea_a3_missed,beds_reversal,R1,13,check,yes,audit issues of this type not matched (§4 items 4-5)
+ea_a3_missed.nurses_reversal.R1,ea_a3_missed,nurses_reversal,R1,7,check,yes,audit issues of this type not matched (§4 items 4-5)
+ea_a3_missed.reallocation_without_effect.R1,ea_a3_missed,reallocation_without_effect,R1,0,check,yes,audit issues of this type not matched (§4 items 4-5)
+ea_a3_missed.total_missed.R1,ea_a3_missed,total missed,R1,21,check,yes,
+ea_a3_missed.nurse_gap.R2,ea_a3_missed,nurse_gap,R2,0,check,yes,audit issues of this type not matched (§4 items 4-5)
+ea_a3_missed.beds_reversal.R2,ea_a3_missed,beds_reversal,R2,13,check,yes,audit issues of this type not matched (§4 items 4-5)
+ea_a3_missed.nurses_reversal.R2,ea_a3_missed,nurses_reversal,R2,5,check,yes,audit issues of this type not matched (§4 items 4-5)
+ea_a3_missed.reallocation_without_effect.R2,ea_a3_missed,reallocation_without_effect,R2,0,check,yes,audit issues of this type not matched (§4 items 4-5)
+ea_a3_missed.total_missed.R2,ea_a3_missed,total missed,R2,18,check,yes,
+ea_a3_missed.nurse_gap.R3,ea_a3_missed,nurse_gap,R3,0,check,yes,audit issues of this type not matched (§4 items 4-5)
+ea_a3_missed.beds_reversal.R3,ea_a3_missed,beds_reversal,R3,15,check,yes,audit issues of this type not matched (§4 items 4-5)
+ea_a3_missed.nurses_reversal.R3,ea_a3_missed,nurses_reversal,R3,8,check,yes,audit issues of this type not matched (§4 items 4-5)
+ea_a3_missed.reallocation_without_effect.R3,ea_a3_missed,reallocation_without_effect,R3,0,check,yes,audit issues of this type not matched (§4 items 4-5)
+ea_a3_missed.total_missed.R3,ea_a3_missed,total missed,R3,23,check,yes,
+ea_a3_missed.nurse_gap.STRESS1,ea_a3_missed,nurse_gap,STRESS1,2,check,no,audit issues of this type not matched (§4 items 4-5)
+ea_a3_missed.beds_reversal.STRESS1,ea_a3_missed,beds_reversal,STRESS1,24,check,no,audit issues of this type not matched (§4 items 4-5)
+ea_a3_missed.nurses_reversal.STRESS1,ea_a3_missed,nurses_reversal,STRESS1,13,check,no,audit issues of this type not matched (§4 items 4-5)
+ea_a3_missed.reallocation_without_effect.STRESS1,ea_a3_missed,reallocation_without_effect,STRESS1,0,check,no,audit issues of this type not matched (§4 items 4-5)
+ea_a3_missed.total_missed.STRESS1,ea_a3_missed,total missed,STRESS1,39,check,no,
+ea_b_total.cases.rows,ea_b_total,cases,rows,54,descriptive,no,"rows of error_register.csv, part B"
+ea_b_total.cases.REFLECTION_LOG_entries,ea_b_total,cases,REFLECTION_LOG entries,56,descriptive,no,
+ea_b_total.cases.with_a_rule_added,ea_b_total,cases,with a rule added,31,descriptive,no,"test, guard, CLAUDE.md rule or documented procedure"
+ea_b_patterns.Silent_errors_no_failing_signal_when_made.cases,ea_b_patterns,Silent errors (no failing signal when made),cases,12,descriptive,no,R21 R23 R26 R37 R50 R53 R54 R55 R58 R59 R61 R68
+ea_b_patterns.Silent_errors_no_failing_signal_when_made.with_a_rule_added,ea_b_patterns,Silent errors (no failing signal when made),with a rule added,10,descriptive,no,
+ea_b_patterns.False_or_unchecked_premises.cases,ea_b_patterns,False or unchecked premises,cases,12,descriptive,no,R2 R3 R17 R18 R22 R25 R28 R31 R34 R35 R45 R46
+ea_b_patterns.False_or_unchecked_premises.with_a_rule_added,ea_b_patterns,False or unchecked premises,with a rule added,7,descriptive,no,
+ea_b_patterns.Scope_underestimates.cases,ea_b_patterns,Scope underestimates,cases,10,descriptive,no,R5 R19 R20 R29 R36 R38 R40 R56 R60 R65
+ea_b_patterns.Scope_underestimates.with_a_rule_added,ea_b_patterns,Scope underestimates,with a rule added,9,descriptive,no,
+ea_b_patterns.Hand_off_and_state_errors.cases,ea_b_patterns,Hand-off and state errors,cases,6,descriptive,no,R7 R27 R39 R41 R47 R62
+ea_b_patterns.Hand_off_and_state_errors.with_a_rule_added,ea_b_patterns,Hand-off and state errors,with a rule added,1,descriptive,no,
+ea_b_patterns.Presentation_and_reporting_errors.cases,ea_b_patterns,Presentation and reporting errors,cases,14,descriptive,no,"R8, R9, R16 R24 R30 R43 R44 R48 R49 R57 R63 R64 R67 R69 R70 R71"
+ea_b_patterns.Presentation_and_reporting_errors.with_a_rule_added,ea_b_patterns,Presentation and reporting errors,with a rule added,4,descriptive,no,
+ea_b_found_by.test_suite.cases,ea_b_found_by,test suite,cases,5,descriptive,no,
+ea_b_found_by.owner.cases,ea_b_found_by,owner,cases,11,descriptive,no,
+ea_b_found_by.consultant_review.cases,ea_b_found_by,consultant review,cases,0,descriptive,no,
+ea_b_found_by.visual_inspection.cases,ea_b_found_by,visual inspection,cases,1,descriptive,no,
+ea_b_found_by.agent_itself.cases,ea_b_found_by,agent itself,cases,30,descriptive,no,
+ea_b_found_by.independent_check.cases,ea_b_found_by,independent check,cases,6,descriptive,no,
+ea_b_found_by.failure_in_use.cases,ea_b_found_by,failure in use,cases,1,descriptive,no,
+ea_b_rules.test.cases,ea_b_rules,test,cases,17,descriptive,no,
+ea_b_rules.guard.cases,ea_b_rules,guard,cases,5,descriptive,no,
+ea_b_rules.CLAUDE_md.cases,ea_b_rules,CLAUDE.md,cases,2,descriptive,no,
+ea_b_rules.procedure.cases,ea_b_rules,procedure,cases,7,descriptive,no,
+ea_b_rules.none.cases,ea_b_rules,none,cases,23,descriptive,no,
+ea_c.Owner_side_discrepancies.register_rows,ea_c,Owner-side discrepancies,register rows,1,descriptive,no,
+ea_c.Rubric_gaps.register_rows,ea_c,Rubric gaps,register rows,1,descriptive,no,
+ea_c.Extraction_errors.register_rows,ea_c,Extraction errors,register rows,1,descriptive,no,
+ea_c.Specification_gaps.register_rows,ea_c,Specification gaps,register rows,1,descriptive,no,
+ea_c.Consultant_owner_or_record_errors_caught.register_rows,ea_c,"Consultant, owner or record errors caught",register rows,7,descriptive,no,
+ea_d.allocation_decisions_R1_R3.unit,ea_d,"allocation decisions, R1-R3",unit,audit issues,descriptive,no,
+ea_d.allocation_decisions_R1_R3.deterministic_audit_or_recomputation,ea_d,"allocation decisions, R1-R3",deterministic audit or recomputation,279,descriptive,no,
+ea_d.allocation_decisions_R1_R3.manual_review,ea_d,"allocation decisions, R1-R3",manual review,0,descriptive,no,
+ea_d.allocation_decisions_R1_R3.matching_protocol,ea_d,"allocation decisions, R1-R3",matching protocol,0,descriptive,no,
+ea_d.allocation_decisions_R1_R3.tests_and_guards,ea_d,"allocation decisions, R1-R3",tests and guards,0,descriptive,no,
+ea_d.allocation_decisions_R1_R3.visual_inspection,ea_d,"allocation decisions, R1-R3",visual inspection,0,descriptive,no,
+ea_d.allocation_decisions_R1_R3.owner_or_consultant_review,ea_d,"allocation decisions, R1-R3",owner or consultant review,0,descriptive,no,
+ea_d.allocation_decisions_R1_R3.agent_s_own_check,ea_d,"allocation decisions, R1-R3",agent's own check,0,descriptive,no,
+ea_d.allocation_decisions_R1_R3.independent_check_or_failure_in_use,ea_d,"allocation decisions, R1-R3",independent check or failure in use,0,descriptive,no,
+ea_d.allocation_decisions_STRESS1.unit,ea_d,"allocation decisions, STRESS1",unit,audit issues,descriptive,no,
+ea_d.allocation_decisions_STRESS1.deterministic_audit_or_recomputation,ea_d,"allocation decisions, STRESS1",deterministic audit or recomputation,99,descriptive,no,
+ea_d.allocation_decisions_STRESS1.manual_review,ea_d,"allocation decisions, STRESS1",manual review,0,descriptive,no,
+ea_d.allocation_decisions_STRESS1.matching_protocol,ea_d,"allocation decisions, STRESS1",matching protocol,0,descriptive,no,
+ea_d.allocation_decisions_STRESS1.tests_and_guards,ea_d,"allocation decisions, STRESS1",tests and guards,0,descriptive,no,
+ea_d.allocation_decisions_STRESS1.visual_inspection,ea_d,"allocation decisions, STRESS1",visual inspection,0,descriptive,no,
+ea_d.allocation_decisions_STRESS1.owner_or_consultant_review,ea_d,"allocation decisions, STRESS1",owner or consultant review,0,descriptive,no,
+ea_d.allocation_decisions_STRESS1.agent_s_own_check,ea_d,"allocation decisions, STRESS1",agent's own check,0,descriptive,no,
+ea_d.allocation_decisions_STRESS1.independent_check_or_failure_in_use,ea_d,"allocation decisions, STRESS1",independent check or failure in use,0,descriptive,no,
+ea_d.explanation_claims_R1.unit,ea_d,"explanation claims, R1",unit,wrong claims,descriptive,no,
+ea_d.explanation_claims_R1.deterministic_audit_or_recomputation,ea_d,"explanation claims, R1",deterministic audit or recomputation,75,descriptive,no,
+ea_d.explanation_claims_R1.manual_review,ea_d,"explanation claims, R1",manual review,19,descriptive,no,
+ea_d.explanation_claims_R1.matching_protocol,ea_d,"explanation claims, R1",matching protocol,0,descriptive,no,
+ea_d.explanation_claims_R1.tests_and_guards,ea_d,"explanation claims, R1",tests and guards,0,descriptive,no,
+ea_d.explanation_claims_R1.visual_inspection,ea_d,"explanation claims, R1",visual inspection,0,descriptive,no,
+ea_d.explanation_claims_R1.owner_or_consultant_review,ea_d,"explanation claims, R1",owner or consultant review,0,descriptive,no,
+ea_d.explanation_claims_R1.agent_s_own_check,ea_d,"explanation claims, R1",agent's own check,0,descriptive,no,
+ea_d.explanation_claims_R1.independent_check_or_failure_in_use,ea_d,"explanation claims, R1",independent check or failure in use,0,descriptive,no,
+ea_d.CHECKER_audit_issues_missed_R1_R3.unit,ea_d,"CHECKER: audit issues missed, R1-R3",unit,audit issues,descriptive,no,
+ea_d.CHECKER_audit_issues_missed_R1_R3.deterministic_audit_or_recomputation,ea_d,"CHECKER: audit issues missed, R1-R3",deterministic audit or recomputation,0,descriptive,no,
+ea_d.CHECKER_audit_issues_missed_R1_R3.manual_review,ea_d,"CHECKER: audit issues missed, R1-R3",manual review,0,descriptive,no,
+ea_d.CHECKER_audit_issues_missed_R1_R3.matching_protocol,ea_d,"CHECKER: audit issues missed, R1-R3",matching protocol,62,descriptive,no,
+ea_d.CHECKER_audit_issues_missed_R1_R3.tests_and_guards,ea_d,"CHECKER: audit issues missed, R1-R3",tests and guards,0,descriptive,no,
+ea_d.CHECKER_audit_issues_missed_R1_R3.visual_inspection,ea_d,"CHECKER: audit issues missed, R1-R3",visual inspection,0,descriptive,no,
+ea_d.CHECKER_audit_issues_missed_R1_R3.owner_or_consultant_review,ea_d,"CHECKER: audit issues missed, R1-R3",owner or consultant review,0,descriptive,no,
+ea_d.CHECKER_audit_issues_missed_R1_R3.agent_s_own_check,ea_d,"CHECKER: audit issues missed, R1-R3",agent's own check,0,descriptive,no,
+ea_d.CHECKER_audit_issues_missed_R1_R3.independent_check_or_failure_in_use,ea_d,"CHECKER: audit issues missed, R1-R3",independent check or failure in use,0,descriptive,no,
+ea_d.CHECKER_reports_without_an_audit_match_R1_R3.unit,ea_d,"CHECKER: reports without an audit match, R1-R3",unit,CHECKER issues,descriptive,no,
+ea_d.CHECKER_reports_without_an_audit_match_R1_R3.deterministic_audit_or_recomputation,ea_d,"CHECKER: reports without an audit match, R1-R3",deterministic audit or recomputation,0,descriptive,no,
+ea_d.CHECKER_reports_without_an_audit_match_R1_R3.manual_review,ea_d,"CHECKER: reports without an audit match, R1-R3",manual review,0,descriptive,no,
+ea_d.CHECKER_reports_without_an_audit_match_R1_R3.matching_protocol,ea_d,"CHECKER: reports without an audit match, R1-R3",matching protocol,20,descriptive,no,
+ea_d.CHECKER_reports_without_an_audit_match_R1_R3.tests_and_guards,ea_d,"CHECKER: reports without an audit match, R1-R3",tests and guards,0,descriptive,no,
+ea_d.CHECKER_reports_without_an_audit_match_R1_R3.visual_inspection,ea_d,"CHECKER: reports without an audit match, R1-R3",visual inspection,0,descriptive,no,
+ea_d.CHECKER_reports_without_an_audit_match_R1_R3.owner_or_consultant_review,ea_d,"CHECKER: reports without an audit match, R1-R3",owner or consultant review,0,descriptive,no,
+ea_d.CHECKER_reports_without_an_audit_match_R1_R3.agent_s_own_check,ea_d,"CHECKER: reports without an audit match, R1-R3",agent's own check,0,descriptive,no,
+ea_d.CHECKER_reports_without_an_audit_match_R1_R3.independent_check_or_failure_in_use,ea_d,"CHECKER: reports without an audit match, R1-R3",independent check or failure in use,0,descriptive,no,
+ea_d.CHECKER_wrong_claims_not_contested_R1.unit,ea_d,"CHECKER: wrong claims not contested, R1",unit,wrong claims,descriptive,no,
+ea_d.CHECKER_wrong_claims_not_contested_R1.deterministic_audit_or_recomputation,ea_d,"CHECKER: wrong claims not contested, R1",deterministic audit or recomputation,0,descriptive,no,
+ea_d.CHECKER_wrong_claims_not_contested_R1.manual_review,ea_d,"CHECKER: wrong claims not contested, R1",manual review,0,descriptive,no,
+ea_d.CHECKER_wrong_claims_not_contested_R1.matching_protocol,ea_d,"CHECKER: wrong claims not contested, R1",matching protocol,68,descriptive,no,
+ea_d.CHECKER_wrong_claims_not_contested_R1.tests_and_guards,ea_d,"CHECKER: wrong claims not contested, R1",tests and guards,0,descriptive,no,
+ea_d.CHECKER_wrong_claims_not_contested_R1.visual_inspection,ea_d,"CHECKER: wrong claims not contested, R1",visual inspection,0,descriptive,no,
+ea_d.CHECKER_wrong_claims_not_contested_R1.owner_or_consultant_review,ea_d,"CHECKER: wrong claims not contested, R1",owner or consultant review,0,descriptive,no,
+ea_d.CHECKER_wrong_claims_not_contested_R1.agent_s_own_check,ea_d,"CHECKER: wrong claims not contested, R1",agent's own check,0,descriptive,no,
+ea_d.CHECKER_wrong_claims_not_contested_R1.independent_check_or_failure_in_use,ea_d,"CHECKER: wrong claims not contested, R1",independent check or failure in use,0,descriptive,no,
+ea_d.CHECKER_wrong_disputes_R1.unit,ea_d,"CHECKER: wrong disputes, R1",unit,contested correct claims,descriptive,no,
+ea_d.CHECKER_wrong_disputes_R1.deterministic_audit_or_recomputation,ea_d,"CHECKER: wrong disputes, R1",deterministic audit or recomputation,0,descriptive,no,
+ea_d.CHECKER_wrong_disputes_R1.manual_review,ea_d,"CHECKER: wrong disputes, R1",manual review,0,descriptive,no,
+ea_d.CHECKER_wrong_disputes_R1.matching_protocol,ea_d,"CHECKER: wrong disputes, R1",matching protocol,0,descriptive,no,
+ea_d.CHECKER_wrong_disputes_R1.tests_and_guards,ea_d,"CHECKER: wrong disputes, R1",tests and guards,0,descriptive,no,
+ea_d.CHECKER_wrong_disputes_R1.visual_inspection,ea_d,"CHECKER: wrong disputes, R1",visual inspection,0,descriptive,no,
+ea_d.CHECKER_wrong_disputes_R1.owner_or_consultant_review,ea_d,"CHECKER: wrong disputes, R1",owner or consultant review,3,descriptive,no,
+ea_d.CHECKER_wrong_disputes_R1.agent_s_own_check,ea_d,"CHECKER: wrong disputes, R1",agent's own check,0,descriptive,no,
+ea_d.CHECKER_wrong_disputes_R1.independent_check_or_failure_in_use,ea_d,"CHECKER: wrong disputes, R1",independent check or failure in use,0,descriptive,no,
+ea_d.development_coding_agent.unit,ea_d,development (coding agent),unit,cases,descriptive,no,
+ea_d.development_coding_agent.deterministic_audit_or_recomputation,ea_d,development (coding agent),deterministic audit or recomputation,0,descriptive,no,
+ea_d.development_coding_agent.manual_review,ea_d,development (coding agent),manual review,0,descriptive,no,
+ea_d.development_coding_agent.matching_protocol,ea_d,development (coding agent),matching protocol,0,descriptive,no,
+ea_d.development_coding_agent.tests_and_guards,ea_d,development (coding agent),tests and guards,5,descriptive,no,
+ea_d.development_coding_agent.visual_inspection,ea_d,development (coding agent),visual inspection,1,descriptive,no,
+ea_d.development_coding_agent.owner_or_consultant_review,ea_d,development (coding agent),owner or consultant review,11,descriptive,no,
+ea_d.development_coding_agent.agent_s_own_check,ea_d,development (coding agent),agent's own check,30,descriptive,no,
+ea_d.development_coding_agent.independent_check_or_failure_in_use,ea_d,development (coding agent),independent check or failure in use,7,descriptive,no,
+ea_d.verification_owner_side_discrepancies.unit,ea_d,verification: owner-side discrepancies,unit,claims,descriptive,no,
+ea_d.verification_owner_side_discrepancies.deterministic_audit_or_recomputation,ea_d,verification: owner-side discrepancies,deterministic audit or recomputation,0,descriptive,no,
+ea_d.verification_owner_side_discrepancies.manual_review,ea_d,verification: owner-side discrepancies,manual review,43,descriptive,no,
+ea_d.verification_owner_side_discrepancies.matching_protocol,ea_d,verification: owner-side discrepancies,matching protocol,0,descriptive,no,
+ea_d.verification_owner_side_discrepancies.tests_and_guards,ea_d,verification: owner-side discrepancies,tests and guards,0,descriptive,no,
+ea_d.verification_owner_side_discrepancies.visual_inspection,ea_d,verification: owner-side discrepancies,visual inspection,0,descriptive,no,
+ea_d.verification_owner_side_discrepancies.owner_or_consultant_review,ea_d,verification: owner-side discrepancies,owner or consultant review,0,descriptive,no,
+ea_d.verification_owner_side_discrepancies.agent_s_own_check,ea_d,verification: owner-side discrepancies,agent's own check,0,descriptive,no,
+ea_d.verification_owner_side_discrepancies.independent_check_or_failure_in_use,ea_d,verification: owner-side discrepancies,independent check or failure in use,0,descriptive,no,
+ea_d.verification_rubric_dependent_readings.unit,ea_d,verification: rubric-dependent readings,unit,claims,descriptive,no,
+ea_d.verification_rubric_dependent_readings.deterministic_audit_or_recomputation,ea_d,verification: rubric-dependent readings,deterministic audit or recomputation,0,descriptive,no,
+ea_d.verification_rubric_dependent_readings.manual_review,ea_d,verification: rubric-dependent readings,manual review,0,descriptive,no,
+ea_d.verification_rubric_dependent_readings.matching_protocol,ea_d,verification: rubric-dependent readings,matching protocol,0,descriptive,no,
+ea_d.verification_rubric_dependent_readings.tests_and_guards,ea_d,verification: rubric-dependent readings,tests and guards,0,descriptive,no,
+ea_d.verification_rubric_dependent_readings.visual_inspection,ea_d,verification: rubric-dependent readings,visual inspection,0,descriptive,no,
+ea_d.verification_rubric_dependent_readings.owner_or_consultant_review,ea_d,verification: rubric-dependent readings,owner or consultant review,0,descriptive,no,
+ea_d.verification_rubric_dependent_readings.agent_s_own_check,ea_d,verification: rubric-dependent readings,agent's own check,54,descriptive,no,
+ea_d.verification_rubric_dependent_readings.independent_check_or_failure_in_use,ea_d,verification: rubric-dependent readings,independent check or failure in use,0,descriptive,no,
+ea_d.verification_extraction_errors.unit,ea_d,verification: extraction errors,unit,claims,descriptive,no,
+ea_d.verification_extraction_errors.deterministic_audit_or_recomputation,ea_d,verification: extraction errors,deterministic audit or recomputation,0,descriptive,no,
+ea_d.verification_extraction_errors.manual_review,ea_d,verification: extraction errors,manual review,2,descriptive,no,
+ea_d.verification_extraction_errors.matching_protocol,ea_d,verification: extraction errors,matching protocol,0,descriptive,no,
+ea_d.verification_extraction_errors.tests_and_guards,ea_d,verification: extraction errors,tests and guards,0,descriptive,no,
+ea_d.verification_extraction_errors.visual_inspection,ea_d,verification: extraction errors,visual inspection,0,descriptive,no,
+ea_d.verification_extraction_errors.owner_or_consultant_review,ea_d,verification: extraction errors,owner or consultant review,0,descriptive,no,
+ea_d.verification_extraction_errors.agent_s_own_check,ea_d,verification: extraction errors,agent's own check,0,descriptive,no,
+ea_d.verification_extraction_errors.independent_check_or_failure_in_use,ea_d,verification: extraction errors,independent check or failure in use,0,descriptive,no,
+ea_d.verification_specification_gaps.unit,ea_d,verification: specification gaps,unit,REFLECTION_LOG entries,descriptive,no,
+ea_d.verification_specification_gaps.deterministic_audit_or_recomputation,ea_d,verification: specification gaps,deterministic audit or recomputation,0,descriptive,no,
+ea_d.verification_specification_gaps.manual_review,ea_d,verification: specification gaps,manual review,0,descriptive,no,
+ea_d.verification_specification_gaps.matching_protocol,ea_d,verification: specification gaps,matching protocol,0,descriptive,no,
+ea_d.verification_specification_gaps.tests_and_guards,ea_d,verification: specification gaps,tests and guards,0,descriptive,no,
+ea_d.verification_specification_gaps.visual_inspection,ea_d,verification: specification gaps,visual inspection,0,descriptive,no,
+ea_d.verification_specification_gaps.owner_or_consultant_review,ea_d,verification: specification gaps,owner or consultant review,0,descriptive,no,
+ea_d.verification_specification_gaps.agent_s_own_check,ea_d,verification: specification gaps,agent's own check,5,descriptive,no,
+ea_d.verification_specification_gaps.independent_check_or_failure_in_use,ea_d,verification: specification gaps,independent check or failure in use,0,descriptive,no,
+ea_d.verification_consultant_owner_or_record_errors.unit,ea_d,"verification: consultant, owner or record errors",unit,cases,descriptive,no,
+ea_d.verification_consultant_owner_or_record_errors.deterministic_audit_or_recomputation,ea_d,"verification: consultant, owner or record errors",deterministic audit or recomputation,0,descriptive,no,
+ea_d.verification_consultant_owner_or_record_errors.manual_review,ea_d,"verification: consultant, owner or record errors",manual review,0,descriptive,no,
+ea_d.verification_consultant_owner_or_record_errors.matching_protocol,ea_d,"verification: consultant, owner or record errors",matching protocol,0,descriptive,no,
+ea_d.verification_consultant_owner_or_record_errors.tests_and_guards,ea_d,"verification: consultant, owner or record errors",tests and guards,0,descriptive,no,
+ea_d.verification_consultant_owner_or_record_errors.visual_inspection,ea_d,"verification: consultant, owner or record errors",visual inspection,0,descriptive,no,
+ea_d.verification_consultant_owner_or_record_errors.owner_or_consultant_review,ea_d,"verification: consultant, owner or record errors",owner or consultant review,2,descriptive,no,
+ea_d.verification_consultant_owner_or_record_errors.agent_s_own_check,ea_d,"verification: consultant, owner or record errors",agent's own check,4,descriptive,no,
+ea_d.verification_consultant_owner_or_record_errors.independent_check_or_failure_in_use,ea_d,"verification: consultant, owner or record errors",independent check or failure in use,1,descriptive,no,
