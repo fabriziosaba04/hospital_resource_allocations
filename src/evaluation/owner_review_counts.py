@@ -2,7 +2,7 @@
 pre-registered recomputation (`explanation_claims.json`), never instead of it. Reads the owner input tables
 `owner_review_wrong.csv` and `owner_review_unverifiable.csv`; writes nothing back to them.
 
-    uv run python -m src.evaluation.owner_review_counts R1
+    uv run python -m src.evaluation.owner_review_counts R1 [--out DIR]   # <out> = DIR, default results/analysis/recomputed/R1/ (Log #127)
 
 Mapping of each pre-registered verdict and owner verdict to a descriptive verdict:
   wrong        confirmed_wrong -> wrong; actually_correct -> correct; extraction_error -> correct (the owner's
@@ -14,7 +14,7 @@ Mapping of each pre-registered verdict and owner verdict to a descriptive verdic
   correct      unchanged (not reviewed)
 The result is provisional while any reviewed list has a row without a verdict. By basis, the encoded `basis` is
 used; the owner's comments on R1-D28-05/06 call them copied, and the effect of relabelling them is shown.
-Writes `<eval>/owner_review/claim_accuracy_after_owner_review.json`.
+Writes `<out>/owner_review/claim_accuracy_after_owner_review.json`.
 """
 
 from __future__ import annotations
@@ -28,7 +28,7 @@ from pathlib import Path
 from .claim_check import VERDICTS
 from .dataset import ROOT
 from .owner_inputs import UNVER_FILE, WRONG_FILE
-from src.utils.paths import guard_write, long_path
+from src.utils.paths import guard_write, long_path, review_out_dir
 
 MAP = {"wrong": {"confirmed_wrong": "wrong", "actually_correct": "correct", "extraction_error": "correct",
                  "should_be_unverifiable": "unverifiable", "": "wrong"},
@@ -48,7 +48,8 @@ def _count(claims: list[dict], key, basis=lambda c: c.get("basis") or "unclassif
     return {"total": total, "by_category": dict(sorted(by_cat.items())), "by_basis": dict(sorted(by_basis.items()))}
 
 
-def main(run_id: str, eval_dir: Path | None = None) -> dict:
+def main(run_id: str, eval_dir: Path | None = None, out_dir: Path | None = None) -> dict:
+    dst = review_out_dir(run_id, eval_dir, out_dir) / "owner_review"   # never the frozen run folder (Log #127)
     ev = long_path(eval_dir or ROOT / "results" / "evaluations" / run_id)        # Log #117
     claims = [c for c in json.loads((ev / "explanation_claims.json").read_text(encoding="utf-8"))["claims"]
               if c["author"] == "ALLOCATOR"]
@@ -78,14 +79,20 @@ def main(run_id: str, eval_dir: Path | None = None) -> dict:
            "after_owner_review": after,
            "by_basis_if_D28_05_06_relabelled_copied": relabel["by_basis"],
            "mapping": {k: dict(v) for k, v in MAP.items()}}
-    guard_write(ev / "owner_review")                      # frozen run folders are read-only (R59)
-    (ev / "owner_review" / "claim_accuracy_after_owner_review.json").write_text(
+    guard_write(dst)                                      # frozen run folders are read-only (R59)
+    dst.mkdir(parents=True, exist_ok=True)
+    (dst / "claim_accuracy_after_owner_review.json").write_text(
         json.dumps(res, indent=2) + "\n", encoding="utf-8", newline="\n")
     return res
 
 
 if __name__ == "__main__":
-    r = main(sys.argv[1])
+    import argparse
+    _a = argparse.ArgumentParser()
+    _a.add_argument("run_id")
+    _a.add_argument("--out", help="output root (default: results/analysis/recomputed/<run_id>/; Log #127)")
+    _a = _a.parse_args()
+    r = main(_a.run_id, out_dir=Path(_a.out) if _a.out else None)
     print(json.dumps({k: r[k] for k in ("provisional", "pending_owner_verdicts")}, indent=1))
     for k in ("pre_registered", "after_owner_review"):
         print(k, json.dumps(r[k]))

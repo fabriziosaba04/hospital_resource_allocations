@@ -1,7 +1,7 @@
 """Item-7a recall after the owner's adjudication (owner, 2026-11-19; §11 #64-#65). Frozen files and earlier
 comparison files are not modified.
 
-    uv run python -m src.evaluation.adjudication_recall R1
+    uv run python -m src.evaluation.adjudication_recall R1 [--out DIR]   # <out> = DIR, default results/analysis/recomputed/R1/ (Log #127)
 
 Owner input tables read (never written):
   owner_verdicts_nonmech.csv      row 71 out of universe (owner_verdicts.py)
@@ -18,7 +18,7 @@ if its cause is owner_encoding, assistant_encoding, rubric_ambiguity or matching
 the display pairing (adjudication_view.pair), and the pair does not encode two different figures (§11 #66,
 corrected by §11 #67): a pair is excluded only if both sides encode a value (the owner's raw Value where the
 conversion left it null) and the values differ as numbers. A side with no value never triggers the exclusion.
-Writes `<eval>/owner_extraction/comparison_7a_adjudicated.json`.
+Writes `<out>/owner_extraction/comparison_7a_adjudicated.json`.
 """
 
 from __future__ import annotations
@@ -37,7 +37,7 @@ from .dataset import ROOT, load_dataset
 from .owner_claims import FILE, _canon, compare, convert
 from .owner_inputs import ADJ_COLS, ADJ_FILE, ADJ_KEY, OwnerInputError, read_table
 from .owner_verdicts import item2_check, load_verdicts
-from src.utils.paths import guard_write, long_path
+from src.utils.paths import guard_write, long_path, review_out_dir
 
 OVERRIDES_FILE = "owner_universe_overrides.csv"
 OVERRIDE_COLS = ["claim_id", "action", "original", "comment", "set_by", "decision"]
@@ -107,12 +107,15 @@ def check_overrides(ds, rec, owner: list[dict], table: dict) -> dict:
     return out
 
 
-def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = None) -> dict:
+def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = None,
+         out_dir: Path | None = None) -> dict:
+    dst = review_out_dir(run_id, eval_dir, out_dir) / "owner_extraction"   # never the frozen run folder (Log #127)
     ev = long_path(eval_dir or ROOT / "results" / "evaluations" / run_id)        # Log #117
     alloc = long_path(alloc_dir or ROOT / "results" / "allocations" / run_id)
     folder = ev / "owner_extraction"
     m = json.loads((alloc / "run_manifest.json").read_text(encoding="utf-8"))
-    ds, rec = load_dataset(m["dataset_id"], Path(m["data_root"])), load_records(alloc)
+    from .run_report import resolve_data_root           # the run clone may not exist here (Log #127)
+    ds, rec = load_dataset(m["dataset_id"], resolve_data_root(m)), load_records(alloc)
     owner, _ = convert(folder)
     spec = json.loads((ev / "explanation_claims_spec.json").read_text(encoding="utf-8"))["claims"]
     raw = list(csv.DictReader(open(folder / FILE, encoding="utf-8-sig")))
@@ -187,13 +190,19 @@ def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = Non
         "causes_total": dict(sorted((by_side["owner_only"] + by_side["assistant_only"]).items())),
         "row_57": "duplicate of row 54, APPLIED (§11 #66): the former not-applied variant is the final figure",
     }
-    guard_write(folder)                                   # frozen run folders are read-only (R59)
-    (folder / "comparison_7a_adjudicated.json").write_text(json.dumps(res, indent=2, ensure_ascii=False) + "\n",
+    guard_write(dst)                                      # frozen run folders are read-only (R59)
+    dst.mkdir(parents=True, exist_ok=True)
+    (dst / "comparison_7a_adjudicated.json").write_text(json.dumps(res, indent=2, ensure_ascii=False) + "\n",
                                                            encoding="utf-8", newline="\n")
     return res
 
 
 if __name__ == "__main__":
-    r = main(sys.argv[1])
+    import argparse
+    _a = argparse.ArgumentParser()
+    _a.add_argument("run_id")
+    _a.add_argument("--out", help="output root (default: results/analysis/recomputed/<run_id>/; Log #127)")
+    _a = _a.parse_args()
+    r = main(_a.run_id, out_dir=Path(_a.out) if _a.out else None)
     print(json.dumps({k: r[k] for k in ("primary_recall", "causes_by_side")}, indent=2))
     print(json.dumps(r["descriptive_recall_after_adjudication"]["recall"]))

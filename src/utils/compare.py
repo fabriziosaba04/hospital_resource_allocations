@@ -26,22 +26,23 @@ def _load(p: Path):
     return json.loads(text)
 
 
-def same(recomputed: Path, committed: Path, ignore: tuple[str, ...] = VOLATILE) -> bool:
-    """JSON / JSONL compared as data with the `ignore` keys removed; any other file compared byte for byte."""
-    if recomputed.suffix in (".json", ".jsonl"):
+def same(recomputed: Path, committed: Path, ignore: tuple[str, ...] = VOLATILE, exact: bool = False) -> bool:
+    """JSON / JSONL compared as data with the `ignore` keys removed; any other file compared byte for byte.
+    With `exact`, every file is compared byte for byte (for outputs that carry no timestamp)."""
+    if not exact and recomputed.suffix in (".json", ".jsonl"):
         return _strip(_load(recomputed), ignore) == _strip(_load(committed), ignore)
     return long_path(recomputed).read_bytes() == long_path(committed).read_bytes()
 
 
-def report(rows: list[tuple[str, Path, Path]]) -> int:
+def report(rows: list[tuple[str, Path, Path]], exact: bool = False) -> int:
     """Print one line per (label, recomputed, committed); return 0 if all are equal, 1 otherwise."""
     bad = 0
     for label, new, old in rows:
         if not long_path(old).exists():
             print(f"  {label}: no committed file to compare ({old.name})")
             continue
-        ok = same(new, old)
+        ok = same(new, old, exact=exact)
         bad += not ok
-        print(f"  {label}: {'EQUAL' if ok else 'DIFFERENT'} to the committed {old.name}")
+        print(f"  {label}: {('BYTE-IDENTICAL' if exact else 'EQUAL') if ok else 'DIFFERENT'} to the committed {old.name}")
     print("RESULT:", "OK" if not bad else f"{bad} DIFFERENT")
     return 1 if bad else 0

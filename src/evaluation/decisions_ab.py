@@ -1,15 +1,15 @@
 """Owner decisions §11 #61 A-B (2026-11-18, taken after the item-7a comparison had been seen): recall and claim
 accuracy as frozen and after the decisions, side by side. The frozen files are not modified.
 
-    uv run python -m src.evaluation.decisions_ab R1
+    uv run python -m src.evaluation.decisions_ab R1 [--out DIR]   # <out> = DIR, default results/analysis/recomputed/R1/ (Log #127)
 
 A: patient attributes are outside the universe (item 1); a named patient in or out of a bed stays in.
    Out-of-universe quantities: `patient` (attribute match), `mean_arrivals`, `census`, `requirement`.
 B: a nurse figure stating the rounded requirement over several tiers, ceil(sum of need), is outside the
    universe; the unrounded summed need is in. Applied to `need` claims: out if the stated value is written as
    an integer, equals the ceiling of the computed need, and the computed need is not an integer.
-Writes `<eval>/owner_extraction/comparison_7a_decisions_AB.json` and
-`<eval>/owner_review/multitier_nurse_claims.csv`.
+Writes `<out>/owner_extraction/comparison_7a_decisions_AB.json` and
+`<out>/owner_review/multitier_nurse_claims.csv`.
 """
 
 from __future__ import annotations
@@ -26,7 +26,7 @@ from .audit import load_records
 from .claim_check import VERDICTS, quantity, score_claim
 from .dataset import ROOT, load_dataset
 from .owner_claims import FILE, compare, convert, encoding
-from src.utils.paths import guard_write, long_path
+from src.utils.paths import guard_write, long_path, review_out_dir
 
 OUT_A = {"patient", "mean_arrivals", "census", "requirement"}
 
@@ -52,11 +52,14 @@ def _accuracy(claims: list[dict]) -> dict:
     return {"total": total, "by_category": dict(sorted(by_cat.items()))}
 
 
-def main(run_id: str) -> None:
-    ev = long_path(ROOT / "results" / "evaluations" / run_id)        # Log #117
-    alloc = long_path(ROOT / "results" / "allocations" / run_id)
+def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = None,
+         out_dir: Path | None = None) -> None:
+    out_root = review_out_dir(run_id, eval_dir, out_dir)  # never the frozen run folder (Log #127)
+    ev = long_path(eval_dir or ROOT / "results" / "evaluations" / run_id)        # Log #117
+    alloc = long_path(alloc_dir or ROOT / "results" / "allocations" / run_id)
     m = json.loads((alloc / "run_manifest.json").read_text(encoding="utf-8"))
-    ds, rec = load_dataset(m["dataset_id"], Path(m["data_root"])), load_records(alloc)
+    from .run_report import resolve_data_root           # the run clone may not exist here (Log #127)
+    ds, rec = load_dataset(m["dataset_id"], resolve_data_root(m)), load_records(alloc)
     scored = [c for c in json.loads((ev / "explanation_claims.json").read_text(encoding="utf-8"))["claims"]
               if c["author"] == "ALLOCATOR"]
     spec = json.loads((ev / "explanation_claims_spec.json").read_text(encoding="utf-8"))["claims"]
@@ -102,13 +105,14 @@ def main(run_id: str) -> None:
                          "unrounded_need_L2_L3": float(v), "ceiling": math.ceil(v),
                          "decision_B": "out (rounded requirement)" if moved_o[c["id"]] else "in universe (unrounded sum)"})
     out["owner_rows_115_118"] = rows
-    guard_write(folder)                                   # frozen run folders are read-only (R59)
-    guard_write(ev / "owner_review")
-    (folder / "comparison_7a_decisions_AB.json").write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8",
+    dst_ex, dst_rv = guard_write(out_root / "owner_extraction"), guard_write(out_root / "owner_review")  # R59
+    dst_ex.mkdir(parents=True, exist_ok=True)
+    dst_rv.mkdir(parents=True, exist_ok=True)
+    (dst_ex / "comparison_7a_decisions_AB.json").write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8",
                                                            newline="\n")
     wrong = {c["id"] for c in scored if c["verdict"] == "wrong"}
     n = 0
-    with open(ev / "owner_review" / "multitier_nurse_claims.csv", "w", encoding="utf-8-sig", newline="") as f:
+    with open(dst_rv / "multitier_nurse_claims.csv", "w", encoding="utf-8-sig", newline="") as f:
         w = csv.writer(f, lineterminator="\n")
         w.writerow(["id", "day", "text", "encoding", "stated", "computed_unrounded", "ceiling_of_computed",
                     "verdict", "among_75_wrong", "decision_B"])
@@ -129,4 +133,9 @@ def main(run_id: str) -> None:
 
 
 if __name__ == "__main__":
-    main(sys.argv[1])
+    import argparse
+    _a = argparse.ArgumentParser()
+    _a.add_argument("run_id")
+    _a.add_argument("--out", help="output root (default: results/analysis/recomputed/<run_id>/; Log #127)")
+    _a = _a.parse_args()
+    main(_a.run_id, out_dir=Path(_a.out) if _a.out else None)

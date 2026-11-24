@@ -1,13 +1,13 @@
 """Display file for the owner's review of the unverifiable claims (owner, 2026-11-19). DISPLAY ONLY: not an
 input (verdicts go in `owner_review_unverifiable.csv`), changes no verdict and no encoding.
 
-    uv run python -m src.evaluation.unverifiable_view R1
+    uv run python -m src.evaluation.unverifiable_view R1 [--out DIR]   # <out> = DIR, default results/analysis/recomputed/R1/ (Log #127)
 
 Per claim: day, field, full sentence, the reason (from the extraction note: "alternative fails validation",
 "vague qualifier", "ambiguous referent", else "other"), and, where a value can be computed, the value under the
 most natural reading. The readings are fixed below (READINGS), one per claim id, stated in words next to the
 value; they are the assistant's, for display, and are not scored. Writes
-`<eval>/owner_review/unverifiable_26_check.csv`.
+`<out>/owner_review/unverifiable_26_check.csv`.
 """
 
 from __future__ import annotations
@@ -25,7 +25,7 @@ from .audit import load_records
 from .claim_check import day_context, quantity, resolve_allocation
 from .dataset import ROOT, load_dataset
 from .rubric_check_view import sentence
-from src.utils.paths import guard_write, long_path
+from src.utils.paths import guard_write, long_path, review_out_dir
 
 AB = {"cardiology": "CA", "internal_medicine": "IM", "neurology": "NE", "orthopedics": "OR"}   # by name (R54)
 assert set(AB) == set(DEPARTMENTS)
@@ -142,11 +142,14 @@ def readings(ds, rec) -> dict[str, tuple[str, str]]:
     return {k: (w, "" if v is None else str(v)) for k, (w, v) in out.items()}
 
 
-def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = None) -> list[dict]:
+def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = None,
+         out_dir: Path | None = None) -> list[dict]:
+    dst = review_out_dir(run_id, eval_dir, out_dir) / "owner_review"   # never the frozen run folder (Log #127)
     ev = long_path(eval_dir or ROOT / "results" / "evaluations" / run_id)        # Log #117
     alloc = long_path(alloc_dir or ROOT / "results" / "allocations" / run_id)
     m = json.loads((alloc / "run_manifest.json").read_text(encoding="utf-8"))
-    ds, rec = load_dataset(m["dataset_id"], Path(m["data_root"])), load_records(alloc)
+    from .run_report import resolve_data_root           # the run clone may not exist here (Log #127)
+    ds, rec = load_dataset(m["dataset_id"], resolve_data_root(m)), load_records(alloc)
     hist = {}
     for line in open(alloc / "decision_history.jsonl", encoding="utf-8"):
         h = json.loads(line)
@@ -165,8 +168,9 @@ def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = Non
                      "full_sentence": found[0] if found else hist[day].get(c["field"], ""),
                      "reason": reason(c.get("note", "")), "reading": vals[c["id"]][0], "value": vals[c["id"]][1],
                      "note": c.get("note", "")})
-    guard_write(ev / "owner_review")                      # frozen run folders are read-only (R59)
-    with open(ev / "owner_review" / "unverifiable_26_check.csv", "w", encoding="utf-8-sig", newline="") as f:
+    guard_write(dst)                                      # frozen run folders are read-only (R59)
+    dst.mkdir(parents=True, exist_ok=True)
+    with open(dst / "unverifiable_26_check.csv", "w", encoding="utf-8-sig", newline="") as f:
         f.write(BANNER + "\n")
         w = csv.DictWriter(f, fieldnames=list(rows[0]), lineterminator="\n")
         w.writeheader()
@@ -175,6 +179,11 @@ def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = Non
 
 
 if __name__ == "__main__":
-    r = main(sys.argv[1])
+    import argparse
+    _a = argparse.ArgumentParser()
+    _a.add_argument("run_id")
+    _a.add_argument("--out", help="output root (default: results/analysis/recomputed/<run_id>/; Log #127)")
+    _a = _a.parse_args()
+    r = main(_a.run_id, out_dir=Path(_a.out) if _a.out else None)
     from collections import Counter
     print(len(r), "rows", dict(Counter(x["reason"] for x in r)))

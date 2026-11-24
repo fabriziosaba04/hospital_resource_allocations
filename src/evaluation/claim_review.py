@@ -1,7 +1,7 @@
 """Owner review lists (EVALUATION_PLAN.md §4 item 7b-c): every claim the recomputation marks wrong, and every
 claim marked unverifiable, from `<eval>/explanation_claims.json`. No CHECKER matching.
 
-    uv run python -m src.evaluation.claim_review R1
+    uv run python -m src.evaluation.claim_review R1 [--out DIR]   # <out> = DIR, default results/analysis/recomputed/R1/ (Log #127)
 
 Wrong claims carry a `tier` (owner request 2026-11-18; no verdict changes):
   wrong_only_primary   a bare "spare" / "free" claim, wrong under the strict reading, correct under the rival
@@ -21,7 +21,7 @@ from pathlib import Path
 
 from .dataset import ROOT
 from .owner_claims import encoding
-from src.utils.paths import guard_write, long_path
+from src.utils.paths import guard_write, long_path, review_out_dir
 
 COLUMNS = ["id", "day", "field", "text", "category", "basis", "encoding", "computed", "computed_compare",
            "rubric_term", "verdict_alternative", "computed_alternative", "tier", "note", "owner_verdict",
@@ -37,16 +37,17 @@ def tier(c: dict) -> str:
     return "no_spare_free_term"
 
 
-def main(run_id: str, eval_dir: Path | None = None) -> None:
+def main(run_id: str, eval_dir: Path | None = None, out_dir: Path | None = None) -> None:
     from .owner_inputs import REVIEW_COLS, REVIEW_KEY, REVIEW_OWNER, UNVER_FILE, WRONG_FILE, merge, review_context
+    out = review_out_dir(run_id, eval_dir, out_dir) / "owner_review"   # never the frozen run folder (Log #127)
     eval_dir = long_path(eval_dir or ROOT / "results" / "evaluations" / run_id)        # Log #117
     claims = json.loads((eval_dir / "explanation_claims.json").read_text(encoding="utf-8"))["claims"]
-    out = guard_write(eval_dir / "owner_review")          # frozen run folders are read-only (R59)
-    out.mkdir(exist_ok=True)
+    guard_write(out)                                     # frozen run folders are read-only (R59)
+    out.mkdir(parents=True, exist_ok=True)
     owner = {}                                           # validate both owner tables before writing anything
     for verdict, table in (("wrong", WRONG_FILE), ("unverifiable", UNVER_FILE)):
         rows = [c for c in claims if c["author"] == "ALLOCATOR" and c["verdict"] == verdict]
-        owner[verdict] = merge(rows, out / table, REVIEW_COLS[verdict], REVIEW_KEY, REVIEW_OWNER,
+        owner[verdict] = merge(rows, eval_dir / "owner_review" / table, REVIEW_COLS[verdict], REVIEW_KEY, REVIEW_OWNER,
                                review_context(rows, verdict))
     for verdict, name in (("wrong", "review_7b_wrong.csv"), ("unverifiable", "review_7c_unverifiable.csv")):
         rows = [c for c in claims if c["author"] == "ALLOCATOR" and c["verdict"] == verdict]
@@ -80,4 +81,9 @@ def main(run_id: str, eval_dir: Path | None = None) -> None:
 
 
 if __name__ == "__main__":
-    main(sys.argv[1])
+    import argparse
+    _a = argparse.ArgumentParser()
+    _a.add_argument("run_id")
+    _a.add_argument("--out", help="output root (default: results/analysis/recomputed/<run_id>/; Log #127)")
+    _a = _a.parse_args()
+    main(_a.run_id, out_dir=Path(_a.out) if _a.out else None)

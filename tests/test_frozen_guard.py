@@ -115,3 +115,28 @@ def test_every_writer_in_src_calls_the_guard():
         if WRITE.search(text) and "guard_write" not in text:
             missing.append(rel)
     assert missing == []
+
+
+OWNER_REVIEW = ("owner_claims", "claim_review", "owner_verdicts", "decisions_ab", "adjudication_recall",
+                "adjudication_view", "rubric_check_view", "unverifiable_view", "owner_review_counts")
+
+
+def test_owner_review_output_root(frozen):
+    """Log #127: the owner-review modules write under `out_dir`, else the evaluation folder the caller passed
+    (a copy, in tests), else results/analysis/recomputed/<run>/; never into a frozen run folder."""
+    other = frozen.parent / "elsewhere"
+    assert paths.review_out_dir(RUN, out_dir=other) == paths.long_path(other)
+    assert paths.review_out_dir(RUN, eval_dir=other) == paths.long_path(other)
+    assert paths.review_out_dir(RUN) == paths.long_path(frozen / "analysis" / "recomputed" / RUN)
+    for bad in ({"out_dir": frozen / "evaluations" / RUN}, {"eval_dir": frozen / "evaluations" / RUN}):
+        with pytest.raises(FrozenRunError):
+            paths.review_out_dir(RUN, **bad)
+
+
+def test_owner_review_modules_take_an_output_root():
+    import importlib
+    import inspect
+    for name in OWNER_REVIEW:
+        mod = importlib.import_module(f"src.evaluation.{name}")
+        assert "out_dir" in inspect.signature(mod.main).parameters, name
+        assert '"--out"' in inspect.getsource(mod), name

@@ -87,3 +87,12 @@ def guard_write(path):
 def recomputed_dir(run_id: str, results_root=None) -> Path:
     """Default output folder for anything recomputed from a run's records."""
     return Path(results_root if results_root is not None else RESULTS_ROOT) / "analysis" / "recomputed" / run_id
+
+
+def review_out_dir(run_id: str, eval_dir=None, out_dir=None) -> Path:
+    """Output root of the owner-review modules (Decisions Log #127): `out_dir` if given; else, when the caller
+    passed its own evaluation folder (a copy, in tests), that folder; else `recomputed_dir(run_id)`, so that a
+    module reading the committed run never writes into it. Outputs keep the run's sub-folders
+    (`owner_extraction/`, `owner_review/`) under this root. Guarded and long-path safe."""
+    root = out_dir if out_dir is not None else (eval_dir if eval_dir is not None else recomputed_dir(run_id))
+    return guard_write(long_path(root))

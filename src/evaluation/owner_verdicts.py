@@ -1,7 +1,7 @@
 """Owner verdicts on the 18 non-mechanical mappings of item 7a (owner, 2026-11-19). The frozen files are not
 modified (`owner_claims_d03_d08_d18.csv`, `explanation_claims_spec.json`), nor are the earlier comparison files.
 
-    uv run python -m src.evaluation.owner_verdicts R1
+    uv run python -m src.evaluation.owner_verdicts R1 [--out DIR]   # <out> = DIR, default results/analysis/recomputed/R1/ (Log #127)
 
 Input: `<eval>/owner_extraction/owner_verdicts_nonmech.csv` (one row per non-mechanical mapping: verdict,
 comment, universe in/out, adjudication cause, who set it). Row 71 follows the owner's rule of item 2: out of
@@ -30,7 +30,7 @@ from .audit import load_records
 from .claim_check import quantity
 from .dataset import ROOT, load_dataset
 from .owner_claims import FILE, compare, convert
-from src.utils.paths import guard_write, long_path
+from src.utils.paths import guard_write, long_path, review_out_dir
 
 VERDICTS_FILE = "owner_verdicts_nonmech.csv"
 
@@ -57,13 +57,16 @@ def _strip(r: dict) -> dict:
     return {k: v for k, v in r.items() if k != "missed"}
 
 
-def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = None) -> None:
+def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = None,
+         out_dir: Path | None = None) -> None:
     from .owner_inputs import ADJ_COLS, ADJ_FILE, ADJ_KEY, OwnerInputError, read_table
+    dst = review_out_dir(run_id, eval_dir, out_dir) / "owner_extraction"   # never the frozen run folder (Log #127)
     ev = long_path(eval_dir or ROOT / "results" / "evaluations" / run_id)        # Log #117
     alloc = long_path(alloc_dir or ROOT / "results" / "allocations" / run_id)
     folder = ev / "owner_extraction"
     m = json.loads((alloc / "run_manifest.json").read_text(encoding="utf-8"))
-    ds, rec = load_dataset(m["dataset_id"], Path(m["data_root"])), load_records(alloc)
+    from .run_report import resolve_data_root           # the run clone may not exist here (Log #127)
+    ds, rec = load_dataset(m["dataset_id"], resolve_data_root(m)), load_records(alloc)
     verdicts = load_verdicts(folder)
     owner, nonmech = convert(folder)
     assert {n["row"] for n in nonmech} == set(verdicts), "verdict table must cover exactly the 18 mappings"
@@ -82,8 +85,9 @@ def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = Non
     # 1. verdict columns on non_mechanical_mappings.csv
     fields = ["row", "day", "field", "text", "owner_quantity", "owner_allocation", "mapped_to", "reason",
               "owner_verdict", "owner_comment"]
-    guard_write(folder)                                   # frozen run folders are read-only (R59)
-    with open(folder / "non_mechanical_mappings.csv", "w", encoding="utf-8", newline="") as f:
+    guard_write(dst)                                      # frozen run folders are read-only (R59)
+    dst.mkdir(parents=True, exist_ok=True)
+    with open(dst / "non_mechanical_mappings.csv", "w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=fields, lineterminator="\n")
         w.writeheader()
         for n in nonmech:
@@ -131,7 +135,7 @@ def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = Non
             "note": "not a decision: rows 64 and 166 stay in the universe; shown for the owner's review",
             "recall": {k: _strip(v) for k, v in descr["recall"].items()}},
     }
-    (folder / "comparison_7a_owner_verdicts.json").write_text(json.dumps(res, indent=2, ensure_ascii=False) + "\n",
+    (dst / "comparison_7a_owner_verdicts.json").write_text(json.dumps(res, indent=2, ensure_ascii=False) + "\n",
                                                              encoding="utf-8", newline="\n")
     print(json.dumps({"item2": checks, "filled": res["causes_filled_owner_rows"],
                       "before": {k: _strip(v) for k, v in before["recall"].items()},
@@ -141,4 +145,9 @@ def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = Non
 
 
 if __name__ == "__main__":
-    main(sys.argv[1])
+    import argparse
+    _a = argparse.ArgumentParser()
+    _a.add_argument("run_id")
+    _a.add_argument("--out", help="output root (default: results/analysis/recomputed/<run_id>/; Log #127)")
+    _a = _a.parse_args()
+    main(_a.run_id, out_dir=Path(_a.out) if _a.out else None)

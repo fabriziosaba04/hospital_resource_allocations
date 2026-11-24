@@ -1,11 +1,11 @@
 """Side-by-side view of the item-7a unmatched claims (owner, 2026-11-19). DISPLAY ONLY: a generated file, not an
 input; it plays no part in matching, changes no matching rule and fills no cause.
 
-    uv run python -m src.evaluation.adjudication_view R1
+    uv run python -m src.evaluation.adjudication_view R1 [--out DIR]   # <out> = DIR, default results/analysis/recomputed/R1/ (Log #127)
 
 Reads the frozen extractions through `owner_claims.convert` / `compare` (the same unmatched rows as
 `adjudication_7a.csv`), never `owner_adjudication_causes.csv`. Writes
-`<eval>/owner_extraction/adjudication_pairs_view.csv` (first line: a GENERATED DISPLAY FILE banner) and
+`<out>/owner_extraction/adjudication_pairs_view.csv` (first line: a GENERATED DISPLAY FILE banner) and
 `adjudication_pairs_summary.json`.
 
 Pairing rule (display only), between an owner-only and an assistant-only claim of the same explanation day:
@@ -35,7 +35,7 @@ from .audit import load_records
 from .claim_check import claim_key, score_claim
 from .dataset import ROOT, load_dataset
 from .owner_claims import ABBR, FILE, _alloc_str, _canon, compare, convert
-from src.utils.paths import guard_write, long_path
+from src.utils.paths import guard_write, long_path, review_out_dir
 
 BANNER = ("# GENERATED DISPLAY FILE (src/evaluation/adjudication_view.py): not an input, plays no part in matching; "
           "edit causes in owner_adjudication_causes.csv")
@@ -152,12 +152,15 @@ def quantity_parts(o: dict, a: dict) -> list[str]:
     return parts
 
 
-def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = None) -> dict:
+def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = None,
+         out_dir: Path | None = None) -> dict:
+    dst = review_out_dir(run_id, eval_dir, out_dir) / "owner_extraction"   # never the frozen run folder (Log #127)
     ev = long_path(eval_dir or ROOT / "results" / "evaluations" / run_id)        # Log #117
     alloc = long_path(alloc_dir or ROOT / "results" / "allocations" / run_id)
     folder = ev / "owner_extraction"
     m = json.loads((alloc / "run_manifest.json").read_text(encoding="utf-8"))
-    ds, rec = load_dataset(m["dataset_id"], Path(m["data_root"])), load_records(alloc)
+    from .run_report import resolve_data_root           # the run clone may not exist here (Log #127)
+    ds, rec = load_dataset(m["dataset_id"], resolve_data_root(m)), load_records(alloc)
     owner, _ = convert(folder)
     spec = json.loads((ev / "explanation_claims_spec.json").read_text(encoding="utf-8"))["claims"]
     raw = list(csv.DictReader(open(folder / FILE, encoding="utf-8-sig")))
@@ -188,8 +191,9 @@ def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = Non
         row.update({f"owner_{k}": v for k, v in so.items()})
         row.update({f"assistant_{k}": v for k, v in sa.items()})
         rows.append(row)
-    guard_write(folder)                                   # frozen run folders are read-only (R59)
-    with open(folder / "adjudication_pairs_view.csv", "w", encoding="utf-8-sig", newline="") as f:
+    guard_write(dst)                                      # frozen run folders are read-only (R59)
+    dst.mkdir(parents=True, exist_ok=True)
+    with open(dst / "adjudication_pairs_view.csv", "w", encoding="utf-8-sig", newline="") as f:
         f.write(BANNER + "\n")
         w = csv.DictWriter(f, fieldnames=list(rows[0]), lineterminator="\n")
         w.writeheader()
@@ -201,11 +205,16 @@ def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = Non
                           "owner_only_total": len(owner_only), "assistant_only_total": len(assistant_only)},
                "differing_fields_per_field": dict(freq.most_common()),
                "differing_fields_combinations": dict(combos.most_common())}
-    (folder / "adjudication_pairs_summary.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False) + "\n",
+    (dst / "adjudication_pairs_summary.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False) + "\n",
                                                             encoding="utf-8", newline="\n")
     return summary
 
 
 if __name__ == "__main__":
-    s = main(sys.argv[1])
+    import argparse
+    _a = argparse.ArgumentParser()
+    _a.add_argument("run_id")
+    _a.add_argument("--out", help="output root (default: results/analysis/recomputed/<run_id>/; Log #127)")
+    _a = _a.parse_args()
+    s = main(_a.run_id, out_dir=Path(_a.out) if _a.out else None)
     print(json.dumps({k: v for k, v in s.items() if k not in ("pairing_rule", "display_only")}, indent=2))

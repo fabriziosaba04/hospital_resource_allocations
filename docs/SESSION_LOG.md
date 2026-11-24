@@ -991,3 +991,24 @@ No frozen file was edited, moved or re-hashed in place; transcripts untouched; n
 
 1. `launch` resumes whatever `ACTIVE_RUN` names (stays parked; no more runs are planned).
 2. `docs/EVALUATION_PLAN.md` §4 item 7 and §10 cite old development paths. Update them as a documentation-only change (like §11 #72), or leave them?
+
+## 2026-11-24 (twenty-fifth session: plan.md wording, merge, owner-review recomputation)
+
+No frozen file was edited, moved or re-hashed in place; transcripts untouched; no history rewrite.
+
+### Achieved
+
+1. **Found at session start:** 12 uncommitted, unlogged files on `cleanup` (an unfinished owner-review redirect citing a non-existent Log #125). Stashed before any edit (REFLECTION_LOG R62).
+2. **`plan.md`, "The result that would prove us wrong":** the owner's wording (Log #125; citations corrected to `EVALUATION_PLAN.md` §1, §3.7, §3.10). Limitation in `docs/LIMITATIONS_AND_REFLECTION.md` §4; one line in the README.
+3. **Parked question 2 closed:** the path note goes in `docs/CLEANUP_PLAN.md` §10, linked from the README; `EVALUATION_PLAN.md` stays byte-identical (Log #126).
+4. **Merge:** `main` fast-forwarded to `cleanup` at `7923f3b` (fast suite 217 passed, `test_readme_paths.py` 11 passed). Not pushed (no remote).
+5. **Owner-review modules** (Log #127, branch `owner-review-out`, not merged): `--out`, default `results/analysis/recomputed/R1/`; `src/08_claim_verification.py` recomputes them. 16/16 generated files byte-identical to the committed ones; recall 58/60, 56/57, 27/40, 29/49 and accuracy 948/75/26 → 1015/19/15 recomputed. No module needed a logic change.
+
+### Next
+
+1. Owner: review branch `owner-review-out` (Log #127); merge into `main`.
+2. The analysis.
+
+### Parked questions
+
+1. `launch` resumes whatever `ACTIVE_RUN` names (stays parked; no more runs are planned).

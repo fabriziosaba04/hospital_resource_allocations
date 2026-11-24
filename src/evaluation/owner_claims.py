@@ -5,7 +5,7 @@ and two committed tables in the same folder: `mapping_quantity.csv` (the free-te
 `row_overrides.csv` (row-level allocations the owner's columns do not determine). Every mapping that is not
 mechanical is listed in `non_mechanical_mappings.csv`.
 
-    uv run python -m src.evaluation.owner_claims R1
+    uv run python -m src.evaluation.owner_claims R1 [--out DIR]   # <out> = DIR, default results/analysis/recomputed/R1/ (Log #127)
 
 Rules (code in brackets is written to each converted claim's `mapping`):
   [D1] Departments: "all" or blank -> all (omitted); CA / IM / NE / OR -> department names; separators
@@ -48,7 +48,7 @@ from src.utils.constants import DEPARTMENTS
 
 from .claim_check import claim_key, extraction_recall
 from .dataset import ROOT
-from src.utils.paths import guard_write, long_path
+from src.utils.paths import guard_write, long_path, review_out_dir
 
 DEP_CODES = {"CA": "cardiology", "IM": "internal_medicine", "NE": "neurology", "OR": "orthopedics"}
 DAY_QUANTITIES = {"pool_beds", "pool_nurses", "holders", "queue", "need", "free_beds"}
@@ -310,15 +310,18 @@ def compare(owner: list[dict], spec: list[dict], days: set[int], raw_rows: list[
             "duplicate_keys_within_a_side": dup, "out_of_universe_owner_rows": oou, "adjudication": adjud}
 
 
-def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = None) -> None:
+def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = None,
+         out_dir: Path | None = None) -> None:
     from .owner_inputs import ADJ_COLS, ADJ_FILE, ADJ_KEY, ADJ_OWNER, adjudication_claim_id, adjudication_context, merge
     folder = long_path((eval_dir or ROOT / "results" / "evaluations" / run_id) / "owner_extraction")      # Log #117
     claims, nonmech = convert(folder)
-    guard_write(folder)                                   # frozen run folders are read-only (R59)
-    (folder / "owner_claims_converted.json").write_text(
+    out_root = review_out_dir(run_id, eval_dir, out_dir)  # never the frozen run folder (Log #127)
+    dst = guard_write(out_root / "owner_extraction")      # frozen run folders are read-only (R59)
+    dst.mkdir(parents=True, exist_ok=True)
+    (dst / "owner_claims_converted.json").write_text(
         json.dumps({"run_id": run_id, "source": FILE, "claims": claims}, indent=2, ensure_ascii=False) + "\n",
         encoding="utf-8", newline="\n")
-    with open(folder / "non_mechanical_mappings.csv", "w", encoding="utf-8", newline="") as f:
+    with open(dst / "non_mechanical_mappings.csv", "w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=["row", "day", "field", "text", "owner_quantity", "owner_allocation",
                                           "mapped_to", "reason"], lineterminator="\n")
         w.writeheader()
@@ -335,22 +338,27 @@ def main(run_id: str, eval_dir: Path | None = None, alloc_dir: Path | None = Non
     for a in adjud:
         a.update(causes[(a["side"], a["claim_id"])])
     cols = ["side", "claim_id"] + [c for c in adjud[0] if c not in ("side", "claim_id") + ADJ_OWNER] + list(ADJ_OWNER)
-    with open(folder / "adjudication_7a.csv", "w", encoding="utf-8-sig", newline="") as f:
+    with open(dst / "adjudication_7a.csv", "w", encoding="utf-8-sig", newline="") as f:
         w = csv.DictWriter(f, fieldnames=cols, lineterminator="\n")
         w.writeheader()
         w.writerows(adjud)
     out["adjudication_rows"] = {"owner_only": sum(a["side"] == "owner_only" for a in adjud),
                                 "assistant_only": sum(a["side"] == "assistant_only" for a in adjud)}
     out["days"] = days
-    (folder / "comparison_7a.json").write_text(json.dumps(out, indent=2, ensure_ascii=False) + "\n",
+    (dst / "comparison_7a.json").write_text(json.dumps(out, indent=2, ensure_ascii=False) + "\n",
                                                encoding="utf-8", newline="\n")
     print(json.dumps({k: out[k] for k in ("recall", "recall_if_null_quantities_collide", "adjudication_rows")},
                      indent=2))
     # the two tables just rewritten carry the owner's verdicts and causes: re-apply them (owner_verdicts.py)
     if (folder / "owner_verdicts_nonmech.csv").exists():
         from .owner_verdicts import main as apply_verdicts
-        apply_verdicts(run_id, folder.parent, alloc_dir)
+        apply_verdicts(run_id, folder.parent, alloc_dir, out_root)
 
 
 if __name__ == "__main__":
-    main(sys.argv[1])
+    import argparse
+    _a = argparse.ArgumentParser()
+    _a.add_argument("run_id")
+    _a.add_argument("--out", help="output root (default: results/analysis/recomputed/<run_id>/; Log #127)")
+    _a = _a.parse_args()
+    main(_a.run_id, out_dir=Path(_a.out) if _a.out else None)
