@@ -23,12 +23,13 @@ B1 on every metric (stop rule of the Phase 2 brief: check the pipeline before re
 import argparse
 import json
 import sys
+from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from src.evaluation.analysis import (AGENT_RUNS, ANALYSIS_DIR, BASELINES, PRIMARY, Table, frac,  # noqa: E402
+from src.evaluation.analysis import (AGENT_RUNS, ANALYSIS_DIR, BASELINES, PRIMARY, Table, audit_days, frac,  # noqa: E402
                                      lexicographic, metric_rows, policy_metrics)
 
 TABLE = {"headline": "main_headline", "secondary": "main_secondary", "context": "main_secondary",
@@ -72,6 +73,22 @@ def build() -> Table:
         for p in AGENT_RUNS + BASELINES:
             t.add("issues_by_level", lv, p, pol[p]["issues_by_level"].get(lv, 0), "gate" if lv == "Critical"
                   else "secondary", True, "explanation and process items do not apply to baselines (§4 item 1)")
+
+    levels = ("Critical", "Major", "Moderate", "Minor")    # §4 item 2: lexicographic, most severe first
+    counts = {p: tuple(pol[p]["issues_by_level"].get(lv, 0) for lv in levels) for p in pol}
+    for r in AGENT_RUNS:
+        for b in BASELINES:
+            t.add("issues_lex", f"issue counts (Critical, Major, Moderate, Minor) vs {b}", r,
+                  lexicographic(counts[r], counts[b]), "secondary", True,
+                  "lower is better; read Critical first (§4 'Use in evaluation' item 2)")
+    for p in AGENT_RUNS + BASELINES:                       # what the Moderate counts consist of
+        days = audit_days(p if p in AGENT_RUNS else f"{p}-{PRIMARY}")
+        by_type = Counter(i["type"] for d in days for i in d["issues"] if i["level"] == "Moderate")
+        t.add("moderate_issues", "nurse_gap issues (days with a net nurse gap at tier 2 or 1 only)", p,
+              by_type.get("nurse_gap", 0), "secondary", False, "audit issue type nurse_gap, level Moderate")
+        t.add("moderate_issues", "other Moderate issues", p, sum(by_type.values()) - by_type.get("nurse_gap", 0),
+              "secondary", False, ", ".join(f"{k} {v}" for k, v in sorted(by_type.items()) if k != "nurse_gap")
+              or "none")
 
     labels = [x[0] for x in rows["R1"]]
     for p in rows:

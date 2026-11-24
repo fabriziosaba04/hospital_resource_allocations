@@ -162,6 +162,11 @@ def build() -> Table:
         t.add("checker_STRESS1_extra", f"{name}: CHECKER LLM-only issues", "value",
               sum(ms["checker_llm_only"].values()), "descriptive", True,
               " ".join(f"{k} {v}" for k, v in sorted(ms["checker_llm_only"].items())) or "none")
+        if name == "checker_STRESS1_nonshock":             # rendered only if it differs from the overall table
+            strip = lambda x: {k: x[k] for k in ("by_group", "by_level", "by_type", "matched", "audit_issues",  # noqa: E731
+                                                  "checker_issues", "level_same")}
+            t.add("checker_STRESS1_extra", "non-shock stratum identical to the overall table", "value",
+                  strip(ms) == strip(m), "descriptive", False, "every stratum of every row compared")
     t.add("checker_STRESS1_extra", "date-shift matches (1-2 days)", "value", len(m["date_shift_matches"]),
           "descriptive", True)
     for ty in ("explanation_inaccuracy", "information_leak", "inconsistency", "other"):

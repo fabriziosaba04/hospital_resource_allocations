@@ -34,10 +34,11 @@ def test_headline_numbers_match_their_source_rows():
 
 
 def test_every_table_cell_is_used_once_its_table_is_rendered():
-    text, used = render(TEMPLATE.read_text(encoding="utf-8"), load_numbers())
+    template = TEMPLATE.read_text(encoding="utf-8")
+    text, used = render(template, load_numbers())
     assert "{{" not in text
     ids = {u["id"] for u in used}
-    tables = {i.split(".")[0] for i in ids}
+    tables = set(re.findall(r"\{\{table:([^}|]+)", template))   # tables rendered whole (folded rows included)
     for r in load_numbers().values():
         if r["table"] in tables:
             assert r["id"] in ids, r["id"]

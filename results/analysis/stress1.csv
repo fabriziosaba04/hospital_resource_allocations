@@ -314,6 +314,36 @@ stress_metrics.A4_tier_floor_tier_1.B0,stress_metrics,A4 tier floor tier 1,B0,38
 stress_metrics.A4_tier_floor_tier_1.B1,stress_metrics,A4 tier floor tier 1,B1,38.2,descriptive,yes,§8.2 table; never pooled with R1-R3
 stress_metrics.A4_tier_floor_tier_1.B2,stress_metrics,A4 tier floor tier 1,B2,38.2,descriptive,yes,§8.2 table; never pooled with R1-R3
 stress_metrics.A4_tier_floor_tier_1.floor,stress_metrics,A4 tier floor tier 1,floor,–,descriptive,yes,
+stress_metrics.A4_tier_shortage_tier_3_levels_3.STRESS1,stress_metrics,A4 tier shortage tier 3 (levels >= 3),STRESS1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_shortage_tier_3_levels_3.B0,stress_metrics,A4 tier shortage tier 3 (levels >= 3),B0,8.8,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_shortage_tier_3_levels_3.B1,stress_metrics,A4 tier shortage tier 3 (levels >= 3),B1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_shortage_tier_3_levels_3.B2,stress_metrics,A4 tier shortage tier 3 (levels >= 3),B2,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_shortage_tier_3_levels_3.floor,stress_metrics,A4 tier shortage tier 3 (levels >= 3),floor,0,descriptive,yes,
+stress_metrics.A4_tier_excess_tier_3_A2_raw_gap.STRESS1,stress_metrics,A4 tier excess tier 3 (= A2 raw gap),STRESS1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_excess_tier_3_A2_raw_gap.B0,stress_metrics,A4 tier excess tier 3 (= A2 raw gap),B0,8.8,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_excess_tier_3_A2_raw_gap.B1,stress_metrics,A4 tier excess tier 3 (= A2 raw gap),B1,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_excess_tier_3_A2_raw_gap.B2,stress_metrics,A4 tier excess tier 3 (= A2 raw gap),B2,0,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_excess_tier_3_A2_raw_gap.floor,stress_metrics,A4 tier excess tier 3 (= A2 raw gap),floor,0,descriptive,yes,
+stress_metrics.A4_tier_shortage_tier_2_levels_2.STRESS1,stress_metrics,A4 tier shortage tier 2 (levels >= 2),STRESS1,4.2,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_shortage_tier_2_levels_2.B0,stress_metrics,A4 tier shortage tier 2 (levels >= 2),B0,72,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_shortage_tier_2_levels_2.B1,stress_metrics,A4 tier shortage tier 2 (levels >= 2),B1,5.15,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_shortage_tier_2_levels_2.B2,stress_metrics,A4 tier shortage tier 2 (levels >= 2),B2,10.95,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_shortage_tier_2_levels_2.floor,stress_metrics,A4 tier shortage tier 2 (levels >= 2),floor,4.1,descriptive,yes,
+stress_metrics.A4_tier_excess_tier_2_A2_raw_gap.STRESS1,stress_metrics,A4 tier excess tier 2 (= A2 raw gap),STRESS1,0.1,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_excess_tier_2_A2_raw_gap.B0,stress_metrics,A4 tier excess tier 2 (= A2 raw gap),B0,67.9,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_excess_tier_2_A2_raw_gap.B1,stress_metrics,A4 tier excess tier 2 (= A2 raw gap),B1,1.05,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_excess_tier_2_A2_raw_gap.B2,stress_metrics,A4 tier excess tier 2 (= A2 raw gap),B2,6.85,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_excess_tier_2_A2_raw_gap.floor,stress_metrics,A4 tier excess tier 2 (= A2 raw gap),floor,0,descriptive,yes,
+stress_metrics.A4_tier_shortage_tier_1_levels_1.STRESS1,stress_metrics,A4 tier shortage tier 1 (levels >= 1),STRESS1,41.45,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_shortage_tier_1_levels_1.B0,stress_metrics,A4 tier shortage tier 1 (levels >= 1),B0,105.95,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_shortage_tier_1_levels_1.B1,stress_metrics,A4 tier shortage tier 1 (levels >= 1),B1,41.35,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_shortage_tier_1_levels_1.B2,stress_metrics,A4 tier shortage tier 1 (levels >= 1),B2,41,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_shortage_tier_1_levels_1.floor,stress_metrics,A4 tier shortage tier 1 (levels >= 1),floor,38.2,descriptive,yes,
+stress_metrics.A4_tier_excess_tier_1_A2_raw_gap.STRESS1,stress_metrics,A4 tier excess tier 1 (= A2 raw gap),STRESS1,3.25,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_excess_tier_1_A2_raw_gap.B0,stress_metrics,A4 tier excess tier 1 (= A2 raw gap),B0,67.75,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_excess_tier_1_A2_raw_gap.B1,stress_metrics,A4 tier excess tier 1 (= A2 raw gap),B1,3.15,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_excess_tier_1_A2_raw_gap.B2,stress_metrics,A4 tier excess tier 1 (= A2 raw gap),B2,2.8,descriptive,yes,§8.2 table; never pooled with R1-R3
+stress_metrics.A4_tier_excess_tier_1_A2_raw_gap.floor,stress_metrics,A4 tier excess tier 1 (= A2 raw gap),floor,0,descriptive,yes,
 stress_metrics.E_bed_RS_total.STRESS1,stress_metrics,E bed RS total,STRESS1,142,descriptive,yes,§8.2 table; never pooled with R1-R3
 stress_metrics.E_bed_RS_total.B0,stress_metrics,E bed RS total,B0,0,descriptive,yes,§8.2 table; never pooled with R1-R3
 stress_metrics.E_bed_RS_total.B1,stress_metrics,E bed RS total,B1,142,descriptive,yes,§8.2 table; never pooled with R1-R3
@@ -549,6 +579,7 @@ checker_STRESS1_nonshock.pooled_reference_only.precision,checker_STRESS1_nonshoc
 checker_STRESS1_nonshock.pooled_reference_only.level_agreement,checker_STRESS1_nonshock,pooled (reference only),level agreement,60/60,descriptive,yes,"kept for reference, not a headline (§4 item 5)"
 checker_STRESS1_extra.checker_STRESS1_nonshock_days.value,checker_STRESS1_extra,checker_STRESS1_nonshock: days,value,29 days,descriptive,yes,
 checker_STRESS1_extra.checker_STRESS1_nonshock_CHECKER_LLM_only_issues.value,checker_STRESS1_extra,checker_STRESS1_nonshock: CHECKER LLM-only issues,value,9,descriptive,yes,explanation_inaccuracy 9
+checker_STRESS1_extra.non_shock_stratum_identical_to_the_overall_table.value,checker_STRESS1_extra,non-shock stratum identical to the overall table,value,yes,descriptive,no,every stratum of every row compared
 checker_STRESS1_extra.date_shift_matches_1_2_days.value,checker_STRESS1_extra,date-shift matches (1-2 days),value,7,descriptive,yes,
 checker_STRESS1_extra.CHECKER_LLM_only_issues_explanation_inaccuracy.value,checker_STRESS1_extra,CHECKER LLM-only issues: explanation_inaccuracy,value,10,descriptive,yes,explanation claims of STRESS1 are not scored (§4 item 5)
 checker_STRESS1_extra.CHECKER_LLM_only_issues_information_leak.value,checker_STRESS1_extra,CHECKER LLM-only issues: information_leak,value,0,descriptive,yes,explanation claims of STRESS1 are not scored (§4 item 5)

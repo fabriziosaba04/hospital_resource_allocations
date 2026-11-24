@@ -2,6 +2,64 @@ id,value,source_file,script,pre_registered,role,label
 gate_d.gate_passed.R1,yes,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,gate,gate passed / R1
 gate_d.gate_passed.R2,yes,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,gate,gate passed / R2
 gate_d.gate_passed.R3,yes,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,gate,gate passed / R3
+main_headline.A1_SV_B.R1,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A1 SV_B / R1
+main_headline.A1_SV_B.R2,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A1 SV_B / R2
+main_headline.A1_SV_B.R3,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A1 SV_B / R3
+main_headline.A1_SV_B.B1,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A1 SV_B / B1
+main_lex.A2_tier_3_2_1_vs_B1.R1,better,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,"A2 (tier 3, 2, 1) vs B1 / R1"
+main_lex.A2_tier_3_2_1_vs_B1.R2,better,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,"A2 (tier 3, 2, 1) vs B1 / R2"
+main_lex.A2_tier_3_2_1_vs_B1.R3,better,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,"A2 (tier 3, 2, 1) vs B1 / R3"
+main_gap.A2_SV_N_tier_2.R1_B1,-0.9,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 2 / R1 - B1
+main_gap.A2_SV_N_tier_2.R2_B1,-1.05,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 2 / R2 - B1
+main_gap.A2_SV_N_tier_2.R3_B1,-0.9,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 2 / R3 - B1
+main_gap.A2_SV_N_tier_1.R1_B1,0.7,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 1 / R1 - B1
+main_gap.A2_SV_N_tier_1.R2_B1,-0.3,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 1 / R2 - B1
+main_gap.A2_SV_N_tier_1.R3_B1,-1.2,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 1 / R3 - B1
+main_headline.A2_SV_N_tier_2.B1,1.05,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 2 / B1
+main_headline.A2_SV_N_tier_1.B1,1.2,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 1 / B1
+main_gap_summary.A3_rows_with_a_non_zero_gap_to_B1.R1,0/8,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,headline,A3 rows with a non-zero gap to B1 / R1
+main_gap_summary.A3_rows_with_a_non_zero_gap_to_B1.R2,0/8,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,headline,A3 rows with a non-zero gap to B1 / R2
+main_gap_summary.A3_rows_with_a_non_zero_gap_to_B1.R3,0/8,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,headline,A3 rows with a non-zero gap to B1 / R3
+issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B1.R1,worse,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,secondary,"issue counts (Critical, Major, Moderate, Minor) vs B1 / R1"
+issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B1.R2,better,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,secondary,"issue counts (Critical, Major, Moderate, Minor) vs B1 / R2"
+issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B1.R3,better,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,secondary,"issue counts (Critical, Major, Moderate, Minor) vs B1 / R3"
+moderate_issues.nurse_gap_issues_days_with_a_net_nurse_gap_at_tier_2_or_1_only.R1,5,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,secondary,nurse_gap issues (days with a net nurse gap at tier 2 or 1 only) / R1
+moderate_issues.nurse_gap_issues_days_with_a_net_nurse_gap_at_tier_2_or_1_only.B1,3,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,secondary,nurse_gap issues (days with a net nurse gap at tier 2 or 1 only) / B1
+main_headline.A2_SV_N_tier_2.R1,0.15,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 2 / R1
+main_variability.A2_SV_N_tier_2.min,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 2 / min
+main_variability.A2_SV_N_tier_2.max,0.15,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 2 / max
+main_variability.A2_SV_N_tier_1.min,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 1 / min
+main_variability.A2_SV_N_tier_1.max,1.9,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 1 / max
+agreement.R1_R2_beds.identical_days,9/30,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R1-R2 beds / identical days
+agreement.R1_R3_beds.identical_days,8/30,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R1-R3 beds / identical days
+agreement.R2_R3_beds.identical_days,8/30,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R2-R3 beds / identical days
+agreement.R1_R2_nurses.identical_days,22/30,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R1-R2 nurses / identical days
+agreement.R1_R3_nurses.identical_days,19/30,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R1-R3 nurses / identical days
+agreement.R2_R3_nurses.identical_days,26/30,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R2-R3 nurses / identical days
+checker_R1.headline_group.recall,4/5,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,headline group / recall
+checker_R2.headline_group.recall,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,headline group / recall
+checker_R3.headline_group.recall,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,headline group / recall
+checker_R1.headline_group.precision,4/4,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,headline group / precision
+checker_R2.headline_group.precision,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,headline group / precision
+checker_R3.headline_group.precision,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,headline group / precision
+checker_R1.secondary_group.recall,76/96,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,secondary group / recall
+checker_R2.secondary_group.recall,73/91,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,secondary group / recall
+checker_R3.secondary_group.recall,62/85,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,secondary group / recall
+checker_R1.secondary_group.precision,76/85,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,secondary group / precision
+checker_R2.secondary_group.precision,73/78,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,secondary group / precision
+checker_R3.secondary_group.precision,62/68,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,secondary group / precision
+wrong_claims_primary.all_wrong_claims.recall,7/75,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,check,all wrong claims / recall
+wrong_claims_primary.all_wrong_claims.precision,7/7,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,check,all wrong claims / precision
+wrong_claims_descriptive.confirmed_wrong_claims.recall,4/19,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,descriptive,confirmed wrong claims / recall
+wrong_claims_descriptive.confirmed_wrong_claims.wrong_disputes,3,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,descriptive,confirmed wrong claims / wrong disputes
+wrong_claims_by_error_type.two_quantities_conflated.recall,2/2,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,two quantities conflated / recall
+wrong_claims_by_error_type.queue_count_wrong.recall,2/11,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,queue count wrong / recall
+stress_criterion.days_meeting_the_criterion_shock_days.STRESS1,1/1,results/analysis/stress1.csv,src/13_stress1.py,yes,primary,days meeting the criterion / shock days / STRESS1
+stress_shock_days.day_23_executed_cut.STRESS1,6,results/analysis/stress1.csv,src/13_stress1.py,yes,primary,day 23 executed cut / STRESS1
+stress_shock_days.day_23_forced_cut_c_t.STRESS1,6,results/analysis/stress1.csv,src/13_stress1.py,yes,primary,day 23 forced cut c(t) / STRESS1
+stress_shock_days.day_23_shock_cut_severity.STRESS1,0,results/analysis/stress1.csv,src/13_stress1.py,yes,primary,day 23 shock-cut severity / STRESS1
+checker_STRESS1.headline_group.recall,2/4,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,headline group / recall
+checker_STRESS1.headline_group.precision,2/2,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,headline group / precision
 gate_d.hard_constraint_violations_in_effect.R1,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,gate,hard-constraint violations in effect / R1
 gate_d.hard_constraint_violations_in_effect.R2,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,gate,hard-constraint violations in effect / R2
 gate_d.hard_constraint_violations_in_effect.R3,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,gate,hard-constraint violations in effect / R3
@@ -44,11 +102,23 @@ issues_by_level.Minor.R3,85,results/analysis/main_comparison.csv,src/10_main_com
 issues_by_level.Minor.B0,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,secondary,Minor / B0
 issues_by_level.Minor.B1,92,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,secondary,Minor / B1
 issues_by_level.Minor.B2,93,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,secondary,Minor / B2
-main_headline.A1_SV_B.R1,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A1 SV_B / R1
-main_headline.A1_SV_B.R2,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A1 SV_B / R2
-main_headline.A1_SV_B.R3,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A1 SV_B / R3
+issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B0.R1,better,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,secondary,"issue counts (Critical, Major, Moderate, Minor) vs B0 / R1"
+issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B0.R2,better,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,secondary,"issue counts (Critical, Major, Moderate, Minor) vs B0 / R2"
+issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B0.R3,better,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,secondary,"issue counts (Critical, Major, Moderate, Minor) vs B0 / R3"
+issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B2.R1,better,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,secondary,"issue counts (Critical, Major, Moderate, Minor) vs B2 / R1"
+issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B2.R2,better,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,secondary,"issue counts (Critical, Major, Moderate, Minor) vs B2 / R2"
+issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B2.R3,better,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,secondary,"issue counts (Critical, Major, Moderate, Minor) vs B2 / R3"
+moderate_issues.nurse_gap_issues_days_with_a_net_nurse_gap_at_tier_2_or_1_only.R2,1,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,secondary,nurse_gap issues (days with a net nurse gap at tier 2 or 1 only) / R2
+moderate_issues.nurse_gap_issues_days_with_a_net_nurse_gap_at_tier_2_or_1_only.R3,1,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,secondary,nurse_gap issues (days with a net nurse gap at tier 2 or 1 only) / R3
+moderate_issues.nurse_gap_issues_days_with_a_net_nurse_gap_at_tier_2_or_1_only.B0,17,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,secondary,nurse_gap issues (days with a net nurse gap at tier 2 or 1 only) / B0
+moderate_issues.nurse_gap_issues_days_with_a_net_nurse_gap_at_tier_2_or_1_only.B2,15,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,secondary,nurse_gap issues (days with a net nurse gap at tier 2 or 1 only) / B2
+moderate_issues.other_Moderate_issues.R1,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,secondary,other Moderate issues / R1
+moderate_issues.other_Moderate_issues.R2,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,secondary,other Moderate issues / R2
+moderate_issues.other_Moderate_issues.R3,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,secondary,other Moderate issues / R3
+moderate_issues.other_Moderate_issues.B0,159,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,secondary,other Moderate issues / B0
+moderate_issues.other_Moderate_issues.B1,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,secondary,other Moderate issues / B1
+moderate_issues.other_Moderate_issues.B2,4,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,secondary,other Moderate issues / B2
 main_headline.A1_SV_B.B0,280,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A1 SV_B / B0
-main_headline.A1_SV_B.B1,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A1 SV_B / B1
 main_headline.A1_SV_B.B2,3,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A1 SV_B / B2
 main_headline.A1_SV_B.floor,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A1 SV_B / floor
 main_headline.A1_displaced_severity.R1,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A1 displaced severity / R1
@@ -79,18 +149,15 @@ main_headline.A2_SV_N_tier_3.B0,8.8,results/analysis/main_comparison.csv,src/10_
 main_headline.A2_SV_N_tier_3.B1,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 3 / B1
 main_headline.A2_SV_N_tier_3.B2,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 3 / B2
 main_headline.A2_SV_N_tier_3.floor,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 3 / floor
-main_headline.A2_SV_N_tier_2.R1,0.15,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 2 / R1
 main_headline.A2_SV_N_tier_2.R2,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 2 / R2
 main_headline.A2_SV_N_tier_2.R3,0.15,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 2 / R3
 main_headline.A2_SV_N_tier_2.B0,67.9,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 2 / B0
-main_headline.A2_SV_N_tier_2.B1,1.05,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 2 / B1
 main_headline.A2_SV_N_tier_2.B2,6.85,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 2 / B2
 main_headline.A2_SV_N_tier_2.floor,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 2 / floor
 main_headline.A2_SV_N_tier_1.R1,1.9,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 1 / R1
 main_headline.A2_SV_N_tier_1.R2,0.9,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 1 / R2
 main_headline.A2_SV_N_tier_1.R3,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 1 / R3
 main_headline.A2_SV_N_tier_1.B0,65.8,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 1 / B0
-main_headline.A2_SV_N_tier_1.B1,1.2,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 1 / B1
 main_headline.A2_SV_N_tier_1.B2,0.85,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 1 / B2
 main_headline.A2_SV_N_tier_1.floor,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 1 / floor
 main_headline.A3_tier_3_raw.R1,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A3 tier 3 raw / R1
@@ -179,15 +246,9 @@ main_gap.A2_SV_N_tier_3.R3_B1,0,results/analysis/main_comparison.csv,src/10_main
 main_gap.A2_SV_N_tier_3.R1_floor,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 3 / R1 - floor
 main_gap.A2_SV_N_tier_3.R2_floor,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 3 / R2 - floor
 main_gap.A2_SV_N_tier_3.R3_floor,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 3 / R3 - floor
-main_gap.A2_SV_N_tier_2.R1_B1,-0.9,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 2 / R1 - B1
-main_gap.A2_SV_N_tier_2.R2_B1,-1.05,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 2 / R2 - B1
-main_gap.A2_SV_N_tier_2.R3_B1,-0.9,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 2 / R3 - B1
 main_gap.A2_SV_N_tier_2.R1_floor,0.15,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 2 / R1 - floor
 main_gap.A2_SV_N_tier_2.R2_floor,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 2 / R2 - floor
 main_gap.A2_SV_N_tier_2.R3_floor,0.15,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 2 / R3 - floor
-main_gap.A2_SV_N_tier_1.R1_B1,0.7,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 1 / R1 - B1
-main_gap.A2_SV_N_tier_1.R2_B1,-0.3,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 1 / R2 - B1
-main_gap.A2_SV_N_tier_1.R3_B1,-1.2,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 1 / R3 - B1
 main_gap.A2_SV_N_tier_1.R1_floor,1.9,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 1 / R1 - floor
 main_gap.A2_SV_N_tier_1.R2_floor,0.9,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 1 / R2 - floor
 main_gap.A2_SV_N_tier_1.R3_floor,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 1 / R3 - floor
@@ -245,15 +306,9 @@ main_gap_summary.A1_rows_with_a_non_zero_gap_to_B1.R3,0/4,results/analysis/main_
 main_gap_summary.A2_rows_with_a_non_zero_gap_to_B1.R1,2/3,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,headline,A2 rows with a non-zero gap to B1 / R1
 main_gap_summary.A2_rows_with_a_non_zero_gap_to_B1.R2,2/3,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,headline,A2 rows with a non-zero gap to B1 / R2
 main_gap_summary.A2_rows_with_a_non_zero_gap_to_B1.R3,2/3,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,headline,A2 rows with a non-zero gap to B1 / R3
-main_gap_summary.A3_rows_with_a_non_zero_gap_to_B1.R1,0/8,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,headline,A3 rows with a non-zero gap to B1 / R1
-main_gap_summary.A3_rows_with_a_non_zero_gap_to_B1.R2,0/8,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,headline,A3 rows with a non-zero gap to B1 / R2
-main_gap_summary.A3_rows_with_a_non_zero_gap_to_B1.R3,0/8,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,headline,A3 rows with a non-zero gap to B1 / R3
 main_lex.A2_tier_3_2_1_vs_B0.R1,better,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,"A2 (tier 3, 2, 1) vs B0 / R1"
 main_lex.A2_tier_3_2_1_vs_B0.R2,better,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,"A2 (tier 3, 2, 1) vs B0 / R2"
 main_lex.A2_tier_3_2_1_vs_B0.R3,better,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,"A2 (tier 3, 2, 1) vs B0 / R3"
-main_lex.A2_tier_3_2_1_vs_B1.R1,better,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,"A2 (tier 3, 2, 1) vs B1 / R1"
-main_lex.A2_tier_3_2_1_vs_B1.R2,better,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,"A2 (tier 3, 2, 1) vs B1 / R2"
-main_lex.A2_tier_3_2_1_vs_B1.R3,better,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,"A2 (tier 3, 2, 1) vs B1 / R3"
 main_lex.A2_tier_3_2_1_vs_B2.R1,better,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,"A2 (tier 3, 2, 1) vs B2 / R1"
 main_lex.A2_tier_3_2_1_vs_B2.R2,better,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,"A2 (tier 3, 2, 1) vs B2 / R2"
 main_lex.A2_tier_3_2_1_vs_B2.R3,better,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,"A2 (tier 3, 2, 1) vs B2 / R3"
@@ -446,6 +501,48 @@ main_secondary.A4_tier_floor_tier_1.B0,38.2,results/analysis/main_comparison.csv
 main_secondary.A4_tier_floor_tier_1.B1,38.2,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier floor tier 1 / B1
 main_secondary.A4_tier_floor_tier_1.B2,38.2,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier floor tier 1 / B2
 main_secondary.A4_tier_floor_tier_1.floor,–,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier floor tier 1 / floor
+main_secondary.A4_tier_shortage_tier_3_levels_3.R1,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 3 (levels >= 3) / R1
+main_secondary.A4_tier_shortage_tier_3_levels_3.R2,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 3 (levels >= 3) / R2
+main_secondary.A4_tier_shortage_tier_3_levels_3.R3,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 3 (levels >= 3) / R3
+main_secondary.A4_tier_shortage_tier_3_levels_3.B0,8.8,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 3 (levels >= 3) / B0
+main_secondary.A4_tier_shortage_tier_3_levels_3.B1,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 3 (levels >= 3) / B1
+main_secondary.A4_tier_shortage_tier_3_levels_3.B2,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 3 (levels >= 3) / B2
+main_secondary.A4_tier_shortage_tier_3_levels_3.floor,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 3 (levels >= 3) / floor
+main_secondary.A4_tier_excess_tier_3_A2_raw_gap.R1,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 3 (= A2 raw gap) / R1
+main_secondary.A4_tier_excess_tier_3_A2_raw_gap.R2,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 3 (= A2 raw gap) / R2
+main_secondary.A4_tier_excess_tier_3_A2_raw_gap.R3,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 3 (= A2 raw gap) / R3
+main_secondary.A4_tier_excess_tier_3_A2_raw_gap.B0,8.8,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 3 (= A2 raw gap) / B0
+main_secondary.A4_tier_excess_tier_3_A2_raw_gap.B1,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 3 (= A2 raw gap) / B1
+main_secondary.A4_tier_excess_tier_3_A2_raw_gap.B2,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 3 (= A2 raw gap) / B2
+main_secondary.A4_tier_excess_tier_3_A2_raw_gap.floor,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 3 (= A2 raw gap) / floor
+main_secondary.A4_tier_shortage_tier_2_levels_2.R1,4.25,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 2 (levels >= 2) / R1
+main_secondary.A4_tier_shortage_tier_2_levels_2.R2,4.1,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 2 (levels >= 2) / R2
+main_secondary.A4_tier_shortage_tier_2_levels_2.R3,4.25,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 2 (levels >= 2) / R3
+main_secondary.A4_tier_shortage_tier_2_levels_2.B0,72,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 2 (levels >= 2) / B0
+main_secondary.A4_tier_shortage_tier_2_levels_2.B1,5.15,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 2 (levels >= 2) / B1
+main_secondary.A4_tier_shortage_tier_2_levels_2.B2,10.95,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 2 (levels >= 2) / B2
+main_secondary.A4_tier_shortage_tier_2_levels_2.floor,4.1,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 2 (levels >= 2) / floor
+main_secondary.A4_tier_excess_tier_2_A2_raw_gap.R1,0.15,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 2 (= A2 raw gap) / R1
+main_secondary.A4_tier_excess_tier_2_A2_raw_gap.R2,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 2 (= A2 raw gap) / R2
+main_secondary.A4_tier_excess_tier_2_A2_raw_gap.R3,0.15,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 2 (= A2 raw gap) / R3
+main_secondary.A4_tier_excess_tier_2_A2_raw_gap.B0,67.9,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 2 (= A2 raw gap) / B0
+main_secondary.A4_tier_excess_tier_2_A2_raw_gap.B1,1.05,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 2 (= A2 raw gap) / B1
+main_secondary.A4_tier_excess_tier_2_A2_raw_gap.B2,6.85,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 2 (= A2 raw gap) / B2
+main_secondary.A4_tier_excess_tier_2_A2_raw_gap.floor,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 2 (= A2 raw gap) / floor
+main_secondary.A4_tier_shortage_tier_1_levels_1.R1,42.05,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 1 (levels >= 1) / R1
+main_secondary.A4_tier_shortage_tier_1_levels_1.R2,41.05,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 1 (levels >= 1) / R2
+main_secondary.A4_tier_shortage_tier_1_levels_1.R3,40.15,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 1 (levels >= 1) / R3
+main_secondary.A4_tier_shortage_tier_1_levels_1.B0,105.95,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 1 (levels >= 1) / B0
+main_secondary.A4_tier_shortage_tier_1_levels_1.B1,41.35,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 1 (levels >= 1) / B1
+main_secondary.A4_tier_shortage_tier_1_levels_1.B2,41,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 1 (levels >= 1) / B2
+main_secondary.A4_tier_shortage_tier_1_levels_1.floor,38.2,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 1 (levels >= 1) / floor
+main_secondary.A4_tier_excess_tier_1_A2_raw_gap.R1,3.85,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 1 (= A2 raw gap) / R1
+main_secondary.A4_tier_excess_tier_1_A2_raw_gap.R2,2.85,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 1 (= A2 raw gap) / R2
+main_secondary.A4_tier_excess_tier_1_A2_raw_gap.R3,1.95,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 1 (= A2 raw gap) / R3
+main_secondary.A4_tier_excess_tier_1_A2_raw_gap.B0,67.75,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 1 (= A2 raw gap) / B0
+main_secondary.A4_tier_excess_tier_1_A2_raw_gap.B1,3.15,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 1 (= A2 raw gap) / B1
+main_secondary.A4_tier_excess_tier_1_A2_raw_gap.B2,2.8,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 1 (= A2 raw gap) / B2
+main_secondary.A4_tier_excess_tier_1_A2_raw_gap.floor,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 1 (= A2 raw gap) / floor
 main_descriptive.E_bed_RS_total.R1,139,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,descriptive,E bed RS total / R1
 main_descriptive.E_bed_RS_total.R2,145,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,descriptive,E bed RS total / R2
 main_descriptive.E_bed_RS_total.R3,134,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,descriptive,E bed RS total / R3
@@ -545,11 +642,7 @@ main_variability.A1_shock_cut_severity.mean,0,results/analysis/main_comparison.c
 main_variability.A2_SV_N_tier_3.min,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 3 / min
 main_variability.A2_SV_N_tier_3.max,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 3 / max
 main_variability.A2_SV_N_tier_3.mean,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 3 / mean
-main_variability.A2_SV_N_tier_2.min,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 2 / min
-main_variability.A2_SV_N_tier_2.max,0.15,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 2 / max
 main_variability.A2_SV_N_tier_2.mean,0.1,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 2 / mean
-main_variability.A2_SV_N_tier_1.min,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 1 / min
-main_variability.A2_SV_N_tier_1.max,1.9,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 1 / max
 main_variability.A2_SV_N_tier_1.mean,0.9333,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A2 SV_N tier 1 / mean
 main_variability.A3_tier_3_raw.min,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A3 tier 3 raw / min
 main_variability.A3_tier_3_raw.max,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A3 tier 3 raw / max
@@ -656,6 +749,24 @@ main_variability.A4_tier_floor_tier_2.mean,4.1,results/analysis/main_comparison.
 main_variability.A4_tier_floor_tier_1.min,38.2,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier floor tier 1 / min
 main_variability.A4_tier_floor_tier_1.max,38.2,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier floor tier 1 / max
 main_variability.A4_tier_floor_tier_1.mean,38.2,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier floor tier 1 / mean
+main_variability.A4_tier_shortage_tier_3_levels_3.min,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 3 (levels >= 3) / min
+main_variability.A4_tier_shortage_tier_3_levels_3.max,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 3 (levels >= 3) / max
+main_variability.A4_tier_shortage_tier_3_levels_3.mean,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 3 (levels >= 3) / mean
+main_variability.A4_tier_excess_tier_3_A2_raw_gap.min,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 3 (= A2 raw gap) / min
+main_variability.A4_tier_excess_tier_3_A2_raw_gap.max,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 3 (= A2 raw gap) / max
+main_variability.A4_tier_excess_tier_3_A2_raw_gap.mean,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 3 (= A2 raw gap) / mean
+main_variability.A4_tier_shortage_tier_2_levels_2.min,4.1,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 2 (levels >= 2) / min
+main_variability.A4_tier_shortage_tier_2_levels_2.max,4.25,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 2 (levels >= 2) / max
+main_variability.A4_tier_shortage_tier_2_levels_2.mean,4.2,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 2 (levels >= 2) / mean
+main_variability.A4_tier_excess_tier_2_A2_raw_gap.min,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 2 (= A2 raw gap) / min
+main_variability.A4_tier_excess_tier_2_A2_raw_gap.max,0.15,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 2 (= A2 raw gap) / max
+main_variability.A4_tier_excess_tier_2_A2_raw_gap.mean,0.1,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 2 (= A2 raw gap) / mean
+main_variability.A4_tier_shortage_tier_1_levels_1.min,40.15,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 1 (levels >= 1) / min
+main_variability.A4_tier_shortage_tier_1_levels_1.max,42.05,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 1 (levels >= 1) / max
+main_variability.A4_tier_shortage_tier_1_levels_1.mean,41.0833,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier shortage tier 1 (levels >= 1) / mean
+main_variability.A4_tier_excess_tier_1_A2_raw_gap.min,1.95,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 1 (= A2 raw gap) / min
+main_variability.A4_tier_excess_tier_1_A2_raw_gap.max,3.85,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 1 (= A2 raw gap) / max
+main_variability.A4_tier_excess_tier_1_A2_raw_gap.mean,2.8833,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,context,A4 tier excess tier 1 (= A2 raw gap) / mean
 main_variability.E_bed_RS_total.min,134,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,descriptive,E bed RS total / min
 main_variability.E_bed_RS_total.max,145,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,descriptive,E bed RS total / max
 main_variability.E_bed_RS_total.mean,139.3333,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,descriptive,E bed RS total / mean
@@ -692,39 +803,21 @@ main_variability.B4_coverage_dispersion_L2.mean,0.0215,results/analysis/main_com
 main_variability.B4_coverage_dispersion_L3.min,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,descriptive,B4 coverage dispersion L3 / min
 main_variability.B4_coverage_dispersion_L3.max,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,descriptive,B4 coverage dispersion L3 / max
 main_variability.B4_coverage_dispersion_L3.mean,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,descriptive,B4 coverage dispersion L3 / mean
-agreement.R1_R2_beds.identical_days,9/30,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R1-R2 beds / identical days
 agreement.R1_R2_beds.mean_L1_distance,2.1333,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R1-R2 beds / mean L1 distance
-agreement.R1_R2_nurses.identical_days,22/30,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R1-R2 nurses / identical days
 agreement.R1_R2_nurses.mean_L1_distance,0.5333,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R1-R2 nurses / mean L1 distance
-agreement.R1_R3_beds.identical_days,8/30,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R1-R3 beds / identical days
 agreement.R1_R3_beds.mean_L1_distance,2.3333,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R1-R3 beds / mean L1 distance
-agreement.R1_R3_nurses.identical_days,19/30,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R1-R3 nurses / identical days
 agreement.R1_R3_nurses.mean_L1_distance,0.7333,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R1-R3 nurses / mean L1 distance
-agreement.R2_R3_beds.identical_days,8/30,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R2-R3 beds / identical days
 agreement.R2_R3_beds.mean_L1_distance,2.2,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R2-R3 beds / mean L1 distance
-agreement.R2_R3_nurses.identical_days,26/30,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R2-R3 nurses / identical days
 agreement.R2_R3_nurses.mean_L1_distance,0.2667,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R2-R3 nurses / mean L1 distance
-checker_R1.headline_group.recall,4/5,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,headline group / recall
-checker_R1.headline_group.precision,4/4,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,headline group / precision
-checker_R1.headline_group.level_agreement,4/4,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,headline group / level agreement
 checker_R1.rejected_submission_own_row.recall,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,rejected_submission (own row) / recall
 checker_R1.rejected_submission_own_row.precision,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,rejected_submission (own row) / precision
 checker_R1.rejected_submission_own_row.level_agreement,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,rejected_submission (own row) / level agreement
-checker_R1.secondary_group.recall,76/96,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,secondary group / recall
-checker_R1.secondary_group.precision,76/85,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,secondary group / precision
-checker_R1.secondary_group.level_agreement,76/76,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,secondary group / level agreement
 checker_R1.level_Critical.recall,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Critical / recall
 checker_R1.level_Critical.precision,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Critical / precision
 checker_R1.level_Critical.level_agreement,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Critical / level agreement
 checker_R1.level_Major.recall,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Major / recall
 checker_R1.level_Major.precision,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Major / precision
 checker_R1.level_Major.level_agreement,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Major / level agreement
-checker_R1.level_Moderate.recall,4/5,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Moderate / recall
-checker_R1.level_Moderate.precision,4/4,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Moderate / precision
-checker_R1.level_Moderate.level_agreement,4/4,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Moderate / level agreement
-checker_R1.level_Minor.recall,76/96,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Minor / recall
-checker_R1.level_Minor.precision,76/85,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Minor / precision
-checker_R1.level_Minor.level_agreement,76/76,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Minor / level agreement
 checker_R1.type_hard_constraint_in_effect.recall,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type hard_constraint_in_effect / recall
 checker_R1.type_hard_constraint_in_effect.precision,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type hard_constraint_in_effect / precision
 checker_R1.type_hard_constraint_in_effect.level_agreement,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type hard_constraint_in_effect / level agreement
@@ -743,12 +836,20 @@ checker_R1.type_bed_empty.level_agreement,0/0,results/analysis/checker_vs_audit.
 checker_R1.type_bed_shock_cut.recall,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type bed_shock_cut / recall
 checker_R1.type_bed_shock_cut.precision,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type bed_shock_cut / precision
 checker_R1.type_bed_shock_cut.level_agreement,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type bed_shock_cut / level agreement
-checker_R1.type_nurse_gap.recall,4/5,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type nurse_gap / recall
-checker_R1.type_nurse_gap.precision,4/4,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type nurse_gap / precision
-checker_R1.type_nurse_gap.level_agreement,4/4,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type nurse_gap / level agreement
 checker_R1.type_f1_inversion.recall,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type f1_inversion / recall
 checker_R1.type_f1_inversion.precision,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type f1_inversion / precision
 checker_R1.type_f1_inversion.level_agreement,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type f1_inversion / level agreement
+checker_R1.headline_group.level_agreement,4/4,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,headline group / level agreement
+checker_R1.secondary_group.level_agreement,76/76,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,secondary group / level agreement
+checker_R1.level_Moderate.recall,4/5,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Moderate / recall
+checker_R1.level_Moderate.precision,4/4,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Moderate / precision
+checker_R1.level_Moderate.level_agreement,4/4,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Moderate / level agreement
+checker_R1.level_Minor.recall,76/96,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Minor / recall
+checker_R1.level_Minor.precision,76/85,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Minor / precision
+checker_R1.level_Minor.level_agreement,76/76,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Minor / level agreement
+checker_R1.type_nurse_gap.recall,4/5,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type nurse_gap / recall
+checker_R1.type_nurse_gap.precision,4/4,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type nurse_gap / precision
+checker_R1.type_nurse_gap.level_agreement,4/4,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type nurse_gap / level agreement
 checker_R1.type_beds_reversal.recall,41/54,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type beds_reversal / recall
 checker_R1.type_beds_reversal.precision,41/46,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type beds_reversal / precision
 checker_R1.type_beds_reversal.level_agreement,41/41,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type beds_reversal / level agreement
@@ -761,27 +862,15 @@ checker_R1.type_reallocation_without_effect.level_agreement,2/2,results/analysis
 checker_R1.pooled_reference_only.recall,80/101,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,pooled (reference only) / recall
 checker_R1.pooled_reference_only.precision,80/89,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,pooled (reference only) / precision
 checker_R1.pooled_reference_only.level_agreement,80/80,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,pooled (reference only) / level agreement
-checker_R2.headline_group.recall,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,headline group / recall
-checker_R2.headline_group.precision,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,headline group / precision
-checker_R2.headline_group.level_agreement,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,headline group / level agreement
 checker_R2.rejected_submission_own_row.recall,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,rejected_submission (own row) / recall
 checker_R2.rejected_submission_own_row.precision,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,rejected_submission (own row) / precision
 checker_R2.rejected_submission_own_row.level_agreement,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,rejected_submission (own row) / level agreement
-checker_R2.secondary_group.recall,73/91,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,secondary group / recall
-checker_R2.secondary_group.precision,73/78,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,secondary group / precision
-checker_R2.secondary_group.level_agreement,73/73,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,secondary group / level agreement
 checker_R2.level_Critical.recall,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Critical / recall
 checker_R2.level_Critical.precision,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Critical / precision
 checker_R2.level_Critical.level_agreement,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Critical / level agreement
 checker_R2.level_Major.recall,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Major / recall
 checker_R2.level_Major.precision,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Major / precision
 checker_R2.level_Major.level_agreement,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Major / level agreement
-checker_R2.level_Moderate.recall,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Moderate / recall
-checker_R2.level_Moderate.precision,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Moderate / precision
-checker_R2.level_Moderate.level_agreement,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Moderate / level agreement
-checker_R2.level_Minor.recall,73/91,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Minor / recall
-checker_R2.level_Minor.precision,73/78,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Minor / precision
-checker_R2.level_Minor.level_agreement,73/73,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Minor / level agreement
 checker_R2.type_hard_constraint_in_effect.recall,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type hard_constraint_in_effect / recall
 checker_R2.type_hard_constraint_in_effect.precision,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type hard_constraint_in_effect / precision
 checker_R2.type_hard_constraint_in_effect.level_agreement,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type hard_constraint_in_effect / level agreement
@@ -800,12 +889,20 @@ checker_R2.type_bed_empty.level_agreement,0/0,results/analysis/checker_vs_audit.
 checker_R2.type_bed_shock_cut.recall,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type bed_shock_cut / recall
 checker_R2.type_bed_shock_cut.precision,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type bed_shock_cut / precision
 checker_R2.type_bed_shock_cut.level_agreement,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type bed_shock_cut / level agreement
-checker_R2.type_nurse_gap.recall,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type nurse_gap / recall
-checker_R2.type_nurse_gap.precision,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type nurse_gap / precision
-checker_R2.type_nurse_gap.level_agreement,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type nurse_gap / level agreement
 checker_R2.type_f1_inversion.recall,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type f1_inversion / recall
 checker_R2.type_f1_inversion.precision,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type f1_inversion / precision
 checker_R2.type_f1_inversion.level_agreement,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type f1_inversion / level agreement
+checker_R2.headline_group.level_agreement,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,headline group / level agreement
+checker_R2.secondary_group.level_agreement,73/73,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,secondary group / level agreement
+checker_R2.level_Moderate.recall,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Moderate / recall
+checker_R2.level_Moderate.precision,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Moderate / precision
+checker_R2.level_Moderate.level_agreement,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Moderate / level agreement
+checker_R2.level_Minor.recall,73/91,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Minor / recall
+checker_R2.level_Minor.precision,73/78,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Minor / precision
+checker_R2.level_Minor.level_agreement,73/73,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Minor / level agreement
+checker_R2.type_nurse_gap.recall,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type nurse_gap / recall
+checker_R2.type_nurse_gap.precision,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type nurse_gap / precision
+checker_R2.type_nurse_gap.level_agreement,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type nurse_gap / level agreement
 checker_R2.type_beds_reversal.recall,41/54,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type beds_reversal / recall
 checker_R2.type_beds_reversal.precision,41/45,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type beds_reversal / precision
 checker_R2.type_beds_reversal.level_agreement,41/41,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type beds_reversal / level agreement
@@ -818,27 +915,15 @@ checker_R2.type_reallocation_without_effect.level_agreement,3/3,results/analysis
 checker_R2.pooled_reference_only.recall,74/92,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,pooled (reference only) / recall
 checker_R2.pooled_reference_only.precision,74/79,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,pooled (reference only) / precision
 checker_R2.pooled_reference_only.level_agreement,74/74,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,pooled (reference only) / level agreement
-checker_R3.headline_group.recall,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,headline group / recall
-checker_R3.headline_group.precision,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,headline group / precision
-checker_R3.headline_group.level_agreement,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,headline group / level agreement
 checker_R3.rejected_submission_own_row.recall,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,rejected_submission (own row) / recall
 checker_R3.rejected_submission_own_row.precision,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,rejected_submission (own row) / precision
 checker_R3.rejected_submission_own_row.level_agreement,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,rejected_submission (own row) / level agreement
-checker_R3.secondary_group.recall,62/85,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,secondary group / recall
-checker_R3.secondary_group.precision,62/68,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,secondary group / precision
-checker_R3.secondary_group.level_agreement,62/62,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,secondary group / level agreement
 checker_R3.level_Critical.recall,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Critical / recall
 checker_R3.level_Critical.precision,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Critical / precision
 checker_R3.level_Critical.level_agreement,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Critical / level agreement
 checker_R3.level_Major.recall,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Major / recall
 checker_R3.level_Major.precision,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Major / precision
 checker_R3.level_Major.level_agreement,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Major / level agreement
-checker_R3.level_Moderate.recall,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Moderate / recall
-checker_R3.level_Moderate.precision,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Moderate / precision
-checker_R3.level_Moderate.level_agreement,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Moderate / level agreement
-checker_R3.level_Minor.recall,62/85,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Minor / recall
-checker_R3.level_Minor.precision,62/68,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Minor / precision
-checker_R3.level_Minor.level_agreement,62/62,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Minor / level agreement
 checker_R3.type_hard_constraint_in_effect.recall,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type hard_constraint_in_effect / recall
 checker_R3.type_hard_constraint_in_effect.precision,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type hard_constraint_in_effect / precision
 checker_R3.type_hard_constraint_in_effect.level_agreement,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type hard_constraint_in_effect / level agreement
@@ -857,12 +942,20 @@ checker_R3.type_bed_empty.level_agreement,0/0,results/analysis/checker_vs_audit.
 checker_R3.type_bed_shock_cut.recall,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type bed_shock_cut / recall
 checker_R3.type_bed_shock_cut.precision,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type bed_shock_cut / precision
 checker_R3.type_bed_shock_cut.level_agreement,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type bed_shock_cut / level agreement
-checker_R3.type_nurse_gap.recall,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type nurse_gap / recall
-checker_R3.type_nurse_gap.precision,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type nurse_gap / precision
-checker_R3.type_nurse_gap.level_agreement,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type nurse_gap / level agreement
 checker_R3.type_f1_inversion.recall,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type f1_inversion / recall
 checker_R3.type_f1_inversion.precision,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type f1_inversion / precision
 checker_R3.type_f1_inversion.level_agreement,0/0,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type f1_inversion / level agreement
+checker_R3.headline_group.level_agreement,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,headline group / level agreement
+checker_R3.secondary_group.level_agreement,62/62,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,secondary group / level agreement
+checker_R3.level_Moderate.recall,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Moderate / recall
+checker_R3.level_Moderate.precision,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Moderate / precision
+checker_R3.level_Moderate.level_agreement,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Moderate / level agreement
+checker_R3.level_Minor.recall,62/85,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Minor / recall
+checker_R3.level_Minor.precision,62/68,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Minor / precision
+checker_R3.level_Minor.level_agreement,62/62,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,level Minor / level agreement
+checker_R3.type_nurse_gap.recall,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type nurse_gap / recall
+checker_R3.type_nurse_gap.precision,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type nurse_gap / precision
+checker_R3.type_nurse_gap.level_agreement,1/1,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type nurse_gap / level agreement
 checker_R3.type_beds_reversal.recall,36/51,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type beds_reversal / recall
 checker_R3.type_beds_reversal.precision,36/39,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type beds_reversal / precision
 checker_R3.type_beds_reversal.level_agreement,36/36,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,type beds_reversal / level agreement
@@ -902,23 +995,27 @@ wrong_claims_sets.extraction_error.size,2,results/analysis/checker_on_wrong_clai
 wrong_claims_sets.confirmed_wrong.size,19,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,check,confirmed wrong / size
 wrong_claims_sets.confirmed_wrong_after_owner_review.size,19,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,descriptive,confirmed wrong after owner review / size
 wrong_claims_sets.CHECKER_LLM_only_issues_on_R1.size,5,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,descriptive,CHECKER LLM-only issues on R1 / size
+wrong_claims_descriptive.confirmed_wrong_claims.disputes_the_owner_judged_well_founded,4,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,confirmed wrong claims / disputes the owner judged well-founded
 checker_explanation_findings.explanation_findings.mapped,4,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,explanation findings / mapped
 checker_explanation_findings.explanation_findings.unmapped,1,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,explanation findings / unmapped
 checker_explanation_findings.explanation_findings.total,5,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,explanation findings / total
 checker_explanation_findings.findings_contesting_a_pre_registered_wrong_claim.value,4/5,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,findings contesting a pre-registered wrong claim / value
 checker_explanation_findings.findings_contesting_a_confirmed_wrong_claim.value,3/5,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,findings contesting a confirmed wrong claim / value
-wrong_claims_primary.all_wrong_claims.recall,7/75,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,check,all wrong claims / recall
-wrong_claims_primary.all_wrong_claims.precision,7/7,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,check,all wrong claims / precision
 wrong_claims_primary.all_wrong_claims.wrong_disputes,0,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,check,all wrong claims / wrong disputes
 wrong_claims_primary.all_wrong_claims.contested_unverifiable,0,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,check,all wrong claims / contested unverifiable
 wrong_claims_primary.all_wrong_claims.disputes_outside_the_universe,0,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,check,all wrong claims / disputes outside the universe
 wrong_claims_primary.rubric_dependent_spare_free.recall,3/54,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,check,rubric-dependent (spare/free) / recall
 wrong_claims_primary.extraction_error.recall,0/2,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,check,extraction error / recall
 wrong_claims_primary.confirmed_wrong.recall,4/19,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,check,confirmed wrong / recall
-wrong_claims_descriptive.confirmed_wrong_claims.recall,4/19,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,descriptive,confirmed wrong claims / recall
 wrong_claims_descriptive.confirmed_wrong_claims.precision,4/7,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,descriptive,confirmed wrong claims / precision
-wrong_claims_descriptive.confirmed_wrong_claims.wrong_disputes,3,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,descriptive,confirmed wrong claims / wrong disputes
-wrong_claims_by_error_type.stratification_by_error_type.status,pending: 0/19 rows confirmed,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,stratification by error type / status
+wrong_claims_by_error_type.arithmetic_slip.recall,0/1,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,arithmetic slip / recall
+wrong_claims_by_error_type.sign_error.recall,0/1,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,sign error / recall
+wrong_claims_by_error_type.wrong_tier_level.recall,0/2,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,wrong tier/level / recall
+wrong_claims_by_error_type.claim_not_simulated.recall,0/1,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,claim not simulated / recall
+wrong_claims_by_error_type.approximation_off.recall,0/1,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,approximation off / recall
+queue_errors.L2_L1_off_by_one.claims,7/11,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,L2/L1 off-by-one / claims
+queue_errors.L2_L1_swap_off_by_2.claims,2/11,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,L2/L1 swap (off by 2) / claims
+queue_errors.queue_total_off_by_one.claims,2/11,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,queue total off by one / claims
 wrong_claims_by_category.empty_beds.recall,2/3,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,empty_beds / recall
 wrong_claims_by_category.nurse_coverage.recall,0/4,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,nurse_coverage / recall
 wrong_claims_by_category.overflow.recall,2/12,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,overflow / recall
@@ -983,11 +1080,9 @@ stress_pool_context.day_27.STRESS1_pool_occupied,96 / 76,results/analysis/stress
 stress_pool_context.day_27.B0_pool_occupied,96 / 74,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 27 / B0 pool / occupied
 stress_pool_context.day_27.B1_pool_occupied,96 / 76,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 27 / B1 pool / occupied
 stress_pool_context.day_27.B2_pool_occupied,96 / 75,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 27 / B2 pool / occupied
-stress_shock_days.day_23_forced_cut_c_t.STRESS1,6,results/analysis/stress1.csv,src/13_stress1.py,yes,primary,day 23 forced cut c(t) / STRESS1
 stress_shock_days.day_23_forced_cut_c_t.B0,4,results/analysis/stress1.csv,src/13_stress1.py,yes,reference,day 23 forced cut c(t) / B0
 stress_shock_days.day_23_forced_cut_c_t.B1,6,results/analysis/stress1.csv,src/13_stress1.py,yes,reference,day 23 forced cut c(t) / B1
 stress_shock_days.day_23_forced_cut_c_t.B2,6,results/analysis/stress1.csv,src/13_stress1.py,yes,reference,day 23 forced cut c(t) / B2
-stress_shock_days.day_23_executed_cut.STRESS1,6,results/analysis/stress1.csv,src/13_stress1.py,yes,primary,day 23 executed cut / STRESS1
 stress_shock_days.day_23_executed_cut.B0,4,results/analysis/stress1.csv,src/13_stress1.py,yes,reference,day 23 executed cut / B0
 stress_shock_days.day_23_executed_cut.B1,6,results/analysis/stress1.csv,src/13_stress1.py,yes,reference,day 23 executed cut / B1
 stress_shock_days.day_23_executed_cut.B2,6,results/analysis/stress1.csv,src/13_stress1.py,yes,reference,day 23 executed cut / B2
@@ -995,7 +1090,6 @@ stress_shock_days.day_23_shock_cut_pairs.STRESS1,0,results/analysis/stress1.csv,
 stress_shock_days.day_23_shock_cut_pairs.B0,0,results/analysis/stress1.csv,src/13_stress1.py,yes,reference,day 23 shock-cut pairs / B0
 stress_shock_days.day_23_shock_cut_pairs.B1,0,results/analysis/stress1.csv,src/13_stress1.py,yes,reference,day 23 shock-cut pairs / B1
 stress_shock_days.day_23_shock_cut_pairs.B2,0,results/analysis/stress1.csv,src/13_stress1.py,yes,reference,day 23 shock-cut pairs / B2
-stress_shock_days.day_23_shock_cut_severity.STRESS1,0,results/analysis/stress1.csv,src/13_stress1.py,yes,primary,day 23 shock-cut severity / STRESS1
 stress_shock_days.day_23_shock_cut_severity.B0,0,results/analysis/stress1.csv,src/13_stress1.py,yes,reference,day 23 shock-cut severity / B0
 stress_shock_days.day_23_shock_cut_severity.B1,0,results/analysis/stress1.csv,src/13_stress1.py,yes,reference,day 23 shock-cut severity / B1
 stress_shock_days.day_23_shock_cut_severity.B2,0,results/analysis/stress1.csv,src/13_stress1.py,yes,reference,day 23 shock-cut severity / B2
@@ -1023,7 +1117,6 @@ stress_shock_days.day_23_follows_the_cut_rule.STRESS1,yes,results/analysis/stres
 stress_shock_days.day_23_follows_the_cut_rule.B0,yes,results/analysis/stress1.csv,src/13_stress1.py,yes,reference,day 23 follows the cut rule / B0
 stress_shock_days.day_23_follows_the_cut_rule.B1,yes,results/analysis/stress1.csv,src/13_stress1.py,yes,reference,day 23 follows the cut rule / B1
 stress_shock_days.day_23_follows_the_cut_rule.B2,yes,results/analysis/stress1.csv,src/13_stress1.py,yes,reference,day 23 follows the cut rule / B2
-stress_criterion.days_meeting_the_criterion_shock_days.STRESS1,1/1,results/analysis/stress1.csv,src/13_stress1.py,yes,primary,days meeting the criterion / shock days / STRESS1
 stress_criterion.days_meeting_the_criterion_shock_days.B0,1/1,results/analysis/stress1.csv,src/13_stress1.py,yes,reference,days meeting the criterion / shock days / B0
 stress_criterion.days_meeting_the_criterion_shock_days.B1,1/1,results/analysis/stress1.csv,src/13_stress1.py,yes,reference,days meeting the criterion / shock days / B1
 stress_criterion.days_meeting_the_criterion_shock_days.B2,1/1,results/analysis/stress1.csv,src/13_stress1.py,yes,reference,days meeting the criterion / shock days / B2
@@ -1241,6 +1334,36 @@ stress_metrics.A4_tier_floor_tier_1.B0,38.2,results/analysis/stress1.csv,src/13_
 stress_metrics.A4_tier_floor_tier_1.B1,38.2,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier floor tier 1 / B1
 stress_metrics.A4_tier_floor_tier_1.B2,38.2,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier floor tier 1 / B2
 stress_metrics.A4_tier_floor_tier_1.floor,–,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier floor tier 1 / floor
+stress_metrics.A4_tier_shortage_tier_3_levels_3.STRESS1,0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier shortage tier 3 (levels >= 3) / STRESS1
+stress_metrics.A4_tier_shortage_tier_3_levels_3.B0,8.8,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier shortage tier 3 (levels >= 3) / B0
+stress_metrics.A4_tier_shortage_tier_3_levels_3.B1,0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier shortage tier 3 (levels >= 3) / B1
+stress_metrics.A4_tier_shortage_tier_3_levels_3.B2,0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier shortage tier 3 (levels >= 3) / B2
+stress_metrics.A4_tier_shortage_tier_3_levels_3.floor,0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier shortage tier 3 (levels >= 3) / floor
+stress_metrics.A4_tier_excess_tier_3_A2_raw_gap.STRESS1,0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier excess tier 3 (= A2 raw gap) / STRESS1
+stress_metrics.A4_tier_excess_tier_3_A2_raw_gap.B0,8.8,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier excess tier 3 (= A2 raw gap) / B0
+stress_metrics.A4_tier_excess_tier_3_A2_raw_gap.B1,0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier excess tier 3 (= A2 raw gap) / B1
+stress_metrics.A4_tier_excess_tier_3_A2_raw_gap.B2,0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier excess tier 3 (= A2 raw gap) / B2
+stress_metrics.A4_tier_excess_tier_3_A2_raw_gap.floor,0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier excess tier 3 (= A2 raw gap) / floor
+stress_metrics.A4_tier_shortage_tier_2_levels_2.STRESS1,4.2,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier shortage tier 2 (levels >= 2) / STRESS1
+stress_metrics.A4_tier_shortage_tier_2_levels_2.B0,72,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier shortage tier 2 (levels >= 2) / B0
+stress_metrics.A4_tier_shortage_tier_2_levels_2.B1,5.15,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier shortage tier 2 (levels >= 2) / B1
+stress_metrics.A4_tier_shortage_tier_2_levels_2.B2,10.95,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier shortage tier 2 (levels >= 2) / B2
+stress_metrics.A4_tier_shortage_tier_2_levels_2.floor,4.1,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier shortage tier 2 (levels >= 2) / floor
+stress_metrics.A4_tier_excess_tier_2_A2_raw_gap.STRESS1,0.1,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier excess tier 2 (= A2 raw gap) / STRESS1
+stress_metrics.A4_tier_excess_tier_2_A2_raw_gap.B0,67.9,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier excess tier 2 (= A2 raw gap) / B0
+stress_metrics.A4_tier_excess_tier_2_A2_raw_gap.B1,1.05,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier excess tier 2 (= A2 raw gap) / B1
+stress_metrics.A4_tier_excess_tier_2_A2_raw_gap.B2,6.85,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier excess tier 2 (= A2 raw gap) / B2
+stress_metrics.A4_tier_excess_tier_2_A2_raw_gap.floor,0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier excess tier 2 (= A2 raw gap) / floor
+stress_metrics.A4_tier_shortage_tier_1_levels_1.STRESS1,41.45,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier shortage tier 1 (levels >= 1) / STRESS1
+stress_metrics.A4_tier_shortage_tier_1_levels_1.B0,105.95,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier shortage tier 1 (levels >= 1) / B0
+stress_metrics.A4_tier_shortage_tier_1_levels_1.B1,41.35,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier shortage tier 1 (levels >= 1) / B1
+stress_metrics.A4_tier_shortage_tier_1_levels_1.B2,41,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier shortage tier 1 (levels >= 1) / B2
+stress_metrics.A4_tier_shortage_tier_1_levels_1.floor,38.2,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier shortage tier 1 (levels >= 1) / floor
+stress_metrics.A4_tier_excess_tier_1_A2_raw_gap.STRESS1,3.25,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier excess tier 1 (= A2 raw gap) / STRESS1
+stress_metrics.A4_tier_excess_tier_1_A2_raw_gap.B0,67.75,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier excess tier 1 (= A2 raw gap) / B0
+stress_metrics.A4_tier_excess_tier_1_A2_raw_gap.B1,3.15,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier excess tier 1 (= A2 raw gap) / B1
+stress_metrics.A4_tier_excess_tier_1_A2_raw_gap.B2,2.8,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier excess tier 1 (= A2 raw gap) / B2
+stress_metrics.A4_tier_excess_tier_1_A2_raw_gap.floor,0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,A4 tier excess tier 1 (= A2 raw gap) / floor
 stress_metrics.E_bed_RS_total.STRESS1,142,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,E bed RS total / STRESS1
 stress_metrics.E_bed_RS_total.B0,0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,E bed RS total / B0
 stress_metrics.E_bed_RS_total.B1,142,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,E bed RS total / B1
@@ -1301,27 +1424,15 @@ stress_metrics.B4_coverage_dispersion_L3.B0,0.045,results/analysis/stress1.csv,s
 stress_metrics.B4_coverage_dispersion_L3.B1,0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,B4 coverage dispersion L3 / B1
 stress_metrics.B4_coverage_dispersion_L3.B2,0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,B4 coverage dispersion L3 / B2
 stress_metrics.B4_coverage_dispersion_L3.floor,–,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,B4 coverage dispersion L3 / floor
-checker_STRESS1.headline_group.recall,2/4,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,headline group / recall
-checker_STRESS1.headline_group.precision,2/2,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,headline group / precision
-checker_STRESS1.headline_group.level_agreement,2/2,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,headline group / level agreement
 checker_STRESS1.rejected_submission_own_row.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,rejected_submission (own row) / recall
 checker_STRESS1.rejected_submission_own_row.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,rejected_submission (own row) / precision
 checker_STRESS1.rejected_submission_own_row.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,rejected_submission (own row) / level agreement
-checker_STRESS1.secondary_group.recall,58/95,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,secondary group / recall
-checker_STRESS1.secondary_group.precision,58/68,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,secondary group / precision
-checker_STRESS1.secondary_group.level_agreement,58/58,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,secondary group / level agreement
 checker_STRESS1.level_Critical.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Critical / recall
 checker_STRESS1.level_Critical.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Critical / precision
 checker_STRESS1.level_Critical.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Critical / level agreement
 checker_STRESS1.level_Major.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Major / recall
 checker_STRESS1.level_Major.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Major / precision
 checker_STRESS1.level_Major.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Major / level agreement
-checker_STRESS1.level_Moderate.recall,2/4,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Moderate / recall
-checker_STRESS1.level_Moderate.precision,2/2,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Moderate / precision
-checker_STRESS1.level_Moderate.level_agreement,2/2,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Moderate / level agreement
-checker_STRESS1.level_Minor.recall,58/95,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Minor / recall
-checker_STRESS1.level_Minor.precision,58/68,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Minor / precision
-checker_STRESS1.level_Minor.level_agreement,58/58,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Minor / level agreement
 checker_STRESS1.type_hard_constraint_in_effect.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type hard_constraint_in_effect / recall
 checker_STRESS1.type_hard_constraint_in_effect.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type hard_constraint_in_effect / precision
 checker_STRESS1.type_hard_constraint_in_effect.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type hard_constraint_in_effect / level agreement
@@ -1340,12 +1451,22 @@ checker_STRESS1.type_bed_empty.level_agreement,0/0,results/analysis/stress1.csv,
 checker_STRESS1.type_bed_shock_cut.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type bed_shock_cut / recall
 checker_STRESS1.type_bed_shock_cut.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type bed_shock_cut / precision
 checker_STRESS1.type_bed_shock_cut.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type bed_shock_cut / level agreement
-checker_STRESS1.type_nurse_gap.recall,2/4,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type nurse_gap / recall
-checker_STRESS1.type_nurse_gap.precision,2/2,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type nurse_gap / precision
-checker_STRESS1.type_nurse_gap.level_agreement,2/2,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type nurse_gap / level agreement
 checker_STRESS1.type_f1_inversion.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type f1_inversion / recall
 checker_STRESS1.type_f1_inversion.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type f1_inversion / precision
 checker_STRESS1.type_f1_inversion.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type f1_inversion / level agreement
+checker_STRESS1.headline_group.level_agreement,2/2,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,headline group / level agreement
+checker_STRESS1.secondary_group.recall,58/95,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,secondary group / recall
+checker_STRESS1.secondary_group.precision,58/68,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,secondary group / precision
+checker_STRESS1.secondary_group.level_agreement,58/58,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,secondary group / level agreement
+checker_STRESS1.level_Moderate.recall,2/4,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Moderate / recall
+checker_STRESS1.level_Moderate.precision,2/2,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Moderate / precision
+checker_STRESS1.level_Moderate.level_agreement,2/2,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Moderate / level agreement
+checker_STRESS1.level_Minor.recall,58/95,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Minor / recall
+checker_STRESS1.level_Minor.precision,58/68,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Minor / precision
+checker_STRESS1.level_Minor.level_agreement,58/58,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Minor / level agreement
+checker_STRESS1.type_nurse_gap.recall,2/4,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type nurse_gap / recall
+checker_STRESS1.type_nurse_gap.precision,2/2,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type nurse_gap / precision
+checker_STRESS1.type_nurse_gap.level_agreement,2/2,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type nurse_gap / level agreement
 checker_STRESS1.type_beds_reversal.recall,31/55,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type beds_reversal / recall
 checker_STRESS1.type_beds_reversal.precision,31/36,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type beds_reversal / precision
 checker_STRESS1.type_beds_reversal.level_agreement,31/31,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type beds_reversal / level agreement
@@ -1358,126 +1479,15 @@ checker_STRESS1.type_reallocation_without_effect.level_agreement,2/2,results/ana
 checker_STRESS1.pooled_reference_only.recall,60/99,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,pooled (reference only) / recall
 checker_STRESS1.pooled_reference_only.precision,60/70,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,pooled (reference only) / precision
 checker_STRESS1.pooled_reference_only.level_agreement,60/60,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,pooled (reference only) / level agreement
-checker_STRESS1_shock.headline_group.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,headline group / recall
-checker_STRESS1_shock.headline_group.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,headline group / precision
-checker_STRESS1_shock.headline_group.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,headline group / level agreement
-checker_STRESS1_shock.rejected_submission_own_row.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,rejected_submission (own row) / recall
-checker_STRESS1_shock.rejected_submission_own_row.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,rejected_submission (own row) / precision
-checker_STRESS1_shock.rejected_submission_own_row.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,rejected_submission (own row) / level agreement
-checker_STRESS1_shock.secondary_group.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,secondary group / recall
-checker_STRESS1_shock.secondary_group.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,secondary group / precision
-checker_STRESS1_shock.secondary_group.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,secondary group / level agreement
-checker_STRESS1_shock.level_Critical.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Critical / recall
-checker_STRESS1_shock.level_Critical.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Critical / precision
-checker_STRESS1_shock.level_Critical.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Critical / level agreement
-checker_STRESS1_shock.level_Major.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Major / recall
-checker_STRESS1_shock.level_Major.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Major / precision
-checker_STRESS1_shock.level_Major.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Major / level agreement
-checker_STRESS1_shock.level_Moderate.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Moderate / recall
-checker_STRESS1_shock.level_Moderate.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Moderate / precision
-checker_STRESS1_shock.level_Moderate.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Moderate / level agreement
-checker_STRESS1_shock.level_Minor.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Minor / recall
-checker_STRESS1_shock.level_Minor.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Minor / precision
-checker_STRESS1_shock.level_Minor.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Minor / level agreement
-checker_STRESS1_shock.type_hard_constraint_in_effect.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type hard_constraint_in_effect / recall
-checker_STRESS1_shock.type_hard_constraint_in_effect.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type hard_constraint_in_effect / precision
-checker_STRESS1_shock.type_hard_constraint_in_effect.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type hard_constraint_in_effect / level agreement
-checker_STRESS1_shock.type_rejected_submission.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type rejected_submission / recall
-checker_STRESS1_shock.type_rejected_submission.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type rejected_submission / precision
-checker_STRESS1_shock.type_rejected_submission.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type rejected_submission / level agreement
-checker_STRESS1_shock.type_allocator_failure_day.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type allocator_failure_day / recall
-checker_STRESS1_shock.type_allocator_failure_day.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type allocator_failure_day / precision
-checker_STRESS1_shock.type_allocator_failure_day.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type allocator_failure_day / level agreement
-checker_STRESS1_shock.type_bed_displaced.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type bed_displaced / recall
-checker_STRESS1_shock.type_bed_displaced.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type bed_displaced / precision
-checker_STRESS1_shock.type_bed_displaced.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type bed_displaced / level agreement
-checker_STRESS1_shock.type_bed_empty.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type bed_empty / recall
-checker_STRESS1_shock.type_bed_empty.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type bed_empty / precision
-checker_STRESS1_shock.type_bed_empty.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type bed_empty / level agreement
-checker_STRESS1_shock.type_bed_shock_cut.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type bed_shock_cut / recall
-checker_STRESS1_shock.type_bed_shock_cut.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type bed_shock_cut / precision
-checker_STRESS1_shock.type_bed_shock_cut.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type bed_shock_cut / level agreement
-checker_STRESS1_shock.type_nurse_gap.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type nurse_gap / recall
-checker_STRESS1_shock.type_nurse_gap.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type nurse_gap / precision
-checker_STRESS1_shock.type_nurse_gap.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type nurse_gap / level agreement
-checker_STRESS1_shock.type_f1_inversion.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type f1_inversion / recall
-checker_STRESS1_shock.type_f1_inversion.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type f1_inversion / precision
-checker_STRESS1_shock.type_f1_inversion.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type f1_inversion / level agreement
-checker_STRESS1_shock.type_beds_reversal.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type beds_reversal / recall
-checker_STRESS1_shock.type_beds_reversal.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type beds_reversal / precision
-checker_STRESS1_shock.type_beds_reversal.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type beds_reversal / level agreement
-checker_STRESS1_shock.type_nurses_reversal.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type nurses_reversal / recall
-checker_STRESS1_shock.type_nurses_reversal.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type nurses_reversal / precision
-checker_STRESS1_shock.type_nurses_reversal.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type nurses_reversal / level agreement
-checker_STRESS1_shock.type_reallocation_without_effect.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type reallocation_without_effect / recall
-checker_STRESS1_shock.type_reallocation_without_effect.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type reallocation_without_effect / precision
-checker_STRESS1_shock.type_reallocation_without_effect.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type reallocation_without_effect / level agreement
-checker_STRESS1_shock.pooled_reference_only.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,pooled (reference only) / recall
-checker_STRESS1_shock.pooled_reference_only.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,pooled (reference only) / precision
-checker_STRESS1_shock.pooled_reference_only.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,pooled (reference only) / level agreement
-checker_STRESS1_nonshock.headline_group.recall,2/4,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,headline group / recall
-checker_STRESS1_nonshock.headline_group.precision,2/2,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,headline group / precision
-checker_STRESS1_nonshock.headline_group.level_agreement,2/2,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,headline group / level agreement
-checker_STRESS1_nonshock.rejected_submission_own_row.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,rejected_submission (own row) / recall
-checker_STRESS1_nonshock.rejected_submission_own_row.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,rejected_submission (own row) / precision
-checker_STRESS1_nonshock.rejected_submission_own_row.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,rejected_submission (own row) / level agreement
-checker_STRESS1_nonshock.secondary_group.recall,58/95,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,secondary group / recall
-checker_STRESS1_nonshock.secondary_group.precision,58/68,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,secondary group / precision
-checker_STRESS1_nonshock.secondary_group.level_agreement,58/58,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,secondary group / level agreement
-checker_STRESS1_nonshock.level_Critical.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Critical / recall
-checker_STRESS1_nonshock.level_Critical.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Critical / precision
-checker_STRESS1_nonshock.level_Critical.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Critical / level agreement
-checker_STRESS1_nonshock.level_Major.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Major / recall
-checker_STRESS1_nonshock.level_Major.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Major / precision
-checker_STRESS1_nonshock.level_Major.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Major / level agreement
-checker_STRESS1_nonshock.level_Moderate.recall,2/4,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Moderate / recall
-checker_STRESS1_nonshock.level_Moderate.precision,2/2,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Moderate / precision
-checker_STRESS1_nonshock.level_Moderate.level_agreement,2/2,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Moderate / level agreement
-checker_STRESS1_nonshock.level_Minor.recall,58/95,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Minor / recall
-checker_STRESS1_nonshock.level_Minor.precision,58/68,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Minor / precision
-checker_STRESS1_nonshock.level_Minor.level_agreement,58/58,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,level Minor / level agreement
-checker_STRESS1_nonshock.type_hard_constraint_in_effect.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type hard_constraint_in_effect / recall
-checker_STRESS1_nonshock.type_hard_constraint_in_effect.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type hard_constraint_in_effect / precision
-checker_STRESS1_nonshock.type_hard_constraint_in_effect.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type hard_constraint_in_effect / level agreement
-checker_STRESS1_nonshock.type_rejected_submission.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type rejected_submission / recall
-checker_STRESS1_nonshock.type_rejected_submission.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type rejected_submission / precision
-checker_STRESS1_nonshock.type_rejected_submission.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type rejected_submission / level agreement
-checker_STRESS1_nonshock.type_allocator_failure_day.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type allocator_failure_day / recall
-checker_STRESS1_nonshock.type_allocator_failure_day.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type allocator_failure_day / precision
-checker_STRESS1_nonshock.type_allocator_failure_day.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type allocator_failure_day / level agreement
-checker_STRESS1_nonshock.type_bed_displaced.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type bed_displaced / recall
-checker_STRESS1_nonshock.type_bed_displaced.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type bed_displaced / precision
-checker_STRESS1_nonshock.type_bed_displaced.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type bed_displaced / level agreement
-checker_STRESS1_nonshock.type_bed_empty.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type bed_empty / recall
-checker_STRESS1_nonshock.type_bed_empty.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type bed_empty / precision
-checker_STRESS1_nonshock.type_bed_empty.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type bed_empty / level agreement
-checker_STRESS1_nonshock.type_bed_shock_cut.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type bed_shock_cut / recall
-checker_STRESS1_nonshock.type_bed_shock_cut.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type bed_shock_cut / precision
-checker_STRESS1_nonshock.type_bed_shock_cut.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type bed_shock_cut / level agreement
-checker_STRESS1_nonshock.type_nurse_gap.recall,2/4,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type nurse_gap / recall
-checker_STRESS1_nonshock.type_nurse_gap.precision,2/2,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type nurse_gap / precision
-checker_STRESS1_nonshock.type_nurse_gap.level_agreement,2/2,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type nurse_gap / level agreement
-checker_STRESS1_nonshock.type_f1_inversion.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type f1_inversion / recall
-checker_STRESS1_nonshock.type_f1_inversion.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type f1_inversion / precision
-checker_STRESS1_nonshock.type_f1_inversion.level_agreement,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type f1_inversion / level agreement
-checker_STRESS1_nonshock.type_beds_reversal.recall,31/55,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type beds_reversal / recall
-checker_STRESS1_nonshock.type_beds_reversal.precision,31/36,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type beds_reversal / precision
-checker_STRESS1_nonshock.type_beds_reversal.level_agreement,31/31,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type beds_reversal / level agreement
-checker_STRESS1_nonshock.type_nurses_reversal.recall,25/38,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type nurses_reversal / recall
-checker_STRESS1_nonshock.type_nurses_reversal.precision,25/30,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type nurses_reversal / precision
-checker_STRESS1_nonshock.type_nurses_reversal.level_agreement,25/25,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type nurses_reversal / level agreement
-checker_STRESS1_nonshock.type_reallocation_without_effect.recall,2/2,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type reallocation_without_effect / recall
-checker_STRESS1_nonshock.type_reallocation_without_effect.precision,2/2,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type reallocation_without_effect / precision
-checker_STRESS1_nonshock.type_reallocation_without_effect.level_agreement,2/2,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,type reallocation_without_effect / level agreement
-checker_STRESS1_nonshock.pooled_reference_only.recall,60/99,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,pooled (reference only) / recall
-checker_STRESS1_nonshock.pooled_reference_only.precision,60/70,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,pooled (reference only) / precision
-checker_STRESS1_nonshock.pooled_reference_only.level_agreement,60/60,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,pooled (reference only) / level agreement
 checker_STRESS1_extra.checker_STRESS1_shock_days.value,23,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,checker_STRESS1_shock: days / value
 checker_STRESS1_extra.checker_STRESS1_shock_CHECKER_LLM_only_issues.value,1,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,checker_STRESS1_shock: CHECKER LLM-only issues / value
 checker_STRESS1_extra.checker_STRESS1_nonshock_days.value,29 days,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,checker_STRESS1_nonshock: days / value
 checker_STRESS1_extra.checker_STRESS1_nonshock_CHECKER_LLM_only_issues.value,9,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,checker_STRESS1_nonshock: CHECKER LLM-only issues / value
+checker_STRESS1_extra.non_shock_stratum_identical_to_the_overall_table.value,yes,results/analysis/stress1.csv,src/13_stress1.py,no,descriptive,non-shock stratum identical to the overall table / value
 checker_STRESS1_extra.date_shift_matches_1_2_days.value,7,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,date-shift matches (1-2 days) / value
 checker_STRESS1_extra.CHECKER_LLM_only_issues_explanation_inaccuracy.value,10,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,CHECKER LLM-only issues: explanation_inaccuracy / value
 checker_STRESS1_extra.CHECKER_LLM_only_issues_information_leak.value,0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,CHECKER LLM-only issues: information_leak / value
 checker_STRESS1_extra.CHECKER_LLM_only_issues_inconsistency.value,0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,CHECKER LLM-only issues: inconsistency / value
 checker_STRESS1_extra.CHECKER_LLM_only_issues_other.value,0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,CHECKER LLM-only issues: other / value
+checker_STRESS1_shock.pooled_reference_only.recall,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,pooled (reference only) / recall
+checker_STRESS1_shock.pooled_reference_only.precision,0/0,results/analysis/stress1.csv,src/13_stress1.py,yes,descriptive,pooled (reference only) / precision

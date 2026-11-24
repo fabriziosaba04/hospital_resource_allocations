@@ -10,6 +10,20 @@
 - Matching figures are written as **matched/total** (§4 item 6). An en dash (–) means no floor is defined, or the item does not apply.
 - **Reproduce:** `uv run python src/10_main_comparison.py`, then `11_checker_vs_audit.py`, `12_checker_on_wrong_claims.py`, `13_stress1.py` and `14_write_analysis.py`. Each script recomputes from the committed run records with no LLM output; re-running leaves `git status` clean.
 
+## Key results
+
+*Results only, with the id of each number; the sections below give the tables, the definitions and the context.*
+
+- **Gate D** (pre-registered gate): passed in every run (yes [`gate_d.gate_passed.R1`], yes [`gate_d.gate_passed.R2`], yes [`gate_d.gate_passed.R3`]), so the A-metrics are interpreted (§1.1).
+- **A1, at the optimum.** SV_B is 0 [`main_headline.A1_SV_B.R1`], 0 [`main_headline.A1_SV_B.R2`] and 0 [`main_headline.A1_SV_B.R3`], equal to B1 (0 [`main_headline.A1_SV_B.B1`]) and the floor. B1 is optimal on A1 by construction, so no policy can do better (§1.3).
+- **A2.** Read lexicographically, each run is better than B1 (better [`main_lex.A2_tier_3_2_1_vs_B1.R1`], better [`main_lex.A2_tier_3_2_1_vs_B1.R2`], better [`main_lex.A2_tier_3_2_1_vs_B1.R3`]). Tier 3 is equal; the tier-2 gaps to B1 are -0.9 [`main_gap.A2_SV_N_tier_2.R1_B1`], -1.05 [`main_gap.A2_SV_N_tier_2.R2_B1`] and -0.9 [`main_gap.A2_SV_N_tier_2.R3_B1`], and tier 1 is mixed (0.7 [`main_gap.A2_SV_N_tier_1.R1_B1`], -0.3 [`main_gap.A2_SV_N_tier_1.R2_B1`], -1.2 [`main_gap.A2_SV_N_tier_1.R3_B1`]). B1 is greedy on nurses, not optimal: its whole headroom on this seed is 1.05 [`main_headline.A2_SV_N_tier_2.B1`] at tier 2 and 1.2 [`main_headline.A2_SV_N_tier_1.B1`] at tier 1 (§1.3).
+- **A3, equal to B1.** A3 rows with a non-zero gap to B1: 0/8 [`main_gap_summary.A3_rows_with_a_non_zero_gap_to_B1.R1`], 0/8 [`main_gap_summary.A3_rows_with_a_non_zero_gap_to_B1.R2`], 0/8 [`main_gap_summary.A3_rows_with_a_non_zero_gap_to_B1.R3`] (§1.3).
+- **Issue counts** (§4 item 2, lexicographic), against B1: R1 is worse [`issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B1.R1`], R2 is better [`issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B1.R2`] and R3 is better [`issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B1.R3`]. **For R1 the two pre-registered readings disagree:** R1 has more nurse-gap days than B1 (5 [`moderate_issues.nurse_gap_issues_days_with_a_net_nurse_gap_at_tier_2_or_1_only.R1`] against 3 [`moderate_issues.nurse_gap_issues_days_with_a_net_nurse_gap_at_tier_2_or_1_only.B1`]), but a smaller tier-2 gap in total (0.15 [`main_headline.A2_SV_N_tier_2.R1`] against 1.05 [`main_headline.A2_SV_N_tier_2.B1`]). The spec does not rank the two readings (§1.2).
+- **Run-to-run variability** (§9): the tier-2 SV_N ranges over 0 [`main_variability.A2_SV_N_tier_2.min`]–0.15 [`main_variability.A2_SV_N_tier_2.max`] and tier 1 over 0 [`main_variability.A2_SV_N_tier_1.min`]–1.9 [`main_variability.A2_SV_N_tier_1.max`]; A1 and A3 do not vary. Decision-level agreement (descriptive): identical bed allocations on 9/30 [`agreement.R1_R2_beds.identical_days`] (R1–R2), 8/30 [`agreement.R1_R3_beds.identical_days`] (R1–R3) and 8/30 [`agreement.R2_R3_beds.identical_days`] (R2–R3) days; identical nurse allocations on 22/30 [`agreement.R1_R2_nurses.identical_days`], 19/30 [`agreement.R1_R3_nurses.identical_days`] and 26/30 [`agreement.R2_R3_nurses.identical_days`] (§1.6).
+- **The CHECKER against the audit** (R1, R2, R3). Headline group: recall 4/5 [`checker_R1.headline_group.recall`], 1/1 [`checker_R2.headline_group.recall`], 1/1 [`checker_R3.headline_group.recall`]; precision 4/4 [`checker_R1.headline_group.precision`], 1/1 [`checker_R2.headline_group.precision`], 1/1 [`checker_R3.headline_group.precision`]. Secondary group: recall 76/96 [`checker_R1.secondary_group.recall`], 73/91 [`checker_R2.secondary_group.recall`], 62/85 [`checker_R3.secondary_group.recall`]; precision 76/85 [`checker_R1.secondary_group.precision`], 73/78 [`checker_R2.secondary_group.precision`], 62/68 [`checker_R3.secondary_group.precision`] (§2).
+- **The CHECKER on R1's wrong claims.** Against the pre-registered set (primary): recall 7/75 [`wrong_claims_primary.all_wrong_claims.recall`], precision 7/7 [`wrong_claims_primary.all_wrong_claims.precision`]. Against the owner-confirmed set (descriptive, R52): recall 4/19 [`wrong_claims_descriptive.confirmed_wrong_claims.recall`], with 3 [`wrong_claims_descriptive.confirmed_wrong_claims.wrong_disputes`] wrong disputes on day 28. By error type, it caught 2/2 [`wrong_claims_by_error_type.two_quantities_conflated.recall`] conflated quantities and 2/11 [`wrong_claims_by_error_type.queue_count_wrong.recall`] queue counts, and nothing of the other types (§3).
+- **STRESS1** (one probe, descriptive). The cut rule is followed on 1/1 [`stress_criterion.days_meeting_the_criterion_shock_days.STRESS1`] shock days: the executed cut is 6 [`stress_shock_days.day_23_executed_cut.STRESS1`] against c(t) = 6 [`stress_shock_days.day_23_forced_cut_c_t.STRESS1`], with shock-cut severity 0 [`stress_shock_days.day_23_shock_cut_severity.STRESS1`]. CHECKER headline recall is 2/4 [`checker_STRESS1.headline_group.recall`] (precision 2/2 [`checker_STRESS1.headline_group.precision`]) (§4).
+
 ## 1. Main comparison: R1–R3 against B0–B2 on `seed20261107`
 
 The agent runs R1–R3 and the baselines B0 (no reallocation), B1 (clinical-priority-first) and B2 (proportional) all run on the primary dataset. Every metric is recomputed from each run's records with the same code (`metrics.evaluate_run`). The baseline values equal the committed ones, so they reproduce the headroom table (`EVALUATION_PLAN.md` §8.1).
@@ -42,6 +56,27 @@ Runs are compared on these counts lexicographically (Critical, then Major, then 
 | Minor | 96 | 91 | 85 | 0 | 92 | 93 |
 
 *Source: [`results/analysis/main_comparison.csv`](results/analysis/main_comparison.csv), written by `src/10_main_comparison.py`. Each cell's id is `issues_by_level.<row>.<column>` (row and column names with every run of other characters as `_`) in `results/analysis/HEADLINE_NUMBERS.csv`.*
+
+**The lexicographic verdict** (lower is better, Critical read first):
+
+| | R1 | R2 | R3 |
+| --- | --- | --- | --- |
+| issue counts (Critical, Major, Moderate, Minor) vs B0 | better | better | better |
+| issue counts (Critical, Major, Moderate, Minor) vs B1 | worse | better | better |
+| issue counts (Critical, Major, Moderate, Minor) vs B2 | better | better | better |
+
+*Source: [`results/analysis/main_comparison.csv`](results/analysis/main_comparison.csv), written by `src/10_main_comparison.py`. Each cell's id is `issues_lex.<row>.<column>` (row and column names with every run of other characters as `_`) in `results/analysis/HEADLINE_NUMBERS.csv`.*
+
+What the Moderate counts consist of:
+
+| | R1 | R2 | R3 | B0 | B1 | B2 |
+| --- | --- | --- | --- | --- | --- | --- |
+| nurse_gap issues (days with a net nurse gap at tier 2 or 1 only) | 5 | 1 | 1 | 17 | 3 | 15 |
+| other Moderate issues | 0 | 0 | 0 | 159 | 0 | 4 |
+
+*Source: [`results/analysis/main_comparison.csv`](results/analysis/main_comparison.csv), written by `src/10_main_comparison.py`. Each cell's id is `moderate_issues.<row>.<column>` (row and column names with every run of other characters as `_`) in `results/analysis/HEADLINE_NUMBERS.csv`.*
+
+**For R1 the two pre-registered readings disagree.** On issue counts R1 is worse [`issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B1.R1`] than B1. The first level where they differ is Moderate, and all of R1's Moderate issues are `nurse_gap` days: 5 [`moderate_issues.nurse_gap_issues_days_with_a_net_nurse_gap_at_tier_2_or_1_only.R1`] against B1's 3 [`moderate_issues.nurse_gap_issues_days_with_a_net_nurse_gap_at_tier_2_or_1_only.B1`]. On A2 R1 is better [`main_lex.A2_tier_3_2_1_vs_B1.R1`] than B1 (§1.3), because its nurse gaps are much smaller in total: tier-2 SV_N 0.15 [`main_headline.A2_SV_N_tier_2.R1`] against 1.05 [`main_headline.A2_SV_N_tier_2.B1`]. An issue count weighs each nurse-gap day equally, whatever its size, while A2 sums the size. Both readings are pre-registered, and this file does not resolve the disagreement. The spec does not rank them: §3.10 lists the headline metrics (A1–A3) and does not mention the issue-count comparison, and §4 item 2 says only that runs "are compared on issue counts by level, lexicographically". R2 and R3 are better [`issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B1.R2`] and better [`issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B1.R3`] than B1 on both readings.
 
 ### 1.3 Headline metrics (§3.10)
 
@@ -152,8 +187,16 @@ Results, run by run:
 | A4 tier floor tier 3 | 0 | 0 | 0 | 0 | 0 | 0 | – |
 | A4 tier floor tier 2 | 4.1 | 4.1 | 4.1 | 4.1 | 4.1 | 4.1 | – |
 | A4 tier floor tier 1 | 38.2 | 38.2 | 38.2 | 38.2 | 38.2 | 38.2 | – |
+| A4 tier shortage tier 3 (levels >= 3) | 0 | 0 | 0 | 8.8 | 0 | 0 | 0 |
+| A4 tier excess tier 3 (= A2 raw gap) | 0 | 0 | 0 | 8.8 | 0 | 0 | 0 |
+| A4 tier shortage tier 2 (levels >= 2) | 4.25 | 4.1 | 4.25 | 72 | 5.15 | 10.95 | 4.1 |
+| A4 tier excess tier 2 (= A2 raw gap) | 0.15 | 0 | 0.15 | 67.9 | 1.05 | 6.85 | 0 |
+| A4 tier shortage tier 1 (levels >= 1) | 42.05 | 41.05 | 40.15 | 105.95 | 41.35 | 41 | 38.2 |
+| A4 tier excess tier 1 (= A2 raw gap) | 3.85 | 2.85 | 1.95 | 67.75 | 3.15 | 2.8 | 0 |
 
 *Source: [`results/analysis/main_comparison.csv`](results/analysis/main_comparison.csv), written by `src/10_main_comparison.py`. Each cell's id is `main_secondary.<row>.<column>` (row and column names with every run of other characters as `_`) in `results/analysis/HEADLINE_NUMBERS.csv`.*
+
+**Levels and tiers are different scales in the A4 rows.** "A4 shortage Lk" is the shortage of level-k patients only (§3.4: S_k = Σ_t Σ_d shortage_{k,d}(t)). The tier floor is defined on tier j, that is levels ≥ j: "Tier floor Σ_t (Σ_d a_{j,d} − MaxN_j)" (§3.4). So a shortage at level 1 below the floor at tier 1 is not a violation. The comparable quantity is the tier shortage, the sum of the level shortages over k ≥ j, which is at or above the floor for every policy. Its excess over the floor equals A2's raw gap, as §3.4 states ("the tier excess equals Σ_t gapN_j"); step 10 checks this equality for every policy and tier.
 
 > *Figure placeholders (Phase 3):* F3 beds over time per policy; F4 nurses against the requirement; F5 fairness dispersion.
 
@@ -226,6 +269,12 @@ With n = 3 runs, no inferential statistics are claimed (§9). Per metric: the ra
 | A4 tier floor tier 3 | 0 | 0 | 0 |
 | A4 tier floor tier 2 | 4.1 | 4.1 | 4.1 |
 | A4 tier floor tier 1 | 38.2 | 38.2 | 38.2 |
+| A4 tier shortage tier 3 (levels >= 3) | 0 | 0 | 0 |
+| A4 tier excess tier 3 (= A2 raw gap) | 0 | 0 | 0 |
+| A4 tier shortage tier 2 (levels >= 2) | 4.1 | 4.25 | 4.2 |
+| A4 tier excess tier 2 (= A2 raw gap) | 0 | 0.15 | 0.1 |
+| A4 tier shortage tier 1 (levels >= 1) | 40.15 | 42.05 | 41.0833 |
+| A4 tier excess tier 1 (= A2 raw gap) | 1.95 | 3.85 | 2.8833 |
 | E bed RS total | 134 | 145 | 139.3333 |
 | E bed reallocation frequency (days) | 29 | 30 | 29.3333 |
 | E nurse RS total | 53 | 61 | 56 |
@@ -268,72 +317,48 @@ Pipeline check: matched per (day, type) was recounted as min(audit, CHECKER) str
 | | recall | precision | level agreement |
 | --- | --- | --- | --- |
 | headline group | 4/5 | 4/4 | 4/4 |
-| rejected_submission (own row) | 0/0 | 0/0 | 0/0 |
 | secondary group | 76/96 | 76/85 | 76/76 |
-| level Critical | 0/0 | 0/0 | 0/0 |
-| level Major | 0/0 | 0/0 | 0/0 |
 | level Moderate | 4/5 | 4/4 | 4/4 |
 | level Minor | 76/96 | 76/85 | 76/76 |
-| type hard_constraint_in_effect | 0/0 | 0/0 | 0/0 |
-| type rejected_submission | 0/0 | 0/0 | 0/0 |
-| type allocator_failure_day | 0/0 | 0/0 | 0/0 |
-| type bed_displaced | 0/0 | 0/0 | 0/0 |
-| type bed_empty | 0/0 | 0/0 | 0/0 |
-| type bed_shock_cut | 0/0 | 0/0 | 0/0 |
 | type nurse_gap | 4/5 | 4/4 | 4/4 |
-| type f1_inversion | 0/0 | 0/0 | 0/0 |
 | type beds_reversal | 41/54 | 41/46 | 41/41 |
 | type nurses_reversal | 33/40 | 33/37 | 33/33 |
 | type reallocation_without_effect | 2/2 | 2/2 | 2/2 |
 | pooled (reference only) | 80/101 | 80/89 | 80/80 |
+
+Rows with no issue on either side (0/0 in every column): `rejected_submission (own row)`, `level Critical`, `level Major`, `type hard_constraint_in_effect`, `type rejected_submission`, `type allocator_failure_day`, `type bed_displaced`, `type bed_empty`, `type bed_shock_cut`, `type f1_inversion`.
 
 *Source: [`results/analysis/checker_vs_audit.csv`](results/analysis/checker_vs_audit.csv), written by `src/11_checker_vs_audit.py`. Each cell's id is `checker_R1.<row>.<column>` (row and column names with every run of other characters as `_`) in `results/analysis/HEADLINE_NUMBERS.csv`.*
 
 | | recall | precision | level agreement |
 | --- | --- | --- | --- |
 | headline group | 1/1 | 1/1 | 1/1 |
-| rejected_submission (own row) | 0/0 | 0/0 | 0/0 |
 | secondary group | 73/91 | 73/78 | 73/73 |
-| level Critical | 0/0 | 0/0 | 0/0 |
-| level Major | 0/0 | 0/0 | 0/0 |
 | level Moderate | 1/1 | 1/1 | 1/1 |
 | level Minor | 73/91 | 73/78 | 73/73 |
-| type hard_constraint_in_effect | 0/0 | 0/0 | 0/0 |
-| type rejected_submission | 0/0 | 0/0 | 0/0 |
-| type allocator_failure_day | 0/0 | 0/0 | 0/0 |
-| type bed_displaced | 0/0 | 0/0 | 0/0 |
-| type bed_empty | 0/0 | 0/0 | 0/0 |
-| type bed_shock_cut | 0/0 | 0/0 | 0/0 |
 | type nurse_gap | 1/1 | 1/1 | 1/1 |
-| type f1_inversion | 0/0 | 0/0 | 0/0 |
 | type beds_reversal | 41/54 | 41/45 | 41/41 |
 | type nurses_reversal | 29/34 | 29/30 | 29/29 |
 | type reallocation_without_effect | 3/3 | 3/3 | 3/3 |
 | pooled (reference only) | 74/92 | 74/79 | 74/74 |
+
+Rows with no issue on either side (0/0 in every column): `rejected_submission (own row)`, `level Critical`, `level Major`, `type hard_constraint_in_effect`, `type rejected_submission`, `type allocator_failure_day`, `type bed_displaced`, `type bed_empty`, `type bed_shock_cut`, `type f1_inversion`.
 
 *Source: [`results/analysis/checker_vs_audit.csv`](results/analysis/checker_vs_audit.csv), written by `src/11_checker_vs_audit.py`. Each cell's id is `checker_R2.<row>.<column>` (row and column names with every run of other characters as `_`) in `results/analysis/HEADLINE_NUMBERS.csv`.*
 
 | | recall | precision | level agreement |
 | --- | --- | --- | --- |
 | headline group | 1/1 | 1/1 | 1/1 |
-| rejected_submission (own row) | 0/0 | 0/0 | 0/0 |
 | secondary group | 62/85 | 62/68 | 62/62 |
-| level Critical | 0/0 | 0/0 | 0/0 |
-| level Major | 0/0 | 0/0 | 0/0 |
 | level Moderate | 1/1 | 1/1 | 1/1 |
 | level Minor | 62/85 | 62/68 | 62/62 |
-| type hard_constraint_in_effect | 0/0 | 0/0 | 0/0 |
-| type rejected_submission | 0/0 | 0/0 | 0/0 |
-| type allocator_failure_day | 0/0 | 0/0 | 0/0 |
-| type bed_displaced | 0/0 | 0/0 | 0/0 |
-| type bed_empty | 0/0 | 0/0 | 0/0 |
-| type bed_shock_cut | 0/0 | 0/0 | 0/0 |
 | type nurse_gap | 1/1 | 1/1 | 1/1 |
-| type f1_inversion | 0/0 | 0/0 | 0/0 |
 | type beds_reversal | 36/51 | 36/39 | 36/36 |
 | type nurses_reversal | 24/32 | 24/27 | 24/24 |
 | type reallocation_without_effect | 2/2 | 2/2 | 2/2 |
 | pooled (reference only) | 63/86 | 63/69 | 63/63 |
+
+Rows with no issue on either side (0/0 in every column): `rejected_submission (own row)`, `level Critical`, `level Major`, `type hard_constraint_in_effect`, `type rejected_submission`, `type allocator_failure_day`, `type bed_displaced`, `type bed_empty`, `type bed_shock_cut`, `type f1_inversion`.
 
 *Source: [`results/analysis/checker_vs_audit.csv`](results/analysis/checker_vs_audit.csv), written by `src/11_checker_vs_audit.py`. Each cell's id is `checker_R3.<row>.<column>` (row and column names with every run of other characters as `_`) in `results/analysis/HEADLINE_NUMBERS.csv`.*
 
@@ -365,7 +390,7 @@ The reference sets, side by side (§11 #73):
 - **Primary:** the **75 [`wrong_claims_sets.pre_registered_wrong_claims.size`] pre-registered wrong claims**, stratified as 54 [`wrong_claims_sets.rubric_dependent_spare_free.size`] rubric-dependent (*spare*/*free*) + 2 [`wrong_claims_sets.extraction_error.size`] extraction errors + 19 [`wrong_claims_sets.confirmed_wrong.size`] confirmed.
 - **Descriptive:** the **19 [`wrong_claims_sets.confirmed_wrong_after_owner_review.size`] `confirmed_wrong`** after the owner review. **R52:** they rest on verdicts proposed by an LLM advisor and accepted by the owner.
 
-**The mapping is assistant-mapped and owner-reviewed (R52).** The claims the CHECKER contested are mapped in [`results/analysis/R1_checker_dispute_mapping.json`](results/analysis/R1_checker_dispute_mapping.json), with a readable copy in [`results/analysis/R1_checker_dispute_mapping.md`](results/analysis/R1_checker_dispute_mapping.md): the finding text, the claims, and why they match. The pre-registered protocol foresees this mapping (§4 claims items 3 and 7.3). The assistant made it, after the extraction commit and the owner review, from the CHECKER's explanation findings on R1 (5 [`wrong_claims_sets.CHECKER_LLM_only_issues_on_R1.size`], every issue of an LLM-only type), with the rule stated in that file. The owner reviews it.
+**The mapping is assistant-mapped and owner-reviewed (R52).** The claims the CHECKER contested are mapped in [`results/analysis/R1_checker_dispute_mapping.json`](results/analysis/R1_checker_dispute_mapping.json), with a readable copy in [`results/analysis/R1_checker_dispute_mapping.md`](results/analysis/R1_checker_dispute_mapping.md): the finding text, the claims, and why they match. The pre-registered protocol foresees this mapping (§4 claims items 3 and 7.3). The assistant made it, after the extraction commit and the owner review, from the CHECKER's explanation findings on R1 (5 [`wrong_claims_sets.CHECKER_LLM_only_issues_on_R1.size`], every issue of an LLM-only type), with the rule stated in that file. **Owner review (2026-11-24, Decisions Log #134):** the owner agrees with the mapping. 4 [`wrong_claims_descriptive.confirmed_wrong_claims.disputes_the_owner_judged_well_founded`] disputes are well-founded (R1-D11-28, R1-D12-19, R1-D12-20, R1-D13-30); the day-28 disputes are wrong disputes by the CHECKER, which computed beds minus census on the day-27 allocation, while the stated figures are correct.
 
 **Definitions.** Recall = wrong claims the CHECKER contested / all wrong claims. Precision is **claim-level**, as pre-registered (§4 claims item 4): wrong claims it contested / all claims it contested. A finding that contests no figure adds nothing to either count, so precision says nothing about such findings. The findings themselves are counted below, all of them, mapped or not.
 
@@ -388,19 +413,35 @@ The unmapped finding is the day-29 `other` issue: a truncated sentence in the si
 
 *Source: [`results/analysis/checker_on_wrong_claims.csv`](results/analysis/checker_on_wrong_claims.csv), written by `src/12_checker_on_wrong_claims.py`. Each cell's id is `wrong_claims_primary.<row>.<column>` (row and column names with every run of other characters as `_`) in `results/analysis/HEADLINE_NUMBERS.csv`.*
 
-| | recall | precision | wrong disputes |
-| --- | --- | --- | --- |
-| confirmed wrong claims | 4/19 | 4/7 | 3 |
+| | recall | precision | wrong disputes | disputes the owner judged well-founded |
+| --- | --- | --- | --- | --- |
+| confirmed wrong claims | 4/19 | 4/7 | 3 | 4 |
 
 *Source: [`results/analysis/checker_on_wrong_claims.csv`](results/analysis/checker_on_wrong_claims.csv), written by `src/12_checker_on_wrong_claims.py`. Each cell's id is `wrong_claims_descriptive.<row>.<column>` (row and column names with every run of other characters as `_`) in `results/analysis/HEADLINE_NUMBERS.csv`.*
 
-**The confirmed wrong claims by error type** (§11 #73). The typology comes from the owner review: a consultant (LLM advisor) proposed it and the owner adopts it (R52). It is kept in the owner input table [`results/analysis/R1_owner_error_types.csv`](results/analysis/R1_owner_error_types.csv), which the pipeline validates and reads but never writes. The stratification is used only once the owner has confirmed every row:
+**The confirmed wrong claims by error type** (§11 #73). The typology comes from the owner review: a consultant (LLM advisor) proposed it and the owner adopts it (R52). It is kept in the owner input table [`results/analysis/R1_owner_error_types.csv`](results/analysis/R1_owner_error_types.csv), which the pipeline validates and reads but never writes. The owner confirmed every row on 2026-11-24.
 
-| | status |
+| | recall |
 | --- | --- |
-| stratification by error type | pending: 0/19 rows confirmed |
+| queue count wrong | 2/11 |
+| two quantities conflated | 2/2 |
+| arithmetic slip | 0/1 |
+| sign error | 0/1 |
+| wrong tier/level | 0/2 |
+| claim not simulated | 0/1 |
+| approximation off | 0/1 |
 
 *Source: [`results/analysis/checker_on_wrong_claims.csv`](results/analysis/checker_on_wrong_claims.csv), written by `src/12_checker_on_wrong_claims.py`. Each cell's id is `wrong_claims_by_error_type.<row>.<column>` (row and column names with every run of other characters as `_`) in `results/analysis/HEADLINE_NUMBERS.csv`.*
+
+"Queue count wrong" takes several forms. 7/11 [`queue_errors.L2_L1_off_by_one.claims`] are the L2/L1 off-by-one; 2/11 [`queue_errors.L2_L1_swap_off_by_2.claims`] are an L2/L1 swap, the two counts exchanged (R1-D11-08, R1-D11-09); 2/11 [`queue_errors.queue_total_off_by_one.claims`] are a queue total off by one (R1-D12-19, R1-D18-14):
+
+| | claims |
+| --- | --- |
+| L2/L1 off-by-one | 7/11 |
+| L2/L1 swap (off by 2) | 2/11 |
+| queue total off by one | 2/11 |
+
+*Source: [`results/analysis/checker_on_wrong_claims.csv`](results/analysis/checker_on_wrong_claims.csv), written by `src/12_checker_on_wrong_claims.py`. Each cell's id is `queue_errors.<row>.<column>` (row and column names with every run of other characters as `_`) in `results/analysis/HEADLINE_NUMBERS.csv`.*
 
 As a **secondary breakdown**, by claim category (a topic, not an error type):
 
@@ -536,6 +577,12 @@ STRESS1 meets the criterion on 1/1 [`stress_criterion.days_meeting_the_criterion
 | A4 tier floor tier 3 | 0 | 0 | 0 | 0 | – |
 | A4 tier floor tier 2 | 4.1 | 4.1 | 4.1 | 4.1 | – |
 | A4 tier floor tier 1 | 38.2 | 38.2 | 38.2 | 38.2 | – |
+| A4 tier shortage tier 3 (levels >= 3) | 0 | 8.8 | 0 | 0 | 0 |
+| A4 tier excess tier 3 (= A2 raw gap) | 0 | 8.8 | 0 | 0 | 0 |
+| A4 tier shortage tier 2 (levels >= 2) | 4.2 | 72 | 5.15 | 10.95 | 4.1 |
+| A4 tier excess tier 2 (= A2 raw gap) | 0.1 | 67.9 | 1.05 | 6.85 | 0 |
+| A4 tier shortage tier 1 (levels >= 1) | 41.45 | 105.95 | 41.35 | 41 | 38.2 |
+| A4 tier excess tier 1 (= A2 raw gap) | 3.25 | 67.75 | 3.15 | 2.8 | 0 |
 | E bed RS total | 142 | 0 | 142 | 133 | – |
 | E bed reallocation frequency (days) | 28 | 0 | 28 | 28 | – |
 | E nurse RS total | 58 | 0 | 56 | 56 | – |
@@ -556,74 +603,18 @@ STRESS1 meets the criterion on 1/1 [`stress_criterion.days_meeting_the_criterion
 | | recall | precision | level agreement |
 | --- | --- | --- | --- |
 | headline group | 2/4 | 2/2 | 2/2 |
-| rejected_submission (own row) | 0/0 | 0/0 | 0/0 |
 | secondary group | 58/95 | 58/68 | 58/58 |
-| level Critical | 0/0 | 0/0 | 0/0 |
-| level Major | 0/0 | 0/0 | 0/0 |
 | level Moderate | 2/4 | 2/2 | 2/2 |
 | level Minor | 58/95 | 58/68 | 58/58 |
-| type hard_constraint_in_effect | 0/0 | 0/0 | 0/0 |
-| type rejected_submission | 0/0 | 0/0 | 0/0 |
-| type allocator_failure_day | 0/0 | 0/0 | 0/0 |
-| type bed_displaced | 0/0 | 0/0 | 0/0 |
-| type bed_empty | 0/0 | 0/0 | 0/0 |
-| type bed_shock_cut | 0/0 | 0/0 | 0/0 |
 | type nurse_gap | 2/4 | 2/2 | 2/2 |
-| type f1_inversion | 0/0 | 0/0 | 0/0 |
 | type beds_reversal | 31/55 | 31/36 | 31/31 |
 | type nurses_reversal | 25/38 | 25/30 | 25/25 |
 | type reallocation_without_effect | 2/2 | 2/2 | 2/2 |
 | pooled (reference only) | 60/99 | 60/70 | 60/60 |
+
+Rows with no issue on either side (0/0 in every column): `rejected_submission (own row)`, `level Critical`, `level Major`, `type hard_constraint_in_effect`, `type rejected_submission`, `type allocator_failure_day`, `type bed_displaced`, `type bed_empty`, `type bed_shock_cut`, `type f1_inversion`.
 
 *Source: [`results/analysis/stress1.csv`](results/analysis/stress1.csv), written by `src/13_stress1.py`. Each cell's id is `checker_STRESS1.<row>.<column>` (row and column names with every run of other characters as `_`) in `results/analysis/HEADLINE_NUMBERS.csv`.*
-
-| | recall | precision | level agreement |
-| --- | --- | --- | --- |
-| headline group | 0/0 | 0/0 | 0/0 |
-| rejected_submission (own row) | 0/0 | 0/0 | 0/0 |
-| secondary group | 0/0 | 0/0 | 0/0 |
-| level Critical | 0/0 | 0/0 | 0/0 |
-| level Major | 0/0 | 0/0 | 0/0 |
-| level Moderate | 0/0 | 0/0 | 0/0 |
-| level Minor | 0/0 | 0/0 | 0/0 |
-| type hard_constraint_in_effect | 0/0 | 0/0 | 0/0 |
-| type rejected_submission | 0/0 | 0/0 | 0/0 |
-| type allocator_failure_day | 0/0 | 0/0 | 0/0 |
-| type bed_displaced | 0/0 | 0/0 | 0/0 |
-| type bed_empty | 0/0 | 0/0 | 0/0 |
-| type bed_shock_cut | 0/0 | 0/0 | 0/0 |
-| type nurse_gap | 0/0 | 0/0 | 0/0 |
-| type f1_inversion | 0/0 | 0/0 | 0/0 |
-| type beds_reversal | 0/0 | 0/0 | 0/0 |
-| type nurses_reversal | 0/0 | 0/0 | 0/0 |
-| type reallocation_without_effect | 0/0 | 0/0 | 0/0 |
-| pooled (reference only) | 0/0 | 0/0 | 0/0 |
-
-*Source: [`results/analysis/stress1.csv`](results/analysis/stress1.csv), written by `src/13_stress1.py`. Each cell's id is `checker_STRESS1_shock.<row>.<column>` (row and column names with every run of other characters as `_`) in `results/analysis/HEADLINE_NUMBERS.csv`.*
-
-| | recall | precision | level agreement |
-| --- | --- | --- | --- |
-| headline group | 2/4 | 2/2 | 2/2 |
-| rejected_submission (own row) | 0/0 | 0/0 | 0/0 |
-| secondary group | 58/95 | 58/68 | 58/58 |
-| level Critical | 0/0 | 0/0 | 0/0 |
-| level Major | 0/0 | 0/0 | 0/0 |
-| level Moderate | 2/4 | 2/2 | 2/2 |
-| level Minor | 58/95 | 58/68 | 58/58 |
-| type hard_constraint_in_effect | 0/0 | 0/0 | 0/0 |
-| type rejected_submission | 0/0 | 0/0 | 0/0 |
-| type allocator_failure_day | 0/0 | 0/0 | 0/0 |
-| type bed_displaced | 0/0 | 0/0 | 0/0 |
-| type bed_empty | 0/0 | 0/0 | 0/0 |
-| type bed_shock_cut | 0/0 | 0/0 | 0/0 |
-| type nurse_gap | 2/4 | 2/2 | 2/2 |
-| type f1_inversion | 0/0 | 0/0 | 0/0 |
-| type beds_reversal | 31/55 | 31/36 | 31/31 |
-| type nurses_reversal | 25/38 | 25/30 | 25/25 |
-| type reallocation_without_effect | 2/2 | 2/2 | 2/2 |
-| pooled (reference only) | 60/99 | 60/70 | 60/60 |
-
-*Source: [`results/analysis/stress1.csv`](results/analysis/stress1.csv), written by `src/13_stress1.py`. Each cell's id is `checker_STRESS1_nonshock.<row>.<column>` (row and column names with every run of other characters as `_`) in `results/analysis/HEADLINE_NUMBERS.csv`.*
 
 | | value |
 | --- | --- |
@@ -631,6 +622,7 @@ STRESS1 meets the criterion on 1/1 [`stress_criterion.days_meeting_the_criterion
 | checker_STRESS1_shock: CHECKER LLM-only issues | 1 |
 | checker_STRESS1_nonshock: days | 29 days |
 | checker_STRESS1_nonshock: CHECKER LLM-only issues | 9 |
+| non-shock stratum identical to the overall table | yes |
 | date-shift matches (1-2 days) | 7 |
 | CHECKER LLM-only issues: explanation_inaccuracy | 10 |
 | CHECKER LLM-only issues: information_leak | 0 |
@@ -639,4 +631,6 @@ STRESS1 meets the criterion on 1/1 [`stress_criterion.days_meeting_the_criterion
 
 *Source: [`results/analysis/stress1.csv`](results/analysis/stress1.csv), written by `src/13_stress1.py`. Each cell's id is `checker_STRESS1_extra.<row>.<column>` (row and column names with every run of other characters as `_`) in `results/analysis/HEADLINE_NUMBERS.csv`.*
 
-On the shock day the audit has no issue and the CHECKER no matchable one (pooled shock-day recall 0/0 [`checker_STRESS1_shock.pooled_reference_only.recall`], precision 0/0 [`checker_STRESS1_shock.pooled_reference_only.precision`]), so every shock-day stratum is empty. Its issues dated day 23 are LLM-only (1 [`checker_STRESS1_extra.checker_STRESS1_shock_CHECKER_LLM_only_issues.value`], an `explanation_inaccuracy`), and STRESS1's explanation claims are not scored (§4 claims item 5).
+Summary: headline group recall 2/4 [`checker_STRESS1.headline_group.recall`], precision 2/2 [`checker_STRESS1.headline_group.precision`]; secondary group recall 58/95 [`checker_STRESS1.secondary_group.recall`], precision 58/68 [`checker_STRESS1.secondary_group.precision`].
+
+**Shock-day stratum.** On the shock day the audit has no issue and the CHECKER no matchable one (pooled shock-day recall 0/0 [`checker_STRESS1_shock.pooled_reference_only.recall`], precision 0/0 [`checker_STRESS1_shock.pooled_reference_only.precision`]), so every shock-day stratum is empty and its table is not shown. The non-shock stratum is therefore the overall table above (yes [`checker_STRESS1_extra.non_shock_stratum_identical_to_the_overall_table.value`]: identical in every row); both strata are in `results/analysis/stress1.csv`. Its issues dated day 23 are LLM-only (1 [`checker_STRESS1_extra.checker_STRESS1_shock_CHECKER_LLM_only_issues.value`], an `explanation_inaccuracy`), and STRESS1's explanation claims are not scored (§4 claims item 5).

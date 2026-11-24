@@ -513,3 +513,19 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **Consequence:** the case is not a CHECKER miss. It shows a class of error that only a transcript audit can see: a false statement of verification outside the explanation fields. `ANALYSIS.md` words it that way (owner, 2026-11-24).
 - **Implication:** before scoring a reviewer on a case, check that the evidence was inside its information set.
 
+### R67. Level and tier rows side by side made A4 look like a broken floor
+
+- **Type:** development/process (presentation of a result).
+- **What happened:** the A4 table showed "A4 shortage L1" (level 1 only) directly above "A4 tier floor tier 1" (levels ≥ 1), with no note. Every policy's level-1 shortage was below the tier-1 floor of 38.2, which reads as a floor being undercut, i.e. a bug. The owner flagged it and suggested a lexicographic floor as the cause.
+- **How it was caught:** by the owner, reading `ANALYSIS.md`. Checked against §3.4 and `metrics.py`: the floor sums need over k ≥ j; it is not lexicographic. On the tier scale every policy is at or above the floor (R1 42.05, B2 41.0 against 38.2), and the excess equals A2's raw gap per tier, as §3.4 states.
+- **Fix:** tier-scale rows (tier shortage, tier excess) with the §3.4 identity as a stop check in `metric_rows`, and a note under the table quoting the definition.
+- **Implication:** two quantities on different scales must not share a table without the scale in the row name; "L" and "tier" looked alike enough to mislead.
+
+### R68. A new block landed in the wrong branch and silently produced nothing
+
+- **Type:** development/process.
+- **What happened:** the breakdown of the 11 "queue count wrong" claims was inserted after the `else:` of the error-type branch, so it ran only while the owner table was unconfirmed, and produced no row once it was confirmed. Nothing failed.
+- **How it was caught:** the expected `queue_errors` rows were missing from the step-12 output that was printed to check them.
+- **Fix:** the block moved into the confirmed branch; the rendered text references its ids, so `test_analysis` now fails if it disappears again.
+- **Implication:** check that a new output is actually present, not only that the script exits 0.
+

@@ -1061,3 +1061,21 @@ No frozen file was edited, moved or re-hashed in place; transcripts untouched; n
 1. `launch` resumes whatever `ACTIVE_RUN` names (stays parked; no more runs are planned).
 2. `ANALYSIS.md` renders every cell of every table (1482 numbers); the per-type CHECKER rows could move to an appendix.
 
+## 2026-11-24 (twenty-eighth session: ANALYSIS.md review, merge of `analysis`)
+
+No frozen file was edited, moved or re-hashed in place; transcripts untouched; no history rewrite.
+
+### Achieved
+
+1. Owner-edited `R1_owner_error_types.csv` committed as edited (`9691526`); owner review recorded in the mapping (Log #134). The error-type breakdown of the 4/19: conflated quantities 2/2, queue count 2/11, the other five types 0.
+2. Issue-count verdicts and the R1 disagreement with A2; A4 level/tier scales explained, with the §3.4 identity as a stop check (no bug; REFLECTION_LOG R67); collapsed CHECKER tables; key results at the top (Log #135). R68.
+3. `analysis` merged into `main`.
+
+### Next
+
+1. Phase 3: figures (F1–F6), then ERROR_ANALYSIS.md and REFLECTION.md.
+
+### Parked questions
+
+1. `launch` resumes whatever `ACTIVE_RUN` names (stays parked; no more runs are planned).
+

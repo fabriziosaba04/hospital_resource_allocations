@@ -133,6 +133,16 @@ def metric_rows(m: dict) -> list[tuple[str, str, object, object]]:
         out.append((f"A4 shortage L{k}", "secondary", a4["shortage_by_level"][k], None))
     for k in (3, 2, 1):
         out.append((f"A4 tier floor tier {k}", "context", a4["tier_floor"][k], None))
+    # The shortage above is per level k; the floor is per tier j (levels >= j, §3.4). On the tier scale the
+    # shortage is the sum over k >= j, and its excess over the floor must equal A2's raw gap at tier j (§3.4:
+    # "the tier excess equals Σ_t gapN_j"). A difference is a bug, not a finding.
+    for j in (3, 2, 1):
+        tier = round(sum(a4["shortage_by_level"][k] for k in (1, 2, 3) if k >= j), 4)
+        excess = round(tier - a4["tier_floor"][j], 4)
+        if abs(excess - m["A2"][f"tier{j}"]["raw_gap"]) > 1e-6:
+            raise SystemExit(f"STOP: A4 tier {j} excess {excess} != A2 raw gap {m['A2'][f'tier{j}']['raw_gap']}")
+        out.append((f"A4 tier shortage tier {j} (levels >= {j})", "context", tier, a4["tier_floor"][j]))
+        out.append((f"A4 tier excess tier {j} (= A2 raw gap)", "context", excess, 0))
     for res, name in (("beds", "bed"), ("nurses", "nurse")):
         out.append((f"E {name} RS total", "descriptive", e[res]["RS_total"], None))
         out.append((f"E {name} reallocation frequency (days)", "descriptive", e[res]["frequency_days"], None))
@@ -195,14 +205,22 @@ def render(template: str, numbers: dict[str, dict]) -> tuple[str, list[dict]]:
                 raise KeyError(f"unknown id {key}")
             use(numbers[key])
             return f"{numbers[key]['value']} [`{key}`]"
-        rows = [r for r in numbers.values() if r["table"] == key and (not opt or re.search(opt, r["row"]))]
+        collapse = opt == "collapse"                         # fold rows that are 0/0 in every column
+        rows = [r for r in numbers.values() if r["table"] == key
+                and (not opt or collapse or re.search(opt, r["row"]))]
         if not rows:
             raise KeyError(f"unknown or empty table {key}")
         order_r = list(dict.fromkeys(r["row"] for r in rows))
         order_c = list(dict.fromkeys(r["col"] for r in rows))
         cell = {(r["row"], r["col"]): r for r in rows}
         lines = ["| | " + " | ".join(_cell(c) for c in order_c) + " |", "| --- |" + " --- |" * len(order_c)]
-        for rr in order_r:
+        folded = [rr for rr in order_r if collapse
+                  and all(cell[(rr, c)]["value"] == "0/0" for c in order_c if (rr, c) in cell)]
+        for rr in folded:
+            for c in order_c:
+                if (rr, c) in cell:
+                    use(cell[(rr, c)])
+        for rr in (x for x in order_r if x not in folded):
             vals = []
             for c in order_c:
                 r = cell.get((rr, c))
@@ -211,6 +229,9 @@ def render(template: str, numbers: dict[str, dict]) -> tuple[str, list[dict]]:
                 vals.append(_cell(r["value"]) if r is not None else "")
             lines.append(f"| {_cell(rr)} | " + " | ".join(vals) + " |")
         src = rows[0]
+        if folded:
+            lines += ["", "Rows with no issue on either side (0/0 in every column): "
+                      + ", ".join(f"`{x}`" for x in folded) + "."]
         lines.append("")
         lines.append(f"*Source: [`{src['source_file']}`]({src['source_file']}), written by `{src['script']}`. "
                      f"Each cell's id is `{key}.<row>.<column>` (row and column names with every run of other characters as `_`) in `results/analysis/HEADLINE_NUMBERS.csv`.*")

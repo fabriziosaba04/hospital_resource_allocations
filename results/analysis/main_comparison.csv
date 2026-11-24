@@ -44,6 +44,27 @@ issues_by_level.Minor.R3,issues_by_level,Minor,R3,85,secondary,yes,explanation a
 issues_by_level.Minor.B0,issues_by_level,Minor,B0,0,secondary,yes,explanation and process items do not apply to baselines (§4 item 1)
 issues_by_level.Minor.B1,issues_by_level,Minor,B1,92,secondary,yes,explanation and process items do not apply to baselines (§4 item 1)
 issues_by_level.Minor.B2,issues_by_level,Minor,B2,93,secondary,yes,explanation and process items do not apply to baselines (§4 item 1)
+issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B0.R1,issues_lex,"issue counts (Critical, Major, Moderate, Minor) vs B0",R1,better,secondary,yes,lower is better; read Critical first (§4 'Use in evaluation' item 2)
+issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B1.R1,issues_lex,"issue counts (Critical, Major, Moderate, Minor) vs B1",R1,worse,secondary,yes,lower is better; read Critical first (§4 'Use in evaluation' item 2)
+issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B2.R1,issues_lex,"issue counts (Critical, Major, Moderate, Minor) vs B2",R1,better,secondary,yes,lower is better; read Critical first (§4 'Use in evaluation' item 2)
+issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B0.R2,issues_lex,"issue counts (Critical, Major, Moderate, Minor) vs B0",R2,better,secondary,yes,lower is better; read Critical first (§4 'Use in evaluation' item 2)
+issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B1.R2,issues_lex,"issue counts (Critical, Major, Moderate, Minor) vs B1",R2,better,secondary,yes,lower is better; read Critical first (§4 'Use in evaluation' item 2)
+issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B2.R2,issues_lex,"issue counts (Critical, Major, Moderate, Minor) vs B2",R2,better,secondary,yes,lower is better; read Critical first (§4 'Use in evaluation' item 2)
+issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B0.R3,issues_lex,"issue counts (Critical, Major, Moderate, Minor) vs B0",R3,better,secondary,yes,lower is better; read Critical first (§4 'Use in evaluation' item 2)
+issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B1.R3,issues_lex,"issue counts (Critical, Major, Moderate, Minor) vs B1",R3,better,secondary,yes,lower is better; read Critical first (§4 'Use in evaluation' item 2)
+issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B2.R3,issues_lex,"issue counts (Critical, Major, Moderate, Minor) vs B2",R3,better,secondary,yes,lower is better; read Critical first (§4 'Use in evaluation' item 2)
+moderate_issues.nurse_gap_issues_days_with_a_net_nurse_gap_at_tier_2_or_1_only.R1,moderate_issues,nurse_gap issues (days with a net nurse gap at tier 2 or 1 only),R1,5,secondary,no,"audit issue type nurse_gap, level Moderate"
+moderate_issues.other_Moderate_issues.R1,moderate_issues,other Moderate issues,R1,0,secondary,no,none
+moderate_issues.nurse_gap_issues_days_with_a_net_nurse_gap_at_tier_2_or_1_only.R2,moderate_issues,nurse_gap issues (days with a net nurse gap at tier 2 or 1 only),R2,1,secondary,no,"audit issue type nurse_gap, level Moderate"
+moderate_issues.other_Moderate_issues.R2,moderate_issues,other Moderate issues,R2,0,secondary,no,none
+moderate_issues.nurse_gap_issues_days_with_a_net_nurse_gap_at_tier_2_or_1_only.R3,moderate_issues,nurse_gap issues (days with a net nurse gap at tier 2 or 1 only),R3,1,secondary,no,"audit issue type nurse_gap, level Moderate"
+moderate_issues.other_Moderate_issues.R3,moderate_issues,other Moderate issues,R3,0,secondary,no,none
+moderate_issues.nurse_gap_issues_days_with_a_net_nurse_gap_at_tier_2_or_1_only.B0,moderate_issues,nurse_gap issues (days with a net nurse gap at tier 2 or 1 only),B0,17,secondary,no,"audit issue type nurse_gap, level Moderate"
+moderate_issues.other_Moderate_issues.B0,moderate_issues,other Moderate issues,B0,159,secondary,no,"bed_displaced 8, bed_empty 64, f1_inversion 87"
+moderate_issues.nurse_gap_issues_days_with_a_net_nurse_gap_at_tier_2_or_1_only.B1,moderate_issues,nurse_gap issues (days with a net nurse gap at tier 2 or 1 only),B1,3,secondary,no,"audit issue type nurse_gap, level Moderate"
+moderate_issues.other_Moderate_issues.B1,moderate_issues,other Moderate issues,B1,0,secondary,no,none
+moderate_issues.nurse_gap_issues_days_with_a_net_nurse_gap_at_tier_2_or_1_only.B2,moderate_issues,nurse_gap issues (days with a net nurse gap at tier 2 or 1 only),B2,15,secondary,no,"audit issue type nurse_gap, level Moderate"
+moderate_issues.other_Moderate_issues.B2,moderate_issues,other Moderate issues,B2,4,secondary,no,"bed_displaced 3, f1_inversion 1"
 main_headline.A1_SV_B.R1,main_headline,A1 SV_B,R1,0,headline,yes,
 main_headline.A1_SV_B.R2,main_headline,A1 SV_B,R2,0,headline,yes,
 main_headline.A1_SV_B.R3,main_headline,A1 SV_B,R3,0,headline,yes,
@@ -554,6 +575,66 @@ main_secondary.A4_tier_floor_tier_1.floor,main_secondary,A4 tier floor tier 1,fl
 main_variability.A4_tier_floor_tier_1.min,main_variability,A4 tier floor tier 1,min,38.2,context,yes,§9
 main_variability.A4_tier_floor_tier_1.max,main_variability,A4 tier floor tier 1,max,38.2,context,yes,§9
 main_variability.A4_tier_floor_tier_1.mean,main_variability,A4 tier floor tier 1,mean,38.2,context,yes,§9: mean over R1-R3
+main_secondary.A4_tier_shortage_tier_3_levels_3.R1,main_secondary,A4 tier shortage tier 3 (levels >= 3),R1,0,context,yes,
+main_secondary.A4_tier_shortage_tier_3_levels_3.R2,main_secondary,A4 tier shortage tier 3 (levels >= 3),R2,0,context,yes,
+main_secondary.A4_tier_shortage_tier_3_levels_3.R3,main_secondary,A4 tier shortage tier 3 (levels >= 3),R3,0,context,yes,
+main_secondary.A4_tier_shortage_tier_3_levels_3.B0,main_secondary,A4 tier shortage tier 3 (levels >= 3),B0,8.8,context,yes,
+main_secondary.A4_tier_shortage_tier_3_levels_3.B1,main_secondary,A4 tier shortage tier 3 (levels >= 3),B1,0,context,yes,
+main_secondary.A4_tier_shortage_tier_3_levels_3.B2,main_secondary,A4 tier shortage tier 3 (levels >= 3),B2,0,context,yes,
+main_secondary.A4_tier_shortage_tier_3_levels_3.floor,main_secondary,A4 tier shortage tier 3 (levels >= 3),floor,0,context,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.A4_tier_shortage_tier_3_levels_3.min,main_variability,A4 tier shortage tier 3 (levels >= 3),min,0,context,yes,§9
+main_variability.A4_tier_shortage_tier_3_levels_3.max,main_variability,A4 tier shortage tier 3 (levels >= 3),max,0,context,yes,§9
+main_variability.A4_tier_shortage_tier_3_levels_3.mean,main_variability,A4 tier shortage tier 3 (levels >= 3),mean,0,context,yes,§9: mean over R1-R3
+main_secondary.A4_tier_excess_tier_3_A2_raw_gap.R1,main_secondary,A4 tier excess tier 3 (= A2 raw gap),R1,0,context,yes,
+main_secondary.A4_tier_excess_tier_3_A2_raw_gap.R2,main_secondary,A4 tier excess tier 3 (= A2 raw gap),R2,0,context,yes,
+main_secondary.A4_tier_excess_tier_3_A2_raw_gap.R3,main_secondary,A4 tier excess tier 3 (= A2 raw gap),R3,0,context,yes,
+main_secondary.A4_tier_excess_tier_3_A2_raw_gap.B0,main_secondary,A4 tier excess tier 3 (= A2 raw gap),B0,8.8,context,yes,
+main_secondary.A4_tier_excess_tier_3_A2_raw_gap.B1,main_secondary,A4 tier excess tier 3 (= A2 raw gap),B1,0,context,yes,
+main_secondary.A4_tier_excess_tier_3_A2_raw_gap.B2,main_secondary,A4 tier excess tier 3 (= A2 raw gap),B2,0,context,yes,
+main_secondary.A4_tier_excess_tier_3_A2_raw_gap.floor,main_secondary,A4 tier excess tier 3 (= A2 raw gap),floor,0,context,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.A4_tier_excess_tier_3_A2_raw_gap.min,main_variability,A4 tier excess tier 3 (= A2 raw gap),min,0,context,yes,§9
+main_variability.A4_tier_excess_tier_3_A2_raw_gap.max,main_variability,A4 tier excess tier 3 (= A2 raw gap),max,0,context,yes,§9
+main_variability.A4_tier_excess_tier_3_A2_raw_gap.mean,main_variability,A4 tier excess tier 3 (= A2 raw gap),mean,0,context,yes,§9: mean over R1-R3
+main_secondary.A4_tier_shortage_tier_2_levels_2.R1,main_secondary,A4 tier shortage tier 2 (levels >= 2),R1,4.25,context,yes,
+main_secondary.A4_tier_shortage_tier_2_levels_2.R2,main_secondary,A4 tier shortage tier 2 (levels >= 2),R2,4.1,context,yes,
+main_secondary.A4_tier_shortage_tier_2_levels_2.R3,main_secondary,A4 tier shortage tier 2 (levels >= 2),R3,4.25,context,yes,
+main_secondary.A4_tier_shortage_tier_2_levels_2.B0,main_secondary,A4 tier shortage tier 2 (levels >= 2),B0,72,context,yes,
+main_secondary.A4_tier_shortage_tier_2_levels_2.B1,main_secondary,A4 tier shortage tier 2 (levels >= 2),B1,5.15,context,yes,
+main_secondary.A4_tier_shortage_tier_2_levels_2.B2,main_secondary,A4 tier shortage tier 2 (levels >= 2),B2,10.95,context,yes,
+main_secondary.A4_tier_shortage_tier_2_levels_2.floor,main_secondary,A4 tier shortage tier 2 (levels >= 2),floor,4.1,context,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.A4_tier_shortage_tier_2_levels_2.min,main_variability,A4 tier shortage tier 2 (levels >= 2),min,4.1,context,yes,§9
+main_variability.A4_tier_shortage_tier_2_levels_2.max,main_variability,A4 tier shortage tier 2 (levels >= 2),max,4.25,context,yes,§9
+main_variability.A4_tier_shortage_tier_2_levels_2.mean,main_variability,A4 tier shortage tier 2 (levels >= 2),mean,4.2,context,yes,§9: mean over R1-R3
+main_secondary.A4_tier_excess_tier_2_A2_raw_gap.R1,main_secondary,A4 tier excess tier 2 (= A2 raw gap),R1,0.15,context,yes,
+main_secondary.A4_tier_excess_tier_2_A2_raw_gap.R2,main_secondary,A4 tier excess tier 2 (= A2 raw gap),R2,0,context,yes,
+main_secondary.A4_tier_excess_tier_2_A2_raw_gap.R3,main_secondary,A4 tier excess tier 2 (= A2 raw gap),R3,0.15,context,yes,
+main_secondary.A4_tier_excess_tier_2_A2_raw_gap.B0,main_secondary,A4 tier excess tier 2 (= A2 raw gap),B0,67.9,context,yes,
+main_secondary.A4_tier_excess_tier_2_A2_raw_gap.B1,main_secondary,A4 tier excess tier 2 (= A2 raw gap),B1,1.05,context,yes,
+main_secondary.A4_tier_excess_tier_2_A2_raw_gap.B2,main_secondary,A4 tier excess tier 2 (= A2 raw gap),B2,6.85,context,yes,
+main_secondary.A4_tier_excess_tier_2_A2_raw_gap.floor,main_secondary,A4 tier excess tier 2 (= A2 raw gap),floor,0,context,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.A4_tier_excess_tier_2_A2_raw_gap.min,main_variability,A4 tier excess tier 2 (= A2 raw gap),min,0,context,yes,§9
+main_variability.A4_tier_excess_tier_2_A2_raw_gap.max,main_variability,A4 tier excess tier 2 (= A2 raw gap),max,0.15,context,yes,§9
+main_variability.A4_tier_excess_tier_2_A2_raw_gap.mean,main_variability,A4 tier excess tier 2 (= A2 raw gap),mean,0.1,context,yes,§9: mean over R1-R3
+main_secondary.A4_tier_shortage_tier_1_levels_1.R1,main_secondary,A4 tier shortage tier 1 (levels >= 1),R1,42.05,context,yes,
+main_secondary.A4_tier_shortage_tier_1_levels_1.R2,main_secondary,A4 tier shortage tier 1 (levels >= 1),R2,41.05,context,yes,
+main_secondary.A4_tier_shortage_tier_1_levels_1.R3,main_secondary,A4 tier shortage tier 1 (levels >= 1),R3,40.15,context,yes,
+main_secondary.A4_tier_shortage_tier_1_levels_1.B0,main_secondary,A4 tier shortage tier 1 (levels >= 1),B0,105.95,context,yes,
+main_secondary.A4_tier_shortage_tier_1_levels_1.B1,main_secondary,A4 tier shortage tier 1 (levels >= 1),B1,41.35,context,yes,
+main_secondary.A4_tier_shortage_tier_1_levels_1.B2,main_secondary,A4 tier shortage tier 1 (levels >= 1),B2,41,context,yes,
+main_secondary.A4_tier_shortage_tier_1_levels_1.floor,main_secondary,A4 tier shortage tier 1 (levels >= 1),floor,38.2,context,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.A4_tier_shortage_tier_1_levels_1.min,main_variability,A4 tier shortage tier 1 (levels >= 1),min,40.15,context,yes,§9
+main_variability.A4_tier_shortage_tier_1_levels_1.max,main_variability,A4 tier shortage tier 1 (levels >= 1),max,42.05,context,yes,§9
+main_variability.A4_tier_shortage_tier_1_levels_1.mean,main_variability,A4 tier shortage tier 1 (levels >= 1),mean,41.0833,context,yes,§9: mean over R1-R3
+main_secondary.A4_tier_excess_tier_1_A2_raw_gap.R1,main_secondary,A4 tier excess tier 1 (= A2 raw gap),R1,3.85,context,yes,
+main_secondary.A4_tier_excess_tier_1_A2_raw_gap.R2,main_secondary,A4 tier excess tier 1 (= A2 raw gap),R2,2.85,context,yes,
+main_secondary.A4_tier_excess_tier_1_A2_raw_gap.R3,main_secondary,A4 tier excess tier 1 (= A2 raw gap),R3,1.95,context,yes,
+main_secondary.A4_tier_excess_tier_1_A2_raw_gap.B0,main_secondary,A4 tier excess tier 1 (= A2 raw gap),B0,67.75,context,yes,
+main_secondary.A4_tier_excess_tier_1_A2_raw_gap.B1,main_secondary,A4 tier excess tier 1 (= A2 raw gap),B1,3.15,context,yes,
+main_secondary.A4_tier_excess_tier_1_A2_raw_gap.B2,main_secondary,A4 tier excess tier 1 (= A2 raw gap),B2,2.8,context,yes,
+main_secondary.A4_tier_excess_tier_1_A2_raw_gap.floor,main_secondary,A4 tier excess tier 1 (= A2 raw gap),floor,0,context,yes,policy-independent; a floor of 0 is a lower bound (§8)
+main_variability.A4_tier_excess_tier_1_A2_raw_gap.min,main_variability,A4 tier excess tier 1 (= A2 raw gap),min,1.95,context,yes,§9
+main_variability.A4_tier_excess_tier_1_A2_raw_gap.max,main_variability,A4 tier excess tier 1 (= A2 raw gap),max,3.85,context,yes,§9
+main_variability.A4_tier_excess_tier_1_A2_raw_gap.mean,main_variability,A4 tier excess tier 1 (= A2 raw gap),mean,2.8833,context,yes,§9: mean over R1-R3
 main_descriptive.E_bed_RS_total.R1,main_descriptive,E bed RS total,R1,139,descriptive,yes,
 main_descriptive.E_bed_RS_total.R2,main_descriptive,E bed RS total,R2,145,descriptive,yes,
 main_descriptive.E_bed_RS_total.R3,main_descriptive,E bed RS total,R3,134,descriptive,yes,

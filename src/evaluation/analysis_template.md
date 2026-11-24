@@ -10,6 +10,20 @@
 - Matching figures are written as **matched/total** (§4 item 6). An en dash (–) means no floor is defined, or the item does not apply.
 - **Reproduce:** `uv run python src/10_main_comparison.py`, then `11_checker_vs_audit.py`, `12_checker_on_wrong_claims.py`, `13_stress1.py` and `14_write_analysis.py`. Each script recomputes from the committed run records with no LLM output; re-running leaves `git status` clean.
 
+## Key results
+
+*Results only, with the id of each number; the sections below give the tables, the definitions and the context.*
+
+- **Gate D** (pre-registered gate): passed in every run ({{n:gate_d.gate_passed.R1}}, {{n:gate_d.gate_passed.R2}}, {{n:gate_d.gate_passed.R3}}), so the A-metrics are interpreted (§1.1).
+- **A1, at the optimum.** SV_B is {{n:main_headline.A1_SV_B.R1}}, {{n:main_headline.A1_SV_B.R2}} and {{n:main_headline.A1_SV_B.R3}}, equal to B1 ({{n:main_headline.A1_SV_B.B1}}) and the floor. B1 is optimal on A1 by construction, so no policy can do better (§1.3).
+- **A2.** Read lexicographically, each run is better than B1 ({{n:main_lex.A2_tier_3_2_1_vs_B1.R1}}, {{n:main_lex.A2_tier_3_2_1_vs_B1.R2}}, {{n:main_lex.A2_tier_3_2_1_vs_B1.R3}}). Tier 3 is equal; the tier-2 gaps to B1 are {{n:main_gap.A2_SV_N_tier_2.R1_B1}}, {{n:main_gap.A2_SV_N_tier_2.R2_B1}} and {{n:main_gap.A2_SV_N_tier_2.R3_B1}}, and tier 1 is mixed ({{n:main_gap.A2_SV_N_tier_1.R1_B1}}, {{n:main_gap.A2_SV_N_tier_1.R2_B1}}, {{n:main_gap.A2_SV_N_tier_1.R3_B1}}). B1 is greedy on nurses, not optimal: its whole headroom on this seed is {{n:main_headline.A2_SV_N_tier_2.B1}} at tier 2 and {{n:main_headline.A2_SV_N_tier_1.B1}} at tier 1 (§1.3).
+- **A3, equal to B1.** A3 rows with a non-zero gap to B1: {{n:main_gap_summary.A3_rows_with_a_non_zero_gap_to_B1.R1}}, {{n:main_gap_summary.A3_rows_with_a_non_zero_gap_to_B1.R2}}, {{n:main_gap_summary.A3_rows_with_a_non_zero_gap_to_B1.R3}} (§1.3).
+- **Issue counts** (§4 item 2, lexicographic), against B1: R1 is {{n:issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B1.R1}}, R2 is {{n:issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B1.R2}} and R3 is {{n:issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B1.R3}}. **For R1 the two pre-registered readings disagree:** R1 has more nurse-gap days than B1 ({{n:moderate_issues.nurse_gap_issues_days_with_a_net_nurse_gap_at_tier_2_or_1_only.R1}} against {{n:moderate_issues.nurse_gap_issues_days_with_a_net_nurse_gap_at_tier_2_or_1_only.B1}}), but a smaller tier-2 gap in total ({{n:main_headline.A2_SV_N_tier_2.R1}} against {{n:main_headline.A2_SV_N_tier_2.B1}}). The spec does not rank the two readings (§1.2).
+- **Run-to-run variability** (§9): the tier-2 SV_N ranges over {{n:main_variability.A2_SV_N_tier_2.min}}–{{n:main_variability.A2_SV_N_tier_2.max}} and tier 1 over {{n:main_variability.A2_SV_N_tier_1.min}}–{{n:main_variability.A2_SV_N_tier_1.max}}; A1 and A3 do not vary. Decision-level agreement (descriptive): identical bed allocations on {{n:agreement.R1_R2_beds.identical_days}} (R1–R2), {{n:agreement.R1_R3_beds.identical_days}} (R1–R3) and {{n:agreement.R2_R3_beds.identical_days}} (R2–R3) days; identical nurse allocations on {{n:agreement.R1_R2_nurses.identical_days}}, {{n:agreement.R1_R3_nurses.identical_days}} and {{n:agreement.R2_R3_nurses.identical_days}} (§1.6).
+- **The CHECKER against the audit** (R1, R2, R3). Headline group: recall {{n:checker_R1.headline_group.recall}}, {{n:checker_R2.headline_group.recall}}, {{n:checker_R3.headline_group.recall}}; precision {{n:checker_R1.headline_group.precision}}, {{n:checker_R2.headline_group.precision}}, {{n:checker_R3.headline_group.precision}}. Secondary group: recall {{n:checker_R1.secondary_group.recall}}, {{n:checker_R2.secondary_group.recall}}, {{n:checker_R3.secondary_group.recall}}; precision {{n:checker_R1.secondary_group.precision}}, {{n:checker_R2.secondary_group.precision}}, {{n:checker_R3.secondary_group.precision}} (§2).
+- **The CHECKER on R1's wrong claims.** Against the pre-registered set (primary): recall {{n:wrong_claims_primary.all_wrong_claims.recall}}, precision {{n:wrong_claims_primary.all_wrong_claims.precision}}. Against the owner-confirmed set (descriptive, R52): recall {{n:wrong_claims_descriptive.confirmed_wrong_claims.recall}}, with {{n:wrong_claims_descriptive.confirmed_wrong_claims.wrong_disputes}} wrong disputes on day 28. By error type, it caught {{n:wrong_claims_by_error_type.two_quantities_conflated.recall}} conflated quantities and {{n:wrong_claims_by_error_type.queue_count_wrong.recall}} queue counts, and nothing of the other types (§3).
+- **STRESS1** (one probe, descriptive). The cut rule is followed on {{n:stress_criterion.days_meeting_the_criterion_shock_days.STRESS1}} shock days: the executed cut is {{n:stress_shock_days.day_23_executed_cut.STRESS1}} against c(t) = {{n:stress_shock_days.day_23_forced_cut_c_t.STRESS1}}, with shock-cut severity {{n:stress_shock_days.day_23_shock_cut_severity.STRESS1}}. CHECKER headline recall is {{n:checker_STRESS1.headline_group.recall}} (precision {{n:checker_STRESS1.headline_group.precision}}) (§4).
+
 ## 1. Main comparison: R1–R3 against B0–B2 on `seed20261107`
 
 The agent runs R1–R3 and the baselines B0 (no reallocation), B1 (clinical-priority-first) and B2 (proportional) all run on the primary dataset. Every metric is recomputed from each run's records with the same code (`metrics.evaluate_run`). The baseline values equal the committed ones, so they reproduce the headroom table (`EVALUATION_PLAN.md` §8.1).
@@ -25,6 +39,16 @@ All three runs pass gate D: {{n:gate_d.gate_passed.R1}}, {{n:gate_d.gate_passed.
 Runs are compared on these counts lexicographically (Critical, then Major, then Moderate, then Minor), with no weighted sum. For the baselines, explanation and process items do not apply (§4 item 1).
 
 {{table:issues_by_level}}
+
+**The lexicographic verdict** (lower is better, Critical read first):
+
+{{table:issues_lex}}
+
+What the Moderate counts consist of:
+
+{{table:moderate_issues}}
+
+**For R1 the two pre-registered readings disagree.** On issue counts R1 is {{n:issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B1.R1}} than B1. The first level where they differ is Moderate, and all of R1's Moderate issues are `nurse_gap` days: {{n:moderate_issues.nurse_gap_issues_days_with_a_net_nurse_gap_at_tier_2_or_1_only.R1}} against B1's {{n:moderate_issues.nurse_gap_issues_days_with_a_net_nurse_gap_at_tier_2_or_1_only.B1}}. On A2 R1 is {{n:main_lex.A2_tier_3_2_1_vs_B1.R1}} than B1 (§1.3), because its nurse gaps are much smaller in total: tier-2 SV_N {{n:main_headline.A2_SV_N_tier_2.R1}} against {{n:main_headline.A2_SV_N_tier_2.B1}}. An issue count weighs each nurse-gap day equally, whatever its size, while A2 sums the size. Both readings are pre-registered, and this file does not resolve the disagreement. The spec does not rank them: §3.10 lists the headline metrics (A1–A3) and does not mention the issue-count comparison, and §4 item 2 says only that runs "are compared on issue counts by level, lexicographically". R2 and R3 are {{n:issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B1.R2}} and {{n:issues_lex.issue_counts_Critical_Major_Moderate_Minor_vs_B1.R3}} than B1 on both readings.
 
 ### 1.3 Headline metrics (§3.10)
 
@@ -60,6 +84,8 @@ Results, run by run:
 
 {{table:main_secondary}}
 
+**Levels and tiers are different scales in the A4 rows.** "A4 shortage Lk" is the shortage of level-k patients only (§3.4: S_k = Σ_t Σ_d shortage_{k,d}(t)). The tier floor is defined on tier j, that is levels ≥ j: "Tier floor Σ_t (Σ_d a_{j,d} − MaxN_j)" (§3.4). So a shortage at level 1 below the floor at tier 1 is not a violation. The comparable quantity is the tier shortage, the sum of the level shortages over k ≥ j, which is at or above the floor for every policy. Its excess over the floor equals A2's raw gap, as §3.4 states ("the tier excess equals Σ_t gapN_j"); step 10 checks this equality for every policy and tier.
+
 > *Figure placeholders (Phase 3):* F3 beds over time per policy; F4 nurses against the requirement; F5 fairness dispersion.
 
 ### 1.5 Descriptive metrics (§3.10)
@@ -89,11 +115,11 @@ Two notes go with every figure:
 
 Pipeline check: matched per (day, type) was recounted as min(audit, CHECKER) straight from the two record files, without the matching code, and agrees in every run (last row of the extra table).
 
-{{table:checker_R1}}
+{{table:checker_R1|collapse}}
 
-{{table:checker_R2}}
+{{table:checker_R2|collapse}}
 
-{{table:checker_R3}}
+{{table:checker_R3|collapse}}
 
 Date-shift matches are descriptive only and never replace the primary figures (§4 item 7). LLM-only issues (explanation accuracy) are reported apart and are LLM-dependent (§4 item 4).
 
@@ -113,7 +139,7 @@ The reference sets, side by side (§11 #73):
 - **Primary:** the **{{n:wrong_claims_sets.pre_registered_wrong_claims.size}} pre-registered wrong claims**, stratified as {{n:wrong_claims_sets.rubric_dependent_spare_free.size}} rubric-dependent (*spare*/*free*) + {{n:wrong_claims_sets.extraction_error.size}} extraction errors + {{n:wrong_claims_sets.confirmed_wrong.size}} confirmed.
 - **Descriptive:** the **{{n:wrong_claims_sets.confirmed_wrong_after_owner_review.size}} `confirmed_wrong`** after the owner review. **R52:** they rest on verdicts proposed by an LLM advisor and accepted by the owner.
 
-**The mapping is assistant-mapped and owner-reviewed (R52).** The claims the CHECKER contested are mapped in [`results/analysis/R1_checker_dispute_mapping.json`](results/analysis/R1_checker_dispute_mapping.json), with a readable copy in [`results/analysis/R1_checker_dispute_mapping.md`](results/analysis/R1_checker_dispute_mapping.md): the finding text, the claims, and why they match. The pre-registered protocol foresees this mapping (§4 claims items 3 and 7.3). The assistant made it, after the extraction commit and the owner review, from the CHECKER's explanation findings on R1 ({{n:wrong_claims_sets.CHECKER_LLM_only_issues_on_R1.size}}, every issue of an LLM-only type), with the rule stated in that file. The owner reviews it.
+**The mapping is assistant-mapped and owner-reviewed (R52).** The claims the CHECKER contested are mapped in [`results/analysis/R1_checker_dispute_mapping.json`](results/analysis/R1_checker_dispute_mapping.json), with a readable copy in [`results/analysis/R1_checker_dispute_mapping.md`](results/analysis/R1_checker_dispute_mapping.md): the finding text, the claims, and why they match. The pre-registered protocol foresees this mapping (§4 claims items 3 and 7.3). The assistant made it, after the extraction commit and the owner review, from the CHECKER's explanation findings on R1 ({{n:wrong_claims_sets.CHECKER_LLM_only_issues_on_R1.size}}, every issue of an LLM-only type), with the rule stated in that file. **Owner review (2026-11-24, Decisions Log #134):** the owner agrees with the mapping. {{n:wrong_claims_descriptive.confirmed_wrong_claims.disputes_the_owner_judged_well_founded}} disputes are well-founded (R1-D11-28, R1-D12-19, R1-D12-20, R1-D13-30); the day-28 disputes are wrong disputes by the CHECKER, which computed beds minus census on the day-27 allocation, while the stated figures are correct.
 
 **Definitions.** Recall = wrong claims the CHECKER contested / all wrong claims. Precision is **claim-level**, as pre-registered (§4 claims item 4): wrong claims it contested / all claims it contested. A finding that contests no figure adds nothing to either count, so precision says nothing about such findings. The findings themselves are counted below, all of them, mapped or not.
 
@@ -125,9 +151,13 @@ The unmapped finding is the day-29 `other` issue: a truncated sentence in the si
 
 {{table:wrong_claims_descriptive}}
 
-**The confirmed wrong claims by error type** (§11 #73). The typology comes from the owner review: a consultant (LLM advisor) proposed it and the owner adopts it (R52). It is kept in the owner input table [`results/analysis/R1_owner_error_types.csv`](results/analysis/R1_owner_error_types.csv), which the pipeline validates and reads but never writes. The stratification is used only once the owner has confirmed every row:
+**The confirmed wrong claims by error type** (§11 #73). The typology comes from the owner review: a consultant (LLM advisor) proposed it and the owner adopts it (R52). It is kept in the owner input table [`results/analysis/R1_owner_error_types.csv`](results/analysis/R1_owner_error_types.csv), which the pipeline validates and reads but never writes. The owner confirmed every row on 2026-11-24.
 
 {{table:wrong_claims_by_error_type}}
+
+"Queue count wrong" takes several forms. {{n:queue_errors.L2_L1_off_by_one.claims}} are the L2/L1 off-by-one; {{n:queue_errors.L2_L1_swap_off_by_2.claims}} are an L2/L1 swap, the two counts exchanged (R1-D11-08, R1-D11-09); {{n:queue_errors.queue_total_off_by_one.claims}} are a queue total off by one (R1-D12-19, R1-D18-14):
+
+{{table:queue_errors}}
 
 As a **secondary breakdown**, by claim category (a topic, not an error type):
 
@@ -168,12 +198,10 @@ STRESS1 meets the criterion on {{n:stress_criterion.days_meeting_the_criterion_s
 
 **The CHECKER against the audit on STRESS1** (descriptive, same procedure as §2, with shock days as their own stratum; §11 #75):
 
-{{table:checker_STRESS1}}
-
-{{table:checker_STRESS1_shock}}
-
-{{table:checker_STRESS1_nonshock}}
+{{table:checker_STRESS1|collapse}}
 
 {{table:checker_STRESS1_extra}}
 
-On the shock day the audit has no issue and the CHECKER no matchable one (pooled shock-day recall {{n:checker_STRESS1_shock.pooled_reference_only.recall}}, precision {{n:checker_STRESS1_shock.pooled_reference_only.precision}}), so every shock-day stratum is empty. Its issues dated day 23 are LLM-only ({{n:checker_STRESS1_extra.checker_STRESS1_shock_CHECKER_LLM_only_issues.value}}, an `explanation_inaccuracy`), and STRESS1's explanation claims are not scored (§4 claims item 5).
+Summary: headline group recall {{n:checker_STRESS1.headline_group.recall}}, precision {{n:checker_STRESS1.headline_group.precision}}; secondary group recall {{n:checker_STRESS1.secondary_group.recall}}, precision {{n:checker_STRESS1.secondary_group.precision}}.
+
+**Shock-day stratum.** On the shock day the audit has no issue and the CHECKER no matchable one (pooled shock-day recall {{n:checker_STRESS1_shock.pooled_reference_only.recall}}, precision {{n:checker_STRESS1_shock.pooled_reference_only.precision}}), so every shock-day stratum is empty and its table is not shown. The non-shock stratum is therefore the overall table above ({{n:checker_STRESS1_extra.non_shock_stratum_identical_to_the_overall_table.value}}: identical in every row); both strata are in `results/analysis/stress1.csv`. Its issues dated day 23 are LLM-only ({{n:checker_STRESS1_extra.checker_STRESS1_shock_CHECKER_LLM_only_issues.value}}, an `explanation_inaccuracy`), and STRESS1's explanation claims are not scored (§4 claims item 5).
