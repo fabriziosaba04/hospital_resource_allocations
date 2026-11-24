@@ -41,4 +41,11 @@ After the baseline headroom review (owner decision §11 #24), this was sharpened
 
 ## The result that would prove us wrong
 
-*Pending the owner's decision.* The pre-registration fixes the metrics, their reading (gap to B1 and to the floor) and the gate. It does **not** state a falsification criterion or a threshold for "reliably". This section will be written only from wording the owner approves, so that nothing is added to the pre-registration after the runs.
+**No numerical falsification threshold was pre-registered.** The pre-registration (`EVALUATION_PLAN.md` §1, §3.7, §3.10) fixes the question, the headline metrics (A1; A2, read lexicographically; A3), each read as the **gap to B1 and to the floor**, and gate D. It does not fix a threshold for "reliably". We do not add one after the runs.
+
+What the pre-registration already implies, and what we apply:
+
+- **Gate D.** A run that fails gate D counts as evidence **against** the hypothesis. Its A-metrics are not interpreted.
+- **Gap to B1.** The hypothesis is contradicted to the extent that R1–R3 show gaps to B1 on A1, A2 or A3. B1 is optimal on A1 by construction (SV_B = 0 on every dataset, §8.4), so on A1 the agent can at best match it. On A2 it can do better or worse. Gaps are reported descriptively, run by run, with no pooled score.
+
+The missing pre-registered threshold is listed as a limitation ([`docs/LIMITATIONS_AND_REFLECTION.md`](docs/LIMITATIONS_AND_REFLECTION.md) §4).

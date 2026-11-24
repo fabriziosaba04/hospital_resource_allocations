@@ -25,7 +25,7 @@ Patients have one of three complexity levels (Level 3 is the highest priority). 
 | README | this file |
 | Error analysis | [`ERROR_ANALYSIS.md`](ERROR_ANALYSIS.md) (*to be completed*; [`mistakes.md`](mistakes.md) points to it) |
 | Reflection (one page) | [`REFLECTION.md`](REFLECTION.md) (*to be completed*; long version [`docs/LIMITATIONS_AND_REFLECTION.md`](docs/LIMITATIONS_AND_REFLECTION.md)) |
-| Plan (question, theory, test) | [`plan.md`](plan.md), which summarises [`docs/EVALUATION_PLAN.md`](docs/EVALUATION_PLAN.md) |
+| Plan (question, theory, test) | [`plan.md`](plan.md), which summarises [`docs/EVALUATION_PLAN.md`](docs/EVALUATION_PLAN.md). No numerical falsification threshold was pre-registered: a run failing gate D counts against the hypothesis, and gaps to B1 are reported run by run (a declared limitation) |
 
 **Two files about "agents".** [`CLAUDE.md`](CLAUDE.md) holds the standing instructions for the coding agent (what the brief calls `AGENTS.md`). [`docs/AGENTS.md`](docs/AGENTS.md) specifies the system's own four agents: ANALYZER, ALLOCATOR, CHECKER and ORCHESTRATOR.
 
@@ -133,7 +133,7 @@ uv run python src/09_build_figures.py           # figures into results/figures/
 | [`docs/LIMITATIONS_AND_REFLECTION.md`](docs/LIMITATIONS_AND_REFLECTION.md) | Limitations and reflection (long working version) |
 | [`docs/REFLECTION_LOG.md`](docs/REFLECTION_LOG.md) | Errors and near misses, recorded when they happened |
 | [`docs/SESSION_LOG.md`](docs/SESSION_LOG.md) | One entry per working session |
-| [`docs/CLEANUP_PLAN.md`](docs/CLEANUP_PLAN.md) | The repository clean-up: inventory, moves, publication scan |
+| [`docs/CLEANUP_PLAN.md`](docs/CLEANUP_PLAN.md) | The repository clean-up: inventory, moves, publication scan; §10 maps the two moved paths cited in `EVALUATION_PLAN.md` |
 
 ---
 

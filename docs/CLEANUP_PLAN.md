@@ -295,3 +295,14 @@ After each step: `uv run pytest -q`, `uv run python -m src.data_generation.manif
 7. Add `results/README.md`, `README.md` (rewrite), `plan.md`, `mistakes.md` pointer, and skeletons of `ERROR_ANALYSIS.md` and `REFLECTION.md` (content comes with the analysis). Update the `CLAUDE.md` §0 tree and `PROJECT_SPEC.md` §0/§1. Put a one-line note on old paths at the top of the historical logs. Verify.
 8. Full suite (`-m "slow or not slow"`) and the manifest check, as a milestone. Re-measure path lengths (expect 132 maximum). Re-run the §7 scan (expect the same counts, with paths shifted for the moved development files).
 9. Owner review, then merge `cleanup` into `main` (fast-forward, no history rewrite).
+
+## 10. Post-clean-up path note for `docs/EVALUATION_PLAN.md` (2026-11-24, Log #126)
+
+`docs/EVALUATION_PLAN.md` is pre-registration text and stays byte-identical (Log #124). Its two references to development paths that moved in Phase 1b resolve as follows:
+
+| `EVALUATION_PLAN.md` | Path as written | Path now |
+| --- | --- | --- |
+| §4 item 7 (hours estimate) | `results/evaluations/DRY2-HARD10/make_full_claims.py` | `results/development/evaluations/DRY2-HARD10/make_full_claims.py` |
+| §10 (figure plan) | `results/visualizations/HARD10/` | `results/development/figures/HARD10/` |
+
+Every other path in `EVALUATION_PLAN.md` is unchanged by the clean-up.

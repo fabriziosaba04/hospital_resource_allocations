@@ -471,3 +471,11 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **How it was caught:** during Phase 1b, by reading the tests that call writers on committed run folders while adding the frozen-run guard. The guard now raises on that call.
 - **Fix:** the test runs the module only on its deep temporary copy (whose outputs are already compared byte for byte with the committed ones) and asserts that the call on the committed folder raises `FrozenRunError`.
 - **Implication:** "byte-identical rewrite" leaves no trace in `git status`, so it is invisible. A test that only reads frozen evidence must not call a function that writes.
+
+### R62. Uncommitted, unlogged work on `cleanup` after a "clean `git status`" hand-off
+
+- **Type:** development/process (not a finding about agent reliability).
+- **What happened:** the hand-off for the 2026-11-24 session reported a clean `git status` at the end of Phase 1b. At session start, 12 tracked files under `src/` were modified (`src/08_claim_verification.py`, the nine owner-review modules, `src/utils/compare.py`, `src/utils/paths.py`): an unfinished version of the owner-review `--out` redirect, citing a Decisions Log #125 that did not exist. Merging with it would either have failed or carried untested, unlogged code into `main`.
+- **How it was caught:** `git status` at session start, before any edit.
+- **Fix:** the work was stashed (`stash@{0}`), the plan.md wording was committed and merged without it, and the stash was then reviewed, finished, logged (renumbered to #127) and tested as the follow-up of item 2.
+- **Implication:** a hand-off's "clean `git status`" is a claim to be checked at the next session start, like any other.
