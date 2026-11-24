@@ -42,7 +42,7 @@ Patients have one of three complexity levels (Level 3 is the highest priority). 
 | Code for the agents | Agent definitions (dispatcher, ALLOCATOR, CHECKER): [`.claude/agents/`](.claude/agents/). Run restrictions: [`.claude/run-settings.json`](.claude/run-settings.json). MCP server (ANALYZER, ORCHESTRATOR state machine, tools): [`src/mcp_server/`](src/mcp_server/). Deterministic environment rules: [`src/environment/`](src/environment/). Audit, metrics and baselines: [`src/evaluation/`](src/evaluation/). The pipeline in run order: [`src/01_verify_data.py`](src/01_verify_data.py) … [`src/16_error_analysis.py`](src/16_error_analysis.py) (§5) |
 | README | this file |
 | Error analysis | [`ERROR_ANALYSIS.md`](ERROR_ANALYSIS.md): the agents' errors in the runs (A), the coding agent's errors during development (B), errors in the verification itself (C), and how each was found (D); every number listed in [`results/analysis/ERROR_NUMBERS.csv`](results/analysis/ERROR_NUMBERS.csv). [`mistakes.md`](mistakes.md) points to it |
-| Reflection (one page) | [`REFLECTION.md`](REFLECTION.md) (*being written by the owner*; long version [`docs/LIMITATIONS_AND_REFLECTION.md`](docs/LIMITATIONS_AND_REFLECTION.md)) |
+| Reflection (one page) | [`REFLECTION.md`](REFLECTION.md) (long version [`docs/LIMITATIONS_AND_REFLECTION.md`](docs/LIMITATIONS_AND_REFLECTION.md)) |
 | Analysis (results) | [`ANALYSIS.md`](ANALYSIS.md): R1–R3 against the baselines, run by run; the CHECKER against the audit; the CHECKER on R1's wrong claims; the STRESS1 probe; the limitations (§5). Every number is listed with its source file and script in [`results/analysis/HEADLINE_NUMBERS.csv`](results/analysis/HEADLINE_NUMBERS.csv) |
 | Plan (question, theory, test) | [`plan.md`](plan.md), which summarises [`docs/EVALUATION_PLAN.md`](docs/EVALUATION_PLAN.md). No numerical falsification threshold was pre-registered: a run failing gate D counts against the hypothesis, and gaps to B1 are reported run by run (a declared limitation) |
 
@@ -53,7 +53,7 @@ Patients have one of three complexity levels (Level 3 is the highest priority). 
 | Grading axis | Evidence |
 | --- | --- |
 | **Analysis (50%)** | Results: [`ANALYSIS.md`](ANALYSIS.md), from the tables in [`results/analysis/`](results/analysis/) (steps 10–14). Figures F1–F6: [`F1`](results/figures/F1_overflow_by_tier.png), [`F2`](results/figures/F2_nurse_gap_by_tier.png), [`F3`](results/figures/F3_beds_over_time.png), [`F4`](results/figures/F4_nurses_vs_requirement.png), [`F5`](results/figures/F5_fairness_dispersion.png), [`F6`](results/figures/F6_checker_vs_audit.png) (`src/09_build_figures.py`). Animations of the net balance per department: [`R1`](results/figures/animations/R1_net_balances.gif), [`R2`](results/figures/animations/R2_net_balances.gif), [`R3`](results/figures/animations/R3_net_balances.gif) (`src/15_animations.py`). Run reports per run: [`results/evaluations/R1/run_report.json`](results/evaluations/R1/run_report.json) (likewise R2, R3, STRESS1). Baseline headroom: [`results/evaluations/headroom.json`](results/evaluations/headroom.json). Metric definitions and the pre-registered headline set: [`docs/EVALUATION_PLAN.md`](docs/EVALUATION_PLAN.md) §3 |
-| **Reflection (30%)** | [`REFLECTION.md`](REFLECTION.md) (*being written by the owner*). Running record of errors and near misses: [`docs/REFLECTION_LOG.md`](docs/REFLECTION_LOG.md). Limitations: [`ANALYSIS.md` §5](ANALYSIS.md#5-limitations) (long working version: [`docs/LIMITATIONS_AND_REFLECTION.md`](docs/LIMITATIONS_AND_REFLECTION.md)). Error analysis: [`ERROR_ANALYSIS.md`](ERROR_ANALYSIS.md) |
+| **Reflection (30%)** | [`REFLECTION.md`](REFLECTION.md). Running record of errors and near misses: [`docs/REFLECTION_LOG.md`](docs/REFLECTION_LOG.md). Limitations: [`ANALYSIS.md` §5](ANALYSIS.md#5-limitations) (long working version: [`docs/LIMITATIONS_AND_REFLECTION.md`](docs/LIMITATIONS_AND_REFLECTION.md)). Error analysis: [`ERROR_ANALYSIS.md`](ERROR_ANALYSIS.md) |
 | **Verification (20%)** | See the list below |
 
 The Verification evidence, none of which depends on an LLM output:
@@ -159,16 +159,17 @@ uv run python src/16_error_analysis.py         # ERROR_ANALYSIS.md, its tables a
 - **Windows and long paths.** The longest path in the repository is 132 characters, so a clone or unzip under a short folder (for example `C:\hra\`) works as is. Under a deep folder, paths can exceed Windows' 260-character limit. In that case, run `git config --global core.longpaths true` before cloning (it is a git setting and does not travel with a clone), or enable `LongPathsEnabled` (administrator; `HKLM\SYSTEM\CurrentControlSet\Control\FileSystem`). The project's own readers handle long paths in any case.
 - Line endings are fixed by [`.gitattributes`](.gitattributes), so the frozen data and transcripts keep their committed bytes on checkout.
 
-## 6. Documentation
+## 6. What's in `docs/`
 
-| Document | Content |
+Supporting material behind the deliverables. The standing instructions for the coding agent are in [`CLAUDE.md`](CLAUDE.md) at the root.
+
+| File | What it is for |
 | --- | --- |
-| [`CLAUDE.md`](CLAUDE.md) | Principles, constraints, scope, working rules |
-| [`docs/AGENTS.md`](docs/AGENTS.md) | The four agents: roles, tools, workflow, state |
-| [`docs/PROJECT_SPEC.md`](docs/PROJECT_SPEC.md) | Technical design, Implementation Decisions Log (§9), owner decisions (§11) |
-| [`docs/EVALUATION_PLAN.md`](docs/EVALUATION_PLAN.md) | Metrics, baselines, run plan, verification checks |
-| [`docs/DATA_DICTIONARY.md`](docs/DATA_DICTIONARY.md) | Dataset fields and validation checks |
-| [`docs/LIMITATIONS_AND_REFLECTION.md`](docs/LIMITATIONS_AND_REFLECTION.md) | Limitations and reflection (long working version) |
-| [`docs/REFLECTION_LOG.md`](docs/REFLECTION_LOG.md) | Errors and near misses, recorded when they happened |
-| [`docs/SESSION_LOG.md`](docs/SESSION_LOG.md) | One entry per working session |
-| [`docs/CLEANUP_PLAN.md`](docs/CLEANUP_PLAN.md) | The repository clean-up: inventory, moves, publication scan; §10 maps the two moved paths cited in `EVALUATION_PLAN.md` |
+| [`docs/PROJECT_SPEC.md`](docs/PROJECT_SPEC.md) | Specification: technical design, Implementation Decisions Log (§9) and owner decisions (§11) |
+| [`docs/EVALUATION_PLAN.md`](docs/EVALUATION_PLAN.md) | Pre-registered metrics and evaluation protocol: baselines, run plan, verification checks |
+| [`docs/DATA_DICTIONARY.md`](docs/DATA_DICTIONARY.md) | Description of the data: dataset fields and validation checks |
+| [`docs/AGENTS.md`](docs/AGENTS.md) | Specification of the system's agents: roles, tools, workflow, state |
+| [`docs/REFLECTION_LOG.md`](docs/REFLECTION_LOG.md) | Running error log, written when each error happened; source of [`ERROR_ANALYSIS.md`](ERROR_ANALYSIS.md) part B |
+| [`docs/SESSION_LOG.md`](docs/SESSION_LOG.md) | Log of the work sessions: one entry per session |
+| [`docs/CLEANUP_PLAN.md`](docs/CLEANUP_PLAN.md) | Repository clean-up and publication scan; §10 maps the two moved paths cited in `EVALUATION_PLAN.md` |
+| [`docs/LIMITATIONS_AND_REFLECTION.md`](docs/LIMITATIONS_AND_REFLECTION.md) | Long working version behind the Limitations ([`ANALYSIS.md` §5](ANALYSIS.md#5-limitations)) and [`REFLECTION.md`](REFLECTION.md) |

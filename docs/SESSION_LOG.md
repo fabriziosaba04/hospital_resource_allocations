@@ -1156,3 +1156,7 @@ No frozen file was edited, moved or re-hashed in place; transcripts of the froze
 
 1. `launch` resumes whatever `ACTIVE_RUN` names (stays parked; no more runs are planned).
 2. Part B classifies each case under one pattern and one "found by"; a few cases fit two (e.g. R58 was found partly by the test suite).
+
+## 2026-11-24 (thirty-third session: final commit before push, on `main`)
+
+`REFLECTION.md` (written by the owner) committed as is; README: the "being written" notes removed, "What's in `docs/`" table added. Owner override of CLAUDE.md §9.4 for this commit: only `tests/test_readme_paths.py` was run, not the full fast suite. No remote, no push.
