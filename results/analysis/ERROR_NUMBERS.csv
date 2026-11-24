@@ -5,7 +5,16 @@ gate_d.gate_passed.R3,yes,results/analysis/main_comparison.csv,src/10_main_compa
 issues_by_level.Major.R1,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,secondary,Major / R1
 issues_by_level.Major.R2,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,secondary,Major / R2
 issues_by_level.Major.R3,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,secondary,Major / R3
+ea_a1_types.total.R1,101,results/analysis/error_analysis.csv,src/16_error_analysis.py,yes,check,total / R1
+ea_a1_types.total.R2,92,results/analysis/error_analysis.csv,src/16_error_analysis.py,yes,check,total / R2
+ea_a1_types.total.R3,86,results/analysis/error_analysis.csv,src/16_error_analysis.py,yes,check,total / R3
 ea_d.allocation_decisions_R1_R3.deterministic_audit_or_recomputation,279,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"allocation decisions, R1-R3 / deterministic audit or recomputation"
+issues_by_level.Moderate.R1,5,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,secondary,Moderate / R1
+issues_by_level.Moderate.R2,1,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,secondary,Moderate / R2
+issues_by_level.Moderate.R3,1,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,secondary,Moderate / R3
+issues_by_level.Minor.R1,96,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,secondary,Minor / R1
+issues_by_level.Minor.R2,91,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,secondary,Minor / R2
+issues_by_level.Minor.R3,85,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,secondary,Minor / R3
 ea_a2_claims.claims_scored.R1,1049,results/analysis/error_analysis.csv,src/16_error_analysis.py,yes,check,claims scored / R1
 ea_a2_accuracy.wrong.pre_registered,75,results/analysis/error_analysis.csv,src/16_error_analysis.py,yes,check,wrong / pre-registered
 ea_a2_accuracy.wrong.after_owner_review,19,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,check,wrong / after owner review
@@ -20,7 +29,7 @@ wrong_claims_descriptive.confirmed_wrong_claims.wrong_disputes,3,results/analysi
 ea_b_total.cases.REFLECTION_LOG_entries,56,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,cases / REFLECTION_LOG entries
 ea_b_total.cases.rows,54,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,cases / rows
 ea_b_found_by.agent_itself.cases,30,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,agent itself / cases
-ea_b_found_by.owner.cases,11,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,owner / cases
+ea_b_found_by.owner_advisor_review.cases,11,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,owner / advisor review / cases
 ea_b_found_by.independent_check.cases,6,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,independent check / cases
 ea_b_found_by.test_suite.cases,5,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,test suite / cases
 ea_b_total.cases.with_a_rule_added,31,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,cases / with a rule added
@@ -44,9 +53,6 @@ ea_a1_types.reallocation_without_effect.R1,2,results/analysis/error_analysis.csv
 ea_a1_types.reallocation_without_effect.R2,3,results/analysis/error_analysis.csv,src/16_error_analysis.py,yes,check,reallocation_without_effect / R2
 ea_a1_types.reallocation_without_effect.R3,2,results/analysis/error_analysis.csv,src/16_error_analysis.py,yes,check,reallocation_without_effect / R3
 ea_a1_types.reallocation_without_effect.STRESS1,2,results/analysis/error_analysis.csv,src/16_error_analysis.py,yes,check,reallocation_without_effect / STRESS1
-ea_a1_types.total.R1,101,results/analysis/error_analysis.csv,src/16_error_analysis.py,yes,check,total / R1
-ea_a1_types.total.R2,92,results/analysis/error_analysis.csv,src/16_error_analysis.py,yes,check,total / R2
-ea_a1_types.total.R3,86,results/analysis/error_analysis.csv,src/16_error_analysis.py,yes,check,total / R3
 ea_a1_types.total.STRESS1,99,results/analysis/error_analysis.csv,src/16_error_analysis.py,yes,check,total / STRESS1
 main_headline.A1_SV_B.R1,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A1 SV_B / R1
 main_headline.A1_SV_B.R2,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,headline,A1 SV_B / R2
@@ -140,7 +146,6 @@ ea_b_patterns.Hand_off_and_state_errors.cases,6,results/analysis/error_analysis.
 ea_b_patterns.Hand_off_and_state_errors.with_a_rule_added,1,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,Hand-off and state errors / with a rule added
 ea_b_patterns.Presentation_and_reporting_errors.cases,14,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,Presentation and reporting errors / cases
 ea_b_patterns.Presentation_and_reporting_errors.with_a_rule_added,4,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,Presentation and reporting errors / with a rule added
-ea_b_found_by.consultant_review.cases,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,consultant review / cases
 ea_b_found_by.visual_inspection.cases,1,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,visual inspection / cases
 ea_b_found_by.failure_in_use.cases,1,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,failure in use / cases
 ea_b_rules.test.cases,17,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,test / cases
@@ -158,7 +163,7 @@ ea_d.allocation_decisions_R1_R3.manual_review,0,results/analysis/error_analysis.
 ea_d.allocation_decisions_R1_R3.matching_protocol,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"allocation decisions, R1-R3 / matching protocol"
 ea_d.allocation_decisions_R1_R3.tests_and_guards,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"allocation decisions, R1-R3 / tests and guards"
 ea_d.allocation_decisions_R1_R3.visual_inspection,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"allocation decisions, R1-R3 / visual inspection"
-ea_d.allocation_decisions_R1_R3.owner_or_consultant_review,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"allocation decisions, R1-R3 / owner or consultant review"
+ea_d.allocation_decisions_R1_R3.owner_advisor_review,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"allocation decisions, R1-R3 / owner / advisor review"
 ea_d.allocation_decisions_R1_R3.agent_s_own_check,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"allocation decisions, R1-R3 / agent's own check"
 ea_d.allocation_decisions_R1_R3.independent_check_or_failure_in_use,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"allocation decisions, R1-R3 / independent check or failure in use"
 ea_d.allocation_decisions_STRESS1.unit,audit issues,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"allocation decisions, STRESS1 / unit"
@@ -167,7 +172,7 @@ ea_d.allocation_decisions_STRESS1.manual_review,0,results/analysis/error_analysi
 ea_d.allocation_decisions_STRESS1.matching_protocol,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"allocation decisions, STRESS1 / matching protocol"
 ea_d.allocation_decisions_STRESS1.tests_and_guards,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"allocation decisions, STRESS1 / tests and guards"
 ea_d.allocation_decisions_STRESS1.visual_inspection,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"allocation decisions, STRESS1 / visual inspection"
-ea_d.allocation_decisions_STRESS1.owner_or_consultant_review,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"allocation decisions, STRESS1 / owner or consultant review"
+ea_d.allocation_decisions_STRESS1.owner_advisor_review,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"allocation decisions, STRESS1 / owner / advisor review"
 ea_d.allocation_decisions_STRESS1.agent_s_own_check,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"allocation decisions, STRESS1 / agent's own check"
 ea_d.allocation_decisions_STRESS1.independent_check_or_failure_in_use,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"allocation decisions, STRESS1 / independent check or failure in use"
 ea_d.explanation_claims_R1.unit,wrong claims,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"explanation claims, R1 / unit"
@@ -176,7 +181,7 @@ ea_d.explanation_claims_R1.manual_review,19,results/analysis/error_analysis.csv,
 ea_d.explanation_claims_R1.matching_protocol,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"explanation claims, R1 / matching protocol"
 ea_d.explanation_claims_R1.tests_and_guards,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"explanation claims, R1 / tests and guards"
 ea_d.explanation_claims_R1.visual_inspection,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"explanation claims, R1 / visual inspection"
-ea_d.explanation_claims_R1.owner_or_consultant_review,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"explanation claims, R1 / owner or consultant review"
+ea_d.explanation_claims_R1.owner_advisor_review,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"explanation claims, R1 / owner / advisor review"
 ea_d.explanation_claims_R1.agent_s_own_check,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"explanation claims, R1 / agent's own check"
 ea_d.explanation_claims_R1.independent_check_or_failure_in_use,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"explanation claims, R1 / independent check or failure in use"
 ea_d.CHECKER_audit_issues_missed_R1_R3.unit,audit issues,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: audit issues missed, R1-R3 / unit"
@@ -185,7 +190,7 @@ ea_d.CHECKER_audit_issues_missed_R1_R3.manual_review,0,results/analysis/error_an
 ea_d.CHECKER_audit_issues_missed_R1_R3.matching_protocol,62,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: audit issues missed, R1-R3 / matching protocol"
 ea_d.CHECKER_audit_issues_missed_R1_R3.tests_and_guards,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: audit issues missed, R1-R3 / tests and guards"
 ea_d.CHECKER_audit_issues_missed_R1_R3.visual_inspection,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: audit issues missed, R1-R3 / visual inspection"
-ea_d.CHECKER_audit_issues_missed_R1_R3.owner_or_consultant_review,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: audit issues missed, R1-R3 / owner or consultant review"
+ea_d.CHECKER_audit_issues_missed_R1_R3.owner_advisor_review,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: audit issues missed, R1-R3 / owner / advisor review"
 ea_d.CHECKER_audit_issues_missed_R1_R3.agent_s_own_check,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: audit issues missed, R1-R3 / agent's own check"
 ea_d.CHECKER_audit_issues_missed_R1_R3.independent_check_or_failure_in_use,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: audit issues missed, R1-R3 / independent check or failure in use"
 ea_d.CHECKER_reports_without_an_audit_match_R1_R3.unit,CHECKER issues,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: reports without an audit match, R1-R3 / unit"
@@ -194,7 +199,7 @@ ea_d.CHECKER_reports_without_an_audit_match_R1_R3.manual_review,0,results/analys
 ea_d.CHECKER_reports_without_an_audit_match_R1_R3.matching_protocol,20,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: reports without an audit match, R1-R3 / matching protocol"
 ea_d.CHECKER_reports_without_an_audit_match_R1_R3.tests_and_guards,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: reports without an audit match, R1-R3 / tests and guards"
 ea_d.CHECKER_reports_without_an_audit_match_R1_R3.visual_inspection,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: reports without an audit match, R1-R3 / visual inspection"
-ea_d.CHECKER_reports_without_an_audit_match_R1_R3.owner_or_consultant_review,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: reports without an audit match, R1-R3 / owner or consultant review"
+ea_d.CHECKER_reports_without_an_audit_match_R1_R3.owner_advisor_review,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: reports without an audit match, R1-R3 / owner / advisor review"
 ea_d.CHECKER_reports_without_an_audit_match_R1_R3.agent_s_own_check,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: reports without an audit match, R1-R3 / agent's own check"
 ea_d.CHECKER_reports_without_an_audit_match_R1_R3.independent_check_or_failure_in_use,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: reports without an audit match, R1-R3 / independent check or failure in use"
 ea_d.CHECKER_wrong_claims_not_contested_R1.unit,wrong claims,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: wrong claims not contested, R1 / unit"
@@ -203,7 +208,7 @@ ea_d.CHECKER_wrong_claims_not_contested_R1.manual_review,0,results/analysis/erro
 ea_d.CHECKER_wrong_claims_not_contested_R1.matching_protocol,68,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: wrong claims not contested, R1 / matching protocol"
 ea_d.CHECKER_wrong_claims_not_contested_R1.tests_and_guards,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: wrong claims not contested, R1 / tests and guards"
 ea_d.CHECKER_wrong_claims_not_contested_R1.visual_inspection,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: wrong claims not contested, R1 / visual inspection"
-ea_d.CHECKER_wrong_claims_not_contested_R1.owner_or_consultant_review,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: wrong claims not contested, R1 / owner or consultant review"
+ea_d.CHECKER_wrong_claims_not_contested_R1.owner_advisor_review,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: wrong claims not contested, R1 / owner / advisor review"
 ea_d.CHECKER_wrong_claims_not_contested_R1.agent_s_own_check,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: wrong claims not contested, R1 / agent's own check"
 ea_d.CHECKER_wrong_claims_not_contested_R1.independent_check_or_failure_in_use,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: wrong claims not contested, R1 / independent check or failure in use"
 ea_d.CHECKER_wrong_disputes_R1.unit,contested correct claims,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: wrong disputes, R1 / unit"
@@ -212,7 +217,7 @@ ea_d.CHECKER_wrong_disputes_R1.manual_review,0,results/analysis/error_analysis.c
 ea_d.CHECKER_wrong_disputes_R1.matching_protocol,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: wrong disputes, R1 / matching protocol"
 ea_d.CHECKER_wrong_disputes_R1.tests_and_guards,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: wrong disputes, R1 / tests and guards"
 ea_d.CHECKER_wrong_disputes_R1.visual_inspection,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: wrong disputes, R1 / visual inspection"
-ea_d.CHECKER_wrong_disputes_R1.owner_or_consultant_review,3,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: wrong disputes, R1 / owner or consultant review"
+ea_d.CHECKER_wrong_disputes_R1.owner_advisor_review,3,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: wrong disputes, R1 / owner / advisor review"
 ea_d.CHECKER_wrong_disputes_R1.agent_s_own_check,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: wrong disputes, R1 / agent's own check"
 ea_d.CHECKER_wrong_disputes_R1.independent_check_or_failure_in_use,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"CHECKER: wrong disputes, R1 / independent check or failure in use"
 ea_d.development_coding_agent.unit,cases,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,development (coding agent) / unit
@@ -221,7 +226,7 @@ ea_d.development_coding_agent.manual_review,0,results/analysis/error_analysis.cs
 ea_d.development_coding_agent.matching_protocol,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,development (coding agent) / matching protocol
 ea_d.development_coding_agent.tests_and_guards,5,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,development (coding agent) / tests and guards
 ea_d.development_coding_agent.visual_inspection,1,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,development (coding agent) / visual inspection
-ea_d.development_coding_agent.owner_or_consultant_review,11,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,development (coding agent) / owner or consultant review
+ea_d.development_coding_agent.owner_advisor_review,11,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,development (coding agent) / owner / advisor review
 ea_d.development_coding_agent.agent_s_own_check,30,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,development (coding agent) / agent's own check
 ea_d.development_coding_agent.independent_check_or_failure_in_use,7,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,development (coding agent) / independent check or failure in use
 ea_d.verification_owner_side_discrepancies.unit,claims,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: owner-side discrepancies / unit
@@ -230,7 +235,7 @@ ea_d.verification_owner_side_discrepancies.manual_review,43,results/analysis/err
 ea_d.verification_owner_side_discrepancies.matching_protocol,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: owner-side discrepancies / matching protocol
 ea_d.verification_owner_side_discrepancies.tests_and_guards,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: owner-side discrepancies / tests and guards
 ea_d.verification_owner_side_discrepancies.visual_inspection,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: owner-side discrepancies / visual inspection
-ea_d.verification_owner_side_discrepancies.owner_or_consultant_review,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: owner-side discrepancies / owner or consultant review
+ea_d.verification_owner_side_discrepancies.owner_advisor_review,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: owner-side discrepancies / owner / advisor review
 ea_d.verification_owner_side_discrepancies.agent_s_own_check,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: owner-side discrepancies / agent's own check
 ea_d.verification_owner_side_discrepancies.independent_check_or_failure_in_use,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: owner-side discrepancies / independent check or failure in use
 ea_d.verification_rubric_dependent_readings.unit,claims,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: rubric-dependent readings / unit
@@ -239,7 +244,7 @@ ea_d.verification_rubric_dependent_readings.manual_review,0,results/analysis/err
 ea_d.verification_rubric_dependent_readings.matching_protocol,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: rubric-dependent readings / matching protocol
 ea_d.verification_rubric_dependent_readings.tests_and_guards,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: rubric-dependent readings / tests and guards
 ea_d.verification_rubric_dependent_readings.visual_inspection,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: rubric-dependent readings / visual inspection
-ea_d.verification_rubric_dependent_readings.owner_or_consultant_review,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: rubric-dependent readings / owner or consultant review
+ea_d.verification_rubric_dependent_readings.owner_advisor_review,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: rubric-dependent readings / owner / advisor review
 ea_d.verification_rubric_dependent_readings.agent_s_own_check,54,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: rubric-dependent readings / agent's own check
 ea_d.verification_rubric_dependent_readings.independent_check_or_failure_in_use,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: rubric-dependent readings / independent check or failure in use
 ea_d.verification_extraction_errors.unit,claims,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: extraction errors / unit
@@ -248,7 +253,7 @@ ea_d.verification_extraction_errors.manual_review,2,results/analysis/error_analy
 ea_d.verification_extraction_errors.matching_protocol,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: extraction errors / matching protocol
 ea_d.verification_extraction_errors.tests_and_guards,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: extraction errors / tests and guards
 ea_d.verification_extraction_errors.visual_inspection,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: extraction errors / visual inspection
-ea_d.verification_extraction_errors.owner_or_consultant_review,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: extraction errors / owner or consultant review
+ea_d.verification_extraction_errors.owner_advisor_review,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: extraction errors / owner / advisor review
 ea_d.verification_extraction_errors.agent_s_own_check,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: extraction errors / agent's own check
 ea_d.verification_extraction_errors.independent_check_or_failure_in_use,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: extraction errors / independent check or failure in use
 ea_d.verification_specification_gaps.unit,REFLECTION_LOG entries,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: specification gaps / unit
@@ -257,7 +262,7 @@ ea_d.verification_specification_gaps.manual_review,0,results/analysis/error_anal
 ea_d.verification_specification_gaps.matching_protocol,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: specification gaps / matching protocol
 ea_d.verification_specification_gaps.tests_and_guards,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: specification gaps / tests and guards
 ea_d.verification_specification_gaps.visual_inspection,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: specification gaps / visual inspection
-ea_d.verification_specification_gaps.owner_or_consultant_review,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: specification gaps / owner or consultant review
+ea_d.verification_specification_gaps.owner_advisor_review,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: specification gaps / owner / advisor review
 ea_d.verification_specification_gaps.agent_s_own_check,5,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: specification gaps / agent's own check
 ea_d.verification_specification_gaps.independent_check_or_failure_in_use,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,verification: specification gaps / independent check or failure in use
 ea_d.verification_consultant_owner_or_record_errors.unit,cases,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"verification: consultant, owner or record errors / unit"
@@ -266,6 +271,6 @@ ea_d.verification_consultant_owner_or_record_errors.manual_review,0,results/anal
 ea_d.verification_consultant_owner_or_record_errors.matching_protocol,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"verification: consultant, owner or record errors / matching protocol"
 ea_d.verification_consultant_owner_or_record_errors.tests_and_guards,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"verification: consultant, owner or record errors / tests and guards"
 ea_d.verification_consultant_owner_or_record_errors.visual_inspection,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"verification: consultant, owner or record errors / visual inspection"
-ea_d.verification_consultant_owner_or_record_errors.owner_or_consultant_review,2,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"verification: consultant, owner or record errors / owner or consultant review"
+ea_d.verification_consultant_owner_or_record_errors.owner_advisor_review,2,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"verification: consultant, owner or record errors / owner / advisor review"
 ea_d.verification_consultant_owner_or_record_errors.agent_s_own_check,4,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"verification: consultant, owner or record errors / agent's own check"
 ea_d.verification_consultant_owner_or_record_errors.independent_check_or_failure_in_use,1,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,"verification: consultant, owner or record errors / independent check or failure in use"

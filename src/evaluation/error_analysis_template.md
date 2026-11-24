@@ -4,12 +4,12 @@
 
 ## Summary
 
-- **Allocation decisions (R1–R3).** Gate D passed in every run ({{n:gate_d.gate_passed.R1}}, {{n:gate_d.gate_passed.R2}}, {{n:gate_d.gate_passed.R3}}), with no Critical or Major issue ({{n:issues_by_level.Major.R1}}, {{n:issues_by_level.Major.R2}}, {{n:issues_by_level.Major.R3}} Major). The deterministic audit raised {{n:ea_d.allocation_decisions_R1_R3.deterministic_audit_or_recomputation}} issues over the three runs: nurse-gap days at Moderate, the rest Minor reversals and reallocations without effect (A1).
+- **Allocation decisions (R1–R3).** Gate D passed in every run ({{n:gate_d.gate_passed.R1}}, {{n:gate_d.gate_passed.R2}}, {{n:gate_d.gate_passed.R3}}), with no Critical or Major issue ({{n:issues_by_level.Major.R1}}, {{n:issues_by_level.Major.R2}}, {{n:issues_by_level.Major.R3}} Major). The deterministic audit raised {{n:ea_a1_types.total.R1}} issues in R1, {{n:ea_a1_types.total.R2}} in R2 and {{n:ea_a1_types.total.R3}} in R3 ({{n:ea_d.allocation_decisions_R1_R3.deterministic_audit_or_recomputation}} in total). By level: Moderate {{n:issues_by_level.Moderate.R1}}, {{n:issues_by_level.Moderate.R2}}, {{n:issues_by_level.Moderate.R3}}, all nurse-gap days; Minor {{n:issues_by_level.Minor.R1}}, {{n:issues_by_level.Minor.R2}}, {{n:issues_by_level.Minor.R3}}, reversals and reallocations without effect (A1).
 - **Explanation claims (R1).** {{n:ea_a2_claims.claims_scored.R1}} claims were scored: {{n:ea_a2_accuracy.wrong.pre_registered}} wrong as pre-registered, {{n:ea_a2_accuracy.wrong.after_owner_review}} after the owner review (R52). Of the confirmed errors, {{n:ea_a2_types.queue_count_wrong.claims}} are queue counts, {{n:queue_errors.L2_L1_off_by_one.claims}} of them the L2/L1 off-by-one (A2).
 - **The CHECKER.** Against the audit it found {{n:checker_R1.headline_group.recall}}, {{n:checker_R2.headline_group.recall}} and {{n:checker_R3.headline_group.recall}} of the headline issues, and missed mostly reversals. On R1's wrong claims it found {{n:wrong_claims_primary.all_wrong_claims.recall}} (primary) and {{n:wrong_claims_descriptive.confirmed_wrong_claims.recall}} (descriptive), with {{n:wrong_claims_descriptive.confirmed_wrong_claims.wrong_disputes}} wrong disputes; it cannot see transcripts (A3).
-- **The coding agent.** {{n:ea_b_total.cases.REFLECTION_LOG_entries}} REFLECTION_LOG entries in {{n:ea_b_total.cases.rows}} rows, in five patterns. The agent found {{n:ea_b_found_by.agent_itself.cases}} itself, the owner {{n:ea_b_found_by.owner.cases}}, independent checks {{n:ea_b_found_by.independent_check.cases}}, the test suite {{n:ea_b_found_by.test_suite.cases}}; {{n:ea_b_total.cases.with_a_rule_added}} led to a test, guard, rule or procedure (B).
+- **The coding agent.** {{n:ea_b_total.cases.REFLECTION_LOG_entries}} REFLECTION_LOG entries in {{n:ea_b_total.cases.rows}} rows, in five patterns. These are detected errors only, drawn from a log the agent writes itself, so the attribution is partly self-report. The agent found {{n:ea_b_found_by.agent_itself.cases}} itself, owner / advisor review {{n:ea_b_found_by.owner_advisor_review.cases}}, independent checks {{n:ea_b_found_by.independent_check.cases}}, the test suite {{n:ea_b_found_by.test_suite.cases}}; {{n:ea_b_total.cases.with_a_rule_added}} led to a test, guard, rule or procedure (B).
 - **The verification itself.** The owner's independent extraction is not a gold standard: all {{n:ea_a2_adjud.discrepancies.count}} discrepancies were attributed to the owner side, the rubric or the matching rule ({{n:ea_a2_adjud.assistant_miss.count}} assistant misses, {{n:ea_a2_adjud.assistant_encoding.count}} assistant encodings, R52), and {{n:wrong_claims_sets.rubric_dependent_spare_free.size}} pre-registered wrong claims depend only on the rubric's reading of *spare*/*free* (C).
-- **How errors were found** (D): the agents' errors by the deterministic audit, the claim recomputation and the matching protocol, all independent of any LLM output; the coding agent's errors mostly by its own checks and the owner's reviews.
+- **How errors were found** (D): the agents' errors by the deterministic audit, the claim recomputation and the matching protocol, all independent of any LLM output; the coding agent's errors mostly by its own checks and owner / advisor review.
 
 ## A. Errors of the system's agents (in the runs)
 
@@ -76,6 +76,12 @@ On STRESS1 (descriptive) its headline recall is {{n:checker_STRESS1.headline_gro
 
 ## B. Errors of the coding agent (Claude Code) during development
 
+**Caveat: what this register can and cannot count.** It is drawn from `docs/REFLECTION_LOG.md`, which the coding agent itself writes.
+
+- "Agent itself" in *found by* is partly self-report: the agent decides what gets logged and how it is attributed.
+- Errors that nobody detected are absent by definition: the register counts **detected** errors, not all errors.
+- "Owner / advisor review": the owner's reviews were prepared with an LLM advisor and relayed by the owner, so the two can't be separated in the record (R52).
+
 *Every REFLECTION_LOG entry in which the coding agent made an error with a consequence or a near consequence, one row each, from the whole log, first entry to last; the Decisions Log adds none that the log does not already record. Excluded: R4 (the agent answered correctly), R6 (a property of the data), R15 (an open status question), R32 and R33 (CHECKER behaviour and evaluation design, part A), R52 (a disclosure); advisor, owner and specification errors are in part C. "Rule added" means a test, a guard, a `CLAUDE.md` rule or a documented procedure that stops a recurrence.*
 
 Counts per pattern:
@@ -92,6 +98,8 @@ How they were found, and what was added:
 
 ## C. Errors in the verification itself
 
+*Where a finding is attributed to the owner ("owner / advisor review"): the owner's reviews were prepared with an LLM advisor and relayed by the owner, so the two can't be separated in the record (R52).*
+
 *The reference is not a gold standard.* The owner's independent extraction differed from the assistant's on {{n:ea_a2_adjud.discrepancies.count}} claims. By cause: owner encoding {{n:ea_a2_adjud.owner_encoding.count}}, owner miss {{n:ea_a2_adjud.owner_miss.count}}, rubric ambiguity {{n:ea_a2_adjud.rubric_ambiguity.count}}, matching rule {{n:ea_a2_adjud.matching_rule.count}}; assistant miss {{n:ea_a2_adjud.assistant_miss.count}}, assistant encoding {{n:ea_a2_adjud.assistant_encoding.count}} (R52: causes proposed by an LLM advisor and accepted by the owner). The rubric's strict reading of *spare*/*free* made {{n:wrong_claims_sets.rubric_dependent_spare_free.size}} correct claims count as wrong (R42).
 
 {{table:ea_c}}
@@ -100,6 +108,6 @@ How they were found, and what was added:
 
 ## D. How each error was found
 
-Each row is a kind of error, with its unit; each cell counts the errors of that row found by that method.
+Each row is a kind of error, with its unit; each cell counts the errors of that row found by that method. *Owner / advisor review*: the owner's reviews were prepared with an LLM advisor and relayed by the owner, so the two can't be separated in the record (R52).
 
 {{table:ea_d}}

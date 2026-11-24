@@ -553,3 +553,10 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **Fix:** anchors corrected and now tested; the C row renamed; `render` takes the number-list name; the prose reworded or referenced.
 - **Implication:** the R63 test generalises: the same check now guards both write-ups. Links into another document need the same treatment as numbers: computed and tested, not typed.
 
+### R72. ERROR_ANALYSIS.md overstated what its register shows
+
+- **Type:** development/reporting (AI assistant).
+- **What happened:** the first `ERROR_ANALYSIS.md` (1) split "found by" into "owner" and "consultant review", and reported the second as 0. That is an artefact of the channel: the owner's reviews were prepared with an LLM advisor and relayed by the owner, which R52 already records, and known cases (R57, R67) came from the advisor's reviews. (2) It reported "agent found 30 itself" with no caveat, although the register is drawn from a log the agent writes itself and can only count detected errors. (3) Its summary gave a total of issues pooled over R1–R3, a form `ANALYSIS.md` §9 avoids.
+- **How it was caught:** owner / advisor review of the merged file.
+- **Fix:** the two categories merged into "owner / advisor review", with the R52 note in parts B, C and D; a selection-bias caveat at the top of part B and in the summary; per-run issue counts with ids, and the total only as "(… in total)". A build-time assertion checks that each per-run total equals the sum by level (Log #139).
+- **Implication:** a category the record cannot separate must not be reported as separate. A count drawn from a self-written log has to say so where the count appears.

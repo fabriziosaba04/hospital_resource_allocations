@@ -45,13 +45,13 @@ PATTERNS = {"silent": "Silent errors (no failing signal when made)", "premise": 
             "presentation": "Presentation and reporting errors"}
 C_KINDS = {"owner_side": "Owner-side discrepancies", "rubric": "Rubric gaps", "extraction": "Extraction errors",
            "specification": "Specification gaps", "consultant_or_owner": "Consultant, owner or record errors caught"}
-FOUND_BY = ("test suite", "owner", "consultant review", "visual inspection", "agent itself", "independent check",
-            "failure in use")
+FOUND_BY = ("test suite", "owner / advisor review", "visual inspection", "agent itself", "independent check",
+            "failure in use")   # owner and advisor merged: not separable in the record (R52)
 RULES = ("test", "guard", "CLAUDE.md", "procedure", "none")
 METHODS = ("deterministic audit or recomputation", "manual review", "matching protocol", "tests and guards",
-           "visual inspection", "owner or consultant review", "agent's own check", "independent check or failure in use")
-TO_METHOD = {"test suite": METHODS[3], "visual inspection": METHODS[4], "owner": METHODS[5],
-             "consultant review": METHODS[5], "agent itself": METHODS[6], "independent check": METHODS[7],
+           "visual inspection", "owner / advisor review", "agent's own check", "independent check or failure in use")
+TO_METHOD = {"test suite": METHODS[3], "visual inspection": METHODS[4], "owner / advisor review": METHODS[5],
+             "agent itself": METHODS[6], "independent check": METHODS[7],
              "failure in use": METHODS[7]}
 
 
@@ -96,6 +96,9 @@ def build() -> Table:
         for ty in ("nurse_gap", "beds_reversal", "nurses_reversal", "reallocation_without_effect"):
             t.add("ea_a1_types", ty, run, c.get(ty, 0), "check", True, "committed deterministic_audit.jsonl")
         t.add("ea_a1_types", "total", run, sum(c.values()), "check", True)
+        if run in AGENT_RUNS:                               # the per-run total equals the sum by level
+            assert sum(c.values()) == sum(int(val(f"issues_by_level.{lv}.{run}"))
+                                          for lv in ("Critical", "Major", "Moderate", "Minor")), run
 
     claims = [c for c in json.loads((EV / "explanation_claims.json").read_text(encoding="utf-8"))["claims"]
               if c["author"] == "ALLOCATOR"]

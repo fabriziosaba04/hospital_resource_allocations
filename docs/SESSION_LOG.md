@@ -1117,3 +1117,21 @@ No frozen file was edited, moved or re-hashed in place; transcripts untouched; n
 1. `launch` resumes whatever `ACTIVE_RUN` names (stays parked; no more runs are planned).
 2. Part B classifies each case under one pattern and one "found by"; a few cases fit two (e.g. R58 was found partly by the test suite).
 
+## 2026-11-24 (thirty-first session: ERROR_ANALYSIS.md honesty fixes, branch `error-analysis-honesty`)
+
+No frozen file was edited, moved or re-hashed in place; transcripts untouched; no history rewrite.
+
+### Achieved
+
+1. "Found by": `owner` and `consultant review` merged into "owner / advisor review", with the R52 note in parts B, C and D (Log #139).
+2. Part B: a selection-bias caveat (self-written log, detected errors only) at the top and in the summary; counts unchanged.
+3. Summary bullet 1: per-run issue counts by level with ids; the pooled total kept only as "(… in total)". R72. Merged into `main`.
+
+### Next
+
+1. Owner: REFLECTION.md.
+
+### Parked questions
+
+1. `launch` resumes whatever `ACTIVE_RUN` names (stays parked; no more runs are planned).
+2. Part B classifies each case under one pattern and one "found by"; a few cases fit two (e.g. R58 was found partly by the test suite).
