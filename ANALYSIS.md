@@ -109,8 +109,12 @@ A1 is the bed clinical gap SV_B with its split by pair type. A2 is the nurse cli
 
 Results, run by run:
 
-- **A1.** A1 rows with a non-zero gap to B1: 0/4 [`main_gap_summary.A1_rows_with_a_non_zero_gap_to_B1.R1`], 0/4 [`main_gap_summary.A1_rows_with_a_non_zero_gap_to_B1.R2`] and 0/4 [`main_gap_summary.A1_rows_with_a_non_zero_gap_to_B1.R3`]. SV_B is 0 [`main_headline.A1_SV_B.R1`], 0 [`main_headline.A1_SV_B.R2`] and 0 [`main_headline.A1_SV_B.R3`]. That equals B1 (0 [`main_headline.A1_SV_B.B1`]) and the floor. B1 scores 0 on A1 by construction (§3.1), so on A1 a run can match B1 but never beat it.
-- **A2.** Tier 3 is 0 [`main_headline.A2_SV_N_tier_3.R1`], 0 [`main_headline.A2_SV_N_tier_3.R2`] and 0 [`main_headline.A2_SV_N_tier_3.R3`], as for B1. At tier 2 the gap to B1 is -0.9 [`main_gap.A2_SV_N_tier_2.R1_B1`], -1.05 [`main_gap.A2_SV_N_tier_2.R2_B1`] and -0.9 [`main_gap.A2_SV_N_tier_2.R3_B1`], so every run is below B1. At tier 1 it is 0.7 [`main_gap.A2_SV_N_tier_1.R1_B1`], -0.3 [`main_gap.A2_SV_N_tier_1.R2_B1`] and -1.2 [`main_gap.A2_SV_N_tier_1.R3_B1`]. Read lexicographically, each run is better than B1 on A2: better [`main_lex.A2_tier_3_2_1_vs_B1.R1`], better [`main_lex.A2_tier_3_2_1_vs_B1.R2`], better [`main_lex.A2_tier_3_2_1_vs_B1.R3`]. B1 itself is 1.05 [`main_headline.A2_SV_N_tier_2.B1`] above the floor of 0 at tier 2, and 1.2 [`main_headline.A2_SV_N_tier_1.B1`] at tier 1. That is the whole headroom below B1 on this seed (`EVALUATION_PLAN.md` §8.1).
+- **A1.** A1 rows with a non-zero gap to B1: 0/4 [`main_gap_summary.A1_rows_with_a_non_zero_gap_to_B1.R1`], 0/4 [`main_gap_summary.A1_rows_with_a_non_zero_gap_to_B1.R2`] and 0/4 [`main_gap_summary.A1_rows_with_a_non_zero_gap_to_B1.R3`]. SV_B is 0 [`main_headline.A1_SV_B.R1`], 0 [`main_headline.A1_SV_B.R2`] and 0 [`main_headline.A1_SV_B.R3`]. That equals B1 (0 [`main_headline.A1_SV_B.B1`]) and the floor. B1 is optimal on A1 by construction (§3.1), so every run reaches the optimum on A1, and no policy can exceed it.
+- **A2.** Tier 3 is 0 [`main_headline.A2_SV_N_tier_3.R1`], 0 [`main_headline.A2_SV_N_tier_3.R2`] and 0 [`main_headline.A2_SV_N_tier_3.R3`], as for B1.
+  - **Tier 2:** each run is below B1 by about one need unit over the horizon. The gaps to B1 are -0.9 [`main_gap.A2_SV_N_tier_2.R1_B1`], -1.05 [`main_gap.A2_SV_N_tier_2.R2_B1`] and -0.9 [`main_gap.A2_SV_N_tier_2.R3_B1`]; the gaps to the floor are 0.15 [`main_gap.A2_SV_N_tier_2.R1_floor`], 0 [`main_gap.A2_SV_N_tier_2.R2_floor`] and 0.15 [`main_gap.A2_SV_N_tier_2.R3_floor`].
+  - **Tier 1:** mixed. The gaps to B1 are 0.7 [`main_gap.A2_SV_N_tier_1.R1_B1`], -0.3 [`main_gap.A2_SV_N_tier_1.R2_B1`] and -1.2 [`main_gap.A2_SV_N_tier_1.R3_B1`].
+  - **Lexicographic reading** (tier 3 first, then tier 2): each run is better than B1 on A2 (better [`main_lex.A2_tier_3_2_1_vs_B1.R1`], better [`main_lex.A2_tier_3_2_1_vs_B1.R2`], better [`main_lex.A2_tier_3_2_1_vs_B1.R3`]). The difference is decided at tier 2, by the magnitudes above.
+  - **Context: B1 is not an optimum on A2.** B1 is optimal on A1 by construction but greedy on nurses: it gives each department whole nurses for its incremental need, tier 3 first ([`docs/LIMITATIONS_AND_REFLECTION.md`](docs/LIMITATIONS_AND_REFLECTION.md) §4; §11 #50). REFLECTION_LOG R35 records that on the synthetic HARD10 fixture an agent run beat B1 at every A2 tier. On this seed B1 itself is 1.05 [`main_headline.A2_SV_N_tier_2.B1`] above the floor of 0 at tier 2 and 1.2 [`main_headline.A2_SV_N_tier_1.B1`] at tier 1; that is the whole headroom below B1 (`EVALUATION_PLAN.md` §8.1). Being better than B1 on A2 therefore means doing better than a greedy rule within that headroom, not beating an optimum.
 - **A3.** A3 rows with a non-zero gap to B1: 0/8 [`main_gap_summary.A3_rows_with_a_non_zero_gap_to_B1.R1`], 0/8 [`main_gap_summary.A3_rows_with_a_non_zero_gap_to_B1.R2`] and 0/8 [`main_gap_summary.A3_rows_with_a_non_zero_gap_to_B1.R3`]. At tier 2 each run has 1 [`main_headline.A3_tier_2_path.R1`], 1 [`main_headline.A3_tier_2_path.R2`] and 1 [`main_headline.A3_tier_2_path.R3`] patient-day of path excess, as B1 does (1 [`main_headline.A3_tier_2_path.B1`]).
 
 > *Figure placeholders (Phase 3):* F1 overflow by tier with the floor (A3); F2 avoidable nurse gap by tier (A2).
@@ -237,7 +241,18 @@ With n = 3 runs, no inferential statistics are claimed (§9). Per metric: the ra
 
 *Source: [`results/analysis/main_comparison.csv`](results/analysis/main_comparison.csv), written by `src/10_main_comparison.py`. Each cell's id is `main_variability.<row>.<column>` (row and column names with every run of other characters as `_`) in `results/analysis/HEADLINE_NUMBERS.csv`.*
 
-**Decision-level agreement between runs** (§9: "the share of days on which the runs chose identical allocations" and "the mean L1 distance between their daily allocations"): *pending the owner's choice of the exact definition* (pairwise or all three runs; beds and nurses separately or together). It is not computed yet.
+**Decision-level agreement between runs (descriptive, not pre-registered in this form).** §9 names the quantities ("the share of days on which the runs chose identical allocations" and "the mean L1 distance between their daily allocations") but not their exact form. The form below was fixed after the runs (owner, 2026-11-24; Decisions Log #131): pairwise, with beds and nurses separately. It compares the allocation in effect at the end of each day. The distance per day is the sum over departments of |x_d − y_d|. The table gives its mean over the days of the horizon, and the number of days with identical allocations.
+
+| | identical days | mean L1 distance |
+| --- | --- | --- |
+| R1-R2 beds | 9/30 | 2.1333 |
+| R1-R2 nurses | 22/30 | 0.5333 |
+| R1-R3 beds | 8/30 | 2.3333 |
+| R1-R3 nurses | 19/30 | 0.7333 |
+| R2-R3 beds | 8/30 | 2.2 |
+| R2-R3 nurses | 26/30 | 0.2667 |
+
+*Source: [`results/analysis/main_comparison.csv`](results/analysis/main_comparison.csv), written by `src/10_main_comparison.py`. Each cell's id is `agreement.<row>.<column>` (row and column names with every run of other characters as `_`) in `results/analysis/HEADLINE_NUMBERS.csv`.*
 
 ## 2. The CHECKER against the deterministic audit, R1–R3 (§4 items 4–8)
 
@@ -336,7 +351,10 @@ Date-shift matches are descriptive only and never replace the primary figures (�
 
 *Source: [`results/analysis/checker_vs_audit.csv`](results/analysis/checker_vs_audit.csv), written by `src/11_checker_vs_audit.py`. Each cell's id is `checker_extra.<row>.<column>` (row and column names with every run of other characters as `_`) in `results/analysis/HEADLINE_NUMBERS.csv`.*
 
-Headline group, run by run: 4/5 [`checker_R1.headline_group.recall`], 1/1 [`checker_R2.headline_group.recall`] and 1/1 [`checker_R3.headline_group.recall`] recall, all of it `nurse_gap` (no run has a bed clinical or hard-constraint issue). Secondary group: 76/96 [`checker_R1.secondary_group.recall`], 73/91 [`checker_R2.secondary_group.recall`] and 62/85 [`checker_R3.secondary_group.recall`].
+Summary, run by run (R1, R2, R3):
+
+- **Headline group:** recall 4/5 [`checker_R1.headline_group.recall`], 1/1 [`checker_R2.headline_group.recall`], 1/1 [`checker_R3.headline_group.recall`]; precision 4/4 [`checker_R1.headline_group.precision`], 1/1 [`checker_R2.headline_group.precision`], 1/1 [`checker_R3.headline_group.precision`]. All of it is `nurse_gap`: no run has a bed clinical or hard-constraint issue.
+- **Secondary group:** recall 76/96 [`checker_R1.secondary_group.recall`], 73/91 [`checker_R2.secondary_group.recall`], 62/85 [`checker_R3.secondary_group.recall`]; precision 76/85 [`checker_R1.secondary_group.precision`], 73/78 [`checker_R2.secondary_group.precision`], 62/68 [`checker_R3.secondary_group.precision`].
 
 > *Figure placeholder (Phase 3):* F6 CHECKER against the audit, by stratum.
 
@@ -347,7 +365,19 @@ The reference sets, side by side (§11 #73):
 - **Primary:** the **75 [`wrong_claims_sets.pre_registered_wrong_claims.size`] pre-registered wrong claims**, stratified as 54 [`wrong_claims_sets.rubric_dependent_spare_free.size`] rubric-dependent (*spare*/*free*) + 2 [`wrong_claims_sets.extraction_error.size`] extraction errors + 19 [`wrong_claims_sets.confirmed_wrong.size`] confirmed.
 - **Descriptive:** the **19 [`wrong_claims_sets.confirmed_wrong_after_owner_review.size`] `confirmed_wrong`** after the owner review. **R52:** they rest on verdicts proposed by an LLM advisor and accepted by the owner.
 
-The claims the CHECKER contested are mapped in [`results/analysis/R1_checker_dispute_mapping.json`](results/analysis/R1_checker_dispute_mapping.json). The pre-registered protocol foresees this mapping (§4 claims items 3 and 7.3). The assistant made it, after the extraction commit and the owner review, from the CHECKER's LLM-only issues on R1 (5 [`wrong_claims_sets.CHECKER_LLM_only_issues_on_R1.size`]), with the rule stated in that file.
+**The mapping is assistant-mapped and owner-reviewed (R52).** The claims the CHECKER contested are mapped in [`results/analysis/R1_checker_dispute_mapping.json`](results/analysis/R1_checker_dispute_mapping.json), with a readable copy in [`results/analysis/R1_checker_dispute_mapping.md`](results/analysis/R1_checker_dispute_mapping.md): the finding text, the claims, and why they match. The pre-registered protocol foresees this mapping (§4 claims items 3 and 7.3). The assistant made it, after the extraction commit and the owner review, from the CHECKER's explanation findings on R1 (5 [`wrong_claims_sets.CHECKER_LLM_only_issues_on_R1.size`], every issue of an LLM-only type), with the rule stated in that file. The owner reviews it.
+
+**Definitions.** Recall = wrong claims the CHECKER contested / all wrong claims. Precision is **claim-level**, as pre-registered (§4 claims item 4): wrong claims it contested / all claims it contested. A finding that contests no figure adds nothing to either count, so precision says nothing about such findings. The findings themselves are counted below, all of them, mapped or not.
+
+| | mapped | unmapped | total | value |
+| --- | --- | --- | --- | --- |
+| explanation findings | 4 | 1 | 5 |  |
+| findings contesting a pre-registered wrong claim |  |  |  | 4/5 |
+| findings contesting a confirmed wrong claim |  |  |  | 3/5 |
+
+*Source: [`results/analysis/checker_on_wrong_claims.csv`](results/analysis/checker_on_wrong_claims.csv), written by `src/12_checker_on_wrong_claims.py`. Each cell's id is `checker_explanation_findings.<row>.<column>` (row and column names with every run of other characters as `_`) in `results/analysis/HEADLINE_NUMBERS.csv`.*
+
+The unmapped finding is the day-29 `other` issue: a truncated sentence in the situation field, which contests no figure. The CHECKER's other issues on R1 are of the audit's types (allocations); a keyword search of their text found none that disputes an explanation figure.
 
 | | recall | precision | wrong disputes | contested unverifiable | disputes outside the universe |
 | --- | --- | --- | --- | --- | --- |
@@ -364,7 +394,23 @@ The claims the CHECKER contested are mapped in [`results/analysis/R1_checker_dis
 
 *Source: [`results/analysis/checker_on_wrong_claims.csv`](results/analysis/checker_on_wrong_claims.csv), written by `src/12_checker_on_wrong_claims.py`. Each cell's id is `wrong_claims_descriptive.<row>.<column>` (row and column names with every run of other characters as `_`) in `results/analysis/HEADLINE_NUMBERS.csv`.*
 
-*The confirmed wrong claims stratified by error type* (§11 #73): *pending the owner's definition of "error type"*. The owner-review files carry a category and a rubric tier per claim, but no error-type field.
+**The confirmed wrong claims by error type** (§11 #73). The typology comes from the owner review: a consultant (LLM advisor) proposed it and the owner adopts it (R52). It is kept in the owner input table [`results/analysis/R1_owner_error_types.csv`](results/analysis/R1_owner_error_types.csv), which the pipeline validates and reads but never writes. The stratification is used only once the owner has confirmed every row:
+
+| | status |
+| --- | --- |
+| stratification by error type | pending: 0/19 rows confirmed |
+
+*Source: [`results/analysis/checker_on_wrong_claims.csv`](results/analysis/checker_on_wrong_claims.csv), written by `src/12_checker_on_wrong_claims.py`. Each cell's id is `wrong_claims_by_error_type.<row>.<column>` (row and column names with every run of other characters as `_`) in `results/analysis/HEADLINE_NUMBERS.csv`.*
+
+As a **secondary breakdown**, by claim category (a topic, not an error type):
+
+| | recall |
+| --- | --- |
+| empty_beds | 2/3 |
+| nurse_coverage | 0/4 |
+| overflow | 2/12 |
+
+*Source: [`results/analysis/checker_on_wrong_claims.csv`](results/analysis/checker_on_wrong_claims.csv), written by `src/12_checker_on_wrong_claims.py`. Each cell's id is `wrong_claims_by_category.<row>.<column>` (row and column names with every run of other characters as `_`) in `results/analysis/HEADLINE_NUMBERS.csv`.*
 
 The two cases the owner asked about:
 
@@ -378,7 +424,7 @@ The two cases the owner asked about:
 *Source: [`results/analysis/checker_on_wrong_claims.csv`](results/analysis/checker_on_wrong_claims.csv), written by `src/12_checker_on_wrong_claims.py`. Each cell's id is `wrong_claims_cases.<row>.<column>` (row and column names with every run of other characters as `_`) in `results/analysis/HEADLINE_NUMBERS.csv`.*
 
 - **The *spare*/*free* readings.** The CHECKER contested 3/54 [`wrong_claims_cases.spare_free_rubric_dependent_claims_contested.value`] rubric-dependent claims, all three in its day-28 finding. None of its findings contests a claim on the strict reading (0 [`wrong_claims_cases.spare_free_CHECKER_findings_that_contest_a_claim_on_the_strict_reading.value`]). On day 28 it uses "beds minus census" itself, and computes it on the day-27 allocation. The decided day-28 beds minus the census give exactly the stated figures. So it contests three claims that the owner review counts as correct, and these are its 3 [`wrong_claims_descriptive.confirmed_wrong_claims.wrong_disputes`] wrong disputes against the descriptive set.
-- **The day-12 false self-verification.** The CHECKER contested the wrong queue total, R1-D12-19 (yes [`wrong_claims_cases.day_12_queue_total_R1_D12_19_contested.value`]). The sentence "which matches the queue records" is in the ALLOCATOR's closing message (transcript), not in its submitted explanation, and no CHECKER tool returns transcripts (no [`wrong_claims_cases.day_12_matches_the_queue_records_visible_to_the_CHECKER.value`]).
+- **The day-12 false self-verification is not a CHECKER miss.** The CHECKER contested the wrong figure, the queue total R1-D12-19 (yes [`wrong_claims_cases.day_12_queue_total_R1_D12_19_contested.value`]). The sentence claiming that the figure "matches the queue records" is in the ALLOCATOR's closing message to the dispatcher (the transcript). It is not in the submitted explanation, and no CHECKER tool returns transcripts (no [`wrong_claims_cases.day_12_matches_the_queue_records_visible_to_the_CHECKER.value`]). The false self-verification lies outside the CHECKER's information set: only an audit of the transcripts can see it.
 
 ## 4. STRESS1: a separate probe of forced cuts (§11 #74–#75)
 
@@ -390,7 +436,33 @@ One constructed probe (n = 1), reported as a case, with no generalisation and ne
 
 *Source: [`results/analysis/stress1.csv`](results/analysis/stress1.csv), written by `src/13_stress1.py`. Each cell's id is `stress_precondition.<row>.<column>` (row and column names with every run of other characters as `_`) in `results/analysis/HEADLINE_NUMBERS.csv`.*
 
-**Shock days** (Σ_d O_d > P_B, which depends on each run's own holders) with the §11 #74 measures, next to the baselines on the stress variant:
+**How many shock days.** A shock day is a day when Σ_d O_d > P_B. It depends on each run's own holders, not only on the pool, so it is counted per policy and listed. The pool changes on more days than that; the context table shows the pool and the holders around every change:
+
+| | STRESS1 | B0 | B1 | B2 |
+| --- | --- | --- | --- | --- |
+| shock days | 1 | 1 | 1 | 1 |
+| shock days (list) | 23 | 23 | 23 | 23 |
+| days with a bed-pool change | 16 21 23 26 | 16 21 23 26 | 16 21 23 26 | 16 21 23 26 |
+
+*Source: [`results/analysis/stress1.csv`](results/analysis/stress1.csv), written by `src/13_stress1.py`. Each cell's id is `stress_shock_day_count.<row>.<column>` (row and column names with every run of other characters as `_`) in `results/analysis/HEADLINE_NUMBERS.csv`.*
+
+| | STRESS1 pool / occupied | B0 pool / occupied | B1 pool / occupied | B2 pool / occupied |
+| --- | --- | --- | --- | --- |
+| day 15 | 96 / 65 | 96 / 64 | 96 / 65 | 96 / 65 |
+| day 16 | 100 / 72 | 100 / 60 | 100 / 72 | 100 / 72 |
+| day 17 | 100 / 72 | 100 / 58 | 100 / 72 | 100 / 72 |
+| day 20 | 100 / 73 | 100 / 63 | 100 / 73 | 100 / 73 |
+| day 21 | 96 / 84 | 96 / 74 | 96 / 84 | 96 / 84 |
+| day 22 | 96 / 70 | 96 / 64 | 96 / 70 | 96 / 70 |
+| day 23 | 56 / 62 | 56 / 60 | 56 / 62 | 56 / 62 |
+| day 24 | 56 / 43 | 56 / 42 | 56 / 43 | 56 / 43 |
+| day 25 | 56 / 47 | 56 / 48 | 56 / 47 | 56 / 47 |
+| day 26 | 96 / 49 | 96 / 49 | 96 / 48 | 96 / 50 |
+| day 27 | 96 / 76 | 96 / 74 | 96 / 76 | 96 / 75 |
+
+*Source: [`results/analysis/stress1.csv`](results/analysis/stress1.csv), written by `src/13_stress1.py`. Each cell's id is `stress_pool_context.<row>.<column>` (row and column names with every run of other characters as `_`) in `results/analysis/HEADLINE_NUMBERS.csv`.*
+
+**Shock days with the §11 #74 measures**, next to the baselines on the stress variant:
 
 | | STRESS1 | B0 | B1 | B2 |
 | --- | --- | --- | --- | --- |

@@ -504,3 +504,12 @@ Entries R7–R16 are gaps found while resuming from the repository alone, at the
 - **How it was caught:** `tests/test_frozen_guard.py::test_every_writer_in_src_calls_the_guard` failed in the fast suite before the commit.
 - **Fix:** both writes go through `guard_write`.
 - **Implication:** the R60 search-based test does its job on new code; it was the only thing that caught this.
+
+### R66. The day-12 false self-verification was outside the CHECKER's information set
+
+- **Type:** evaluation design (how a case is used in the Reflection), not an agent error of the CHECKER.
+- **What happened:** the owner's §11 #73 brief asked whether the CHECKER catches the day-12 false self-verification ("matches the queue records"), on the premise that a miss would be a CHECKER failure. The sentence is in the ALLOCATOR's closing message to the dispatcher (`transcripts/`, `allocator_digest/day_12.md`), not in the submitted explanation. The CHECKER reads the decision history, the records and the what-if, never the transcripts (Decisions Log #73). The CHECKER did contest the wrong figure itself (R1-D12-19).
+- **How it was caught:** searching the run's records for the quoted phrase while building step 12; it occurs only in the transcripts, the digest and the owner-review files.
+- **Consequence:** the case is not a CHECKER miss. It shows a class of error that only a transcript audit can see: a false statement of verification outside the explanation fields. `ANALYSIS.md` words it that way (owner, 2026-11-24).
+- **Implication:** before scoring a reviewer on a case, check that the evidence was inside its information set.
+

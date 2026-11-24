@@ -11,6 +11,20 @@ stress_shock_days.day_23_replay_ok.STRESS1,stress_shock_days,day 23 replay ok,ST
 stress_shock_days.day_23_pairing_closed_form_mismatches.STRESS1,stress_shock_days,day 23 pairing / closed-form mismatches,STRESS1,0,primary,yes,
 stress_shock_days.day_23_follows_the_cut_rule.STRESS1,stress_shock_days,day 23 follows the cut rule,STRESS1,yes,primary,yes,
 stress_criterion.days_meeting_the_criterion_shock_days.STRESS1,stress_criterion,days meeting the criterion / shock days,STRESS1,1/1,primary,yes,no failing day
+stress_shock_day_count.shock_days.STRESS1,stress_shock_day_count,shock days,STRESS1,1,descriptive,no,"sum O_d > P_B, from each run's own holders"
+stress_shock_day_count.shock_days_list.STRESS1,stress_shock_day_count,shock days (list),STRESS1,23,descriptive,no,
+stress_shock_day_count.days_with_a_bed_pool_change.STRESS1,stress_shock_day_count,days with a bed-pool change,STRESS1,16 21 23 26,context,no,dataset pools; equal for every policy
+stress_pool_context.day_15.STRESS1_pool_occupied,stress_pool_context,day 15,STRESS1 pool / occupied,96 / 65,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_16.STRESS1_pool_occupied,stress_pool_context,day 16,STRESS1 pool / occupied,100 / 72,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_17.STRESS1_pool_occupied,stress_pool_context,day 17,STRESS1 pool / occupied,100 / 72,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_20.STRESS1_pool_occupied,stress_pool_context,day 20,STRESS1 pool / occupied,100 / 73,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_21.STRESS1_pool_occupied,stress_pool_context,day 21,STRESS1 pool / occupied,96 / 84,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_22.STRESS1_pool_occupied,stress_pool_context,day 22,STRESS1 pool / occupied,96 / 70,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_23.STRESS1_pool_occupied,stress_pool_context,day 23,STRESS1 pool / occupied,56 / 62,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_24.STRESS1_pool_occupied,stress_pool_context,day 24,STRESS1 pool / occupied,56 / 43,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_25.STRESS1_pool_occupied,stress_pool_context,day 25,STRESS1 pool / occupied,56 / 47,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_26.STRESS1_pool_occupied,stress_pool_context,day 26,STRESS1 pool / occupied,96 / 49,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_27.STRESS1_pool_occupied,stress_pool_context,day 27,STRESS1 pool / occupied,96 / 76,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
 stress_shock_days.day_23_forced_cut_c_t.B0,stress_shock_days,day 23 forced cut c(t),B0,4,reference,yes,
 stress_shock_days.day_23_executed_cut.B0,stress_shock_days,day 23 executed cut,B0,4,reference,yes,
 stress_shock_days.day_23_shock_cut_pairs.B0,stress_shock_days,day 23 shock-cut pairs,B0,0,reference,yes,
@@ -22,6 +36,20 @@ stress_shock_days.day_23_replay_ok.B0,stress_shock_days,day 23 replay ok,B0,yes,
 stress_shock_days.day_23_pairing_closed_form_mismatches.B0,stress_shock_days,day 23 pairing / closed-form mismatches,B0,0,reference,yes,
 stress_shock_days.day_23_follows_the_cut_rule.B0,stress_shock_days,day 23 follows the cut rule,B0,yes,reference,yes,
 stress_criterion.days_meeting_the_criterion_shock_days.B0,stress_criterion,days meeting the criterion / shock days,B0,1/1,reference,yes,no failing day
+stress_shock_day_count.shock_days.B0,stress_shock_day_count,shock days,B0,1,descriptive,no,"sum O_d > P_B, from each run's own holders"
+stress_shock_day_count.shock_days_list.B0,stress_shock_day_count,shock days (list),B0,23,descriptive,no,
+stress_shock_day_count.days_with_a_bed_pool_change.B0,stress_shock_day_count,days with a bed-pool change,B0,16 21 23 26,context,no,dataset pools; equal for every policy
+stress_pool_context.day_15.B0_pool_occupied,stress_pool_context,day 15,B0 pool / occupied,96 / 64,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_16.B0_pool_occupied,stress_pool_context,day 16,B0 pool / occupied,100 / 60,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_17.B0_pool_occupied,stress_pool_context,day 17,B0 pool / occupied,100 / 58,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_20.B0_pool_occupied,stress_pool_context,day 20,B0 pool / occupied,100 / 63,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_21.B0_pool_occupied,stress_pool_context,day 21,B0 pool / occupied,96 / 74,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_22.B0_pool_occupied,stress_pool_context,day 22,B0 pool / occupied,96 / 64,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_23.B0_pool_occupied,stress_pool_context,day 23,B0 pool / occupied,56 / 60,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_24.B0_pool_occupied,stress_pool_context,day 24,B0 pool / occupied,56 / 42,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_25.B0_pool_occupied,stress_pool_context,day 25,B0 pool / occupied,56 / 48,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_26.B0_pool_occupied,stress_pool_context,day 26,B0 pool / occupied,96 / 49,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_27.B0_pool_occupied,stress_pool_context,day 27,B0 pool / occupied,96 / 74,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
 stress_shock_days.day_23_forced_cut_c_t.B1,stress_shock_days,day 23 forced cut c(t),B1,6,reference,yes,
 stress_shock_days.day_23_executed_cut.B1,stress_shock_days,day 23 executed cut,B1,6,reference,yes,
 stress_shock_days.day_23_shock_cut_pairs.B1,stress_shock_days,day 23 shock-cut pairs,B1,0,reference,yes,
@@ -33,6 +61,20 @@ stress_shock_days.day_23_replay_ok.B1,stress_shock_days,day 23 replay ok,B1,yes,
 stress_shock_days.day_23_pairing_closed_form_mismatches.B1,stress_shock_days,day 23 pairing / closed-form mismatches,B1,0,reference,yes,
 stress_shock_days.day_23_follows_the_cut_rule.B1,stress_shock_days,day 23 follows the cut rule,B1,yes,reference,yes,
 stress_criterion.days_meeting_the_criterion_shock_days.B1,stress_criterion,days meeting the criterion / shock days,B1,1/1,reference,yes,no failing day
+stress_shock_day_count.shock_days.B1,stress_shock_day_count,shock days,B1,1,descriptive,no,"sum O_d > P_B, from each run's own holders"
+stress_shock_day_count.shock_days_list.B1,stress_shock_day_count,shock days (list),B1,23,descriptive,no,
+stress_shock_day_count.days_with_a_bed_pool_change.B1,stress_shock_day_count,days with a bed-pool change,B1,16 21 23 26,context,no,dataset pools; equal for every policy
+stress_pool_context.day_15.B1_pool_occupied,stress_pool_context,day 15,B1 pool / occupied,96 / 65,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_16.B1_pool_occupied,stress_pool_context,day 16,B1 pool / occupied,100 / 72,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_17.B1_pool_occupied,stress_pool_context,day 17,B1 pool / occupied,100 / 72,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_20.B1_pool_occupied,stress_pool_context,day 20,B1 pool / occupied,100 / 73,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_21.B1_pool_occupied,stress_pool_context,day 21,B1 pool / occupied,96 / 84,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_22.B1_pool_occupied,stress_pool_context,day 22,B1 pool / occupied,96 / 70,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_23.B1_pool_occupied,stress_pool_context,day 23,B1 pool / occupied,56 / 62,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_24.B1_pool_occupied,stress_pool_context,day 24,B1 pool / occupied,56 / 43,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_25.B1_pool_occupied,stress_pool_context,day 25,B1 pool / occupied,56 / 47,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_26.B1_pool_occupied,stress_pool_context,day 26,B1 pool / occupied,96 / 48,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_27.B1_pool_occupied,stress_pool_context,day 27,B1 pool / occupied,96 / 76,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
 stress_shock_days.day_23_forced_cut_c_t.B2,stress_shock_days,day 23 forced cut c(t),B2,6,reference,yes,
 stress_shock_days.day_23_executed_cut.B2,stress_shock_days,day 23 executed cut,B2,6,reference,yes,
 stress_shock_days.day_23_shock_cut_pairs.B2,stress_shock_days,day 23 shock-cut pairs,B2,0,reference,yes,
@@ -44,6 +86,20 @@ stress_shock_days.day_23_replay_ok.B2,stress_shock_days,day 23 replay ok,B2,yes,
 stress_shock_days.day_23_pairing_closed_form_mismatches.B2,stress_shock_days,day 23 pairing / closed-form mismatches,B2,0,reference,yes,
 stress_shock_days.day_23_follows_the_cut_rule.B2,stress_shock_days,day 23 follows the cut rule,B2,yes,reference,yes,
 stress_criterion.days_meeting_the_criterion_shock_days.B2,stress_criterion,days meeting the criterion / shock days,B2,1/1,reference,yes,no failing day
+stress_shock_day_count.shock_days.B2,stress_shock_day_count,shock days,B2,1,descriptive,no,"sum O_d > P_B, from each run's own holders"
+stress_shock_day_count.shock_days_list.B2,stress_shock_day_count,shock days (list),B2,23,descriptive,no,
+stress_shock_day_count.days_with_a_bed_pool_change.B2,stress_shock_day_count,days with a bed-pool change,B2,16 21 23 26,context,no,dataset pools; equal for every policy
+stress_pool_context.day_15.B2_pool_occupied,stress_pool_context,day 15,B2 pool / occupied,96 / 65,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_16.B2_pool_occupied,stress_pool_context,day 16,B2 pool / occupied,100 / 72,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_17.B2_pool_occupied,stress_pool_context,day 17,B2 pool / occupied,100 / 72,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_20.B2_pool_occupied,stress_pool_context,day 20,B2 pool / occupied,100 / 73,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_21.B2_pool_occupied,stress_pool_context,day 21,B2 pool / occupied,96 / 84,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_22.B2_pool_occupied,stress_pool_context,day 22,B2 pool / occupied,96 / 70,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_23.B2_pool_occupied,stress_pool_context,day 23,B2 pool / occupied,56 / 62,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_24.B2_pool_occupied,stress_pool_context,day 24,B2 pool / occupied,56 / 43,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_25.B2_pool_occupied,stress_pool_context,day 25,B2 pool / occupied,56 / 47,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_26.B2_pool_occupied,stress_pool_context,day 26,B2 pool / occupied,96 / 50,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
+stress_pool_context.day_27.B2_pool_occupied,stress_pool_context,day 27,B2 pool / occupied,96 / 75,context,no,occupied = holders O at the start of the day; shock day if occupied > pool
 stress_metrics.gate_passed_run_level.STRESS1,stress_metrics,gate passed (run level),STRESS1,yes,descriptive,yes,
 stress_metrics.gate_passed_run_level.B0,stress_metrics,gate passed (run level),B0,yes,descriptive,yes,
 stress_metrics.gate_passed_run_level.B1,stress_metrics,gate passed (run level),B1,yes,descriptive,yes,

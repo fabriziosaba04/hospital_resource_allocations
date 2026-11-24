@@ -683,6 +683,18 @@ main_gap_summary.A2_rows_with_a_non_zero_gap_to_B1.R3,main_gap_summary,A2 rows w
 main_gap_summary.A3_rows_with_a_non_zero_gap_to_B1.R1,main_gap_summary,A3 rows with a non-zero gap to B1,R1,0/8,headline,no,count of the main_gap rows of this metric
 main_gap_summary.A3_rows_with_a_non_zero_gap_to_B1.R2,main_gap_summary,A3 rows with a non-zero gap to B1,R2,0/8,headline,no,count of the main_gap rows of this metric
 main_gap_summary.A3_rows_with_a_non_zero_gap_to_B1.R3,main_gap_summary,A3 rows with a non-zero gap to B1,R3,0/8,headline,no,count of the main_gap rows of this metric
+agreement.R1_R2_beds.identical_days,agreement,R1-R2 beds,identical days,9/30,descriptive,no,"§9 names the quantity; this form was fixed after the runs (owner, 2026-11-24): descriptive"
+agreement.R1_R2_beds.mean_L1_distance,agreement,R1-R2 beds,mean L1 distance,2.1333,descriptive,no,"§9 names the quantity; this form was fixed after the runs (owner, 2026-11-24): descriptive; per day the sum over departments of |x_d - y_d|"
+agreement.R1_R2_nurses.identical_days,agreement,R1-R2 nurses,identical days,22/30,descriptive,no,"§9 names the quantity; this form was fixed after the runs (owner, 2026-11-24): descriptive"
+agreement.R1_R2_nurses.mean_L1_distance,agreement,R1-R2 nurses,mean L1 distance,0.5333,descriptive,no,"§9 names the quantity; this form was fixed after the runs (owner, 2026-11-24): descriptive; per day the sum over departments of |x_d - y_d|"
+agreement.R1_R3_beds.identical_days,agreement,R1-R3 beds,identical days,8/30,descriptive,no,"§9 names the quantity; this form was fixed after the runs (owner, 2026-11-24): descriptive"
+agreement.R1_R3_beds.mean_L1_distance,agreement,R1-R3 beds,mean L1 distance,2.3333,descriptive,no,"§9 names the quantity; this form was fixed after the runs (owner, 2026-11-24): descriptive; per day the sum over departments of |x_d - y_d|"
+agreement.R1_R3_nurses.identical_days,agreement,R1-R3 nurses,identical days,19/30,descriptive,no,"§9 names the quantity; this form was fixed after the runs (owner, 2026-11-24): descriptive"
+agreement.R1_R3_nurses.mean_L1_distance,agreement,R1-R3 nurses,mean L1 distance,0.7333,descriptive,no,"§9 names the quantity; this form was fixed after the runs (owner, 2026-11-24): descriptive; per day the sum over departments of |x_d - y_d|"
+agreement.R2_R3_beds.identical_days,agreement,R2-R3 beds,identical days,8/30,descriptive,no,"§9 names the quantity; this form was fixed after the runs (owner, 2026-11-24): descriptive"
+agreement.R2_R3_beds.mean_L1_distance,agreement,R2-R3 beds,mean L1 distance,2.2,descriptive,no,"§9 names the quantity; this form was fixed after the runs (owner, 2026-11-24): descriptive; per day the sum over departments of |x_d - y_d|"
+agreement.R2_R3_nurses.identical_days,agreement,R2-R3 nurses,identical days,26/30,descriptive,no,"§9 names the quantity; this form was fixed after the runs (owner, 2026-11-24): descriptive"
+agreement.R2_R3_nurses.mean_L1_distance,agreement,R2-R3 nurses,mean L1 distance,0.2667,descriptive,no,"§9 names the quantity; this form was fixed after the runs (owner, 2026-11-24): descriptive; per day the sum over departments of |x_d - y_d|"
 main_lex.A2_tier_3_2_1_vs_B0.R1,main_lex,"A2 (tier 3, 2, 1) vs B0",R1,better,headline,yes,lower is better; read tier 3 first (§3.2)
 main_lex.A2_tier_3_2_1_vs_B1.R1,main_lex,"A2 (tier 3, 2, 1) vs B1",R1,better,headline,yes,lower is better; read tier 3 first (§3.2)
 main_lex.A2_tier_3_2_1_vs_B2.R1,main_lex,"A2 (tier 3, 2, 1) vs B2",R1,better,headline,yes,lower is better; read tier 3 first (§3.2)

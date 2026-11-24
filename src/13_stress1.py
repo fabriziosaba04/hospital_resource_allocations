@@ -117,6 +117,20 @@ def build() -> Table:
                 failing.append(f"day {day}: {'; '.join(reasons)}")
         t.add("stress_criterion", "days meeting the criterion / shock days", SHORT[p], f"{meeting}/{len(days)}",
               "primary" if p == RUN else "reference", True, "; ".join(failing) or "no failing day")
+        all_days = audit_days(p)                           # owner check 2026-11-24: shock days per policy
+        t.add("stress_shock_day_count", "shock days", SHORT[p], len(days), "descriptive", False,
+              "sum O_d > P_B, from each run's own holders")
+        t.add("stress_shock_day_count", "shock days (list)", SHORT[p], " ".join(str(d["day"]) for d in days) or "none",
+              "descriptive", False)
+        changes = [d for prev, d in zip(all_days, all_days[1:]) if d["pool_beds"] != prev["pool_beds"]]
+        t.add("stress_shock_day_count", "days with a bed-pool change", SHORT[p],
+              " ".join(f"{d['day']}" for d in changes), "context", False, "dataset pools; equal for every policy")
+        near = {c["day"] + k for c in changes for k in (-1, 0, 1)}   # each pool change with the days around it
+        for d in all_days:
+            if d["day"] in near:
+                t.add("stress_pool_context", f"day {d['day']}", f"{SHORT[p]} pool / occupied",
+                      f"{d['pool_beds']} / {sum(d['occupied'].values())}", "context", False,
+                      "occupied = holders O at the start of the day; shock day if occupied > pool")
 
     pol = {SHORT[p]: policy_metrics(p, STRESS) for p in POLICIES}
     rows = {k: metric_rows(m) for k, m in pol.items()}

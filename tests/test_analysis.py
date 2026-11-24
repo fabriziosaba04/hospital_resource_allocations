@@ -48,7 +48,7 @@ LABELS = re.compile(
     r"|^#+ [0-9.]+|§\s?\d+(?:\.\d+)?(?:[–-]#?\d+)?|#\d+(?:[–-]#?\d+)?|\d{4}-\d{2}-\d{2}"  # headings, §, #, dates
     r"|R\d-D\d+-\d+|\b(?i:items?|days?|day-|tiers?|tier-|levels?|Phase|steps?)\s?\d+(?:\.\d+)?"
     r"(?:\s?(?:and|–|-|,)\s?\d+(?:\.\d+)?)*"                                # item 4, items 3 and 7.3, tiers 3 and 2
-    r"|\b[ABCFLRW]\d(?:[–-][ABCFLRW]?\d)?\b|\b(?:n|W) = \d\b|SV_[BN]|seed\d+|STRESS1|R52"
+    r"|\b[ABCFLRW]\d(?:[–-][ABCFLRW]?\d)?\b|\b(?:n|W) = \d\b|SV_[BN]|seed\d+|STRESS1|\bR\d{2}\b|HARD10"  # R35 etc.: log ids
     r"|\bfloor of 0\b|\bscores 0 on A1\b", re.M)
 
 
@@ -99,3 +99,5 @@ def test_steps_10_to_13_reproduce_the_committed_tables(tmp_path):
         r = subprocess.run([sys.executable, script, "--out", str(tmp_path)], cwd=ROOT, capture_output=True, text=True)
         assert r.returncode == 0, r.stdout + r.stderr
         assert (tmp_path / name).read_bytes() == (ANALYSIS_DIR / name).read_bytes(), name
+    md = "R1_checker_dispute_mapping.md"
+    assert (tmp_path / md).read_bytes() == (ANALYSIS_DIR / md).read_bytes()

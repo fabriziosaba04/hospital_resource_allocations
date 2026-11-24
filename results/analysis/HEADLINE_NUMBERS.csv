@@ -692,6 +692,18 @@ main_variability.B4_coverage_dispersion_L2.mean,0.0215,results/analysis/main_com
 main_variability.B4_coverage_dispersion_L3.min,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,descriptive,B4 coverage dispersion L3 / min
 main_variability.B4_coverage_dispersion_L3.max,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,descriptive,B4 coverage dispersion L3 / max
 main_variability.B4_coverage_dispersion_L3.mean,0,results/analysis/main_comparison.csv,src/10_main_comparison.py,yes,descriptive,B4 coverage dispersion L3 / mean
+agreement.R1_R2_beds.identical_days,9/30,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R1-R2 beds / identical days
+agreement.R1_R2_beds.mean_L1_distance,2.1333,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R1-R2 beds / mean L1 distance
+agreement.R1_R2_nurses.identical_days,22/30,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R1-R2 nurses / identical days
+agreement.R1_R2_nurses.mean_L1_distance,0.5333,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R1-R2 nurses / mean L1 distance
+agreement.R1_R3_beds.identical_days,8/30,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R1-R3 beds / identical days
+agreement.R1_R3_beds.mean_L1_distance,2.3333,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R1-R3 beds / mean L1 distance
+agreement.R1_R3_nurses.identical_days,19/30,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R1-R3 nurses / identical days
+agreement.R1_R3_nurses.mean_L1_distance,0.7333,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R1-R3 nurses / mean L1 distance
+agreement.R2_R3_beds.identical_days,8/30,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R2-R3 beds / identical days
+agreement.R2_R3_beds.mean_L1_distance,2.2,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R2-R3 beds / mean L1 distance
+agreement.R2_R3_nurses.identical_days,26/30,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R2-R3 nurses / identical days
+agreement.R2_R3_nurses.mean_L1_distance,0.2667,results/analysis/main_comparison.csv,src/10_main_comparison.py,no,descriptive,R2-R3 nurses / mean L1 distance
 checker_R1.headline_group.recall,4/5,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,headline group / recall
 checker_R1.headline_group.precision,4/4,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,headline group / precision
 checker_R1.headline_group.level_agreement,4/4,results/analysis/checker_vs_audit.csv,src/11_checker_vs_audit.py,yes,check,headline group / level agreement
@@ -890,6 +902,11 @@ wrong_claims_sets.extraction_error.size,2,results/analysis/checker_on_wrong_clai
 wrong_claims_sets.confirmed_wrong.size,19,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,check,confirmed wrong / size
 wrong_claims_sets.confirmed_wrong_after_owner_review.size,19,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,descriptive,confirmed wrong after owner review / size
 wrong_claims_sets.CHECKER_LLM_only_issues_on_R1.size,5,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,descriptive,CHECKER LLM-only issues on R1 / size
+checker_explanation_findings.explanation_findings.mapped,4,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,explanation findings / mapped
+checker_explanation_findings.explanation_findings.unmapped,1,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,explanation findings / unmapped
+checker_explanation_findings.explanation_findings.total,5,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,explanation findings / total
+checker_explanation_findings.findings_contesting_a_pre_registered_wrong_claim.value,4/5,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,findings contesting a pre-registered wrong claim / value
+checker_explanation_findings.findings_contesting_a_confirmed_wrong_claim.value,3/5,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,findings contesting a confirmed wrong claim / value
 wrong_claims_primary.all_wrong_claims.recall,7/75,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,check,all wrong claims / recall
 wrong_claims_primary.all_wrong_claims.precision,7/7,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,check,all wrong claims / precision
 wrong_claims_primary.all_wrong_claims.wrong_disputes,0,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,check,all wrong claims / wrong disputes
@@ -901,11 +918,71 @@ wrong_claims_primary.confirmed_wrong.recall,4/19,results/analysis/checker_on_wro
 wrong_claims_descriptive.confirmed_wrong_claims.recall,4/19,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,descriptive,confirmed wrong claims / recall
 wrong_claims_descriptive.confirmed_wrong_claims.precision,4/7,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,descriptive,confirmed wrong claims / precision
 wrong_claims_descriptive.confirmed_wrong_claims.wrong_disputes,3,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,descriptive,confirmed wrong claims / wrong disputes
+wrong_claims_by_error_type.stratification_by_error_type.status,pending: 0/19 rows confirmed,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,stratification by error type / status
+wrong_claims_by_category.empty_beds.recall,2/3,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,empty_beds / recall
+wrong_claims_by_category.nurse_coverage.recall,0/4,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,nurse_coverage / recall
+wrong_claims_by_category.overflow.recall,2/12,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,overflow / recall
 wrong_claims_cases.spare_free_rubric_dependent_claims_contested.value,3/54,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,spare/free: rubric-dependent claims contested / value
 wrong_claims_cases.spare_free_CHECKER_findings_that_contest_a_claim_on_the_strict_reading.value,0,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,spare/free: CHECKER findings that contest a claim on the strict reading / value
 wrong_claims_cases.day_12_queue_total_R1_D12_19_contested.value,yes,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,day 12: queue total R1-D12-19 contested / value
 wrong_claims_cases.day_12_matches_the_queue_records_visible_to_the_CHECKER.value,no,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,no,descriptive,day 12: 'matches the queue records' visible to the CHECKER / value
 stress_precondition.shock_day_A1_pairing_closed_form_Hypothesis_property_test.result,passed,results/analysis/stress1.csv,src/13_stress1.py,yes,check,shock-day A1 pairing = closed form (Hypothesis property test) / result
+stress_shock_day_count.shock_days.STRESS1,1,results/analysis/stress1.csv,src/13_stress1.py,no,descriptive,shock days / STRESS1
+stress_shock_day_count.shock_days.B0,1,results/analysis/stress1.csv,src/13_stress1.py,no,descriptive,shock days / B0
+stress_shock_day_count.shock_days.B1,1,results/analysis/stress1.csv,src/13_stress1.py,no,descriptive,shock days / B1
+stress_shock_day_count.shock_days.B2,1,results/analysis/stress1.csv,src/13_stress1.py,no,descriptive,shock days / B2
+stress_shock_day_count.shock_days_list.STRESS1,23,results/analysis/stress1.csv,src/13_stress1.py,no,descriptive,shock days (list) / STRESS1
+stress_shock_day_count.shock_days_list.B0,23,results/analysis/stress1.csv,src/13_stress1.py,no,descriptive,shock days (list) / B0
+stress_shock_day_count.shock_days_list.B1,23,results/analysis/stress1.csv,src/13_stress1.py,no,descriptive,shock days (list) / B1
+stress_shock_day_count.shock_days_list.B2,23,results/analysis/stress1.csv,src/13_stress1.py,no,descriptive,shock days (list) / B2
+stress_shock_day_count.days_with_a_bed_pool_change.STRESS1,16 21 23 26,results/analysis/stress1.csv,src/13_stress1.py,no,context,days with a bed-pool change / STRESS1
+stress_shock_day_count.days_with_a_bed_pool_change.B0,16 21 23 26,results/analysis/stress1.csv,src/13_stress1.py,no,context,days with a bed-pool change / B0
+stress_shock_day_count.days_with_a_bed_pool_change.B1,16 21 23 26,results/analysis/stress1.csv,src/13_stress1.py,no,context,days with a bed-pool change / B1
+stress_shock_day_count.days_with_a_bed_pool_change.B2,16 21 23 26,results/analysis/stress1.csv,src/13_stress1.py,no,context,days with a bed-pool change / B2
+stress_pool_context.day_15.STRESS1_pool_occupied,96 / 65,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 15 / STRESS1 pool / occupied
+stress_pool_context.day_15.B0_pool_occupied,96 / 64,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 15 / B0 pool / occupied
+stress_pool_context.day_15.B1_pool_occupied,96 / 65,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 15 / B1 pool / occupied
+stress_pool_context.day_15.B2_pool_occupied,96 / 65,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 15 / B2 pool / occupied
+stress_pool_context.day_16.STRESS1_pool_occupied,100 / 72,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 16 / STRESS1 pool / occupied
+stress_pool_context.day_16.B0_pool_occupied,100 / 60,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 16 / B0 pool / occupied
+stress_pool_context.day_16.B1_pool_occupied,100 / 72,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 16 / B1 pool / occupied
+stress_pool_context.day_16.B2_pool_occupied,100 / 72,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 16 / B2 pool / occupied
+stress_pool_context.day_17.STRESS1_pool_occupied,100 / 72,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 17 / STRESS1 pool / occupied
+stress_pool_context.day_17.B0_pool_occupied,100 / 58,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 17 / B0 pool / occupied
+stress_pool_context.day_17.B1_pool_occupied,100 / 72,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 17 / B1 pool / occupied
+stress_pool_context.day_17.B2_pool_occupied,100 / 72,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 17 / B2 pool / occupied
+stress_pool_context.day_20.STRESS1_pool_occupied,100 / 73,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 20 / STRESS1 pool / occupied
+stress_pool_context.day_20.B0_pool_occupied,100 / 63,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 20 / B0 pool / occupied
+stress_pool_context.day_20.B1_pool_occupied,100 / 73,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 20 / B1 pool / occupied
+stress_pool_context.day_20.B2_pool_occupied,100 / 73,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 20 / B2 pool / occupied
+stress_pool_context.day_21.STRESS1_pool_occupied,96 / 84,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 21 / STRESS1 pool / occupied
+stress_pool_context.day_21.B0_pool_occupied,96 / 74,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 21 / B0 pool / occupied
+stress_pool_context.day_21.B1_pool_occupied,96 / 84,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 21 / B1 pool / occupied
+stress_pool_context.day_21.B2_pool_occupied,96 / 84,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 21 / B2 pool / occupied
+stress_pool_context.day_22.STRESS1_pool_occupied,96 / 70,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 22 / STRESS1 pool / occupied
+stress_pool_context.day_22.B0_pool_occupied,96 / 64,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 22 / B0 pool / occupied
+stress_pool_context.day_22.B1_pool_occupied,96 / 70,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 22 / B1 pool / occupied
+stress_pool_context.day_22.B2_pool_occupied,96 / 70,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 22 / B2 pool / occupied
+stress_pool_context.day_23.STRESS1_pool_occupied,56 / 62,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 23 / STRESS1 pool / occupied
+stress_pool_context.day_23.B0_pool_occupied,56 / 60,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 23 / B0 pool / occupied
+stress_pool_context.day_23.B1_pool_occupied,56 / 62,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 23 / B1 pool / occupied
+stress_pool_context.day_23.B2_pool_occupied,56 / 62,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 23 / B2 pool / occupied
+stress_pool_context.day_24.STRESS1_pool_occupied,56 / 43,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 24 / STRESS1 pool / occupied
+stress_pool_context.day_24.B0_pool_occupied,56 / 42,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 24 / B0 pool / occupied
+stress_pool_context.day_24.B1_pool_occupied,56 / 43,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 24 / B1 pool / occupied
+stress_pool_context.day_24.B2_pool_occupied,56 / 43,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 24 / B2 pool / occupied
+stress_pool_context.day_25.STRESS1_pool_occupied,56 / 47,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 25 / STRESS1 pool / occupied
+stress_pool_context.day_25.B0_pool_occupied,56 / 48,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 25 / B0 pool / occupied
+stress_pool_context.day_25.B1_pool_occupied,56 / 47,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 25 / B1 pool / occupied
+stress_pool_context.day_25.B2_pool_occupied,56 / 47,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 25 / B2 pool / occupied
+stress_pool_context.day_26.STRESS1_pool_occupied,96 / 49,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 26 / STRESS1 pool / occupied
+stress_pool_context.day_26.B0_pool_occupied,96 / 49,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 26 / B0 pool / occupied
+stress_pool_context.day_26.B1_pool_occupied,96 / 48,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 26 / B1 pool / occupied
+stress_pool_context.day_26.B2_pool_occupied,96 / 50,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 26 / B2 pool / occupied
+stress_pool_context.day_27.STRESS1_pool_occupied,96 / 76,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 27 / STRESS1 pool / occupied
+stress_pool_context.day_27.B0_pool_occupied,96 / 74,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 27 / B0 pool / occupied
+stress_pool_context.day_27.B1_pool_occupied,96 / 76,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 27 / B1 pool / occupied
+stress_pool_context.day_27.B2_pool_occupied,96 / 75,results/analysis/stress1.csv,src/13_stress1.py,no,context,day 27 / B2 pool / occupied
 stress_shock_days.day_23_forced_cut_c_t.STRESS1,6,results/analysis/stress1.csv,src/13_stress1.py,yes,primary,day 23 forced cut c(t) / STRESS1
 stress_shock_days.day_23_forced_cut_c_t.B0,4,results/analysis/stress1.csv,src/13_stress1.py,yes,reference,day 23 forced cut c(t) / B0
 stress_shock_days.day_23_forced_cut_c_t.B1,6,results/analysis/stress1.csv,src/13_stress1.py,yes,reference,day 23 forced cut c(t) / B1

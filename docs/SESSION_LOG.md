@@ -1038,3 +1038,26 @@ No frozen file was edited, moved or re-hashed in place; transcripts untouched; n
 
 1. `launch` resumes whatever `ACTIVE_RUN` names (stays parked; no more runs are planned).
 2. `ANALYSIS.md` renders every cell of every table (1405 numbers); the per-type CHECKER rows could move to an appendix.
+
+## 2026-11-24 (twenty-seventh session: Phase 2 review items, on branch `analysis`)
+
+No frozen file was edited, moved or re-hashed in place; transcripts untouched; no history rewrite. Not merged (the owner reads `ANALYSIS.md` first).
+
+### Achieved
+
+1. **§9 decision-level agreement** computed in the owner's form, labelled descriptive (`pre_registered = no`; Log #131).
+2. **Error types:** owner input table `results/analysis/R1_owner_error_types.csv`, pre-filled for all 19 ids from the owner-review comments, validated, read only; the stratification waits for the owner's confirmation (Log #132). Category as a secondary breakdown.
+3. **Mapping checks** (Log #133): explanation findings 4 mapped / 1 unmapped / 5 total; claim-level precision defined in `ANALYSIS.md`; readable copy `results/analysis/R1_checker_dispute_mapping.md`.
+4. **STRESS1:** shock days listed per policy (day 23 only, for all four), with the pool and holders around every pool change.
+5. **Wording:** A1 and A2 with magnitudes and context; CHECKER precision next to recall; day 12 as outside the CHECKER's information set (REFLECTION_LOG R66).
+
+### Next
+
+1. Owner: confirm `R1_owner_error_types.csv` (set `owner_confirmed = yes`), review `R1_checker_dispute_mapping.md`, read `ANALYSIS.md`; then re-run steps 12 and 14, and merge `analysis`.
+2. Phase 3: figures.
+
+### Parked questions
+
+1. `launch` resumes whatever `ACTIVE_RUN` names (stays parked; no more runs are planned).
+2. `ANALYSIS.md` renders every cell of every table (1482 numbers); the per-type CHECKER rows could move to an appendix.
+

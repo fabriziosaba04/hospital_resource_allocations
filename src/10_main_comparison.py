@@ -40,6 +40,17 @@ def halts(run: str) -> int:
     return sum(1 for x in wf.read_text(encoding="utf-8").splitlines() if x.strip() and json.loads(x)["event"] == "halted")
 
 
+def final_allocations(run: str) -> dict[int, dict]:
+    """The allocation in effect at the end of each day: the last Allocation State record of the day that is not
+    the initial rule (as run_report.build)."""
+    p = ROOT / "results" / "allocations" / run / "allocation_state.jsonl"
+    out = {}
+    for x in (json.loads(l) for l in p.read_text(encoding="utf-8").splitlines() if l.strip()):
+        if x["source"] != "initial_rule":
+            out[x["day"]] = {"beds": x["beds"], "nurses": x["nurses"]}
+    return out
+
+
 def build() -> Table:
     pol = {r: policy_metrics(r) for r in AGENT_RUNS}
     pol.update({b: policy_metrics(f"{b}-{PRIMARY}", PRIMARY) for b in BASELINES})
@@ -104,6 +115,19 @@ def build() -> Table:
             n = sum(1 for i in idx if round(rows[r][i][2] - rows["B1"][i][2], 9) != 0)
             t.add("main_gap_summary", f"{metric} rows with a non-zero gap to B1", r, frac(n, len(idx)), "headline",
                   False, "count of the main_gap rows of this metric")
+
+    alloc = {r: final_allocations(r) for r in AGENT_RUNS}  # §9 decision-level agreement (Log #131)
+    for a, b in ((AGENT_RUNS[0], AGENT_RUNS[1]), (AGENT_RUNS[0], AGENT_RUNS[2]), (AGENT_RUNS[1], AGENT_RUNS[2])):
+        days = sorted(alloc[a])
+        if days != sorted(alloc[b]) or len(days) != 30:
+            raise SystemExit(f"{a}/{b}: allocation days differ")
+        for res in ("beds", "nurses"):
+            dist = [sum(abs(alloc[a][d][res][k] - alloc[b][d][res][k]) for k in alloc[a][d][res]) for d in days]
+            note = "§9 names the quantity; this form was fixed after the runs (owner, 2026-11-24): descriptive"
+            t.add("agreement", f"{a}-{b} {res}", "identical days", frac(sum(x == 0 for x in dist), len(days)),
+                  "descriptive", False, note)
+            t.add("agreement", f"{a}-{b} {res}", "mean L1 distance", round(sum(dist) / len(days), 4),
+                  "descriptive", False, note + "; per day the sum over departments of |x_d - y_d|")
 
     for r in AGENT_RUNS:                                   # A2 lexicographic (§3.2)
         tri = lambda p: tuple(pol[p]["A2"][f"tier{j}"]["SV_N"] for j in (3, 2, 1))  # noqa: E731

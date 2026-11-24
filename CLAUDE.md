@@ -72,7 +72,7 @@ hospital_resource_allocations/
 ├── results/                       index: results/README.md
 │   ├── allocations/               run records (agent runs R1–R3 and STRESS1, frozen, with per-subagent transcripts split into allocator/ and checker/; baselines B0–B2 on the four datasets)
 │   ├── evaluations/               audit records, metrics, headroom.json, run reports, copy-back manifests; R1 claim and owner review
-│   ├── analysis/                  analysis tables (steps 10–13), HEADLINE_NUMBERS.csv, R1 CHECKER dispute mapping; recomputed/ (not committed) receives the entry scripts' recomputations
+│   ├── analysis/                  analysis tables (steps 10–13), HEADLINE_NUMBERS.csv, R1 CHECKER dispute mapping (JSON input, generated .md), owner error-type table; recomputed/ (not committed) receives the entry scripts' recomputations
 │   ├── figures/                   static figures per dataset
 │   ├── verification/              copy_back/ (independent re-hashes of the four runs), pre_run/ (smoke test, run-settings probe)
 │   └── development/               dry runs DRY1–3, CHK-B2-HARD10, baselines on HARD10, synthetic fixtures (dry_runs/), HARD10 figures
