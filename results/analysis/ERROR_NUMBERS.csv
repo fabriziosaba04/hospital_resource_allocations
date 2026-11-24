@@ -37,6 +37,7 @@ ea_a2_adjud.discrepancies.count,43,results/analysis/error_analysis.csv,src/16_er
 ea_a2_adjud.assistant_miss.count,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,assistant_miss / count
 ea_a2_adjud.assistant_encoding.count,0,results/analysis/error_analysis.csv,src/16_error_analysis.py,no,descriptive,assistant_encoding / count
 wrong_claims_sets.rubric_dependent_spare_free.size,54,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,check,rubric-dependent (spare/free) / size
+wrong_claims_sets.confirmed_wrong_after_owner_review.size,19,results/analysis/checker_on_wrong_claims.csv,src/12_checker_on_wrong_claims.py,yes,descriptive,confirmed wrong after owner review / size
 ea_a1_types.nurse_gap.R1,5,results/analysis/error_analysis.csv,src/16_error_analysis.py,yes,check,nurse_gap / R1
 ea_a1_types.nurse_gap.R2,1,results/analysis/error_analysis.csv,src/16_error_analysis.py,yes,check,nurse_gap / R2
 ea_a1_types.nurse_gap.R3,1,results/analysis/error_analysis.csv,src/16_error_analysis.py,yes,check,nurse_gap / R3

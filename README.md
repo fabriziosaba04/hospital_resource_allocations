@@ -8,6 +8,24 @@ A decision-support agent that reallocates **beds and nurses** across four depart
 
 The agent is compared with three deterministic baselines on synthetic data. It is a course prototype (Business Analytics), not a system for running a real hospital or replacing human decisions.
 
+## Five-minute path
+
+1. **What it is.** An LLM agent system (ALLOCATOR and CHECKER, run as Claude Code subagents against a local MCP server) that reallocates beds and nurses daily in a simulated four-department hospital. It is compared with three deterministic baselines (B0 no reallocation, B1 clinical-priority-first, B2 proportional) on frozen synthetic data, and every decision is audited by deterministic code.
+2. **The headline result:** [`ANALYSIS.md`, Key results](ANALYSIS.md#key-results), with the reach of the results in [§5 Limitations](ANALYSIS.md#5-limitations). Every number there is listed with its source file in [`results/analysis/HEADLINE_NUMBERS.csv`](results/analysis/HEADLINE_NUMBERS.csv).
+3. **The brief's deliverables:** code ([`src/`](src/), [`.claude/agents/`](.claude/agents/)), this README, [`ERROR_ANALYSIS.md`](ERROR_ANALYSIS.md), [`REFLECTION.md`](REFLECTION.md); the full map is in §1.
+4. **Verify in a few commands** (from a clone or the zip; see §5 for setup):
+
+   ```bash
+   uv sync
+   uv run pytest -q                                # fast test suite
+   uv run python src/01_verify_data.py             # frozen data against data/MANIFEST.json
+   uv run python src/05_verify_copy_back.py        # re-hash all four agent runs (--sums-only mode)
+   uv run python src/14_write_analysis.py --check  # ANALYSIS.md matches the committed tables
+   uv run python src/16_error_analysis.py --check  # ERROR_ANALYSIS.md matches its tables and register
+   ```
+
+   Each prints OK / EQUAL / "up to date" or exits non-zero.
+
 **Overview.** A fixed split of beds and nurses soon becomes unbalanced: one department overflows while another has idle beds, and nurse shortages fall unevenly on patients. Each simulated day, the ALLOCATOR reassesses the split under hard rules:
 
 - resources are never created;
@@ -24,8 +42,8 @@ Patients have one of three complexity levels (Level 3 is the highest priority). 
 | Code for the agents | Agent definitions (dispatcher, ALLOCATOR, CHECKER): [`.claude/agents/`](.claude/agents/). Run restrictions: [`.claude/run-settings.json`](.claude/run-settings.json). MCP server (ANALYZER, ORCHESTRATOR state machine, tools): [`src/mcp_server/`](src/mcp_server/). Deterministic environment rules: [`src/environment/`](src/environment/). Audit, metrics and baselines: [`src/evaluation/`](src/evaluation/). The pipeline in run order: [`src/01_verify_data.py`](src/01_verify_data.py) … [`src/16_error_analysis.py`](src/16_error_analysis.py) (§5) |
 | README | this file |
 | Error analysis | [`ERROR_ANALYSIS.md`](ERROR_ANALYSIS.md): the agents' errors in the runs (A), the coding agent's errors during development (B), errors in the verification itself (C), and how each was found (D); every number listed in [`results/analysis/ERROR_NUMBERS.csv`](results/analysis/ERROR_NUMBERS.csv). [`mistakes.md`](mistakes.md) points to it |
-| Reflection (one page) | [`REFLECTION.md`](REFLECTION.md) (*to be completed*; long version [`docs/LIMITATIONS_AND_REFLECTION.md`](docs/LIMITATIONS_AND_REFLECTION.md)) |
-| Analysis (results) | [`ANALYSIS.md`](ANALYSIS.md): R1–R3 against the baselines, run by run; the CHECKER against the audit; the CHECKER on R1's wrong claims; the STRESS1 probe. Every number is listed with its source file and script in [`results/analysis/HEADLINE_NUMBERS.csv`](results/analysis/HEADLINE_NUMBERS.csv) |
+| Reflection (one page) | [`REFLECTION.md`](REFLECTION.md) (*being written by the owner*; long version [`docs/LIMITATIONS_AND_REFLECTION.md`](docs/LIMITATIONS_AND_REFLECTION.md)) |
+| Analysis (results) | [`ANALYSIS.md`](ANALYSIS.md): R1–R3 against the baselines, run by run; the CHECKER against the audit; the CHECKER on R1's wrong claims; the STRESS1 probe; the limitations (§5). Every number is listed with its source file and script in [`results/analysis/HEADLINE_NUMBERS.csv`](results/analysis/HEADLINE_NUMBERS.csv) |
 | Plan (question, theory, test) | [`plan.md`](plan.md), which summarises [`docs/EVALUATION_PLAN.md`](docs/EVALUATION_PLAN.md). No numerical falsification threshold was pre-registered: a run failing gate D counts against the hypothesis, and gaps to B1 are reported run by run (a declared limitation) |
 
 **Two files about "agents".** [`CLAUDE.md`](CLAUDE.md) holds the standing instructions for the coding agent (what the brief calls `AGENTS.md`). [`docs/AGENTS.md`](docs/AGENTS.md) specifies the system's own four agents: ANALYZER, ALLOCATOR, CHECKER and ORCHESTRATOR.
@@ -35,7 +53,7 @@ Patients have one of three complexity levels (Level 3 is the highest priority). 
 | Grading axis | Evidence |
 | --- | --- |
 | **Analysis (50%)** | Results: [`ANALYSIS.md`](ANALYSIS.md), from the tables in [`results/analysis/`](results/analysis/) (steps 10–14). Figures F1–F6: [`F1`](results/figures/F1_overflow_by_tier.png), [`F2`](results/figures/F2_nurse_gap_by_tier.png), [`F3`](results/figures/F3_beds_over_time.png), [`F4`](results/figures/F4_nurses_vs_requirement.png), [`F5`](results/figures/F5_fairness_dispersion.png), [`F6`](results/figures/F6_checker_vs_audit.png) (`src/09_build_figures.py`). Animations of the net balance per department: [`R1`](results/figures/animations/R1_net_balances.gif), [`R2`](results/figures/animations/R2_net_balances.gif), [`R3`](results/figures/animations/R3_net_balances.gif) (`src/15_animations.py`). Run reports per run: [`results/evaluations/R1/run_report.json`](results/evaluations/R1/run_report.json) (likewise R2, R3, STRESS1). Baseline headroom: [`results/evaluations/headroom.json`](results/evaluations/headroom.json). Metric definitions and the pre-registered headline set: [`docs/EVALUATION_PLAN.md`](docs/EVALUATION_PLAN.md) §3 |
-| **Reflection (30%)** | [`REFLECTION.md`](REFLECTION.md) (*to be completed*). Running record of errors and near misses: [`docs/REFLECTION_LOG.md`](docs/REFLECTION_LOG.md). Limitations: [`docs/LIMITATIONS_AND_REFLECTION.md`](docs/LIMITATIONS_AND_REFLECTION.md). Error analysis: [`ERROR_ANALYSIS.md`](ERROR_ANALYSIS.md) (*to be completed*) |
+| **Reflection (30%)** | [`REFLECTION.md`](REFLECTION.md) (*being written by the owner*). Running record of errors and near misses: [`docs/REFLECTION_LOG.md`](docs/REFLECTION_LOG.md). Limitations: [`ANALYSIS.md` §5](ANALYSIS.md#5-limitations) (long working version: [`docs/LIMITATIONS_AND_REFLECTION.md`](docs/LIMITATIONS_AND_REFLECTION.md)). Error analysis: [`ERROR_ANALYSIS.md`](ERROR_ANALYSIS.md) |
 | **Verification (20%)** | See the list below |
 
 The Verification evidence, none of which depends on an LLM output:
@@ -84,11 +102,13 @@ docs/                        specification, evaluation plan, data dictionary, lo
 - **`data/`, and the brief's *data/raw* and *data/derived*.** `data/raw/` holds the datasets exactly as generated and frozen. `data/processed/` plays the role of the brief's *data/derived*: validation reports and the Monte Carlo reference ranges. `data/metadata/` holds each dataset's configs. `data/` is not renamed or split because `data/MANIFEST.json`, frozen at tag `data-v1.0`, records these exact paths, and the hashed generator code writes them; any change would need a new data tag.
 - **Why the runs stay under `results/allocations/` and `results/evaluations/`.** The four agent runs were copied back from the run clone with hash manifests and are frozen evidence: they are never moved or edited. All the evaluation code addresses runs as `results/{allocations,evaluations}/<run_id>/`. The index [`results/README.md`](results/README.md) groups them into runs, baselines, analysis, figures, verification and development.
 
-## 4. Data, models and privacy
+## 4. AI assistance, data and privacy
 
-- **Synthetic data, no personal data.** The four datasets are generated from fixed seeds by a stochastic simulation ([`src/data_generation/`](src/data_generation/)). A patient record holds only an ID, department, complexity level, arrival day and discharge day. The distributions are illustrative and are not real hospital statistics. Fields: [`docs/DATA_DICTIONARY.md`](docs/DATA_DICTIONARY.md).
-- **No API key or paid API.** The agents run as Claude Code subagents against a local MCP server, on a Claude subscription.
-- **Models and versions per run** (from each run's `run_manifest.json` and launch transcript):
+**Disclosure of AI assistance.**
+
+- **The system was implemented by Claude Code**, the coding agent (Claude Opus 5.5, per the `Co-Authored-By` line of every commit), under the instructions in [`CLAUDE.md`](CLAUDE.md). Its errors during development are part B of [`ERROR_ANALYSIS.md`](ERROR_ANALYSIS.md).
+- **The owner's reviews were prepared with an LLM advisor** (a separate claude.ai chat, without repository access) and relayed by the owner. The two cannot be separated in the record ([`docs/REFLECTION_LOG.md`](docs/REFLECTION_LOG.md) R52). This includes the owner verdicts on R1's wrong claims and the adjudication causes; the owner's own extraction of days 3, 8 and 18 is the part made without the advisor.
+- **The system's agents** (dispatcher, ALLOCATOR, CHECKER) ran on the models below, from each run's `run_manifest.json` (`models`, checked per launch in `launches.jsonl`) and launch transcript:
 
   | Run | Dataset | Dispatcher, ALLOCATOR, CHECKER | Code (`prompts-v1.0`) | Claude Code |
   | --- | --- | --- | --- | --- |
@@ -97,13 +117,22 @@ docs/                        specification, evaluation plan, data dictionary, lo
   | R3 | `seed20261107` | `claude-sonnet-5-5` | `f2162c0` | 2.1.330 |
   | STRESS1 | `seed20261107_stress` | `claude-sonnet-5-5` | `f2162c0` | 2.1.330 |
 
-- **Development:** the code was written with Claude Code as the coding agent (Claude Opus 5.5, per the `Co-Authored-By` line of every commit), under the instructions in `CLAUDE.md`.
 - **LLM non-determinism:** a new agent run is a new run, never a reproduction. Differences between R1, R2 and R3 are part of the evaluation.
-- The run transcripts contain local file paths (including the owner's Windows username). They are frozen evidence and are left unedited.
+
+**Data, keys and privacy.**
+
+- **Synthetic data, no personal data.** The four datasets are generated from fixed seeds by a stochastic simulation ([`src/data_generation/`](src/data_generation/)). A patient record holds only an ID, department, complexity level, arrival day and discharge day. The distributions are illustrative and are not real hospital statistics. Fields: [`docs/DATA_DICTIONARY.md`](docs/DATA_DICTIONARY.md).
+- **No API key, token or paid API in the repository.** The agents run as Claude Code subagents against a local MCP server, on a Claude subscription; nothing in the code reads a key.
+- **Local paths.** The frozen run records and transcripts contain local file paths, including the owner's Windows username. They are frozen evidence and are left unedited. In editable files, such paths are written as `~` or `<repo>`.
 
 ## 5. Reproduce
 
-Requirements: Python ≥ 3.12 and [uv](https://docs.astral.sh/uv/). Then, in the repository root:
+Requirements: Python ≥ 3.12 and [uv](https://docs.astral.sh/uv/) (git only for a clone). Get the code either way:
+
+- **Clone:** `git clone <repository URL> C:\hra` (any short folder), then `cd C:\hra`.
+- **Zip:** unzip into a short folder (for example `C:\hra\`) and open a shell there. The zip is built with `git archive`, so it holds exactly the committed bytes and no `.git`. Everything below runs from it; the tests that read the committed version of a file through git (`tests/test_owner_inputs.py`) skip with the reason "needs a git checkout".
+
+Then, in the repository root:
 
 ```bash
 uv sync                                         # environment
@@ -143,13 +172,3 @@ uv run python src/16_error_analysis.py         # ERROR_ANALYSIS.md, its tables a
 | [`docs/REFLECTION_LOG.md`](docs/REFLECTION_LOG.md) | Errors and near misses, recorded when they happened |
 | [`docs/SESSION_LOG.md`](docs/SESSION_LOG.md) | One entry per working session |
 | [`docs/CLEANUP_PLAN.md`](docs/CLEANUP_PLAN.md) | The repository clean-up: inventory, moves, publication scan; §10 maps the two moved paths cited in `EVALUATION_PLAN.md` |
-
----
-
-### Submission instructions (owner)
-
-Build the zip from the committed tree, so that it contains exactly the repository's bytes (and no `.venv/` or caches):
-
-```bash
-git archive --format=zip --output hospital_resource_allocations.zip HEAD
-```

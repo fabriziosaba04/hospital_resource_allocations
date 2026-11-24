@@ -22,7 +22,13 @@ ADJ_REL = "results/evaluations/R1/owner_extraction/" + ADJ_FILE
 
 def _committed_causes() -> bytes:
     # the owner may be editing the working copy: the tests use the committed table, never the working one
-    return subprocess.run(["git", "show", f"HEAD:{ADJ_REL}"], cwd=ROOT, capture_output=True, check=True).stdout
+    try:
+        r = subprocess.run(["git", "show", f"HEAD:{ADJ_REL}"], cwd=ROOT, capture_output=True)
+    except FileNotFoundError:  # git not installed
+        r = None
+    if r is None or r.returncode != 0:   # e.g. the submission zip (git archive): no .git, no committed table
+        pytest.skip("needs a git checkout: reads the committed owner table with `git show HEAD:...`")
+    return r.stdout
 
 
 @pytest.fixture

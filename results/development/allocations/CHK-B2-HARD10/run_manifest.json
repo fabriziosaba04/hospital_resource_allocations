@@ -1,8 +1,8 @@
 {
   "run_id": "CHK-B2-HARD10",
   "dataset_id": "HARD10",
-  "data_root": "C:\\Users\\bissi\\OneDrive\\Documenti\\UNI_LAVORO\\MAGISTRALE\\1st_year\\Business_Analytics\\Individual_Project\\hospital_resource_allocations\\results\\dry_runs\\HARD10_fixture",
-  "eval_dir": "C:\\Users\\bissi\\OneDrive\\Documenti\\UNI_LAVORO\\MAGISTRALE\\1st_year\\Business_Analytics\\Individual_Project\\hospital_resource_allocations\\results\\evaluations\\CHK-B2-HARD10",
+  "data_root": "<repo>\\results\\dry_runs\\HARD10_fixture",
+  "eval_dir": "<repo>\\results\\evaluations\\CHK-B2-HARD10",
   "retry_limit": 3,
   "horizon": 10,
   "expose_violation_labels": false,

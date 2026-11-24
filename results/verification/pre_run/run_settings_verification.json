@@ -193,7 +193,7 @@
       "is_error": true,
       "denied": true,
       "leak_markers": [],
-      "result_excerpt": "Permission to read C:\\Users\\bissi\\OneDrive\\Documenti\\UNI_LAVORO\\MAGISTRALE\\1st_year\\Business_Analytics\\Individual_Project\\hospital_resource_allocations\\data has been denied."
+      "result_excerpt": "Permission to read <repo>\\data has been denied."
     },
     {
       "tool": "Grep",
@@ -241,7 +241,7 @@
       "is_error": true,
       "denied": true,
       "leak_markers": [],
-      "result_excerpt": "Permission to read C:\\Users\\bissi\\OneDrive\\Documenti\\UNI_LAVORO\\MAGISTRALE\\1st_year\\Business_Analytics\\Individual_Project\\hospital_resource_allocations\\results has been denied."
+      "result_excerpt": "Permission to read <repo>\\results has been denied."
     }
   ]
 }

@@ -1,8 +1,8 @@
 {
   "run_id": "DRY1-SMOKE5",
   "dataset_id": "SMOKE5",
-  "data_root": "C:\\Users\\bissi\\OneDrive\\Documenti\\UNI_LAVORO\\MAGISTRALE\\1st_year\\Business_Analytics\\Individual_Project\\hospital_resource_allocations\\results\\dry_runs\\SMOKE5_fixture",
-  "eval_dir": "C:\\Users\\bissi\\OneDrive\\Documenti\\UNI_LAVORO\\MAGISTRALE\\1st_year\\Business_Analytics\\Individual_Project\\hospital_resource_allocations\\results\\evaluations\\DRY1-SMOKE5",
+  "data_root": "<repo>\\results\\dry_runs\\SMOKE5_fixture",
+  "eval_dir": "<repo>\\results\\evaluations\\DRY1-SMOKE5",
   "retry_limit": 3,
   "horizon": 5,
   "expose_violation_labels": false,
